@@ -1,0 +1,76 @@
+<div class="pet-wellness">
+  <!-- Header -->
+  <div class="pet-wellness__header">
+    <app-back-button
+      class="pet-wellness__back"
+      variant="glass"
+      ariaLabel="Torna indietro"
+      (clicked)="onBack()">
+    </app-back-button>
+
+    <h1 class="pet-wellness__title">Guida al Benessere</h1>
+  </div>
+
+  <!-- Logo -->
+  <div class="pet-wellness__logo">
+    <app-logo
+      variant="color"
+      size="lg"
+      loading="eager"
+      href="https://fiutami.pet">
+    </app-logo>
+  </div>
+
+  <!-- Description -->
+  <p class="pet-wellness__description">
+    Scopri come prenderti cura al meglio del tuo animale.
+    Ogni specie ha esigenze diverse!
+  </p>
+
+  <!-- Species Badge -->
+  <div *ngIf="selectedSpecies" class="pet-wellness__species-badge">
+    <span>{{ selectedSpecies.name }}</span>
+  </div>
+
+  <!-- Wellness Categories -->
+  <div class="pet-wellness__categories">
+    <button
+      *ngFor="let cat of wellnessCategories"
+      class="pet-wellness__category"
+      type="button"
+      (click)="viewCategory(cat.id)">
+      <!-- Icon -->
+      <div class="pet-wellness__category-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path *ngIf="cat.icon === 'food'" d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05l-2.97-.98-2.07 9.68-2.68-1.75-2.06 1.75-2.68-1.75-2.05 1.75-2.69-1.75-2.07 9.68L1 5.05l1.66 16.48c.1.82.79 1.46 1.63 1.46h1.66l2.29-2.29 2.29 2.29h2.29l2.29-2.29z"/>
+          <path *ngIf="cat.icon === 'scale'" d="M12 3L2 9l10 6 10-6-10-6zm0 17l10-6v-2l-10 6-10-6v2l10 6z"/>
+          <path *ngIf="cat.icon === 'behavior'" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z"/>
+          <path *ngIf="cat.icon === 'home'" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          <path *ngIf="cat.icon === 'vaccine'" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z"/>
+          <path *ngIf="cat.icon === 'vet'" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+        </svg>
+      </div>
+
+      <!-- Content -->
+      <div class="pet-wellness__category-content">
+        <span class="pet-wellness__category-label">{{ cat.label }}</span>
+        <span class="pet-wellness__category-desc">{{ cat.description }}</span>
+      </div>
+
+      <!-- Chevron -->
+      <svg class="pet-wellness__category-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Coming Soon Notice -->
+  <div class="pet-wellness__notice">
+    <p>Le guide dettagliate saranno disponibili nella versione completa dell'app.</p>
+  </div>
+
+  <!-- Complete Button -->
+  <button class="pet-wellness__complete" type="button" (click)="onComplete()">
+    Completa Registrazione
+  </button>
+</div>

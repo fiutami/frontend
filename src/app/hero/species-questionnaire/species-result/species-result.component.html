@@ -1,0 +1,55 @@
+<div class="species-result">
+  <!-- Header -->
+  <header class="species-result__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+  </header>
+
+  <!-- Content -->
+  <main class="species-result__content">
+    <!-- Intro bubble (blue) -->
+    <div class="species-result__intro">
+      <app-speech-bubble variant="ai-info" tailPosition="bottom-left">
+        {{ introMessage }}
+      </app-speech-bubble>
+    </div>
+
+    <!-- Result card -->
+    <div class="species-result__card">
+      <!-- Species image placeholder -->
+      <div class="species-result__image-container">
+        <div class="species-result__image-placeholder">
+          <span class="material-icons">pets</span>
+        </div>
+      </div>
+
+      <!-- Species name -->
+      <h2 class="species-result__species-name">{{ recommendedSpecies.name }}</h2>
+
+      <!-- Species description -->
+      <p class="species-result__description">{{ recommendedSpecies.description }}</p>
+    </div>
+
+    <!-- Fiuto with speech bubble -->
+    <div class="species-result__fiuto">
+      <app-speech-bubble variant="ai" tailPosition="bottom-right">
+        {{ fiutoMessage }}
+      </app-speech-bubble>
+    </div>
+
+    <!-- Mascot -->
+    <div class="species-result__mascot">
+      <img
+        src="assets/images/fiuto-mascot.png"
+        alt="Fiuto mascotte"
+        class="species-result__mascot-img" />
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="species-result__footer">
+    <app-logo variant="white" size="md" href="https://fiutami.pet"></app-logo>
+  </footer>
+</div>

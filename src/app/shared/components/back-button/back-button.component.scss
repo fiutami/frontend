@@ -1,0 +1,104 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ========================================
+// BACK BUTTON COMPONENT
+// Circular back navigation button
+// Based on Figma: node 12271:7531 (mob_welcome_ai)
+// ========================================
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $border-radius-full;
+  cursor: pointer;
+  transition: $transition-base;
+
+  @include focus-ring(rgba(255, 255, 255, 0.8));
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  // Icon styling
+  &__icon {
+    width: 50%;
+    height: 50%;
+  }
+
+  // ========================================
+  // VARIANTS
+  // ========================================
+
+  // Glass variant - white with blur (default for welcome page)
+  &--glass {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: $color-text-dark;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 1);
+      transform: translateY(-1px);
+      box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  // Solid variant - filled background
+  &--solid {
+    background: $color-background-primary;
+    color: $color-text-primary;
+    box-shadow: $shadow-md;
+
+    &:hover:not(:disabled) {
+      background: darken(#fff, 5%);
+    }
+  }
+
+  // Outline variant - transparent with border
+  &--outline {
+    background: transparent;
+    color: $color-text-inverse;
+    border: 2px solid $color-text-inverse;
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // ========================================
+  // SIZES
+  // ========================================
+
+  &--sm {
+    width: 28px;
+    height: 28px;
+  }
+
+  &--md {
+    width: 34px;
+    height: 34px;
+
+    @include respond(md) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &--lg {
+    width: 44px;
+    height: 44px;
+
+    @include respond(md) {
+      width: 52px;
+      height: 52px;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+<div class="home-start">
+  <!-- Language Switcher (Top-Right) -->
+  <div class="home-start__language">
+    <app-language-switcher (languageClick)="onLanguageClick()"></app-language-switcher>
+  </div>
+
+  <!-- LEFT SIDE: Content (visible on desktop) -->
+  <div class="home-start__left">
+    <!-- Branding -->
+    <div class="home-start__branding">
+      <div class="home-start__logo">
+        <picture>
+          <source srcset="assets/images/logo-fiutami.avif" type="image/avif">
+          <source srcset="assets/images/logo-fiutami.webp" type="image/webp">
+          <img
+            src="assets/images/logo-fiutami.png"
+            alt="FiutaMi"
+            class="home-start__logo-img"
+            loading="eager"
+            fetchpriority="high" />
+        </picture>
+      </div>
+
+      <div class="home-start__mascot" aria-label="Mascotte FiutaMi">
+        <picture>
+          <source srcset="assets/images/mascot-icon.avif" type="image/avif">
+          <source srcset="assets/images/mascot-icon.webp" type="image/webp">
+          <img
+            src="assets/images/mascot-icon.png"
+            alt=""
+            class="home-start__mascot-img"
+            role="presentation"
+            loading="eager" />
+        </picture>
+      </div>
+
+      <p class="home-start__tagline">
+        <span class="home-start__tagline-main">Fiuta</span>
+        <span class="home-start__tagline-sub">la tua soluzione ideale</span>
+      </p>
+    </div>
+
+    <!-- Auth Card -->
+    <app-auth-card>
+      <div class="home-start__actions">
+        <app-button
+          variant="primary"
+          [fullWidth]="true"
+          (clicked)="onLoginClick()">
+          Accedi
+        </app-button>
+
+        <app-button
+          variant="outline"
+          [fullWidth]="true"
+          (clicked)="onSignupClick()">
+          Registrati
+        </app-button>
+
+        <p class="home-start__terms">
+          Accedendo accetti i nostri
+          <a href="/terms" class="home-start__link">Termini</a>
+          &
+          <a href="/privacy" class="home-start__link">Privacy</a>
+        </p>
+      </div>
+    </app-auth-card>
+  </div>
+
+  <!-- RIGHT SIDE: Dog Image (desktop only, mobile = background) -->
+  <div class="home-start__right">
+    <picture>
+      <source
+        srcset="assets/images/auth-bg-480w.avif 480w,
+                assets/images/auth-bg-768w.avif 768w,
+                assets/images/auth-bg-1280w.avif 1280w,
+                assets/images/auth-bg.avif 1920w"
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        type="image/avif">
+      <source
+        srcset="assets/images/auth-bg-480w.webp 480w,
+                assets/images/auth-bg-768w.webp 768w,
+                assets/images/auth-bg-1280w.webp 1280w,
+                assets/images/auth-bg.webp 1920w"
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        type="image/webp">
+      <img
+        src="assets/images/auth-bg.png"
+        alt=""
+        class="home-start__dog-image"
+        role="presentation"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async" />
+    </picture>
+  </div>
+</div>

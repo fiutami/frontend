@@ -1,0 +1,19 @@
+@if (href) {
+  <a [href]="href" [target]="target" class="logo-link" rel="noopener noreferrer">
+    <img
+      [src]="logoSrc"
+      [class]="logoClasses.join(' ')"
+      [loading]="loading"
+      [ngStyle]="customStyles"
+      alt="FiutaMi"
+      decoding="async" />
+  </a>
+} @else {
+  <img
+    [src]="logoSrc"
+    [class]="logoClasses.join(' ')"
+    [loading]="loading"
+    [ngStyle]="customStyles"
+    alt="FiutaMi"
+    decoding="async" />
+}

@@ -1,0 +1,194 @@
+@use "sass:map";
+@use "sass:math";
+@import './tokens';
+$breakpoints: (
+  xs: 0,
+  sm: 480,
+  md: 768,
+  lg: 1024,
+  xl: 1280
+) !default;
+/* ========== FIUTAMI MIXINS ==========
+   Dipende da: _tokens.scss (per $breakpoints)
+   Include: media helpers, fluid clamp, container, focus-ring, safe-area
+====================================== */
+/* Importa i breakpoints definiti in _tokens.scss */
+@function bp($key) {
+  @return map.get($breakpoints, $key);
+}
+
+/* Media query min-width */
+@mixin respond($from) {
+  @media (min-width: #{bp($from)}px) {
+    @content;
+  }
+}
+
+/* Media query fra due breakpoints (opzionale) */
+@mixin between($from, $to) {
+  @media (min-width: #{bp($from)}px) and (max-width: #{bp($to) - 0.02}px) {
+    @content;
+  }
+}
+
+/* Orientation helper */
+@mixin orientation($value) {
+  @media (orientation: #{$value}) {
+    @content;
+  }
+}
+
+/* Fluid clamp per grandezze relative al viewport */
+@function fluid($min, $max, $min-vw: 320, $max-vw: 1440) {
+  $slope: ($max - $min) / ($max-vw - $min-vw) * 100;
+  $intercept: $min - ($slope * $min-vw / 100);
+  @return clamp(#{$min}, #{$intercept}rem + #{$slope}vw, #{$max});
+}
+
+/* Container centrale con padding fluido */
+@mixin container {
+  width: min(100%, var(--container-w));
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* Safe area (iOS notch) */
+@mixin safe-area-padding($t:0, $r:0, $b:0, $l:0) {
+  padding-top: calc(#{$t} + env(safe-area-inset-top));
+  padding-right: calc(#{$r} + env(safe-area-inset-right));
+  padding-bottom: calc(#{$b} + env(safe-area-inset-bottom));
+  padding-left: calc(#{$l} + env(safe-area-inset-left));
+}
+
+/* Focus ring consistente (per componenti interattivi) */
+@mixin focus-ring($color: var(--accent), $offset: 2px, $width: 2px) {
+  &:focus-visible {
+    outline: $width solid $color;
+    outline-offset: $offset;
+  }
+}
+
+/* Cover media (img/video) con object-position personalizzabile */
+@mixin media-cover($pos: center) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: $pos;
+}
+
+/* Overlay gradiente per leggibilità su immagini */
+@mixin gradient-overlay($from: rgba(0,0,0,.45), $to: rgba(0,0,0,0)) {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, #0000 0%, $to 35%, $from 100%);
+  }
+}
+
+/* Utility: visually hidden (per testi accessibili off-screen) */
+@mixin visually-hidden {
+  position: absolute !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+/* FR-004: container query helper (defaults to hero container) */
+@mixin container-query($name: hero, $from: null, $to: null) {
+  @if $from != null and $to != null {
+    @container #{$name} (min-width: #{$from}px) and (max-width: #{$to - 0.02}px) {
+      @content;
+    }
+  } @else if $from != null {
+    @container #{$name} (min-width: #{$from}px) {
+      @content;
+    }
+  } @else if $to != null {
+    @container #{$name} (max-width: #{$to - 0.02}px) {
+      @content;
+    }
+  } @else {
+    @container #{$name} {
+      @content;
+    }
+  }
+}
+
+/* FR-006: ensure hero viewport honours 100dvh with safe-area compensation */
+@mixin hero-viewport-floor {
+  min-height: 100dvh;
+  min-height: calc(100dvh + env(safe-area-inset-bottom));
+  @supports (min-height: 100svh) {
+    min-height: 100svh;
+  }
+}
+
+/* Portrait compact helper: aligns media & content stack without scroll */
+@mixin hero-compact-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--hero-portrait-gap);
+  min-height: var(--hero-portrait-min-height);
+
+  .hero-media {
+    position: relative;
+    flex: 1 0 auto;
+    min-block-size: var(--hero-portrait-media-min-height);
+    max-block-size: var(--hero-portrait-media-max-height);
+  }
+
+  .hero-content {
+    display: grid;
+    gap: var(--hero-gap);
+    block-size: auto;
+  }
+}
+
+/* Overlay helper to float logo/lockup above hero media */
+@mixin hero-logo-overlay {
+  position: absolute;
+  inset-block-start: var(--hero-logo-offset-block);
+  inset-inline-start: var(--hero-logo-offset-inline);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hero-cta-stack-gap);
+  pointer-events: none;
+}
+
+/* Media frame with gradient overlay for readability */
+@mixin hero-media-frame($radius: clamp(32px, 10vw, 48px)) {
+  position: relative;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: var(--hero-shadow);
+  background: #000;
+  @include gradient-overlay(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0));
+}
+
+@mixin hero-landscape-align($panel: left) {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--hero-landscape-gap);
+
+  .hero-media {
+    flex: 0 1 var(--hero-landscape-media-width);
+    min-height: var(--hero-landscape-media-min-height);
+    max-height: var(--hero-landscape-media-max-height);
+    order: if($panel == left, 2, 1);
+  }
+
+  .hero-content {
+    flex: 1 1 var(--hero-landscape-panel-width);
+    order: if($panel == left, 1, 2);
+    align-content: center;
+  }
+}

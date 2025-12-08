@@ -1,0 +1,90 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// MONTH CHIP COMPONENT
+// Grid of selectable month chips
+// ===========================================
+
+.month-chip {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 6), 1fr);
+  gap: $spacing-sm;
+
+  // Disabled state
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  // Individual chip
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm $spacing-md;
+    min-height: 40px;
+    background-color: $color-chip-selected;
+    border: 2px solid transparent;
+    border-radius: $border-radius-md;
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-chip-text-selected;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover:not(:disabled) {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-cta-primary;
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    // Selected state (inverted for visual feedback)
+    &--selected {
+      background-color: $color-cta-primary;
+      color: $color-text-inverse;
+      box-shadow: $shadow-md;
+    }
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  // Mobile: 3 columns
+  @media (max-width: 479px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-xs;
+
+    .month-chip__item {
+      padding: $spacing-xs $spacing-sm;
+      min-height: 36px;
+      font-size: 12px;
+    }
+  }
+
+  // Small tablet: 4 columns
+  @media (min-width: 480px) and (max-width: 767px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include respond(md) {
+    gap: $spacing-md;
+
+    .month-chip__item {
+      padding: $spacing-md;
+      min-height: 44px;
+      font-size: 15px;
+    }
+  }
+}

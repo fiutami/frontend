@@ -1,0 +1,8 @@
+<div [ngClass]="containerClasses">
+  @for (item of items; track item.label) {
+    <div class="pet-info-card__item">
+      <span class="pet-info-card__label">{{ item.label }}</span>
+      <span class="pet-info-card__value">{{ item.value }}</span>
+    </div>
+  }
+</div>

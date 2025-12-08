@@ -1,0 +1,82 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// MENU ITEM - Reusable Menu Button Component
+// Based on Figma pet-register menu items
+// ===========================================
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  background: $color-background-primary;
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: $transition-base;
+  box-shadow: $shadow-sm;
+
+  &:hover:not(:disabled) {
+    background: darken($color-background-primary, 2%);
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: $shadow-sm;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-cta-primary;
+    outline-offset: 2px;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // Icon container
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-right: $spacing-md;
+    color: $color-cta-primary;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Label text
+  &__label {
+    flex: 1;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: $typography-body-weight;
+    color: $color-text-primary;
+    text-align: left;
+  }
+
+  // Chevron arrow
+  &__chevron {
+    width: 20px;
+    height: 20px;
+    color: $color-text-secondary;
+    flex-shrink: 0;
+    margin-left: $spacing-sm;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover:not(:disabled) &__chevron {
+    transform: translateX(2px);
+  }
+}

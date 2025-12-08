@@ -1,0 +1,227 @@
+// ========================================
+// TYPOGRAPHY UTILITIES
+// Utility classes for consistent text styling
+// ========================================
+
+@import '../tokens-figma';
+@import '../mixins';
+
+// ========================================
+// TEXT SIZES
+// Mobile-first with responsive scaling
+// ========================================
+
+// Display - Hero headlines
+.text-display {
+  font-family: $font-family-display;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+
+  @include respond(md) {
+    font-size: 48px;
+  }
+}
+
+// H1 - Page titles
+.text-h1 {
+  font-family: $font-family-body;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: $typography-h1-line-height;
+
+  @include respond(md) {
+    font-size: 36px;
+  }
+}
+
+// H2 - Section titles
+.text-h2 {
+  font-family: $font-family-body;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: $typography-h2-line-height;
+
+  @include respond(md) {
+    font-size: 28px;
+  }
+}
+
+// H3 - Card titles
+.text-h3 {
+  font-family: $font-family-body;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: $typography-h2-line-height;
+
+  @include respond(md) {
+    font-size: 24px;
+  }
+}
+
+// Body Large - Lead text
+.text-body-lg {
+  font-family: $font-family-body;
+  font-size: 18px;
+  font-weight: $typography-body-weight;
+  line-height: $typography-body-line-height;
+
+  @include respond(md) {
+    font-size: 20px;
+  }
+}
+
+// Body - Standard text
+.text-body {
+  font-family: $font-family-body;
+  font-size: $typography-body-size;
+  font-weight: $typography-body-weight;
+  line-height: $typography-body-line-height;
+}
+
+// Small - Secondary text
+.text-sm {
+  font-family: $font-family-body;
+  font-size: 14px;
+  font-weight: $typography-body-weight;
+  line-height: $typography-body-line-height;
+}
+
+// Extra Small - Terms, captions
+.text-xs {
+  font-family: $font-family-body;
+  font-size: $typography-terms-size-mobile;
+  font-weight: $typography-body-weight;
+  line-height: $typography-body-line-height;
+
+  @include respond(md) {
+    font-size: $typography-terms-size;
+  }
+}
+
+// ========================================
+// TEXT COLORS
+// ========================================
+
+.text-primary {
+  color: $color-text-primary;
+}
+
+.text-secondary {
+  color: $color-text-secondary;
+}
+
+.text-inverse {
+  color: $color-text-inverse;
+}
+
+.text-dark {
+  color: $color-text-dark;
+}
+
+.text-cta {
+  color: $color-cta-primary;
+}
+
+// ========================================
+// TEXT ALIGNMENT
+// ========================================
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Responsive alignment
+@include respond(md) {
+  .md\:text-left {
+    text-align: left;
+  }
+
+  .md\:text-center {
+    text-align: center;
+  }
+
+  .md\:text-right {
+    text-align: right;
+  }
+}
+
+// ========================================
+// FONT WEIGHTS
+// ========================================
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+// ========================================
+// TEXT TRANSFORMS
+// ========================================
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+// ========================================
+// TEXT DECORATION
+// ========================================
+
+.underline {
+  text-decoration: underline;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+// ========================================
+// TRUNCATION
+// ========================================
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

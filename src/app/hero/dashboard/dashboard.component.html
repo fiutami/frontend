@@ -1,0 +1,27 @@
+<section class="dashboard">
+  <header class="dashboard__header">
+    <div class="dashboard__brand">
+      <img src="assets/wordmark.svg" alt="FiutaMi" class="dashboard__logo">
+    </div>
+    <div class="dashboard__user-actions">
+      <button class="dashboard__logout-btn" (click)="logout()" type="button">
+        Esci
+      </button>
+    </div>
+  </header>
+
+  <main class="dashboard__content">
+    <div class="dashboard__welcome">
+      <h1 class="dashboard__title">Benvenuto, {{ userName }}!</h1>
+      <p class="dashboard__email">{{ userEmail }}</p>
+    </div>
+
+    <div class="dashboard__placeholder">
+      <div class="dashboard__coming-soon">
+        <img src="assets/hero/dog-cutout-440.png" alt="" class="dashboard__mascot">
+        <h2>Presto disponibile</h2>
+        <p>Stiamo lavorando per portarti nuove funzionalita. Resta sintonizzato!</p>
+      </div>
+    </div>
+  </main>
+</section>

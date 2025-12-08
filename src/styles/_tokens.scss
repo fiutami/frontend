@@ -1,0 +1,98 @@
+/* === FiutaMi design tokens (base) === */
+:root{
+  --bg: #F5A623;
+  --text: #111111;
+  --accent: #4A90E2;
+
+  --container-w: 1200px;
+  --container-pad: clamp(16px, 4vw, 32px);
+
+  /* spacing (mini set) */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+
+  /* type scale minima */
+  --fs-h1: clamp(28px, 4vw, 56px);
+  --fs-h3: clamp(18px, 2.2vw, 24px);
+
+  /* FR-003 hero-specific tokens */
+  --hero-portrait-line-max: 60; /* portrait copy max characters */
+  --hero-landscape-line-max: 66; /* landscape copy max characters */
+  --hero-desktop-line-max: 75; /* desktop copy max characters */
+  --hero-copy-min: 45; /* minimum characters per line target */
+  --hero-content-padding-block: clamp(16px, 3.5vw, 48px);
+  --hero-content-padding-inline: clamp(18px, 5vw, 60px);
+  --hero-gap: clamp(12px, 3vw, 28px);
+  --hero-cta-gap: clamp(14px, 4vw, 32px);
+  --hero-cta-stack-gap: clamp(12px, 3vw, 24px);
+  --hero-overlay-gap: clamp(14px, 6vw, 28px);
+  --hero-overlay-wordmark-max-width: clamp(184px, 48vw, 312px);
+  --hero-overlay-icon-size: clamp(56px, 18vw, 96px);
+  --hero-portrait-min-height: 100dvh;
+  --hero-portrait-media-height: clamp(320px, 70vh, 520px);
+  --hero-portrait-content-height: clamp(280px, 60vh, 520px);
+  --hero-portrait-gap: clamp(24px, 8vh, 64px);
+  --hero-portrait-media-min-height: clamp(320px, 68vh, 720px);
+  --hero-portrait-media-max-height: clamp(420px, 92vh, 840px);
+  --hero-logo-offset-block: clamp(20px, 7vh, 72px);
+  --hero-logo-offset-inline: clamp(16px, 8vw, 60px);
+  --hero-landscape-gap: clamp(24px, 4vw, 48px);
+  --hero-landscape-media-width: clamp(320px, 46vw, 640px);
+  --hero-landscape-media-min-height: 60vh;
+  --hero-landscape-media-max-height: 85vh;
+  --hero-landscape-panel-width: clamp(320px, 40vw, 520px);
+  --hero-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+  --hero-surface-solid: #f4ae1a;
+  --hero-surface-gradient: linear-gradient(160deg, #f4ae1a 0%, #f6c450 100%);
+  --hero-text-strong: #111111;
+  --hero-landscape-column-template: minmax(0, 1fr) minmax(0, 0.92fr);
+  --hero-wordmark-size-portrait: clamp(42px, 12vw, 64px);
+  --hero-wordmark-size-landscape: clamp(72px, 9vw, 150px);
+  --hero-app-icon-size-portrait: clamp(64px, 18vw, 112px);
+  --hero-app-icon-size-landscape: clamp(56px, 8vw, 96px);
+  --hero-portrait-dog-width: clamp(320px, 58vw, 640px);
+  --hero-portrait-dog-offset-block: clamp(16px, 5vw, 32px);
+  --hero-mobile-dog-width: clamp(320px, 88vw, 640px);
+  --hero-mobile-dog-inline: var(--hero-mobile-dog-width);
+  --hero-mobile-dog-headroom: clamp(56px, 12vh, 120px);
+  --hero-mobile-stack-top: clamp(68px, 18vh, 132px);
+  --hero-mobile-stack-bottom: clamp(88px, 28vh, 184px);
+  --hero-landscape-dog-width: clamp(360px, 36vw, 640px);
+  --hero-desktop-dog-width: clamp(420px, 32vw, 720px);
+  --hero-language-padding-inline: clamp(14px, 2.4vw, 20px);
+  --hero-language-padding-block: clamp(10px, 1.8vw, 16px);
+  --hero-language-gap: clamp(6px, 0.8vw, 12px);
+  --hero-language-icon-size: clamp(24px, 3vw, 32px);
+  --hero-cta-max-width: 360px;
+  --hero-cta-inline-gap: clamp(12px, 2vw, 20px);
+  --hero-portrait-stack-gap: clamp(18px, 5vw, 28px);
+  --hero-landscape-stack-gap: clamp(16px, 2.6vw, 28px);
+  --hero-lede-portrait: clamp(18px, 4.8vw, 28px);
+  --hero-lede-landscape: clamp(18px, 2.4vw, 28px);
+  --hero-v2-gap: clamp(16px, 4vh, 28px);
+  --hero-v2-pad-block: clamp(32px, 14vh, 88px);
+  --hero-v2-pad-inline: clamp(20px, 6vw, 72px);
+  --hero-v2-language-offset: clamp(16px, 5vw, 40px);
+  --hero-v2-content-max: clamp(280px, 72vw, 520px);
+  --hero-v2-landscape-media-space: clamp(220px, 34vw, 460px);
+  --hero-v2-landscape-dog-inset: clamp(12px, 3vw, 36px);
+  --hero-mobile-max-width: 440px;
+  --hero-mobile-gradient-top: #fde5a7;
+  --hero-mobile-gradient-mid: #f7bc34;
+  --hero-mobile-gradient-bottom: #e98b0c;
+  --hero-mobile-text: #111111;
+  --hero-mobile-focus: #f2a10c;
+}
+
+/* breakpoints per i mixin */
+$breakpoints: (
+  xs: 0,
+  sm: 480,
+  md: 768,
+  lg: 1024,
+  xl: 1280
+) !default;
+
+

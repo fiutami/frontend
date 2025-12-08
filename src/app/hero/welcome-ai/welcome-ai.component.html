@@ -1,0 +1,50 @@
+<div class="welcome-ai">
+  <!-- Back Button -->
+  <app-back-button
+    class="welcome-ai__back"
+    variant="glass"
+    ariaLabel="Torna indietro"
+    (clicked)="onBack()">
+  </app-back-button>
+
+  <!-- AI Speech Bubble -->
+  <div class="welcome-ai__speech-bubble">
+    <p class="welcome-ai__message">{{ aiMessage }}</p>
+  </div>
+
+  <!-- Play Button -->
+  <button
+    class="welcome-ai__play"
+    type="button"
+    (click)="onPlayStart()"
+    aria-label="Inizia registrazione animale">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+    </svg>
+  </button>
+
+  <!-- Dog Mascot Image -->
+  <div class="welcome-ai__mascot">
+    <img
+      src="assets/images/ai-mascot-dog.png"
+      alt="Mascotte cane con occhiali"
+      class="welcome-ai__mascot-image"
+      loading="eager"
+      fetchpriority="high" />
+  </div>
+
+  <!-- CTA Speech Bubble -->
+  <div class="welcome-ai__cta-bubble">
+    <p class="welcome-ai__cta-text">{{ ctaText }}</p>
+  </div>
+
+  <!-- Footer with Logo -->
+  <footer class="welcome-ai__footer">
+    <app-logo
+      variant="color"
+      size="lg"
+      loading="lazy"
+      href="https://fiutami.pet">
+    </app-logo>
+  </footer>
+</div>

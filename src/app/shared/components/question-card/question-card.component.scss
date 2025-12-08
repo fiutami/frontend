@@ -1,0 +1,109 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// QUESTION CARD COMPONENT
+// Card with question and answer controls
+// ===========================================
+
+.question-card {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  background-color: $color-background-primary;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-md;
+
+  // ===========================================
+  // HEADER
+  // ===========================================
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__question {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-text-primary;
+    line-height: 1.4;
+  }
+
+  &__required {
+    color: #e53935;
+    margin-left: 2px;
+  }
+
+  &__hint {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: $color-text-secondary;
+    line-height: 1.4;
+  }
+
+  // ===========================================
+  // ANSWER SECTION
+  // ===========================================
+
+  &__answer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text-input {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: 2px solid $color-radio-unchecked;
+    border-radius: $border-radius-md;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    background-color: $color-background-primary;
+    transition: $transition-base;
+
+    &::placeholder {
+      color: $color-text-secondary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-cta-primary;
+      box-shadow: 0 0 0 3px rgba($color-cta-primary, 0.2);
+    }
+  }
+
+  // ===========================================
+  // ERROR MESSAGE
+  // ===========================================
+
+  &__error {
+    padding: $spacing-xs $spacing-sm;
+    background-color: rgba(#e53935, 0.1);
+    border-radius: $border-radius-sm;
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: #e53935;
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    gap: $spacing-lg;
+
+    &__question {
+      font-size: 20px;
+    }
+
+    &__text-input {
+      padding: $spacing-md;
+    }
+  }
+}

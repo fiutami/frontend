@@ -1,0 +1,145 @@
+<div class="profile">
+  <h1 class="profile__title">Profilo</h1>
+  <p class="profile__subtitle">Gestisci le tue informazioni personali</p>
+
+  <!-- Avatar Section -->
+  <div class="profile__avatar-section">
+    <div class="profile__avatar">
+      {{ userInitials }}
+    </div>
+    <div class="profile__avatar-info">
+      <span class="profile__avatar-name">{{ user?.firstName }} {{ user?.lastName }}</span>
+      <span class="profile__avatar-email">{{ user?.email }}</span>
+      <span class="profile__auth-badge" *ngIf="user?.provider === 'google'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Collegato con Google
+      </span>
+    </div>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div class="profile__message profile__message--success" *ngIf="successMessage">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    {{ successMessage }}
+  </div>
+
+  <div class="profile__message profile__message--error" *ngIf="errorMessage">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="15" y1="9" x2="9" y2="15"></line>
+      <line x1="9" y1="9" x2="15" y2="15"></line>
+    </svg>
+    {{ errorMessage }}
+  </div>
+
+  <!-- Loading State -->
+  <div class="profile__loading" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <span>Caricamento profilo...</span>
+  </div>
+
+  <!-- Profile Form -->
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile__form" *ngIf="!isLoading">
+    <div class="form-group">
+      <label for="displayName" class="form-label">Nome Visualizzato</label>
+      <input
+        type="text"
+        id="displayName"
+        formControlName="displayName"
+        class="form-input"
+        placeholder="Come vuoi essere chiamato"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="bio" class="form-label">Bio</label>
+      <textarea
+        id="bio"
+        formControlName="bio"
+        class="form-input form-textarea"
+        placeholder="Raccontaci qualcosa di te"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="city" class="form-label">Città</label>
+        <input
+          type="text"
+          id="city"
+          formControlName="city"
+          class="form-input"
+          placeholder="La tua città"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="country" class="form-label">Paese</label>
+        <input
+          type="text"
+          id="country"
+          formControlName="country"
+          class="form-input"
+          placeholder="Il tuo paese"
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber" class="form-label">Telefono</label>
+      <input
+        type="tel"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        class="form-input"
+        placeholder="+39 123 456 7890"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-input form-input--disabled"
+      >
+      <span class="form-hint">L'email non può essere modificata per account Google</span>
+    </div>
+
+    <div class="profile__actions">
+      <button
+        type="submit"
+        class="btn btn--primary"
+        [disabled]="profileForm.invalid || isSaving"
+      >
+        <span *ngIf="!isSaving">Salva Modifiche</span>
+        <span *ngIf="isSaving">Salvataggio...</span>
+      </button>
+    </div>
+  </form>
+
+  <!-- Account Info -->
+  <div class="profile__info-section">
+    <h2 class="profile__section-title">Informazioni Account</h2>
+    <div class="profile__info-grid">
+      <div class="profile__info-item">
+        <span class="profile__info-label">Registrato il</span>
+        <span class="profile__info-value">{{ user?.createdAt | date:'dd MMMM yyyy' }}</span>
+      </div>
+      <div class="profile__info-item">
+        <span class="profile__info-label">Metodo di accesso</span>
+        <span class="profile__info-value">{{ user?.provider === 'google' ? 'Google OAuth' : 'Email e Password' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

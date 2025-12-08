@@ -1,0 +1,45 @@
+<div [ngClass]="containerClasses">
+  <!-- Mascot (left position) -->
+  @if (showMascot && mascotPosition === 'left') {
+    <div class="ai-message__mascot">
+      <img
+        [src]="mascotSrc"
+        alt="AI Assistant"
+        class="ai-message__mascot-image"
+        loading="lazy" />
+    </div>
+  }
+
+  <!-- Message Bubble -->
+  <app-speech-bubble
+    variant="ai"
+    [tailPosition]="tailPosition"
+    [maxWidth]="maxWidth"
+    [animated]="animated"
+    class="ai-message__bubble">
+
+    @if (typing) {
+      <!-- Typing indicator -->
+      <div class="ai-message__typing-indicator" aria-label="L'AI sta scrivendo...">
+        <span class="ai-message__typing-dot"></span>
+        <span class="ai-message__typing-dot"></span>
+        <span class="ai-message__typing-dot"></span>
+      </div>
+    } @else {
+      <!-- Message content -->
+      <p class="ai-message__text">{{ message }}</p>
+    }
+
+  </app-speech-bubble>
+
+  <!-- Mascot (right position) -->
+  @if (showMascot && mascotPosition === 'right') {
+    <div class="ai-message__mascot">
+      <img
+        [src]="mascotSrc"
+        alt="AI Assistant"
+        class="ai-message__mascot-image"
+        loading="lazy" />
+    </div>
+  }
+</div>

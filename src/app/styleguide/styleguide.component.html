@@ -1,0 +1,21 @@
+<div class="styleguide">
+  <app-styleguide-sidebar
+    [categories]="categories"
+    [components]="components"
+    [selectedCategory]="selectedCategory"
+    [selectedComponentId]="selectedComponentId"
+    (categoryChange)="onCategoryChange($event)"
+    (componentSelect)="selectComponent($event)"
+  ></app-styleguide-sidebar>
+
+  <main class="styleguide__main">
+    <app-component-demo
+      *ngIf="selectedComponent"
+      [config]="selectedComponent"
+    ></app-component-demo>
+
+    <div *ngIf="!selectedComponent" class="styleguide__empty">
+      <p>Select a component from the sidebar to see its demo.</p>
+    </div>
+  </main>
+</div>

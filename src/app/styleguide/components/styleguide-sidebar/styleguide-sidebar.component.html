@@ -1,0 +1,40 @@
+<aside class="sidebar">
+  <div class="sidebar__header">
+    <h1 class="sidebar__title">Styleguide</h1>
+    <p class="sidebar__subtitle">{{ components.length }} Components</p>
+  </div>
+
+  <nav class="sidebar__nav">
+    <div
+      *ngFor="let category of categories"
+      class="sidebar__category"
+    >
+      <button
+        class="sidebar__category-header"
+        [class.sidebar__category-header--expanded]="isCategoryExpanded(category.id)"
+        (click)="toggleCategory(category.id)"
+      >
+        <span class="sidebar__category-icon">{{ category.icon }}</span>
+        <span class="sidebar__category-label">{{ category.label }}</span>
+        <span class="sidebar__category-count">{{ getComponentsForCategory(category.id).length }}</span>
+        <span class="sidebar__category-chevron">
+          {{ isCategoryExpanded(category.id) ? '▼' : '▶' }}
+        </span>
+      </button>
+
+      <div
+        class="sidebar__components"
+        *ngIf="isCategoryExpanded(category.id)"
+      >
+        <button
+          *ngFor="let comp of getComponentsForCategory(category.id)"
+          class="sidebar__component"
+          [class.sidebar__component--active]="comp.id === selectedComponentId"
+          (click)="selectComponent(comp.id, category.id)"
+        >
+          {{ comp.name }}
+        </button>
+      </div>
+    </div>
+  </nav>
+</aside>

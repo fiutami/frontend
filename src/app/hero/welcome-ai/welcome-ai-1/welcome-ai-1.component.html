@@ -1,0 +1,75 @@
+<div class="welcome-ai-1">
+  <!-- Header with back button and language -->
+  <header class="welcome-ai-1__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBackClick()">
+    </app-back-button>
+
+    <button
+      type="button"
+      class="welcome-ai-1__language-btn"
+      (click)="onLanguageClick()"
+      aria-label="Cambia lingua">
+      <span class="material-icons">language</span>
+    </button>
+  </header>
+
+  <!-- Main content -->
+  <main class="welcome-ai-1__content">
+    <!-- Fiuto message -->
+    <div class="welcome-ai-1__message">
+      <app-ai-message-bubble
+        [message]="fiutoMessage()"
+        [showMascot]="true"
+        mascotPosition="right"
+        [animated]="true">
+      </app-ai-message-bubble>
+    </div>
+
+    <!-- Choice buttons -->
+    @if (!hasSelected()) {
+      <div class="welcome-ai-1__choices">
+        <button
+          type="button"
+          class="welcome-ai-1__choice-btn welcome-ai-1__choice-btn--primary"
+          (click)="onHasPetClick()">
+          <span class="welcome-ai-1__choice-icon">🐕</span>
+          <span class="welcome-ai-1__choice-text">Ho un animale</span>
+        </button>
+
+        <button
+          type="button"
+          class="welcome-ai-1__choice-btn welcome-ai-1__choice-btn--secondary"
+          (click)="onWantsPetClick()">
+          <span class="welcome-ai-1__choice-icon">🔍</span>
+          <span class="welcome-ai-1__choice-text">Vorrei un animale</span>
+        </button>
+      </div>
+    }
+
+    <!-- Loading indicator when selected -->
+    @if (hasSelected()) {
+      <div class="welcome-ai-1__loading">
+        <div class="welcome-ai-1__spinner"></div>
+        <p class="welcome-ai-1__loading-text">Un momento...</p>
+      </div>
+    }
+  </main>
+
+  <!-- Footer -->
+  <footer class="welcome-ai-1__footer">
+    <img
+      src="assets/images/logo-fiutami.png"
+      alt="FiutaMi"
+      class="welcome-ai-1__footer-logo" />
+  </footer>
+</div>
+
+<!-- Language Bottom Sheet -->
+<app-language-bottom-sheet
+  [isOpen]="showLanguageSheet()"
+  [selectedLanguage]="currentLanguage()"
+  (languageSelected)="onLanguageSelected($event)"
+  (closed)="onLanguageSheetClosed()">
+</app-language-bottom-sheet>

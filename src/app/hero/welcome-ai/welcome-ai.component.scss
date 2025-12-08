@@ -1,0 +1,211 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// WELCOME AI - AI-Guided Onboarding Page
+// Based on Figma: FxJsfOV7R7qoXBM2xTyXRE, node 12284:4265
+// Mobile-First Design (390x844)
+// ===========================================
+
+.welcome-ai {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: $border-radius-page;
+  background: linear-gradient(
+    180deg,
+    rgba(242, 184, 48, 0.5) 0%,
+    rgba(242, 184, 48, 0.5) 100%
+  );
+  background-color: #F5A623;
+
+  // Back Button - Top Left (uses app-back-button component)
+  &__back {
+    position: absolute;
+    top: 45px;
+    left: 31px;
+    z-index: 20;
+  }
+
+  // AI Speech Bubble - Main Message
+  &__speech-bubble {
+    position: absolute;
+    top: 183px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 341px;
+    max-width: calc(100% - 48px);
+    padding: $spacing-md $spacing-sm;
+    background: $color-background-primary;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-md;
+  }
+
+  &__message {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: $typography-body-weight;
+    line-height: 1.4;
+    color: $color-text-primary;
+    text-align: center;
+  }
+
+  // Play Button - Below Speech Bubble
+  &__play {
+    position: absolute;
+    top: 303px;
+    left: 33px;
+    z-index: 100; // Higher z-index to ensure clickability
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    background: #4A74F0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: $transition-base;
+    box-shadow: 0 4px 12px rgba(74, 116, 240, 0.4);
+
+    svg {
+      width: 100%;
+      height: 100%;
+      color: #FFFFFF;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(74, 116, 240, 0.5);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @include focus-ring(#4A74F0, 2px, 2px);
+  }
+
+  // Dog Mascot Image
+  &__mascot {
+    position: absolute;
+    top: 285px;
+    left: 50%;
+    transform: translateX(-30%);
+    z-index: 5;
+    width: 333px;
+    height: 500px;
+    pointer-events: none;
+  }
+
+  &__mascot-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  // CTA Speech Bubble - "Premi Play e iniziamo!!"
+  &__cta-bubble {
+    position: absolute;
+    top: 523px;
+    left: 8px;
+    z-index: 15;
+    width: 170px;
+    padding: $spacing-md;
+    background: $color-background-primary;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-md;
+
+    // Speech bubble tail pointing right
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 12px solid $color-background-primary;
+    }
+  }
+
+  &__cta-text {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 20px;
+    font-weight: $typography-body-weight;
+    line-height: 1.3;
+    color: $color-text-primary;
+    text-align: center;
+  }
+
+  // Footer with Logo
+  &__footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 25;
+    height: 70px;
+    background-color: #4A74F0; // Blue from Figma
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo {
+    height: 45px;
+    width: auto;
+  }
+
+  // Responsive adjustments
+  @include respond(md) {
+    max-width: 500px;
+    border-radius: $border-radius-page;
+
+    &__back {
+      top: 60px;
+      left: 40px;
+    }
+
+    &__speech-bubble {
+      top: 200px;
+      width: 380px;
+      padding: $spacing-lg;
+    }
+
+    &__message {
+      font-size: 18px;
+    }
+
+    &__play {
+      top: 330px;
+      left: 40px;
+      width: 48px;
+      height: 48px;
+    }
+
+    &__mascot {
+      top: 300px;
+      width: 380px;
+      height: 550px;
+    }
+
+    &__cta-bubble {
+      top: 560px;
+      left: 20px;
+      width: 190px;
+    }
+
+    &__cta-text {
+      font-size: 22px;
+    }
+  }
+}

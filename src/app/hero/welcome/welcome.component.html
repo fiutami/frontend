@@ -1,0 +1,60 @@
+<div class="welcome">
+  <!-- Background Image -->
+  <div class="welcome__background">
+    <img
+      src="assets/images/welcome-bg.png"
+      alt=""
+      class="welcome__background-image"
+      role="presentation"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async" />
+  </div>
+
+  <!-- Header -->
+  <div class="welcome__header">
+    <!-- Back Button (Top-Left) -->
+    <app-back-button
+      class="welcome__back"
+      variant="glass"
+      ariaLabel="Esci"
+      (clicked)="onBack()">
+    </app-back-button>
+
+    <!-- Language Selector (Top-Right) - placeholder for now -->
+    <button class="welcome__language" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" class="welcome__language-icon">
+        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+        <path stroke-width="2" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span>Lingua</span>
+    </button>
+  </div>
+
+  <!-- Choice Card -->
+  <div class="welcome__card">
+    <button
+      class="welcome__choice"
+      type="button"
+      (click)="onHavePet()">
+      Ho un animale
+    </button>
+    <button
+      class="welcome__choice"
+      type="button"
+      (click)="onWantPet()">
+      Vorrei un animale
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <div class="welcome__footer">
+    <app-logo
+      variant="color"
+      size="lg"
+      loading="lazy"
+      href="https://fiutami.pet">
+    </app-logo>
+  </div>
+
+</div>

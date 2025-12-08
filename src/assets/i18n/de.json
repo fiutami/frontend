@@ -1,0 +1,89 @@
+{
+  "common": {
+    "language": "Sprache",
+    "back": "Zurück",
+    "close": "Schließen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "search": "Suchen",
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "signup": "Registrieren",
+    "logout": "Abmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "forgotPassword": "Passwort vergessen?",
+    "resetPassword": "Passwort zurücksetzen",
+    "termsAccept": "Durch die Anmeldung akzeptieren Sie unsere Bedingungen & Datenschutz",
+    "termsAndConditions": "Allgemeine Geschäftsbedingungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+    "dontHaveAccount": "Sie haben noch kein Konto?",
+    "loginButton": "Anmelden",
+    "signupButton": "Registrieren",
+    "loginTitle": "Anmelden",
+    "signupTitle": "Registrieren",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+    "passwordPlaceholder": "Geben Sie Ihr Passwort ein",
+    "confirmPasswordPlaceholder": "Bestätigen Sie Ihr Passwort"
+  },
+  "hero": {
+    "tagline": "Finden Sie Ihre ideale Lösung",
+    "subtitle": "Finden Sie Dienstleistungen und Fachleute in Ihrer Nähe",
+    "cta": "Jetzt starten",
+    "learnMore": "Mehr erfahren"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "profile": "Profil",
+    "settings": "Einstellungen"
+  },
+  "footer": {
+    "company": "Unternehmen",
+    "aboutUs": "Über uns",
+    "careers": "Karriere",
+    "press": "Presse",
+    "support": "Support",
+    "help": "Hilfe",
+    "faq": "FAQ",
+    "contact": "Kontaktieren Sie uns",
+    "legal": "Rechtliches",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutz",
+    "cookies": "Cookies",
+    "followUs": "Folgen Sie uns",
+    "copyright": "© {{year}} Fiutami. Alle Rechte vorbehalten."
+  },
+  "errors": {
+    "required": "Dieses Feld ist erforderlich",
+    "invalidEmail": "Ungültige E-Mail",
+    "passwordMismatch": "Passwörter stimmen nicht überein",
+    "minLength": "Mindestens {{length}} Zeichen erforderlich",
+    "maxLength": "Maximal {{length}} Zeichen erlaubt",
+    "invalidFormat": "Ungültiges Format",
+    "serverError": "Serverfehler. Bitte versuchen Sie es später erneut.",
+    "networkError": "Verbindungsfehler. Überprüfen Sie Ihr Netzwerk.",
+    "unauthorized": "Nicht autorisiert",
+    "notFound": "Nicht gefunden",
+    "forbidden": "Zugriff verweigert"
+  },
+  "validation": {
+    "emailRequired": "E-Mail ist erforderlich",
+    "emailInvalid": "Bitte geben Sie eine gültige E-Mail ein",
+    "passwordRequired": "Passwort ist erforderlich",
+    "passwordMinLength": "Passwort muss mindestens 8 Zeichen lang sein",
+    "passwordsMustMatch": "Passwörter müssen übereinstimmen",
+    "termsRequired": "Sie müssen die Geschäftsbedingungen akzeptieren"
+  }
+}

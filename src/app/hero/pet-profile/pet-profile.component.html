@@ -1,0 +1,211 @@
+<div class="pet-profile">
+  <!-- Header -->
+  <header class="pet-profile__header">
+    <!-- Back button -->
+    <button
+      class="pet-profile__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+    </button>
+
+    <div class="pet-profile__header-right">
+      <!-- Avatar -->
+      <button
+        class="pet-profile__avatar"
+        routerLink="/user/profile"
+        aria-label="Vai al profilo utente"
+      >
+        <img
+          [src]="pet.photoUrl"
+          [alt]="pet.name"
+          class="pet-profile__avatar-img"
+        />
+      </button>
+
+      <!-- Hamburger -->
+      <button
+        class="pet-profile__icon-btn"
+        (click)="openDrawer()"
+        aria-label="Apri menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Side icons -->
+    <div class="pet-profile__side-icons">
+      <button class="pet-profile__icon-btn" (click)="navigateToCalendar()" aria-label="Calendario">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/>
+        </svg>
+      </button>
+      <button class="pet-profile__icon-btn pet-profile__icon-btn--with-badge" aria-label="Notifiche">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+        </svg>
+        @if (notificationCount > 0) {
+          <span class="pet-profile__badge">{{ notificationCount }}</span>
+        }
+      </button>
+      <button class="pet-profile__icon-btn" (click)="navigateToEdit()" aria-label="Modifica">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+        </svg>
+      </button>
+      <button class="pet-profile__icon-btn" (click)="navigateToChat()" aria-label="Chat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </button>
+      <button class="pet-profile__icon-btn" (click)="navigateToSaved()" aria-label="Salvati">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Scrollable content -->
+  <main class="pet-profile__content">
+    <!-- Loading state -->
+    @if (isLoading()) {
+      <div class="pet-profile__loading">
+        <div class="pet-profile__spinner"></div>
+        <p>Caricamento dati pet...</p>
+      </div>
+    }
+
+    <!-- Error state -->
+    @if (errorMessage() && !isLoading()) {
+      <div class="pet-profile__error">
+        <p>{{ errorMessage() }}</p>
+        <button class="pet-profile__retry-btn" routerLink="/home/pet-register/specie">
+          Registra un pet
+        </button>
+      </div>
+    }
+
+    <!-- Hero section -->
+    @if (!isLoading() && !errorMessage() && pet.id) {
+    <section class="pet-profile__hero">
+      <div class="pet-profile__photo-wrapper">
+        <img
+          [src]="pet.photoUrl"
+          [alt]="pet.name"
+          class="pet-profile__photo"
+        />
+        <!-- Fiuto speech bubble -->
+        <div class="pet-profile__bubble">
+          <app-speech-bubble tailPosition="left" variant="ai">
+            Andiamo a Fiutare il mondo?
+          </app-speech-bubble>
+        </div>
+      </div>
+
+      <h1 class="pet-profile__name">{{ pet.name }}</h1>
+      <p class="pet-profile__description">{{ pet.description }}</p>
+    </section>
+
+    <!-- Pet info card -->
+    <section class="pet-profile__info">
+      <app-pet-info-card [items]="petInfoItems"></app-pet-info-card>
+    </section>
+
+    <!-- Yellow CTA buttons -->
+    <section class="pet-profile__actions">
+      <button class="pet-profile__yellow-btn" (click)="onBandaPelosaClick()">
+        Banda Pelosa
+      </button>
+      <button class="pet-profile__yellow-btn" (click)="onFattiBestialiClick()">
+        Fatti Bestiali
+      </button>
+      <button class="pet-profile__yellow-btn" (click)="onRullinoFeroceClick()">
+        Rullino Feroce
+      </button>
+      <button class="pet-profile__yellow-btn pet-profile__yellow-btn--outline" (click)="onAppCompletaClick()">
+        Prova la App Completa
+      </button>
+    </section>
+
+    <!-- Mini map -->
+    <section class="pet-profile__map">
+      <div class="pet-profile__map-container">
+        <div class="pet-profile__map-placeholder">
+          <span>Mappa</span>
+        </div>
+        <button class="pet-profile__fiuta-btn" (click)="onFiutaClick()">
+          FIUTA
+        </button>
+      </div>
+    </section>
+
+    <!-- Promo slider -->
+    <section class="pet-profile__promo">
+      <div class="pet-profile__promo-slides">
+        @for (slide of promoSlides; track slide.id; let i = $index) {
+          <div
+            class="pet-profile__promo-slide"
+            [class.pet-profile__promo-slide--active]="i === currentSlide"
+          >
+            <h3>{{ slide.title }}</h3>
+            <p>{{ slide.description }}</p>
+          </div>
+        }
+      </div>
+      <div class="pet-profile__promo-dots">
+        @for (slide of promoSlides; track slide.id; let i = $index) {
+          <button
+            class="pet-profile__promo-dot"
+            [class.pet-profile__promo-dot--active]="i === currentSlide"
+            (click)="goToSlide(i)"
+            [attr.aria-label]="'Vai a slide ' + (i + 1)"
+          ></button>
+        }
+      </div>
+    </section>
+
+    <!-- Online friends -->
+    <section class="pet-profile__friends">
+      <h3 class="pet-profile__friends-title">Amici Online</h3>
+      <div class="pet-profile__friends-scroll">
+        @for (friend of onlineFriends; track friend.id) {
+          <button
+            class="pet-profile__friend-card"
+            (click)="onFriendClick(friend)"
+          >
+            <img
+              [src]="friend.avatarUrl"
+              [alt]="friend.name"
+              class="pet-profile__friend-avatar"
+            />
+            <span class="pet-profile__friend-name">{{ friend.name }}</span>
+            @if (friend.online) {
+              <span class="pet-profile__friend-online"></span>
+            }
+          </button>
+        }
+      </div>
+    </section>
+
+    <!-- Add pet button -->
+    <button
+      class="pet-profile__add-pet"
+      (click)="onAddPetClick()"
+      aria-label="Aggiungi nuovo pet"
+    >
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+      </svg>
+    </button>
+    } <!-- End of @if pet.id -->
+  </main>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'pet'"></app-bottom-tab-bar>
+</div>

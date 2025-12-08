@@ -1,0 +1,168 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// SPECIES RESULT COMPONENT
+// Questionnaire Result Screen
+// ===========================================
+
+.species-result {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: $color-primary-500;
+  padding: $spacing-md;
+  overflow-x: hidden;
+
+  // ===========================================
+  // HEADER
+  // ===========================================
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: $spacing-md;
+  }
+
+  // ===========================================
+  // CONTENT
+  // ===========================================
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    padding: $spacing-md 0;
+  }
+
+  // Intro bubble wrapper
+  &__intro {
+    display: flex;
+    justify-content: flex-start;
+    padding-right: $spacing-xl;
+  }
+
+  // ===========================================
+  // RESULT CARD
+  // ===========================================
+
+  &__card {
+    background-color: $color-background-primary;
+    border-radius: $border-radius-lg;
+    padding: $spacing-xl;
+    box-shadow: $shadow-md;
+    text-align: center;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__image-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $color-primary-500 0%, $color-accent-500 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .material-icons {
+      font-size: 60px;
+      color: $color-text-inverse;
+    }
+  }
+
+  &__species-name {
+    font-family: $font-family-display;
+    font-size: $typography-h1-size;
+    font-weight: $typography-h1-weight;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-md;
+  }
+
+  &__description {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    line-height: $typography-body-line-height;
+    color: $color-text-secondary;
+    margin: 0;
+  }
+
+  // ===========================================
+  // FIUTO SPEECH
+  // ===========================================
+
+  &__fiuto {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: $spacing-xl;
+  }
+
+  // ===========================================
+  // MASCOT
+  // ===========================================
+
+  &__mascot {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: $spacing-md;
+  }
+
+  &__mascot-img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  // ===========================================
+  // FOOTER
+  // ===========================================
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    padding: $spacing-md 0;
+  }
+}
+
+// ===========================================
+// RESPONSIVE
+// ===========================================
+
+@include respond(md) {
+  .species-result {
+    padding: $spacing-lg;
+
+    &__content {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    &__card {
+      padding: $spacing-2xl;
+    }
+
+    &__image-placeholder {
+      width: 160px;
+      height: 160px;
+
+      .material-icons {
+        font-size: 80px;
+      }
+    }
+
+    &__species-name {
+      font-size: 48px;
+    }
+
+    &__mascot-img {
+      width: 160px;
+    }
+  }
+}

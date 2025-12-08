@@ -1,0 +1,156 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// LOGIN - Mobile-First Responsive Design
+// Based on Figma: mob_home_login → Tablet → Desktop
+// Key: Dark overlay card on ALL screen sizes, white text/inputs
+// ===========================================
+
+.login {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; // Centered on all screen sizes
+  padding: $spacing-auth-mobile-padding;
+  overflow: hidden; // Prevent scrolling
+
+  @include safe-area-padding(
+    $spacing-auth-mobile-padding,
+    $spacing-auth-mobile-padding,
+    $spacing-auth-mobile-padding,
+    $spacing-auth-mobile-padding
+  );
+
+  @include respond(md) {
+    padding: $spacing-auth-tablet-padding;
+  }
+
+  // Background Image & Overlay - FIXED position to prevent scrolling
+  &__background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-color: $color-cta-primary; // Yellow bg for desktop letterboxing
+  }
+
+  &__background-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(0.9);
+
+    // Desktop/landscape: use contain to show full dog (ears to sweater)
+    @include respond(lg) {
+      object-fit: contain;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: $color-overlay-light;
+  }
+
+  // Back Button (Top-Left) - uses app-icon-button
+  &__back {
+    position: absolute;
+    top: $spacing-auth-mobile-padding;
+    left: $spacing-auth-mobile-padding;
+    z-index: 20;
+
+    @include respond(md) {
+      top: $spacing-xl;
+      left: $spacing-xl;
+    }
+  }
+
+  // Main Content Container
+  &__content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 100%;
+
+    @include respond(md) {
+      max-width: $spacing-auth-tablet-card-width; // 566px
+    }
+  }
+
+  // Form
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-auth-mobile-gap;
+
+    @include respond(md) {
+      gap: $spacing-auth-gap-medium; // 23px
+    }
+  }
+
+  &__title {
+    font-family: $font-family-body;
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: 500;
+    color: $color-text-inverse; // White on all sizes (dark card)
+    margin: 0 0 $spacing-sm;
+    text-align: center;
+
+    @include respond(md) {
+      font-size: clamp(20px, 3vw, 28px);
+      margin-bottom: $spacing-md;
+    }
+  }
+
+  // Forgot Password Link
+  &__forgot {
+    text-align: right;
+    margin-top: -$spacing-xs;
+  }
+
+  &__forgot-link {
+    background: none;
+    border: none;
+    color: $color-text-inverse; // White on all sizes
+    font-size: $typography-terms-size-mobile;
+    font-weight: 500;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    transition: $transition-fast;
+
+    @include focus-ring($color-text-inverse, 1px, 2px);
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @include respond(md) {
+      font-size: 12px;
+    }
+  }
+
+  // Error Message
+  &__error {
+    margin-top: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    background-color: rgba(#dc3545, 0.15);
+    border: 1px solid #dc3545;
+    border-radius: $border-radius-sm;
+    color: #dc3545;
+    font-size: $typography-terms-size-mobile;
+    text-align: center;
+
+    @include respond(md) {
+      font-size: 14px;
+    }
+  }
+}
+
+// Form and Button styles now provided by SharedModule components

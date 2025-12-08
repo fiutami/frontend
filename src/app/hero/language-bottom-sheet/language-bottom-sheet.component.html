@@ -1,0 +1,46 @@
+@if (isOpen) {
+  <div
+    class="language-bottom-sheet__backdrop"
+    (click)="onBackdropClick($event)">
+
+    <div
+      class="language-bottom-sheet__content"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="language-sheet-title">
+
+      <!-- Handle bar -->
+      <div class="language-bottom-sheet__handle">
+        <span class="language-bottom-sheet__handle-bar"></span>
+      </div>
+
+      <!-- Header -->
+      <div class="language-bottom-sheet__header">
+        <h2 id="language-sheet-title" class="language-bottom-sheet__title">
+          Seleziona la lingua
+        </h2>
+      </div>
+
+      <!-- Language list -->
+      <div class="language-bottom-sheet__body">
+        <app-radio-button-group
+          [options]="languageOptions"
+          [(ngModel)]="selectedLanguageValue"
+          orientation="vertical"
+          size="lg"
+          (selectionChange)="onSelectionChange($event)">
+        </app-radio-button-group>
+      </div>
+
+      <!-- Footer with confirm button -->
+      <div class="language-bottom-sheet__footer">
+        <app-button
+          variant="primary"
+          [fullWidth]="true"
+          (clicked)="onConfirm()">
+          Invio
+        </app-button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,0 +1,276 @@
+// ========================================
+// SPACING UTILITIES
+// Margin, Padding, and Gap utilities
+// ========================================
+
+@import '../tokens-figma';
+@import '../mixins';
+
+// Spacing scale map
+$spacing-scale: (
+  '0': 0,
+  'xs': $spacing-xs,     // 8px
+  'sm': $spacing-sm,     // 12px
+  'md': $spacing-md,     // 16px
+  'lg': $spacing-lg,     // 24px
+  'xl': $spacing-xl,     // 32px
+  '2xl': $spacing-2xl,   // 48px
+);
+
+// ========================================
+// MARGIN UTILITIES
+// ========================================
+
+// All sides
+@each $name, $value in $spacing-scale {
+  .m-#{$name} {
+    margin: $value;
+  }
+}
+
+// Top
+@each $name, $value in $spacing-scale {
+  .mt-#{$name} {
+    margin-top: $value;
+  }
+}
+
+// Right
+@each $name, $value in $spacing-scale {
+  .mr-#{$name} {
+    margin-right: $value;
+  }
+}
+
+// Bottom
+@each $name, $value in $spacing-scale {
+  .mb-#{$name} {
+    margin-bottom: $value;
+  }
+}
+
+// Left
+@each $name, $value in $spacing-scale {
+  .ml-#{$name} {
+    margin-left: $value;
+  }
+}
+
+// Horizontal (left & right)
+@each $name, $value in $spacing-scale {
+  .mx-#{$name} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+}
+
+// Vertical (top & bottom)
+@each $name, $value in $spacing-scale {
+  .my-#{$name} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+}
+
+// Auto margins
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+// ========================================
+// PADDING UTILITIES
+// ========================================
+
+// All sides
+@each $name, $value in $spacing-scale {
+  .p-#{$name} {
+    padding: $value;
+  }
+}
+
+// Top
+@each $name, $value in $spacing-scale {
+  .pt-#{$name} {
+    padding-top: $value;
+  }
+}
+
+// Right
+@each $name, $value in $spacing-scale {
+  .pr-#{$name} {
+    padding-right: $value;
+  }
+}
+
+// Bottom
+@each $name, $value in $spacing-scale {
+  .pb-#{$name} {
+    padding-bottom: $value;
+  }
+}
+
+// Left
+@each $name, $value in $spacing-scale {
+  .pl-#{$name} {
+    padding-left: $value;
+  }
+}
+
+// Horizontal (left & right)
+@each $name, $value in $spacing-scale {
+  .px-#{$name} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+}
+
+// Vertical (top & bottom)
+@each $name, $value in $spacing-scale {
+  .py-#{$name} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}
+
+// ========================================
+// GAP UTILITIES (for flex/grid)
+// ========================================
+
+@each $name, $value in $spacing-scale {
+  .gap-#{$name} {
+    gap: $value;
+  }
+}
+
+@each $name, $value in $spacing-scale {
+  .gap-x-#{$name} {
+    column-gap: $value;
+  }
+}
+
+@each $name, $value in $spacing-scale {
+  .gap-y-#{$name} {
+    row-gap: $value;
+  }
+}
+
+// ========================================
+// RESPONSIVE SPACING
+// Medium breakpoint (md: 768px+)
+// ========================================
+
+@include respond(md) {
+  // Margin
+  @each $name, $value in $spacing-scale {
+    .md\:m-#{$name} {
+      margin: $value;
+    }
+    .md\:mt-#{$name} {
+      margin-top: $value;
+    }
+    .md\:mb-#{$name} {
+      margin-bottom: $value;
+    }
+    .md\:mx-#{$name} {
+      margin-left: $value;
+      margin-right: $value;
+    }
+    .md\:my-#{$name} {
+      margin-top: $value;
+      margin-bottom: $value;
+    }
+  }
+
+  // Padding
+  @each $name, $value in $spacing-scale {
+    .md\:p-#{$name} {
+      padding: $value;
+    }
+    .md\:pt-#{$name} {
+      padding-top: $value;
+    }
+    .md\:pb-#{$name} {
+      padding-bottom: $value;
+    }
+    .md\:px-#{$name} {
+      padding-left: $value;
+      padding-right: $value;
+    }
+    .md\:py-#{$name} {
+      padding-top: $value;
+      padding-bottom: $value;
+    }
+  }
+
+  // Gap
+  @each $name, $value in $spacing-scale {
+    .md\:gap-#{$name} {
+      gap: $value;
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE SPACING
+// Large breakpoint (lg: 1024px+)
+// ========================================
+
+@include respond(lg) {
+  // Margin
+  @each $name, $value in $spacing-scale {
+    .lg\:m-#{$name} {
+      margin: $value;
+    }
+    .lg\:mt-#{$name} {
+      margin-top: $value;
+    }
+    .lg\:mb-#{$name} {
+      margin-bottom: $value;
+    }
+    .lg\:mx-#{$name} {
+      margin-left: $value;
+      margin-right: $value;
+    }
+    .lg\:my-#{$name} {
+      margin-top: $value;
+      margin-bottom: $value;
+    }
+  }
+
+  // Padding
+  @each $name, $value in $spacing-scale {
+    .lg\:p-#{$name} {
+      padding: $value;
+    }
+    .lg\:pt-#{$name} {
+      padding-top: $value;
+    }
+    .lg\:pb-#{$name} {
+      padding-bottom: $value;
+    }
+    .lg\:px-#{$name} {
+      padding-left: $value;
+      padding-right: $value;
+    }
+    .lg\:py-#{$name} {
+      padding-top: $value;
+      padding-bottom: $value;
+    }
+  }
+
+  // Gap
+  @each $name, $value in $spacing-scale {
+    .lg\:gap-#{$name} {
+      gap: $value;
+    }
+  }
+}

@@ -1,0 +1,199 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// ICON BADGE COMPONENT
+// Reusable badge with icon and label
+// ===========================================
+
+.icon-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  text-align: center;
+
+  // Icon wrapper
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: $transition-base;
+  }
+
+  // Icon
+  &__icon {
+    width: 50%;
+    height: 50%;
+
+    &--custom {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
+    }
+  }
+
+  // Label
+  &__label {
+    font-family: $font-family-body;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  // ===========================================
+  // VARIANTS
+  // ===========================================
+
+  &--primary {
+    .icon-badge__icon-wrapper {
+      background-color: $color-badge-primary;
+      color: $color-text-inverse;
+    }
+
+    .icon-badge__label {
+      color: $color-text-primary;
+    }
+  }
+
+  &--secondary {
+    .icon-badge__icon-wrapper {
+      background-color: $color-badge-secondary;
+      color: $color-text-secondary;
+    }
+
+    .icon-badge__label {
+      color: $color-text-secondary;
+    }
+  }
+
+  &--accent {
+    .icon-badge__icon-wrapper {
+      background-color: $color-badge-default;
+      color: $color-text-inverse;
+    }
+
+    .icon-badge__label {
+      color: $color-text-primary;
+    }
+  }
+
+  &--neutral {
+    .icon-badge__icon-wrapper {
+      background-color: $color-background-secondary;
+      color: $color-text-secondary;
+    }
+
+    .icon-badge__label {
+      color: $color-text-secondary;
+    }
+  }
+
+  // ===========================================
+  // SIZES
+  // ===========================================
+
+  &--sm {
+    .icon-badge__icon-wrapper {
+      width: 48px;
+      height: 48px;
+    }
+
+    .icon-badge__label {
+      font-size: 10px;
+    }
+  }
+
+  &--md {
+    .icon-badge__icon-wrapper {
+      width: 64px;
+      height: 64px;
+    }
+
+    .icon-badge__label {
+      font-size: 12px;
+    }
+  }
+
+  &--lg {
+    .icon-badge__icon-wrapper {
+      width: 80px;
+      height: 80px;
+    }
+
+    .icon-badge__label {
+      font-size: 14px;
+    }
+  }
+
+  // ===========================================
+  // MODIFIERS
+  // ===========================================
+
+  &--circular {
+    .icon-badge__icon-wrapper {
+      border-radius: 50%;
+    }
+  }
+
+  &--outlined {
+    .icon-badge__icon-wrapper {
+      background-color: transparent;
+      border: 2px solid currentColor;
+    }
+
+    &.icon-badge--primary .icon-badge__icon-wrapper {
+      border-color: $color-badge-primary;
+      color: $color-badge-primary;
+    }
+
+    &.icon-badge--accent .icon-badge__icon-wrapper {
+      border-color: $color-badge-default;
+      color: $color-badge-default;
+    }
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    &--sm {
+      .icon-badge__icon-wrapper {
+        width: 56px;
+        height: 56px;
+      }
+
+      .icon-badge__label {
+        font-size: 11px;
+      }
+    }
+
+    &--md {
+      .icon-badge__icon-wrapper {
+        width: 72px;
+        height: 72px;
+      }
+
+      .icon-badge__label {
+        font-size: 13px;
+      }
+    }
+
+    &--lg {
+      .icon-badge__icon-wrapper {
+        width: 96px;
+        height: 96px;
+      }
+
+      .icon-badge__label {
+        font-size: 15px;
+      }
+    }
+  }
+}

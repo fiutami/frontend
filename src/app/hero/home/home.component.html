@@ -1,0 +1,94 @@
+<div class="home">
+  <!-- Header -->
+  <header class="home__header">
+    <!-- Avatar (links to pet profile) -->
+    <button
+      class="home__avatar"
+      routerLink="/home/pet-profile"
+      aria-label="Vai al profilo del pet"
+    >
+      <img
+        [src]="petAvatarUrl"
+        [alt]="petName + ' avatar'"
+        class="home__avatar-img"
+        loading="lazy"
+      />
+    </button>
+
+    <div class="home__header-actions">
+      <!-- Notifications/Calendar bell -->
+      <button
+        class="home__icon-btn"
+        (click)="navigateToCalendar()"
+        aria-label="Calendario e notifiche"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+        </svg>
+        @if (notificationCount > 0) {
+          <span class="home__badge">{{ notificationCount }}</span>
+        }
+      </button>
+
+      <!-- Hamburger menu -->
+      <button
+        class="home__icon-btn"
+        (click)="openDrawer()"
+        aria-label="Apri menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="home__content">
+    <!-- Fiuto mascot background -->
+    <div class="home__mascot">
+      <img
+        src="assets/images/fiuto-mascot.png"
+        alt="Fiuto mascotte"
+        class="home__mascot-img"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Search bar -->
+    <div class="home__search-wrapper">
+      <div class="home__search">
+        <svg class="home__search-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+        <input
+          type="text"
+          class="home__search-input"
+          placeholder="Cosa posso fiutare per te?"
+          (input)="onSearch($any($event.target).value)"
+          aria-label="Cerca servizi, attività, luoghi"
+        />
+      </div>
+    </div>
+
+    <!-- Upcoming events widget -->
+    <div class="home__events">
+      <h3 class="home__events-title">Prossimi eventi</h3>
+      @if (upcomingEvents.length === 0) {
+        <p class="home__events-empty">Non c'è nessun evento in programma.</p>
+      } @else {
+        <ul class="home__events-list">
+          @for (event of upcomingEvents; track event.title) {
+            <li class="home__event-item">
+              <span class="home__event-title">{{ event.title }}</span>
+              <span class="home__event-date">{{ event.date }}</span>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </main>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'"></app-bottom-tab-bar>
+</div>

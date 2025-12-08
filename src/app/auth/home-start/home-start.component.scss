@@ -1,0 +1,321 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// HOME START - Split Layout Desktop
+// Mobile/Tablet: Dog background, content centered
+// Desktop: Left = content (gradient), Right = dog image (slide-up animation)
+// ===========================================
+
+// Animation: Dog slides up from bottom
+@keyframes slideUpDog {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.home-start {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+
+  // Mobile/Tablet: Flex centered
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Desktop: Grid layout 50/50
+  @include respond(lg) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  // Language Switcher (Top-Left on desktop, Top-Right on mobile)
+  &__language {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    z-index: 20;
+
+    @include respond(md) {
+      top: $spacing-xl;
+      right: $spacing-xl;
+    }
+
+    // Desktop: sposta a sinistra
+    @include respond(lg) {
+      right: auto;
+      left: $spacing-xl;
+    }
+  }
+
+  // ===========================================
+  // LEFT SIDE: Content
+  // ===========================================
+  &__left {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-md;
+    gap: $spacing-sm;
+
+    // Mobile: Background is the dog image
+    &::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: url('/assets/images/auth-bg.webp') center 15% / cover no-repeat;
+      filter: brightness(0.9);
+
+      @include respond(lg) {
+        display: none; // Hide background on desktop
+      }
+    }
+
+    // Mobile overlay
+    &::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: rgba(0, 0, 0, 0.2);
+
+      @include respond(lg) {
+        display: none;
+      }
+    }
+
+    @include respond(md) {
+      padding: $spacing-xl;
+      gap: $spacing-md;
+    }
+
+    // Desktop: Left panel - colore solido identico al right
+    @include respond(lg) {
+      height: 100%;
+      background: $color-cta-primary; // #F2B830 - stesso colore del right panel
+      padding: $spacing-2xl;
+      gap: $spacing-lg;
+    }
+  }
+
+  // ===========================================
+  // RIGHT SIDE: Dog Image (Desktop only)
+  // ===========================================
+  &__right {
+    display: none; // Hidden on mobile/tablet
+
+    @include respond(lg) {
+      display: block;
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      // Sfondo giallo identico al left panel
+      background: $color-cta-primary; // #F2B830 - stesso colore
+    }
+  }
+
+  &__dog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+
+    // Desktop: ridimensiona e anima
+    @include respond(lg) {
+      width: 80%; // Ridotto del 20%
+      height: auto;
+      min-height: 100%;
+      margin: 0 auto; // Centra orizzontalmente
+      object-fit: contain; // Mostra tutto il cane
+      object-position: center bottom; // Allinea in basso per far vedere maglioncino
+      animation: slideUpDog 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+  }
+
+  // ===========================================
+  // Branding Section
+  // ===========================================
+  &__branding {
+    text-align: center;
+    color: $color-text-inverse;
+    flex-shrink: 0;
+
+    @include respond(lg) {
+      color: $color-text-primary; // Dark text on yellow background
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $spacing-xs;
+
+    @include respond(md) {
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  &__logo-img {
+    width: clamp(140px, 38vw, 170px);
+    height: auto;
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
+
+    @include respond(sm) {
+      width: clamp(150px, 35vw, 180px);
+    }
+
+    @include respond(md) {
+      width: clamp(170px, 25vw, 210px);
+    }
+
+    @include respond(lg) {
+      width: clamp(180px, 15vw, 240px);
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+    }
+  }
+
+  &__mascot {
+    width: clamp(65px, 17vw, 75px);
+    height: clamp(65px, 17vw, 75px);
+    margin: $spacing-xs auto;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+    border-radius: 50%;
+    overflow: hidden;
+    background: $color-cta-primary;
+    border: 2px solid $color-text-inverse;
+
+    @include respond(md) {
+      width: clamp(80px, 11vw, 90px);
+      height: clamp(80px, 11vw, 90px);
+      margin: $spacing-sm auto;
+    }
+
+    @include respond(lg) {
+      width: clamp(90px, 8vw, 110px);
+      height: clamp(90px, 8vw, 110px);
+      border-color: $color-text-primary;
+      background: white;
+    }
+  }
+
+  &__mascot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // Tagline
+  &__tagline {
+    font-family: $font-family-body;
+    font-size: clamp(16px, 4.5vw, 22px);
+    line-height: 1.35;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+
+    @include respond(md) {
+      font-size: clamp(20px, 3vw, 26px);
+    }
+
+    @include respond(lg) {
+      font-size: clamp(22px, 2vw, 28px);
+      text-shadow: none;
+    }
+  }
+
+  &__tagline-main {
+    display: block;
+    font-family: $font-family-display;
+    font-weight: 400;
+    font-size: 1em;
+  }
+
+  &__tagline-sub {
+    display: block;
+    font-family: $font-family-body;
+    font-weight: 400;
+    font-size: 1em;
+  }
+
+  // ===========================================
+  // Auth Card wrapper
+  // ===========================================
+  app-auth-card {
+    width: 100%;
+    max-width: 320px;
+
+    @include respond(sm) {
+      max-width: 340px;
+    }
+
+    @include respond(md) {
+      max-width: 380px;
+    }
+
+    @include respond(lg) {
+      max-width: 400px;
+    }
+  }
+
+  // Auth Actions
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    width: 100%;
+
+    @include respond(md) {
+      gap: $spacing-md;
+    }
+  }
+
+  &__terms {
+    margin-top: $spacing-xs;
+    font-size: $typography-terms-size-mobile;
+    color: $color-text-inverse;
+    text-align: center;
+    line-height: 1.4;
+
+    @include respond(md) {
+      font-size: $typography-terms-size;
+    }
+
+    @include respond(lg) {
+      color: rgba(0, 0, 0, 0.7); // Darker on yellow bg
+    }
+  }
+
+  &__link {
+    color: $color-text-inverse;
+    text-decoration: underline;
+    transition: $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @include respond(lg) {
+      color: $color-text-primary;
+    }
+
+    @include focus-ring($color-text-inverse, 1px, 2px);
+  }
+}

@@ -1,0 +1,22 @@
+<div class="answer-squares">
+  @for (option of options; track trackByValue($index, option)) {
+    <button
+      type="button"
+      class="answer-square"
+      [class.answer-square--selected]="isSelected(option)"
+      (click)="onSelect(option)"
+      [attr.aria-pressed]="isSelected(option)"
+      [attr.aria-label]="option.label">
+
+      @if (option.icon) {
+        <span class="answer-square__icon">{{ option.icon }}</span>
+      }
+
+      <span class="answer-square__label">{{ option.label }}</span>
+
+      @if (option.description) {
+        <span class="answer-square__description">{{ option.description }}</span>
+      }
+    </button>
+  }
+</div>

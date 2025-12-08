@@ -1,0 +1,20 @@
+<div
+  class="month-chip"
+  [class.month-chip--disabled]="disabled"
+  [style.--columns]="columns"
+  role="group"
+  [attr.aria-label]="multiSelect ? 'Seleziona mesi' : 'Seleziona mese'">
+
+  @for (month of months(); track month.index) {
+    <button
+      type="button"
+      class="month-chip__item"
+      [class.month-chip__item--selected]="isSelected(month.index)"
+      [disabled]="disabled"
+      [attr.aria-pressed]="isSelected(month.index)"
+      (click)="onMonthClick(month.index)">
+      {{ getMonthName(month) }}
+    </button>
+  }
+
+</div>

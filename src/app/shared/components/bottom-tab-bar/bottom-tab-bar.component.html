@@ -1,0 +1,43 @@
+<nav [ngClass]="containerClasses" role="tablist" aria-label="Main navigation">
+  @for (tab of tabs; track trackByTabId($index, tab)) {
+    <button
+      type="button"
+      role="tab"
+      [ngClass]="getTabClasses(tab)"
+      [attr.data-tab-id]="tab.id"
+      [attr.aria-selected]="isActive(tab)"
+      [attr.aria-disabled]="tab.disabled"
+      [attr.aria-label]="tab.label || tab.id"
+      [tabindex]="tab.disabled ? -1 : 0"
+      (click)="onTabClick(tab, $event)"
+      (keydown)="onKeyDown($event, tab, $index)">
+
+      <!-- Icon -->
+      <span class="bottom-tab-bar__icon">
+        @if (getIconSrc(tab)) {
+          <img
+            [src]="getIconSrc(tab)"
+            [alt]="tab.label || tab.id"
+            class="bottom-tab-bar__icon-img" />
+        } @else if (getIcon(tab)) {
+          <span class="material-icons">{{ getIcon(tab) }}</span>
+        }
+      </span>
+
+      <!-- Badge -->
+      @if (tab.badge && tab.badge > 0) {
+        <span class="bottom-tab-bar__badge">
+          {{ tab.badge > 99 ? '99+' : tab.badge }}
+        </span>
+      }
+
+      <!-- Label -->
+      @if (showLabels && tab.label) {
+        <span class="bottom-tab-bar__label">{{ tab.label }}</span>
+      }
+
+      <!-- Active indicator -->
+      <span class="bottom-tab-bar__indicator" aria-hidden="true"></span>
+    </button>
+  }
+</nav>

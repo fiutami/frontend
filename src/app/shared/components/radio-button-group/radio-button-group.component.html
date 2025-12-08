@@ -1,0 +1,37 @@
+<div
+  [ngClass]="containerClasses"
+  role="radiogroup"
+  [attr.aria-label]="name">
+
+  @for (option of options; track option.value; let i = $index) {
+    <label
+      class="radio-group__option"
+      [class.radio-group__option--selected]="isSelected(option.value)"
+      [class.radio-group__option--disabled]="isOptionDisabled(option)"
+      [for]="name + '-' + option.value">
+
+      <input
+        type="radio"
+        class="radio-group__input"
+        [id]="name + '-' + option.value"
+        [name]="name"
+        [value]="option.value"
+        [checked]="isSelected(option.value)"
+        [disabled]="isOptionDisabled(option)"
+        (change)="onOptionSelect(option)"
+        (keydown)="onKeyDown($event, i)" />
+
+      <span class="radio-group__radio">
+        <span class="radio-group__radio-inner"></span>
+      </span>
+
+      <span class="radio-group__content">
+        <span class="radio-group__label">{{ option.label }}</span>
+        @if (showDescriptions && option.description) {
+          <span class="radio-group__description">{{ option.description }}</span>
+        }
+      </span>
+    </label>
+  }
+
+</div>

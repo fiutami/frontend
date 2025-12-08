@@ -1,0 +1,181 @@
+<div class="pet-details">
+  <!-- Header -->
+  <div class="pet-details__header">
+    <app-back-button
+      class="pet-details__back"
+      variant="glass"
+      ariaLabel="Torna indietro"
+      (clicked)="onBack()">
+    </app-back-button>
+
+    <h1 class="pet-details__title">Dati Anagrafici</h1>
+  </div>
+
+  <!-- Logo -->
+  <div class="pet-details__logo">
+    <app-logo
+      variant="color"
+      size="lg"
+      loading="eager"
+      href="https://fiutami.pet">
+    </app-logo>
+  </div>
+
+  <!-- Species Badge -->
+  <div *ngIf="selectedSpecies" class="pet-details__species-badge">
+    <span class="pet-details__species-label">Specie selezionata:</span>
+    <span class="pet-details__species-name">{{ selectedSpecies.name }}</span>
+    <!-- Species loading indicator -->
+    <span *ngIf="isLoadingSpecies()" class="pet-details__species-loading">
+      (caricamento...)
+    </span>
+    <!-- Species match indicator -->
+    <span *ngIf="!isLoadingSpecies() && speciesDto" class="pet-details__species-ok">
+      ✓
+    </span>
+    <span *ngIf="!isLoadingSpecies() && !speciesDto" class="pet-details__species-error">
+      ✗
+    </span>
+  </div>
+
+  <!-- Species Load Error -->
+  <div *ngIf="speciesLoadError()" class="pet-details__species-error-message">
+    <span class="material-icons">warning</span>
+    {{ speciesLoadError() }}
+    <button type="button" class="pet-details__retry-btn" (click)="loadSpeciesFromBackend()">
+      Riprova
+    </button>
+  </div>
+
+  <!-- Form -->
+  <form class="pet-details__form" (ngSubmit)="onSubmit()">
+    <!-- Pet Name -->
+    <div class="pet-details__field">
+      <label class="pet-details__label" for="petName">Nome</label>
+      <input
+        type="text"
+        id="petName"
+        class="pet-details__input"
+        [(ngModel)]="petName"
+        name="petName"
+        placeholder="Nome del tuo animale"
+        required />
+    </div>
+
+    <!-- Sex Selection -->
+    <div class="pet-details__field">
+      <label class="pet-details__label">Sesso</label>
+      <div class="pet-details__radio-group">
+        <button
+          type="button"
+          class="pet-details__radio-btn"
+          [class.pet-details__radio-btn--active]="sex === 'male'"
+          (click)="sex = 'male'">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M9.5 11c1.93 0 3.5 1.57 3.5 3.5S11.43 18 9.5 18 6 16.43 6 14.5 7.57 11 9.5 11zm0-2C6.46 9 4 11.46 4 14.5S6.46 20 9.5 20s5.5-2.46 5.5-5.5c0-1.16-.36-2.23-.97-3.12L18 7.41V10h2V4h-6v2h2.59l-3.97 3.97c-.89-.61-1.96-.97-3.12-.97z"/>
+          </svg>
+          Maschio
+        </button>
+        <button
+          type="button"
+          class="pet-details__radio-btn"
+          [class.pet-details__radio-btn--active]="sex === 'female'"
+          (click)="sex = 'female'">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 4c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          Femmina
+        </button>
+      </div>
+    </div>
+
+    <!-- Birth Date -->
+    <div class="pet-details__field">
+      <label class="pet-details__label" for="birthDate">Data di nascita</label>
+      <input
+        type="date"
+        id="birthDate"
+        class="pet-details__input"
+        [(ngModel)]="birthDate"
+        name="birthDate" />
+    </div>
+
+    <!-- Calculated Age -->
+    <div *ngIf="calculatedAge" class="pet-details__field pet-details__field--readonly">
+      <label class="pet-details__label">Eta</label>
+      <div class="pet-details__value">{{ calculatedAge }}</div>
+    </div>
+
+    <!-- Origin -->
+    <div class="pet-details__field">
+      <label class="pet-details__label" for="origin">Provenienza</label>
+      <input
+        type="text"
+        id="origin"
+        class="pet-details__input"
+        [(ngModel)]="origin"
+        name="origin"
+        placeholder="Allevamento, adozione, regalo..." />
+    </div>
+
+    <!-- Color -->
+    <div class="pet-details__field">
+      <label class="pet-details__label" for="color">Colore</label>
+      <input
+        type="text"
+        id="color"
+        class="pet-details__input"
+        [(ngModel)]="color"
+        name="color"
+        placeholder="Colore del mantello" />
+    </div>
+
+    <!-- Weight -->
+    <div class="pet-details__field">
+      <label class="pet-details__label" for="weight">Peso (kg)</label>
+      <input
+        type="text"
+        id="weight"
+        class="pet-details__input"
+        [(ngModel)]="weight"
+        name="weight"
+        placeholder="Es. 5.5" />
+    </div>
+
+    <!-- Special Marks -->
+    <div class="pet-details__field">
+      <label class="pet-details__label" for="specialMarks">Segni particolari</label>
+      <textarea
+        id="specialMarks"
+        class="pet-details__textarea"
+        [(ngModel)]="specialMarks"
+        name="specialMarks"
+        placeholder="Descrivi eventuali segni particolari..."
+        rows="3"></textarea>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage()" class="pet-details__error">
+      <span class="pet-details__error-icon">!</span>
+      {{ errorMessage() }}
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="pet-details__submit"
+      [disabled]="!isFormValid || isLoading()"
+      [class.pet-details__submit--loading]="isLoading()">
+      <span *ngIf="!isLoading()">Continua</span>
+      <span *ngIf="isLoading()" class="pet-details__spinner"></span>
+      <span *ngIf="isLoading()">Salvataggio...</span>
+    </button>
+
+    <!-- Validation hints -->
+    <div *ngIf="!isFormValid && (petName || sex)" class="pet-details__hints">
+      <p *ngIf="!petName">* Nome obbligatorio</p>
+      <p *ngIf="!sex">* Seleziona il sesso</p>
+      <p *ngIf="!speciesDto">* Specie non caricata - torna indietro</p>
+    </div>
+  </form>
+</div>

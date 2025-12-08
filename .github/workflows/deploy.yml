@@ -1,0 +1,63 @@
+name: Frontend Deploy
+
+on:
+  push:
+    branches: [main, stage]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        type: choice
+        options: [stage, prod]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.env.outputs.environment }}
+      image_tag: ${{ steps.env.outputs.image_tag }}
+    steps:
+      - name: Determine environment
+        id: env
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            ENV="${{ inputs.environment }}"
+          elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            ENV="prod"
+          else
+            ENV="stage"
+          fi
+          TAG=$([[ "$ENV" == "prod" ]] && echo "latest" || echo "stage")
+          echo "environment=$ENV" >> $GITHUB_OUTPUT
+          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
+
+  build:
+    needs: setup
+    uses: fiutami/infra/.github/workflows/reusable-docker-build.yml@main
+    with:
+      image_name: fiutami/frontend
+      image_tag: ${{ needs.setup.outputs.image_tag }}
+    secrets:
+      REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: [setup, build]
+    uses: fiutami/infra/.github/workflows/reusable-ssh-deploy.yml@main
+    with:
+      environment: ${{ needs.setup.outputs.environment }}
+      compose_file: docker-compose.${{ needs.setup.outputs.environment }}.yml
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+
+  trigger-e2e:
+    needs: [setup, deploy]
+    uses: fiutami/infra/.github/workflows/reusable-notify-e2e.yml@main
+    with:
+      environment: ${{ needs.setup.outputs.environment }}
+      source_repo: frontend
+      source_sha: ${{ github.sha }}
+    secrets:
+      E2E_DISPATCH_TOKEN: ${{ secrets.E2E_DISPATCH_TOKEN }}

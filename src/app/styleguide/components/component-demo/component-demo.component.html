@@ -1,0 +1,240 @@
+<div class="component-demo" *ngIf="config">
+  <!-- Header -->
+  <div class="component-demo__header">
+    <div class="component-demo__info">
+      <h2 class="component-demo__name">{{ config.name }}</h2>
+      <code class="component-demo__selector">&lt;{{ config.selector }}&gt;</code>
+      <p class="component-demo__description">{{ config.description }}</p>
+    </div>
+    <div class="component-demo__actions">
+      <button
+        class="component-demo__bg-toggle"
+        (click)="toggleBackground()"
+        [title]="darkBackground ? 'Switch to light background' : 'Switch to dark background'"
+      >
+        {{ darkBackground ? '☀️' : '🌙' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Preview Area -->
+  <div
+    class="component-demo__preview"
+    [class.component-demo__preview--dark]="darkBackground"
+  >
+    <ng-container [ngSwitch]="config.id">
+
+      <!-- BUTTONS -->
+      <ng-container *ngSwitchCase="'button'">
+        <app-button
+          [variant]="propValues['variant']"
+          [size]="propValues['size']"
+          [disabled]="propValues['disabled']"
+          [loading]="propValues['loading']"
+          [fullWidth]="propValues['fullWidth']"
+        >
+          {{ contentValue }}
+        </app-button>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'icon-button'">
+        <app-icon-button
+          [variant]="propValues['variant']"
+          [size]="propValues['size']"
+          [disabled]="propValues['disabled']"
+          [ariaLabel]="propValues['ariaLabel']"
+        >
+          {{ contentValue }}
+        </app-icon-button>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'back-button'">
+        <app-back-button
+          [variant]="propValues['variant']"
+          [size]="propValues['size']"
+          [disabled]="propValues['disabled']"
+        ></app-back-button>
+      </ng-container>
+
+      <!-- FORM CONTROLS -->
+      <ng-container *ngSwitchCase="'form-input'">
+        <app-form-input
+          [type]="propValues['type']"
+          [label]="propValues['label']"
+          [placeholder]="propValues['placeholder']"
+          [hasError]="propValues['hasError']"
+          [errorMessage]="propValues['errorMessage']"
+        ></app-form-input>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'radio-button-group'">
+        <app-radio-button-group
+          [options]="sampleData.radioOptions"
+          [orientation]="propValues['orientation']"
+          [size]="propValues['size']"
+          [disabled]="propValues['disabled']"
+          [showDescriptions]="propValues['showDescriptions']"
+        ></app-radio-button-group>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'checkbox-group'">
+        <app-checkbox-group
+          [options]="sampleData.checkboxOptions"
+          [orientation]="propValues['orientation']"
+          [size]="propValues['size']"
+          [disabled]="propValues['disabled']"
+          [min]="propValues['min']"
+          [max]="propValues['max']"
+        ></app-checkbox-group>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'month-chip'">
+        <app-month-chip
+          [locale]="propValues['locale']"
+          [multiSelect]="propValues['multiSelect']"
+          [disabled]="propValues['disabled']"
+          [shortNames]="propValues['shortNames']"
+          [columns]="propValues['columns']"
+        ></app-month-chip>
+      </ng-container>
+
+      <!-- CARDS -->
+      <ng-container *ngSwitchCase="'card'">
+        <app-card
+          [variant]="propValues['variant']"
+          [padding]="propValues['padding']"
+          [rounded]="propValues['rounded']"
+        >
+          {{ contentValue }}
+        </app-card>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'question-card'">
+        <app-question-card
+          [question]="propValues['question']"
+          [questionType]="propValues['questionType']"
+          [options]="sampleData.questionCardOptions"
+          [required]="propValues['required']"
+          [hint]="propValues['hint']"
+        ></app-question-card>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'pet-info-card'">
+        <app-pet-info-card
+          [items]="sampleData.petInfoItems"
+          [layout]="propValues['layout']"
+          [variant]="propValues['variant']"
+          [compact]="propValues['compact']"
+        ></app-pet-info-card>
+      </ng-container>
+
+      <!-- MESSAGES -->
+      <ng-container *ngSwitchCase="'speech-bubble'">
+        <app-speech-bubble
+          [tailPosition]="propValues['tailPosition']"
+          [variant]="propValues['variant']"
+          [animated]="propValues['animated']"
+          [maxWidth]="propValues['maxWidth']"
+        >
+          {{ contentValue }}
+        </app-speech-bubble>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'ai-message-bubble'">
+        <app-ai-message-bubble
+          [message]="propValues['message']"
+          [showMascot]="propValues['showMascot']"
+          [mascotPosition]="propValues['mascotPosition']"
+          [animated]="propValues['animated']"
+          [typing]="propValues['typing']"
+        ></app-ai-message-bubble>
+      </ng-container>
+
+      <!-- INDICATORS -->
+      <ng-container *ngSwitchCase="'step-indicator'">
+        <app-step-indicator
+          [totalSteps]="propValues['totalSteps']"
+          [currentStep]="propValues['currentStep']"
+          [variant]="propValues['variant']"
+          [size]="propValues['size']"
+          [showLabels]="propValues['showLabels']"
+          [clickable]="propValues['clickable']"
+        ></app-step-indicator>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'icon-badge'">
+        <app-icon-badge
+          [label]="propValues['label']"
+          [icon]="propValues['icon']"
+          [variant]="propValues['variant']"
+          [size]="propValues['size']"
+          [circular]="propValues['circular']"
+          [outlined]="propValues['outlined']"
+        ></app-icon-badge>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'answer-square'">
+        <app-answer-square
+          [options]="sampleData.answerOptions"
+        ></app-answer-square>
+      </ng-container>
+
+      <!-- NAVIGATION -->
+      <ng-container *ngSwitchCase="'menu-item'">
+        <div style="max-width: 300px;">
+          <app-menu-item
+            [label]="propValues['label']"
+            [icon]="propValues['icon']"
+            [disabled]="propValues['disabled']"
+            [showChevron]="propValues['showChevron']"
+          ></app-menu-item>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'bottom-tab-bar'">
+        <div class="component-demo__tab-bar-container">
+          <app-bottom-tab-bar
+            [tabs]="sampleData.tabItems"
+            [variant]="propValues['variant']"
+            [size]="propValues['size']"
+            [showLabels]="propValues['showLabels']"
+            [safeArea]="propValues['safeArea']"
+          ></app-bottom-tab-bar>
+        </div>
+      </ng-container>
+
+      <!-- BRANDING -->
+      <ng-container *ngSwitchCase="'logo'">
+        <app-logo
+          [variant]="propValues['variant']"
+          [size]="propValues['size']"
+        ></app-logo>
+      </ng-container>
+
+      <!-- DEFAULT -->
+      <ng-container *ngSwitchDefault>
+        <p>Component demo not implemented: {{ config.id }}</p>
+      </ng-container>
+
+    </ng-container>
+  </div>
+
+  <!-- Content Input (if component has ng-content) -->
+  <div class="component-demo__content-input" *ngIf="config.hasContent">
+    <label>Content</label>
+    <input
+      type="text"
+      [value]="contentValue"
+      (input)="onContentChange($event)"
+      placeholder="Enter content..."
+    />
+  </div>
+
+  <!-- Prop Controls -->
+  <app-prop-controls
+    *ngIf="config.props.length > 0"
+    [props]="config.props"
+    [values]="propValues"
+    (valueChange)="onPropChange($event)"
+  ></app-prop-controls>
+</div>

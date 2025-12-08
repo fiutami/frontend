@@ -1,0 +1,173 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// WELCOME AI 2A COMPONENT
+// Pet owner introduction screen
+// ===========================================
+
+.welcome-ai-2a {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: $color-primary-500;
+
+  // ===========================================
+  // HEADER
+  // ===========================================
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md;
+    position: relative;
+    z-index: 10;
+  }
+
+  &__language-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: $color-ai-primary;
+    border: none;
+    border-radius: 50%;
+    color: $color-text-inverse;
+    cursor: pointer;
+    transition: all 150ms ease;
+
+    .material-icons {
+      font-size: 24px;
+    }
+
+    &:hover {
+      background-color: rgba($color-ai-primary, 0.8);
+    }
+
+    &:active {
+      background-color: $color-cta-primary;
+      color: $color-text-dark;
+    }
+  }
+
+  // ===========================================
+  // CONTENT
+  // ===========================================
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-lg;
+    gap: $spacing-xl;
+  }
+
+  // ===========================================
+  // MESSAGE
+  // ===========================================
+
+  &__message {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &__message-text {
+    margin: 0 0 $spacing-md;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    line-height: $typography-body-line-height;
+    color: $color-text-primary;
+  }
+
+  &__cta-btn {
+    display: block;
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    background-color: $color-cta-primary;
+    border: none;
+    border-radius: $border-radius-lg;
+    font-family: $font-family-body;
+    font-size: $typography-button-size;
+    font-weight: 600;
+    color: $color-text-dark;
+    cursor: pointer;
+    transition: all 150ms ease;
+
+    &:hover {
+      background-color: darken($color-cta-primary, 5%);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // ===========================================
+  // MASCOT
+  // ===========================================
+
+  &__mascot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__mascot-img {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  // ===========================================
+  // FOOTER
+  // ===========================================
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-lg;
+    background-color: $color-ai-primary;
+    min-height: 70px;
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    &__content {
+      padding: $spacing-xl;
+      flex-direction: row;
+      gap: $spacing-2xl;
+    }
+
+    &__message {
+      max-width: 500px;
+    }
+
+    &__mascot-img {
+      width: 220px;
+    }
+  }
+}
+
+// ===========================================
+// ANIMATIONS
+// ===========================================
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

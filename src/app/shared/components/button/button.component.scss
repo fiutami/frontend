@@ -1,0 +1,169 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ========================================
+// BUTTON COMPONENT
+// Reusable button with variants and sizes
+// ========================================
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $border-radius-md;
+  font-family: $font-family-body;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition-base;
+  text-align: center;
+  white-space: nowrap;
+
+  @include focus-ring($color-cta-primary);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  // ========================================
+  // VARIANTS
+  // ========================================
+
+  &--primary {
+    background: $color-cta-primary;
+    color: $color-text-dark;
+
+    &:hover:not(:disabled) {
+      background: darken($color-cta-primary, 8%);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $color-text-inverse;
+    border: $border-width-button solid $color-text-inverse;
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-text-inverse;
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // ========================================
+  // SIZES
+  // ========================================
+
+  &--sm {
+    height: 36px;
+    padding: $spacing-xs $spacing-md;
+    font-size: 14px;
+
+    @include respond(md) {
+      height: 40px;
+      padding: $spacing-sm $spacing-lg;
+    }
+  }
+
+  &--md {
+    height: 40px; // Reduced from 44px
+    padding: $spacing-xs $spacing-md;
+    font-size: 15px; // Reduced from 16px
+
+    @include respond(md) {
+      height: 42px; // Reduced from 46px
+      padding: $spacing-sm $spacing-lg;
+      font-size: 16px; // Reduced from 17px
+      font-weight: 500;
+    }
+
+    @include respond(lg) {
+      height: 44px; // Reduced from 48px
+      padding: $spacing-sm $spacing-xl;
+      font-size: 17px; // Reduced from 18px
+    }
+  }
+
+  &--lg {
+    height: 56px;
+    padding: $spacing-md $spacing-xl;
+    font-size: 18px;
+
+    @include respond(md) {
+      height: 60px;
+      padding: $spacing-lg $spacing-2xl;
+      font-size: 20px;
+    }
+  }
+
+  // ========================================
+  // MODIFIERS
+  // ========================================
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &--loading {
+    pointer-events: none;
+  }
+
+  // ========================================
+  // CONTENT & LOADER
+  // ========================================
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xs;
+    transition: opacity 0.2s ease;
+
+    &--hidden {
+      opacity: 0;
+    }
+  }
+
+  &__loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__spinner {
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+  }
+
+  &__spinner-circle {
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 45;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

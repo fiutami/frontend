@@ -1,0 +1,204 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// CHECKBOX GROUP COMPONENT
+// Reusable checkbox group with form integration
+// ===========================================
+
+.checkbox-group {
+  display: flex;
+  gap: $spacing-sm;
+
+  // Orientation
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  // Disabled state
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  // ===========================================
+  // OPTION
+  // ===========================================
+
+  &__option {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover:not(.checkbox-group__option--disabled) {
+      background-color: rgba($color-cta-primary, 0.05);
+    }
+
+    &--selected {
+      background-color: rgba($color-cta-primary, 0.1);
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  // ===========================================
+  // HIDDEN INPUT
+  // ===========================================
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+
+    &:focus-visible + .checkbox-group__checkbox {
+      outline: 2px solid $color-cta-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  // ===========================================
+  // CHECKBOX BOX
+  // ===========================================
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $radio-size-md;
+    height: $radio-size-md;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border: 2px solid $color-radio-unchecked;
+    border-radius: $border-radius-sm;
+    background-color: $color-background-primary;
+    transition: $transition-base;
+
+    .checkbox-group__option--selected & {
+      background-color: $color-radio-checked;
+      border-color: $color-radio-checked;
+    }
+  }
+
+  &__check-icon {
+    width: 14px;
+    height: 14px;
+    color: $color-text-inverse;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: $transition-fast;
+
+    .checkbox-group__option--selected & {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  // ===========================================
+  // CONTENT
+  // ===========================================
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__label {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 500;
+    color: $color-text-primary;
+    line-height: 1.4;
+  }
+
+  &__description {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: $color-text-secondary;
+    line-height: 1.4;
+  }
+
+  // ===========================================
+  // SIZES
+  // ===========================================
+
+  &--sm {
+    gap: $spacing-xs;
+
+    .checkbox-group__option {
+      padding: $spacing-xs;
+    }
+
+    .checkbox-group__checkbox {
+      width: $radio-size-sm;
+      height: $radio-size-sm;
+    }
+
+    .checkbox-group__check-icon {
+      width: 10px;
+      height: 10px;
+    }
+
+    .checkbox-group__label {
+      font-size: 14px;
+    }
+
+    .checkbox-group__description {
+      font-size: 12px;
+    }
+  }
+
+  &--lg {
+    gap: $spacing-md;
+
+    .checkbox-group__option {
+      padding: $spacing-md;
+    }
+
+    .checkbox-group__checkbox {
+      width: $radio-size-lg;
+      height: $radio-size-lg;
+    }
+
+    .checkbox-group__check-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .checkbox-group__label {
+      font-size: 18px;
+    }
+
+    .checkbox-group__description {
+      font-size: 14px;
+    }
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    &--horizontal {
+      gap: $spacing-md;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "common": {
+    "language": "Lingua",
+    "back": "Indietro",
+    "close": "Chiudi",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "search": "Cerca",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo"
+  },
+  "auth": {
+    "login": "Accedi",
+    "signup": "Registrati",
+    "logout": "Esci",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Conferma Password",
+    "forgotPassword": "Dimenticata la password?",
+    "resetPassword": "Reimposta Password",
+    "termsAccept": "Accedendo accetti i nostri Termini & Privacy",
+    "termsAndConditions": "Termini e Condizioni",
+    "privacyPolicy": "Informativa sulla Privacy",
+    "alreadyHaveAccount": "Hai già un account?",
+    "dontHaveAccount": "Non hai un account?",
+    "loginButton": "Accedi",
+    "signupButton": "Registrati",
+    "loginTitle": "Accedi",
+    "signupTitle": "Registrati",
+    "emailPlaceholder": "Inserisci la tua email",
+    "passwordPlaceholder": "Inserisci la tua password",
+    "confirmPasswordPlaceholder": "Conferma la tua password"
+  },
+  "hero": {
+    "tagline": "Fiuta la tua soluzione ideale",
+    "subtitle": "Trova servizi e professionisti vicino a te",
+    "cta": "Inizia ora",
+    "learnMore": "Scopri di più"
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Servizi",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "profile": "Profilo",
+    "settings": "Impostazioni"
+  },
+  "footer": {
+    "company": "Azienda",
+    "aboutUs": "Chi Siamo",
+    "careers": "Carriere",
+    "press": "Stampa",
+    "support": "Supporto",
+    "help": "Aiuto",
+    "faq": "FAQ",
+    "contact": "Contattaci",
+    "legal": "Legale",
+    "terms": "Termini di Servizio",
+    "privacy": "Privacy",
+    "cookies": "Cookie",
+    "followUs": "Seguici",
+    "copyright": "© {{year}} Fiutami. Tutti i diritti riservati."
+  },
+  "errors": {
+    "required": "Questo campo è obbligatorio",
+    "invalidEmail": "Email non valida",
+    "passwordMismatch": "Le password non coincidono",
+    "minLength": "Minimo {{length}} caratteri richiesti",
+    "maxLength": "Massimo {{length}} caratteri consentiti",
+    "invalidFormat": "Formato non valido",
+    "serverError": "Errore del server. Riprova più tardi.",
+    "networkError": "Errore di connessione. Verifica la tua rete.",
+    "unauthorized": "Non autorizzato",
+    "notFound": "Non trovato",
+    "forbidden": "Accesso negato"
+  },
+  "validation": {
+    "emailRequired": "L'email è obbligatoria",
+    "emailInvalid": "Inserisci un'email valida",
+    "passwordRequired": "La password è obbligatoria",
+    "passwordMinLength": "La password deve essere di almeno 8 caratteri",
+    "passwordsMustMatch": "Le password devono coincidere",
+    "termsRequired": "Devi accettare i termini e condizioni"
+  }
+}

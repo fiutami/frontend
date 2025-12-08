@@ -1,0 +1,108 @@
+<section
+  class="hero-shell"
+  aria-label="Fiutami hero"
+  [attr.data-variant]="heroVariant"
+  [attr.data-layout]="layoutMode"
+  [style.--hero-dog-scale]="heroDogScale"
+>
+  <header class="hero-header">
+    <button
+      class="hero-language__button"
+      type="button"
+      aria-haspopup="listbox"
+      [attr.aria-expanded]="isLanguageMenuOpen"
+      aria-controls="hero-language-menu"
+      (click)="toggleLanguageMenu()" (keydown.escape)="closeLanguageMenu()"
+    >
+      <img class="hero-language__icon" src="assets/Ui/Globe.svg" alt="">
+      <span class="hero-language__label">{{ currentLanguage.label }}</span>
+    </button>
+
+    <ul
+      *ngIf="isLanguageMenuOpen"
+      id="hero-language-menu"
+      class="hero-language__menu"
+      role="listbox"
+      tabindex="-1"
+      (keydown.escape)="closeLanguageMenu()"
+    >
+      <li *ngFor="let language of languages" class="hero-language__menu-item">
+        <button
+          type="button"
+          role="option"
+          [attr.aria-selected]="language.code === currentLanguage.code"
+          (click)="selectLanguage(language)"
+        >
+          {{ language.label }}
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <div class="hero-illustration" aria-hidden="true">
+    <picture>
+      <source type="image/avif" [attr.srcset]="heroIllustration.avif" sizes="(max-width: 1024px) 80vw, 440px">
+      <source type="image/webp" [attr.srcset]="heroIllustration.webp" sizes="(max-width: 1024px) 80vw, 440px">
+      <img
+        class="hero-illustration__image"
+        [src]="heroIllustration.png"
+        [attr.width]="heroIllustration.width"
+        [attr.height]="heroIllustration.height"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        loading="eager"
+      >
+    </picture>
+  </div>
+
+  <div class="hero-body">
+    <div class="hero-logo">
+      <img [src]="wordmarkAsset" alt="FiutaMi" class="hero-logo__image">
+    </div>
+
+    <p class="hero-claim">{{ claim }}</p>
+
+    <div class="hero-ctas">
+      <button class="hero-cta hero-cta--primary" type="button" (click)="onPrimaryCta()">
+        Accedi
+      </button>
+      <button class="hero-cta hero-cta--secondary" type="button" (click)="onSecondaryCta()">
+        Registrati
+      </button>
+    </div>
+
+    <p class="hero-legal">
+      Accedendo accetti i nostri
+      <a
+        class="hero-legal__link"
+        [href]="legalLinks[0].url"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ legalLinks[0].label }}
+      </a>
+      &amp;
+      <a
+        class="hero-legal__link"
+        [href]="legalLinks[1].url"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ legalLinks[1].label }}
+      </a>
+    </p>
+
+    <div class="hero-social" role="group" aria-label="Social login">
+      <button
+        *ngFor="let provider of socialProviders"
+        type="button"
+        class="hero-social__button hero-social__button--{{ provider.id }}"
+        [attr.aria-label]="provider.label"
+        (click)="onSocialTapped(provider)"
+      >
+        <img [src]="provider.icon" alt="">
+      </button>
+    </div>
+  </div>
+</section>

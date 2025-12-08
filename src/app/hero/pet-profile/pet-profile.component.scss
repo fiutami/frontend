@@ -1,0 +1,454 @@
+@import 'src/styles/tokens-figma';
+
+.pet-profile {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #4A74F0 0%, #3D5FC4 100%);
+  padding-bottom: $tab-bar-height;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: $spacing-md;
+    position: relative;
+  }
+
+  &__back {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-drawer-text;
+    border-radius: 50%;
+    transition: $transition-fast;
+
+    &:hover {
+      color: $color-white-60;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &:active {
+      color: $color-cta-primary;
+    }
+  }
+
+  &__header-right {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid $color-text-inverse;
+    transition: $transition-fast;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__icon-btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-inverse;
+    border-radius: 50%;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background: $color-badge-notification;
+    color: $color-text-inverse;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: $border-radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__side-icons {
+    position: absolute;
+    right: $spacing-md;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 $spacing-md $spacing-xl;
+  }
+
+  // Loading state
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: $color-text-inverse;
+
+    p {
+      margin-top: $spacing-md;
+      font-size: $typography-body-size;
+    }
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: $color-text-inverse;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Error state
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+    color: $color-text-inverse;
+
+    p {
+      font-size: $typography-body-size;
+      margin-bottom: $spacing-lg;
+    }
+  }
+
+  &__retry-btn {
+    padding: $spacing-md $spacing-xl;
+    background: $color-yellow-btn;
+    color: $color-yellow-btn-text;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    border-radius: $border-radius-md;
+    transition: $transition-fast;
+
+    &:hover {
+      background: $color-yellow-btn-hover;
+    }
+  }
+
+  // Hero section
+  &__hero {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__photo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: $spacing-md;
+  }
+
+  &__photo {
+    width: $avatar-size-xl;
+    height: $avatar-size-xl;
+    border-radius: 50%;
+    border: 4px solid $color-text-inverse;
+    object-fit: cover;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  &__bubble {
+    position: absolute;
+    top: -20px;
+    right: -80px;
+    width: 120px;
+  }
+
+  &__name {
+    font-size: 28px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0 0 $spacing-xs;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    font-size: $typography-body-size;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  // Info section
+  &__info {
+    margin-bottom: $spacing-lg;
+  }
+
+  // Yellow buttons
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__yellow-btn {
+    padding: $spacing-md;
+    background: $color-yellow-btn;
+    color: $color-yellow-btn-text;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    border-radius: $border-radius-md;
+    transition: $transition-fast;
+
+    &:hover {
+      background: $color-yellow-btn-hover;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      background: $color-yellow-btn-pressed;
+      transform: translateY(0);
+    }
+
+    &--outline {
+      grid-column: 1 / -1;
+      background: transparent;
+      border: 2px solid $color-yellow-btn;
+      color: $color-yellow-btn;
+
+      &:hover {
+        background: rgba(255, 215, 0, 0.1);
+      }
+    }
+  }
+
+  // Map section
+  &__map {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__map-container {
+    position: relative;
+    border-radius: $map-border-radius;
+    overflow: hidden;
+  }
+
+  &__map-placeholder {
+    height: $map-height;
+    background: #E5E5E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-secondary;
+    font-size: $typography-body-size;
+  }
+
+  &__fiuta-btn {
+    position: absolute;
+    bottom: $spacing-md;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: $spacing-sm $spacing-xl;
+    background: $color-yellow-btn;
+    color: $color-yellow-btn-text;
+    font-size: $typography-body-size;
+    font-weight: 700;
+    border-radius: $border-radius-full;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: $transition-fast;
+
+    &:hover {
+      background: $color-yellow-btn-hover;
+      transform: translateX(-50%) scale(1.05);
+    }
+  }
+
+  // Promo slider
+  &__promo {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__promo-slides {
+    position: relative;
+    height: 100px;
+    overflow: hidden;
+    border-radius: $border-radius-lg;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &__promo-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-md;
+    opacity: 0;
+    transition: opacity 300ms ease;
+
+    &--active {
+      opacity: 1;
+    }
+
+    h3 {
+      margin: 0 0 $spacing-xs;
+      font-size: $typography-button-size;
+      color: $color-text-inverse;
+    }
+
+    p {
+      margin: 0;
+      font-size: $typography-small-size;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  &__promo-dots {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+  }
+
+  &__promo-dot {
+    width: $slider-dot-size;
+    height: $slider-dot-size;
+    border-radius: 50%;
+    background: $slider-dot-inactive;
+    transition: $transition-fast;
+
+    &--active {
+      background: $slider-dot-active;
+      transform: scale(1.2);
+    }
+  }
+
+  // Friends section
+  &__friends {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__friends-title {
+    font-size: $typography-body-size;
+    font-weight: 600;
+    color: $color-text-inverse;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__friends-scroll {
+    display: flex;
+    gap: $spacing-md;
+    overflow-x: auto;
+    padding-bottom: $spacing-sm;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__friend-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: $border-radius-md;
+    min-width: 80px;
+    transition: $transition-fast;
+    position: relative;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__friend-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__friend-name {
+    font-size: $typography-small-size;
+    color: $color-text-inverse;
+    text-align: center;
+  }
+
+  &__friend-online {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    width: 10px;
+    height: 10px;
+    background: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid $color-drawer-bg;
+  }
+
+  // Add pet button
+  &__add-pet {
+    position: fixed;
+    bottom: calc($tab-bar-height + $spacing-md);
+    right: $spacing-md;
+    width: 56px;
+    height: 56px;
+    background: $color-yellow-btn;
+    color: $color-yellow-btn-text;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: $transition-fast;
+    z-index: 100;
+
+    &:hover {
+      background: $color-yellow-btn-hover;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      background: $color-yellow-btn-pressed;
+      transform: scale(0.95);
+    }
+  }
+}

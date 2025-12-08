@@ -1,0 +1,47 @@
+<div
+  [ngClass]="containerClasses"
+  role="group"
+  [attr.aria-label]="name">
+
+  @for (option of options; track option.value) {
+    <label
+      class="checkbox-group__option"
+      [class.checkbox-group__option--selected]="isSelected(option.value)"
+      [class.checkbox-group__option--disabled]="isOptionDisabled(option)"
+      [for]="name + '-' + option.value">
+
+      <input
+        type="checkbox"
+        class="checkbox-group__input"
+        [id]="name + '-' + option.value"
+        [name]="name"
+        [value]="option.value"
+        [checked]="isSelected(option.value)"
+        [disabled]="isOptionDisabled(option)"
+        (change)="onOptionToggle(option)" />
+
+      <span class="checkbox-group__checkbox">
+        <svg
+          class="checkbox-group__check-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          aria-hidden="true">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            d="M5 13l4 4L19 7" />
+        </svg>
+      </span>
+
+      <span class="checkbox-group__content">
+        <span class="checkbox-group__label">{{ option.label }}</span>
+        @if (showDescriptions && option.description) {
+          <span class="checkbox-group__description">{{ option.description }}</span>
+        }
+      </span>
+    </label>
+  }
+
+</div>

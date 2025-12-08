@@ -1,0 +1,199 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// PET INFO CARD COMPONENT
+// Display pet information in card format
+// ===========================================
+
+.pet-info-card {
+  display: flex;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+
+  // ===========================================
+  // LAYOUTS
+  // ===========================================
+
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  // ===========================================
+  // VARIANTS
+  // ===========================================
+
+  &--solid {
+    background-color: $color-ai-primary;
+
+    .pet-info-card__item {
+      background-color: $color-ai-primary;
+
+      &:not(:last-child) {
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .pet-info-card__label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .pet-info-card__value {
+      color: $color-text-inverse;
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 2px solid $color-ai-primary;
+
+    .pet-info-card__item {
+      &:not(:last-child) {
+        border-right: 1px solid $color-ai-primary;
+      }
+    }
+
+    .pet-info-card__label {
+      color: $color-text-secondary;
+    }
+
+    .pet-info-card__value {
+      color: $color-text-primary;
+    }
+  }
+
+  &--transparent {
+    background-color: transparent;
+    gap: $spacing-md;
+
+    .pet-info-card__item {
+      background-color: rgba($color-ai-primary, 0.1);
+      border-radius: $border-radius-md;
+    }
+
+    .pet-info-card__label {
+      color: $color-ai-primary;
+    }
+
+    .pet-info-card__value {
+      color: $color-text-primary;
+    }
+  }
+
+  // ===========================================
+  // ITEM
+  // ===========================================
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm $spacing-md;
+    flex: 1;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  &__label {
+    font-family: $font-family-body;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  &__value {
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  // ===========================================
+  // COMPACT MODE
+  // ===========================================
+
+  &--compact {
+    .pet-info-card__item {
+      padding: $spacing-xs $spacing-sm;
+    }
+
+    .pet-info-card__label {
+      font-size: 8px;
+    }
+
+    .pet-info-card__value {
+      font-size: 12px;
+    }
+  }
+
+  // ===========================================
+  // LAYOUT-SPECIFIC STYLING
+  // ===========================================
+
+  &--vertical {
+    .pet-info-card__item:not(:last-child) {
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    &.pet-info-card--outline .pet-info-card__item:not(:last-child) {
+      border-bottom-color: $color-ai-primary;
+    }
+  }
+
+  &--grid {
+    .pet-info-card__item {
+      border-right: none;
+    }
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    &__label {
+      font-size: 11px;
+    }
+
+    &__value {
+      font-size: 18px;
+    }
+
+    &__item {
+      padding: $spacing-md;
+      min-width: 80px;
+    }
+
+    &--compact {
+      .pet-info-card__item {
+        padding: $spacing-sm;
+      }
+
+      .pet-info-card__label {
+        font-size: 9px;
+      }
+
+      .pet-info-card__value {
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// AUTH CARD - Responsive Design
+// From Figma: Dark overlay card on ALL screen sizes
+// Mobile: Full width, Tablet/Desktop: Fixed width
+// ===========================================
+
+.auth-card {
+  // Mobile-first: Si riduce con la finestra
+  width: calc(100% - 2 * $spacing-md);
+  max-width: 320px; // Massimo su mobile
+  margin: 0 auto;
+  border-radius: $border-radius-md;
+  transition: $transition-base;
+
+  // Opacità leggermente aumentata per leggibilità
+  background: rgba(0, 0, 0, 0.30);
+  backdrop-filter: blur(10px);
+  padding: $spacing-md;
+
+  // Small (480px+): Leggermente più largo
+  @include respond(sm) {
+    max-width: 340px;
+  }
+
+  // Tablet (768px+): Fixed centered width
+  @include respond(md) {
+    width: auto;
+    max-width: 380px;
+    padding: $spacing-md $spacing-lg;
+  }
+
+  // Desktop (1024px+): Slightly larger
+  @include respond(lg) {
+    max-width: 420px;
+    padding: $spacing-lg;
+  }
+}

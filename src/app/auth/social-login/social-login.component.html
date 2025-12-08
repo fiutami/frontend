@@ -1,0 +1,44 @@
+<div class="social-login">
+  <div class="social-login__divider">
+    <span class="social-login__divider-text">oppure</span>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="social-login__error" (click)="clearError()">
+    {{ errorMessage }}
+  </div>
+
+  <div class="social-login__buttons">
+    <button
+      type="button"
+      class="social-login__button social-login__button--apple"
+      [class.social-login__button--loading]="isProviderLoading('apple')"
+      [disabled]="isLoading"
+      (click)="onProviderClick('apple')"
+      aria-label="Accedi con Apple">
+      <img *ngIf="!isProviderLoading('apple')" src="assets/icons/apple.svg" alt="" class="social-login__icon" aria-hidden="true" />
+      <span *ngIf="isProviderLoading('apple')" class="social-login__spinner"></span>
+    </button>
+
+    <button
+      type="button"
+      class="social-login__button social-login__button--facebook"
+      [class.social-login__button--loading]="isProviderLoading('facebook')"
+      [disabled]="isLoading"
+      (click)="onProviderClick('facebook')"
+      aria-label="Accedi con Facebook">
+      <img *ngIf="!isProviderLoading('facebook')" src="assets/icons/facebook.svg" alt="" class="social-login__icon" aria-hidden="true" />
+      <span *ngIf="isProviderLoading('facebook')" class="social-login__spinner"></span>
+    </button>
+
+    <!-- Google Button: Native Google Sign-In button -->
+    <div class="social-login__google-wrapper">
+      <asl-google-signin-button
+        type="icon"
+        size="large"
+        shape="circle"
+        theme="outline">
+      </asl-google-signin-button>
+    </div>
+  </div>
+</div>

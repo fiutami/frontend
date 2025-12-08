@@ -1,0 +1,36 @@
+<div [ngClass]="badgeClasses">
+  <div class="icon-badge__icon-wrapper">
+    <!-- Built-in SVG icon -->
+    @if (hasBuiltInIcon) {
+      <svg
+        class="icon-badge__icon"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true">
+        <path [attr.d]="getIconPath(icon!)"></path>
+      </svg>
+    }
+
+    <!-- Custom icon from URL -->
+    @if (hasCustomIcon) {
+      <img
+        class="icon-badge__icon icon-badge__icon--custom"
+        [src]="iconSrc"
+        [alt]="label"
+        loading="lazy" />
+    }
+
+    <!-- Default icon if none provided -->
+    @if (!hasBuiltInIcon && !hasCustomIcon) {
+      <svg
+        class="icon-badge__icon"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+      </svg>
+    }
+  </div>
+
+  <span class="icon-badge__label">{{ label }}</span>
+</div>

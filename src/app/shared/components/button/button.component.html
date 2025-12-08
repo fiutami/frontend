@@ -1,0 +1,17 @@
+<button
+  [type]="type"
+  [class]="buttonClasses.join(' ')"
+  [disabled]="disabled || loading"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-busy]="loading"
+  (click)="onClick($event)"
+>
+  <span class="btn__content" [class.btn__content--hidden]="loading">
+    <ng-content></ng-content>
+  </span>
+  <span class="btn__loader" *ngIf="loading" aria-hidden="true">
+    <svg class="btn__spinner" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle class="btn__spinner-circle" cx="12" cy="12" r="10" fill="none" stroke-width="3"/>
+    </svg>
+  </span>
+</button>

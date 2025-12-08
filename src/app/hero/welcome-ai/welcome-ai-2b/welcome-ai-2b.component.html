@@ -1,0 +1,54 @@
+<div class="welcome-ai-2b">
+  <!-- Header with back button and language -->
+  <header class="welcome-ai-2b__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+
+    <button
+      type="button"
+      class="welcome-ai-2b__language-btn"
+      (click)="onLanguageClick()"
+      aria-label="Cambia lingua">
+      <span class="material-icons">language</span>
+    </button>
+  </header>
+
+  <!-- Main content -->
+  <main class="welcome-ai-2b__content">
+    <!-- Fiuto message with CTA -->
+    <div class="welcome-ai-2b__message">
+      <app-speech-bubble variant="ai" tailPosition="bottom-left">
+        <p class="welcome-ai-2b__message-text">{{ aiMessage }}</p>
+        <button
+          type="button"
+          class="welcome-ai-2b__cta-btn"
+          (click)="onCtaClick()">
+          {{ ctaText }}
+        </button>
+      </app-speech-bubble>
+    </div>
+
+    <!-- Mascot image -->
+    <div class="welcome-ai-2b__mascot">
+      <img
+        src="assets/images/fiuto-mascot.png"
+        alt="Fiuto mascotte"
+        class="welcome-ai-2b__mascot-img" />
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="welcome-ai-2b__footer">
+    <app-logo variant="white" size="md" href="https://fiutami.pet"></app-logo>
+  </footer>
+</div>
+
+<!-- Language Bottom Sheet -->
+<app-language-bottom-sheet
+  [isOpen]="showLanguageSheet()"
+  [selectedLanguage]="currentLanguage()"
+  (languageSelected)="onLanguageSelected($event)"
+  (closed)="onLanguageSheetClosed()">
+</app-language-bottom-sheet>

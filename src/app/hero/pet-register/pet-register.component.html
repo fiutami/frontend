@@ -1,0 +1,49 @@
+<div class="pet-register">
+  <!-- Back Button -->
+  <app-back-button
+    class="pet-register__back"
+    variant="glass"
+    ariaLabel="Torna indietro"
+    (clicked)="onBack()">
+  </app-back-button>
+
+  <!-- Logo -->
+  <div class="pet-register__logo">
+    <app-logo
+      variant="color"
+      size="lg"
+      loading="eager"
+      href="https://fiutami.pet">
+    </app-logo>
+  </div>
+
+  <!-- Description -->
+  <p class="pet-register__description">{{ description }}</p>
+
+  <!-- Menu Items -->
+  <div class="pet-register__menu">
+    <app-menu-item
+      *ngFor="let item of menuItems"
+      [label]="item.label"
+      [icon]="item.icon"
+      (clicked)="onMenuItemClick(item)">
+    </app-menu-item>
+  </div>
+
+  <!-- Mascot Section -->
+  <div class="pet-register__mascot-section">
+    <!-- Speech Bubble -->
+    <div class="pet-register__speech-bubble">
+      <p class="pet-register__speech-text">{{ mascotMessage }}</p>
+    </div>
+
+    <!-- Dog Mascot Image -->
+    <div class="pet-register__mascot">
+      <img
+        src="assets/images/ai-mascot-dog.png"
+        alt="Mascotte cane con occhiali"
+        class="pet-register__mascot-image"
+        loading="eager" />
+    </div>
+  </div>
+</div>

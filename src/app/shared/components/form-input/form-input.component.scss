@@ -1,0 +1,95 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ========================================
+// FORM INPUT COMPONENT
+// Reusable form input with label and error states
+// ========================================
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.form-label {
+  font-size: $typography-terms-size-mobile;
+  font-weight: 500;
+  color: $color-text-inverse;
+
+  @include respond(md) {
+    font-size: 14px;
+  }
+}
+
+.form-input {
+  width: 100%;
+  height: $spacing-auth-mobile-button-height; // 50px
+  padding: $spacing-md;
+  background: $color-input-background; // transparent
+  border: $border-width-input solid $color-input-border; // 2px white
+  border-radius: $border-radius-md;
+  font-family: $font-family-body;
+  font-size: $typography-body-size-mobile;
+  color: $color-text-inverse; // White text
+  transition: $transition-base;
+
+  @include focus-ring($color-text-inverse, 0, 2px);
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+
+  &:focus {
+    border-color: $color-cta-primary;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @include respond(md) {
+    height: auto;
+    padding: $spacing-md $spacing-lg;
+  }
+
+  // Error state
+  &--error {
+    border-color: #FF6B6B;
+
+    &:focus {
+      border-color: #FF6B6B;
+    }
+  }
+}
+
+.form-hint {
+  font-size: $typography-terms-size-mobile;
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  min-height: 16px;
+
+  &--visible {
+    opacity: 1;
+  }
+
+  @include respond(md) {
+    font-size: 12px;
+  }
+}
+
+.form-error {
+  font-size: $typography-terms-size-mobile;
+  color: #FF6B6B; // Bright red for dark backgrounds
+
+  @include respond(md) {
+    font-size: 13px;
+  }
+}

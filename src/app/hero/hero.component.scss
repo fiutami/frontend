@@ -1,0 +1,409 @@
+:host {
+  display: block;
+}
+
+.hero-shell {
+  --hero-dog-base-width: 759px;
+  --hero-dog-base-height: 1080px;
+  --hero-dog-scale: 1;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100dvh;
+  height: 100svh;
+  max-height: 100dvh;
+  padding: clamp(12px, 3vh, 32px) clamp(16px, 4vw, 48px);
+  background: linear-gradient(
+    135deg,
+    var(--hero-mobile-gradient-top, #fde5a7) 0%,
+    var(--hero-mobile-gradient-mid, #f7bc34) 45%,
+    var(--hero-mobile-gradient-bottom, #e98b0c) 100%
+  );
+  color: var(--hero-mobile-text, #111111);
+  overflow: hidden;
+}
+
+.hero-header {
+  position: absolute;
+  inset-block-start: clamp(16px, 5vh, 32px);
+  inset-inline-end: clamp(16px, 6vw, 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 3;
+}
+
+.hero-language__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 16px;
+  background: rgba(17, 17, 17, 0.08);
+  color: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  min-inline-size: 96px;
+  min-block-size: 44px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-language__button:hover {
+  transform: translateY(-1px);
+  background-color: rgba(17, 17, 17, 0.12);
+}
+
+.hero-language__button:focus-visible {
+  outline: 2px solid var(--hero-mobile-focus, #f2a10c);
+  outline-offset: 3px;
+}
+
+.hero-language__icon {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.hero-language__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.hero-language__menu-item button {
+  inline-size: 100%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.hero-language__menu-item button[aria-selected='true'] {
+  background: rgba(17, 17, 17, 0.08);
+  font-weight: 600;
+}
+
+.hero-language__menu-item button:focus-visible {
+  outline: 2px solid var(--hero-mobile-focus, #f2a10c);
+  outline-offset: 2px;
+}
+
+.hero-illustration {
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-end: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-illustration picture {
+  display: block;
+}
+
+.hero-illustration__image {
+  display: block;
+  inline-size: calc(var(--hero-dog-base-width) * var(--hero-dog-scale));
+  max-inline-size: calc(var(--hero-dog-base-width) * 1);
+  block-size: auto;
+}
+
+.hero-body {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(12px, 2vh, 20px);
+  inline-size: min(100%, var(--hero-mobile-max-width, 440px));
+  margin-inline: auto;
+  padding-block: clamp(8px, 2vh, 24px) clamp(32px, 8vh, 80px);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hero-logo__image {
+  inline-size: clamp(112px, 10vw, 144px);
+  block-size: auto;
+}
+
+.hero-claim {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+  text-wrap: balance;
+  color: currentColor;
+  max-width: 22ch;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  inline-size: min(100%, 320px);
+}
+
+.hero-cta {
+  inline-size: 100%;
+  min-block-size: 56px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-cta:focus-visible {
+  outline: 2px solid var(--hero-mobile-focus, #f2a10c);
+  outline-offset: 3px;
+}
+
+.hero-cta--primary {
+  background: #111111;
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.hero-cta--primary:hover {
+  background: #0b0b0b;
+}
+
+.hero-cta--secondary {
+  background: transparent;
+  color: #111111;
+  border: 2px solid rgba(17, 17, 17, 0.72);
+}
+
+.hero-cta--secondary:hover {
+  background: rgba(17, 17, 17, 0.08);
+}
+
+.hero-legal {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(17, 17, 17, 0.78);
+}
+
+.hero-legal__link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.hero-legal__link:focus-visible {
+  outline: 2px solid var(--hero-mobile-focus, #f2a10c);
+  outline-offset: 3px;
+}
+
+.hero-social {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  inline-size: min(100%, 200px);
+}
+
+.hero-social__button {
+  inline-size: 56px;
+  block-size: 56px;
+  border-radius: 16px;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-social__button img {
+  inline-size: 24px;
+  block-size: 24px;
+}
+
+.hero-social__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+.hero-social__button:focus-visible {
+  outline: 2px solid var(--hero-mobile-focus, #f2a10c);
+  outline-offset: 3px;
+}
+
+/* Compact portrait (small screens) */
+@media (max-height: 640px) and (orientation: portrait) {
+  .hero-shell {
+    padding: clamp(8px, 2vh, 16px) clamp(12px, 3vw, 24px);
+  }
+
+  .hero-body {
+    gap: clamp(8px, 1.5vh, 12px);
+    padding-block: clamp(4px, 1vh, 12px) clamp(20px, 5vh, 40px);
+  }
+
+  .hero-claim {
+    font-size: clamp(20px, 4vw, 26px);
+  }
+
+  .hero-ctas {
+    gap: 8px;
+  }
+
+  .hero-cta {
+    min-block-size: 48px;
+    font-size: 14px;
+  }
+
+  .hero-logo__image {
+    inline-size: clamp(80px, 8vw, 112px);
+  }
+
+  .hero-social__button {
+    inline-size: 48px;
+    block-size: 48px;
+  }
+
+  .hero-legal {
+    font-size: 11px;
+  }
+}
+
+/* Medium screens portrait */
+@media (min-width: 768px) and (orientation: portrait) {
+  .hero-body {
+    gap: clamp(16px, 2.4vw, 28px);
+    padding-block-end: clamp(60px, 12vh, 140px);
+  }
+}
+
+/* Landscape mode - split layout */
+@media (orientation: landscape) {
+  .hero-shell {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: clamp(12px, 3vh, 24px) clamp(16px, 4vw, 48px);
+  }
+
+  .hero-body {
+    flex: 0 1 auto;
+    inline-size: clamp(280px, 45vw, 480px);
+    align-items: flex-start;
+    text-align: start;
+    justify-content: center;
+    padding-block: clamp(16px, 4vh, 32px);
+    gap: clamp(10px, 2vh, 18px);
+  }
+
+  .hero-claim {
+    text-align: start;
+  }
+
+  .hero-ctas {
+    inline-size: min(100%, 280px);
+  }
+
+  .hero-social {
+    justify-content: flex-start;
+  }
+
+  .hero-illustration {
+    position: relative;
+    inset: unset;
+    transform: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex: 0 1 auto;
+    max-inline-size: 50vw;
+  }
+
+  .hero-illustration__image {
+    max-block-size: calc(100vh - clamp(24px, 6vh, 48px));
+    inline-size: auto;
+    max-inline-size: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+  }
+
+  .hero-header {
+    inset-block-start: clamp(12px, 3vh, 24px);
+    inset-inline-end: clamp(12px, 3vw, 24px);
+  }
+}
+
+/* Compact landscape (short screens) */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero-shell {
+    padding: clamp(8px, 2vh, 16px) clamp(12px, 3vw, 32px);
+  }
+
+  .hero-body {
+    padding-block: clamp(8px, 2vh, 16px);
+    gap: clamp(6px, 1.5vh, 12px);
+  }
+
+  .hero-claim {
+    font-size: clamp(18px, 3.5vw, 24px);
+  }
+
+  .hero-ctas {
+    gap: 6px;
+  }
+
+  .hero-cta {
+    min-block-size: 44px;
+    font-size: 14px;
+  }
+
+  .hero-logo__image {
+    inline-size: clamp(72px, 7vw, 100px);
+  }
+
+  .hero-social__button {
+    inline-size: 44px;
+    block-size: 44px;
+  }
+
+  .hero-social__button img {
+    inline-size: 20px;
+    block-size: 20px;
+  }
+
+  .hero-legal {
+    font-size: 10px;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1024px) {
+  .hero-body {
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  .hero-claim {
+    font-size: clamp(28px, 3vw, 36px);
+  }
+}

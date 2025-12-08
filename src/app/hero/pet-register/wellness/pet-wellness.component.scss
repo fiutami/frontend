@@ -1,0 +1,216 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// PET WELLNESS - Wellness Guide Page
+// Based on Figma designs
+// Mobile-First Design (390x844)
+// ===========================================
+
+.pet-wellness {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg $spacing-2xl;
+  overflow-y: auto;
+  border-radius: $border-radius-page;
+  background: linear-gradient(
+    180deg,
+    #4A74F0 0%,
+    #6B8CF5 100%
+  );
+
+  // Header
+  &__header {
+    display: flex;
+    align-items: center;
+    padding-top: 45px;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__back {
+    flex-shrink: 0;
+  }
+
+  &__title {
+    flex: 1;
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-text-inverse;
+    text-align: center;
+    padding-right: 34px;
+  }
+
+  // Logo
+  &__logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  // Description
+  &__description {
+    margin: 0 0 $spacing-lg;
+    padding: 0 $spacing-sm;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: $typography-body-weight;
+    line-height: 1.5;
+    color: $color-text-inverse;
+    text-align: center;
+  }
+
+  // Species badge
+  &__species-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $spacing-xl;
+    padding: $spacing-xs $spacing-md;
+    background: $color-cta-primary;
+    border-radius: $border-radius-full;
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-inverse;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Wellness categories
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__category {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-md $spacing-lg;
+    background: $color-background-primary;
+    border: none;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: $transition-base;
+    text-align: left;
+
+    &:hover {
+      background: darken($color-background-primary, 2%);
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-cta-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__category-icon {
+    width: 40px;
+    height: 40px;
+    background: #F0F4FF;
+    border-radius: $border-radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      color: #4A74F0;
+    }
+  }
+
+  &__category-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__category-label {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 500;
+    color: $color-text-primary;
+  }
+
+  &__category-desc {
+    font-family: $font-family-body;
+    font-size: 13px;
+    color: $color-text-secondary;
+  }
+
+  &__category-chevron {
+    width: 20px;
+    height: 20px;
+    color: $color-text-secondary;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  &__category:hover &__category-chevron {
+    transform: translateX(2px);
+  }
+
+  // Coming soon notice
+  &__notice {
+    padding: $spacing-md;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: $border-radius-md;
+    margin-bottom: $spacing-xl;
+
+    p {
+      margin: 0;
+      font-family: $font-family-body;
+      font-size: 14px;
+      color: $color-text-inverse;
+      text-align: center;
+      line-height: 1.4;
+    }
+  }
+
+  // Complete button
+  &__complete {
+    width: 100%;
+    padding: $spacing-md $spacing-xl;
+    background: $color-cta-primary;
+    border: none;
+    border-radius: $border-radius-md;
+    font-family: $font-family-body;
+    font-size: $typography-button-size;
+    font-weight: 600;
+    color: $color-text-inverse;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+      background: darken($color-cta-primary, 10%);
+    }
+  }
+
+  // Responsive
+  @include respond(md) {
+    max-width: 500px;
+    padding: 0 $spacing-xl $spacing-2xl;
+
+    &__header {
+      padding-top: 60px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+  }
+}

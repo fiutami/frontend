@@ -1,0 +1,116 @@
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: #1a1a2e;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__header {
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    margin: 4px 0 0;
+  }
+
+  &__nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 0;
+  }
+
+  &__category {
+    margin-bottom: 4px;
+  }
+
+  &__category-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+
+    &--expanded {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  &__category-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+  }
+
+  &__category-label {
+    flex: 1;
+    text-align: left;
+  }
+
+  &__category-count {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &__category-chevron {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  &__components {
+    padding: 4px 0;
+  }
+
+  &__component {
+    width: 100%;
+    display: block;
+    padding: 10px 20px 10px 56px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    &--active {
+      background: rgba(245, 166, 35, 0.15);
+      color: #f5a623;
+      border-left: 3px solid #f5a623;
+      padding-left: 53px;
+    }
+  }
+}

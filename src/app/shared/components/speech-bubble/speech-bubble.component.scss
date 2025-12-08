@@ -1,0 +1,213 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// SPEECH BUBBLE COMPONENT
+// Reusable chat-style speech bubble
+// ===========================================
+
+.speech-bubble {
+  position: relative;
+  display: inline-block;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  font-family: $font-family-body;
+  font-size: $typography-body-size;
+  line-height: $typography-body-line-height;
+
+  // Default variant - white background
+  &--default {
+    background-color: $color-user-bubble-bg;
+    color: $color-text-primary;
+  }
+
+  // AI variant - cream/yellow background
+  &--ai {
+    background-color: $color-ai-bubble-bg;
+    color: $color-text-primary;
+  }
+
+  // User variant - white background
+  &--user {
+    background-color: $color-user-bubble-bg;
+    color: $color-text-primary;
+  }
+
+  // AI Info variant - blue background for intro messages
+  &--ai-info {
+    background-color: $color-ai-primary;
+    color: $color-text-inverse;
+  }
+
+  // Content wrapper
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  // ===========================================
+  // TAIL POSITIONS
+  // ===========================================
+
+  // Tail - Bottom Left (pointing down-left)
+  &--tail-bottom-left::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid $color-user-bubble-bg;
+  }
+
+  &--ai.speech-bubble--tail-bottom-left::after {
+    border-top-color: $color-ai-bubble-bg;
+  }
+
+  &--ai-info.speech-bubble--tail-bottom-left::after {
+    border-top-color: $color-ai-primary;
+  }
+
+  // Tail - Bottom Right (pointing down-right)
+  &--tail-bottom-right::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid $color-user-bubble-bg;
+  }
+
+  &--ai.speech-bubble--tail-bottom-right::after {
+    border-top-color: $color-ai-bubble-bg;
+  }
+
+  &--ai-info.speech-bubble--tail-bottom-right::after {
+    border-top-color: $color-ai-primary;
+  }
+
+  // Tail - Top Left (pointing up-left)
+  &--tail-top-left::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid $color-user-bubble-bg;
+  }
+
+  &--ai.speech-bubble--tail-top-left::after {
+    border-bottom-color: $color-ai-bubble-bg;
+  }
+
+  &--ai-info.speech-bubble--tail-top-left::after {
+    border-bottom-color: $color-ai-primary;
+  }
+
+  // Tail - Top Right (pointing up-right)
+  &--tail-top-right::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid $color-user-bubble-bg;
+  }
+
+  &--ai.speech-bubble--tail-top-right::after {
+    border-bottom-color: $color-ai-bubble-bg;
+  }
+
+  &--ai-info.speech-bubble--tail-top-right::after {
+    border-bottom-color: $color-ai-primary;
+  }
+
+  // Tail - Left (pointing left)
+  &--tail-left::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 12px solid $color-user-bubble-bg;
+  }
+
+  &--ai.speech-bubble--tail-left::after {
+    border-right-color: $color-ai-bubble-bg;
+  }
+
+  &--ai-info.speech-bubble--tail-left::after {
+    border-right-color: $color-ai-primary;
+  }
+
+  // Tail - Right (pointing right)
+  &--tail-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 12px solid $color-user-bubble-bg;
+  }
+
+  &--ai.speech-bubble--tail-right::after {
+    border-left-color: $color-ai-bubble-bg;
+  }
+
+  &--ai-info.speech-bubble--tail-right::after {
+    border-left-color: $color-ai-primary;
+  }
+
+  // No tail
+  &--no-tail::after {
+    display: none;
+  }
+
+  // ===========================================
+  // ANIMATION
+  // ===========================================
+
+  &--animated {
+    animation: bubble-appear 0.3s ease-out;
+  }
+
+  @keyframes bubble-appear {
+    0% {
+      opacity: 0;
+      transform: scale(0.9) translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    padding: $spacing-md $spacing-lg;
+    font-size: 18px;
+  }
+}

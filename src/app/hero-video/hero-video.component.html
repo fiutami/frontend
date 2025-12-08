@@ -1,0 +1,94 @@
+<div class="hero-video">
+  <!-- Language Switcher (Top-Right) -->
+  <div class="hero-video__language">
+    <app-language-switcher (languageClick)="onLanguageClick()"></app-language-switcher>
+  </div>
+
+  <!-- LEFT SIDE: Content (visible on desktop) -->
+  <div class="hero-video__left">
+    <!-- Branding -->
+    <div class="hero-video__branding">
+      <div class="hero-video__logo">
+        <picture>
+          <source srcset="assets/images/logo-fiutami.avif" type="image/avif">
+          <source srcset="assets/images/logo-fiutami.webp" type="image/webp">
+          <img
+            src="assets/images/logo-fiutami.png"
+            alt="FiutaMi"
+            class="hero-video__logo-img"
+            loading="eager"
+            fetchpriority="high" />
+        </picture>
+      </div>
+
+      <div class="hero-video__mascot" aria-label="Mascotte FiutaMi">
+        <picture>
+          <source srcset="assets/images/mascot-icon.avif" type="image/avif">
+          <source srcset="assets/images/mascot-icon.webp" type="image/webp">
+          <img
+            src="assets/images/mascot-icon.png"
+            alt=""
+            class="hero-video__mascot-img"
+            role="presentation"
+            loading="eager" />
+        </picture>
+      </div>
+
+      <p class="hero-video__tagline">
+        <span class="hero-video__tagline-main">Fiuta</span>
+        <span class="hero-video__tagline-sub">la tua soluzione ideale</span>
+      </p>
+    </div>
+
+    <!-- Auth Card -->
+    <app-auth-card>
+      <div class="hero-video__actions">
+        <app-button
+          variant="primary"
+          [fullWidth]="true"
+          (clicked)="onLoginClick()">
+          Accedi
+        </app-button>
+
+        <app-button
+          variant="outline"
+          [fullWidth]="true"
+          (clicked)="onSignupClick()">
+          Registrati
+        </app-button>
+
+        <p class="hero-video__terms">
+          Accedendo accetti i nostri
+          <a href="/terms" class="hero-video__link">Termini</a>
+          &
+          <a href="/privacy" class="hero-video__link">Privacy</a>
+        </p>
+      </div>
+
+      <!-- Social Login - Inside card on mobile -->
+      <div class="hero-video__social-mobile">
+        <app-social-login (providerSelected)="onSocialLoginClick($event)"></app-social-login>
+      </div>
+    </app-auth-card>
+
+    <!-- Social Login - Outside card at bottom on tablet/desktop -->
+    <div class="hero-video__social-desktop">
+      <app-social-login (providerSelected)="onSocialLoginClick($event)"></app-social-login>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE: Video (desktop only) -->
+  <div class="hero-video__right">
+    <video
+      #videoPlayer
+      class="hero-video__video"
+      autoplay
+      loop
+      muted
+      playsinline
+      disablePictureInPicture
+      [muted]="true"
+      src="assets/video/fiuto.mp4"
+    ></video>
+  </div>
+</div>

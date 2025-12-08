@@ -1,0 +1,69 @@
+<div class="pet-docs">
+  <!-- Header -->
+  <div class="pet-docs__header">
+    <app-back-button
+      class="pet-docs__back"
+      variant="glass"
+      ariaLabel="Torna indietro"
+      (clicked)="onBack()">
+    </app-back-button>
+
+    <h1 class="pet-docs__title">Documentazioni</h1>
+  </div>
+
+  <!-- Logo -->
+  <div class="pet-docs__logo">
+    <app-logo
+      variant="color"
+      size="lg"
+      loading="eager"
+      href="https://fiutami.pet">
+    </app-logo>
+  </div>
+
+  <!-- Description -->
+  <p class="pet-docs__description">
+    Seleziona i documenti che hai gia per il tuo animale.
+    Potrai aggiungerli in seguito dalla sezione Fatti Bestiali.
+  </p>
+
+  <!-- Species Badge -->
+  <div *ngIf="selectedSpecies" class="pet-docs__species-badge">
+    <span>{{ selectedSpecies.name }}</span>
+  </div>
+
+  <!-- Document Checklist -->
+  <div class="pet-docs__checklist">
+    <div
+      *ngFor="let doc of documentItems"
+      class="pet-docs__item"
+      [class.pet-docs__item--checked]="doc.checked"
+      (click)="toggleDocument(doc)">
+      <!-- Checkbox -->
+      <div class="pet-docs__checkbox">
+        <svg *ngIf="doc.checked" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+        </svg>
+      </div>
+
+      <!-- Label -->
+      <span class="pet-docs__label">{{ doc.label }}</span>
+
+      <!-- Required badge -->
+      <span *ngIf="doc.required" class="pet-docs__required">Richiesto</span>
+    </div>
+  </div>
+
+  <!-- Info Message -->
+  <div class="pet-docs__info">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+    </svg>
+    <p>Potrai caricare i documenti scannerizzati in seguito</p>
+  </div>
+
+  <!-- Continue Button -->
+  <button class="pet-docs__continue" type="button" (click)="onContinue()">
+    Continua
+  </button>
+</div>

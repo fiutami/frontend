@@ -1,0 +1,326 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// BOTTOM TAB BAR COMPONENT
+// Fixed bottom navigation for mobile apps
+// ===========================================
+
+.bottom-tab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: $tab-bar-height;
+
+  // ===========================================
+  // VARIANTS
+  // ===========================================
+
+  &--solid {
+    background-color: $color-tab-bar-bg;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+
+    .bottom-tab-bar__tab {
+      color: rgba(255, 255, 255, 0.7);
+
+      &--active {
+        color: $color-tab-bar-active;
+      }
+
+      &:hover:not(&--disabled):not(&--active) {
+        color: rgba(255, 255, 255, 0.9);
+      }
+    }
+
+    .bottom-tab-bar__indicator {
+      background-color: $color-tab-bar-active;
+    }
+  }
+
+  &--floating {
+    margin: 0 $spacing-md $spacing-md;
+    left: $spacing-md;
+    right: $spacing-md;
+    bottom: $spacing-md;
+    border-radius: $border-radius-xl;
+    background-color: $color-tab-bar-bg;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+    .bottom-tab-bar__tab {
+      color: rgba(255, 255, 255, 0.7);
+
+      &--active {
+        color: $color-tab-bar-active;
+      }
+    }
+
+    .bottom-tab-bar__indicator {
+      background-color: $color-tab-bar-active;
+    }
+  }
+
+  &--transparent {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    .bottom-tab-bar__tab {
+      color: $color-text-secondary;
+
+      &--active {
+        color: $color-ai-primary;
+      }
+
+      &:hover:not(&--disabled):not(&--active) {
+        color: $color-text-primary;
+      }
+    }
+
+    .bottom-tab-bar__indicator {
+      background-color: $color-ai-primary;
+    }
+  }
+
+  // ===========================================
+  // SIZES
+  // ===========================================
+
+  &--sm {
+    height: 56px;
+
+    .bottom-tab-bar__icon {
+      font-size: 20px;
+
+      .material-icons {
+        font-size: 20px;
+      }
+    }
+
+    .bottom-tab-bar__label {
+      font-size: 9px;
+    }
+  }
+
+  &--md {
+    height: $tab-bar-height;
+
+    .bottom-tab-bar__icon {
+      font-size: 24px;
+
+      .material-icons {
+        font-size: 24px;
+      }
+    }
+
+    .bottom-tab-bar__label {
+      font-size: 10px;
+    }
+  }
+
+  &--lg {
+    height: 80px;
+
+    .bottom-tab-bar__icon {
+      font-size: 28px;
+
+      .material-icons {
+        font-size: 28px;
+      }
+    }
+
+    .bottom-tab-bar__label {
+      font-size: 11px;
+    }
+  }
+
+  // ===========================================
+  // SAFE AREA (for notch devices)
+  // ===========================================
+
+  &--safe-area {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  // ===========================================
+  // WITH LABELS
+  // ===========================================
+
+  &--with-labels {
+    .bottom-tab-bar__tab {
+      flex-direction: column;
+      gap: 2px;
+    }
+  }
+
+  // ===========================================
+  // TAB ITEM
+  // ===========================================
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    padding: $spacing-sm;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus-visible {
+      outline: 2px solid $color-tab-bar-active;
+      outline-offset: -2px;
+    }
+
+    &--disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &--active {
+      .bottom-tab-bar__indicator {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+    }
+  }
+
+  // ===========================================
+  // ICON
+  // ===========================================
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+
+    .bottom-tab-bar__tab--active & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+
+    .bottom-tab-bar--sm & {
+      width: 20px;
+      height: 20px;
+    }
+
+    .bottom-tab-bar--lg & {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  // ===========================================
+  // BADGE
+  // ===========================================
+
+  &__badge {
+    position: absolute;
+    top: 8px;
+    right: 50%;
+    transform: translateX(16px);
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background-color: $color-error;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  // ===========================================
+  // LABEL
+  // ===========================================
+
+  &__label {
+    font-family: $font-family-body;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  // ===========================================
+  // INDICATOR
+  // ===========================================
+
+  &__indicator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 40px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    // On tablets/desktop, can be wider
+    max-width: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: $border-radius-lg $border-radius-lg 0 0;
+
+    &--floating {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      width: calc(100% - #{$spacing-xl * 2});
+      max-width: 500px;
+    }
+  }
+}
+
+// ===========================================
+// SPACER (to prevent content from being hidden)
+// ===========================================
+
+.bottom-tab-bar-spacer {
+  height: $tab-bar-height;
+  flex-shrink: 0;
+
+  &--safe-area {
+    height: calc(#{$tab-bar-height} + env(safe-area-inset-bottom, 0));
+  }
+
+  &--sm {
+    height: 56px;
+
+    &.bottom-tab-bar-spacer--safe-area {
+      height: calc(56px + env(safe-area-inset-bottom, 0));
+    }
+  }
+
+  &--lg {
+    height: 80px;
+
+    &.bottom-tab-bar-spacer--safe-area {
+      height: calc(80px + env(safe-area-inset-bottom, 0));
+    }
+  }
+}

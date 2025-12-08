@@ -1,0 +1,246 @@
+<div class="security">
+  <h1 class="security__title">Sicurezza</h1>
+  <p class="security__subtitle">Gestisci la sicurezza del tuo account</p>
+
+  <!-- Password Section -->
+  <section class="security__section">
+    <h2 class="security__section-title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
+      Password
+    </h2>
+
+    <!-- Google OAuth Info -->
+    <div class="security__info" *ngIf="canSetPassword">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
+      <div>
+        <strong>Account Google</strong>
+        <p>Il tuo account utilizza l'autenticazione Google. Non è necessaria una password separata.</p>
+      </div>
+    </div>
+
+    <!-- Password Change Form -->
+    <div *ngIf="hasPassword">
+      <div class="security__message security__message--success" *ngIf="passwordSuccessMessage">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        {{ passwordSuccessMessage }}
+      </div>
+
+      <div class="security__message security__message--error" *ngIf="passwordErrorMessage">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+        {{ passwordErrorMessage }}
+      </div>
+
+      <button
+        *ngIf="!showPasswordForm"
+        type="button"
+        class="btn btn--outline"
+        (click)="togglePasswordForm()"
+      >
+        Modifica Password
+      </button>
+
+      <form
+        *ngIf="showPasswordForm"
+        [formGroup]="passwordForm"
+        (ngSubmit)="onChangePassword()"
+        class="security__form"
+      >
+        <div class="form-group">
+          <label for="currentPassword" class="form-label">Password Attuale</label>
+          <input
+            type="password"
+            id="currentPassword"
+            formControlName="currentPassword"
+            class="form-input"
+            placeholder="Inserisci la password attuale"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="newPassword" class="form-label">Nuova Password</label>
+          <input
+            type="password"
+            id="newPassword"
+            formControlName="newPassword"
+            class="form-input"
+            placeholder="Inserisci la nuova password"
+          >
+          <span class="form-hint">Minimo 8 caratteri</span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword" class="form-label">Conferma Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            class="form-input"
+            placeholder="Conferma la nuova password"
+          >
+          <span
+            class="form-error"
+            *ngIf="passwordForm.hasError('passwordMismatch') && passwordForm.get('confirmPassword')?.touched"
+          >
+            Le password non coincidono
+          </span>
+        </div>
+
+        <div class="security__form-actions">
+          <button type="button" class="btn btn--ghost" (click)="togglePasswordForm()">
+            Annulla
+          </button>
+          <button
+            type="submit"
+            class="btn btn--primary"
+            [disabled]="passwordForm.invalid || isChangingPassword"
+          >
+            {{ isChangingPassword ? 'Modifica in corso...' : 'Modifica Password' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Sessions Section -->
+  <section class="security__section">
+    <div class="security__section-header">
+      <h2 class="security__section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+        Sessioni Attive
+      </h2>
+      <button
+        *ngIf="sessions.length > 1"
+        type="button"
+        class="btn btn--text btn--danger"
+        (click)="revokeAllOtherSessions()"
+        [disabled]="isRevokingSession"
+      >
+        Disconnetti altre
+      </button>
+    </div>
+
+    <div class="security__message security__message--error" *ngIf="sessionErrorMessage">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="15" y1="9" x2="9" y2="15"></line>
+        <line x1="9" y1="9" x2="15" y2="15"></line>
+      </svg>
+      {{ sessionErrorMessage }}
+    </div>
+
+    <!-- Loading State -->
+    <div class="security__loading" *ngIf="isLoadingSessions">
+      <div class="spinner"></div>
+      <span>Caricamento sessioni...</span>
+    </div>
+
+    <!-- Sessions List -->
+    <div class="sessions-list" *ngIf="!isLoadingSessions">
+      <div *ngFor="let session of sessions" class="session-card" [class.session-card--current]="session.isCurrent">
+        <div class="session-card__icon">
+          <!-- Desktop Icon -->
+          <svg *ngIf="getDeviceIcon(session.deviceType) === 'desktop'" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <!-- Mobile Icon -->
+          <svg *ngIf="getDeviceIcon(session.deviceType) === 'mobile'" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+          </svg>
+          <!-- Tablet Icon -->
+          <svg *ngIf="getDeviceIcon(session.deviceType) === 'tablet'" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+          </svg>
+        </div>
+
+        <div class="session-card__details">
+          <div class="session-card__header">
+            <span class="session-card__device">{{ session.browser }} - {{ session.operatingSystem }}</span>
+            <span *ngIf="session.isCurrent" class="session-card__badge">Sessione attuale</span>
+          </div>
+          <span class="session-card__ip">{{ session.city || 'Posizione sconosciuta' }}, {{ session.country || '' }}</span>
+          <span class="session-card__time">
+            Ultimo accesso: {{ session.lastActivityAt | date:'dd/MM/yyyy HH:mm' }}
+          </span>
+        </div>
+
+        <button
+          *ngIf="!session.isCurrent"
+          type="button"
+          class="session-card__revoke"
+          (click)="revokeSession(session.id)"
+          [disabled]="isRevokingSession"
+          title="Disconnetti sessione"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div *ngIf="sessions.length === 0" class="security__empty">
+        <p>Nessuna sessione attiva trovata.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Tips -->
+  <section class="security__section security__section--tips">
+    <h2 class="security__section-title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      </svg>
+      Consigli di Sicurezza
+    </h2>
+
+    <ul class="security__tips">
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Usa una password unica e complessa
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Non condividere mai le tue credenziali
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Disconnetti le sessioni che non riconosci
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Attiva le notifiche di sicurezza via email
+      </li>
+    </ul>
+  </section>
+</div>

@@ -1,0 +1,89 @@
+{
+  "common": {
+    "language": "Language",
+    "back": "Back",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot password?",
+    "resetPassword": "Reset Password",
+    "termsAccept": "By logging in you accept our Terms & Privacy",
+    "termsAndConditions": "Terms and Conditions",
+    "privacyPolicy": "Privacy Policy",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "loginButton": "Login",
+    "signupButton": "Sign Up",
+    "loginTitle": "Login",
+    "signupTitle": "Sign Up",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPasswordPlaceholder": "Confirm your password"
+  },
+  "hero": {
+    "tagline": "Sniff out your ideal solution",
+    "subtitle": "Find services and professionals near you",
+    "cta": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "footer": {
+    "company": "Company",
+    "aboutUs": "About Us",
+    "careers": "Careers",
+    "press": "Press",
+    "support": "Support",
+    "help": "Help",
+    "faq": "FAQ",
+    "contact": "Contact Us",
+    "legal": "Legal",
+    "terms": "Terms of Service",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "followUs": "Follow Us",
+    "copyright": "© {{year}} Fiutami. All rights reserved."
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email",
+    "passwordMismatch": "Passwords do not match",
+    "minLength": "Minimum {{length}} characters required",
+    "maxLength": "Maximum {{length}} characters allowed",
+    "invalidFormat": "Invalid format",
+    "serverError": "Server error. Please try again later.",
+    "networkError": "Connection error. Check your network.",
+    "unauthorized": "Unauthorized",
+    "notFound": "Not found",
+    "forbidden": "Access denied"
+  },
+  "validation": {
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordsMustMatch": "Passwords must match",
+    "termsRequired": "You must accept the terms and conditions"
+  }
+}

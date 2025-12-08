@@ -1,0 +1,128 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ========================================
+// ICON BUTTON COMPONENT
+// Circular button for icons (back, close, etc.)
+// ========================================
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $border-radius-full;
+  cursor: pointer;
+  transition: $transition-base;
+
+  @include focus-ring(rgba(255, 255, 255, 0.8));
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  // Icon styling
+  svg {
+    width: 100%;
+    height: 100%;
+    max-width: 24px;
+    max-height: 24px;
+  }
+
+  // ========================================
+  // VARIANTS
+  // ========================================
+
+  &--default {
+    background: rgba(255, 255, 255, 0.2);
+    color: $color-text-inverse;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-text-inverse;
+    border: none;
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &--glass {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: $color-text-inverse;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: $shadow-auth-back-button;
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  // ========================================
+  // SIZES
+  // ========================================
+
+  &--sm {
+    width: 32px;
+    height: 32px;
+
+    svg {
+      max-width: 16px;
+      max-height: 16px;
+    }
+  }
+
+  &--md {
+    width: 40px;
+    height: 40px;
+
+    @include respond(md) {
+      width: 44px;
+      height: 44px;
+    }
+
+    svg {
+      max-width: 20px;
+      max-height: 20px;
+
+      @include respond(md) {
+        max-width: 24px;
+        max-height: 24px;
+      }
+    }
+  }
+
+  &--lg {
+    width: 48px;
+    height: 48px;
+
+    @include respond(md) {
+      width: 56px;
+      height: 56px;
+    }
+
+    svg {
+      max-width: 24px;
+      max-height: 24px;
+
+      @include respond(md) {
+        max-width: 28px;
+        max-height: 28px;
+      }
+    }
+  }
+}

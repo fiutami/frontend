@@ -1,0 +1,43 @@
+<div class="species-q2">
+  <!-- Header -->
+  <header class="species-q2__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+  </header>
+
+  <!-- Content -->
+  <main class="species-q2__content">
+    <!-- Intro bubble (blue) -->
+    <div class="species-q2__intro">
+      <app-speech-bubble variant="ai-info" tailPosition="bottom-left">
+        {{ introMessage }}
+      </app-speech-bubble>
+    </div>
+
+    <!-- Question card (white) with options -->
+    <div class="species-q2__question-card">
+      <p class="species-q2__question">{{ question }}</p>
+
+      <app-answer-square
+        [options]="options"
+        [selectedValue]="selectedAnswer()"
+        (selectionChange)="onAnswerSelect($event)">
+      </app-answer-square>
+    </div>
+
+    <!-- Fiuto mascot -->
+    <div class="species-q2__mascot">
+      <img
+        src="assets/images/fiuto-mascot.png"
+        alt="Fiuto mascotte"
+        class="species-q2__mascot-img" />
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="species-q2__footer">
+    <app-logo variant="white" size="md" href="https://fiutami.pet"></app-logo>
+  </footer>
+</div>

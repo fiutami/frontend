@@ -1,0 +1,71 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// LANGUAGE SWITCHER - Responsive Design
+// Mobile: White text/icon (on dark background)
+// Tablet/Desktop: DARK text (from Figma - black text visible)
+// ===========================================
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-sm;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $border-radius-full;
+  color: $color-text-inverse; // White on mobile
+  font-size: $typography-terms-size-mobile;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition-base;
+
+  @include focus-ring(rgba(255, 255, 255, 0.8));
+
+  // Tablet/Desktop: Dark text, no background (from Figma)
+  @include respond(md) {
+    padding: $spacing-sm $spacing-md;
+    font-size: 13px;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    color: $color-text-dark; // Black text on tablet/desktop
+
+    @include focus-ring($color-text-dark);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+
+    @include respond(md) {
+      background: rgba(0, 0, 0, 0.05);
+      border-color: transparent;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1); // White icon on mobile
+
+    @include respond(md) {
+      width: 22px;
+      height: 22px;
+      filter: none; // Original dark icon on tablet/desktop
+    }
+  }
+
+  &__text {
+    @media (max-width: 360px) {
+      @include visually-hidden;
+    }
+  }
+}

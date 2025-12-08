@@ -1,0 +1,81 @@
+<div
+  [ngClass]="containerClasses"
+  role="navigation"
+  aria-label="Indicatore di progresso">
+
+  @switch (variant) {
+    <!-- Dots variant -->
+    @case ('dots') {
+      <div class="step-indicator__dots">
+        @for (step of stepIndices(); track step) {
+          <button
+            type="button"
+            class="step-indicator__dot"
+            [class.step-indicator__dot--completed]="getStepStatus(step) === 'completed'"
+            [class.step-indicator__dot--current]="getStepStatus(step) === 'current'"
+            [class.step-indicator__dot--upcoming]="getStepStatus(step) === 'upcoming'"
+            [disabled]="!clickable"
+            [attr.aria-label]="'Step ' + step + (getStepLabel(step) ? ': ' + getStepLabel(step) : '')"
+            [attr.aria-current]="getStepStatus(step) === 'current' ? 'step' : null"
+            (click)="onStepClick(step)">
+          </button>
+        }
+      </div>
+    }
+
+    <!-- Numbers variant -->
+    @case ('numbers') {
+      <div class="step-indicator__numbers">
+        @for (step of stepIndices(); track step; let last = $last) {
+          <div class="step-indicator__number-wrapper">
+            <button
+              type="button"
+              class="step-indicator__number"
+              [class.step-indicator__number--completed]="getStepStatus(step) === 'completed'"
+              [class.step-indicator__number--current]="getStepStatus(step) === 'current'"
+              [class.step-indicator__number--upcoming]="getStepStatus(step) === 'upcoming'"
+              [disabled]="!clickable"
+              [attr.aria-label]="'Step ' + step + (getStepLabel(step) ? ': ' + getStepLabel(step) : '')"
+              [attr.aria-current]="getStepStatus(step) === 'current' ? 'step' : null"
+              (click)="onStepClick(step)">
+              @if (getStepStatus(step) === 'completed') {
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+              } @else {
+                {{ step }}
+              }
+            </button>
+
+            @if (showLabels && getStepLabel(step)) {
+              <span class="step-indicator__label">{{ getStepLabel(step) }}</span>
+            }
+          </div>
+
+          @if (!last) {
+            <div
+              class="step-indicator__connector"
+              [class.step-indicator__connector--completed]="getStepStatus(step) === 'completed'">
+            </div>
+          }
+        }
+      </div>
+    }
+
+    <!-- Progress bar variant -->
+    @case ('progress') {
+      <div class="step-indicator__progress">
+        <div class="step-indicator__progress-track">
+          <div
+            class="step-indicator__progress-fill"
+            [style.width.%]="progressPercentage()">
+          </div>
+        </div>
+        <span class="step-indicator__progress-text">
+          {{ currentStep }} / {{ totalSteps }}
+        </span>
+      </div>
+    }
+  }
+
+</div>

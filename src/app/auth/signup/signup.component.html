@@ -1,0 +1,105 @@
+<div class="signup">
+  <!-- Background Image with Overlay - Optimized with responsive WebP/AVIF -->
+  <div class="signup__background">
+    <picture>
+      <!-- AVIF: Best compression with responsive sizes (14-57KB vs 1.4MB PNG) -->
+      <source
+        srcset="assets/images/auth-bg-480w.avif 480w,
+                assets/images/auth-bg-768w.avif 768w,
+                assets/images/auth-bg-1280w.avif 1280w,
+                assets/images/auth-bg.avif 1920w"
+        sizes="100vw"
+        type="image/avif">
+      <!-- WebP: Wide support with responsive sizes -->
+      <source
+        srcset="assets/images/auth-bg-480w.webp 480w,
+                assets/images/auth-bg-768w.webp 768w,
+                assets/images/auth-bg-1280w.webp 1280w,
+                assets/images/auth-bg.webp 1920w"
+        sizes="100vw"
+        type="image/webp">
+      <!-- PNG: Fallback -->
+      <img
+        src="assets/images/auth-bg.png"
+        alt=""
+        class="signup__background-image"
+        role="presentation"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async" />
+    </picture>
+    <div class="signup__overlay" aria-hidden="true"></div>
+  </div>
+
+  <!-- Back Button (Top-Left) -->
+  <app-icon-button
+    class="signup__back"
+    variant="glass"
+    ariaLabel="Torna indietro"
+    (clicked)="onBackClick()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </app-icon-button>
+
+  <!-- Main Content -->
+  <div class="signup__content">
+    <app-auth-card>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup__form">
+        <h2 class="signup__title">Registrati</h2>
+
+        <!-- Email Input -->
+        <app-form-input
+          label="Email"
+          type="email"
+          formControlName="email"
+          placeholder="inserisci la tua email"
+          autocomplete="email"
+          [hasError]="!!(email?.invalid && email?.touched)"
+          [errorMessage]="getEmailError()">
+        </app-form-input>
+
+        <!-- Password Input -->
+        <app-form-input
+          label="Password"
+          type="password"
+          formControlName="password"
+          placeholder="minimo 8 caratteri"
+          autocomplete="new-password"
+          hint="Usa almeno 8 caratteri con lettere e numeri"
+          [hasError]="!!(password?.invalid && password?.touched)"
+          [errorMessage]="getPasswordError()">
+        </app-form-input>
+
+        <!-- Confirm Password Input -->
+        <app-form-input
+          label="Conferma Password"
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="conferma la tua password"
+          autocomplete="new-password"
+          [hasError]="!!(getConfirmPasswordError())"
+          [errorMessage]="getConfirmPasswordError()">
+        </app-form-input>
+
+        <!-- Submit Button -->
+        <app-button
+          variant="primary"
+          type="submit"
+          [fullWidth]="true"
+          [disabled]="signupForm.invalid"
+          [loading]="isSubmitting">
+          Registrati
+        </app-button>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="signup__error" role="alert">
+          {{ errorMessage }}
+        </div>
+      </form>
+
+      <!-- Social Login -->
+      <app-social-login (providerSelected)="onSocialLoginClick($event)"></app-social-login>
+    </app-auth-card>
+  </div>
+</div>

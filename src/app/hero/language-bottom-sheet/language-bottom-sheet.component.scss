@@ -1,0 +1,191 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// LANGUAGE BOTTOM SHEET COMPONENT
+// Slide-up panel for language selection
+// ===========================================
+
+.language-bottom-sheet {
+  // ===========================================
+  // BACKDROP
+  // ===========================================
+
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    animation: fadeIn 200ms ease-out;
+  }
+
+  // ===========================================
+  // CONTENT PANEL
+  // ===========================================
+
+  &__content {
+    width: 100%;
+    max-width: 500px;
+    max-height: 85vh;
+    background-color: $color-primary-500;
+    border-radius: $border-radius-xl $border-radius-xl 0 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 300ms ease-out;
+
+    @include respond(md) {
+      max-width: 450px;
+      margin: 0 auto;
+    }
+  }
+
+  // ===========================================
+  // HANDLE BAR
+  // ===========================================
+
+  &__handle {
+    display: flex;
+    justify-content: center;
+    padding: $spacing-sm 0;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &__handle-bar {
+    width: 40px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+
+  // ===========================================
+  // HEADER
+  // ===========================================
+
+  &__header {
+    padding: $spacing-sm $spacing-lg;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-text-inverse;
+  }
+
+  // ===========================================
+  // BODY (Language list)
+  // ===========================================
+
+  &__body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 $spacing-lg;
+    -webkit-overflow-scrolling: touch;
+
+    // Custom styling for radio buttons in this context
+    ::ng-deep .radio-button-group {
+      gap: $spacing-xs;
+    }
+
+    ::ng-deep .radio-button-group__option {
+      background-color: $color-cta-primary;
+      border-radius: $border-radius-md;
+      padding: $spacing-sm $spacing-md;
+      transition: all 150ms ease;
+
+      &:hover:not(.radio-button-group__option--disabled) {
+        background-color: lighten($color-cta-primary, 5%);
+      }
+
+      &--selected {
+        background-color: $color-ai-primary;
+
+        .radio-button-group__label {
+          color: $color-text-inverse;
+        }
+
+        &:hover {
+          background-color: $color-ai-primary;
+        }
+      }
+    }
+
+    ::ng-deep .radio-button-group__label {
+      color: $color-text-dark;
+      font-weight: 600;
+    }
+
+    ::ng-deep .radio-button-group__radio {
+      border-color: rgba(0, 0, 0, 0.3);
+
+      &--checked {
+        border-color: $color-text-inverse;
+        background-color: $color-text-inverse;
+
+        &::after {
+          background-color: $color-ai-primary;
+        }
+      }
+    }
+  }
+
+  // ===========================================
+  // FOOTER
+  // ===========================================
+
+  &__footer {
+    padding: $spacing-lg;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    // Override button styles for this context
+    ::ng-deep .btn--primary {
+      background-color: $color-cta-primary;
+      border: 2px solid $color-text-inverse;
+      color: $color-text-dark;
+      font-weight: 700;
+
+      &:hover:not(:disabled) {
+        background-color: lighten($color-cta-primary, 5%);
+      }
+
+      &:active:not(:disabled) {
+        background-color: darken($color-cta-primary, 5%);
+      }
+    }
+  }
+}
+
+// ===========================================
+// ANIMATIONS
+// ===========================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

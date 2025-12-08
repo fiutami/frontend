@@ -1,0 +1,46 @@
+/* FiutaMi Global Styles */
+@import './styles/tokens';
+@import './styles/tokens-figma';
+@import './styles/mixins';
+
+/* Design System Utilities */
+@import './styles/utilities/index';
+
+/* Base reset – il resto è già in _tokens.scss */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans, "Segoe UI", sans-serif);
+  font-size: var(--fs-base, 16px);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Media elements */
+img, picture, video, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Buttons / interactive */
+button, .btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  @include focus-ring(var(--accent));
+}
+
+/* Utility: visually hidden (a11y) */
+.sr-only { @include visually-hidden; }

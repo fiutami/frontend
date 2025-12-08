@@ -1,0 +1,70 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ========================================
+// CARD COMPONENT
+// Reusable card with variants and padding options
+// ========================================
+
+.card {
+  width: 100%;
+  box-sizing: border-box;
+
+  // ========================================
+  // VARIANTS
+  // ========================================
+
+  &--overlay {
+    background: $color-overlay-dark;
+    backdrop-filter: blur(10px);
+  }
+
+  &--solid {
+    background: $color-background-primary;
+    box-shadow: $shadow-md;
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+
+  // ========================================
+  // PADDING
+  // ========================================
+
+  &--padding-none {
+    padding: 0;
+  }
+
+  &--padding-sm {
+    padding: $spacing-sm;
+
+    @include respond(md) {
+      padding: $spacing-md;
+    }
+  }
+
+  &--padding-md {
+    padding: $spacing-auth-mobile-card-padding; // 25px
+
+    @include respond(md) {
+      padding: $spacing-lg;
+    }
+  }
+
+  &--padding-lg {
+    padding: $spacing-lg;
+
+    @include respond(md) {
+      padding: $spacing-xl;
+    }
+  }
+
+  // ========================================
+  // BORDER RADIUS
+  // ========================================
+
+  &--rounded {
+    border-radius: $border-radius-md;
+  }
+}
