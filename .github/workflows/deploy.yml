@@ -4,60 +4,101 @@ on:
   push:
     branches: [main, stage]
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Target environment'
-        required: true
-        type: choice
-        options: [stage, prod]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: fiutami/frontend
 
 jobs:
-  setup:
+  build-and-push:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     outputs:
-      environment: ${{ steps.env.outputs.environment }}
-      image_tag: ${{ steps.env.outputs.image_tag }}
+      image_tag: ${{ steps.vars.outputs.image_tag }}
     steps:
-      - name: Determine environment
-        id: env
-        run: |
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            ENV="${{ inputs.environment }}"
-          elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            ENV="prod"
-          else
-            ENV="stage"
-          fi
-          TAG=$([[ "$ENV" == "prod" ]] && echo "latest" || echo "stage")
-          echo "environment=$ENV" >> $GITHUB_OUTPUT
-          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v4
 
-  build:
-    needs: setup
-    uses: fiutami/infra/.github/workflows/reusable-docker-build.yml@main
-    with:
-      image_name: fiutami/frontend
-      image_tag: ${{ needs.setup.outputs.image_tag }}
-    secrets:
-      REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set variables
+        id: vars
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "image_tag=latest" >> $GITHUB_OUTPUT
+            echo "environment=prod" >> $GITHUB_OUTPUT
+          else
+            echo "image_tag=stage" >> $GITHUB_OUTPUT
+            echo "environment=stage" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.image_tag }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   deploy:
-    needs: [setup, build]
-    uses: fiutami/infra/.github/workflows/reusable-ssh-deploy.yml@main
-    with:
-      environment: ${{ needs.setup.outputs.environment }}
-      compose_file: docker-compose.${{ needs.setup.outputs.environment }}.yml
-    secrets:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      SSH_HOST: ${{ secrets.SSH_HOST }}
-      SSH_USER: ${{ secrets.SSH_USER }}
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
 
-  trigger-e2e:
-    needs: [setup, deploy]
-    uses: fiutami/infra/.github/workflows/reusable-notify-e2e.yml@main
-    with:
-      environment: ${{ needs.setup.outputs.environment }}
-      source_repo: frontend
-      source_sha: ${{ github.sha }}
-    secrets:
-      E2E_DISPATCH_TOKEN: ${{ secrets.E2E_DISPATCH_TOKEN }}
+      - name: Deploy via SSH
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} << 'ENDSSH'
+            cd /opt/fiutami
+
+            echo "📦 Pulling new frontend image..."
+            docker compose -f docker-compose.stage.yml pull frontend || true
+
+            echo "🛑 Stopping frontend..."
+            docker compose -f docker-compose.stage.yml stop frontend
+            docker compose -f docker-compose.stage.yml rm -f frontend
+
+            echo "🚀 Starting new frontend..."
+            docker compose -f docker-compose.stage.yml up -d frontend
+
+            echo "🧹 Cleanup..."
+            docker system prune -f
+          ENDSSH
+
+      - name: Health Check
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          echo "⏳ Waiting for frontend..."
+          for i in {1..10}; do
+            HEALTH=$(ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} \
+              "curl -sf http://localhost:8082 2>/dev/null | head -c 100 || echo 'error'")
+            if echo "$HEALTH" | grep -qi "html"; then
+              echo "✅ Frontend is serving content!"
+              exit 0
+            fi
+            echo "  Attempt $i/10..."
+            sleep 5
+          done
+          echo "⚠️ Health check inconclusive"
