@@ -1,0 +1,55 @@
+<div class="section-page">
+  <header class="section-header">
+    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
+      ←
+    </button>
+    <h1>{{ title }}</h1>
+  </header>
+  <main class="section-content section-content--scrollable">
+    <div class="content-wrapper">
+      <p class="intro">Hai domande o suggerimenti? Siamo qui per aiutarti!</p>
+
+      @if (!submitted) {
+        <form class="contact-form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="email"
+              placeholder="tua@email.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Messaggio</label>
+            <textarea
+              id="message"
+              name="message"
+              [(ngModel)]="message"
+              placeholder="Scrivi qui il tuo messaggio..."
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="!email || !message"
+          >
+            Invia Messaggio
+          </button>
+        </form>
+      } @else {
+        <div class="success-message">
+          <span class="success-icon">✅</span>
+          <p>Messaggio inviato con successo!</p>
+          <p class="success-subtext">Ti risponderemo al più presto.</p>
+        </div>
+      }
+    </div>
+  </main>
+</div>

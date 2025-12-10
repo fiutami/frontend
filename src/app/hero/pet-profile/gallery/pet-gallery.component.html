@@ -1,0 +1,72 @@
+<div class="pet-gallery">
+  <!-- Header -->
+  <header class="pet-gallery__header">
+    <button
+      class="pet-gallery__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+    </button>
+
+    <h1 class="pet-gallery__title">Galleria</h1>
+
+    <button
+      class="pet-gallery__add"
+      (click)="onAddPhotoClick()"
+      aria-label="Aggiungi foto"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Content -->
+  <main class="pet-gallery__content">
+    <!-- Empty state -->
+    @if (isEmpty) {
+      <div class="pet-gallery__empty">
+        <div class="pet-gallery__empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+          </svg>
+        </div>
+        <h2 class="pet-gallery__empty-title">Nessuna foto ancora</h2>
+        <p class="pet-gallery__empty-text">
+          Aggiungi la prima foto del tuo pet!
+        </p>
+        <button
+          class="pet-gallery__empty-btn"
+          (click)="onAddPhotoClick()"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+          </svg>
+          Aggiungi Foto
+        </button>
+      </div>
+    }
+
+    <!-- Photo grid -->
+    @if (!isEmpty) {
+      <div class="pet-gallery__grid">
+        @for (photo of photos(); track photo.id) {
+          <button
+            class="pet-gallery__photo-card"
+            (click)="onPhotoClick(photo)"
+          >
+            <img
+              [src]="photo.url"
+              [alt]="photo.alt"
+              class="pet-gallery__photo-img"
+            />
+          </button>
+        }
+      </div>
+    }
+  </main>
+</div>

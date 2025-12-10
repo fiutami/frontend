@@ -1,0 +1,55 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { {{componentName}}Component } from './{{componentKebabName}}.component';
+
+/**
+ * {{componentName}}Component Tests
+ * Auto-generated from Figma design
+ */
+describe('{{componentName}}Component', () => {
+  let component: {{componentName}}Component;
+  let fixture: ComponentFixture<{{componentName}}Component>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [{{componentName}}Component]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent({{componentName}}Component);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  // Input tests
+  describe('Inputs', () => {
+    // Add input tests based on component properties
+{{tests}}
+  });
+
+  // Output tests
+  describe('Outputs', () => {
+    // Add output tests for events
+  });
+
+  // Interaction tests
+  describe('Interactions', () => {
+    // Add interaction tests
+  });
+
+  // Accessibility tests
+  describe('Accessibility', () => {
+    it('should have proper ARIA attributes', () => {
+      const compiled = fixture.nativeElement;
+      // Add ARIA attribute checks
+      expect(compiled).toBeTruthy();
+    });
+
+    it('should be keyboard accessible', () => {
+      // Add keyboard navigation tests
+      expect(component).toBeTruthy();
+    });
+  });
+});

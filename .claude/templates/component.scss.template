@@ -1,0 +1,33 @@
+/**
+ * {{componentName}}Component Styles
+ * Auto-generated from Figma design
+ */
+
+@import 'src/styles/tokens';
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+{{styles}}
+
+// Responsive styles
+@include respond(md) {
+  .{{componentKebabName}} {
+    // Tablet and desktop styles
+  }
+}
+
+// Accessibility
+.{{componentKebabName}} {
+  // Focus visible styles
+  &:focus-visible {
+    @include focus-ring();
+  }
+
+  // Reduced motion support
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

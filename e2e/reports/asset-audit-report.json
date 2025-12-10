@@ -1,0 +1,4669 @@
+{
+  "generatedAt": "2025-12-08T22:11:02.281Z",
+  "totalScreens": 29,
+  "screensOk": 29,
+  "screensWarning": 0,
+  "screensError": 0,
+  "screens": [
+    {
+      "url": "http://localhost:4200/",
+      "route": "/",
+      "timestamp": "2025-12-08T22:10:31.629Z",
+      "images": [
+        {
+          "src": "assets/icons/globe.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/logo-fiutami.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 467,
+          "naturalHeight": 212
+        },
+        {
+          "src": "assets/images/mascot-icon.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        },
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 640,
+          "naturalHeight": 960
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 5,
+        "loadedImages": 5,
+        "missingImages": 0,
+        "totalSvgs": 16,
+        "visibleSvgs": 16,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login",
+      "route": "/login",
+      "timestamp": "2025-12-08T22:10:32.845Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/signup",
+      "route": "/signup",
+      "timestamp": "2025-12-08T22:10:33.927Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fmain",
+      "route": "/home/main",
+      "timestamp": "2025-12-08T22:10:35.032Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fwelcome",
+      "route": "/home/welcome",
+      "timestamp": "2025-12-08T22:10:36.145Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fpet-profile",
+      "route": "/home/pet-profile",
+      "timestamp": "2025-12-08T22:10:37.242Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fdashboard",
+      "route": "/home/dashboard",
+      "timestamp": "2025-12-08T22:10:38.341Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fpet-register",
+      "route": "/home/pet-register",
+      "timestamp": "2025-12-08T22:10:39.474Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fpet-register%2Fspecie",
+      "route": "/home/pet-register/specie",
+      "timestamp": "2025-12-08T22:10:40.557Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fpet-register%2Fdetails",
+      "route": "/home/pet-register/details",
+      "timestamp": "2025-12-08T22:10:41.658Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fpet-register%2Fdocs",
+      "route": "/home/pet-register/docs",
+      "timestamp": "2025-12-08T22:10:42.773Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fpet-register%2Fwellness",
+      "route": "/home/pet-register/wellness",
+      "timestamp": "2025-12-08T22:10:43.875Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fwelcome-ai%2F1",
+      "route": "/home/welcome-ai/1",
+      "timestamp": "2025-12-08T22:10:44.972Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fwelcome-ai%2F2a",
+      "route": "/home/welcome-ai/2a",
+      "timestamp": "2025-12-08T22:10:46.056Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fwelcome-ai%2F2b",
+      "route": "/home/welcome-ai/2b",
+      "timestamp": "2025-12-08T22:10:47.156Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fspecies-questionnaire%2Fq1",
+      "route": "/home/species-questionnaire/q1",
+      "timestamp": "2025-12-08T22:10:48.241Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fspecies-questionnaire%2Fq2",
+      "route": "/home/species-questionnaire/q2",
+      "timestamp": "2025-12-08T22:10:49.288Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fspecies-questionnaire%2Fq3",
+      "route": "/home/species-questionnaire/q3",
+      "timestamp": "2025-12-08T22:10:50.405Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fspecies-questionnaire%2Fq4",
+      "route": "/home/species-questionnaire/q4",
+      "timestamp": "2025-12-08T22:10:51.504Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fspecies-questionnaire%2Fq5",
+      "route": "/home/species-questionnaire/q5",
+      "timestamp": "2025-12-08T22:10:52.592Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fspecies-questionnaire%2Fq6",
+      "route": "/home/species-questionnaire/q6",
+      "timestamp": "2025-12-08T22:10:53.673Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fhome%2Fspecies-questionnaire%2Fresult",
+      "route": "/home/species-questionnaire/result",
+      "timestamp": "2025-12-08T22:10:54.773Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fuser%2Fdashboard",
+      "route": "/user/dashboard",
+      "timestamp": "2025-12-08T22:10:55.839Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fuser%2Fprofile",
+      "route": "/user/profile",
+      "timestamp": "2025-12-08T22:10:56.949Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fuser%2Fsettings",
+      "route": "/user/settings",
+      "timestamp": "2025-12-08T22:10:58.092Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fuser%2Fsecurity",
+      "route": "/user/security",
+      "timestamp": "2025-12-08T22:10:59.174Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/login?returnUrl=%2Fuser%2Faccount",
+      "route": "/user/account",
+      "timestamp": "2025-12-08T22:11:00.241Z",
+      "images": [
+        {
+          "src": "assets/images/auth-bg.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 1024,
+          "naturalHeight": 1536
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 4,
+        "loadedImages": 4,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 17,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/styleguide",
+      "route": "/styleguide",
+      "timestamp": "2025-12-08T22:11:01.008Z",
+      "images": [
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-1",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 1,
+        "loadedImages": 1,
+        "missingImages": 0,
+        "totalSvgs": 16,
+        "visibleSvgs": 16,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    },
+    {
+      "url": "http://localhost:4200/test-video",
+      "route": "/test-video",
+      "timestamp": "2025-12-08T22:11:02.210Z",
+      "images": [
+        {
+          "src": "assets/icons/globe.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/logo-fiutami.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 467,
+          "naturalHeight": 212
+        },
+        {
+          "src": "assets/images/mascot-icon.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/apple.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/icons/facebook.svg",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 300,
+          "naturalHeight": 150
+        },
+        {
+          "src": "assets/images/default-pet-avatar.png",
+          "loaded": true,
+          "missing": false,
+          "naturalWidth": 3634,
+          "naturalHeight": 3953
+        }
+      ],
+      "svgs": [
+        {
+          "id": "svg-0",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-1",
+          "visible": false,
+          "hasContent": true,
+          "viewBox": "0 0 48 48"
+        },
+        {
+          "id": "svg-2",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-3",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-4",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-5",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-6",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-7",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-8",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-9",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-10",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-11",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-12",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-13",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-14",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-15",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-16",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        },
+        {
+          "id": "svg-17",
+          "visible": true,
+          "hasContent": true,
+          "viewBox": "0 0 24 24"
+        }
+      ],
+      "backgrounds": [],
+      "consoleErrors": [],
+      "networkErrors": [],
+      "missingAssets": [],
+      "summary": {
+        "totalImages": 8,
+        "loadedImages": 8,
+        "missingImages": 0,
+        "totalSvgs": 18,
+        "visibleSvgs": 16,
+        "totalBackgrounds": 0,
+        "loadedBackgrounds": 0,
+        "consoleErrorCount": 0,
+        "networkErrorCount": 0,
+        "status": "OK"
+      }
+    }
+  ],
+  "allMissingAssets": []
+}

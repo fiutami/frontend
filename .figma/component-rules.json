@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0",
+  "description": "Rules for component generation from Figma designs to Angular code",
+  "generation": {
+    "alwaysGenerateTests": true,
+    "alwaysGenerateDocs": true,
+    "alwaysGenerateModule": true,
+    "alwaysGenerateBarrelExport": true,
+    "useStrictTypeScript": true,
+    "useOnPushChangeDetection": true,
+    "separateTemplateFile": true,
+    "separateStyleFile": true
+  },
+  "structure": {
+    "componentStructure": {
+      "folder": "src/app/{component-name}",
+      "files": [
+        "{component-name}.component.ts",
+        "{component-name}.component.html",
+        "{component-name}.component.scss",
+        "{component-name}.component.spec.ts",
+        "{component-name}.module.ts",
+        "index.ts"
+      ]
+    },
+    "namingPatterns": {
+      "component": "{Name}Component",
+      "selector": "app-{name}",
+      "module": "{Name}Module",
+      "interface": "I{Name}Props",
+      "enum": "{Name}Enum"
+    }
+  },
+  "accessibility": {
+    "enforceAriaLabels": true,
+    "enforceSemanticHTML": true,
+    "enforceKeyboardNav": true,
+    "enforceFocusManagement": true,
+    "wcagLevel": "AA",
+    "minContrastRatio": 4.5,
+    "rules": {
+      "requireAltText": true,
+      "requireHeadingHierarchy": true,
+      "requireLandmarks": true,
+      "requireSkipLinks": true,
+      "requireFocusIndicators": true
+    },
+    "ariaRoles": {
+      "button": "button",
+      "link": "link",
+      "navigation": "navigation",
+      "main": "main",
+      "complementary": "complementary",
+      "contentinfo": "contentinfo"
+    }
+  },
+  "responsive": {
+    "generateMobileFirst": true,
+    "breakpoints": ["xs", "sm", "md", "lg", "xl"],
+    "strategy": "progressive-enhancement",
+    "fluidTypography": true,
+    "responsiveImages": true,
+    "touchTargetSize": "44px",
+    "viewportMeta": true
+  },
+  "performance": {
+    "lazyLoadImages": true,
+    "useOnPushChangeDetection": true,
+    "asyncPipes": true,
+    "trackByFunctions": true,
+    "avoidDirectDomAccess": true,
+    "memoizeExpensiveOperations": true,
+    "virtualScrolling": {
+      "enabled": true,
+      "threshold": 50
+    },
+    "bundleOptimization": {
+      "treeshake": true,
+      "minify": true,
+      "compression": true
+    }
+  },
+  "styling": {
+    "useDesignTokens": true,
+    "useMixins": true,
+    "useVariables": true,
+    "methodology": "component-scoped",
+    "mobileFirst": true,
+    "bem": false,
+    "nesting": true,
+    "maxNestingDepth": 3,
+    "avoidImportant": true,
+    "prefersReducedMotion": true
+  },
+  "typescript": {
+    "strictMode": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "useInterfaces": true,
+    "useEnums": true,
+    "useTypeGuards": true,
+    "documentPublicApi": true,
+    "avoidAny": true
+  },
+  "testing": {
+    "framework": "jasmine",
+    "coverage": {
+      "enabled": true,
+      "threshold": {
+        "statements": 80,
+        "branches": 75,
+        "functions": 80,
+        "lines": 80
+      }
+    },
+    "testTypes": {
+      "unit": {
+        "enabled": true,
+        "testInputs": true,
+        "testOutputs": true,
+        "testMethods": true,
+        "testLifecycle": true
+      },
+      "integration": {
+        "enabled": true,
+        "testInteractions": true,
+        "testDataFlow": true
+      },
+      "accessibility": {
+        "enabled": true,
+        "testAriaLabels": true,
+        "testKeyboardNav": true,
+        "testFocusManagement": true
+      }
+    },
+    "mockStrategies": {
+      "services": "spy",
+      "http": "httpTestingController",
+      "router": "mock"
+    }
+  },
+  "documentation": {
+    "jsDoc": {
+      "enabled": true,
+      "requireForPublicApi": true,
+      "includeExamples": true,
+      "includeParams": true,
+      "includeReturns": true
+    },
+    "componentDocs": {
+      "enabled": true,
+      "format": "markdown",
+      "includeProps": true,
+      "includeEvents": true,
+      "includeExamples": true,
+      "includeAccessibility": true
+    },
+    "storybook": {
+      "enabled": false,
+      "generateStories": false
+    }
+  },
+  "validation": {
+    "enforceNamingConvention": true,
+    "enforceFileStructure": true,
+    "enforceComponentRules": true,
+    "maxComponentSize": {
+      "lines": 300,
+      "methods": 10
+    },
+    "maxTemplateSize": {
+      "lines": 150
+    },
+    "complexityThreshold": 10
+  },
+  "componentTypes": {
+    "presentational": {
+      "prefix": "ui",
+      "changeDetection": "OnPush",
+      "inputs": true,
+      "outputs": true,
+      "services": false,
+      "routing": false
+    },
+    "container": {
+      "prefix": "container",
+      "changeDetection": "Default",
+      "inputs": true,
+      "outputs": true,
+      "services": true,
+      "routing": true
+    },
+    "layout": {
+      "prefix": "layout",
+      "changeDetection": "OnPush",
+      "inputs": true,
+      "outputs": false,
+      "services": false,
+      "routing": false
+    }
+  },
+  "figmaLayerMapping": {
+    "FRAME": {
+      "defaultTag": "div",
+      "attributes": {
+        "layout": "class",
+        "padding": "style"
+      }
+    },
+    "TEXT": {
+      "defaultTag": "p",
+      "semanticMapping": {
+        "heading": "h1-h6",
+        "label": "label",
+        "paragraph": "p",
+        "span": "span"
+      }
+    },
+    "RECTANGLE": {
+      "defaultTag": "div",
+      "specialCases": {
+        "image": "img",
+        "button": "button"
+      }
+    },
+    "INSTANCE": {
+      "defaultTag": "component",
+      "resolveComponent": true
+    },
+    "COMPONENT": {
+      "defaultTag": "component",
+      "generateSeparately": true
+    }
+  },
+  "interactionMapping": {
+    "CLICK": {
+      "angular": "(click)",
+      "generateMethod": true,
+      "emitEvent": true
+    },
+    "HOVER": {
+      "angular": "(mouseenter) (mouseleave)",
+      "generateMethod": true,
+      "cssHover": true
+    },
+    "FOCUS": {
+      "angular": "(focus) (blur)",
+      "generateMethod": true,
+      "accessibility": true
+    },
+    "INPUT": {
+      "angular": "[(ngModel)]",
+      "generateFormControl": true,
+      "validation": true
+    }
+  },
+  "variantMapping": {
+    "size": {
+      "type": "input",
+      "values": ["small", "medium", "large"],
+      "default": "medium",
+      "cssClass": true
+    },
+    "state": {
+      "type": "input",
+      "values": ["default", "hover", "active", "disabled"],
+      "default": "default",
+      "cssClass": true,
+      "property": true
+    },
+    "variant": {
+      "type": "input",
+      "values": ["primary", "secondary", "tertiary"],
+      "default": "primary",
+      "cssClass": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false,
+      "attribute": true,
+      "property": true
+    }
+  },
+  "codePatterns": {
+    "smartDefaults": {
+      "enabled": true,
+      "inferTypes": true,
+      "inferValidation": true,
+      "inferAccessibility": true
+    },
+    "reusablePatterns": {
+      "extractCommonLogic": true,
+      "extractCommonStyles": true,
+      "useSharedComponents": true
+    }
+  }
+}

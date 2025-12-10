@@ -1,0 +1,208 @@
+@import 'src/styles/tokens-figma';
+
+.pet-memories {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #4A74F0 0%, #3D5FC4 100%);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &__back,
+  &__add {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-inverse;
+    border-radius: 50%;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-md;
+  }
+
+  // Empty state
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 400px;
+    padding: $spacing-xl;
+  }
+
+  &__empty-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    margin-bottom: $spacing-lg;
+    color: $color-text-inverse;
+  }
+
+  &__empty-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__empty-text {
+    font-size: $typography-body-size;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 $spacing-xl;
+    max-width: 280px;
+  }
+
+  &__empty-btn {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-md $spacing-xl;
+    background: $color-yellow-btn;
+    color: $color-yellow-btn-text;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    border-radius: $border-radius-full;
+    transition: $transition-fast;
+
+    &:hover {
+      background: $color-yellow-btn-hover;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      background: $color-yellow-btn-pressed;
+      transform: translateY(0);
+    }
+  }
+
+  // Timeline
+  &__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    padding-bottom: $spacing-xl;
+  }
+
+  &__item {
+    display: flex;
+    gap: $spacing-md;
+    text-align: left;
+    transition: $transition-fast;
+
+    &:hover {
+      .pet-memories__card {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  &__dot-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    flex-shrink: 0;
+  }
+
+  &__line {
+    width: 2px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: $spacing-xs;
+
+    .pet-memories__item:last-child & {
+      display: none;
+    }
+  }
+
+  &__card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: $border-radius-lg;
+    padding: $spacing-md;
+    backdrop-filter: blur(10px);
+    transition: $transition-fast;
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__icon {
+    font-size: 24px;
+    color: $color-text-inverse;
+  }
+
+  &__card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0;
+  }
+
+  &__card-description {
+    font-size: $typography-body-size;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 $spacing-sm;
+    line-height: 1.5;
+  }
+
+  &__card-date {
+    font-size: $typography-small-size;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+  }
+}
+
+// Responsive: larger screens
+@media (min-width: 768px) {
+  .pet-memories {
+    &__timeline {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}

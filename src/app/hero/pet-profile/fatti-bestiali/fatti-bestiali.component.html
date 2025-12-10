@@ -1,0 +1,104 @@
+<div class="fatti-bestiali">
+  <!-- Header -->
+  <header class="fatti-bestiali__header">
+    <button
+      class="fatti-bestiali__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+    </button>
+
+    <h1 class="fatti-bestiali__title">Fatti Bestiali</h1>
+
+    <button
+      class="fatti-bestiali__refresh"
+      (click)="onRefreshClick()"
+      [disabled]="isLoading()"
+      aria-label="Aggiorna fatti"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        [class.fatti-bestiali__refresh-icon--spinning]="isLoading()"
+      >
+        <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Content -->
+  <main class="fatti-bestiali__content">
+    <!-- Fiuto mascot header -->
+    <div class="fatti-bestiali__mascot">
+      <div class="fatti-bestiali__mascot-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4.5 9.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0M9 5.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M15 5.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M19.5 9.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0M17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91c-.46-.54-1.05-1.08-1.75-1.32c-.11-.04-.22-.07-.33-.09a2.5 2.5 0 0 0-1.56 0c-.11.02-.22.05-.33.09c-.7.24-1.29.78-1.75 1.32c-.88 1.02-1.61 1.89-2.48 2.91C4.16 17.5 4 20.5 4 20.5h16s-.16-3-.66-5.64z"/>
+        </svg>
+      </div>
+      <p class="fatti-bestiali__mascot-text">
+        Scopri curiosità incredibili sul tuo pet!
+      </p>
+    </div>
+
+    <!-- Empty state -->
+    @if (isEmpty) {
+      <div class="fatti-bestiali__empty">
+        <div class="fatti-bestiali__empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+          </svg>
+        </div>
+        <h2 class="fatti-bestiali__empty-title">Nessun fatto disponibile</h2>
+        <p class="fatti-bestiali__empty-text">
+          Premi il pulsante aggiorna per generare nuovi fatti!
+        </p>
+      </div>
+    }
+
+    <!-- Facts grid -->
+    @if (!isEmpty) {
+      <div class="fatti-bestiali__grid">
+        @for (fact of facts(); track fact.id) {
+          <div class="fatti-bestiali__card">
+            <!-- Category badge -->
+            <div
+              class="fatti-bestiali__category"
+              [style.background-color]="getCategoryColor(fact.category)"
+            >
+              {{ getCategoryLabel(fact.category) }}
+            </div>
+
+            <!-- Icon -->
+            <div class="fatti-bestiali__icon">
+              <span class="material-icons">{{ fact.icon }}</span>
+            </div>
+
+            <!-- Content -->
+            <h3 class="fatti-bestiali__card-title">{{ fact.title }}</h3>
+            <p class="fatti-bestiali__card-description">
+              {{ fact.description }}
+            </p>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- AI disclaimer -->
+    @if (!isEmpty) {
+      <div class="fatti-bestiali__disclaimer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+        </svg>
+        <p>
+          Questi fatti sono generati da AI e potrebbero contenere informazioni non accurate.
+          Consulta sempre un veterinario per informazioni mediche.
+        </p>
+      </div>
+    }
+  </main>
+</div>

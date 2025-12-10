@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0",
+  "figma": {
+    "fileId": "25uQUXz6gwFQKx4Wjp0dcc",
+    "fileUrl": "https://www.figma.com/design/25uQUXz6gwFQKx4Wjp0dcc/LOGIN-STATIC",
+    "accessToken": "env:FIGMA_PERSONAL_ACCESS_TOKEN",
+    "apiVersion": "v1"
+  },
+  "output": {
+    "rootDir": ".figma",
+    "specsDir": ".figma/specs",
+    "componentsDir": ".figma/specs/components",
+    "assetsDir": "src/assets/figma"
+  },
+  "exports": {
+    "designTokens": {
+      "enabled": true,
+      "format": "scss",
+      "outputFile": "src/styles/_tokens-figma.scss",
+      "categories": [
+        "colors",
+        "typography",
+        "spacing",
+        "shadows",
+        "effects",
+        "borderRadius",
+        "transitions"
+      ],
+      "includeMetadata": true,
+      "includeComments": true,
+      "groupByCategory": true
+    },
+    "components": {
+      "enabled": true,
+      "format": "json",
+      "outputDir": ".figma/specs/components",
+      "includeVariants": true,
+      "includeProperties": true,
+      "includeAssets": true,
+      "includeInteractions": true,
+      "includeConstraints": true,
+      "includeStyles": true,
+      "generateTypescript": true,
+      "filter": {
+        "componentSets": true,
+        "components": true,
+        "instances": false
+      }
+    },
+    "assets": {
+      "enabled": true,
+      "formats": [
+        {
+          "type": "svg",
+          "optimize": true,
+          "svgoConfig": {
+            "removeViewBox": false,
+            "removeDimensions": true,
+            "cleanupIDs": true
+          }
+        },
+        {
+          "type": "png",
+          "scale": 2,
+          "optimize": true
+        },
+        {
+          "type": "webp",
+          "quality": 90
+        }
+      ],
+      "outputDir": "src/assets/figma",
+      "organizeByComponent": true,
+      "includeIcons": true
+    },
+    "styles": {
+      "enabled": true,
+      "format": "scss",
+      "outputFile": "src/styles/_styles-figma.scss",
+      "includeTextStyles": true,
+      "includeColorStyles": true,
+      "includeEffectStyles": true
+    }
+  },
+  "namingConvention": {
+    "components": {
+      "format": "PascalCase",
+      "prefix": "",
+      "suffix": "Component",
+      "separator": "/",
+      "examples": [
+        "Button/Primary → ButtonPrimaryComponent",
+        "Card/Product → CardProductComponent",
+        "Form/Input/Text → FormInputTextComponent"
+      ]
+    },
+    "files": {
+      "format": "kebab-case",
+      "extension": ".component.ts",
+      "examples": [
+        "ButtonPrimary → button-primary.component.ts",
+        "CardProduct → card-product.component.ts"
+      ]
+    },
+    "selectors": {
+      "format": "kebab-case",
+      "prefix": "app",
+      "examples": [
+        "ButtonPrimary → app-button-primary",
+        "CardProduct → app-card-product"
+      ]
+    },
+    "variants": {
+      "format": "kebab-case",
+      "examples": [
+        "size=small → size='small'",
+        "state=disabled → [disabled]='true'"
+      ]
+    },
+    "properties": {
+      "format": "camelCase",
+      "examples": [
+        "background_color → backgroundColor",
+        "is_disabled → isDisabled"
+      ]
+    },
+    "designTokens": {
+      "format": "kebab-case",
+      "prefix": "$",
+      "separator": "-",
+      "examples": [
+        "color/primary/500 → $color-primary-500",
+        "spacing/md → $spacing-md",
+        "typography/h1/size → $typography-h1-size"
+      ]
+    }
+  },
+  "mapping": {
+    "figmaLayerTypes": {
+      "FRAME": "div",
+      "GROUP": "div",
+      "TEXT": "span",
+      "RECTANGLE": "div",
+      "ELLIPSE": "div",
+      "VECTOR": "svg",
+      "INSTANCE": "component",
+      "COMPONENT": "component",
+      "COMPONENT_SET": "component-set"
+    },
+    "figmaPropertiesToAngular": {
+      "visible": "[hidden]",
+      "opacity": "[style.opacity]",
+      "width": "[style.width]",
+      "height": "[style.height]",
+      "x": "[style.left]",
+      "y": "[style.top]",
+      "rotation": "[style.transform]"
+    },
+    "interactionsToEvents": {
+      "CLICK": "(click)",
+      "HOVER": "(mouseenter) (mouseleave)",
+      "PRESS": "(mousedown) (mouseup)",
+      "DRAG": "(drag)",
+      "KEY": "(keydown) (keyup)"
+    }
+  },
+  "codeGeneration": {
+    "angular": {
+      "version": "18.0.0",
+      "componentType": "ngmodule",
+      "changeDetection": "OnPush",
+      "viewEncapsulation": "Emulated",
+      "styleUrls": true,
+      "templateUrl": true,
+      "generateModule": true,
+      "generateTests": true,
+      "generateDocs": true,
+      "strictMode": true
+    },
+    "typescript": {
+      "target": "ES2022",
+      "strict": true,
+      "decorators": true,
+      "interfaces": true
+    },
+    "scss": {
+      "useTokens": true,
+      "useMixins": true,
+      "mobileFirst": true,
+      "bem": false,
+      "nesting": true
+    }
+  },
+  "validation": {
+    "enforceNamingConvention": true,
+    "requireDesignTokens": true,
+    "requireAccessibilityProps": true,
+    "requireDocumentation": true,
+    "maxComponentDepth": 5,
+    "minContrastRatio": 4.5
+  },
+  "optimization": {
+    "removeUnusedStyles": true,
+    "minifyOutput": false,
+    "generateSourceMaps": true,
+    "treeshake": true,
+    "compressAssets": true
+  },
+  "sync": {
+    "autoSync": true,
+    "syncInterval": 300000,
+    "watchMode": false,
+    "webhookUrl": null,
+    "onChangeAction": "notify"
+  },
+  "notifications": {
+    "enabled": true,
+    "channels": ["console", "desktop"],
+    "events": [
+      "component-added",
+      "component-updated",
+      "component-removed",
+      "token-changed",
+      "sync-completed",
+      "error"
+    ]
+  }
+}

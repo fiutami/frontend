@@ -1,0 +1,236 @@
+@import 'src/styles/tokens-figma';
+
+.event-create {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+
+  @media (min-width: 768px) {
+    align-items: center;
+  }
+
+  &__content {
+    background: $color-background-primary;
+    border-radius: $border-radius-xl $border-radius-xl 0 0;
+    max-width: 100%;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+    box-shadow: $shadow-xl;
+
+    @media (min-width: 768px) {
+      border-radius: $border-radius-xl;
+      max-width: 500px;
+      max-height: 90vh;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-lg;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    background: $color-background-primary;
+    z-index: 10;
+  }
+
+  &__title {
+    font-size: $typography-h2-size;
+    font-weight: $typography-h2-weight;
+    color: $color-text-primary;
+    margin: 0;
+  }
+
+  &__close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: $color-text-secondary;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: $color-text-primary;
+    }
+
+    &:active {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__form {
+    padding: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__label {
+    font-size: $typography-body-size;
+    font-weight: 600;
+    color: $color-text-primary;
+  }
+
+  &__input {
+    padding: $spacing-md;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: $border-radius-md;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    transition: $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent-500;
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    }
+
+    &::placeholder {
+      color: $color-text-secondary;
+    }
+  }
+
+  &__types {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__type-btn {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-md;
+    background: $color-background-secondary;
+    border: 2px solid transparent;
+    border-radius: $border-radius-md;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    text-align: left;
+    transition: $transition-fast;
+
+    &:hover {
+      background: darken($color-background-secondary, 3%);
+      transform: translateX(4px);
+    }
+
+    &:active {
+      transform: translateX(2px);
+    }
+
+    &--active {
+      background: rgba(74, 144, 226, 0.1);
+      border-color: $color-accent-500;
+      font-weight: 600;
+
+      &:hover {
+        background: rgba(74, 144, 226, 0.15);
+      }
+    }
+  }
+
+  &__type-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-md;
+    margin-top: $spacing-md;
+
+    @media (max-width: 374px) {
+      flex-direction: column;
+    }
+  }
+
+  &__btn {
+    flex: 1;
+    padding: $spacing-md $spacing-lg;
+    border-radius: $border-radius-md;
+    font-size: $typography-button-size;
+    font-weight: 600;
+    transition: $transition-fast;
+
+    &--secondary {
+      background: $color-background-secondary;
+      color: $color-text-primary;
+
+      &:hover {
+        background: darken($color-background-secondary, 5%);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    &--primary {
+      background: $color-cta-primary;
+      color: $color-text-dark;
+      box-shadow: $shadow-md;
+
+      &:hover {
+        background: darken($color-cta-primary, 5%);
+        box-shadow: $shadow-lg;
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+
+        &:hover {
+          background: $color-cta-primary;
+          box-shadow: $shadow-md;
+          transform: none;
+        }
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

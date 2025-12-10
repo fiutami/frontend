@@ -1,0 +1,83 @@
+<div class="chat-screen">
+  <!-- Header -->
+  <header class="chat-screen__header">
+    <button
+      class="chat-screen__back-btn"
+      (click)="goBack()"
+      aria-label="Torna alla lista"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+    </button>
+
+    <div class="chat-screen__header-info">
+      <div class="chat-screen__avatar-small">
+        {{ conversationName().charAt(0).toUpperCase() }}
+      </div>
+      <span class="chat-screen__name">{{ conversationName() }}</span>
+    </div>
+
+    <button
+      class="chat-screen__more-btn"
+      aria-label="Altre opzioni"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Messages Container -->
+  <main class="chat-screen__messages" #messagesContainer>
+    <div class="chat-screen__messages-inner">
+      @for (message of messages(); track message.id) {
+        <div
+          class="chat-screen__message"
+          [class.chat-screen__message--sent]="message.sent"
+          [class.chat-screen__message--received]="!message.sent"
+        >
+          <div class="chat-screen__bubble">
+            <p class="chat-screen__text">{{ message.text }}</p>
+            <span class="chat-screen__time">{{ message.time }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </main>
+
+  <!-- Input Area -->
+  <footer class="chat-screen__input-area">
+    <div class="chat-screen__input-wrapper">
+      <button
+        class="chat-screen__attach-btn"
+        aria-label="Allega file"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5a2.5 2.5 0 0 1 5 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 0 0 5 0V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/>
+        </svg>
+      </button>
+
+      <input
+        type="text"
+        class="chat-screen__input"
+        placeholder="Scrivi un messaggio..."
+        [value]="messageInput()"
+        (input)="messageInput.set($any($event.target).value)"
+        (keypress)="onInputKeyPress($event)"
+        aria-label="Scrivi un messaggio"
+      />
+
+      <button
+        class="chat-screen__send-btn"
+        (click)="sendMessage()"
+        [disabled]="!messageInput().trim()"
+        aria-label="Invia messaggio"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+</div>

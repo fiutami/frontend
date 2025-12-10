@@ -1,0 +1,41 @@
+<div class="chat-empty">
+  <div class="chat-empty__content">
+    <!-- Illustration -->
+    <div class="chat-empty__illustration">
+      <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+        <!-- Chat bubble icon -->
+        <circle cx="100" cy="100" r="80" fill="#F5F5F5"/>
+        <path
+          d="M60 80C60 71.7157 66.7157 65 75 65H125C133.284 65 140 71.7157 140 80V110C140 118.284 133.284 125 125 125H90L70 140V125C63.3726 125 60 121.627 60 115V80Z"
+          fill="#F5A623"
+        />
+        <circle cx="85" cy="92" r="5" fill="white"/>
+        <circle cx="100" cy="92" r="5" fill="white"/>
+        <circle cx="115" cy="92" r="5" fill="white"/>
+      </svg>
+    </div>
+
+    <!-- Text -->
+    <h1 class="chat-empty__title">Nessuna conversazione</h1>
+    <p class="chat-empty__description">
+      Inizia a chattare con gli amici dei tuoi pet!
+      Trova nuovi amici nella tua zona e organizza passeggiate insieme.
+    </p>
+
+    <!-- Actions -->
+    <div class="chat-empty__actions">
+      <button
+        class="chat-empty__button chat-empty__button--primary"
+        (click)="goToExplore()"
+      >
+        Esplora
+      </button>
+      <button
+        class="chat-empty__button chat-empty__button--secondary"
+        (click)="goToHome()"
+      >
+        Torna alla Home
+      </button>
+    </div>
+  </div>
+</div>

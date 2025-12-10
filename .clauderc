@@ -1,0 +1,153 @@
+{
+  "version": "1.0",
+  "project": {
+    "name": "fiutami",
+    "type": "angular",
+    "description": "Fiutami Angular WebApp con integrazione Figma-to-Code e automazione generazione componenti",
+    "repository": "https://github.com/fra-itc/fiutami",
+    "mainBranch": "main",
+    "devBranch": "dev"
+  },
+  "paths": {
+    "root": ".",
+    "source": "src",
+    "components": "src/app",
+    "styles": "src/styles",
+    "assets": "src/assets",
+    "tests": "src/app/**/*.spec.ts",
+    "figmaSpecs": ".figma/specs",
+    "figmaAssets": "src/assets/figma",
+    "templates": ".claude/templates",
+    "scripts": ".claude/scripts"
+  },
+  "codeGeneration": {
+    "framework": "angular",
+    "version": "18.0.0",
+    "language": "typescript",
+    "styleLanguage": "scss",
+    "testFramework": "jasmine",
+    "componentPrefix": "app",
+    "moduleFormat": "ngmodule",
+    "strictMode": true,
+    "standalone": false,
+    "changeDetection": "OnPush",
+    "viewEncapsulation": "Emulated"
+  },
+  "figmaIntegration": {
+    "enabled": true,
+    "autoSync": true,
+    "mcpServer": {
+      "enabled": true,
+      "serverName": "figma",
+      "configPath": "~/.config/claude-desktop/config.json"
+    },
+    "exportConfig": ".figma/export-config.json",
+    "tokenMapping": ".figma/token-mapping.json",
+    "componentRules": ".figma/component-rules.json",
+    "namingConvention": {
+      "components": "PascalCase",
+      "files": "kebab-case",
+      "selectors": "kebab-case",
+      "variants": "kebab-case",
+      "properties": "camelCase"
+    }
+  },
+  "designSystem": {
+    "tokensFile": "src/styles/_tokens.scss",
+    "figmaTokensFile": "src/styles/_tokens-figma.scss",
+    "mixinsFile": "src/styles/_mixins.scss",
+    "breakpoints": {
+      "xs": "0px",
+      "sm": "480px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px"
+    },
+    "tokenCategories": [
+      "colors",
+      "typography",
+      "spacing",
+      "shadows",
+      "effects",
+      "borderRadius",
+      "transitions"
+    ]
+  },
+  "codeStyle": {
+    "indentation": 2,
+    "quotes": "single",
+    "semicolons": true,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "arrowParens": "always",
+    "endOfLine": "lf"
+  },
+  "testing": {
+    "framework": "jasmine",
+    "autoGenerateTests": true,
+    "testCoverage": {
+      "enabled": true,
+      "threshold": {
+        "statements": 80,
+        "branches": 75,
+        "functions": 80,
+        "lines": 80
+      }
+    },
+    "testTypes": [
+      "unit",
+      "integration"
+    ]
+  },
+  "documentation": {
+    "autoGenerate": true,
+    "format": "markdown",
+    "jsDoc": true,
+    "componentDocs": true,
+    "outputDir": "docs/components"
+  },
+  "git": {
+    "branchPrefix": "feat/",
+    "commitConvention": "conventional",
+    "autoCommit": false,
+    "commitMessageFormat": "<type>(<scope>): <subject>",
+    "prTemplate": ".github/pull_request_template.md"
+  },
+  "accessibility": {
+    "enforceAriaLabels": true,
+    "enforceSemanticHTML": true,
+    "enforceKeyboardNav": true,
+    "wcagLevel": "AA"
+  },
+  "performance": {
+    "lazyLoadImages": true,
+    "useOnPushChangeDetection": true,
+    "bundleSizeLimit": "500kb",
+    "treeshake": true
+  },
+  "customCommands": {
+    "generateComponent": "npm run component:generate",
+    "syncTokens": "npm run figma:sync-tokens",
+    "generateFromFigma": "npm run figma:generate",
+    "analyzeChanges": "npm run figma:diff",
+    "buildProduction": "npm run build -- --configuration production",
+    "test": "npm test",
+    "serve": "npm start"
+  },
+  "ai": {
+    "model": "claude-sonnet-4-5",
+    "contextWindow": 200000,
+    "temperature": 0.7,
+    "instructions": "Sei un esperto sviluppatore Angular 18 specializzato in integrazione design-to-code da Figma. Genera codice pulito, type-safe, accessibile e performante seguendo Angular style guide. Usa design tokens da _tokens.scss e mixins da _mixins.scss. Genera sempre test Jasmine completi. Segui naming convention kebab-case per file e selectors, PascalCase per classi.",
+    "capabilities": [
+      "component-generation",
+      "test-generation",
+      "documentation-generation",
+      "code-review",
+      "refactoring",
+      "bug-fixing",
+      "performance-optimization",
+      "accessibility-audit"
+    ]
+  }
+}

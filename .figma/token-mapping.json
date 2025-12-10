@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0",
+  "description": "Mapping between Figma design tokens and SCSS variables for Fiutami project",
+  "figmaFile": {
+    "fileId": "25uQUXz6gwFQKx4Wjp0dcc",
+    "fileName": "LOGIN-STATIC",
+    "fileUrl": "https://www.figma.com/design/25uQUXz6gwFQKx4Wjp0dcc/LOGIN-STATIC"
+  },
+  "lastSync": "2025-11-27T00:00:00Z",
+  "mappings": {
+    "colors": {
+      "figmaPrefix": "color/",
+      "scssPrefix": "$color-",
+      "format": "hex",
+      "mapping": {
+        "color/primary/100": "$color-primary-100",
+        "color/primary/200": "$color-primary-200",
+        "color/primary/300": "$color-primary-300",
+        "color/primary/400": "$color-primary-400",
+        "color/primary/500": "$color-primary-500",
+        "color/primary/600": "$color-primary-600",
+        "color/primary/700": "$color-primary-700",
+        "color/primary/800": "$color-primary-800",
+        "color/primary/900": "$color-primary-900",
+        "color/accent/100": "$color-accent-100",
+        "color/accent/200": "$color-accent-200",
+        "color/accent/300": "$color-accent-300",
+        "color/accent/400": "$color-accent-400",
+        "color/accent/500": "$color-accent-500",
+        "color/accent/600": "$color-accent-600",
+        "color/accent/700": "$color-accent-700",
+        "color/accent/800": "$color-accent-800",
+        "color/accent/900": "$color-accent-900",
+        "color/text/primary": "$color-text-primary",
+        "color/text/secondary": "$color-text-secondary",
+        "color/text/disabled": "$color-text-disabled",
+        "color/text/inverse": "$color-text-inverse",
+        "color/background/primary": "$color-background-primary",
+        "color/background/secondary": "$color-background-secondary",
+        "color/background/tertiary": "$color-background-tertiary",
+        "color/semantic/success": "$color-semantic-success",
+        "color/semantic/error": "$color-semantic-error",
+        "color/semantic/warning": "$color-semantic-warning",
+        "color/semantic/info": "$color-semantic-info",
+        "color/border/primary": "$color-border-primary",
+        "color/border/secondary": "$color-border-secondary",
+        "color/border/focus": "$color-border-focus",
+        "color/background/overlay": "$color-background-overlay",
+        "color/social/google": "$color-social-google",
+        "color/social/facebook": "$color-social-facebook",
+        "color/social/apple": "$color-social-apple"
+      },
+      "fallbacks": {
+        "$color-primary-500": "#F5A623",
+        "$color-accent-500": "#4A90E2",
+        "$color-text-primary": "#111111"
+      }
+    },
+    "spacing": {
+      "figmaPrefix": "spacing/",
+      "scssPrefix": "$spacing-",
+      "format": "px",
+      "scale": {
+        "xs": "8px",
+        "sm": "12px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "2xl": "48px",
+        "3xl": "64px",
+        "4xl": "96px"
+      },
+      "mapping": {
+        "spacing/xs": "$spacing-xs",
+        "spacing/sm": "$spacing-sm",
+        "spacing/md": "$spacing-md",
+        "spacing/lg": "$spacing-lg",
+        "spacing/xl": "$spacing-xl",
+        "spacing/2xl": "$spacing-2xl",
+        "spacing/3xl": "$spacing-3xl",
+        "spacing/4xl": "$spacing-4xl"
+      }
+    },
+    "typography": {
+      "figmaPrefix": "typography/",
+      "scssPrefix": "$typography-",
+      "properties": [
+        "size",
+        "weight",
+        "lineHeight",
+        "letterSpacing",
+        "fontFamily"
+      ],
+      "mapping": {
+        "typography/h1/size": "$typography-h1-size",
+        "typography/h1/weight": "$typography-h1-weight",
+        "typography/h1/lineHeight": "$typography-h1-line-height",
+        "typography/h1/letterSpacing": "$typography-h1-letter-spacing",
+        "typography/h2/size": "$typography-h2-size",
+        "typography/h2/weight": "$typography-h2-weight",
+        "typography/h2/lineHeight": "$typography-h2-line-height",
+        "typography/h3/size": "$typography-h3-size",
+        "typography/h3/weight": "$typography-h3-weight",
+        "typography/h3/lineHeight": "$typography-h3-line-height",
+        "typography/body/size": "$typography-body-size",
+        "typography/body/weight": "$typography-body-weight",
+        "typography/body/lineHeight": "$typography-body-line-height",
+        "typography/caption/size": "$typography-caption-size",
+        "typography/caption/weight": "$typography-caption-weight"
+      },
+      "fontFamilies": {
+        "typography/fontFamily/primary": "$font-family-primary",
+        "typography/fontFamily/secondary": "$font-family-secondary",
+        "typography/fontFamily/mono": "$font-family-mono"
+      },
+      "fallbacks": {
+        "$font-family-primary": "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+      }
+    },
+    "shadows": {
+      "figmaPrefix": "shadow/",
+      "scssPrefix": "$shadow-",
+      "format": "box-shadow",
+      "mapping": {
+        "shadow/sm": "$shadow-sm",
+        "shadow/md": "$shadow-md",
+        "shadow/lg": "$shadow-lg",
+        "shadow/xl": "$shadow-xl",
+        "shadow/elevated": "$shadow-elevated",
+        "shadow/focus": "$shadow-focus"
+      },
+      "fallbacks": {
+        "$shadow-sm": "0 1px 2px rgba(0, 0, 0, 0.05)",
+        "$shadow-md": "0 4px 6px rgba(0, 0, 0, 0.1)",
+        "$shadow-lg": "0 10px 15px rgba(0, 0, 0, 0.1)"
+      }
+    },
+    "effects": {
+      "figmaPrefix": "effect/",
+      "scssPrefix": "$effect-",
+      "types": [
+        "blur",
+        "opacity",
+        "gradient"
+      ],
+      "mapping": {
+        "effect/blur/sm": "$effect-blur-sm",
+        "effect/blur/md": "$effect-blur-md",
+        "effect/blur/lg": "$effect-blur-lg",
+        "effect/opacity/disabled": "$effect-opacity-disabled",
+        "effect/opacity/hover": "$effect-opacity-hover"
+      }
+    },
+    "borderRadius": {
+      "figmaPrefix": "radius/",
+      "scssPrefix": "$border-radius-",
+      "format": "px",
+      "mapping": {
+        "radius/none": "$border-radius-none",
+        "radius/sm": "$border-radius-sm",
+        "radius/md": "$border-radius-md",
+        "radius/lg": "$border-radius-lg",
+        "radius/xl": "$border-radius-xl",
+        "radius/full": "$border-radius-full"
+      },
+      "fallbacks": {
+        "$border-radius-none": "0",
+        "$border-radius-sm": "4px",
+        "$border-radius-md": "8px",
+        "$border-radius-lg": "12px",
+        "$border-radius-xl": "16px",
+        "$border-radius-full": "9999px"
+      }
+    },
+    "transitions": {
+      "figmaPrefix": "transition/",
+      "scssPrefix": "$transition-",
+      "format": "transition",
+      "mapping": {
+        "transition/fast": "$transition-fast",
+        "transition/base": "$transition-base",
+        "transition/slow": "$transition-slow",
+        "transition/easeIn": "$transition-ease-in",
+        "transition/easeOut": "$transition-ease-out",
+        "transition/easeInOut": "$transition-ease-in-out"
+      },
+      "fallbacks": {
+        "$transition-fast": "all 0.15s ease",
+        "$transition-base": "all 0.2s ease",
+        "$transition-slow": "all 0.3s ease"
+      }
+    },
+    "breakpoints": {
+      "figmaPrefix": "breakpoint/",
+      "scssPrefix": "$breakpoint-",
+      "format": "px",
+      "mapping": {
+        "breakpoint/xs": "$breakpoint-xs",
+        "breakpoint/sm": "$breakpoint-sm",
+        "breakpoint/md": "$breakpoint-md",
+        "breakpoint/lg": "$breakpoint-lg",
+        "breakpoint/xl": "$breakpoint-xl"
+      },
+      "fallbacks": {
+        "$breakpoint-xs": "0px",
+        "$breakpoint-sm": "480px",
+        "$breakpoint-md": "768px",
+        "$breakpoint-lg": "1024px",
+        "$breakpoint-xl": "1280px"
+      }
+    },
+    "zIndex": {
+      "figmaPrefix": "zIndex/",
+      "scssPrefix": "$z-index-",
+      "format": "number",
+      "mapping": {
+        "zIndex/dropdown": "$z-index-dropdown",
+        "zIndex/modal": "$z-index-modal",
+        "zIndex/tooltip": "$z-index-tooltip",
+        "zIndex/overlay": "$z-index-overlay"
+      }
+    }
+  },
+  "transformations": {
+    "colorFormats": {
+      "figma": "rgba",
+      "scss": "hex",
+      "supportAlpha": true
+    },
+    "sizingUnits": {
+      "figma": "px",
+      "scss": "px",
+      "allowRem": true,
+      "remBase": 16
+    },
+    "namingConversions": {
+      "separator": {
+        "figma": "/",
+        "scss": "-"
+      },
+      "case": {
+        "figma": "camelCase",
+        "scss": "kebab-case"
+      }
+    }
+  },
+  "validation": {
+    "enforceMapping": true,
+    "warnOnMissing": true,
+    "errorOnConflict": true,
+    "allowCustomTokens": true
+  },
+  "sync": {
+    "direction": "bidirectional",
+    "priority": "figma",
+    "conflictResolution": "manual",
+    "backupBeforeSync": true
+  },
+  "output": {
+    "generateComments": true,
+    "groupByCategory": true,
+    "includeMetadata": true,
+    "sortAlphabetically": true
+  }
+}

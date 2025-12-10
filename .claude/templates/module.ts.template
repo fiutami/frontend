@@ -1,0 +1,22 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { {{componentName}}Component } from './{{componentKebabName}}.component';
+
+/**
+ * {{componentName}}Module
+ *
+ * Auto-generated from Figma design
+ * Feature module for {{componentName}}Component
+ */
+@NgModule({
+  declarations: [
+    {{componentName}}Component
+  ],
+  imports: [
+    CommonModule
+  ],
+  exports: [
+    {{componentName}}Component
+  ]
+})
+export class {{componentName}}Module { }

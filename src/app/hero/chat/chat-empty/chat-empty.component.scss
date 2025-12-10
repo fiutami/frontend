@@ -1,0 +1,118 @@
+@import 'src/styles/tokens-figma';
+
+.chat-empty {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-background-primary;
+  padding: $spacing-xl $spacing-lg;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  &__illustration {
+    margin-bottom: $spacing-xl;
+    animation: float 3s ease-in-out infinite;
+
+    svg {
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+    }
+  }
+
+  &__title {
+    font-size: $typography-h2-size;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-md;
+  }
+
+  &__description {
+    font-size: $typography-body-size;
+    color: $color-text-secondary;
+    line-height: $typography-body-line-height;
+    margin: 0 0 $spacing-xl;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    width: 100%;
+  }
+
+  &__button {
+    width: 100%;
+    padding: $spacing-md $spacing-xl;
+    font-size: $typography-button-size;
+    font-weight: 600;
+    border-radius: $border-radius-md;
+    transition: $transition-fast;
+    cursor: pointer;
+
+    &--primary {
+      background: $color-primary-500;
+      color: $color-text-inverse;
+      border: none;
+
+      &:hover {
+        background: darken($color-primary-500, 10%);
+        transform: translateY(-2px);
+        box-shadow: $shadow-md;
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: $color-primary-500;
+      border: 2px solid $color-primary-500;
+
+      &:hover {
+        background: rgba($color-primary-500, 0.1);
+      }
+
+      &:active {
+        background: rgba($color-primary-500, 0.2);
+      }
+    }
+  }
+}
+
+// Float animation for illustration
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .chat-empty {
+    padding: $spacing-lg;
+
+    &__illustration svg {
+      width: 150px;
+      height: 150px;
+    }
+
+    &__title {
+      font-size: $typography-button-size;
+    }
+
+    &__description {
+      font-size: $typography-body-size-mobile;
+    }
+  }
+}

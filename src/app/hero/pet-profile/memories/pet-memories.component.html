@@ -1,0 +1,90 @@
+<div class="pet-memories">
+  <!-- Header -->
+  <header class="pet-memories__header">
+    <button
+      class="pet-memories__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+    </button>
+
+    <h1 class="pet-memories__title">Ricordi</h1>
+
+    <button
+      class="pet-memories__add"
+      (click)="onAddMemoryClick()"
+      aria-label="Aggiungi ricordo"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Content -->
+  <main class="pet-memories__content">
+    <!-- Empty state -->
+    @if (isEmpty) {
+      <div class="pet-memories__empty">
+        <div class="pet-memories__empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1zm1-8h-2V7h2v2z"/>
+          </svg>
+        </div>
+        <h2 class="pet-memories__empty-title">Nessun ricordo ancora</h2>
+        <p class="pet-memories__empty-text">
+          Inizia a creare ricordi speciali con il tuo pet!
+        </p>
+        <button
+          class="pet-memories__empty-btn"
+          (click)="onAddMemoryClick()"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          Aggiungi Ricordo
+        </button>
+      </div>
+    }
+
+    <!-- Timeline -->
+    @if (!isEmpty) {
+      <div class="pet-memories__timeline">
+        @for (memory of memories(); track memory.id) {
+          <button
+            class="pet-memories__item"
+            (click)="onMemoryClick(memory)"
+          >
+            <!-- Timeline dot -->
+            <div class="pet-memories__dot-wrapper">
+              <div
+                class="pet-memories__dot"
+                [style.background-color]="getCategoryColor(memory.category)"
+              ></div>
+              <div class="pet-memories__line"></div>
+            </div>
+
+            <!-- Memory card -->
+            <div class="pet-memories__card">
+              <div class="pet-memories__card-header">
+                <span class="pet-memories__icon material-icons">
+                  {{ memory.icon }}
+                </span>
+                <h3 class="pet-memories__card-title">{{ memory.title }}</h3>
+              </div>
+              <p class="pet-memories__card-description">
+                {{ memory.description }}
+              </p>
+              <time class="pet-memories__card-date">
+                {{ formatDate(memory.date) }}
+              </time>
+            </div>
+          </button>
+        }
+      </div>
+    }
+  </main>
+</div>

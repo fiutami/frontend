@@ -1,0 +1,36 @@
+<div class="calendar-month">
+  <!-- Week day headers -->
+  <div class="calendar-month__header">
+    @for (day of weekDays; track day) {
+      <div class="calendar-month__weekday">{{ day }}</div>
+    }
+  </div>
+
+  <!-- Calendar grid -->
+  <div class="calendar-month__grid">
+    @for (day of calendarDays(); track day.date.getTime()) {
+      <button
+        [class]="getDayClasses(day).join(' ')"
+        (click)="onDayClick(day)"
+        [attr.aria-label]="day.date | date: 'fullDate'"
+        [attr.aria-current]="day.isToday ? 'date' : null"
+      >
+        <span class="calendar-month__day-number">
+          {{ day.date.getDate() }}
+        </span>
+
+        @if (day.hasEvents) {
+          <div class="calendar-month__event-indicators">
+            @for (event of day.events; track event.id) {
+              <span
+                class="calendar-month__event-dot"
+                [style.background-color]="event.color"
+                [attr.aria-label]="event.title"
+              ></span>
+            }
+          </div>
+        }
+      </button>
+    }
+  </div>
+</div>

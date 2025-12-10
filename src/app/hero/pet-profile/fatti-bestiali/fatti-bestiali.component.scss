@@ -1,0 +1,239 @@
+@import 'src/styles/tokens-figma';
+
+.fatti-bestiali {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #4A74F0 0%, #3D5FC4 100%);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &__back,
+  &__refresh {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-inverse;
+    border-radius: 50%;
+    transition: $transition-fast;
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    &:active:not(:disabled) {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__refresh-icon--spinning {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-md;
+  }
+
+  // Mascot section
+  &__mascot {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: $border-radius-lg;
+    padding: $spacing-md;
+    margin-bottom: $spacing-lg;
+    backdrop-filter: blur(10px);
+  }
+
+  &__mascot-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-yellow-btn;
+    border-radius: 50%;
+    flex-shrink: 0;
+    color: $color-yellow-btn-text;
+  }
+
+  &__mascot-text {
+    font-size: $typography-body-size;
+    color: $color-text-inverse;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  // Empty state
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 300px;
+    padding: $spacing-xl;
+  }
+
+  &__empty-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    margin-bottom: $spacing-lg;
+    color: $color-text-inverse;
+  }
+
+  &__empty-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__empty-text {
+    font-size: $typography-body-size;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    max-width: 280px;
+  }
+
+  // Facts grid
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transition: $transition-fast;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__category {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: $border-radius-full;
+    font-size: $typography-small-size;
+    font-weight: 600;
+    color: white;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    margin-bottom: $spacing-md;
+    color: white;
+
+    .material-icons {
+      font-size: 28px;
+    }
+  }
+
+  &__card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__card-description {
+    font-size: $typography-body-size;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  // Disclaimer
+  &__disclaimer {
+    display: flex;
+    gap: $spacing-sm;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: $border-radius-md;
+    padding: $spacing-md;
+    backdrop-filter: blur(10px);
+    margin-bottom: $spacing-xl;
+
+    svg {
+      flex-shrink: 0;
+      color: $color-yellow-btn;
+    }
+
+    p {
+      font-size: $typography-small-size;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Responsive: larger screens
+@media (min-width: 768px) {
+  .fatti-bestiali {
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__disclaimer {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

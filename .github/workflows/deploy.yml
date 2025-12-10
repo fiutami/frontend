@@ -1,104 +1,276 @@
-name: Frontend Deploy
+name: Deploy Fiutami Multi-Environment
 
 on:
   push:
-    branches: [main, stage]
+    branches:
+      - main    # → PROD
+      - stage   # → STAGE
+      - dev     # → DEV (NAS)
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - stage
+          - prod
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: fiutami/frontend
+  IMAGE_NAME_FRONTEND: ${{ github.repository }}/frontend
+  IMAGE_NAME_BACKEND: ${{ github.repository }}/backend
 
 jobs:
-  build-and-push:
+  # ===========================================
+  # Determine Environment
+  # ===========================================
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-env.outputs.environment }}
+      image_tag: ${{ steps.set-env.outputs.image_tag }}
+      angular_config: ${{ steps.set-env.outputs.angular_config }}
+    steps:
+      - name: Determine environment
+        id: set-env
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            ENV="${{ github.event.inputs.environment }}"
+          elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            ENV="prod"
+          elif [[ "${{ github.ref }}" == "refs/heads/stage" ]]; then
+            ENV="stage"
+          elif [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
+            ENV="dev"
+          else
+            echo "Unknown branch, defaulting to dev"
+            ENV="dev"
+          fi
+
+          case "$ENV" in
+            prod)
+              IMAGE_TAG="latest"
+              ANGULAR_CONFIG="production"
+              ;;
+            stage)
+              IMAGE_TAG="stage"
+              ANGULAR_CONFIG="stage"
+              ;;
+            *)
+              IMAGE_TAG="dev"
+              ANGULAR_CONFIG="dev"
+              ;;
+          esac
+
+          echo "environment=$ENV" >> $GITHUB_OUTPUT
+          echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
+          echo "angular_config=$ANGULAR_CONFIG" >> $GITHUB_OUTPUT
+
+          echo "::notice::Deploying to $ENV environment with tag $IMAGE_TAG"
+
+  # ===========================================
+  # Build Frontend
+  # ===========================================
+  build-frontend:
+    needs: setup
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-    outputs:
-      image_tag: ${{ steps.vars.outputs.image_tag }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set variables
-        id: vars
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular app
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
         run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "image_tag=latest" >> $GITHUB_OUTPUT
-            echo "environment=prod" >> $GITHUB_OUTPUT
-          else
-            echo "image_tag=stage" >> $GITHUB_OUTPUT
-            echo "environment=stage" >> $GITHUB_OUTPUT
+          # Inject OAuth secrets if configured
+          if [ -n "$GOOGLE_CLIENT_ID" ]; then
+            sed -i "s|YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com|${GOOGLE_CLIENT_ID}|g" src/environments/environment.prod.ts
+            sed -i "s|YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com|${GOOGLE_CLIENT_ID}|g" src/environments/environment.stage.ts 2>/dev/null || true
+            sed -i "s|YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com|${GOOGLE_CLIENT_ID}|g" src/environments/environment.dev.ts 2>/dev/null || true
           fi
+          if [ -n "$FACEBOOK_APP_ID" ]; then
+            sed -i "s|YOUR_FACEBOOK_APP_ID|${FACEBOOK_APP_ID}|g" src/environments/environment.prod.ts
+            sed -i "s|YOUR_FACEBOOK_APP_ID|${FACEBOOK_APP_ID}|g" src/environments/environment.stage.ts 2>/dev/null || true
+            sed -i "s|YOUR_FACEBOOK_APP_ID|${FACEBOOK_APP_ID}|g" src/environments/environment.dev.ts 2>/dev/null || true
+          fi
+          npm run build -- --configuration=${{ needs.setup.outputs.angular_config }}
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Log in to GHCR
+      - name: Log in to Container Registry
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Frontend image
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.image_tag }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ needs.setup.outputs.image_tag }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+  # ===========================================
+  # Build Backend
+  # ===========================================
+  build-backend:
+    needs: setup
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Backend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:${{ needs.setup.outputs.image_tag }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ===========================================
+  # Deploy to Environment
+  # ===========================================
   deploy:
-    needs: build-and-push
+    needs: [setup, build-frontend, build-backend]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # SSH setup only for STAGE (PROD deploy is manual)
       - name: Setup SSH
+        if: needs.setup.outputs.environment == 'stage'
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -H "${{ secrets.SSH_HOST_STAGE }}" >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Deploy via SSH
+      - name: Deploy to STAGE
+        if: needs.setup.outputs.environment == 'stage'
         env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_HOST: ${{ secrets.SSH_HOST_STAGE }}
           SSH_USER: ${{ secrets.SSH_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
+          FACEBOOK_APP_SECRET: ${{ secrets.FACEBOOK_APP_SECRET }}
+          GHCR_TOKEN: ${{ secrets.GHCR_PAT }}
         run: |
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} << 'ENDSSH'
-            cd /opt/fiutami
+          echo "::notice::Deploying STAGE to ${SSH_HOST}"
 
-            echo "📦 Pulling new frontend image..."
-            docker compose -f docker-compose.stage.yml pull frontend || true
+          # Create .env file on remote
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cat > /opt/fiutami/.env" << EOF
+          DB_PASSWORD=${DB_PASSWORD}
+          JWT_SECRET=${JWT_SECRET}
+          GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
+          FACEBOOK_APP_ID=${FACEBOOK_APP_ID:-}
+          FACEBOOK_APP_SECRET=${FACEBOOK_APP_SECRET:-}
+          EOF
 
-            echo "🛑 Stopping frontend..."
-            docker compose -f docker-compose.stage.yml stop frontend
-            docker compose -f docker-compose.stage.yml rm -f frontend
+          # Login to GHCR on remote server
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "echo ${GHCR_TOKEN} | docker login ghcr.io -u ${{ github.actor }} --password-stdin"
 
-            echo "🚀 Starting new frontend..."
-            docker compose -f docker-compose.stage.yml up -d frontend
+          # Stop existing containers, pull new images, and restart
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cd /opt/fiutami && docker compose -f docker-compose.stage.yml down --remove-orphans && docker compose -f docker-compose.stage.yml pull && docker compose -f docker-compose.stage.yml up -d"
 
-            echo "🧹 Cleanup..."
-            docker system prune -f
-          ENDSSH
+          echo "::notice::STAGE deployed successfully!"
 
-      - name: Health Check
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
+      # PROD: Build only, no auto-deploy (same server as stage - avoid conflicts)
+      - name: PROD Build Notice
+        if: needs.setup.outputs.environment == 'prod'
         run: |
-          echo "⏳ Waiting for frontend..."
-          for i in {1..10}; do
-            HEALTH=$(ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} \
-              "curl -sf http://localhost:8082 2>/dev/null | head -c 100 || echo 'error'")
-            if echo "$HEALTH" | grep -qi "html"; then
-              echo "✅ Frontend is serving content!"
-              exit 0
-            fi
-            echo "  Attempt $i/10..."
-            sleep 5
-          done
-          echo "⚠️ Health check inconclusive"
+          echo "## PROD Build Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Docker images built and pushed to GHCR:" >> $GITHUB_STEP_SUMMARY
+          echo "- \`ghcr.io/${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:latest\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`ghcr.io/${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:latest\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Manual Deployment Required" >> $GITHUB_STEP_SUMMARY
+          echo "PROD and STAGE share the same server. Auto-deploy disabled to prevent conflicts." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "To deploy manually:" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "cd /opt/fiutami" >> $GITHUB_STEP_SUMMARY
+          echo "docker compose -f docker-compose.prod.yml pull" >> $GITHUB_STEP_SUMMARY
+          echo "docker compose -f docker-compose.prod.yml up -d" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "::notice::PROD images built successfully. Manual deployment required on production server."
+
+      - name: DEV Manual Deploy Notice
+        if: ${{ needs.setup.outputs.environment == 'dev' }}
+        run: |
+          echo "::notice::DEV images built successfully. Manual deployment required on NAS."
+          echo "::notice::Run on NAS: cd /opt/fiutami && docker compose -f docker-compose.dev.yml pull && docker compose -f docker-compose.dev.yml up -d"
+
+      - name: Deployment Summary
+        run: |
+          ENV="${{ needs.setup.outputs.environment }}"
+
+          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Environment | **$ENV** |" >> $GITHUB_STEP_SUMMARY
+          echo "| Image Tag | \`${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Frontend | \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Backend | \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "$ENV" == "dev" ]; then
+            echo "### 📋 Manual Deploy Instructions (DEV/NAS)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "NAS is not reachable from internet. Deploy manually:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+            echo "# SSH to NAS or use Portainer UI" >> $GITHUB_STEP_SUMMARY
+            echo "cd /path/to/fiutami" >> $GITHUB_STEP_SUMMARY
+            echo "docker compose -f docker-compose.dev.yml pull" >> $GITHUB_STEP_SUMMARY
+            echo "docker compose -f docker-compose.dev.yml up -d" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Or in Portainer: Stack → fiutami-dev → Pull and redeploy" >> $GITHUB_STEP_SUMMARY
+          fi

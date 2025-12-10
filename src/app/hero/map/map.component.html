@@ -1,0 +1,90 @@
+<div class="map">
+  <!-- Header -->
+  <div class="map__header">
+    <button class="map__back-btn" routerLink="/home/main" aria-label="Torna alla home">
+      <span class="material-icons">arrow_back</span>
+    </button>
+    <h1 class="map__title">Luoghi Pet-Friendly</h1>
+  </div>
+
+  <!-- Map Placeholder -->
+  <div class="map__placeholder">
+    <div class="map__placeholder-content">
+      <span class="material-icons map__placeholder-icon">place</span>
+      <div class="map__coming-soon">
+        <span class="map__coming-soon-badge">Coming Soon</span>
+        <p class="map__coming-soon-text">Integrazione Google Maps in arrivo</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="map__filters">
+    <button
+      *ngFor="let filter of filters"
+      class="map__filter"
+      [class.map__filter--active]="activeFilter === filter.id"
+      (click)="setFilter(filter.id)"
+      [attr.aria-label]="'Filtra per ' + filter.label"
+      [attr.aria-pressed]="activeFilter === filter.id">
+      <span class="material-icons map__filter-icon">{{ filter.icon }}</span>
+      <span class="map__filter-label">{{ filter.label }}</span>
+    </button>
+  </div>
+
+  <!-- Places List -->
+  <div class="map__content">
+    <div class="map__places">
+      <h2 class="map__section-title">
+        Luoghi nelle vicinanze
+        <span class="map__count">({{ filteredPlaces.length }})</span>
+      </h2>
+
+      <div class="map__places-list">
+        <div
+          *ngFor="let place of filteredPlaces"
+          class="map__place-card"
+          (click)="goToPlace(place)"
+          tabindex="0"
+          role="button"
+          [attr.aria-label]="place.name + ', ' + place.distance">
+          <div class="map__place-icon-wrapper">
+            <span class="material-icons map__place-icon" [class]="'map__place-icon--' + place.type">
+              {{ place.icon }}
+            </span>
+          </div>
+
+          <div class="map__place-info">
+            <h3 class="map__place-name">{{ place.name }}</h3>
+            <div class="map__place-meta">
+              <div class="map__place-rating">
+                <span
+                  *ngFor="let star of getStarArray(place.rating)"
+                  class="material-icons map__star"
+                  [class.map__star--filled]="star.full">
+                  {{ star.full ? 'star' : 'star_border' }}
+                </span>
+                <span class="map__rating-value">{{ place.rating }}</span>
+              </div>
+              <span class="map__place-distance">
+                <span class="material-icons map__distance-icon">directions_walk</span>
+                {{ place.distance }}
+              </span>
+            </div>
+          </div>
+
+          <span class="material-icons map__place-arrow">chevron_right</span>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div *ngIf="filteredPlaces.length === 0" class="map__empty">
+        <span class="material-icons map__empty-icon">search_off</span>
+        <p class="map__empty-text">Nessun luogo trovato per questo filtro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'location'"></app-bottom-tab-bar>
+</div>

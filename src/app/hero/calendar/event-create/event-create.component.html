@@ -1,0 +1,108 @@
+<div class="event-create" (click)="onCancel()">
+  <div class="event-create__content" (click)="onModalContentClick($event)">
+    <!-- Header -->
+    <div class="event-create__header">
+      <h2 class="event-create__title">Nuovo Evento</h2>
+      <button
+        class="event-create__close"
+        (click)="onCancel()"
+        aria-label="Chiudi"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form class="event-create__form" (ngSubmit)="onSubmit()">
+      <!-- Title input -->
+      <div class="event-create__field">
+        <label for="event-title" class="event-create__label">
+          Titolo
+        </label>
+        <input
+          id="event-title"
+          type="text"
+          class="event-create__input"
+          placeholder="Es: Visita veterinaria"
+          [value]="title()"
+          (input)="title.set($any($event.target).value)"
+          required
+        />
+      </div>
+
+      <!-- Date input -->
+      <div class="event-create__field">
+        <label for="event-date" class="event-create__label">
+          Data
+        </label>
+        <input
+          id="event-date"
+          type="date"
+          class="event-create__input"
+          [value]="selectedDate()"
+          (input)="selectedDate.set($any($event.target).value)"
+          required
+        />
+      </div>
+
+      <!-- Time input -->
+      <div class="event-create__field">
+        <label for="event-time" class="event-create__label">
+          Ora
+        </label>
+        <input
+          id="event-time"
+          type="time"
+          class="event-create__input"
+          [value]="selectedTime()"
+          (input)="selectedTime.set($any($event.target).value)"
+          required
+        />
+      </div>
+
+      <!-- Event type selection -->
+      <div class="event-create__field">
+        <label class="event-create__label">
+          Tipo di evento
+        </label>
+        <div class="event-create__types">
+          @for (type of eventTypes; track type.id) {
+            <button
+              type="button"
+              class="event-create__type-btn"
+              [class.event-create__type-btn--active]="selectedType() === type.id"
+              (click)="selectType(type.id)"
+              [attr.aria-pressed]="selectedType() === type.id"
+            >
+              <span
+                class="event-create__type-indicator"
+                [style.background-color]="type.color"
+              ></span>
+              {{ type.label }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="event-create__actions">
+        <button
+          type="button"
+          class="event-create__btn event-create__btn--secondary"
+          (click)="onCancel()"
+        >
+          Annulla
+        </button>
+        <button
+          type="submit"
+          class="event-create__btn event-create__btn--primary"
+          [disabled]="!title()"
+        >
+          Crea evento
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

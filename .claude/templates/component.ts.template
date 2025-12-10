@@ -1,0 +1,41 @@
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+
+/**
+ * {{componentName}}Component
+ *
+ * Auto-generated from Figma design
+ * Component: {{componentName}}
+ *
+ * @example
+ * <{{componentSelector}}
+ *   [prop]="value"
+ *   (clicked)="handleClick()">
+ * </{{componentSelector}}>
+ */
+@Component({
+  selector: '{{componentSelector}}',
+  templateUrl: './{{componentKebabName}}.component.html',
+  styleUrls: ['./{{componentKebabName}}.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class {{componentName}}Component {
+  /**
+   * Component inputs from Figma properties
+   */
+{{inputs}}
+
+  /**
+   * Component outputs for interactions
+   */
+{{outputs}}
+
+  /**
+   * Component constructor
+   */
+  constructor() {}
+
+  /**
+   * Component methods
+   */
+{{methods}}
+}

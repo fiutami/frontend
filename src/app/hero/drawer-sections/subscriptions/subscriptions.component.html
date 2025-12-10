@@ -1,0 +1,14 @@
+<div class="section-page">
+  <header class="section-header">
+    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
+      ←
+    </button>
+    <h1>{{ title }}</h1>
+  </header>
+  <main class="section-content">
+    <div class="empty-state">
+      <span class="icon">{{ icon }}</span>
+      <p>{{ emptyMessage }}</p>
+    </div>
+  </main>
+</div>
