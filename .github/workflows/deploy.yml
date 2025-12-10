@@ -1,17 +1,17 @@
-name: Deploy Fiutami Multi-Environment
+name: Deploy Frontend
 
 on:
   push:
     branches:
-      - main    # → PROD
-      - stage   # → STAGE
-      - dev     # → DEV (NAS)
+      - main    # -> PROD (build only, manual deploy)
+      - stage   # -> STAGE (auto deploy)
+      - dev     # -> DEV (build only, manual deploy)
   workflow_dispatch:
     inputs:
       environment:
         description: 'Target environment'
         required: true
-        default: 'dev'
+        default: 'stage'
         type: choice
         options:
           - dev
@@ -20,8 +20,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME_FRONTEND: ${{ github.repository }}/frontend
-  IMAGE_NAME_BACKEND: ${{ github.repository }}/backend
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   # ===========================================
@@ -74,7 +73,7 @@ jobs:
   # ===========================================
   # Build Frontend
   # ===========================================
-  build-frontend:
+  build:
     needs: setup
     runs-on: ubuntu-latest
     permissions:
@@ -128,43 +127,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ needs.setup.outputs.image_tag }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-  # ===========================================
-  # Build Backend
-  # ===========================================
-  build-backend:
-    needs: setup
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Log in to Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build and push Backend image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./backend
-          file: ./backend/Dockerfile
-          push: true
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:${{ needs.setup.outputs.image_tag }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.setup.outputs.image_tag }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -172,13 +136,13 @@ jobs:
   # Deploy to Environment
   # ===========================================
   deploy:
-    needs: [setup, build-frontend, build-backend]
+    needs: [setup, build]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # SSH setup only for STAGE (PROD deploy is manual)
+      # SSH setup only for STAGE (PROD/DEV deploy is manual)
       - name: Setup SSH
         if: needs.setup.outputs.environment == 'stage'
         run: |
@@ -192,85 +156,58 @@ jobs:
         env:
           SSH_HOST: ${{ secrets.SSH_HOST_STAGE }}
           SSH_USER: ${{ secrets.SSH_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
-          FACEBOOK_APP_SECRET: ${{ secrets.FACEBOOK_APP_SECRET }}
           GHCR_TOKEN: ${{ secrets.GHCR_PAT }}
         run: |
-          echo "::notice::Deploying STAGE to ${SSH_HOST}"
-
-          # Create .env file on remote
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cat > /opt/fiutami/.env" << EOF
-          DB_PASSWORD=${DB_PASSWORD}
-          JWT_SECRET=${JWT_SECRET}
-          GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
-          FACEBOOK_APP_ID=${FACEBOOK_APP_ID:-}
-          FACEBOOK_APP_SECRET=${FACEBOOK_APP_SECRET:-}
-          EOF
+          echo "::notice::Deploying STAGE frontend to ${SSH_HOST}"
 
           # Login to GHCR on remote server
           ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "echo ${GHCR_TOKEN} | docker login ghcr.io -u ${{ github.actor }} --password-stdin"
 
-          # Stop existing containers, pull new images, and restart
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cd /opt/fiutami && docker compose -f docker-compose.stage.yml down --remove-orphans && docker compose -f docker-compose.stage.yml pull && docker compose -f docker-compose.stage.yml up -d"
+          # Pull and restart frontend container only
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "docker pull ghcr.io/${{ env.IMAGE_NAME }}:stage && docker stop fiutami-frontend-stage 2>/dev/null || true && docker rm fiutami-frontend-stage 2>/dev/null || true && docker run -d --name fiutami-frontend-stage --network fiutami-stage -p 8082:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:stage"
 
-          echo "::notice::STAGE deployed successfully!"
+          echo "::notice::STAGE frontend deployed successfully!"
 
-      # PROD: Build only, no auto-deploy (same server as stage - avoid conflicts)
+      # PROD: Build only, no auto-deploy
       - name: PROD Build Notice
         if: needs.setup.outputs.environment == 'prod'
         run: |
-          echo "## PROD Build Complete" >> $GITHUB_STEP_SUMMARY
+          echo "## PROD Frontend Build Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Docker images built and pushed to GHCR:" >> $GITHUB_STEP_SUMMARY
-          echo "- \`ghcr.io/${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:latest\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`ghcr.io/${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:latest\`" >> $GITHUB_STEP_SUMMARY
+          echo "Docker image built and pushed to GHCR:" >> $GITHUB_STEP_SUMMARY
+          echo "- \`ghcr.io/${{ env.IMAGE_NAME }}:latest\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Manual Deployment Required" >> $GITHUB_STEP_SUMMARY
-          echo "PROD and STAGE share the same server. Auto-deploy disabled to prevent conflicts." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "To deploy manually:" >> $GITHUB_STEP_SUMMARY
+          echo "Deploy manually on production server:" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-          echo "cd /opt/fiutami" >> $GITHUB_STEP_SUMMARY
-          echo "docker compose -f docker-compose.prod.yml pull" >> $GITHUB_STEP_SUMMARY
-          echo "docker compose -f docker-compose.prod.yml up -d" >> $GITHUB_STEP_SUMMARY
+          echo "docker pull ghcr.io/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_STEP_SUMMARY
+          echo "docker stop fiutami-frontend && docker rm fiutami-frontend" >> $GITHUB_STEP_SUMMARY
+          echo "docker run -d --name fiutami-frontend --network fiutami-network -p 8080:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          echo "::notice::PROD images built successfully. Manual deployment required on production server."
 
       - name: DEV Manual Deploy Notice
-        if: ${{ needs.setup.outputs.environment == 'dev' }}
+        if: needs.setup.outputs.environment == 'dev'
         run: |
-          echo "::notice::DEV images built successfully. Manual deployment required on NAS."
-          echo "::notice::Run on NAS: cd /opt/fiutami && docker compose -f docker-compose.dev.yml pull && docker compose -f docker-compose.dev.yml up -d"
+          echo "::notice::DEV frontend image built successfully. Manual deployment required on NAS."
+          echo "## DEV Frontend Build Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Docker image: \`ghcr.io/${{ env.IMAGE_NAME }}:dev\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Deploy manually on NAS:" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "docker pull ghcr.io/${{ env.IMAGE_NAME }}:dev" >> $GITHUB_STEP_SUMMARY
+          echo "docker stop fiutami-frontend-dev && docker rm fiutami-frontend-dev" >> $GITHUB_STEP_SUMMARY
+          echo "docker run -d --name fiutami-frontend-dev --network fiutami-dev -p 4201:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:dev" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
       - name: Deployment Summary
         run: |
           ENV="${{ needs.setup.outputs.environment }}"
-
-          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| Environment | **$ENV** |" >> $GITHUB_STEP_SUMMARY
           echo "| Image Tag | \`${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| Frontend | \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| Backend | \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          if [ "$ENV" == "dev" ]; then
-            echo "### 📋 Manual Deploy Instructions (DEV/NAS)" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "NAS is not reachable from internet. Deploy manually:" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-            echo "# SSH to NAS or use Portainer UI" >> $GITHUB_STEP_SUMMARY
-            echo "cd /path/to/fiutami" >> $GITHUB_STEP_SUMMARY
-            echo "docker compose -f docker-compose.dev.yml pull" >> $GITHUB_STEP_SUMMARY
-            echo "docker compose -f docker-compose.dev.yml up -d" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Or in Portainer: Stack → fiutami-dev → Pull and redeploy" >> $GITHUB_STEP_SUMMARY
-          fi
+          echo "| Image | \`ghcr.io/${{ env.IMAGE_NAME }}:${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
