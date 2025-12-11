@@ -83,10 +83,11 @@ export class LoginComponent {
       this.authService.login({ email, password }).subscribe({
         next: () => {
           // Navigate based on onboarding status
+          // Ha pet → home principale, No pet → onboarding AI
           if (this.authService.hasCompletedOnboarding()) {
-            this.router.navigate(['/home/pet-profile']);
+            this.router.navigate(['/home/main']);
           } else {
-            this.router.navigate(['/home/welcome']);
+            this.router.navigate(['/home/welcome-ai/1']);
           }
         },
         error: (err) => {
