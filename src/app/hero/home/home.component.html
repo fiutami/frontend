@@ -1,7 +1,13 @@
 <div class="home">
+  <!-- Background Image with Overlay -->
+  <app-page-background
+    imageName="auth-bg"
+    overlayOpacity="light">
+  </app-page-background>
+
   <!-- Header -->
   <header class="home__header">
-    <!-- Avatar (links to pet profile) - Dynamic with initials fallback -->
+    <!-- Avatar (links to pet profile) -->
     <button
       class="home__avatar"
       routerLink="/home/pet-profile"
@@ -28,7 +34,7 @@
         (click)="navigateToCalendar()"
         aria-label="Calendario e notifiche"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
         </svg>
         @if (notificationCount > 0) {
@@ -42,7 +48,7 @@
         (click)="openDrawer()"
         aria-label="Apri menu"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
         </svg>
       </button>
@@ -51,76 +57,28 @@
 
   <!-- Main content -->
   <main class="home__content">
-    <!-- Fiuto mascot - SVG inline placeholder -->
-    <div class="home__mascot">
-      <svg class="home__mascot-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Fiuto mascotte">
-        <!-- Dog head outline -->
-        <ellipse cx="100" cy="110" rx="70" ry="60" fill="#F5A623"/>
-        <!-- Ears -->
-        <ellipse cx="50" cy="70" rx="25" ry="35" fill="#E98B0C" transform="rotate(-15 50 70)"/>
-        <ellipse cx="150" cy="70" rx="25" ry="35" fill="#E98B0C" transform="rotate(15 150 70)"/>
-        <!-- Inner ears -->
-        <ellipse cx="52" cy="72" rx="12" ry="20" fill="#FFD699" transform="rotate(-15 52 72)"/>
-        <ellipse cx="148" cy="72" rx="12" ry="20" fill="#FFD699" transform="rotate(15 148 72)"/>
-        <!-- Face -->
-        <ellipse cx="100" cy="115" rx="55" ry="45" fill="#FFD699"/>
-        <!-- Eyes -->
-        <ellipse cx="75" cy="100" rx="12" ry="14" fill="white"/>
-        <ellipse cx="125" cy="100" rx="12" ry="14" fill="white"/>
-        <circle cx="77" cy="102" r="7" fill="#333"/>
-        <circle cx="127" cy="102" r="7" fill="#333"/>
-        <!-- Eye shine -->
-        <circle cx="79" cy="99" r="2" fill="white"/>
-        <circle cx="129" cy="99" r="2" fill="white"/>
-        <!-- Nose -->
-        <ellipse cx="100" cy="125" rx="15" ry="10" fill="#333"/>
-        <ellipse cx="100" cy="123" rx="5" ry="3" fill="#666"/>
-        <!-- Mouth -->
-        <path d="M85 138 Q100 150 115 138" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <!-- Tongue -->
-        <ellipse cx="100" cy="148" rx="8" ry="12" fill="#FF6B6B"/>
-        <!-- Collar -->
-        <rect x="60" y="155" width="80" height="12" rx="6" fill="#4A74F0"/>
-        <!-- Tag -->
-        <circle cx="100" cy="168" r="8" fill="#FFD700"/>
-        <text x="100" y="172" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">F</text>
-      </svg>
-    </div>
-
     <!-- Search bar -->
     <div class="home__search-wrapper">
-      <div class="home__search">
-        <svg class="home__search-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-        </svg>
-        <input
-          type="text"
-          class="home__search-input"
-          placeholder="Cosa posso fiutare per te?"
-          (input)="onSearch($any($event.target).value)"
-          aria-label="Cerca servizi, attività, luoghi"
-        />
-      </div>
+      <app-search-box
+        placeholder="Cosa posso fiutare per te?"
+        variant="glass"
+        [value]="searchQuery"
+        (search)="onSearch($event)">
+      </app-search-box>
     </div>
 
     <!-- Upcoming events widget -->
-    <div class="home__events">
-      <h3 class="home__events-title">Prossimi eventi</h3>
-      @if (upcomingEvents.length === 0) {
-        <p class="home__events-empty">Non c'è nessun evento in programma.</p>
-      } @else {
-        <ul class="home__events-list">
-          @for (event of upcomingEvents; track event.title) {
-            <li class="home__event-item">
-              <span class="home__event-title">{{ event.title }}</span>
-              <span class="home__event-date">{{ event.date }}</span>
-            </li>
-          }
-        </ul>
-      }
+    <div class="home__events-wrapper">
+      <app-events-widget
+        title="Prossimi eventi"
+        [events]="upcomingEvents"
+        emptyMessage="Non c'è nessun evento in programma."
+        (eventClick)="onEventClick($event)"
+        (viewAllClick)="onViewAllEvents()">
+      </app-events-widget>
     </div>
   </main>
 
-  <!-- Bottom Tab Bar -->
+  <!-- Bottom Tab Bar (Blue) -->
   <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'"></app-bottom-tab-bar>
 </div>

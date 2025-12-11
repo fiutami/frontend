@@ -1,0 +1,111 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+.events-widget {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+
+  @include respond(md) {
+    padding: $spacing-lg;
+  }
+
+  &__title {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-sm;
+
+    @include respond(md) {
+      font-size: 18px;
+      margin-bottom: $spacing-md;
+    }
+  }
+
+  &__empty {
+    font-size: $typography-small-size;
+    color: $color-text-secondary;
+    margin: 0;
+    text-align: center;
+    padding: $spacing-md 0;
+
+    @include respond(md) {
+      font-size: $typography-body-size;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.02);
+      margin: 0 (-$spacing-sm);
+      padding-left: $spacing-sm;
+      padding-right: $spacing-sm;
+      border-radius: $border-radius-sm;
+    }
+
+    @include respond(md) {
+      padding: $spacing-md 0;
+    }
+  }
+
+  &__icon {
+    font-size: 18px;
+    margin-right: $spacing-sm;
+  }
+
+  &__item-title {
+    flex: 1;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+  }
+
+  &__item-date {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: $color-text-secondary;
+    margin-left: $spacing-sm;
+  }
+
+  &__view-all {
+    display: block;
+    width: 100%;
+    margin-top: $spacing-sm;
+    padding: $spacing-sm;
+    background: transparent;
+    border: none;
+    color: $color-ai-primary;
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      color: darken($color-ai-primary, 10%);
+    }
+  }
+}

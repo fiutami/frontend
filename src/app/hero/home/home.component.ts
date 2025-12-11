@@ -13,11 +13,21 @@ import {
   BottomTabBarComponent,
   TabItem,
 } from '../../shared/components/bottom-tab-bar';
+import { SearchBoxComponent } from '../../shared/components/search-box';
+import { EventsWidgetComponent, EventItem } from '../../shared/components/events-widget';
+import { PageBackgroundComponent } from '../../shared/components/page-background';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, BottomTabBarComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    BottomTabBarComponent,
+    SearchBoxComponent,
+    EventsWidgetComponent,
+    PageBackgroundComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,7 +46,8 @@ export class HomeComponent implements OnInit {
   initials = computed(() => this.getInitials(this.petName()));
 
   notificationCount = 2;
-  upcomingEvents: { title: string; date: string }[] = [];
+  upcomingEvents: EventItem[] = [];
+  searchQuery = '';
 
   // Bottom tab bar configuration
   tabs: TabItem[] = [
@@ -57,8 +68,18 @@ export class HomeComponent implements OnInit {
   }
 
   onSearch(query: string): void {
+    this.searchQuery = query;
     console.log('Search query:', query);
     // Implement search logic
+  }
+
+  onEventClick(event: EventItem): void {
+    console.log('Event clicked:', event);
+    // Navigate to event detail
+  }
+
+  onViewAllEvents(): void {
+    // Navigate to calendar/events list
   }
 
   navigateToCalendar(): void {

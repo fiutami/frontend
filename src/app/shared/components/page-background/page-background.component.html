@@ -1,0 +1,37 @@
+<div class="page-background" [class.page-background--contain]="objectFit === 'contain'">
+  <picture>
+    <!-- AVIF: Best compression -->
+    <source
+      [srcset]="imagePath + '-480w.avif 480w, ' +
+                imagePath + '-768w.avif 768w, ' +
+                imagePath + '-1280w.avif 1280w, ' +
+                imagePath + '.avif 1920w'"
+      sizes="100vw"
+      type="image/avif">
+    <!-- WebP: Wide support -->
+    <source
+      [srcset]="imagePath + '-480w.webp 480w, ' +
+                imagePath + '-768w.webp 768w, ' +
+                imagePath + '-1280w.webp 1280w, ' +
+                imagePath + '.webp 1920w'"
+      sizes="100vw"
+      type="image/webp">
+    <!-- PNG: Fallback -->
+    <img
+      [src]="imagePath + '.png'"
+      alt=""
+      class="page-background__image"
+      role="presentation"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async" />
+  </picture>
+  <div
+    class="page-background__overlay"
+    [class.page-background__overlay--none]="overlayOpacity === 'none'"
+    [class.page-background__overlay--light]="overlayOpacity === 'light'"
+    [class.page-background__overlay--medium]="overlayOpacity === 'medium'"
+    [class.page-background__overlay--dark]="overlayOpacity === 'dark'"
+    aria-hidden="true">
+  </div>
+</div>

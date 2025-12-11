@@ -1,0 +1,25 @@
+<div class="events-widget">
+  <h3 class="events-widget__title">{{ title }}</h3>
+
+  @if (events.length === 0) {
+    <p class="events-widget__empty">{{ emptyMessage }}</p>
+  } @else {
+    <ul class="events-widget__list">
+      @for (event of displayedEvents; track event.title) {
+        <li class="events-widget__item" (click)="onEventClick(event)">
+          @if (event.icon) {
+            <span class="events-widget__icon">{{ event.icon }}</span>
+          }
+          <span class="events-widget__item-title">{{ event.title }}</span>
+          <span class="events-widget__item-date">{{ event.date }}</span>
+        </li>
+      }
+    </ul>
+
+    @if (hasMoreEvents) {
+      <button class="events-widget__view-all" (click)="onViewAll()">
+        Vedi tutti
+      </button>
+    }
+  }
+</div>

@@ -1,0 +1,54 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: $color-background-primary;
+  border-radius: $border-radius-full;
+  padding: $spacing-sm $spacing-md;
+  gap: $spacing-sm;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: $transition-fast;
+  width: 100%;
+
+  &:focus-within {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &--glass {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+  }
+
+  &__icon {
+    color: $color-text-secondary;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+
+    @include respond(md) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    min-width: 0;
+
+    &::placeholder {
+      color: $color-text-secondary;
+    }
+
+    @include respond(md) {
+      font-size: 18px;
+    }
+  }
+}

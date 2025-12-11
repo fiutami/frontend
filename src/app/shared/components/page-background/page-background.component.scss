@@ -1,0 +1,48 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+.page-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: $color-cta-primary;
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(0.95);
+  }
+
+  &--contain &__image {
+    object-fit: contain;
+
+    @include respond(lg) {
+      object-fit: contain;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+
+    &--none {
+      background: transparent;
+    }
+
+    &--light {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    &--medium {
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    &--dark {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+}
