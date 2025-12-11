@@ -20,6 +20,14 @@ import { SpeciesQ6Component } from './species-questionnaire/species-q6/species-q
 import { SpeciesResultComponent } from './species-questionnaire/species-result/species-result.component';
 import { HomeComponent } from './home/home.component';
 import { PetProfileComponent } from './pet-profile/pet-profile.component';
+import { PetGalleryComponent } from './pet-profile/gallery/pet-gallery.component';
+import { PetMemoriesComponent } from './pet-profile/memories/pet-memories.component';
+import { PetFriendsComponent } from './pet-profile/friends/pet-friends.component';
+import { FattiBestialiComponent } from './pet-profile/fatti-bestiali/fatti-bestiali.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { MapComponent } from './map/map.component';
+import { ChatListComponent } from './chat/chat-list/chat-list.component';
+import { ChatScreenComponent } from './chat/chat-screen/chat-screen.component';
 
 const routes: Routes = [
   {
@@ -38,6 +46,38 @@ const routes: Routes = [
   {
     path: 'pet-profile/:id',
     component: PetProfileComponent  // Pet profile with ID
+  },
+  {
+    path: 'pet-profile/:id/gallery',
+    component: PetGalleryComponent  // Pet photo gallery
+  },
+  {
+    path: 'pet-profile/:id/memories',
+    component: PetMemoriesComponent  // Pet memories timeline
+  },
+  {
+    path: 'pet-profile/:id/friends',
+    component: PetFriendsComponent  // Pet friends list
+  },
+  {
+    path: 'pet-profile/:id/fatti-bestiali',
+    component: FattiBestialiComponent  // Pet fun facts
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent  // Calendar with events
+  },
+  {
+    path: 'map',
+    component: MapComponent  // Pet-friendly map
+  },
+  {
+    path: 'chat',
+    component: ChatListComponent  // Chat conversations list
+  },
+  {
+    path: 'chat/:conversationId',
+    component: ChatScreenComponent  // Single chat conversation
   },
   {
     path: 'welcome',
