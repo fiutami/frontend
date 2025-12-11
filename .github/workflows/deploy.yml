@@ -156,7 +156,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "echo ${GHCR_TOKEN} | docker login ghcr.io -u ${{ github.actor }} --password-stdin"
 
           # Pull and restart frontend container only
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "docker pull ghcr.io/${{ env.IMAGE_NAME }}:stage && docker stop fiutami-frontend-stage 2>/dev/null || true && docker rm fiutami-frontend-stage 2>/dev/null || true && docker run -d --name fiutami-frontend-stage --network fiutami-stage -p 8082:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:stage"
+          # Network: fiutami_fiutami-stage (created by docker-compose)
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "docker pull ghcr.io/${{ env.IMAGE_NAME }}:stage && docker stop fiutami-frontend-stage 2>/dev/null || true && docker rm fiutami-frontend-stage 2>/dev/null || true && docker run -d --name fiutami-frontend-stage --network fiutami_fiutami-stage --network proxy-net -p 8082:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:stage"
 
           echo "::notice::STAGE frontend deployed successfully!"
 
