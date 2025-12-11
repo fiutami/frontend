@@ -100,6 +100,7 @@ export class SocialLoginComponent implements OnInit, OnDestroy {
         this.loginSuccess.emit();
         this.setLoading(null, false);
         this.isProcessingAuth = false;
+        // Navigate based on onboarding status
         // Ha pet → home principale, No pet → onboarding AI
         if (this.authService.hasCompletedOnboarding()) {
           this.router.navigate(['/home/main']);

@@ -135,7 +135,7 @@ export class SignupComponent {
       // firstName and lastName are optional for now, user can complete profile later
       this.authService.signup({ email, password, firstName: '', lastName: '' }).subscribe({
         next: () => {
-          // New users always go to AI onboarding
+          // New users always go to AI onboarding (no pets yet)
           this.router.navigate(['/home/welcome-ai/1']);
         },
         error: (err) => {
