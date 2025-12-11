@@ -1,22 +1,13 @@
 name: Deploy Frontend
 
+# MVP: CD on main only (stage branch uses ci.yml for build/test)
+# Workflow: stage (CI) -> merge to main -> auto-deploy
+
 on:
   push:
     branches:
-      - main    # -> PROD (build only, manual deploy)
-      - stage   # -> STAGE (auto deploy)
-      - dev     # -> DEV (build only, manual deploy)
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Target environment'
-        required: true
-        default: 'stage'
-        type: choice
-        options:
-          - dev
-          - stage
-          - prod
+      - main  # Auto-deploy on main only
+  workflow_dispatch:  # Manual trigger for emergencies
 
 env:
   REGISTRY: ghcr.io
@@ -36,33 +27,26 @@ jobs:
       - name: Determine environment
         id: set-env
         run: |
+          # MVP: main e stage deployano entrambi su stage (stesso ambiente)
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             ENV="${{ github.event.inputs.environment }}"
           elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            ENV="prod"
+            ENV="stage"  # MVP: main deploya su stage
           elif [[ "${{ github.ref }}" == "refs/heads/stage" ]]; then
             ENV="stage"
-          elif [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
-            ENV="dev"
           else
-            echo "Unknown branch, defaulting to dev"
-            ENV="dev"
+            echo "Unknown branch, defaulting to stage"
+            ENV="stage"
           fi
 
-          case "$ENV" in
-            prod)
-              IMAGE_TAG="latest"
-              ANGULAR_CONFIG="production"
-              ;;
-            stage)
-              IMAGE_TAG="stage"
-              ANGULAR_CONFIG="stage"
-              ;;
-            *)
-              IMAGE_TAG="dev"
-              ANGULAR_CONFIG="dev"
-              ;;
-          esac
+          # MVP: sempre stage config
+          IMAGE_TAG="stage"
+          ANGULAR_CONFIG="stage"
+
+          if [[ "$ENV" == "prod" ]]; then
+            IMAGE_TAG="latest"
+            ANGULAR_CONFIG="production"
+          fi
 
           echo "environment=$ENV" >> $GITHUB_OUTPUT
           echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
@@ -142,17 +126,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # SSH setup only for STAGE (PROD/DEV deploy is manual)
+      # MVP: auto-deploy sempre (stage = prod)
       - name: Setup SSH
-        if: needs.setup.outputs.environment == 'stage'
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "${{ secrets.SSH_HOST_STAGE }}" >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Deploy to STAGE
-        if: needs.setup.outputs.environment == 'stage'
+      - name: Deploy to Server
         env:
           SSH_HOST: ${{ secrets.SSH_HOST_STAGE }}
           SSH_USER: ${{ secrets.SSH_USER }}
@@ -164,41 +146,10 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "echo ${GHCR_TOKEN} | docker login ghcr.io -u ${{ github.actor }} --password-stdin"
 
           # Pull and restart frontend container only
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "docker pull ghcr.io/${{ env.IMAGE_NAME }}:stage && docker stop fiutami-frontend-stage 2>/dev/null || true && docker rm fiutami-frontend-stage 2>/dev/null || true && docker run -d --name fiutami-frontend-stage --network fiutami-stage -p 8082:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:stage"
+          # Network: fiutami_fiutami-stage (created by docker-compose)
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "docker pull ghcr.io/${{ env.IMAGE_NAME }}:stage && docker stop fiutami-frontend-stage 2>/dev/null || true && docker rm fiutami-frontend-stage 2>/dev/null || true && docker run -d --name fiutami-frontend-stage --network fiutami_fiutami-stage --network proxy-net -p 8082:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:stage"
 
           echo "::notice::STAGE frontend deployed successfully!"
-
-      # PROD: Build only, no auto-deploy
-      - name: PROD Build Notice
-        if: needs.setup.outputs.environment == 'prod'
-        run: |
-          echo "## PROD Frontend Build Complete" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Docker image built and pushed to GHCR:" >> $GITHUB_STEP_SUMMARY
-          echo "- \`ghcr.io/${{ env.IMAGE_NAME }}:latest\`" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Manual Deployment Required" >> $GITHUB_STEP_SUMMARY
-          echo "Deploy manually on production server:" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-          echo "docker pull ghcr.io/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_STEP_SUMMARY
-          echo "docker stop fiutami-frontend && docker rm fiutami-frontend" >> $GITHUB_STEP_SUMMARY
-          echo "docker run -d --name fiutami-frontend --network fiutami-network -p 8080:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-
-      - name: DEV Manual Deploy Notice
-        if: needs.setup.outputs.environment == 'dev'
-        run: |
-          echo "::notice::DEV frontend image built successfully. Manual deployment required on NAS."
-          echo "## DEV Frontend Build Complete" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Docker image: \`ghcr.io/${{ env.IMAGE_NAME }}:dev\`" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Deploy manually on NAS:" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-          echo "docker pull ghcr.io/${{ env.IMAGE_NAME }}:dev" >> $GITHUB_STEP_SUMMARY
-          echo "docker stop fiutami-frontend-dev && docker rm fiutami-frontend-dev" >> $GITHUB_STEP_SUMMARY
-          echo "docker run -d --name fiutami-frontend-dev --network fiutami-dev -p 4201:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:dev" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
       - name: Deployment Summary
         run: |
