@@ -1,23 +1,13 @@
 name: Deploy Frontend
 
-# MVP: stage = prod (stesso server, stesso container)
-# Auto-deploy su MAIN e STAGE
+# MVP: CD on main only (stage branch uses ci.yml for build/test)
+# Workflow: stage (CI) -> merge to main -> auto-deploy
 
 on:
   push:
     branches:
-      - main    # -> Auto-deploy (MVP: main = stage = prod)
-      - stage   # -> Auto-deploy
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Target environment'
-        required: true
-        default: 'stage'
-        type: choice
-        options:
-          - stage
-          - prod
+      - main  # Auto-deploy on main only
+  workflow_dispatch:  # Manual trigger for emergencies
 
 env:
   REGISTRY: ghcr.io

@@ -1,8 +1,11 @@
 name: Frontend CI
 
+# CI only - build and test (no deploy)
+# Deploy happens only on main via deploy.yml
+
 on:
   push:
-    branches: [main, stage, dev]
+    branches: [stage]  # CI on stage only, main uses deploy.yml
   pull_request:
     branches: [main, stage]
 
