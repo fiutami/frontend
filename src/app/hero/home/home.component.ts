@@ -3,6 +3,8 @@ import {
   ChangeDetectionStrategy,
   inject,
   OnInit,
+  signal,
+  computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -23,9 +25,16 @@ import {
 export class HomeComponent implements OnInit {
   private drawerService = inject(DrawerService);
 
-  // Mock data - would come from services
-  petName = 'Thor';
-  petAvatarUrl = 'assets/images/default-pet-avatar.png';
+  // Pet data - using signals for reactivity
+  petName = signal('Thor');
+  petAvatarUrl = signal<string | null>(null);
+  userAvatarUrl = signal<string | null>(null);
+
+  // Computed properties for avatar display
+  showInitials = computed(() => !this.petAvatarUrl() && !this.userAvatarUrl());
+  avatarUrl = computed(() => this.userAvatarUrl() || this.petAvatarUrl());
+  initials = computed(() => this.getInitials(this.petName()));
+
   notificationCount = 2;
   upcomingEvents: { title: string; date: string }[] = [];
 
@@ -61,5 +70,18 @@ export class HomeComponent implements OnInit {
     this.upcomingEvents = [
       // Empty for now - shows "Non c'è nessun evento in programma"
     ];
+  }
+
+  /**
+   * Get initials from pet name for avatar fallback
+   */
+  private getInitials(name: string): string {
+    if (!name) return '?';
+    return name
+      .split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
   }
 }

@@ -1,18 +1,24 @@
 <div class="home">
   <!-- Header -->
   <header class="home__header">
-    <!-- Avatar (links to pet profile) -->
+    <!-- Avatar (links to pet profile) - Dynamic with initials fallback -->
     <button
       class="home__avatar"
       routerLink="/home/pet-profile"
       aria-label="Vai al profilo del pet"
     >
-      <img
-        [src]="petAvatarUrl"
-        [alt]="petName + ' avatar'"
-        class="home__avatar-img"
-        loading="lazy"
-      />
+      @if (showInitials()) {
+        <div class="home__avatar-initials" [attr.aria-label]="petName() + ' avatar'">
+          {{ initials() }}
+        </div>
+      } @else {
+        <img
+          [src]="avatarUrl()"
+          [alt]="petName() + ' avatar'"
+          class="home__avatar-img"
+          loading="lazy"
+        />
+      }
     </button>
 
     <div class="home__header-actions">
@@ -45,14 +51,40 @@
 
   <!-- Main content -->
   <main class="home__content">
-    <!-- Fiuto mascot background -->
+    <!-- Fiuto mascot - SVG inline placeholder -->
     <div class="home__mascot">
-      <img
-        src="assets/images/fiuto-mascot.png"
-        alt="Fiuto mascotte"
-        class="home__mascot-img"
-        loading="lazy"
-      />
+      <svg class="home__mascot-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Fiuto mascotte">
+        <!-- Dog head outline -->
+        <ellipse cx="100" cy="110" rx="70" ry="60" fill="#F5A623"/>
+        <!-- Ears -->
+        <ellipse cx="50" cy="70" rx="25" ry="35" fill="#E98B0C" transform="rotate(-15 50 70)"/>
+        <ellipse cx="150" cy="70" rx="25" ry="35" fill="#E98B0C" transform="rotate(15 150 70)"/>
+        <!-- Inner ears -->
+        <ellipse cx="52" cy="72" rx="12" ry="20" fill="#FFD699" transform="rotate(-15 52 72)"/>
+        <ellipse cx="148" cy="72" rx="12" ry="20" fill="#FFD699" transform="rotate(15 148 72)"/>
+        <!-- Face -->
+        <ellipse cx="100" cy="115" rx="55" ry="45" fill="#FFD699"/>
+        <!-- Eyes -->
+        <ellipse cx="75" cy="100" rx="12" ry="14" fill="white"/>
+        <ellipse cx="125" cy="100" rx="12" ry="14" fill="white"/>
+        <circle cx="77" cy="102" r="7" fill="#333"/>
+        <circle cx="127" cy="102" r="7" fill="#333"/>
+        <!-- Eye shine -->
+        <circle cx="79" cy="99" r="2" fill="white"/>
+        <circle cx="129" cy="99" r="2" fill="white"/>
+        <!-- Nose -->
+        <ellipse cx="100" cy="125" rx="15" ry="10" fill="#333"/>
+        <ellipse cx="100" cy="123" rx="5" ry="3" fill="#666"/>
+        <!-- Mouth -->
+        <path d="M85 138 Q100 150 115 138" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Tongue -->
+        <ellipse cx="100" cy="148" rx="8" ry="12" fill="#FF6B6B"/>
+        <!-- Collar -->
+        <rect x="60" y="155" width="80" height="12" rx="6" fill="#4A74F0"/>
+        <!-- Tag -->
+        <circle cx="100" cy="168" r="8" fill="#FFD700"/>
+        <text x="100" y="172" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">F</text>
+      </svg>
     </div>
 
     <!-- Search bar -->
