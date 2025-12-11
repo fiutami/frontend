@@ -100,7 +100,12 @@ export class SocialLoginComponent implements OnInit, OnDestroy {
         this.loginSuccess.emit();
         this.setLoading(null, false);
         this.isProcessingAuth = false;
-        this.router.navigate(['/home']);
+        // Ha pet → home principale, No pet → onboarding AI
+        if (this.authService.hasCompletedOnboarding()) {
+          this.router.navigate(['/home/main']);
+        } else {
+          this.router.navigate(['/home/welcome-ai/1']);
+        }
       },
       error: (err) => {
         console.error('Backend OAuth error:', err);

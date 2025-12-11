@@ -135,8 +135,8 @@ export class SignupComponent {
       // firstName and lastName are optional for now, user can complete profile later
       this.authService.signup({ email, password, firstName: '', lastName: '' }).subscribe({
         next: () => {
-          // New users always go to welcome/onboarding (under HeroModule at /home/welcome)
-          this.router.navigate(['/home/welcome']);
+          // New users always go to AI onboarding
+          this.router.navigate(['/home/welcome-ai/1']);
         },
         error: (err) => {
           this.isSubmitting = false;
