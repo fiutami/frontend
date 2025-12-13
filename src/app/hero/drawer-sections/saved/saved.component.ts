@@ -10,7 +10,8 @@ import { BottomTabBarComponent, TabItem } from '../../../shared/components/botto
   imports: [CommonModule, RouterModule, BottomTabBarComponent],
   templateUrl: './saved.component.html',
   styleUrls: ['./saved.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'saved-page' }
 })
 export class SavedComponent implements OnInit {
   private location = inject(Location);
