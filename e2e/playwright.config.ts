@@ -98,6 +98,48 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
       testMatch: /visual/,
     },
+
+    // Drawer Menu Device Matrix (8 devices)
+    {
+      name: 'drawer-mobile',
+      use: { viewport: { width: 375, height: 667 }, isMobile: true, hasTouch: true },
+      testMatch: /drawer-menu/,
+    },
+    {
+      name: 'drawer-tablet',
+      use: { viewport: { width: 768, height: 1024 }, isMobile: false, hasTouch: true },
+      testMatch: /drawer-menu/,
+    },
+    {
+      name: 'drawer-desktop',
+      use: { viewport: { width: 1440, height: 900 }, isMobile: false },
+      testMatch: /drawer-menu/,
+    },
+    {
+      name: 'drawer-foldable-folded',
+      use: { viewport: { width: 717, height: 512 }, isMobile: true, hasTouch: true },
+      testMatch: /drawer-menu/,
+    },
+    {
+      name: 'drawer-foldable-unfolded',
+      use: { viewport: { width: 1485, height: 720 }, isMobile: false, hasTouch: true },
+      testMatch: /drawer-menu/,
+    },
+    {
+      name: 'drawer-iphone-2025',
+      use: { viewport: { width: 430, height: 932 }, isMobile: true, hasTouch: true, deviceScaleFactor: 3 },
+      testMatch: /drawer-menu/,
+    },
+    {
+      name: 'drawer-honor-magic-v3',
+      use: { viewport: { width: 795, height: 720 }, isMobile: true, hasTouch: true },
+      testMatch: /drawer-menu/,
+    },
+    {
+      name: 'drawer-honor-magic-v5',
+      use: { viewport: { width: 795, height: 720 }, isMobile: true, hasTouch: true },
+      testMatch: /drawer-menu/,
+    },
   ],
 
   webServer: {
