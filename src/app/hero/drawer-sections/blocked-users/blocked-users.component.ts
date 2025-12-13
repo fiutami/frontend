@@ -1,12 +1,11 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { BlockedUsersService, BlockedUser } from '../../../core/services/blocked-users.service';
-import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
 
 @Component({
   selector: 'app-blocked-users',
   standalone: true,
-  imports: [CommonModule, BottomTabBarComponent],
+  imports: [CommonModule],
   templateUrl: './blocked-users.component.html',
   styleUrls: ['./blocked-users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,14 +21,6 @@ export class BlockedUsersComponent implements OnInit {
   readonly userToUnblock = signal<BlockedUser | null>(null);
   readonly isUnblocking = signal(false);
 
-  // Bottom tab bar config
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', route: '/home/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
-  ];
 
   ngOnInit(): void {
     this.loadBlockedUsers();

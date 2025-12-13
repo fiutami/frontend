@@ -2,12 +2,11 @@ import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@ang
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LostPetsService, LostPet } from '../../../core/services/lost-pets.service';
-import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
 
 @Component({
   selector: 'app-lost-pets',
   standalone: true,
-  imports: [CommonModule, FormsModule, BottomTabBarComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './lost-pets.component.html',
   styleUrls: ['./lost-pets.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -25,14 +24,6 @@ export class LostPetsComponent implements OnInit {
   readonly sightingNotes = signal('');
   readonly isSubmitting = signal(false);
 
-  // Bottom tab bar config
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', route: '/home/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
-  ];
 
   ngOnInit(): void {
     this.loadLostPets();

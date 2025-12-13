@@ -2,12 +2,11 @@ import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@ang
 import { CommonModule, Location } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { SavedService, SavedItem, SavedTab } from '../../../core/services/saved.service';
-import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
 
 @Component({
   selector: 'app-saved',
   standalone: true,
-  imports: [CommonModule, RouterModule, BottomTabBarComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './saved.component.html',
   styleUrls: ['./saved.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -34,14 +33,6 @@ export class SavedComponent implements OnInit {
     { id: 'places', label: 'Luoghi', icon: 'place' }
   ];
 
-  // Bottom tab bar config
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', route: '/home/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
-  ];
 
   ngOnInit(): void {
     this.loadSavedItems();
