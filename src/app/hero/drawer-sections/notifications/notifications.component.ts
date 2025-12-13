@@ -1,8 +1,11 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { Subject, fromEvent, debounceTime, startWith, takeUntil } from 'rxjs';
 import { NotificationsService, NotificationItem, NotificationTab } from '../../../core/services/notifications.service';
 import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
+
+export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' | 'foldable-unfolded';
 
 @Component({
   selector: 'app-notifications',
@@ -12,10 +15,11 @@ import { BottomTabBarComponent, TabItem } from '../../../shared/components/botto
   styleUrls: ['./notifications.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationsComponent implements OnInit, OnDestroy {
   private location = inject(Location);
   private router = inject(Router);
   private notificationsService = inject(NotificationsService);
+  private destroy$ = new Subject<void>();
 
   title = 'Notifiche';
 
@@ -25,6 +29,29 @@ export class NotificationsComponent implements OnInit {
   hasError = signal(false);
   activeTab = signal<NotificationTab>('all');
   unreadCount = signal(0);
+
+  // Viewport detection
+  private windowWidth = signal(typeof window !== 'undefined' ? window.innerWidth : 375);
+  private windowHeight = signal(typeof window !== 'undefined' ? window.innerHeight : 667);
+
+  viewportSize = computed<ViewportSize>(() => {
+    const width = this.windowWidth();
+    const height = this.windowHeight();
+    const aspectRatio = width / height;
+
+    if (width >= 700 && width <= 800 && height >= 500 && height <= 730) {
+      return aspectRatio > 1 ? 'foldable-folded' : 'foldable-unfolded';
+    }
+    if (width >= 717 && width <= 720 && height >= 500 && height <= 520) {
+      return 'foldable-folded';
+    }
+    if (width >= 1400 && width <= 1500 && height >= 700 && height <= 800) {
+      return 'foldable-unfolded';
+    }
+    if (width < 768) return 'mobile';
+    if (width < 1024) return 'tablet';
+    return 'desktop';
+  });
 
   // Tab configuration
   tabOptions: { id: NotificationTab; label: string; icon: string }[] = [
@@ -46,6 +73,21 @@ export class NotificationsComponent implements OnInit {
   ngOnInit(): void {
     this.loadNotifications();
     this.loadUnreadCount();
+
+    // Viewport resize listener
+    if (typeof window !== 'undefined') {
+      fromEvent(window, 'resize')
+        .pipe(debounceTime(100), startWith(null), takeUntil(this.destroy$))
+        .subscribe(() => {
+          this.windowWidth.set(window.innerWidth);
+          this.windowHeight.set(window.innerHeight);
+        });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   goBack(): void {
