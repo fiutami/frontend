@@ -1,14 +1,135 @@
-<div class="section-page">
-  <header class="section-header">
+<div class="lost-pets-page">
+  <header class="page-header">
     <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1>Animali Smarriti</h1>
   </header>
-  <main class="section-content">
-    <div class="empty-state">
-      <span class="icon">{{ icon }}</span>
-      <p>{{ emptyMessage }}</p>
-    </div>
+
+  <main class="page-content">
+    @if (isLoading()) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Caricamento...</p>
+      </div>
+    } @else if (hasError()) {
+      <div class="error-state">
+        <span class="material-icons">error_outline</span>
+        <p>Errore nel caricamento</p>
+        <button class="retry-btn" (click)="loadLostPets()">Riprova</button>
+      </div>
+    } @else if (lostPets().length === 0) {
+      <div class="empty-state">
+        <span class="material-icons">search_off</span>
+        <p>Nessun animale segnalato</p>
+      </div>
+    } @else {
+      <div class="pets-list">
+        @for (pet of lostPets(); track pet.id) {
+          <article class="pet-card" [class.searching]="pet.status === 'searching'">
+            <div class="pet-image">
+              <img [src]="pet.imageUrl" [alt]="pet.name" loading="lazy">
+              <span class="status-badge" [class]="pet.status">
+                {{ getStatusLabel(pet.status) }}
+              </span>
+            </div>
+            <div class="pet-info">
+              <div class="pet-header">
+                <h3>{{ pet.name }}</h3>
+                <span class="species-icon material-icons">{{ getSpeciesIcon(pet.species) }}</span>
+              </div>
+              <p class="pet-breed">{{ pet.breed || pet.species }}</p>
+              <div class="pet-details">
+                <div class="detail">
+                  <span class="material-icons">palette</span>
+                  <span>{{ pet.color }}</span>
+                </div>
+                <div class="detail">
+                  <span class="material-icons">straighten</span>
+                  <span>{{ pet.size === 'small' ? 'Piccolo' : pet.size === 'medium' ? 'Medio' : 'Grande' }}</span>
+                </div>
+              </div>
+              <div class="last-seen">
+                <span class="material-icons">location_on</span>
+                <div class="location-info">
+                  <span class="location">{{ pet.lastSeenLocation }}</span>
+                  <span class="time">{{ formatLastSeen(pet.lastSeenDate) }}</span>
+                </div>
+              </div>
+              <p class="pet-description">{{ pet.description }}</p>
+              <div class="pet-contact">
+                <span class="owner">{{ pet.ownerName }}</span>
+              </div>
+              <div class="pet-actions">
+                <button class="action-btn call" (click)="callOwner(pet.ownerPhone)">
+                  <span class="material-icons">phone</span>
+                  Chiama
+                </button>
+                <button class="action-btn report" (click)="openSightingModal(pet)">
+                  <span class="material-icons">visibility</span>
+                  Segnala avvistamento
+                </button>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    }
   </main>
+
+  @if (showSightingModal()) {
+    <div class="modal-overlay" (click)="closeSightingModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <header class="modal-header">
+          <h2>Segnala avvistamento</h2>
+          <button class="close-btn" (click)="closeSightingModal()">
+            <span class="material-icons">close</span>
+          </button>
+        </header>
+        @if (selectedPet(); as pet) {
+          <div class="modal-body">
+            <div class="pet-summary">
+              <img [src]="pet.imageUrl" [alt]="pet.name">
+              <span>{{ pet.name }}</span>
+            </div>
+            <div class="form-group">
+              <label for="location">Dove l'hai visto?</label>
+              <input
+                id="location"
+                type="text"
+                [ngModel]="sightingLocation()"
+                (ngModelChange)="sightingLocation.set($event)"
+                placeholder="es. Via Roma 10, Milano"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label for="notes">Note aggiuntive (opzionale)</label>
+              <textarea
+                id="notes"
+                [ngModel]="sightingNotes()"
+                (ngModelChange)="sightingNotes.set($event)"
+                placeholder="Descrivi le condizioni, la direzione, ecc."
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+          <footer class="modal-footer">
+            <button class="cancel-btn" (click)="closeSightingModal()">Annulla</button>
+            <button
+              class="submit-btn"
+              (click)="submitSighting()"
+              [disabled]="!sightingLocation() || isSubmitting()"
+            >
+              @if (isSubmitting()) {
+                <span class="btn-spinner"></span>
+              } @else {
+                Invia segnalazione
+              }
+            </button>
+          </footer>
+        }
+      </div>
+    </div>
+  }
 </div>

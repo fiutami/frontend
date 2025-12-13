@@ -1,14 +1,95 @@
-<div class="section-page">
-  <header class="section-header">
+<div class="subscriptions-page">
+  <header class="page-header">
     <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1>Abbonamenti</h1>
   </header>
-  <main class="section-content">
-    <div class="empty-state">
-      <span class="icon">{{ icon }}</span>
-      <p>{{ emptyMessage }}</p>
-    </div>
+
+  <main class="page-content">
+    @if (isLoading()) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Caricamento piani...</p>
+      </div>
+    } @else if (hasError()) {
+      <div class="error-state">
+        <span class="material-icons">error_outline</span>
+        <p>Errore nel caricamento</p>
+        <button class="retry-btn" (click)="loadData()">Riprova</button>
+      </div>
+    } @else {
+      <div class="billing-toggle">
+        <span [class.active]="!isYearly()">Mensile</span>
+        <button class="toggle-switch" (click)="toggleBillingCycle()" [class.yearly]="isYearly()">
+          <span class="toggle-knob"></span>
+        </button>
+        <span [class.active]="isYearly()">
+          Annuale
+          <span class="discount-badge">-33%</span>
+        </span>
+      </div>
+
+      <div class="plans-list">
+        @for (plan of plans(); track plan.id) {
+          <article
+            class="plan-card"
+            [class.highlighted]="plan.highlighted"
+            [class.current]="isCurrentPlan(plan.id)"
+          >
+            @if (plan.badge) {
+              <span class="plan-badge">{{ plan.badge }}</span>
+            }
+
+            <div class="plan-header" [style.background]="getPlanGradient(plan.tier)">
+              <h2>{{ plan.name }}</h2>
+              <p class="plan-description">{{ plan.description }}</p>
+            </div>
+
+            <div class="plan-pricing">
+              <span class="price">{{ getPrice(plan) }}</span>
+              @if (plan.monthlyPrice > 0) {
+                <span class="period">{{ getPeriod() }}</span>
+              }
+            </div>
+
+            @if (isYearly() && plan.yearlyDiscount > 0) {
+              <p class="yearly-savings">
+                Risparmi {{ plan.yearlyDiscount }}% con il piano annuale
+              </p>
+            }
+
+            <ul class="features-list">
+              @for (feature of plan.features; track feature.text) {
+                <li [class.included]="feature.included" [class.excluded]="!feature.included">
+                  <span class="material-icons">
+                    {{ feature.included ? 'check_circle' : 'cancel' }}
+                  </span>
+                  {{ feature.text }}
+                </li>
+              }
+            </ul>
+
+            <button
+              class="subscribe-btn"
+              [class.current]="isCurrentPlan(plan.id)"
+              [disabled]="isCurrentPlan(plan.id) || plan.monthlyPrice === 0 || isSubscribing()"
+              (click)="subscribe(plan)"
+            >
+              @if (isSubscribing() && subscribingPlanId() === plan.id) {
+                <span class="btn-spinner"></span>
+              } @else {
+                {{ getButtonText(plan) }}
+              }
+            </button>
+          </article>
+        }
+      </div>
+
+      <div class="footer-info">
+        <p>Puoi annullare il tuo abbonamento in qualsiasi momento.</p>
+        <p>I pagamenti sono gestiti in modo sicuro.</p>
+      </div>
+    }
   </main>
 </div>
