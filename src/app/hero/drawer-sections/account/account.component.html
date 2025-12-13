@@ -1,0 +1,214 @@
+<div class="account-page">
+  <!-- Header -->
+  <header class="account-header">
+    <button
+      class="account-header__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+      type="button">
+      <span class="material-icons">arrow_back</span>
+    </button>
+    <h1 class="account-header__title">{{ title }}</h1>
+  </header>
+
+  <!-- Content -->
+  <main class="account-content">
+    <!-- Loading State -->
+    @if (isLoading()) {
+      <div class="account-loading">
+        <div class="account-loading__spinner"></div>
+        <p class="account-loading__text">Caricamento dati account...</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @else if (hasError()) {
+      <div class="account-error">
+        <span class="material-icons account-error__icon">error_outline</span>
+        <p class="account-error__text">Si è verificato un errore nel caricamento</p>
+        <button class="account-error__retry" (click)="retry()" type="button">
+          Riprova
+        </button>
+      </div>
+    }
+
+    <!-- Account Content -->
+    @else {
+      <!-- Account Overview Section -->
+      <section class="account-section">
+        <h2 class="account-section__title">
+          <span class="material-icons">person</span>
+          Panoramica Account
+        </h2>
+
+        <div class="account-info-grid">
+          <div class="account-info-item">
+            <span class="account-info-item__label">Email</span>
+            <span class="account-info-item__value">{{ user()?.email }}</span>
+          </div>
+          <div class="account-info-item">
+            <span class="account-info-item__label">Tipo Account</span>
+            <span class="account-info-item__value">{{ getAccountType() }}</span>
+          </div>
+          <div class="account-info-item">
+            <span class="account-info-item__label">Data Registrazione</span>
+            <span class="account-info-item__value">{{ formatDate(user()?.createdAt) }}</span>
+          </div>
+          <div class="account-info-item">
+            <span class="account-info-item__label">Stato Account</span>
+            <span class="account-info-item__value account-info-item__value--active">
+              <span class="account-status-dot"></span>
+              Attivo
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Data Management Section -->
+      <section class="account-section">
+        <h2 class="account-section__title">
+          <span class="material-icons">download</span>
+          Gestione Dati
+        </h2>
+
+        <p class="account-section__desc">
+          In conformità con il GDPR, puoi esportare tutti i tuoi dati personali in qualsiasi momento.
+        </p>
+
+        <button
+          type="button"
+          class="account-btn account-btn--outline"
+          (click)="openExportModal()">
+          <span class="material-icons">file_download</span>
+          Esporta i miei dati
+        </button>
+      </section>
+
+      <!-- Danger Zone Section -->
+      <section class="account-section account-section--danger">
+        <h2 class="account-section__title account-section__title--danger">
+          <span class="material-icons">warning</span>
+          Zona Pericolosa
+        </h2>
+
+        <div class="account-danger-box">
+          <div class="account-danger-info">
+            <strong>Elimina Account</strong>
+            <p>
+              Una volta eliminato, il tuo account e tutti i dati associati verranno rimossi permanentemente
+              dopo un periodo di grazia di 30 giorni.
+            </p>
+          </div>
+          <button
+            type="button"
+            class="account-btn account-btn--danger"
+            (click)="openDeleteConfirm()">
+            Elimina Account
+          </button>
+        </div>
+      </section>
+    }
+  </main>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs"></app-bottom-tab-bar>
+</div>
+
+<!-- Delete Confirmation Modal -->
+@if (showDeleteConfirm()) {
+  <div class="modal-overlay" (click)="closeDeleteConfirm()">
+    <div class="modal" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+      <div class="modal__header">
+        <h3 class="modal__title">Conferma Eliminazione Account</h3>
+        <button type="button" class="modal__close" (click)="closeDeleteConfirm()" aria-label="Chiudi">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+
+      <div class="modal__body">
+        <div class="modal__warning">
+          <span class="material-icons">warning</span>
+        </div>
+
+        <p class="modal__text">
+          Stai per richiedere l'eliminazione del tuo account. Questa azione avvierà un periodo di grazia di 30 giorni.
+        </p>
+
+        <div class="modal__confirm-input">
+          <label for="deleteConfirmInput">
+            Per confermare, digita <strong>elimina</strong>:
+          </label>
+          <input
+            id="deleteConfirmInput"
+            type="text"
+            [value]="deleteConfirmText()"
+            (input)="updateDeleteConfirmText($event)"
+            placeholder="elimina"
+            class="modal__input"
+            autocomplete="off"
+          >
+        </div>
+
+        @if (deleteError()) {
+          <div class="modal__error">{{ deleteError() }}</div>
+        }
+      </div>
+
+      <div class="modal__footer">
+        <button type="button" class="account-btn account-btn--ghost" (click)="closeDeleteConfirm()">
+          Annulla
+        </button>
+        <button
+          type="button"
+          class="account-btn account-btn--danger"
+          [disabled]="!canDelete || isDeleting()"
+          (click)="confirmDelete()">
+          {{ isDeleting() ? 'Eliminazione...' : 'Elimina' }}
+        </button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Export Data Modal -->
+@if (showExportModal()) {
+  <div class="modal-overlay" (click)="closeExportModal()">
+    <div class="modal modal--small" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+      <div class="modal__header">
+        <h3 class="modal__title">Esporta Dati</h3>
+        <button type="button" class="modal__close" (click)="closeExportModal()" aria-label="Chiudi">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+
+      <div class="modal__body">
+        @if (!exportSuccess()) {
+          <div class="modal__icon">
+            <span class="material-icons">file_download</span>
+          </div>
+          <p class="modal__text">Esporteremo tutti i tuoi dati personali in formato JSON.</p>
+        } @else {
+          <div class="modal__success">
+            <span class="material-icons">check_circle</span>
+          </div>
+          <p class="modal__text modal__text--success">Dati esportati con successo!</p>
+        }
+      </div>
+
+      <div class="modal__footer">
+        @if (!exportSuccess()) {
+          <button type="button" class="account-btn account-btn--ghost" (click)="closeExportModal()">Annulla</button>
+          <button
+            type="button"
+            class="account-btn account-btn--primary"
+            [disabled]="isExporting()"
+            (click)="exportData()">
+            {{ isExporting() ? 'Esportazione...' : 'Esporta' }}
+          </button>
+        } @else {
+          <button type="button" class="account-btn account-btn--primary" (click)="closeExportModal()">Chiudi</button>
+        }
+      </div>
+    </div>
+  </div>
+}

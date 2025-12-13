@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 /**
  * PetRegisterComponent - Pet Registration Menu Page
@@ -16,6 +17,9 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PetRegisterComponent {
+  private readonly router = inject(Router);
+  private readonly location = inject(Location);
+
   /** Page description text */
   readonly description = 'Completa queste informazioni per registrare il tuo animale e personalizzare Fiutami';
 
@@ -30,13 +34,12 @@ export class PetRegisterComponent {
     { id: 'wellness', label: 'Guida al Benessere', route: '/home/pet-register/wellness', icon: 'paw' as const }
   ];
 
-  constructor(private router: Router) {}
-
   /**
-   * Navigate back to welcome-ai page
+   * Navigate back using browser history
+   * Works for both onboarding flow and drawer menu access
    */
   onBack(): void {
-    this.router.navigate(['/home/welcome-ai']);
+    this.location.back();
   }
 
   /**
