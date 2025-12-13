@@ -1,14 +1,106 @@
-<div class="section-page">
-  <header class="section-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+<div class="saved-page">
+  <!-- Header -->
+  <header class="saved-header">
+    <button
+      class="saved-header__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+      type="button">
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1 class="saved-header__title">
+      {{ title }}
+      @if (savedCount() > 0) {
+        <span class="saved-header__badge">{{ savedCount() }}</span>
+      }
+    </h1>
   </header>
-  <main class="section-content">
-    <div class="empty-state">
-      <span class="icon">{{ icon }}</span>
-      <p>{{ emptyMessage }}</p>
-    </div>
+
+  <!-- Tab Bar -->
+  <nav class="saved-tabs" role="tablist">
+    @for (tab of tabOptions; track tab.id) {
+      <button
+        class="saved-tabs__item"
+        [class.saved-tabs__item--active]="activeTab() === tab.id"
+        (click)="selectTab(tab.id)"
+        [attr.aria-selected]="activeTab() === tab.id"
+        role="tab"
+        type="button">
+        <span class="material-icons saved-tabs__icon">{{ tab.icon }}</span>
+        <span class="saved-tabs__label">{{ tab.label }}</span>
+      </button>
+    }
+  </nav>
+
+  <!-- Content -->
+  <main class="saved-content">
+    <!-- Loading State -->
+    @if (isLoading()) {
+      <div class="saved-loading">
+        <div class="saved-loading__spinner"></div>
+        <p class="saved-loading__text">Caricamento preferiti...</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @else if (hasError()) {
+      <div class="saved-error">
+        <span class="material-icons saved-error__icon">error_outline</span>
+        <p class="saved-error__text">Si è verificato un errore</p>
+        <button class="saved-error__retry" (click)="retry()" type="button">
+          Riprova
+        </button>
+      </div>
+    }
+
+    <!-- Empty State -->
+    @else if (savedItems().length === 0) {
+      <div class="saved-empty">
+        <span class="material-icons saved-empty__icon">bookmark_border</span>
+        <p class="saved-empty__text">Nessun preferito</p>
+        <p class="saved-empty__subtext">Gli elementi salvati appariranno qui</p>
+      </div>
+    }
+
+    <!-- Saved Items List -->
+    @else {
+      <ul class="saved-list" role="list">
+        @for (item of savedItems(); track item.id) {
+          <li
+            class="saved-item"
+            [class]="getItemTypeClass(item.type)"
+            (click)="onItemClick(item)"
+            role="button"
+            tabindex="0"
+            (keydown.enter)="onItemClick(item)"
+            (keydown.space)="onItemClick(item)">
+            <div class="saved-item__image">
+              @if (item.imageUrl) {
+                <img [src]="item.imageUrl" [alt]="item.title" />
+              } @else {
+                <span class="material-icons">{{ item.icon }}</span>
+              }
+            </div>
+            <div class="saved-item__content">
+              <h3 class="saved-item__title">{{ item.title }}</h3>
+              <p class="saved-item__subtitle">{{ item.subtitle }}</p>
+              <time class="saved-item__time" [attr.datetime]="item.timestamp.toISOString()">
+                Salvato {{ formatTime(item.timestamp) }}
+              </time>
+            </div>
+            <button
+              class="saved-item__remove"
+              (click)="onRemoveItem($event, item)"
+              type="button"
+              aria-label="Rimuovi dai preferiti">
+              <span class="material-icons">bookmark_remove</span>
+            </button>
+          </li>
+        }
+      </ul>
+    }
   </main>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs"></app-bottom-tab-bar>
 </div>

@@ -1,14 +1,67 @@
-<div class="section-page">
-  <header class="section-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+<div class="activity-page">
+  <!-- Header -->
+  <header class="activity-header">
+    <button
+      class="activity-header__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+      type="button">
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1 class="activity-header__title">{{ title }}</h1>
   </header>
-  <main class="section-content">
-    <div class="empty-state">
-      <span class="icon">{{ icon }}</span>
-      <p>{{ emptyMessage }}</p>
-    </div>
+
+  <!-- Content -->
+  <main class="activity-content">
+    <!-- Loading State -->
+    @if (isLoading()) {
+      <div class="activity-loading">
+        <div class="activity-loading__spinner"></div>
+        <p class="activity-loading__text">Caricamento attività...</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @else if (hasError()) {
+      <div class="activity-error">
+        <span class="material-icons activity-error__icon">error_outline</span>
+        <p class="activity-error__text">Si è verificato un errore</p>
+        <button class="activity-error__retry" (click)="retry()" type="button">
+          Riprova
+        </button>
+      </div>
+    }
+
+    <!-- Empty State -->
+    @else if (activities().length === 0) {
+      <div class="activity-empty">
+        <span class="material-icons activity-empty__icon">history</span>
+        <p class="activity-empty__text">Nessuna attività recente</p>
+        <p class="activity-empty__subtext">Le tue attività appariranno qui</p>
+      </div>
+    }
+
+    <!-- Activities List -->
+    @else {
+      <ul class="activity-list" role="list">
+        @for (activity of activities(); track activity.id) {
+          <li class="activity-item" [class]="getActivityTypeClass(activity.type)">
+            <div class="activity-item__icon">
+              <span class="material-icons">{{ activity.icon }}</span>
+            </div>
+            <div class="activity-item__content">
+              <h3 class="activity-item__title">{{ activity.title }}</h3>
+              <p class="activity-item__description">{{ activity.description }}</p>
+              <time class="activity-item__time" [attr.datetime]="activity.timestamp.toISOString()">
+                {{ formatTime(activity.timestamp) }}
+              </time>
+            </div>
+          </li>
+        }
+      </ul>
+    }
   </main>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs"></app-bottom-tab-bar>
 </div>
