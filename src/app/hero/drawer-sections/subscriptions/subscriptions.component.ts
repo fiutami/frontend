@@ -1,20 +1,125 @@
-import { Component } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, OnInit, inject, ChangeDetectionStrategy, signal, computed } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
+import { SubscriptionsService, SubscriptionPlan, UserSubscription } from '../../../core/services/subscriptions.service';
+import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
 
 @Component({
   selector: 'app-subscriptions',
   standalone: true,
+  imports: [CommonModule, BottomTabBarComponent],
   templateUrl: './subscriptions.component.html',
-  styleUrls: ['./subscriptions.component.scss']
+  styleUrls: ['./subscriptions.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SubscriptionsComponent {
-  title = 'Abbonamenti';
-  icon = '⭐';
-  emptyMessage = 'Piano Free attivo';
+export class SubscriptionsComponent implements OnInit {
+  private readonly location = inject(Location);
+  private readonly subscriptionsService = inject(SubscriptionsService);
 
-  constructor(private location: Location) {}
+  readonly plans = signal<SubscriptionPlan[]>([]);
+  readonly currentSubscription = signal<UserSubscription | null>(null);
+  readonly isLoading = signal(true);
+  readonly hasError = signal(false);
+  readonly billingCycle = signal<'monthly' | 'yearly'>('monthly');
+  readonly isSubscribing = signal(false);
+  readonly subscribingPlanId = signal<string | null>(null);
+
+  readonly isYearly = computed(() => this.billingCycle() === 'yearly');
+
+  // Bottom tab bar config
+  tabs: TabItem[] = [
+    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
+    { id: 'calendar', icon: 'calendar_today', route: '/home/calendar', label: 'Calendario' },
+    { id: 'location', icon: 'place', route: '/home/map', label: 'Mappa' },
+    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
+    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
+  ];
+
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(): void {
+    this.isLoading.set(true);
+    this.hasError.set(false);
+
+    this.subscriptionsService.getPlans().subscribe({
+      next: (plans) => {
+        this.plans.set(plans);
+        this.loadCurrentSubscription();
+      },
+      error: () => {
+        this.hasError.set(true);
+        this.isLoading.set(false);
+      }
+    });
+  }
+
+  private loadCurrentSubscription(): void {
+    this.subscriptionsService.getCurrentSubscription().subscribe({
+      next: (sub) => {
+        this.currentSubscription.set(sub);
+        this.billingCycle.set(sub.billingCycle);
+        this.isLoading.set(false);
+      },
+      error: () => {
+        this.isLoading.set(false);
+      }
+    });
+  }
 
   goBack(): void {
     this.location.back();
+  }
+
+  toggleBillingCycle(): void {
+    this.billingCycle.update(cycle =>
+      cycle === 'monthly' ? 'yearly' : 'monthly'
+    );
+  }
+
+  getPrice(plan: SubscriptionPlan): string {
+    const price = this.isYearly() ? plan.yearlyPrice : plan.monthlyPrice;
+    return this.subscriptionsService.formatPrice(price);
+  }
+
+  getPeriod(): string {
+    return this.isYearly() ? '/anno' : '/mese';
+  }
+
+  getPlanGradient(tier: SubscriptionPlan['tier']): string {
+    return this.subscriptionsService.getPlanGradient(tier);
+  }
+
+  isCurrentPlan(planId: string): boolean {
+    return this.currentSubscription()?.planId === planId;
+  }
+
+  subscribe(plan: SubscriptionPlan): void {
+    if (this.isCurrentPlan(plan.id) || plan.monthlyPrice === 0) return;
+
+    this.isSubscribing.set(true);
+    this.subscribingPlanId.set(plan.id);
+
+    this.subscriptionsService.subscribe(plan.id, this.billingCycle()).subscribe({
+      next: () => {
+        this.currentSubscription.update(sub => ({
+          ...sub!,
+          planId: plan.id,
+          billingCycle: this.billingCycle()
+        }));
+        this.isSubscribing.set(false);
+        this.subscribingPlanId.set(null);
+      },
+      error: () => {
+        this.isSubscribing.set(false);
+        this.subscribingPlanId.set(null);
+      }
+    });
+  }
+
+  getButtonText(plan: SubscriptionPlan): string {
+    if (this.isCurrentPlan(plan.id)) return 'Piano attuale';
+    if (plan.monthlyPrice === 0) return 'Piano attuale';
+    return 'Abbonati';
   }
 }

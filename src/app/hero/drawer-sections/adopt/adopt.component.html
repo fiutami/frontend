@@ -1,14 +1,104 @@
-<div class="section-page">
-  <header class="section-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+<div class="adopt-page">
+  <header class="adopt-header">
+    <button class="adopt-header__back" (click)="goBack()" aria-label="Torna indietro">
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1 class="adopt-header__title">Adottare</h1>
   </header>
-  <main class="section-content">
-    <div class="empty-state">
-      <span class="icon">{{ icon }}</span>
-      <p>{{ emptyMessage }}</p>
-    </div>
+
+  <main class="adopt-content">
+    <!-- Loading State -->
+    @if (isLoading()) {
+      <div class="adopt-loading">
+        <div class="adopt-loading__spinner"></div>
+        <p class="adopt-loading__text">Caricamento annunci...</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @if (hasError() && !isLoading()) {
+      <div class="adopt-error">
+        <span class="material-icons adopt-error__icon">error_outline</span>
+        <p class="adopt-error__text">Errore nel caricamento degli annunci</p>
+        <button class="adopt-error__retry" (click)="retry()">Riprova</button>
+      </div>
+    }
+
+    <!-- Empty State -->
+    @if (!isLoading() && !hasError() && adoptionAds().length === 0) {
+      <div class="adopt-empty">
+        <span class="material-icons adopt-empty__icon">pets</span>
+        <p class="adopt-empty__text">Nessun annuncio disponibile</p>
+        <p class="adopt-empty__subtext">Torna più tardi per nuovi annunci</p>
+      </div>
+    }
+
+    <!-- Adoption Ads List -->
+    @if (!isLoading() && !hasError() && adoptionAds().length > 0) {
+      <ul class="adopt-list" role="list">
+        @for (ad of adoptionAds(); track ad.id) {
+          <li class="adopt-card" (click)="viewDetails(ad)">
+            <div class="adopt-card__image">
+              @if (ad.imageUrl) {
+                <img [src]="ad.imageUrl" [alt]="ad.petName" />
+              } @else {
+                <span class="adopt-card__placeholder">{{ getPetTypeIcon(ad.petType) }}</span>
+              }
+              <span class="adopt-card__status" [class]="getStatusClass(ad.status)">
+                {{ getStatusLabel(ad.status) }}
+              </span>
+              @if (ad.isUrgent) {
+                <span class="adopt-card__urgent-badge">Urgente</span>
+              }
+            </div>
+            <div class="adopt-card__content">
+              <div class="adopt-card__header">
+                <h3 class="adopt-card__name">{{ ad.petName }}</h3>
+                <span class="adopt-card__type">
+                  <span class="material-icons">{{ getPetTypeIcon(ad.petType) }}</span>
+                  {{ ad.breed }}
+                </span>
+              </div>
+              <div class="adopt-card__info">
+                <span class="adopt-card__age">
+                  <span class="material-icons">cake</span>
+                  {{ ad.age }}
+                </span>
+                <span class="adopt-card__gender">
+                  <span class="material-icons">{{ ad.gender === 'male' ? 'male' : 'female' }}</span>
+                  {{ ad.gender === 'male' ? 'Maschio' : 'Femmina' }}
+                </span>
+              </div>
+              <p class="adopt-card__description">{{ ad.description }}</p>
+              <div class="adopt-card__location">
+                <span class="material-icons">location_on</span>
+                {{ ad.location }}
+              </div>
+              @if (ad.shelterName) {
+                <div class="adopt-card__shelter">
+                  <span class="material-icons">home</span>
+                  {{ ad.shelterName }}
+                </div>
+              }
+              <div class="adopt-card__meta">
+                <span class="adopt-card__time">{{ formatRelativeTime(ad.publishedAt) }}</span>
+              </div>
+              <div class="adopt-card__actions">
+                <button class="adopt-card__action adopt-card__action--contact" (click)="contactOwner(ad); $event.stopPropagation()">
+                  <span class="material-icons">chat</span>
+                  Contatta
+                </button>
+                <button class="adopt-card__action adopt-card__action--details" (click)="viewDetails(ad); $event.stopPropagation()">
+                  <span class="material-icons">info</span>
+                  Dettagli
+                </button>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+    }
   </main>
+
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'"></app-bottom-tab-bar>
 </div>

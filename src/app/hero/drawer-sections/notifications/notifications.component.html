@@ -1,14 +1,108 @@
-<div class="section-page">
-  <header class="section-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+<div class="notifications-page">
+  <!-- Header -->
+  <header class="notifications-header">
+    <button
+      class="notifications-header__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+      type="button">
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1 class="notifications-header__title">
+      {{ title }}
+      @if (unreadCount() > 0) {
+        <span class="notifications-header__badge">{{ unreadCount() }}</span>
+      }
+    </h1>
+    @if (unreadCount() > 0) {
+      <button
+        class="notifications-header__action"
+        (click)="markAllAsRead()"
+        type="button"
+        aria-label="Segna tutte come lette">
+        <span class="material-icons">done_all</span>
+      </button>
+    }
   </header>
-  <main class="section-content">
-    <div class="empty-state">
-      <span class="icon">{{ icon }}</span>
-      <p>{{ emptyMessage }}</p>
-    </div>
+
+  <!-- Tab Bar -->
+  <nav class="notifications-tabs" role="tablist">
+    @for (tab of tabOptions; track tab.id) {
+      <button
+        class="notifications-tabs__item"
+        [class.notifications-tabs__item--active]="activeTab() === tab.id"
+        (click)="selectTab(tab.id)"
+        [attr.aria-selected]="activeTab() === tab.id"
+        role="tab"
+        type="button">
+        <span class="material-icons notifications-tabs__icon">{{ tab.icon }}</span>
+        <span class="notifications-tabs__label">{{ tab.label }}</span>
+      </button>
+    }
+  </nav>
+
+  <!-- Content -->
+  <main class="notifications-content">
+    <!-- Loading State -->
+    @if (isLoading()) {
+      <div class="notifications-loading">
+        <div class="notifications-loading__spinner"></div>
+        <p class="notifications-loading__text">Caricamento notifiche...</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @else if (hasError()) {
+      <div class="notifications-error">
+        <span class="material-icons notifications-error__icon">error_outline</span>
+        <p class="notifications-error__text">Si è verificato un errore</p>
+        <button class="notifications-error__retry" (click)="retry()" type="button">
+          Riprova
+        </button>
+      </div>
+    }
+
+    <!-- Empty State -->
+    @else if (notifications().length === 0) {
+      <div class="notifications-empty">
+        <span class="material-icons notifications-empty__icon">notifications_off</span>
+        <p class="notifications-empty__text">Nessuna notifica</p>
+        <p class="notifications-empty__subtext">Le nuove notifiche appariranno qui</p>
+      </div>
+    }
+
+    <!-- Notifications List -->
+    @else {
+      <ul class="notifications-list" role="list">
+        @for (notification of notifications(); track notification.id) {
+          <li
+            class="notification-item"
+            [class]="getNotificationTypeClass(notification.type)"
+            [class.notification-item--unread]="!notification.isRead"
+            (click)="onNotificationClick(notification)"
+            role="button"
+            tabindex="0"
+            (keydown.enter)="onNotificationClick(notification)"
+            (keydown.space)="onNotificationClick(notification)">
+            <div class="notification-item__icon">
+              <span class="material-icons">{{ notification.icon }}</span>
+            </div>
+            <div class="notification-item__content">
+              <h3 class="notification-item__title">{{ notification.title }}</h3>
+              <p class="notification-item__message">{{ notification.message }}</p>
+              <time class="notification-item__time" [attr.datetime]="notification.timestamp.toISOString()">
+                {{ formatTime(notification.timestamp) }}
+              </time>
+            </div>
+            @if (!notification.isRead) {
+              <span class="notification-item__dot" aria-label="Non letta"></span>
+            }
+          </li>
+        }
+      </ul>
+    }
   </main>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs"></app-bottom-tab-bar>
 </div>

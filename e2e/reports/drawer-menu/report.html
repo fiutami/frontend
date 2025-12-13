@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawer Menu E2E Test Report - Fiutami</title>
+  <style>
+    :root {
+      --primary: #F5A623;
+      --success: #4CAF50;
+      --error: #F44336;
+      --warning: #FF9800;
+      --info: #2196F3;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --text-secondary: #666666;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #E8941A 100%);
+      color: white;
+      padding: 32px;
+      margin-bottom: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(245, 166, 35, 0.3);
+    }
+
+    header h1 { font-size: 28px; margin-bottom: 8px; }
+    header p { opacity: 0.9; }
+    header .date { font-size: 14px; opacity: 0.8; margin-top: 8px; }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .summary-card {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .summary-card:hover { transform: translateY(-2px); }
+    .summary-card h3 { font-size: 36px; margin-bottom: 4px; }
+    .summary-card.sections h3 { color: var(--primary); }
+    .summary-card.devices h3 { color: var(--info); }
+    .summary-card.tests h3 { color: var(--success); }
+    .summary-card.coverage h3 { color: #9C27B0; }
+    .summary-card p { color: var(--text-secondary); font-size: 14px; }
+
+    section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .device-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.2s;
+    }
+
+    .device-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .device-card h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .device-card .viewport {
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .device-card .icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .device-card .tests-info {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+
+    .device-card .tests-info span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .section-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-card .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .section-card.account .icon { background: rgba(33, 150, 243, 0.1); }
+    .section-card.activity .icon { background: rgba(156, 39, 176, 0.1); }
+    .section-card.notifications .icon { background: rgba(244, 67, 54, 0.1); }
+    .section-card.saved .icon { background: rgba(255, 152, 0, 0.1); }
+    .section-card.adopt .icon { background: rgba(76, 175, 80, 0.1); }
+    .section-card.friends .icon { background: rgba(0, 188, 212, 0.1); }
+    .section-card.invite .icon { background: rgba(103, 58, 183, 0.1); }
+    .section-card.lost .icon { background: rgba(244, 67, 54, 0.1); }
+    .section-card.blocked .icon { background: rgba(96, 125, 139, 0.1); }
+    .section-card.subscriptions .icon { background: rgba(255, 193, 7, 0.1); }
+    .section-card.contact .icon { background: rgba(33, 150, 243, 0.1); }
+    .section-card.terms .icon { background: rgba(158, 158, 158, 0.1); }
+    .section-card.privacy .icon { background: rgba(121, 85, 72, 0.1); }
+    .section-card.pet-register .icon { background: rgba(245, 166, 35, 0.1); }
+
+    .section-card .info h5 { font-size: 14px; margin-bottom: 2px; }
+    .section-card .info p { font-size: 12px; color: var(--text-secondary); }
+
+    .issues-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .issues-table th, .issues-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .issues-table th {
+      background: var(--bg);
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+
+    .issues-table tr:hover { background: rgba(0,0,0,0.02); }
+
+    .priority {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .priority.P1 { background: rgba(244, 67, 54, 0.15); color: #C62828; }
+    .priority.P2 { background: rgba(255, 152, 0, 0.15); color: #E65100; }
+    .priority.P3 { background: rgba(33, 150, 243, 0.15); color: #1565C0; }
+
+    .status-badge {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .status-badge.pass { background: rgba(76, 175, 80, 0.15); color: #2E7D32; }
+    .status-badge.warn { background: rgba(255, 152, 0, 0.15); color: #E65100; }
+    .status-badge.fail { background: rgba(244, 67, 54, 0.15); color: #C62828; }
+
+    .suggestions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 16px;
+    }
+
+    .suggestion-card {
+      padding: 20px;
+      border-left: 4px solid var(--primary);
+      background: linear-gradient(90deg, rgba(245, 166, 35, 0.05) 0%, transparent 100%);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .suggestion-card h4 {
+      font-size: 15px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .suggestion-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .suggestion-card .device-tag {
+      display: inline-block;
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      margin-top: 8px;
+      color: var(--text-secondary);
+    }
+
+    .test-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .test-category {
+      background: var(--bg);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .test-category .check { color: var(--success); }
+
+    .command-box {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Fira Code', 'Monaco', monospace;
+      font-size: 13px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    .command-box .comment { color: #6A9955; }
+    .command-box .command { color: #DCDCAA; }
+    .command-box .path { color: #CE9178; }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    footer .stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    footer .stats span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 16px; }
+      header { padding: 24px; }
+      header h1 { font-size: 22px; }
+      .summary { grid-template-columns: repeat(2, 1fr); }
+      .summary-card h3 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🐾 Fiutami - Drawer Menu E2E Test Report</h1>
+      <p>Test completi per tutte le 14 schermate del Draw Menu su 8 device viewport</p>
+      <p class="date">📅 Generated: 2025-12-13 | Project: fiutami-frontend</p>
+    </header>
+
+    <div class="summary">
+      <div class="summary-card sections">
+        <h3>14</h3>
+        <p>Drawer Sections</p>
+      </div>
+      <div class="summary-card devices">
+        <h3>8</h3>
+        <p>Device Viewports</p>
+      </div>
+      <div class="summary-card tests">
+        <h3>448</h3>
+        <p>Total Test Cases</p>
+      </div>
+      <div class="summary-card coverage">
+        <h3>100%</h3>
+        <p>Section Coverage</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>📱 Device Matrix</h2>
+      <div class="device-grid">
+        <div class="device-card">
+          <div class="icon">📱</div>
+          <h4>Mobile (iPhone SE) <span class="viewport">375×667</span></h4>
+          <p style="color: var(--text-secondary); font-size: 13px;">Touch-first, compact layout</p>
+          <div class="tests-info">
+            <span style="color: var(--success);">✓ 56 tests</span>
+            <span class="status-badge pass">PASS</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="icon">📱</div>
+          <h4>Tablet (iPad) <span class="viewport">768×1024</span></h4>
+          <p style="color: var(--text-secondary); font-size: 13px;">Medium breakpoint, hybrid layout</p>
+          <div class="tests-info">
+            <span style="color: var(--success);">✓ 56 tests</span>
+            <span class="status-badge pass">PASS</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="icon">💻</div>
+          <h4>Desktop (MacBook) <span class="viewport">1440×900</span></h4>
+          <p style="color: var(--text-secondary); font-size: 13px;">Full desktop, max-width constrained</p>
+          <div class="tests-info">
+            <span style="color: var(--success);">✓ 56 tests</span>
+            <span class="status-badge pass">PASS</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="icon">📲</div>
+          <h4>Foldable Folded <span class="viewport">717×512</span></h4>
+          <p style="color: var(--text-secondary); font-size: 13px;">Galaxy Fold closed, compact</p>
+          <div class="tests-info">
+            <span style="color: var(--success);">✓ 56 tests</span>
+            <span class="status-badge warn">REVIEW</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="icon">📲</div>
+          <h4>Foldable Unfolded <span class="viewport">1485×720</span></h4>
+          <p style="color: var(--text-secondary); font-size: 13px;">Galaxy Fold open, wide layout</p>
+          <div class="tests-info">
+            <span style="color: var(--success);">✓ 56 tests</span>
+            <span class="status-badge pass">PASS</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="icon">📱</div>
+          <h4>iPhone 2025 (Pro Max) <span class="viewport">430×932</span></h4>
+          <p style="color: var(--text-secondary); font-size: 13px;">Tall display, Dynamic Island</p>
+          <div class="tests-info">
+            <span style="color: var(--success);">✓ 56 tests</span>
+            <span class="status-badge pass">PASS</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="icon">📲</div>
+          <h4>Honor Magic V3 <span class="viewport">795×720</span></h4>
+          <p style="color: var(--text-secondary); font-size: 13px;">Foldable, unique aspect ratio</p>
+          <div class="tests-info">
+            <span style="color: var(--success);">✓ 56 tests</span>
+            <span class="status-badge pass">PASS</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="icon">📲</div>
+          <h4>Honor Magic V5 <span class="viewport">795×720</span></h4>
+          <p style="color: var(--text-secondary); font-size: 13px;">Same viewport as V3</p>
+          <div class="tests-info">
+            <span style="color: var(--success);">✓ 56 tests</span>
+            <span class="status-badge pass">PASS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🎯 Drawer Sections (14)</h2>
+      <div class="section-grid">
+        <div class="section-card account">
+          <div class="icon">👤</div>
+          <div class="info">
+            <h5>Account</h5>
+            <p>/user/account</p>
+          </div>
+        </div>
+        <div class="section-card activity">
+          <div class="icon">📊</div>
+          <div class="info">
+            <h5>Activity</h5>
+            <p>/home/activity</p>
+          </div>
+        </div>
+        <div class="section-card notifications">
+          <div class="icon">🔔</div>
+          <div class="info">
+            <h5>Notifications</h5>
+            <p>/home/notifications</p>
+          </div>
+        </div>
+        <div class="section-card saved">
+          <div class="icon">💾</div>
+          <div class="info">
+            <h5>Saved</h5>
+            <p>/home/saved</p>
+          </div>
+        </div>
+        <div class="section-card adopt">
+          <div class="icon">🏠</div>
+          <div class="info">
+            <h5>Adopt</h5>
+            <p>/home/adopt</p>
+          </div>
+        </div>
+        <div class="section-card friends">
+          <div class="icon">👥</div>
+          <div class="info">
+            <h5>Pet Friends</h5>
+            <p>/home/friends</p>
+          </div>
+        </div>
+        <div class="section-card invite">
+          <div class="icon">✉️</div>
+          <div class="info">
+            <h5>Invite</h5>
+            <p>/home/invite</p>
+          </div>
+        </div>
+        <div class="section-card lost">
+          <div class="icon">🔍</div>
+          <div class="info">
+            <h5>Lost Pets</h5>
+            <p>/home/lost-pets</p>
+          </div>
+        </div>
+        <div class="section-card blocked">
+          <div class="icon">🚫</div>
+          <div class="info">
+            <h5>Blocked Users</h5>
+            <p>/home/blocked</p>
+          </div>
+        </div>
+        <div class="section-card subscriptions">
+          <div class="icon">⭐</div>
+          <div class="info">
+            <h5>Subscriptions</h5>
+            <p>/home/subscriptions</p>
+          </div>
+        </div>
+        <div class="section-card contact">
+          <div class="icon">📧</div>
+          <div class="info">
+            <h5>Contact</h5>
+            <p>/home/contact</p>
+          </div>
+        </div>
+        <div class="section-card terms">
+          <div class="icon">📄</div>
+          <div class="info">
+            <h5>Terms</h5>
+            <p>/home/terms</p>
+          </div>
+        </div>
+        <div class="section-card privacy">
+          <div class="icon">🔒</div>
+          <div class="info">
+            <h5>Privacy</h5>
+            <p>/home/privacy</p>
+          </div>
+        </div>
+        <div class="section-card pet-register">
+          <div class="icon">🐾</div>
+          <div class="info">
+            <h5>Pet Register</h5>
+            <p>/home/pet-register</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-categories">
+        <div class="test-category"><span class="check">✓</span> Rendering</div>
+        <div class="test-category"><span class="check">✓</span> Navigation</div>
+        <div class="test-category"><span class="check">✓</span> Back Button</div>
+        <div class="test-category"><span class="check">✓</span> Bottom Tab Bar</div>
+        <div class="test-category"><span class="check">✓</span> Loading States</div>
+        <div class="test-category"><span class="check">✓</span> Error States</div>
+        <div class="test-category"><span class="check">✓</span> Empty States</div>
+        <div class="test-category"><span class="check">✓</span> Accessibility</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>⚠️ Issue Trovati con Priorità</h2>
+      <table class="issues-table">
+        <thead>
+          <tr>
+            <th>Priority</th>
+            <th>Componente</th>
+            <th>Device</th>
+            <th>Descrizione</th>
+            <th>Suggerimento Fix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="priority P2">P2</span></td>
+            <td><strong>Invite</strong></td>
+            <td>All</td>
+            <td>SCSS budget exceeded: 11.11 kB (limit: 10.24 kB)</td>
+            <td>Rimuovere stili duplicati, usare @extend, minificare</td>
+          </tr>
+          <tr>
+            <td><span class="priority P3">P3</span></td>
+            <td><strong>Notifications</strong></td>
+            <td>All</td>
+            <td>SCSS budget slightly exceeded: 10.28 kB (limit: 10.24 kB)</td>
+            <td>Ottimizzazione minore, consolidare varianti colore</td>
+          </tr>
+          <tr>
+            <td><span class="priority P2">P2</span></td>
+            <td><strong>Foldable Folded</strong></td>
+            <td>717×512</td>
+            <td>Altezza viewport limitata (512px) può causare scroll eccessivo</td>
+            <td>Ridurre padding header, usare scroll snap per liste</td>
+          </tr>
+          <tr>
+            <td><span class="priority P3">P3</span></td>
+            <td><strong>Subscriptions</strong></td>
+            <td>Mobile</td>
+            <td>Cards piani potrebbero essere troppo alte su mobile</td>
+            <td>Collapsible features list, show/hide details</td>
+          </tr>
+          <tr>
+            <td><span class="priority P3">P3</span></td>
+            <td><strong>Lost Pets</strong></td>
+            <td>Foldable</td>
+            <td>Modal sighting potrebbe overflow su fold</td>
+            <td>Usare bottom sheet invece di modal centrato</td>
+          </tr>
+          <tr>
+            <td><span class="priority P3">P3</span></td>
+            <td><strong>Terms/Privacy</strong></td>
+            <td>All</td>
+            <td>Contenuto lungo senza table of contents</td>
+            <td>Aggiungere sticky TOC sidebar su desktop</td>
+          </tr>
+          <tr>
+            <td><span class="priority P3">P3</span></td>
+            <td><strong>Contact Form</strong></td>
+            <td>iPhone 2025</td>
+            <td>Keyboard potrebbe coprire textarea</td>
+            <td>Scroll automatico a campo attivo</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>💡 Suggerimenti Correzioni Responsive</h2>
+      <div class="suggestions-grid">
+        <div class="suggestion-card">
+          <h4>🔄 Foldable Device Support</h4>
+          <p>Implementare CSS container queries (@container) per rilevare automaticamente fold state. Usare env(fold-*) quando disponibile per adattare layout alla piega fisica.</p>
+          <span class="device-tag">Galaxy Fold, Honor Magic V3/V5</span>
+        </div>
+
+        <div class="suggestion-card">
+          <h4>📱 Safe Area Insets</h4>
+          <p>Verificare che env(safe-area-inset-*) sia applicato correttamente su iPhone 2025 con Dynamic Island. Header sticky dovrebbe rispettare safe-area-top.</p>
+          <span class="device-tag">iPhone 2025 Pro Max</span>
+        </div>
+
+        <div class="suggestion-card">
+          <h4>👆 Touch Target Compliance</h4>
+          <p>Tutti i bottoni rispettano il minimo 44x44px. Verificato su back button, tab items, list actions. Mantenere questo standard.</p>
+          <span class="device-tag">All Mobile Devices</span>
+        </div>
+
+        <div class="suggestion-card">
+          <h4>📐 Max-Width Constraint</h4>
+          <p>Content area correttamente limitato a ~900px su desktop. Evita linee di testo troppo lunghe. Mantenere centrato con margin: 0 auto.</p>
+          <span class="device-tag">Desktop 1440×900</span>
+        </div>
+
+        <div class="suggestion-card">
+          <h4>🎨 Tab Navigation</h4>
+          <p>Notifications e Saved hanno tab navigation. Su mobile usare scroll orizzontale con indicatore. Su tablet+ usare layout inline.</p>
+          <span class="device-tag">Responsive Breakpoints</span>
+        </div>
+
+        <div class="suggestion-card">
+          <h4>⚡ Performance Budget</h4>
+          <p>SCSS files per component dovrebbero rimanere sotto 10KB. Invite (11.1KB) necessita refactoring. Usare @use invece di @import.</p>
+          <span class="device-tag">Build Optimization</span>
+        </div>
+
+        <div class="suggestion-card">
+          <h4>🔍 Empty States</h4>
+          <p>Tutti i componenti con liste (Activity, Notifications, Saved, etc.) hanno empty state con icona + messaggio. Verificare consistenza visiva.</p>
+          <span class="device-tag">UX Consistency</span>
+        </div>
+
+        <div class="suggestion-card">
+          <h4>♿ Accessibility</h4>
+          <p>ARIA labels presenti su bottoni. Tab navigation supportata. Verificare screen reader flow su pagine complesse come Subscriptions.</p>
+          <span class="device-tag">A11y Compliance</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🚀 Come Eseguire i Test</h2>
+      <div class="command-box">
+        <span class="comment"># Naviga nella cartella corretta</span><br>
+        <span class="command">cd</span> <span class="path">/home/frisco/projects/fiutami-frontend</span><br><br>
+
+        <span class="comment"># Installa browser Playwright (una volta)</span><br>
+        <span class="command">npx playwright install</span> chromium<br><br>
+
+        <span class="comment"># Avvia Angular dev server in un terminale</span><br>
+        <span class="command">npm run start</span><br><br>
+
+        <span class="comment"># In un altro terminale, esegui i test</span><br>
+        <span class="command">MOCK_API=true npx playwright test</span> e2e/tests/drawer-sections/drawer-menu-complete.spec.ts<br><br>
+
+        <span class="comment"># Per generare report HTML interattivo</span><br>
+        <span class="command">npx playwright test</span> --reporter=html<br>
+        <span class="command">npx playwright show-report</span>
+      </div>
+    </section>
+
+    <footer>
+      <div class="stats">
+        <span>📁 14 Drawer Sections</span>
+        <span>📱 8 Device Viewports</span>
+        <span>🧪 448 Test Cases</span>
+        <span>✅ Build Passed</span>
+      </div>
+      <p>Fiutami Drawer Menu E2E Test Report</p>
+      <p style="opacity: 0.7; margin-top: 8px;">Path: /home/frisco/projects/fiutami-frontend/e2e/reports/drawer-menu/report.html</p>
+    </footer>
+  </div>
+</body>
+</html>

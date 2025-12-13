@@ -1,14 +1,106 @@
-<div class="section-page">
-  <header class="section-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+<div class="pet-friends-page">
+  <header class="pet-friends-header">
+    <button class="pet-friends-header__back" (click)="goBack()" aria-label="Torna indietro">
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1 class="pet-friends-header__title">Amici Pets</h1>
   </header>
-  <main class="section-content">
-    <div class="empty-state">
-      <span class="icon">{{ icon }}</span>
-      <p>{{ emptyMessage }}</p>
-    </div>
+
+  <main class="pet-friends-content">
+    <!-- Loading State -->
+    @if (isLoading()) {
+      <div class="pet-friends-loading">
+        <div class="pet-friends-loading__spinner"></div>
+        <p class="pet-friends-loading__text">Caricamento amici...</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @if (hasError() && !isLoading()) {
+      <div class="pet-friends-error">
+        <span class="material-icons pet-friends-error__icon">error_outline</span>
+        <p class="pet-friends-error__text">Errore nel caricamento degli amici</p>
+        <button class="pet-friends-error__retry" (click)="retry()">Riprova</button>
+      </div>
+    }
+
+    <!-- Empty State -->
+    @if (!isLoading() && !hasError() && friends().length === 0) {
+      <div class="pet-friends-empty">
+        <span class="material-icons pet-friends-empty__icon">group</span>
+        <p class="pet-friends-empty__text">Nessun amico pet ancora</p>
+        <p class="pet-friends-empty__subtext">Inizia a connetterti con altri amanti degli animali!</p>
+      </div>
+    }
+
+    <!-- Friends List -->
+    @if (!isLoading() && !hasError() && friends().length > 0) {
+      <ul class="pet-friends-list">
+        @for (friend of friends(); track friend.id) {
+          <li class="friend-card" (click)="viewProfile(friend)">
+            <div class="friend-card__avatar">
+              @if (friend.userAvatar) {
+                <img [src]="friend.userAvatar" [alt]="friend.userName" />
+              } @else {
+                <span class="friend-card__initials">{{ getInitials(friend.userName) }}</span>
+              }
+              <span class="friend-card__status-indicator" [class.friend-card__status-indicator--online]="friend.isOnline"></span>
+            </div>
+            <div class="friend-card__content">
+              <div class="friend-card__header">
+                <h3 class="friend-card__name">{{ friend.userName }}</h3>
+                @if (friend.isOnline) {
+                  <span class="friend-card__online-badge">Online</span>
+                } @else if (friend.lastSeen) {
+                  <span class="friend-card__last-seen">{{ formatLastSeen(friend.lastSeen) }}</span>
+                }
+              </div>
+              @if (friend.location) {
+                <div class="friend-card__location">
+                  <span class="material-icons">location_on</span>
+                  {{ friend.location }}
+                </div>
+              }
+              <div class="friend-card__pets">
+                <span class="material-icons friend-card__pets-icon">pets</span>
+                <span class="friend-card__pets-list">
+                  @for (petName of getPetNames(friend); track petName; let last = $last) {
+                    <span class="friend-card__pet">{{ petName }}</span>
+                    @if (!last) {
+                      <span class="friend-card__pet-separator">,</span>
+                    }
+                  }
+                </span>
+                <span class="friend-card__pets-count">({{ friend.pets.length }})</span>
+              </div>
+              <div class="friend-card__meta">
+                <span class="friend-card__friends-since">
+                  <span class="material-icons">calendar_today</span>
+                  {{ formatFriendsSince(friend.friendsSince) }}
+                </span>
+                @if (friend.mutualFriends && friend.mutualFriends > 0) {
+                  <span class="friend-card__mutual">
+                    <span class="material-icons">people</span>
+                    {{ friend.mutualFriends }} amici in comune
+                  </span>
+                }
+              </div>
+              <div class="friend-card__actions">
+                <button class="friend-card__action friend-card__action--message" (click)="sendMessage(friend); $event.stopPropagation()" aria-label="Invia messaggio">
+                  <span class="material-icons">chat</span>
+                  Messaggio
+                </button>
+                <button class="friend-card__action friend-card__action--pets" (click)="viewPets(friend); $event.stopPropagation()" aria-label="Vedi pets">
+                  <span class="material-icons">pets</span>
+                  Pets
+                </button>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+    }
   </main>
+
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'"></app-bottom-tab-bar>
 </div>
