@@ -1,55 +1,62 @@
-<div class="section-page">
-  <header class="section-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+<div class="terms-page">
+  <!-- Header -->
+  <header class="terms-header">
+    <button
+      class="terms-header__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+      type="button">
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1 class="terms-header__title">{{ title }}</h1>
   </header>
-  <main class="section-content section-content--scrollable">
-    <div class="content-wrapper">
-      <h2>Termini e Condizioni d'Uso</h2>
 
-      <section class="terms-section">
-        <h3>1. Accettazione dei Termini</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Utilizzando FiutaMi, accetti i presenti termini e condizioni. Se non accetti questi termini, ti preghiamo di non utilizzare il servizio.</p>
-      </section>
+  <!-- Quick Navigation -->
+  <nav class="terms-nav" aria-label="Navigazione sezioni">
+    <div class="terms-nav__scroll">
+      @for (section of sections; track section.id) {
+        <button
+          class="terms-nav__item"
+          [class.terms-nav__item--active]="activeSection() === section.id"
+          (click)="scrollToSection(section.id)"
+          type="button">
+          {{ section.title.split('.')[0] }}
+        </button>
+      }
+    </div>
+  </nav>
 
-      <section class="terms-section">
-        <h3>2. Descrizione del Servizio</h3>
-        <p>FiutaMi è una piattaforma dedicata alla gestione e cura degli animali domestici. Il servizio offre funzionalità per tracciare informazioni sui tuoi pet, connetterti con altri proprietari e accedere a risorse utili.</p>
-      </section>
+  <!-- Content -->
+  <main class="terms-content">
+    <div class="terms-content__wrapper">
+      <!-- Title Section -->
+      <div class="terms-intro">
+        <span class="material-icons terms-intro__icon">gavel</span>
+        <h2 class="terms-intro__title">Termini e Condizioni d'Uso</h2>
+        <p class="terms-intro__subtitle">
+          Leggi attentamente i seguenti termini prima di utilizzare FiutaMi
+        </p>
+      </div>
 
-      <section class="terms-section">
-        <h3>3. Registrazione e Account</h3>
-        <p>Per utilizzare determinate funzionalità del servizio, è necessario creare un account. Sei responsabile della sicurezza del tuo account e di tutte le attività che si verificano sotto il tuo account.</p>
-      </section>
+      <!-- Sections -->
+      @for (section of sections; track section.id) {
+        <section
+          [id]="section.id"
+          #sectionEl
+          class="terms-section">
+          <h3 class="terms-section__title">{{ section.title }}</h3>
+          <p class="terms-section__content">{{ section.content }}</p>
+        </section>
+      }
 
-      <section class="terms-section">
-        <h3>4. Privacy e Dati Personali</h3>
-        <p>La tua privacy è importante per noi. Consulta la nostra Informativa sulla Privacy per comprendere come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali.</p>
-      </section>
-
-      <section class="terms-section">
-        <h3>5. Contenuti Generati dagli Utenti</h3>
-        <p>Sei responsabile dei contenuti che pubblichi su FiutaMi. Non devi pubblicare contenuti illegali, offensivi o che violano i diritti di terzi.</p>
-      </section>
-
-      <section class="terms-section">
-        <h3>6. Limitazioni di Responsabilità</h3>
-        <p>FiutaMi viene fornito "così com'è" senza garanzie di alcun tipo. Non siamo responsabili per eventuali danni derivanti dall'uso del servizio.</p>
-      </section>
-
-      <section class="terms-section">
-        <h3>7. Modifiche ai Termini</h3>
-        <p>Ci riserviamo il diritto di modificare questi termini in qualsiasi momento. Le modifiche saranno effettive immediatamente dopo la pubblicazione sul sito.</p>
-      </section>
-
-      <section class="terms-section">
-        <h3>8. Contatti</h3>
-        <p>Per domande su questi termini, contattaci attraverso la sezione "Contattaci" dell'app.</p>
-      </section>
-
-      <p class="last-updated">Ultimo aggiornamento: Dicembre 2025</p>
+      <!-- Last Updated -->
+      <div class="terms-footer">
+        <span class="material-icons">update</span>
+        <span>Ultimo aggiornamento: {{ lastUpdated }}</span>
+      </div>
     </div>
   </main>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs"></app-bottom-tab-bar>
 </div>

@@ -1,13 +1,26 @@
 @import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
 
-.section-page {
+// ================================
+// Privacy Page - Mobile First
+// ================================
+
+$tab-bar-height: 64px;
+$nav-height: 52px;
+
+.privacy-page {
   min-height: 100vh;
+  min-height: 100dvh;
   background: $color-background-primary;
   display: flex;
   flex-direction: column;
 }
 
-.section-header {
+// ================================
+// Header
+// ================================
+
+.privacy-header {
   display: flex;
   align-items: center;
   gap: $spacing-md;
@@ -15,10 +28,20 @@
   background: $color-cta-primary;
   color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 
-  .back-btn {
-    width: 40px;
-    height: 40px;
+  @include safe-area-padding($spacing-md, $spacing-lg, 0, $spacing-lg);
+
+  @include respond(md) {
+    padding: $spacing-lg $spacing-xl;
+  }
+
+  &__back {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,9 +49,12 @@
     border: none;
     border-radius: 50%;
     color: white;
-    font-size: 24px;
     cursor: pointer;
     transition: all 0.2s ease;
+
+    .material-icons {
+      font-size: 24px;
+    }
 
     &:hover {
       background: rgba(255, 255, 255, 0.3);
@@ -38,71 +64,286 @@
     &:active {
       transform: scale(0.95);
     }
+
+    &:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
   }
 
-  h1 {
+  &__title {
+    font-family: $font-family-body;
     font-size: 20px;
     font-weight: 600;
     margin: 0;
     flex: 1;
-  }
-}
 
-.section-content {
-  flex: 1;
-  padding: $spacing-lg;
-
-  &--scrollable {
-    overflow-y: auto;
-  }
-}
-
-.content-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-
-  h2 {
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-text-primary;
-    margin-bottom: $spacing-lg;
-  }
-}
-
-.privacy-section {
-  margin-bottom: $spacing-lg;
-
-  h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: $color-text-primary;
-    margin-bottom: $spacing-sm;
-  }
-
-  p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: $color-text-secondary;
-    margin: 0 0 $spacing-sm 0;
-  }
-
-  ul {
-    margin: $spacing-sm 0 0 $spacing-lg;
-    padding: 0;
-
-    li {
-      font-size: 14px;
-      line-height: 1.6;
-      color: $color-text-secondary;
-      margin-bottom: $spacing-xs;
+    @include respond(md) {
+      font-size: 24px;
     }
   }
 }
 
-.last-updated {
-  font-size: 12px;
-  color: $color-text-secondary;
-  font-style: italic;
-  margin-top: $spacing-xl;
+// ================================
+// Quick Navigation
+// ================================
+
+.privacy-nav {
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 60px; // Below header
+  z-index: 9;
+
+  @include respond(md) {
+    top: 72px;
+  }
+
+  &__scroll {
+    display: flex;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    // Hide scrollbar but keep functionality
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    padding: $spacing-xs $spacing-md;
+    background: rgba($color-cta-primary, 0.1);
+    border: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $color-text-secondary;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    scroll-snap-align: start;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba($color-cta-primary, 0.2);
+    }
+
+    &--active {
+      background: $color-cta-primary;
+      color: white;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-cta-primary;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// ================================
+// Content Area
+// ================================
+
+.privacy-content {
+  flex: 1;
+  padding: $spacing-md;
+  padding-bottom: calc($tab-bar-height + $spacing-lg);
+  overflow-y: auto;
+
+  @include respond(md) {
+    padding: $spacing-lg $spacing-xl;
+    padding-bottom: calc($tab-bar-height + $spacing-xl);
+  }
+
+  &__wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+// ================================
+// Intro Section
+// ================================
+
+.privacy-intro {
   text-align: center;
+  margin-bottom: $spacing-xl;
+  padding-bottom: $spacing-xl;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  &__icon {
+    font-size: 56px;
+    color: $color-cta-primary;
+    opacity: 0.8;
+    margin-bottom: $spacing-md;
+
+    @include respond(md) {
+      font-size: 64px;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-sm 0;
+
+    @include respond(md) {
+      font-size: 28px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 15px;
+    color: $color-text-secondary;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// ================================
+// Privacy Sections
+// ================================
+
+.privacy-section {
+  margin-bottom: $spacing-xl;
+  padding: $spacing-lg;
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  scroll-margin-top: 130px; // Account for sticky header + nav
+
+  @include respond(md) {
+    scroll-margin-top: 150px;
+    padding: $spacing-xl;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-md 0;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    @include respond(md) {
+      font-size: 20px;
+    }
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: $color-cta-primary;
+      border-radius: 2px;
+    }
+  }
+
+  &__content {
+    font-size: 15px;
+    line-height: 1.7;
+    color: $color-text-secondary;
+    margin: 0;
+    white-space: pre-line;
+
+    @include respond(md) {
+      font-size: 16px;
+    }
+  }
+
+  &__list {
+    margin: $spacing-md 0 0 0;
+    padding: 0 0 0 $spacing-lg;
+    list-style-type: none;
+
+    li {
+      position: relative;
+      font-size: 14px;
+      line-height: 1.7;
+      color: $color-text-secondary;
+      margin-bottom: $spacing-sm;
+      padding-left: $spacing-md;
+
+      @include respond(md) {
+        font-size: 15px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 6px;
+        height: 6px;
+        background: $color-cta-primary;
+        border-radius: 50%;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ================================
+// Footer
+// ================================
+
+.privacy-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+  font-size: 13px;
+  color: $color-text-secondary;
+  opacity: 0.7;
+
+  .material-icons {
+    font-size: 18px;
+  }
+}
+
+// ================================
+// Responsive Adjustments
+// ================================
+
+// Tablet
+@include respond(md) {
+  .privacy-nav {
+    &__scroll {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// Desktop
+@include respond(lg) {
+  .privacy-content__wrapper {
+    max-width: 900px;
+  }
+
+  .privacy-section {
+    transition: all 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Foldable support
+@media (min-width: 717px) and (max-width: 800px) {
+  .privacy-content {
+    padding: $spacing-md $spacing-lg;
+  }
 }

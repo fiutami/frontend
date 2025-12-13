@@ -1,86 +1,69 @@
-<div class="section-page">
-  <header class="section-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+<div class="privacy-page">
+  <!-- Header -->
+  <header class="privacy-header">
+    <button
+      class="privacy-header__back"
+      (click)="goBack()"
+      aria-label="Torna indietro"
+      type="button">
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1 class="privacy-header__title">{{ title }}</h1>
   </header>
-  <main class="section-content section-content--scrollable">
-    <div class="content-wrapper">
-      <h2>Informativa sulla Privacy</h2>
 
-      <section class="privacy-section">
-        <h3>1. Introduzione</h3>
-        <p>La tua privacy è importante per noi. Questa informativa spiega come FiutaMi raccoglie, utilizza e protegge i tuoi dati personali.</p>
-      </section>
+  <!-- Quick Navigation -->
+  <nav class="privacy-nav" aria-label="Navigazione sezioni">
+    <div class="privacy-nav__scroll">
+      @for (section of sections; track section.id) {
+        <button
+          class="privacy-nav__item"
+          [class.privacy-nav__item--active]="activeSection() === section.id"
+          (click)="scrollToSection(section.id)"
+          type="button">
+          {{ section.title.split('.')[0] }}
+        </button>
+      }
+    </div>
+  </nav>
 
-      <section class="privacy-section">
-        <h3>2. Dati che Raccogliamo</h3>
-        <p>Raccogliamo le seguenti tipologie di dati:</p>
-        <ul>
-          <li>Informazioni di registrazione (nome, email, password)</li>
-          <li>Informazioni sui tuoi animali domestici</li>
-          <li>Dati di utilizzo dell'app</li>
-          <li>Informazioni del dispositivo e log tecnici</li>
-        </ul>
-      </section>
+  <!-- Content -->
+  <main class="privacy-content">
+    <div class="privacy-content__wrapper">
+      <!-- Title Section -->
+      <div class="privacy-intro">
+        <span class="material-icons privacy-intro__icon">security</span>
+        <h2 class="privacy-intro__title">Informativa sulla Privacy</h2>
+        <p class="privacy-intro__subtitle">
+          Scopri come proteggiamo e utilizziamo i tuoi dati personali
+        </p>
+      </div>
 
-      <section class="privacy-section">
-        <h3>3. Come Utilizziamo i Tuoi Dati</h3>
-        <p>Utilizziamo i tuoi dati per:</p>
-        <ul>
-          <li>Fornire e migliorare i nostri servizi</li>
-          <li>Personalizzare la tua esperienza</li>
-          <li>Comunicare con te</li>
-          <li>Garantire la sicurezza del servizio</li>
-          <li>Rispettare gli obblighi legali</li>
-        </ul>
-      </section>
+      <!-- Sections -->
+      @for (section of sections; track section.id) {
+        <section
+          [id]="section.id"
+          #sectionEl
+          class="privacy-section">
+          <h3 class="privacy-section__title">{{ section.title }}</h3>
+          <p class="privacy-section__content">{{ section.content }}</p>
+          @if (section.bullets && section.bullets.length > 0) {
+            <ul class="privacy-section__list">
+              @for (bullet of section.bullets; track bullet) {
+                <li>{{ bullet }}</li>
+              }
+            </ul>
+          }
+        </section>
+      }
 
-      <section class="privacy-section">
-        <h3>4. Condivisione dei Dati</h3>
-        <p>Non vendiamo i tuoi dati personali. Possiamo condividere i dati solo in questi casi:</p>
-        <ul>
-          <li>Con il tuo consenso esplicito</li>
-          <li>Con fornitori di servizi fidati che ci aiutano a gestire l'app</li>
-          <li>Per rispettare obblighi legali</li>
-          <li>Per proteggere i diritti e la sicurezza</li>
-        </ul>
-      </section>
-
-      <section class="privacy-section">
-        <h3>5. Sicurezza dei Dati</h3>
-        <p>Implementiamo misure di sicurezza tecniche e organizzative per proteggere i tuoi dati da accessi non autorizzati, perdita o alterazione.</p>
-      </section>
-
-      <section class="privacy-section">
-        <h3>6. I Tuoi Diritti</h3>
-        <p>Hai diritto di:</p>
-        <ul>
-          <li>Accedere ai tuoi dati personali</li>
-          <li>Correggere dati inesatti</li>
-          <li>Richiedere la cancellazione dei tuoi dati</li>
-          <li>Opporti al trattamento dei tuoi dati</li>
-          <li>Richiedere la portabilità dei dati</li>
-        </ul>
-      </section>
-
-      <section class="privacy-section">
-        <h3>7. Cookie e Tecnologie Simili</h3>
-        <p>Utilizziamo cookie e tecnologie simili per migliorare la tua esperienza, analizzare l'utilizzo dell'app e personalizzare i contenuti.</p>
-      </section>
-
-      <section class="privacy-section">
-        <h3>8. Modifiche a Questa Informativa</h3>
-        <p>Potremmo aggiornare questa informativa periodicamente. Ti notificheremo eventuali modifiche significative.</p>
-      </section>
-
-      <section class="privacy-section">
-        <h3>9. Contatti</h3>
-        <p>Per domande su questa informativa o per esercitare i tuoi diritti, contattaci tramite la sezione "Contattaci" dell'app.</p>
-      </section>
-
-      <p class="last-updated">Ultimo aggiornamento: Dicembre 2025</p>
+      <!-- Last Updated -->
+      <div class="privacy-footer">
+        <span class="material-icons">update</span>
+        <span>Ultimo aggiornamento: {{ lastUpdated }}</span>
+      </div>
     </div>
   </main>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs"></app-bottom-tab-bar>
 </div>

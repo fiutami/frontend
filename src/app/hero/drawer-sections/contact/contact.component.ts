@@ -1,36 +1,116 @@
-import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ContactService, ContactFormData, ContactFormResponse } from '../../../core/services/contact.service';
+import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, BottomTabBarComponent],
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactComponent {
-  title = 'Contattaci';
-  email = '';
-  message = '';
-  submitted = false;
+export class ContactComponent implements OnInit {
+  private location = inject(Location);
+  private contactService = inject(ContactService);
+  private fb = inject(FormBuilder);
 
-  constructor(private location: Location) {}
+  title = 'Contattaci';
+
+  // Form
+  contactForm!: FormGroup;
+  subjectOptions: string[] = [];
+
+  // State signals
+  isSubmitting = signal(false);
+  isSuccess = signal(false);
+  hasError = signal(false);
+  errorMessage = signal('');
+  successResponse = signal<ContactFormResponse | null>(null);
+
+  // Bottom tab bar config
+  tabs: TabItem[] = [
+    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
+    { id: 'calendar', icon: 'calendar_today', route: '/home/calendar', label: 'Calendario' },
+    { id: 'location', icon: 'place', route: '/home/map', label: 'Mappa' },
+    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
+    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
+  ];
+
+  ngOnInit(): void {
+    this.subjectOptions = this.contactService.getSubjectOptions();
+    this.initForm();
+  }
+
+  private initForm(): void {
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      subject: ['', [Validators.required]],
+      message: ['', [Validators.required, Validators.minLength(10)]]
+    });
+  }
 
   goBack(): void {
     this.location.back();
   }
 
   onSubmit(): void {
-    if (this.email && this.message) {
-      console.log('Contact form submitted:', { email: this.email, message: this.message });
-      this.submitted = true;
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        this.email = '';
-        this.message = '';
-        this.submitted = false;
-      }, 3000);
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      return;
     }
+
+    this.isSubmitting.set(true);
+    this.hasError.set(false);
+    this.errorMessage.set('');
+
+    const formData: ContactFormData = this.contactForm.value;
+
+    this.contactService.submitContactForm(formData).subscribe({
+      next: (response) => {
+        this.isSubmitting.set(false);
+        this.isSuccess.set(true);
+        this.successResponse.set(response);
+      },
+      error: (error) => {
+        this.isSubmitting.set(false);
+        this.hasError.set(true);
+        this.errorMessage.set(error.message || 'Si è verificato un errore. Riprova più tardi.');
+      }
+    });
+  }
+
+  resetForm(): void {
+    this.contactForm.reset();
+    this.isSuccess.set(false);
+    this.successResponse.set(null);
+    this.hasError.set(false);
+    this.errorMessage.set('');
+  }
+
+  // Form field helpers
+  getFieldError(fieldName: string): string {
+    const control = this.contactForm.get(fieldName);
+    if (control?.touched && control.errors) {
+      if (control.errors['required']) {
+        return 'Campo obbligatorio';
+      }
+      if (control.errors['email']) {
+        return 'Email non valida';
+      }
+      if (control.errors['minlength']) {
+        const minLength = control.errors['minlength'].requiredLength;
+        return `Minimo ${minLength} caratteri`;
+      }
+    }
+    return '';
+  }
+
+  isFieldInvalid(fieldName: string): boolean {
+    const control = this.contactForm.get(fieldName);
+    return !!(control?.touched && control.invalid);
   }
 }

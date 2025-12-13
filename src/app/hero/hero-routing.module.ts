@@ -29,6 +29,25 @@ import { MapComponent } from './map/map.component';
 import { ChatListComponent } from './chat/chat-list/chat-list.component';
 import { ChatScreenComponent } from './chat/chat-screen/chat-screen.component';
 
+// Account Drawer Component (direct import)
+import { AccountDrawerComponent } from './drawer-sections/account/account.component';
+
+// Drawer Sections
+import {
+  ActivityComponent,
+  NotificationsComponent,
+  SavedComponent,
+  AdoptComponent,
+  PetFriendsComponent as DrawerPetFriendsComponent,
+  InviteComponent,
+  LostPetsComponent,
+  BlockedUsersComponent,
+  TermsComponent,
+  SubscriptionsComponent,
+  ContactComponent,
+  PrivacyComponent,
+} from './drawer-sections';
+
 const routes: Routes = [
   {
     path: '',
@@ -37,67 +56,67 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    component: HomeComponent  // New main home page
+    component: HomeComponent
   },
   {
     path: 'pet-profile',
-    component: PetProfileComponent  // Pet profile page
+    component: PetProfileComponent
   },
   {
     path: 'pet-profile/:id',
-    component: PetProfileComponent  // Pet profile with ID
+    component: PetProfileComponent
   },
   {
     path: 'pet-profile/:id/gallery',
-    component: PetGalleryComponent  // Pet photo gallery
+    component: PetGalleryComponent
   },
   {
     path: 'pet-profile/:id/memories',
-    component: PetMemoriesComponent  // Pet memories timeline
+    component: PetMemoriesComponent
   },
   {
     path: 'pet-profile/:id/friends',
-    component: PetFriendsComponent  // Pet friends list
+    component: PetFriendsComponent
   },
   {
     path: 'pet-profile/:id/fatti-bestiali',
-    component: FattiBestialiComponent  // Pet fun facts
+    component: FattiBestialiComponent
   },
   {
     path: 'calendar',
-    component: CalendarComponent  // Calendar with events
+    component: CalendarComponent
   },
   {
     path: 'map',
-    component: MapComponent  // Pet-friendly map
+    component: MapComponent
   },
   {
     path: 'chat',
-    component: ChatListComponent  // Chat conversations list
+    component: ChatListComponent
   },
   {
     path: 'chat/:conversationId',
-    component: ChatScreenComponent  // Single chat conversation
+    component: ChatScreenComponent
   },
   {
     path: 'welcome',
-    component: WelcomeComponent  // Legacy welcome/onboarding
+    component: WelcomeComponent
   },
   {
     path: 'welcome-ai',
-    component: WelcomeAiComponent  // Legacy route - redirects to welcome-ai/1
+    component: WelcomeAiComponent
   },
   {
     path: 'welcome-ai/1',
-    component: WelcomeAi1Component  // AI onboarding - initial question
+    component: WelcomeAi1Component
   },
   {
     path: 'welcome-ai/2a',
-    component: WelcomeAi2aComponent  // AI onboarding - has pet flow
+    component: WelcomeAi2aComponent
   },
   {
     path: 'welcome-ai/2b',
-    component: WelcomeAi2bComponent  // AI onboarding - wants pet flow
+    component: WelcomeAi2bComponent
   },
   {
     path: 'pet-register',
@@ -139,6 +158,59 @@ const routes: Routes = [
   {
     path: 'breeds',
     loadChildren: () => import('./breeds/breeds.module').then(m => m.BreedsModule)
+  },
+  // Drawer Sections Routes
+  {
+    path: 'account',
+    component: AccountDrawerComponent
+  },
+  {
+    path: 'activity',
+    component: ActivityComponent
+  },
+  {
+    path: 'notifications',
+    component: NotificationsComponent
+  },
+  {
+    path: 'favorites',
+    component: SavedComponent
+  },
+  {
+    path: 'adopt',
+    component: AdoptComponent
+  },
+  {
+    path: 'friends',
+    component: DrawerPetFriendsComponent
+  },
+  {
+    path: 'invite',
+    component: InviteComponent
+  },
+  {
+    path: 'lost-pets',
+    component: LostPetsComponent
+  },
+  {
+    path: 'blocked',
+    component: BlockedUsersComponent
+  },
+  {
+    path: 'terms',
+    component: TermsComponent
+  },
+  {
+    path: 'subscriptions',
+    component: SubscriptionsComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'privacy',
+    component: PrivacyComponent
   }
 ];
 
