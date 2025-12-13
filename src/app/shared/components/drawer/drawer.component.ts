@@ -5,13 +5,17 @@ import {
   OnInit,
   OnDestroy,
   HostListener,
+  signal,
+  computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil, fromEvent, debounceTime, startWith } from 'rxjs';
 import { DrawerService } from './drawer.service';
 import { AuthService } from '../../../core/services/auth.service';
+
+export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' | 'foldable-unfolded';
 
 export interface DrawerMenuItem {
   label: string;
@@ -50,6 +54,38 @@ export class DrawerComponent implements OnInit, OnDestroy {
   isOpen = false;
   searchQuery = '';
 
+  // Viewport size detection for responsive layout indicators
+  private windowWidth = signal(typeof window !== 'undefined' ? window.innerWidth : 375);
+  private windowHeight = signal(typeof window !== 'undefined' ? window.innerHeight : 667);
+
+  viewportSize = computed<ViewportSize>(() => {
+    const width = this.windowWidth();
+    const height = this.windowHeight();
+    const aspectRatio = width / height;
+
+    // Foldable detection: specific aspect ratios and dimensions
+    if (width >= 700 && width <= 800 && height >= 500 && height <= 730) {
+      // Honor Magic V3/V5 or similar foldable in folded state
+      return aspectRatio > 1 ? 'foldable-folded' : 'foldable-unfolded';
+    }
+
+    // Galaxy Fold detection
+    if (width >= 717 && width <= 720 && height >= 500 && height <= 520) {
+      return 'foldable-folded';
+    }
+    if (width >= 1400 && width <= 1500 && height >= 700 && height <= 800) {
+      return 'foldable-unfolded';
+    }
+
+    // Standard breakpoints
+    if (width < 768) {
+      return 'mobile';
+    } else if (width < 1024) {
+      return 'tablet';
+    }
+    return 'desktop';
+  });
+
   menuItems: DrawerMenuItem[] = [
     { label: 'Account', route: '/home/account', icon: 'person' },
     { label: 'La tua attività', route: '/home/activity', icon: 'history' },
@@ -87,6 +123,20 @@ export class DrawerComponent implements OnInit, OnDestroy {
       .subscribe(isOpen => {
         this.isOpen = isOpen;
       });
+
+    // Listen for window resize events for viewport detection
+    if (typeof window !== 'undefined') {
+      fromEvent(window, 'resize')
+        .pipe(
+          debounceTime(100),
+          startWith(null),
+          takeUntil(this.destroy$)
+        )
+        .subscribe(() => {
+          this.windowWidth.set(window.innerWidth);
+          this.windowHeight.set(window.innerHeight);
+        });
+    }
   }
 
   ngOnDestroy(): void {

@@ -1,4 +1,4 @@
-<div class="notifications-page">
+<div class="notifications-page" [attr.data-viewport]="viewportSize()" data-testid="notifications-page">
   <!-- Header -->
   <header class="notifications-header">
     <button
@@ -103,6 +103,4 @@
     }
   </main>
 
-  <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar [tabs]="tabs"></app-bottom-tab-bar>
 </div>

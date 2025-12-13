@@ -28,11 +28,22 @@
     justify-content: space-between;
     align-items: center;
     padding: $spacing-md;
+    flex-shrink: 0;
+
+    // Short viewports (foldables, landscape mobile): make header sticky
+    @media (max-height: 600px) {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: inherit;
+    }
   }
 
   &__back {
     width: 44px;
     height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;

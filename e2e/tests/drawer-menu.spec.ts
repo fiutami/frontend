@@ -24,9 +24,20 @@ const DEVICE_VIEWPORTS = {
   foldableFolded: { width: 717, height: 512, name: 'Foldable Folded (Galaxy Fold)' },
   foldableUnfolded: { width: 1485, height: 720, name: 'Foldable Unfolded (Galaxy Fold)' },
   iphone2025: { width: 430, height: 932, name: 'iPhone 2025 (Pro Max)' },
-  honorMagicV3: { width: 795, height: 720, name: 'Honor Magic V3' },
-  honorMagicV5: { width: 795, height: 720, name: 'Honor Magic V5' },
+  honorMagicV3: { width: 795, height: 720, name: 'Honor Magic V3/V5' },
+  // REMOVED: honorMagicV5 - identical to V3 viewport, redundant
 } as const;
+
+// Helper to get current project/device from test info
+function getProjectName(testInfo: { project: { name: string } }): string {
+  return testInfo.project.name;
+}
+
+// Helper to check if running on specific device type
+function isDeviceType(testInfo: { project: { name: string } }, ...types: string[]): boolean {
+  const projectName = testInfo.project.name.toLowerCase();
+  return types.some(type => projectName.includes(type.toLowerCase()));
+}
 
 // Drawer menu sections configuration
 const DRAWER_SECTIONS = [
@@ -170,13 +181,13 @@ test.describe('Drawer Menu Complete Tests', () => {
         await expect(backButton).toBeVisible();
       });
 
-      test(`should have bottom tab bar on ${section.name}`, async ({ page }) => {
+      test(`should not have bottom tab bar on ${section.name}`, async ({ page }) => {
         await page.goto(section.route);
         await page.waitForTimeout(500);
 
-        // Use first() to avoid strict mode violation (component contains .bottom-tab-bar nav)
+        // Drawer pages should NOT show the bottom tab bar (only main pages should)
         const tabBar = page.locator('app-bottom-tab-bar').first();
-        await expect(tabBar).toBeVisible();
+        await expect(tabBar).not.toBeVisible();
       });
 
       test(`should navigate back from ${section.name}`, async ({ page }) => {
@@ -317,6 +328,7 @@ test.describe('Drawer Menu Complete Tests', () => {
 
   // ============================================
   // Responsive Tests - Honor Magic V3/V5 (795x720)
+  // Note: V3 and V5 have identical viewports, testing once covers both
   // ============================================
   test.describe('Responsive - Honor Magic V3/V5 (795x720)', () => {
     test.use({ viewport: DEVICE_VIEWPORTS.honorMagicV3 });

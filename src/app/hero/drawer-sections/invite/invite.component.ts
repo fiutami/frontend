@@ -1,13 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { InviteService, InviteOption, PendingInvite, InviteStats, InviteMethod, InviteStatus } from '../../../core/services/invite.service';
-import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar/bottom-tab-bar.component';
-import { TabItem } from '../../../shared/components/bottom-tab-bar/bottom-tab-bar.models';
 
 @Component({
   selector: 'app-invite',
   standalone: true,
-  imports: [CommonModule, BottomTabBarComponent],
+  imports: [CommonModule],
   templateUrl: './invite.component.html',
   styleUrls: ['./invite.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -27,13 +25,6 @@ export class InviteComponent implements OnInit {
   inviteCode: string = '';
   inviteLink: string = '';
 
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', label: 'Home', route: '/home' },
-    { id: 'explore', icon: 'explore', label: 'Esplora', route: '/explore' },
-    { id: 'add', icon: 'add_circle', label: 'Aggiungi', route: '/add' },
-    { id: 'messages', icon: 'chat', label: 'Messaggi', route: '/messages' },
-    { id: 'profile', icon: 'person', label: 'Profilo', route: '/profile' }
-  ];
 
   ngOnInit(): void {
     this.inviteCode = this.inviteService.getInviteCode();

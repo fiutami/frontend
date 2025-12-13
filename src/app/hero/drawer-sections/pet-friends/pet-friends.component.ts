@@ -1,13 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { PetFriendsService, PetFriend } from '../../../core/services/pet-friends.service';
-import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar/bottom-tab-bar.component';
-import { TabItem } from '../../../shared/components/bottom-tab-bar/bottom-tab-bar.models';
 
 @Component({
   selector: 'app-pet-friends',
   standalone: true,
-  imports: [CommonModule, BottomTabBarComponent],
+  imports: [CommonModule],
   templateUrl: './pet-friends.component.html',
   styleUrls: ['./pet-friends.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,13 +18,6 @@ export class PetFriendsComponent implements OnInit {
   isLoading = signal(true);
   hasError = signal(false);
 
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', label: 'Home', route: '/home' },
-    { id: 'explore', icon: 'explore', label: 'Esplora', route: '/explore' },
-    { id: 'add', icon: 'add_circle', label: 'Aggiungi', route: '/add' },
-    { id: 'messages', icon: 'chat', label: 'Messaggi', route: '/messages' },
-    { id: 'profile', icon: 'person', label: 'Profilo', route: '/profile' }
-  ];
 
   ngOnInit(): void {
     this.loadFriends();

@@ -5,16 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService, User } from '../../../core/services/auth.service';
 import { AccountService } from '../../../core/services/account.service';
-import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
 import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-account-drawer',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, BottomTabBarComponent],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'account-page' }
 })
 export class AccountDrawerComponent implements OnInit {
   private location = inject(Location);
@@ -40,14 +40,6 @@ export class AccountDrawerComponent implements OnInit {
   isExporting = signal(false);
   exportSuccess = signal(false);
 
-  // Bottom tab bar config
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', route: '/home/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
-  ];
 
   ngOnInit(): void {
     this.loadUserData();
