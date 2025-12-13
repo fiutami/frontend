@@ -1,14 +1,135 @@
-<div class="section-page">
-  <header class="section-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      ←
+<div class="invite-page">
+  <header class="invite-header">
+    <button class="invite-header__back" (click)="goBack()" aria-label="Torna indietro">
+      <span class="material-icons">arrow_back</span>
     </button>
-    <h1>{{ title }}</h1>
+    <h1 class="invite-header__title">Invita Amici</h1>
   </header>
-  <main class="section-content">
-    <div class="empty-state">
-      <span class="icon">{{ icon }}</span>
-      <p>{{ emptyMessage }}</p>
-    </div>
+
+  <main class="invite-content">
+    <!-- Loading State -->
+    @if (isLoading()) {
+      <div class="invite-loading">
+        <div class="invite-loading__spinner"></div>
+        <p class="invite-loading__text">Caricamento...</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @if (hasError() && !isLoading()) {
+      <div class="invite-error">
+        <span class="material-icons invite-error__icon">error_outline</span>
+        <p class="invite-error__text">Errore nel caricamento</p>
+        <button class="invite-error__retry" (click)="retry()">Riprova</button>
+      </div>
+    }
+
+    @if (!isLoading() && !hasError()) {
+      <!-- Hero Section -->
+      <section class="invite-hero">
+        <div class="invite-hero__icon">
+          <span class="material-icons">card_giftcard</span>
+        </div>
+        <h2 class="invite-hero__title">Invita i tuoi amici!</h2>
+        <p class="invite-hero__description">Condividi FiutaMi con chi ami e guadagna premi esclusivi</p>
+      </section>
+
+      <!-- Stats Section -->
+      @if (stats()) {
+        <section class="invite-stats">
+          <div class="invite-stats__item">
+            <span class="invite-stats__value">{{ stats()!.totalSent }}</span>
+            <span class="invite-stats__label">Inviti inviati</span>
+          </div>
+          <div class="invite-stats__item invite-stats__item--success">
+            <span class="invite-stats__value">{{ stats()!.accepted }}</span>
+            <span class="invite-stats__label">Accettati</span>
+          </div>
+          <div class="invite-stats__item">
+            <span class="invite-stats__value">{{ stats()!.pending }}</span>
+            <span class="invite-stats__label">In attesa</span>
+          </div>
+        </section>
+      }
+
+      <!-- Invite Code Section -->
+      <section class="invite-code-section">
+        <h3 class="invite-code-section__title">Il tuo codice invito</h3>
+        <div class="invite-code-box">
+          <span class="invite-code-box__code">{{ inviteCode }}</span>
+          <button class="invite-code-box__copy" (click)="copyCode()" [class.invite-code-box__copy--copied]="codeCopied()">
+            <span class="material-icons">{{ codeCopied() ? 'check' : 'content_copy' }}</span>
+            {{ codeCopied() ? 'Copiato!' : 'Copia' }}
+          </button>
+        </div>
+        @if (codeCopied()) {
+          <p class="invite-code-section__copied">Copiato negli appunti!</p>
+        }
+        <p class="invite-code-section__hint">Condividi questo codice con i tuoi amici</p>
+      </section>
+
+      <!-- Share Options -->
+      <section class="invite-share">
+        <h3 class="invite-share__title">Condividi via</h3>
+        <div class="invite-share__options">
+          @for (option of inviteOptions(); track option.id) {
+            <button class="invite-share__option" (click)="shareVia(option)" [style.--option-color]="option.color" [attr.aria-label]="option.description">
+              <span class="material-icons invite-share__option-icon">{{ option.icon }}</span>
+              <span class="invite-share__option-label">{{ option.label }}</span>
+            </button>
+          }
+        </div>
+      </section>
+
+      <!-- Copy Link Section -->
+      <section class="invite-link-section">
+        <div class="invite-link-box">
+          <span class="invite-link-box__url">{{ inviteLink }}</span>
+          <button class="invite-link-box__copy" (click)="copyLink()" [class.invite-link-box__copy--copied]="linkCopied()">
+            <span class="material-icons">{{ linkCopied() ? 'check' : 'content_copy' }}</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Pending Invites -->
+      @if (pendingInvites().length > 0) {
+        <section class="invite-history">
+          <h3 class="invite-history__title">Inviti recenti</h3>
+          <ul class="invite-history__list">
+            @for (invite of pendingInvites(); track invite.id) {
+              <li class="invite-item">
+                <div class="invite-item__icon">
+                  <span class="material-icons">{{ getMethodIcon(invite.method) }}</span>
+                </div>
+                <div class="invite-item__content">
+                  <div class="invite-item__header">
+                    <span class="invite-item__recipient">{{ getRecipientDisplay(invite) }}</span>
+                    <span class="invite-item__status" [class]="getStatusClass(invite.status)">
+                      {{ getStatusLabel(invite.status) }}
+                    </span>
+                  </div>
+                  <div class="invite-item__meta">
+                    <span class="invite-item__method">{{ getMethodLabel(invite.method) }}</span>
+                    <span class="invite-item__time">{{ formatRelativeTime(invite.sentAt) }}</span>
+                  </div>
+                  @if (invite.status === 'pending' && invite.expiresAt) {
+                    <span class="invite-item__expires">{{ formatExpiresIn(invite.expiresAt) }}</span>
+                  }
+                </div>
+                @if (invite.status === 'pending' || invite.status === 'expired') {
+                  <div class="invite-item__actions">
+                    <button class="invite-item__resend" (click)="resendInvite(invite)" aria-label="Reinvia invito">
+                      <span class="material-icons">refresh</span>
+                    </button>
+                  </div>
+                }
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    }
   </main>
+
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'"></app-bottom-tab-bar>
 </div>
