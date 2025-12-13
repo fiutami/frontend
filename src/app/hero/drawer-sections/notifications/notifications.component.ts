@@ -2,12 +2,11 @@ import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@ang
 import { CommonModule, Location } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { NotificationsService, NotificationItem, NotificationTab } from '../../../core/services/notifications.service';
-import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
 
 @Component({
   selector: 'app-notifications',
   standalone: true,
-  imports: [CommonModule, RouterModule, BottomTabBarComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -34,14 +33,6 @@ export class NotificationsComponent implements OnInit {
     { id: 'nearby', label: 'Vicino a me', icon: 'location_on' }
   ];
 
-  // Bottom tab bar config
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', route: '/home/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
-  ];
 
   ngOnInit(): void {
     this.loadNotifications();

@@ -170,13 +170,13 @@ test.describe('Drawer Menu Complete Tests', () => {
         await expect(backButton).toBeVisible();
       });
 
-      test(`should have bottom tab bar on ${section.name}`, async ({ page }) => {
+      test(`should not have bottom tab bar on ${section.name}`, async ({ page }) => {
         await page.goto(section.route);
         await page.waitForTimeout(500);
 
-        // Use first() to avoid strict mode violation (component contains .bottom-tab-bar nav)
+        // Drawer pages should NOT show the bottom tab bar (only main pages should)
         const tabBar = page.locator('app-bottom-tab-bar').first();
-        await expect(tabBar).toBeVisible();
+        await expect(tabBar).not.toBeVisible();
       });
 
       test(`should navigate back from ${section.name}`, async ({ page }) => {

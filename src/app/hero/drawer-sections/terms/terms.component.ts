@@ -1,6 +1,5 @@
 import { Component, inject, ChangeDetectionStrategy, signal, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { BottomTabBarComponent, TabItem } from '../../../shared/components/bottom-tab-bar';
 
 interface TermsSection {
   id: string;
@@ -11,7 +10,7 @@ interface TermsSection {
 @Component({
   selector: 'app-terms',
   standalone: true,
-  imports: [CommonModule, BottomTabBarComponent],
+  imports: [CommonModule],
   templateUrl: './terms.component.html',
   styleUrls: ['./terms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -100,14 +99,6 @@ export class TermsComponent implements AfterViewInit {
     }
   ];
 
-  // Bottom tab bar config
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', route: '/home/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
-  ];
 
   ngAfterViewInit(): void {
     // Set first section as active by default
