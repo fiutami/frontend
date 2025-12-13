@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble/speech-bubble.component';
 import { SpeciesQuestionnaireService } from '../species-questionnaire.service';
+import { PageBackgroundComponent } from '../../../shared/components/page-background/page-background.component';
 
 /**
  * SpeciesResultComponent - Questionnaire Result
@@ -19,6 +20,7 @@ import { SpeciesQuestionnaireService } from '../species-questionnaire.service';
     CommonModule,
     SharedModule,
     SpeechBubbleComponent,
+    PageBackgroundComponent,
   ],
   templateUrl: './species-result.component.html',
   styleUrls: ['./species-result.component.scss'],

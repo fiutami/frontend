@@ -5,6 +5,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble/speech-bubble.component';
 import { AnswerSquareComponent, AnswerOption } from '../../../shared/components/answer-square';
 import { SpeciesQuestionnaireService } from '../species-questionnaire.service';
+import { PageBackgroundComponent } from '../../../shared/components/page-background/page-background.component';
 
 /**
  * SpeciesQ2Component - Question 2: Time away from home
@@ -21,6 +22,7 @@ import { SpeciesQuestionnaireService } from '../species-questionnaire.service';
     SharedModule,
     SpeechBubbleComponent,
     AnswerSquareComponent,
+    PageBackgroundComponent,
   ],
   templateUrl: './species-q2.component.html',
   styleUrls: ['./species-q2.component.scss'],

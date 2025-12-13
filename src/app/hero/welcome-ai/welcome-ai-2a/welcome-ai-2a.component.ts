@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble';
 import { LanguageBottomSheetComponent } from '../../language-bottom-sheet';
+import { PageBackgroundComponent } from '../../../shared/components/page-background/page-background.component';
 
 /**
  * WelcomeAi2aComponent - Pet owner introduction
@@ -27,6 +28,7 @@ import { LanguageBottomSheetComponent } from '../../language-bottom-sheet';
     SharedModule,
     SpeechBubbleComponent,
     LanguageBottomSheetComponent,
+    PageBackgroundComponent,
   ],
   templateUrl: './welcome-ai-2a.component.html',
   styleUrls: ['./welcome-ai-2a.component.scss'],

@@ -12,12 +12,14 @@
   gap: $spacing-md;
 
   // Mascot positioning
+  // mascot-left = mascot appears visually on the LEFT of bubble
+  // mascot-right = mascot appears visually on the RIGHT of bubble
   &--mascot-left {
-    flex-direction: row;
+    flex-direction: row; // [mascot] [bubble]
   }
 
   &--mascot-right {
-    flex-direction: row-reverse;
+    flex-direction: row; // [bubble] [mascot] - mascot rendered after bubble in DOM
   }
 
   // ===========================================

@@ -5,6 +5,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble/speech-bubble.component';
 import { AnswerSquareComponent, AnswerOption } from '../../../shared/components/answer-square';
 import { SpeciesQuestionnaireService } from '../species-questionnaire.service';
+import { PageBackgroundComponent } from '../../../shared/components/page-background/page-background.component';
 
 /**
  * SpeciesQ1Component - Question 1: Time Dedication
@@ -24,6 +25,7 @@ import { SpeciesQuestionnaireService } from '../species-questionnaire.service';
     SharedModule,
     SpeechBubbleComponent,
     AnswerSquareComponent,
+    PageBackgroundComponent,
   ],
   templateUrl: './species-q1.component.html',
   styleUrls: ['./species-q1.component.scss'],
