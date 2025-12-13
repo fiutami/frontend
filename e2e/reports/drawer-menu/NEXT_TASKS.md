@@ -41,15 +41,17 @@
 
 ### P2 - Should Fix (Importante per UX)
 
-- [ ] **TASK-005**: Implement Error States for Activity/Notifications/Saved
+- [x] **TASK-005**: Implement Error States for Activity/Notifications/Saved ✅ **ALREADY IMPLEMENTED**
   - **Files:**
     - `src/app/hero/drawer-sections/activity/activity.component.html`
     - `src/app/hero/drawer-sections/notifications/notifications.component.html`
     - `src/app/hero/drawer-sections/saved/saved.component.html`
   - **Issue:** P2-002
   - **Tests Fixed:** ~24
-  - **Effort:** 1-2 hours
-  - **Dependencies:** Error state design (shared component?)
+  - **Status:** All three components already have complete error states with:
+    - Error UI (`.activity-error`, `.notifications-error`, `.saved-error`)
+    - Retry buttons
+    - Error icons and messages
 
 - [ ] **TASK-006**: Increase Touch Target Size for Back Button
   - **File:** `src/app/shared/components/drawer/drawer.component.scss` or header component
@@ -57,12 +59,18 @@
   - **Tests Fixed:** ~16
   - **Effort:** 15 min
 
-- [ ] **TASK-007**: Add responsive layout indicators (data-viewport attribute)
-  - **File:** `src/app/shared/components/drawer/drawer.component.ts`
+- [x] **TASK-007**: Add responsive layout indicators (data-viewport attribute) ✅ **COMPLETED**
+  - **Files:**
+    - `src/app/shared/components/drawer/drawer.component.ts`
+    - `src/app/hero/drawer-sections/activity/activity.component.ts`
+    - `src/app/hero/drawer-sections/notifications/notifications.component.ts`
+    - `src/app/hero/drawer-sections/saved/saved.component.ts`
   - **Issue:** P2-004
   - **Tests Fixed:** ~48
-  - **Effort:** 30 min
-  - **Alternative:** Update tests to check computed styles instead
+  - **Implementation:**
+    - Added `data-viewport` attribute to drawer and page containers
+    - Values: `mobile`, `tablet`, `desktop`, `foldable-folded`, `foldable-unfolded`
+    - Added `data-testid` attributes for E2E targeting
 
 - [ ] **TASK-008**: Fix Back Button positioning on short viewports
   - **File:** `src/app/shared/components/drawer/drawer.component.scss`
