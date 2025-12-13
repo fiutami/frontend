@@ -14,7 +14,8 @@ import { Location } from '@angular/common';
   selector: 'app-pet-register',
   templateUrl: './pet-register.component.html',
   styleUrls: ['./pet-register.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'pet-register-page' }
 })
 export class PetRegisterComponent {
   private readonly router = inject(Router);

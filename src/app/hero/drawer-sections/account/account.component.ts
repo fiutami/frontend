@@ -14,7 +14,8 @@ import { environment } from '../../../../environments/environment';
   imports: [CommonModule, RouterModule, FormsModule, BottomTabBarComponent],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'account-page' }
 })
 export class AccountDrawerComponent implements OnInit {
   private location = inject(Location);
