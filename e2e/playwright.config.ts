@@ -135,11 +135,7 @@ export default defineConfig({
       use: { viewport: { width: 795, height: 720 }, isMobile: true, hasTouch: true },
       testMatch: /drawer-menu/,
     },
-    {
-      name: 'drawer-honor-magic-v5',
-      use: { viewport: { width: 795, height: 720 }, isMobile: true, hasTouch: true },
-      testMatch: /drawer-menu/,
-    },
+    // REMOVED: drawer-honor-magic-v5 - identical to v3 (same viewport 795x720), saves 220 test executions
   ],
 
   webServer: {
