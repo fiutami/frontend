@@ -159,6 +159,10 @@ const routes: Routes = [
     path: 'breeds',
     loadChildren: () => import('./breeds/breeds.module').then(m => m.BreedsModule)
   },
+  {
+    path: 'species',
+    loadChildren: () => import('./species/species.module').then(m => m.SpeciesModule)
+  },
   // Drawer Sections Routes
   {
     path: 'account',

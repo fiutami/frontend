@@ -7,50 +7,28 @@
 
   <!-- Header -->
   <header class="home__header">
-    <!-- Avatar (links to pet profile) -->
-    <button
-      class="home__avatar"
-      routerLink="/home/pet-profile"
-      aria-label="Vai al profilo del pet"
-    >
-      @if (showInitials()) {
-        <div class="home__avatar-initials" [attr.aria-label]="petName() + ' avatar'">
-          {{ initials() }}
-        </div>
-      } @else {
-        <img
-          [src]="avatarUrl()"
-          [alt]="petName() + ' avatar'"
-          class="home__avatar-img"
-          loading="lazy"
-        />
-      }
-    </button>
+    <!-- Spacer per bilanciare il layout -->
+    <div class="home__header-spacer"></div>
 
     <div class="home__header-actions">
-      <!-- Notifications/Calendar bell -->
+      <!-- Menu avatar (apre drawer con profilo e impostazioni) -->
       <button
-        class="home__icon-btn"
-        (click)="navigateToCalendar()"
-        aria-label="Calendario e notifiche"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-        </svg>
-        @if (notificationCount > 0) {
-          <span class="home__badge">{{ notificationCount }}</span>
-        }
-      </button>
-
-      <!-- Hamburger menu -->
-      <button
-        class="home__icon-btn"
+        class="home__menu-avatar"
         (click)="openDrawer()"
-        aria-label="Apri menu"
+        aria-label="Apri menu profilo"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-        </svg>
+        @if (showInitials()) {
+          <div class="home__menu-avatar-initials" [attr.aria-label]="petName() + ' avatar'">
+            {{ initials() }}
+          </div>
+        } @else {
+          <img
+            [src]="avatarUrl()"
+            [alt]="petName() + ' avatar'"
+            class="home__menu-avatar-img"
+            loading="lazy"
+          />
+        }
       </button>
     </div>
   </header>
@@ -67,14 +45,17 @@
       </app-search-box>
     </div>
 
-    <!-- Upcoming events widget -->
+    <!-- Upcoming events widget con campanella notifiche -->
     <div class="home__events-wrapper">
       <app-events-widget
         title="Prossimi eventi"
         [events]="upcomingEvents"
         emptyMessage="Non c'è nessun evento in programma."
+        [showNotificationBell]="true"
+        [notificationCount]="notificationCount"
         (eventClick)="onEventClick($event)"
-        (viewAllClick)="onViewAllEvents()">
+        (viewAllClick)="onViewAllEvents()"
+        (notificationClick)="navigateToCalendar()">
       </app-events-widget>
     </div>
   </main>
