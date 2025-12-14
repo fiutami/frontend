@@ -18,7 +18,7 @@ export interface EventItem {
  * EventsWidget - Shows upcoming events in a card
  *
  * Features:
- * - Title header
+ * - Title header with optional notification bell
  * - List of events with title and date
  * - Empty state message
  * - Click handler for events
@@ -36,9 +36,12 @@ export class EventsWidgetComponent {
   @Input() events: EventItem[] = [];
   @Input() emptyMessage = "Non c'è nessun evento in programma.";
   @Input() maxItems = 5;
+  @Input() showNotificationBell = false;
+  @Input() notificationCount = 0;
 
   @Output() eventClick = new EventEmitter<EventItem>();
   @Output() viewAllClick = new EventEmitter<void>();
+  @Output() notificationClick = new EventEmitter<void>();
 
   get displayedEvents(): EventItem[] {
     return this.events.slice(0, this.maxItems);
@@ -54,5 +57,9 @@ export class EventsWidgetComponent {
 
   onViewAll(): void {
     this.viewAllClick.emit();
+  }
+
+  onNotificationClick(): void {
+    this.notificationClick.emit();
   }
 }

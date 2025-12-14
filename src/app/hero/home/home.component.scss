@@ -30,10 +30,18 @@
     }
   }
 
-  // Avatar button
-  &__avatar {
-    width: 48px;
-    height: 48px;
+  // Spacer per bilanciare header con avatar a destra
+  &__header-spacer {
+    width: 44px; // Stesso width del menu-avatar per bilanciare
+    @include respond(md) {
+      width: 48px;
+    }
+  }
+
+  // Menu avatar button (hamburger + profilo unificato)
+  &__menu-avatar {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid $color-text-inverse;
@@ -45,6 +53,7 @@
 
     &:hover {
       transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     &:active {
@@ -52,18 +61,18 @@
     }
 
     @include respond(md) {
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
     }
   }
 
-  &__avatar-img {
+  &__menu-avatar-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  &__avatar-initials {
+  &__menu-avatar-initials {
     width: 100%;
     height: 100%;
     display: flex;
@@ -72,13 +81,13 @@
     background: linear-gradient(135deg, $color-primary-500 0%, #E98B0C 100%);
     color: white;
     font-family: $font-family-body;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 50%;
 
     @include respond(md) {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
