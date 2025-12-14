@@ -50,12 +50,13 @@ export class HomeComponent implements OnInit {
   searchQuery = '';
 
   // Bottom tab bar configuration
+  // Usa iconSrc per SVG custom, icon come fallback Material Icons
   tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', route: '/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', route: '/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
+    { id: 'home', icon: 'home', iconSrc: 'assets/icons/nav/home.svg', activeIconSrc: 'assets/icons/nav/home-active.svg', route: '/home/main', label: 'Home' },
+    { id: 'calendar', icon: 'calendar_today', iconSrc: 'assets/icons/nav/calendar.svg', activeIconSrc: 'assets/icons/nav/calendar-active.svg', route: '/home/calendar', label: 'Calendario' },
+    { id: 'location', icon: 'place', iconSrc: 'assets/icons/nav/map.svg', activeIconSrc: 'assets/icons/nav/map-active.svg', route: '/home/map', label: 'Mappa' },
+    { id: 'species', icon: 'pets', iconSrc: 'assets/icons/nav/species.svg', activeIconSrc: 'assets/icons/nav/species-active.svg', route: '/home/species', label: 'Specie' },
+    { id: 'profile', icon: 'person', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/user/profile', label: 'Profilo' },
   ];
 
   ngOnInit(): void {

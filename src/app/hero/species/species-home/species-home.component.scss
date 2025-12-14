@@ -1,0 +1,229 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+.species-home {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  // Header
+  &__header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md;
+
+    @include safe-area-padding($spacing-md, $spacing-md, 0, $spacing-md);
+
+    @include respond(md) {
+      padding: $spacing-lg $spacing-xl;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    @include respond(md) {
+      font-size: 28px;
+    }
+  }
+
+  &__header-spacer {
+    width: 44px;
+  }
+
+  &__back-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 50%;
+    color: $color-text-inverse;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.45);
+      transform: scale(0.95);
+    }
+  }
+
+  // Main content
+  &__content {
+    position: relative;
+    z-index: 10;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-lg;
+    padding-bottom: calc($tab-bar-height + $spacing-lg);
+    overflow-y: auto;
+
+    @include respond(md) {
+      padding: $spacing-xl;
+      padding-bottom: calc($tab-bar-height + $spacing-xl);
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-inverse;
+    text-align: center;
+    margin: 0 0 $spacing-xl;
+    opacity: 0.9;
+
+    @include respond(md) {
+      font-size: 18px;
+      margin-bottom: $spacing-2xl;
+    }
+  }
+
+  // Loading state
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: $color-text-inverse;
+    gap: $spacing-md;
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: $color-text-inverse;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Grid
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
+
+    @include respond(md) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-lg;
+    }
+
+    @include respond(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  // Card
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-lg $spacing-md;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: $border-radius-lg;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: $transition-fast;
+    min-height: 140px;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: translateY(-2px);
+    }
+
+    &--selected {
+      border: 2px solid var(--card-color, $color-primary-500);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15),
+                  0 0 0 4px rgba(var(--card-color, $color-primary-500), 0.2);
+    }
+
+    @include respond(md) {
+      padding: $spacing-xl $spacing-lg;
+      min-height: 160px;
+    }
+  }
+
+  &__card-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-color, $color-primary-500);
+    border-radius: 50%;
+    margin-bottom: $spacing-md;
+
+    .material-icons {
+      font-size: 28px;
+      color: $color-text-inverse;
+    }
+
+    @include respond(md) {
+      width: 64px;
+      height: 64px;
+
+      .material-icons {
+        font-size: 32px;
+      }
+    }
+  }
+
+  &__card-name {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-xs;
+
+    @include respond(md) {
+      font-size: 18px;
+    }
+  }
+
+  &__card-count {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: $color-text-secondary;
+  }
+}
