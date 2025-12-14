@@ -24,6 +24,8 @@
     display: flex;
     justify-content: flex-start;
     padding-bottom: $spacing-md;
+    position: relative;
+    z-index: 10;
   }
 
   // ===========================================
@@ -36,6 +38,8 @@
     flex-direction: column;
     gap: $spacing-lg;
     padding: $spacing-md 0;
+    position: relative;
+    z-index: 10;
   }
 
   // Intro bubble wrapper
@@ -91,6 +95,8 @@
     display: flex;
     justify-content: center;
     padding: $spacing-md 0;
+    position: relative;
+    z-index: 10;
   }
 }
 
