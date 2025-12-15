@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { AdoptService, AdoptionAd, PetType } from '../../../core/services/adopt.service';
 import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar/bottom-tab-bar.component';
 import { TabItem } from '../../../shared/components/bottom-tab-bar/bottom-tab-bar.models';
@@ -14,6 +15,7 @@ import { TabItem } from '../../../shared/components/bottom-tab-bar/bottom-tab-ba
 })
 export class AdoptComponent implements OnInit {
   private location = inject(Location);
+  private router = inject(Router);
   private adoptService = inject(AdoptService);
 
   adoptionAds = signal<AdoptionAd[]>([]);
@@ -21,11 +23,11 @@ export class AdoptComponent implements OnInit {
   hasError = signal(false);
 
   tabs: TabItem[] = [
-    { id: 'home', icon: 'home', label: 'Home', route: '/home' },
-    { id: 'explore', icon: 'explore', label: 'Esplora', route: '/explore' },
-    { id: 'add', icon: 'add_circle', label: 'Aggiungi', route: '/add' },
-    { id: 'messages', icon: 'chat', label: 'Messaggi', route: '/messages' },
-    { id: 'profile', icon: 'person', label: 'Profilo', route: '/profile' }
+    { id: 'home', icon: 'home', iconSrc: 'assets/icons/nav/home.svg', activeIconSrc: 'assets/icons/nav/home-active.svg', route: '/home/main', label: 'Home' },
+    { id: 'calendar', icon: 'calendar_today', iconSrc: 'assets/icons/nav/calendar.svg', activeIconSrc: 'assets/icons/nav/calendar-active.svg', route: '/home/calendar', label: 'Calendario' },
+    { id: 'location', icon: 'place', iconSrc: 'assets/icons/nav/map.svg', activeIconSrc: 'assets/icons/nav/map-active.svg', route: '/home/map', label: 'Mappa' },
+    { id: 'species', icon: 'pets', iconSrc: 'assets/icons/nav/species.svg', activeIconSrc: 'assets/icons/nav/species-active.svg', route: '/home/species', label: 'Specie' },
+    { id: 'profile', icon: 'person', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/user/profile', label: 'Profilo' }
   ];
 
   ngOnInit(): void {
@@ -83,10 +85,17 @@ export class AdoptComponent implements OnInit {
   }
 
   contactOwner(ad: AdoptionAd): void {
-    console.log('Contact owner for:', ad.petName);
+    // Open chat - using ad ID as reference since ownerId not available
+    this.router.navigate(['/home/chat'], {
+      queryParams: {
+        adId: ad.id,
+        subject: `Interessato a ${ad.petName}`
+      }
+    });
   }
 
   viewDetails(ad: AdoptionAd): void {
-    console.log('View details for:', ad.petName);
+    // Navigate to adoption ad detail page
+    this.router.navigate(['/home/adopt', ad.id]);
   }
 }
