@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { PetFriendsService, PetFriend } from '../../../core/services/pet-friends.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { PetFriendsService, PetFriend } from '../../../core/services/pet-friends
 })
 export class PetFriendsComponent implements OnInit {
   private location = inject(Location);
+  private router = inject(Router);
   private petFriendsService = inject(PetFriendsService);
 
   friends = signal<PetFriend[]>([]);
@@ -69,14 +71,20 @@ export class PetFriendsComponent implements OnInit {
   }
 
   sendMessage(friend: PetFriend): void {
-    console.log('Send message to:', friend.userName);
+    this.router.navigate(['/home/chat'], {
+      queryParams: { userId: friend.id }
+    });
   }
 
   viewPets(friend: PetFriend): void {
-    console.log('View pets of:', friend.userName);
+    // Navigate to first pet's profile
+    if (friend.pets && friend.pets.length > 0) {
+      this.router.navigate(['/home/pet-profile', friend.pets[0].id]);
+    }
   }
 
   viewProfile(friend: PetFriend): void {
-    console.log('View profile:', friend.userName);
+    // Navigate to user profile
+    this.router.navigate(['/user/profile', friend.id]);
   }
 }

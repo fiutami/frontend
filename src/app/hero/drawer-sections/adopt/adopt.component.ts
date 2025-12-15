@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { AdoptService, AdoptionAd, PetType } from '../../../core/services/adopt.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { AdoptService, AdoptionAd, PetType } from '../../../core/services/adopt.
 })
 export class AdoptComponent implements OnInit {
   private location = inject(Location);
+  private router = inject(Router);
   private adoptService = inject(AdoptService);
 
   adoptionAds = signal<AdoptionAd[]>([]);
@@ -74,10 +76,17 @@ export class AdoptComponent implements OnInit {
   }
 
   contactOwner(ad: AdoptionAd): void {
-    console.log('Contact owner for:', ad.petName);
+    // Open chat - using ad ID as reference since ownerId not available
+    this.router.navigate(['/home/chat'], {
+      queryParams: {
+        adId: ad.id,
+        subject: `Interessato a ${ad.petName}`
+      }
+    });
   }
 
   viewDetails(ad: AdoptionAd): void {
-    console.log('View details for:', ad.petName);
+    // Navigate to adoption ad detail page
+    this.router.navigate(['/home/adopt', ad.id]);
   }
 }
