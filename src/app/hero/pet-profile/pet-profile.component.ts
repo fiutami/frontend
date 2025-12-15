@@ -7,7 +7,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { DrawerService } from '../../shared/components/drawer';
 import {
   BottomTabBarComponent,
@@ -56,6 +56,7 @@ export interface FriendPet {
 export class PetProfileComponent implements OnInit {
   private drawerService = inject(DrawerService);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private petService = inject(PetService);
   private cdr = inject(ChangeDetectorRef);
 
@@ -80,11 +81,11 @@ export class PetProfileComponent implements OnInit {
 
   // Bottom tab bar configuration
   tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', route: '/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', route: '/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
+    { id: 'home', icon: 'home', iconSrc: 'assets/icons/nav/home.svg', activeIconSrc: 'assets/icons/nav/home-active.svg', route: '/home/main', label: 'Home' },
+    { id: 'calendar', icon: 'calendar_today', iconSrc: 'assets/icons/nav/calendar.svg', activeIconSrc: 'assets/icons/nav/calendar-active.svg', route: '/home/calendar', label: 'Calendario' },
+    { id: 'location', icon: 'place', iconSrc: 'assets/icons/nav/map.svg', activeIconSrc: 'assets/icons/nav/map-active.svg', route: '/home/map', label: 'Mappa' },
+    { id: 'species', icon: 'pets', iconSrc: 'assets/icons/nav/species.svg', activeIconSrc: 'assets/icons/nav/species-active.svg', route: '/home/species', label: 'Specie' },
+    { id: 'profile', icon: 'person', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/user/profile', label: 'Profilo' },
   ];
 
   notificationCount = 2;
@@ -130,41 +131,50 @@ export class PetProfileComponent implements OnInit {
   }
 
   navigateToEdit(): void {
-    // Navigate to edit pet profile
+    if (this.pet.id) {
+      this.router.navigate(['/home/pet-register/edit', this.pet.id]);
+    }
   }
 
   navigateToCalendar(): void {
-    // Navigate to calendar
+    this.router.navigate(['/home/calendar']);
   }
 
   navigateToChat(): void {
-    // Navigate to chat
+    this.router.navigate(['/home/chat']);
   }
 
   navigateToSaved(): void {
-    // Navigate to saved items
+    this.router.navigate(['/home/favorites']);
   }
 
   // Yellow button actions
   onBandaPelosaClick(): void {
-    // Navigate to pet gallery
+    if (this.pet.id) {
+      this.router.navigate(['/home/pet-profile', this.pet.id, 'gallery']);
+    }
   }
 
   onFattiBestialiClick(): void {
-    // Navigate to pet fun facts
+    if (this.pet.id) {
+      this.router.navigate(['/home/pet-profile', this.pet.id, 'fatti-bestiali']);
+    }
   }
 
   onRullinoFeroceClick(): void {
-    // Navigate to pet friends/timeline
+    if (this.pet.id) {
+      this.router.navigate(['/home/pet-profile', this.pet.id, 'friends']);
+    }
   }
 
   onAppCompletaClick(): void {
-    // Navigate to premium features
+    // Premium features - Coming Soon
+    alert('Funzionalità Premium - Coming Soon!');
   }
 
   // Map actions
   onFiutaClick(): void {
-    // Open full map
+    this.router.navigate(['/home/map']);
   }
 
   // Promo slider
@@ -174,12 +184,14 @@ export class PetProfileComponent implements OnInit {
 
   // Add new pet
   onAddPetClick(): void {
-    // Navigate to add new pet
+    this.router.navigate(['/home/pet-register']);
   }
 
   // Friend click
   onFriendClick(friend: FriendPet): void {
-    // Navigate to friend profile
+    if (friend.id) {
+      this.router.navigate(['/home/pet-profile', friend.id]);
+    }
   }
 
   /**

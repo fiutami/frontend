@@ -7,7 +7,7 @@ import {
   computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { DrawerService } from '../../shared/components/drawer';
 import {
   BottomTabBarComponent,
@@ -34,6 +34,7 @@ import { PageBackgroundComponent } from '../../shared/components/page-background
 })
 export class HomeComponent implements OnInit {
   private drawerService = inject(DrawerService);
+  private router = inject(Router);
 
   // Pet data - using signals for reactivity
   petName = signal('Thor');
@@ -75,16 +76,18 @@ export class HomeComponent implements OnInit {
   }
 
   onEventClick(event: EventItem): void {
-    console.log('Event clicked:', event);
-    // Navigate to event detail
+    // Navigate to calendar with selected event
+    this.router.navigate(['/home/calendar'], {
+      queryParams: { eventId: event.id }
+    });
   }
 
   onViewAllEvents(): void {
-    // Navigate to calendar/events list
+    this.router.navigate(['/home/calendar']);
   }
 
   navigateToCalendar(): void {
-    // Navigate to calendar
+    this.router.navigate(['/home/calendar']);
   }
 
   private loadUpcomingEvents(): void {
