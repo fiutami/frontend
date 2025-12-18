@@ -1,0 +1,66 @@
+name: Sync Documentation
+
+on:
+  push:
+    branches: [stage]
+  pull_request:
+    branches: [stage]
+    types: [closed]
+
+jobs:
+  sync-docs:
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate Component Docs
+        run: |
+          npm ci
+          npx compodoc -p tsconfig.json -e json -d ./docs-generated --silent || true
+
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+        with:
+          repository: fiutami/docs
+          path: docs-repo
+          token: ${{ secrets.DOCS_SYNC_PAT }}
+
+      - name: Sync documentation
+        run: |
+          # Copy generated docs if exist
+          if [ -d "./docs-generated" ]; then
+            mkdir -p ./docs-repo/api/frontend
+            cp -r ./docs-generated/* ./docs-repo/api/frontend/
+          fi
+
+          # Update sync timestamp
+          echo "# Last Sync" > ./docs-repo/api/frontend/LAST_SYNC.md
+          echo "" >> ./docs-repo/api/frontend/LAST_SYNC.md
+          echo "- Source: frontend" >> ./docs-repo/api/frontend/LAST_SYNC.md
+          echo "- Commit: ${{ github.sha }}" >> ./docs-repo/api/frontend/LAST_SYNC.md
+          echo "- Date: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> ./docs-repo/api/frontend/LAST_SYNC.md
+
+      - name: Commit and push
+        working-directory: docs-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "docs: auto-sync from frontend @ ${{ github.sha }}"
+            git push
+          fi
