@@ -1,0 +1,74 @@
+<div class="quiz">
+  <!-- Header -->
+  <header class="quiz__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+
+    <!-- Progress indicator -->
+    <div class="quiz__progress-text">
+      Fase {{ currentPhase() }}/3
+    </div>
+  </header>
+
+  <!-- Progress bar -->
+  <div class="quiz__progress-bar">
+    <div
+      class="quiz__progress-fill"
+      [style.width.%]="progressPercent()">
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main class="quiz__content">
+    <!-- Phase title -->
+    <div class="quiz__phase-title">
+      {{ currentPhaseData().title }}
+    </div>
+
+    <!-- Question -->
+    <h1 class="quiz__question">
+      {{ currentQuestionData().text }}
+    </h1>
+
+    <!-- Answer options -->
+    <div class="quiz__options">
+      @for (option of currentQuestionData().options; track option.value) {
+        <button
+          type="button"
+          class="quiz__option"
+          [class.quiz__option--selected]="currentAnswer() === option.value"
+          (click)="onAnswerSelect(option.value)">
+          {{ option.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Question indicator -->
+    <div class="quiz__question-indicator">
+      <span
+        class="quiz__dot"
+        [class.quiz__dot--active]="currentQuestion() === 0"
+        [class.quiz__dot--completed]="currentQuestion() > 0">
+      </span>
+      <span
+        class="quiz__dot"
+        [class.quiz__dot--active]="currentQuestion() === 1"
+        [class.quiz__dot--completed]="currentQuestion() > 1">
+      </span>
+      <span
+        class="quiz__dot"
+        [class.quiz__dot--active]="currentQuestion() === 2">
+      </span>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="quiz__footer">
+    <img
+      src="assets/images/logo-fiutami.png"
+      alt="FiutaMi"
+      class="quiz__footer-logo" />
+  </footer>
+</div>

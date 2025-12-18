@@ -1,0 +1,213 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// QUIZ COMPONENT - Onboarding
+// 3-phase questionnaire screen
+// ===========================================
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: $color-primary-500;
+
+  // ===========================================
+  // HEADER
+  // ===========================================
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md;
+    position: relative;
+    z-index: 10;
+  }
+
+  &__progress-text {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-inverse;
+    background-color: $color-ai-primary;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-full;
+  }
+
+  // ===========================================
+  // PROGRESS BAR
+  // ===========================================
+
+  &__progress-bar {
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 $spacing-md;
+  }
+
+  &__progress-fill {
+    height: 100%;
+    background-color: $color-cta-primary;
+    transition: width 300ms ease;
+    border-radius: 2px;
+  }
+
+  // ===========================================
+  // CONTENT
+  // ===========================================
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-lg;
+    gap: $spacing-xl;
+  }
+
+  // ===========================================
+  // PHASE TITLE
+  // ===========================================
+
+  &__phase-title {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-cta-primary;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  // ===========================================
+  // QUESTION
+  // ===========================================
+
+  &__question {
+    margin: 0;
+    font-family: $font-family-display;
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    text-align: center;
+    max-width: 320px;
+  }
+
+  // ===========================================
+  // OPTIONS
+  // ===========================================
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-md $spacing-lg;
+    background-color: $color-text-inverse;
+    border: 2px solid transparent;
+    border-radius: $border-radius-lg;
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-text-primary;
+    cursor: pointer;
+    transition: all 150ms ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &--selected {
+      background-color: $color-cta-primary;
+      color: $color-text-dark;
+      border-color: darken($color-cta-primary, 10%);
+    }
+  }
+
+  // ===========================================
+  // QUESTION INDICATOR
+  // ===========================================
+
+  &__question-indicator {
+    display: flex;
+    gap: $spacing-xs;
+    margin-top: $spacing-md;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all 150ms ease;
+
+    &--active {
+      width: 24px;
+      border-radius: 4px;
+      background-color: $color-cta-primary;
+    }
+
+    &--completed {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  // ===========================================
+  // FOOTER
+  // ===========================================
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-lg;
+    background-color: $color-ai-primary;
+    min-height: 70px;
+  }
+
+  &__footer-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    &__content {
+      padding: $spacing-xl;
+    }
+
+    &__question {
+      font-size: 28px;
+      max-width: 400px;
+    }
+
+    &__options {
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 500px;
+      justify-content: center;
+    }
+
+    &__option {
+      flex: 0 0 auto;
+      min-width: 140px;
+    }
+  }
+}

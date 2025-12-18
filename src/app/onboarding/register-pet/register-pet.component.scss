@@ -1,0 +1,282 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// REGISTER PET COMPONENT - Onboarding
+// Single-form pet registration screen
+// ===========================================
+
+.register-pet {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: $color-primary-500;
+
+  // ===========================================
+  // HEADER
+  // ===========================================
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: $spacing-md;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: $color-primary-500;
+  }
+
+  // ===========================================
+  // CONTENT
+  // ===========================================
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-md;
+    padding-top: 0;
+    overflow-y: auto;
+  }
+
+  // ===========================================
+  // TITLE
+  // ===========================================
+
+  &__title {
+    margin: 0 0 $spacing-lg;
+    font-family: $font-family-display;
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    text-align: center;
+  }
+
+  // ===========================================
+  // ERROR
+  // ===========================================
+
+  &__error {
+    margin-bottom: $spacing-md;
+    padding: $spacing-sm $spacing-md;
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-radius: $border-radius-md;
+    color: #ffcccc;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  // ===========================================
+  // FORM
+  // ===========================================
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: $spacing-xl;
+  }
+
+  // ===========================================
+  // FIELD
+  // ===========================================
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__label {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-inverse;
+  }
+
+  &__required {
+    color: $color-cta-primary;
+  }
+
+  &__field-error {
+    font-size: 12px;
+    color: #ffcccc;
+  }
+
+  // ===========================================
+  // INPUT / SELECT / TEXTAREA
+  // ===========================================
+
+  &__input,
+  &__select,
+  &__textarea {
+    padding: $spacing-sm $spacing-md;
+    font-family: $font-family-body;
+    font-size: 16px;
+    color: $color-text-primary;
+    background-color: $color-text-inverse;
+    border: 2px solid transparent;
+    border-radius: $border-radius-md;
+    transition: border-color 150ms ease;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-cta-primary;
+    }
+
+    &--error {
+      border-color: #ff6b6b;
+    }
+  }
+
+  &__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $spacing-sm center;
+    padding-right: 40px;
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  // ===========================================
+  // RADIO GROUP
+  // ===========================================
+
+  &__radio-group {
+    display: flex;
+    gap: $spacing-lg;
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    cursor: pointer;
+
+    input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: $color-cta-primary;
+    }
+  }
+
+  &__radio-label {
+    font-family: $font-family-body;
+    font-size: 16px;
+    color: $color-text-inverse;
+  }
+
+  // ===========================================
+  // PHOTO PLACEHOLDER
+  // ===========================================
+
+  &__photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xs;
+    padding: $spacing-lg;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-md;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    cursor: not-allowed;
+
+    .material-icons {
+      font-size: 32px;
+    }
+  }
+
+  // ===========================================
+  // SUBMIT BUTTON
+  // ===========================================
+
+  &__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+    padding: $spacing-md $spacing-lg;
+    background-color: $color-cta-primary;
+    border: none;
+    border-radius: $border-radius-lg;
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-text-dark;
+    cursor: pointer;
+    transition: all 150ms ease;
+
+    &:hover:not(:disabled) {
+      background-color: darken($color-cta-primary, 5%);
+      transform: translateY(-2px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  // ===========================================
+  // SPINNER
+  // ===========================================
+
+  &__spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-top-color: $color-text-dark;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    &__content {
+      padding: $spacing-lg;
+      padding-top: 0;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__form {
+      gap: $spacing-lg;
+    }
+  }
+}
+
+// ===========================================
+// ANIMATIONS
+// ===========================================
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
