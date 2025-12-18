@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export type SupportedLanguage = 'it' | 'en' | 'fr' | 'de' | 'es';
+export type SupportedLanguage = 'it' | 'en' | 'fr' | 'de' | 'es' | 'pt-BR';
 
 export interface Language {
   code: SupportedLanguage;
@@ -57,6 +57,12 @@ export class LanguageService {
       name: 'Spanish',
       nativeName: 'Español',
       flag: '🇪🇸'
+    },
+    {
+      code: 'pt-BR',
+      name: 'Portuguese (Brazil)',
+      nativeName: 'Português (Brasil)',
+      flag: '🇧🇷'
     }
   ];
 

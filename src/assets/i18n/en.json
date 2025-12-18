@@ -85,5 +85,104 @@
     "passwordMinLength": "Password must be at least 8 characters",
     "passwordsMustMatch": "Passwords must match",
     "termsRequired": "You must accept the terms and conditions"
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Welcome to FIUTAMI!",
+      "question": "Do you already have a pet or would you like one?",
+      "hasPet": "I have a pet",
+      "wantsPet": "I'd like a pet",
+      "hasPetResponse": "Great! Let's register your pet together so we can enter the world of Fiutami.",
+      "wantsPetResponse": "The world is full of wonderful animals. To help you find the right one, let's get to know you better."
+    },
+    "registerPet": {
+      "title": "Register your furry friend!",
+      "petName": "Pet name",
+      "petType": "Pet type",
+      "breed": "Breed",
+      "age": "Age",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female"
+    },
+    "quizResult": {
+      "title": "Here's your perfect match!",
+      "compatibility": "Compatibility",
+      "viewDetails": "View details",
+      "tryAgain": "Take quiz again"
+    }
+  },
+  "quiz": {
+    "phase1": {
+      "title": "Lifestyle",
+      "activity": {
+        "question": "How active are you?",
+        "sedentary": "Sedentary",
+        "moderate": "Moderate",
+        "active": "Very active"
+      },
+      "location": {
+        "question": "Where do you live?",
+        "city": "City",
+        "suburbs": "Suburbs",
+        "countryside": "Countryside"
+      },
+      "otherPets": {
+        "question": "Do you have other pets?",
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "phase2": {
+      "title": "Space",
+      "housing": {
+        "question": "Housing type?",
+        "apartment": "Apartment",
+        "house": "House",
+        "houseGarden": "House with garden"
+      },
+      "size": {
+        "question": "Square meters?",
+        "small": "<50sqm",
+        "medium": "50-100sqm",
+        "large": ">100sqm"
+      },
+      "outdoor": {
+        "question": "Do you have outdoor space?",
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "phase3": {
+      "title": "Time",
+      "hours": {
+        "question": "Hours available per day?",
+        "few": "<1h",
+        "some": "1-3h",
+        "many": ">3h"
+      },
+      "travel": {
+        "question": "Do you travel often?",
+        "yes": "Yes",
+        "no": "No"
+      },
+      "experience": {
+        "question": "Experience with animals?",
+        "none": "None",
+        "little": "Little",
+        "much": "A lot"
+      }
+    }
+  },
+  "languages": {
+    "it": "Italian",
+    "en": "English",
+    "pt-BR": "Portuguese (Brazil)",
+    "ar": "Arabic",
+    "fr": "French",
+    "es": "Spanish",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "hi": "Hindi"
   }
 }

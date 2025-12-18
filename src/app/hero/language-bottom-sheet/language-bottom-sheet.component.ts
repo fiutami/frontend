@@ -27,12 +27,13 @@ export interface LanguageOption {
  */
 export const LANGUAGES: LanguageOption[] = [
   { code: 'it', label: 'Italiano' },
+  { code: 'en', label: 'English' },
+  { code: 'pt-BR', label: 'Português (Brasil)' },
   { code: 'ar', label: 'Arabo' },
   { code: 'fr', label: 'Francese' },
   { code: 'es', label: 'Spagnolo' },
   { code: 'zh', label: 'Cinese' },
   { code: 'ja', label: 'Giapponese' },
-  { code: 'en', label: 'Inglese' },
   { code: 'hi', label: 'Indiano' },
 ];
 

@@ -85,5 +85,104 @@
     "passwordMinLength": "La password deve essere di almeno 8 caratteri",
     "passwordsMustMatch": "Le password devono coincidere",
     "termsRequired": "Devi accettare i termini e condizioni"
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Benvenuto in FIUTAMI!",
+      "question": "Hai già un animale o vorresti averne uno?",
+      "hasPet": "Ho un animale",
+      "wantsPet": "Vorrei un animale",
+      "hasPetResponse": "Perfetto! Registriamo insieme il tuo animale così potremo entrare nel mondo di Fiutami.",
+      "wantsPetResponse": "Il mondo è pieno di animali meravigliosi. Per aiutarti a trovare quello giusto, iniziamo a conoscerti meglio."
+    },
+    "registerPet": {
+      "title": "Registra il tuo amico peloso!",
+      "petName": "Nome animale",
+      "petType": "Tipo animale",
+      "breed": "Razza",
+      "age": "Età",
+      "gender": "Sesso",
+      "male": "Maschio",
+      "female": "Femmina"
+    },
+    "quizResult": {
+      "title": "Ecco il tuo match perfetto!",
+      "compatibility": "Compatibilità",
+      "viewDetails": "Vedi dettagli",
+      "tryAgain": "Rifai il quiz"
+    }
+  },
+  "quiz": {
+    "phase1": {
+      "title": "Stile di vita",
+      "activity": {
+        "question": "Quanto sei attivo?",
+        "sedentary": "Sedentario",
+        "moderate": "Moderato",
+        "active": "Molto attivo"
+      },
+      "location": {
+        "question": "Dove vivi?",
+        "city": "Città",
+        "suburbs": "Periferia",
+        "countryside": "Campagna"
+      },
+      "otherPets": {
+        "question": "Hai altri animali?",
+        "yes": "Sì",
+        "no": "No"
+      }
+    },
+    "phase2": {
+      "title": "Spazio",
+      "housing": {
+        "question": "Tipo abitazione?",
+        "apartment": "Appartamento",
+        "house": "Casa",
+        "houseGarden": "Casa con giardino"
+      },
+      "size": {
+        "question": "Metri quadri?",
+        "small": "<50mq",
+        "medium": "50-100mq",
+        "large": ">100mq"
+      },
+      "outdoor": {
+        "question": "Hai spazio esterno?",
+        "yes": "Sì",
+        "no": "No"
+      }
+    },
+    "phase3": {
+      "title": "Tempo",
+      "hours": {
+        "question": "Ore al giorno disponibili?",
+        "few": "<1h",
+        "some": "1-3h",
+        "many": ">3h"
+      },
+      "travel": {
+        "question": "Viaggi spesso?",
+        "yes": "Sì",
+        "no": "No"
+      },
+      "experience": {
+        "question": "Esperienza con animali?",
+        "none": "Nessuna",
+        "little": "Poca",
+        "much": "Molta"
+      }
+    }
+  },
+  "languages": {
+    "it": "Italiano",
+    "en": "Inglese",
+    "pt-BR": "Portoghese (Brasile)",
+    "ar": "Arabo",
+    "fr": "Francese",
+    "es": "Spagnolo",
+    "zh": "Cinese",
+    "ja": "Giapponese",
+    "hi": "Hindi"
   }
 }
