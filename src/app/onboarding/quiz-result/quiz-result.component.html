@@ -1,0 +1,101 @@
+<div class="quiz-result">
+  <!-- Header -->
+  <header class="quiz-result__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+  </header>
+
+  <!-- Main content -->
+  <main class="quiz-result__content">
+    <!-- Title -->
+    <h1 class="quiz-result__title">Ecco il tuo match perfetto!</h1>
+
+    @if (topMatch()) {
+      <!-- Result card -->
+      <div class="quiz-result__card">
+        <!-- Species icon -->
+        <div class="quiz-result__icon">
+          {{ topMatch()!.icon }}
+        </div>
+
+        <!-- Species name -->
+        <h2 class="quiz-result__species">{{ topMatch()!.name }}</h2>
+
+        <!-- Suggested breed -->
+        <p class="quiz-result__breed">{{ topMatch()!.suggestedBreed }}</p>
+
+        <!-- Compatibility bar -->
+        <div class="quiz-result__compatibility">
+          <div class="quiz-result__compatibility-bar">
+            <div
+              class="quiz-result__compatibility-fill"
+              [style.width.%]="topMatch()!.compatibility">
+            </div>
+          </div>
+          <span class="quiz-result__compatibility-text">
+            {{ topMatch()!.compatibility }}% compatibile con te
+          </span>
+        </div>
+
+        <!-- Description -->
+        <p class="quiz-result__description">
+          {{ topMatch()!.description }}
+        </p>
+      </div>
+
+      <!-- Fiuto message -->
+      <div class="quiz-result__fiuto">
+        <div class="quiz-result__fiuto-bubble">
+          {{ fiutoMessage() }}
+        </div>
+        <div class="quiz-result__fiuto-mascot">
+          <img
+            src="assets/images/mascot-fiuto.png"
+            alt="Fiuto"
+            class="quiz-result__mascot-img"
+            onerror="this.style.display='none'" />
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="quiz-result__actions">
+        <button
+          type="button"
+          class="quiz-result__btn quiz-result__btn--primary"
+          (click)="onExploreSpecies()">
+          Scopri di piu
+        </button>
+
+        <button
+          type="button"
+          class="quiz-result__btn quiz-result__btn--secondary"
+          (click)="onExploreAll()">
+          Esplora altre specie
+        </button>
+      </div>
+
+      <!-- Register anyway link -->
+      <a
+        class="quiz-result__link"
+        (click)="onRegisterAnyway()">
+        Registra comunque un animale
+      </a>
+    } @else {
+      <!-- Loading state -->
+      <div class="quiz-result__loading">
+        <div class="quiz-result__spinner"></div>
+        <p>Calcolando il tuo match...</p>
+      </div>
+    }
+  </main>
+
+  <!-- Footer -->
+  <footer class="quiz-result__footer">
+    <img
+      src="assets/images/logo-fiutami.png"
+      alt="FiutaMi"
+      class="quiz-result__footer-logo" />
+  </footer>
+</div>

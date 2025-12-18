@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeAiComponent } from './welcome-ai/welcome-ai.component';
 import { RegisterPetComponent } from './register-pet/register-pet.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { QuizResultComponent } from './quiz-result/quiz-result.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,11 @@ const routes: Routes = [
   {
     path: 'quiz',
     component: QuizComponent
+  },
+  {
+    path: 'quiz-result',
+    component: QuizResultComponent
   }
-  // Future: { path: 'quiz-result', component: QuizResultComponent }
 ];
 
 @NgModule({
