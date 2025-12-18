@@ -4,6 +4,14 @@
 
 ---
 
+> ⚠️ **IMPORTANTE**: Per la documentazione globale dell'organizzazione Fiutami (tutti e 7 i repository, server, secrets, comandi), consulta:
+>
+> 📁 **[FIUTAMI-GLOBAL.md](./FIUTAMI-GLOBAL.md)**
+>
+> Questo file (CLAUDE.md) è specifico per il repository **frontend** e l'integrazione Figma-to-Code.
+
+---
+
 ## 📋 Indice
 
 1. [Architettura Overview](#architettura-overview)
