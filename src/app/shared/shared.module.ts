@@ -24,6 +24,8 @@ import { PetInfoCardComponent } from './components/pet-info-card';
 import { BottomTabBarComponent } from './components/bottom-tab-bar';
 import { AnswerSquareComponent } from './components/answer-square';
 import { DrawerComponent } from './components/drawer';
+import { SpeciesCardComponent } from './components/species-card';
+import { SpeciesSelectorComponent } from './components/species-selector';
 
 // Legacy components (declared in this module)
 const LEGACY_COMPONENTS = [
@@ -50,6 +52,8 @@ const STANDALONE_COMPONENTS = [
   BottomTabBarComponent,
   AnswerSquareComponent,
   DrawerComponent,
+  SpeciesCardComponent,
+  SpeciesSelectorComponent,
 ];
 
 @NgModule({

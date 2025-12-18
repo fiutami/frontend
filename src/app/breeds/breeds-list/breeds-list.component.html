@@ -1,59 +1,78 @@
-<div class="breeds-list">
-  <!-- Header -->
-  <header class="breeds-list__header">
-    <app-back-button
-      variant="solid"
-      (clicked)="onBack()">
-    </app-back-button>
-    <h1 class="breeds-list__title">Esplora le Razze</h1>
-  </header>
-
-  <!-- Search -->
-  <div class="breeds-list__search">
-    <app-search-box
-      placeholder="Cerca razza..."
-      variant="solid"
-      (search)="onSearch($event)">
-    </app-search-box>
+<div class="breeds-page">
+  <!-- Decorative Header Background -->
+  <div class="breeds-page__header-bg">
+    <div class="breeds-page__header-shape"></div>
+    <img
+      src="assets/images/logo-fiutami.png"
+      alt="Fiutami Logo"
+      class="breeds-page__logo" />
   </div>
 
-  <!-- Filter Tabs -->
-  <div class="breeds-list__filters">
-    @for (filter of filterOptions; track filter) {
-      <button
-        type="button"
-        class="breeds-list__filter-btn"
-        [class.breeds-list__filter-btn--active]="activeFilter() === filter"
-        (click)="setFilter(filter)">
-        {{ getFilterLabel(filter) }}
-      </button>
-    }
+  <!-- Navigation Buttons -->
+  <button
+    type="button"
+    class="breeds-page__btn-back"
+    (click)="onBack()"
+    aria-label="Torna indietro">
+    <img src="assets/images/species/btn-back.svg" alt="" />
+  </button>
+
+  <button
+    type="button"
+    class="breeds-page__btn-drawer"
+    (click)="onOpenDrawer()"
+    aria-label="Apri menu">
+    <img src="assets/images/species/btn-drawer-menu.svg" alt="" />
+  </button>
+
+  <!-- Species Selector Switch -->
+  <div class="breeds-page__selector">
+    <app-species-selector
+      [label]="currentLabel"
+      (previous)="onPreviousView()"
+      (next)="onNextView()">
+    </app-species-selector>
   </div>
 
-  <!-- Breeds Grid -->
-  <div class="breeds-list__grid">
-    @for (breed of filteredBreeds(); track trackByBreedId($index, breed)) {
-      <article
-        class="breed-card"
-        (click)="onBreedClick(breed)"
-        (keydown.enter)="onBreedClick(breed)"
-        tabindex="0"
-        role="button"
-        [attr.aria-label]="'Vedi dettagli ' + breed.name">
-        <div class="breed-card__image">
-          <span class="breed-card__emoji">{{ breed.image }}</span>
-        </div>
-        <div class="breed-card__content">
-          <h3 class="breed-card__name">{{ breed.name }}</h3>
-          <span class="breed-card__badge breed-card__badge--{{ breed.species | lowercase }}">
-            {{ breed.species }}
-          </span>
-        </div>
-      </article>
-    } @empty {
-      <div class="breeds-list__empty">
-        <p>Nessuna razza trovata</p>
-      </div>
-    }
+  <!-- Title Section -->
+  <div class="breeds-page__title">
+    <h1>Fiuta e scopri</h1>
+    <p>Ogni specie racconta qualcosa.</p>
   </div>
+
+  <!-- Species Grid -->
+  <div class="breeds-page__grid-container">
+    <div class="breeds-page__grid">
+      @for (item of species; track trackBySpeciesId($index, item)) {
+        <app-species-card
+          [label]="item.label"
+          [image]="item.image"
+          [smallLabel]="isSmallLabel(item.label)"
+          (clicked)="onSpeciesClick(item)">
+        </app-species-card>
+      }
+    </div>
+  </div>
+
+  <!-- Interactive Mascot -->
+  <div class="breeds-page__mascot">
+    <div class="breeds-page__mascot-bubble">
+      <app-speech-bubble variant="default" tailPosition="right">
+        <span class="breeds-page__mascot-text">
+          il Fiuta ti<br />istruisce
+        </span>
+      </app-speech-bubble>
+    </div>
+    <img
+      src="assets/images/species/mascot-fiuto.svg"
+      alt="Fiuto mascot"
+      class="breeds-page__mascot-image" />
+  </div>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar
+    [tabs]="tabs"
+    [showLabels]="false"
+    [safeArea]="true">
+  </app-bottom-tab-bar>
 </div>

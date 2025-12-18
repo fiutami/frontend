@@ -1,33 +1,145 @@
-.breeds-list {
+.breeds-page {
+  position: relative;
   min-height: 100dvh;
-  background: linear-gradient(180deg, #fde5a7 0%, #f7bc34 50%, #e98b0c 100%);
-  padding: 16px;
-  padding-bottom: 32px;
+  width: 100%;
+  max-width: 393px;
+  margin: 0 auto;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(252, 239, 209, 1) 0%,
+    rgba(248, 215, 139, 1) 19%,
+    rgba(242, 184, 48, 1) 82%
+  );
+  overflow-x: hidden;
+  padding-bottom: 100px; // Space for tab bar + mascot
 
-  &__header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
+  // ===== Header Section =====
+  &__header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 212px;
+    z-index: 0;
   }
 
+  &__header-shape {
+    position: absolute;
+    width: 100%;
+    height: 212px;
+    background: #4a74f0;
+    border-radius: 103px 0 228px 15px;
+    box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  &__logo {
+    position: absolute;
+    top: 99px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 142px;
+    height: 34px;
+    object-fit: contain;
+  }
+
+  // ===== Navigation Buttons =====
+  &__btn-back,
+  &__btn-drawer {
+    position: absolute;
+    z-index: 10;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
+    img {
+      display: block;
+    }
+  }
+
+  &__btn-back {
+    top: 49px;
+    left: 28px;
+    width: 34px;
+    height: 34px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__btn-drawer {
+    top: 32px;
+    right: 20px;
+    width: 34px;
+    height: 61px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // ===== Selector Switch =====
+  &__selector {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    padding: 0 21px;
+    margin-top: 165px;
+  }
+
+  // ===== Title Section =====
   &__title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #111;
-    margin: 0;
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 24px 21px 16px;
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.22;
+      color: #4a74f0;
+      margin: 0;
+    }
+
+    p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.22;
+      color: #4a74f0;
+      margin: 4px 0 0 0;
+    }
   }
 
-  &__search {
-    margin-bottom: 16px;
-  }
-
-  &__filters {
-    display: flex;
-    gap: 8px;
+  // ===== Species Grid =====
+  &__grid-container {
+    position: relative;
+    z-index: 5;
+    padding: 0 10px;
     overflow-x: auto;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
+    overflow-y: visible;
     scrollbar-width: none;
     -ms-overflow-style: none;
 
@@ -36,114 +148,71 @@
     }
   }
 
-  &__filter-btn {
-    flex-shrink: 0;
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: 2px solid #111;
-    background: transparent;
-    color: #111;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
-    }
-
-    &--active {
-      background: #f5a623;
-      border-color: #f5a623;
-      color: #111;
-    }
-  }
-
   &__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(3, 112.68px);
+    gap: 8px 8px;
+    padding: 8px 0;
+    width: fit-content;
+    margin: 0 auto;
+
+    // Allow horizontal scroll if needed
+    @media (max-width: 370px) {
+      grid-template-columns: repeat(3, 100px);
+    }
   }
 
-  &__empty {
-    grid-column: 1 / -1;
+  // ===== Mascot Section =====
+  &__mascot {
+    position: fixed;
+    bottom: 90px;
+    right: 10px;
+    z-index: 20;
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+  }
+
+  &__mascot-bubble {
+    position: relative;
+    margin-right: -10px;
+    margin-bottom: 20px;
+  }
+
+  &__mascot-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.22;
     text-align: center;
-    padding: 40px 20px;
-    color: #111;
-    font-size: 16px;
+    color: #000000;
+    white-space: nowrap;
+  }
+
+  &__mascot-image {
+    width: 86px;
+    height: 118px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
-.breed-card {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+// Override speech bubble styles for mascot
+::ng-deep .breeds-page__mascot-bubble {
+  .speech-bubble {
+    background: #ffffff;
+    border: 3px solid #f2b830;
+    border-radius: 16px;
+    box-shadow: 3px 4px 0 0 rgba(0, 0, 0, 0.25);
+    padding: 12px 16px;
 
-  &:hover,
-  &:focus {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid #111;
-    outline-offset: 2px;
-  }
-
-  &__image {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #fef3d8 0%, #fde5a7 100%);
-  }
-
-  &__emoji {
-    font-size: 48px;
-  }
-
-  &__content {
-    padding: 12px;
-  }
-
-  &__name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #111;
-    margin: 0 0 8px 0;
-    line-height: 1.2;
-  }
-
-  &__badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-
-    &--cane {
-      background: #e3f2fd;
-      color: #1565c0;
-    }
-
-    &--gatto {
-      background: #fce4ec;
-      color: #c2185b;
-    }
-
-    &--coniglio {
-      background: #fff3e0;
-      color: #e65100;
-    }
-
-    &--uccello {
-      background: #e8f5e9;
-      color: #2e7d32;
+    &__tail {
+      border-color: #f2b830;
     }
   }
 }

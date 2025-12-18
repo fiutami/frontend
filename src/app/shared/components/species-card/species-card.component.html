@@ -1,0 +1,11 @@
+<article
+  class="species-card"
+  [class.species-card--small-label]="smallLabel"
+  [style.background-image]="'url(' + image + ')'"
+  (click)="onClick()"
+  (keydown)="onKeyDown($event)"
+  tabindex="0"
+  role="button"
+  [attr.aria-label]="'Esplora ' + label">
+  <span class="species-card__label">{{ label }}</span>
+</article>

@@ -55,8 +55,7 @@
                   <div class="species-card__overlay"></div>
                 </div>
                 <div class="species-card__content">
-                  <span class="material-icons species-card__icon">{{ species.icon }}</span>
-                  <span class="species-card__name">{{ species.name }}</span>
+                  <span class="species-card__name" [class.species-card__name--small]="species.name.length > 8">{{ species.name }}</span>
                 </div>
               </button>
             }

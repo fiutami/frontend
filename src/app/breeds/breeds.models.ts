@@ -2,7 +2,45 @@
  * Breed models for breeds module
  */
 
-export type Species = 'Cane' | 'Gatto' | 'Coniglio' | 'Uccello';
+export type Species =
+  | 'Cane'
+  | 'Gatto'
+  | 'Cavallo'
+  | 'Pesci'
+  | 'Rana'
+  | 'Pappagalli'
+  | 'Api'
+  | 'Serpenti'
+  | 'Canarini'
+  | 'Tartarughe'
+  | 'Coniglio'
+  | 'Uccello';
+
+/**
+ * Species configuration for the grid display
+ */
+export interface SpeciesConfig {
+  id: Species;
+  label: string;
+  image: string;
+  color: string;
+}
+
+/**
+ * All available species with their display configuration
+ */
+export const SPECIES_CONFIG: SpeciesConfig[] = [
+  { id: 'Cane', label: 'CANE', image: 'assets/images/species/species-cane.png', color: '#4A74F0' },
+  { id: 'Cavallo', label: 'CAVALLO', image: 'assets/images/species/species-cavallo.png', color: '#8B4513' },
+  { id: 'Pesci', label: 'PESCI', image: 'assets/images/species/species-pesci.png', color: '#00CED1' },
+  { id: 'Gatto', label: 'GATTO', image: 'assets/images/species/species-gatto.png', color: '#FF6B6B' },
+  { id: 'Rana', label: 'RANA', image: 'assets/images/species/species-rana.png', color: '#32CD32' },
+  { id: 'Pappagalli', label: 'PAPPAGALLI', image: 'assets/images/species/species-pappagalli.png', color: '#FF4500' },
+  { id: 'Api', label: 'API', image: 'assets/images/species/species-api.png', color: '#FFD700' },
+  { id: 'Serpenti', label: 'SERPENTI', image: 'assets/images/species/species-serpenti.png', color: '#2F4F4F' },
+  { id: 'Canarini', label: 'CANARINI', image: 'assets/images/species/species-canarini.png', color: '#FFFF00' },
+  { id: 'Tartarughe', label: 'TARTARUGHE', image: 'assets/images/species/species-tartarughe.png', color: '#228B22' },
+];
 
 export interface Breed {
   id: string;

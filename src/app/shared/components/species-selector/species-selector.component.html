@@ -1,0 +1,27 @@
+<div class="species-selector">
+  <button
+    *ngIf="showPrevious"
+    type="button"
+    class="species-selector__arrow species-selector__arrow--left"
+    (click)="onPreviousClick($event)"
+    aria-label="Categoria precedente">
+    <img
+      src="assets/images/species/arrow-left.svg"
+      alt=""
+      class="species-selector__arrow-icon" />
+  </button>
+
+  <span class="species-selector__label">{{ label }}</span>
+
+  <button
+    *ngIf="showNext"
+    type="button"
+    class="species-selector__arrow species-selector__arrow--right"
+    (click)="onNextClick($event)"
+    aria-label="Categoria successiva">
+    <img
+      src="assets/images/species/arrow-right.svg"
+      alt=""
+      class="species-selector__arrow-icon" />
+  </button>
+</div>

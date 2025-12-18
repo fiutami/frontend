@@ -118,14 +118,22 @@ export interface BreedAnalysisResult {
  * Mock data for MVP development
  */
 export const MOCK_SPECIES: Species[] = [
+  // Row 1 - Figma layout
   { id: 'dog', name: 'CANE', icon: 'pets', imageUrl: '/assets/species/dog.jpg', category: 'mammiferi', description: 'Il miglior amico dell\'uomo' },
-  { id: 'cat', name: 'GATTO', icon: 'pets', imageUrl: '/assets/species/cat.jpg', category: 'mammiferi', description: 'Compagno indipendente e affettuoso' },
   { id: 'horse', name: 'CAVALLO', icon: 'pets', imageUrl: '/assets/species/horse.jpg', category: 'mammiferi', description: 'Nobile e maestoso' },
   { id: 'fish', name: 'PESCI', icon: 'water', imageUrl: '/assets/species/fish.jpg', category: 'pesci', description: 'Colorati abitanti dell\'acquario' },
-  { id: 'bird', name: 'UCCELLI', icon: 'flutter_dash', imageUrl: '/assets/species/bird.jpg', category: 'uccelli', description: 'Cantori alati' },
-  { id: 'snake', name: 'SERPENTI', icon: 'pets', imageUrl: '/assets/species/snake.jpg', category: 'rettili', description: 'Affascinanti rettili' },
-  { id: 'turtle', name: 'TARTARUGHE', icon: 'pets', imageUrl: '/assets/species/turtle.jpg', category: 'rettili', description: 'Lente ma sagge' },
+  // Row 2
+  { id: 'cat', name: 'GATTO', icon: 'pets', imageUrl: '/assets/species/cat.jpg', category: 'mammiferi', description: 'Compagno indipendente e affettuoso' },
   { id: 'frog', name: 'RANA', icon: 'pets', imageUrl: '/assets/species/frog.jpg', category: 'anfibi', description: 'Saltellanti anfibi' },
+  { id: 'parrot', name: 'PAPPAGALLI', icon: 'flutter_dash', imageUrl: '/assets/species/parrot.jpg', category: 'uccelli', description: 'Colorati e intelligenti' },
+  { id: 'bee', name: 'API', icon: 'hive', imageUrl: '/assets/species/bee.jpg', category: 'invertebrati', description: 'Preziose impollinatrici' },
+  // Row 3
+  { id: 'snake', name: 'SERPENTI', icon: 'pets', imageUrl: '/assets/species/snake.jpg', category: 'rettili', description: 'Affascinanti rettili' },
+  { id: 'canary', name: 'CANARINI', icon: 'flutter_dash', imageUrl: '/assets/species/canary.jpg', category: 'uccelli', description: 'Melodiosi cantori' },
+  { id: 'turtle', name: 'TARTARUGHE', icon: 'pets', imageUrl: '/assets/species/turtle.jpg', category: 'rettili', description: 'Lente ma sagge' },
+  // Additional species
+  { id: 'rabbit', name: 'CONIGLIO', icon: 'pets', imageUrl: '/assets/species/rabbit.jpg', category: 'mammiferi', description: 'Dolce e socievole' },
+  { id: 'hamster', name: 'CRICETO', icon: 'pets', imageUrl: '/assets/species/hamster.jpg', category: 'mammiferi', description: 'Piccolo e vivace' },
 ];
 
 export const MOCK_BREEDS: Breed[] = [

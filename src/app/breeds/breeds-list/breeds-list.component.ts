@@ -2,96 +2,84 @@ import {
   Component,
   ChangeDetectionStrategy,
   signal,
-  computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
-import { SearchBoxComponent } from '../../shared/components/search-box';
-import { Breed, Species, MOCK_BREEDS } from '../breeds.models';
+import { Species, SPECIES_CONFIG, SpeciesConfig } from '../breeds.models';
 
-type FilterOption = 'Tutti' | Species;
+type ViewMode = 'species' | 'breeds';
 
 /**
- * BreedsListComponent - Grid of pet breeds with filters
+ * BreedsListComponent - Species selection grid (mob_breeds design)
  *
  * Features:
- * - Search bar to filter by name
- * - Species filter tabs (Tutti, Cani, Gatti, Conigli, Uccelli)
- * - 2-column grid of breed cards
- * - Click to navigate to breed detail
+ * - Background gradient with decorative header
+ * - Species selector switch (Specie/Razze)
+ * - 3-column scrollable grid of species cards
+ * - Interactive mascot with speech bubble
+ * - Bottom tab bar navigation
  */
 @Component({
   selector: 'app-breeds-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedModule, SearchBoxComponent],
+  imports: [CommonModule, SharedModule],
   templateUrl: './breeds-list.component.html',
   styleUrls: ['./breeds-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreedsListComponent {
-  /** All available breeds */
-  private readonly allBreeds = MOCK_BREEDS;
+  /** All available species */
+  protected readonly species = SPECIES_CONFIG;
 
-  /** Filter options */
-  protected readonly filterOptions: FilterOption[] = [
-    'Tutti',
-    'Cane',
-    'Gatto',
-    'Coniglio',
-    'Uccello',
+  /** Current view mode */
+  protected viewMode = signal<ViewMode>('species');
+
+  /** View mode labels */
+  protected readonly viewLabels: Record<ViewMode, string> = {
+    species: 'Specie',
+    breeds: 'Razze',
+  };
+
+  /** Tab bar configuration */
+  protected readonly tabs = [
+    { id: 'home', icon: 'home', route: '/home' },
+    { id: 'calendar', icon: 'calendar_today', route: '/calendar' },
+    { id: 'location', icon: 'place', route: '/map' },
+    { id: 'pet', icon: 'pets', route: '/pet' },
+    { id: 'profile', icon: 'person', route: '/profile' },
   ];
-
-  /** Current search query */
-  protected searchQuery = signal('');
-
-  /** Current active filter */
-  protected activeFilter = signal<FilterOption>('Tutti');
-
-  /** Filtered breeds based on search and filter */
-  protected filteredBreeds = computed(() => {
-    let breeds = [...this.allBreeds];
-    const query = this.searchQuery().toLowerCase().trim();
-    const filter = this.activeFilter();
-
-    // Apply species filter
-    if (filter !== 'Tutti') {
-      breeds = breeds.filter(b => b.species === filter);
-    }
-
-    // Apply search filter
-    if (query) {
-      breeds = breeds.filter(b =>
-        b.name.toLowerCase().includes(query)
-      );
-    }
-
-    // Sort by popularity
-    return breeds.sort((a, b) => b.popularity - a.popularity);
-  });
 
   constructor(private router: Router) {}
 
   /**
-   * Handle search input
+   * Get current view label
    */
-  onSearch(query: string): void {
-    this.searchQuery.set(query);
+  get currentLabel(): string {
+    return this.viewLabels[this.viewMode()];
   }
 
   /**
-   * Set active filter
+   * Switch to previous view mode
    */
-  setFilter(filter: FilterOption): void {
-    this.activeFilter.set(filter);
+  onPreviousView(): void {
+    this.viewMode.set(this.viewMode() === 'species' ? 'breeds' : 'species');
   }
 
   /**
-   * Navigate to breed detail
+   * Switch to next view mode
    */
-  onBreedClick(breed: Breed): void {
-    this.router.navigate(['/breeds', breed.id]);
+  onNextView(): void {
+    this.viewMode.set(this.viewMode() === 'species' ? 'breeds' : 'species');
+  }
+
+  /**
+   * Navigate to species detail (breeds of this species)
+   */
+  onSpeciesClick(species: SpeciesConfig): void {
+    this.router.navigate(['/breeds'], {
+      queryParams: { species: species.id },
+    });
   }
 
   /**
@@ -102,21 +90,24 @@ export class BreedsListComponent {
   }
 
   /**
-   * Get display label for filter
+   * Open drawer menu
    */
-  getFilterLabel(filter: FilterOption): string {
-    if (filter === 'Tutti') return 'Tutti';
-    if (filter === 'Cane') return 'Cani';
-    if (filter === 'Gatto') return 'Gatti';
-    if (filter === 'Coniglio') return 'Conigli';
-    if (filter === 'Uccello') return 'Uccelli';
-    return filter;
+  onOpenDrawer(): void {
+    // TODO: Implement drawer service
+    console.log('Open drawer');
   }
 
   /**
-   * TrackBy function for breeds
+   * Check if label should be small (for long species names)
    */
-  trackByBreedId(_index: number, breed: Breed): string {
-    return breed.id;
+  isSmallLabel(label: string): boolean {
+    return label.length > 6;
+  }
+
+  /**
+   * TrackBy function for species
+   */
+  trackBySpeciesId(_index: number, species: SpeciesConfig): string {
+    return species.id;
   }
 }

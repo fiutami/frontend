@@ -1,0 +1,63 @@
+.species-card {
+  position: relative;
+  width: 112.68px;
+  height: 120px;
+  border-radius: 22px 0 22px 22px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+
+  // Dark overlay for better text readability
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    border-radius: inherit;
+  }
+
+  &:hover,
+  &:focus {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.35);
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #4a74f0;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  &__label {
+    position: relative;
+    z-index: 1;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.22;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 0 8px;
+  }
+
+  // For longer labels like PAPPAGALLI, SERPENTI, etc.
+  &--small-label &__label {
+    font-size: 16px;
+  }
+}

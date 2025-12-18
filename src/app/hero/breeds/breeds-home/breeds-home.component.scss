@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  background: linear-gradient(180deg, #1a5f7a 0%, #0d3b4c 100%);
+  // Figma: #4A74F1 (rgba 0.29, 0.45, 0.94) with curved shape
+  background: #4A74F1;
   padding-bottom: 80px; // Space for tab bar
 }
 
@@ -201,16 +202,17 @@
   }
 }
 
-// Species card
+// Species card - Figma design: asymmetric corners (22px top-left, 0 top-right, 22px bottom corners)
 .species-card {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 0.94; // ~112w x 120h from Figma
   border: none;
-  border-radius: 16px;
+  border-radius: 22px 0 22px 22px; // Asymmetric: top-left, top-right(sharp), bottom-right, bottom-left
   overflow: hidden;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.1);
+  background: #000;
   transition: all 0.3s ease;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3); // Figma drop shadow
 
   &:hover {
     transform: translateY(-4px);
@@ -234,13 +236,15 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0.9; // Figma: 90% opacity on image
     }
   }
 
   &__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+    // Figma: gradient from top transparent to bottom dark for text readability
+    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
   }
 
   &__content {
@@ -262,11 +266,19 @@
   }
 
   &__name {
-    font-size: 12px;
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px; // Figma: 20px (16px for long names like PAPPAGALLI)
+    font-weight: 700; // Figma: Bold
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0;
     text-align: center;
+    line-height: 1.22; // Figma: 24.38px / 20px
+
+    // Smaller font for long names
+    &--small {
+      font-size: 16px;
+      line-height: 1.22;
+    }
   }
 }
 
