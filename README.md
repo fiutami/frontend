@@ -30,17 +30,14 @@ npm test
 ## Project Structure
 
 ```
-src/
-├── app/
-│   ├── core/           # Guards, services, interceptors
-│   ├── shared/         # Common components
-│   ├── features/       # Feature modules
-│   │   ├── auth/       # Login, register
-│   │   ├── user/       # Dashboard, profile, settings
-│   │   └── pet/        # Pet management
-│   └── layouts/        # Page layouts
-├── assets/             # Images, icons, i18n
-└── styles/             # Global SCSS, tokens
+src/app/
+├── auth/           # Login, signup, forgot-password
+├── core/           # Guards, interceptors, services, models, i18n
+├── shared/         # Shared components
+├── hero/           # Landing page, hero video
+├── hero-video/     # Video component
+├── user/           # User dashboard (TODO: onboarding, pets, calendar)
+└── styleguide/     # Design system demo
 ```
 
 ## Environment Variables
