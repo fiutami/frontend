@@ -1,0 +1,78 @@
+<div class="welcome-ai">
+  <!-- Header with back button and language -->
+  <header class="welcome-ai__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBackClick()">
+    </app-back-button>
+
+    <button
+      type="button"
+      class="welcome-ai__language-btn"
+      (click)="onLanguageClick()"
+      aria-label="Cambia lingua">
+      <span class="material-icons">language</span>
+    </button>
+  </header>
+
+  <!-- Main content -->
+  <main class="welcome-ai__content">
+    <!-- Title -->
+    <h1 class="welcome-ai__title">Benvenuto in FIUTAMI!</h1>
+
+    <!-- Fiuto message -->
+    <div class="welcome-ai__message">
+      <app-ai-message-bubble
+        [message]="fiutoMessage()"
+        [showMascot]="true"
+        mascotPosition="right"
+        [animated]="true">
+      </app-ai-message-bubble>
+    </div>
+
+    <!-- Choice buttons -->
+    @if (!hasSelected()) {
+      <div class="welcome-ai__choices">
+        <button
+          type="button"
+          class="welcome-ai__choice-btn welcome-ai__choice-btn--primary"
+          (click)="onHasPetClick()">
+          <span class="welcome-ai__choice-icon">&#x1F415;</span>
+          <span class="welcome-ai__choice-text">Ho già un animale</span>
+        </button>
+
+        <button
+          type="button"
+          class="welcome-ai__choice-btn welcome-ai__choice-btn--secondary"
+          (click)="onWantsPetClick()">
+          <span class="welcome-ai__choice-icon">&#x1F4AD;</span>
+          <span class="welcome-ai__choice-text">Vorrei averne uno</span>
+        </button>
+      </div>
+    }
+
+    <!-- Loading indicator when selected -->
+    @if (hasSelected()) {
+      <div class="welcome-ai__loading">
+        <div class="welcome-ai__spinner"></div>
+        <p class="welcome-ai__loading-text">Un momento...</p>
+      </div>
+    }
+  </main>
+
+  <!-- Footer -->
+  <footer class="welcome-ai__footer">
+    <img
+      src="assets/images/logo-fiutami.png"
+      alt="FiutaMi"
+      class="welcome-ai__footer-logo" />
+  </footer>
+</div>
+
+<!-- Language Bottom Sheet -->
+<app-language-bottom-sheet
+  [isOpen]="showLanguageSheet()"
+  [selectedLanguage]="currentLanguage()"
+  (languageSelected)="onLanguageSelected($event)"
+  (closed)="onLanguageSheetClosed()">
+</app-language-bottom-sheet>

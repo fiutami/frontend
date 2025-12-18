@@ -26,6 +26,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Onboarding flow - requires authentication
+  {
+    path: 'onboarding',
+    loadChildren: () => import('./onboarding/onboarding.module').then(m => m.OnboardingModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',
