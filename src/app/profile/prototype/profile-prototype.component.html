@@ -1,0 +1,146 @@
+<div class="profile-prototype">
+  <!-- Header -->
+  <header class="profile-prototype__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+
+    <!-- Prototype Badge -->
+    <div class="profile-prototype__badge">
+      <span class="profile-prototype__badge-icon">🔮</span>
+      <span class="profile-prototype__badge-text">Profilo Prototipo</span>
+    </div>
+  </header>
+
+  @if (profile()) {
+    <!-- Main Content -->
+    <main class="profile-prototype__content">
+      <!-- Hero Section -->
+      <section class="profile-prototype__hero">
+        <div class="profile-prototype__hero-icon">
+          {{ profile()!.icon }}
+        </div>
+        <h1 class="profile-prototype__hero-name">{{ profile()!.speciesName }}</h1>
+        <p class="profile-prototype__hero-breed">
+          {{ profile()!.suggestedBreed }} - {{ profile()!.compatibility }}% compatibile
+        </p>
+      </section>
+
+      <!-- Info Section (UNLOCKED) -->
+      <section class="profile-prototype__section profile-prototype__section--unlocked">
+        <h2 class="profile-prototype__section-title">
+          <span class="profile-prototype__section-icon">📋</span>
+          Informazioni
+        </h2>
+        <div class="profile-prototype__info-card">
+          <p class="profile-prototype__info-text">
+            {{ profile()!.description }}
+          </p>
+          <button
+            type="button"
+            class="profile-prototype__info-link"
+            (click)="onDiscoverBreed()">
+            Scopri di piu sulla razza →
+          </button>
+        </div>
+      </section>
+
+      <!-- Gallery Section (LOCKED) -->
+      <section class="profile-prototype__section profile-prototype__section--locked">
+        <h2 class="profile-prototype__section-title">
+          <span class="profile-prototype__section-icon">🖼️</span>
+          Galleria
+        </h2>
+        <div class="profile-prototype__locked-overlay">
+          <div class="profile-prototype__locked-placeholder">
+            <div class="profile-prototype__placeholder-item"></div>
+            <div class="profile-prototype__placeholder-item"></div>
+            <div class="profile-prototype__placeholder-item"></div>
+          </div>
+          <div class="profile-prototype__locked-content">
+            <span class="profile-prototype__lock-icon">🔒</span>
+            <p class="profile-prototype__lock-text">Registra il tuo pet per sbloccare la galleria</p>
+            <button
+              type="button"
+              class="profile-prototype__unlock-btn"
+              (click)="onRegisterPet()">
+              Registra ora
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Friends Section (LOCKED) -->
+      <section class="profile-prototype__section profile-prototype__section--locked">
+        <h2 class="profile-prototype__section-title">
+          <span class="profile-prototype__section-icon">🐾</span>
+          Amici
+        </h2>
+        <div class="profile-prototype__locked-overlay">
+          <div class="profile-prototype__locked-placeholder">
+            <div class="profile-prototype__placeholder-avatar"></div>
+            <div class="profile-prototype__placeholder-avatar"></div>
+            <div class="profile-prototype__placeholder-avatar"></div>
+            <div class="profile-prototype__placeholder-avatar"></div>
+          </div>
+          <div class="profile-prototype__locked-content">
+            <span class="profile-prototype__lock-icon">🔒</span>
+            <p class="profile-prototype__lock-text">Registra il tuo pet per trovare amici</p>
+            <button
+              type="button"
+              class="profile-prototype__unlock-btn"
+              (click)="onRegisterPet()">
+              Registra ora
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Memories Section (LOCKED) -->
+      <section class="profile-prototype__section profile-prototype__section--locked">
+        <h2 class="profile-prototype__section-title">
+          <span class="profile-prototype__section-icon">📸</span>
+          Ricordi
+        </h2>
+        <div class="profile-prototype__locked-overlay">
+          <div class="profile-prototype__locked-placeholder">
+            <div class="profile-prototype__placeholder-memory"></div>
+            <div class="profile-prototype__placeholder-memory"></div>
+          </div>
+          <div class="profile-prototype__locked-content">
+            <span class="profile-prototype__lock-icon">🔒</span>
+            <p class="profile-prototype__lock-text">Registra il tuo pet per salvare ricordi</p>
+            <button
+              type="button"
+              class="profile-prototype__unlock-btn"
+              (click)="onRegisterPet()">
+              Registra ora
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="profile-prototype__footer">
+      <button
+        type="button"
+        class="profile-prototype__cta-btn"
+        (click)="onRegisterPet()">
+        🐾 Ho adottato! Registra il mio pet
+      </button>
+      <a
+        class="profile-prototype__footer-link"
+        (click)="onRetakeQuiz()">
+        Rifai il quiz
+      </a>
+    </footer>
+  } @else {
+    <!-- Loading -->
+    <div class="profile-prototype__loading">
+      <div class="profile-prototype__spinner"></div>
+      <p>Caricamento profilo...</p>
+    </div>
+  }
+</div>

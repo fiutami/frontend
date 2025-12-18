@@ -33,6 +33,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Profile - requires authentication
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',

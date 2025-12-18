@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { QuizMatchingService, SpeciesMatch } from '../services/quiz-matching.service';
 import { QuizAnswers, EMPTY_QUIZ_STATE } from '../quiz/quiz.models';
+import { PrototypeService } from '../../profile/services/prototype.service';
 
 /**
  * QuizResultComponent - Species matching result screen
@@ -30,6 +31,7 @@ import { QuizAnswers, EMPTY_QUIZ_STATE } from '../quiz/quiz.models';
 export class QuizResultComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly matchingService = inject(QuizMatchingService);
+  private readonly prototypeService = inject(PrototypeService);
 
   /** Top match result */
   protected topMatch = signal<SpeciesMatch | null>(null);
@@ -86,13 +88,21 @@ export class QuizResultComponent implements OnInit {
   }
 
   /**
-   * Explore selected species
+   * Explore selected species - save to prototype and navigate
    */
   onExploreSpecies(): void {
     const match = this.topMatch();
     if (match) {
-      // TODO: Navigate to species detail when implemented
-      this.router.navigate(['/home/breeds']);
+      // Save prototype data for Path B users
+      this.prototypeService.savePrototypeData({
+        speciesId: match.id,
+        speciesName: match.name,
+        suggestedBreed: match.suggestedBreed,
+        compatibility: match.compatibility,
+        icon: match.icon,
+        description: match.description,
+      });
+      this.router.navigate(['/profile/prototype']);
     }
   }
 
