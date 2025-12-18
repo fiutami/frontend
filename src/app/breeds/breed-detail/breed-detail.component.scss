@@ -1,0 +1,255 @@
+.breed-detail {
+  min-height: 100dvh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+
+  &--not-found {
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  &__header {
+    position: relative;
+    background: linear-gradient(135deg, #fef3d8 0%, #fde5a7 100%);
+    padding-bottom: 20px;
+  }
+
+  &__back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+  }
+
+  &__hero {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__emoji {
+    font-size: 96px;
+  }
+
+  &__info {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  &__name {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 8px 0;
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  &__species {
+    font-weight: 600;
+    color: #111;
+  }
+
+  &__origin {
+    &::before {
+      content: '"';
+      margin-right: 12px;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid #eee;
+    padding: 0 12px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__tab {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: #f5a623;
+      border-radius: 2px 2px 0 0;
+      transition: width 0.2s ease;
+    }
+
+    &:hover {
+      color: #f5a623;
+    }
+
+    &--active {
+      color: #f5a623;
+
+      &::after {
+        width: calc(100% - 16px);
+      }
+    }
+  }
+
+  &__tab-icon {
+    font-size: 20px;
+  }
+
+  &__tab-label {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  &__content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    padding: 16px 20px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    background: #fff;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  &__cta {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 12px;
+    border: none;
+    background: #f5a623;
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+
+    &:hover {
+      background: #e69a1f;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.tab-content {
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 20px 0;
+  }
+
+  &__item {
+    margin-bottom: 20px;
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin: 0 0 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #111;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  &__stat {
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  &__stat-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  &__stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 20px;
+
+    li {
+      font-size: 16px;
+      color: #111;
+      margin-bottom: 8px;
+      line-height: 1.4;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #f5a623;
+    color: #111;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}

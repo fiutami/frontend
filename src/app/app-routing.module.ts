@@ -40,6 +40,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Breeds catalog - requires authentication
+  {
+    path: 'breeds',
+    loadChildren: () => import('./breeds/breeds.module').then(m => m.BreedsModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',

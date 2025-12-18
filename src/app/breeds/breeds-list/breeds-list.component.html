@@ -1,0 +1,59 @@
+<div class="breeds-list">
+  <!-- Header -->
+  <header class="breeds-list__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+    <h1 class="breeds-list__title">Esplora le Razze</h1>
+  </header>
+
+  <!-- Search -->
+  <div class="breeds-list__search">
+    <app-search-box
+      placeholder="Cerca razza..."
+      variant="solid"
+      (search)="onSearch($event)">
+    </app-search-box>
+  </div>
+
+  <!-- Filter Tabs -->
+  <div class="breeds-list__filters">
+    @for (filter of filterOptions; track filter) {
+      <button
+        type="button"
+        class="breeds-list__filter-btn"
+        [class.breeds-list__filter-btn--active]="activeFilter() === filter"
+        (click)="setFilter(filter)">
+        {{ getFilterLabel(filter) }}
+      </button>
+    }
+  </div>
+
+  <!-- Breeds Grid -->
+  <div class="breeds-list__grid">
+    @for (breed of filteredBreeds(); track trackByBreedId($index, breed)) {
+      <article
+        class="breed-card"
+        (click)="onBreedClick(breed)"
+        (keydown.enter)="onBreedClick(breed)"
+        tabindex="0"
+        role="button"
+        [attr.aria-label]="'Vedi dettagli ' + breed.name">
+        <div class="breed-card__image">
+          <span class="breed-card__emoji">{{ breed.image }}</span>
+        </div>
+        <div class="breed-card__content">
+          <h3 class="breed-card__name">{{ breed.name }}</h3>
+          <span class="breed-card__badge breed-card__badge--{{ breed.species | lowercase }}">
+            {{ breed.species }}
+          </span>
+        </div>
+      </article>
+    } @empty {
+      <div class="breeds-list__empty">
+        <p>Nessuna razza trovata</p>
+      </div>
+    }
+  </div>
+</div>

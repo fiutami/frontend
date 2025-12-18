@@ -1,0 +1,172 @@
+@if (breed(); as breedData) {
+  <div class="breed-detail">
+    <!-- Header with image -->
+    <header class="breed-detail__header">
+      <app-back-button
+        variant="glass"
+        (clicked)="onBack()"
+        class="breed-detail__back">
+      </app-back-button>
+
+      <div class="breed-detail__hero">
+        <span class="breed-detail__emoji">{{ breedData.image }}</span>
+      </div>
+
+      <div class="breed-detail__info">
+        <h1 class="breed-detail__name">{{ breedData.name }}</h1>
+        <div class="breed-detail__meta">
+          <span class="breed-detail__species">{{ breedData.species }}</span>
+          @if (breedData.origin) {
+            <span class="breed-detail__origin">{{ breedData.origin }}</span>
+          }
+        </div>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="breed-detail__tabs" aria-label="Informazioni razza">
+      @for (tab of tabs; track tab.id) {
+        <button
+          type="button"
+          class="breed-detail__tab"
+          [class.breed-detail__tab--active]="isTabActive(tab.id)"
+          (click)="setActiveTab(tab.id)"
+          [attr.aria-selected]="isTabActive(tab.id)"
+          role="tab">
+          <span class="breed-detail__tab-icon">{{ tab.icon }}</span>
+          <span class="breed-detail__tab-label">{{ tab.label }}</span>
+        </button>
+      }
+    </nav>
+
+    <!-- Tab Content -->
+    <main class="breed-detail__content" role="tabpanel">
+      @switch (activeTab()) {
+        @case ('dna') {
+          <section class="tab-content">
+            <h2 class="tab-content__title">Origini e Genetica</h2>
+            <div class="tab-content__item">
+              <h3>Origine</h3>
+              <p>{{ breedData.dna.origin }}</p>
+            </div>
+            <div class="tab-content__item">
+              <h3>Storia</h3>
+              <p>{{ breedData.dna.history }}</p>
+            </div>
+            <div class="tab-content__item">
+              <h3>Genetica</h3>
+              <p>{{ breedData.dna.genetics }}</p>
+            </div>
+          </section>
+        }
+        @case ('size') {
+          <section class="tab-content">
+            <h2 class="tab-content__title">Taglia e Aspetto</h2>
+            <div class="tab-content__grid">
+              <div class="tab-content__stat">
+                <span class="tab-content__stat-label">Peso</span>
+                <span class="tab-content__stat-value">{{ breedData.size.weight }}</span>
+              </div>
+              <div class="tab-content__stat">
+                <span class="tab-content__stat-label">Altezza</span>
+                <span class="tab-content__stat-value">{{ breedData.size.height }}</span>
+              </div>
+            </div>
+            <div class="tab-content__item">
+              <h3>Mantello</h3>
+              <p>{{ breedData.size.coat }}</p>
+            </div>
+          </section>
+        }
+        @case ('temperament') {
+          <section class="tab-content">
+            <h2 class="tab-content__title">Temperamento</h2>
+            <div class="tab-content__item">
+              <h3>Carattere</h3>
+              <p>{{ breedData.temperament.character }}</p>
+            </div>
+            <div class="tab-content__item">
+              <h3>Comportamento</h3>
+              <p>{{ breedData.temperament.behavior }}</p>
+            </div>
+            <div class="tab-content__item">
+              <h3>Socialità</h3>
+              <p>{{ breedData.temperament.sociability }}</p>
+            </div>
+          </section>
+        }
+        @case ('care') {
+          <section class="tab-content">
+            <h2 class="tab-content__title">Cura</h2>
+            <div class="tab-content__item">
+              <h3>Alimentazione</h3>
+              <p>{{ breedData.care.feeding }}</p>
+            </div>
+            <div class="tab-content__item">
+              <h3>Esercizio</h3>
+              <p>{{ breedData.care.exercise }}</p>
+            </div>
+            <div class="tab-content__item">
+              <h3>Toelettatura</h3>
+              <p>{{ breedData.care.grooming }}</p>
+            </div>
+          </section>
+        }
+        @case ('risks') {
+          <section class="tab-content">
+            <h2 class="tab-content__title">Rischi e Salute</h2>
+            <div class="tab-content__item">
+              <h3>Aspettativa di vita</h3>
+              <p>{{ breedData.risks.lifeExpectancy }}</p>
+            </div>
+            <div class="tab-content__item">
+              <h3>Malattie comuni</h3>
+              <ul class="tab-content__list">
+                @for (disease of breedData.risks.commonDiseases; track disease) {
+                  <li>{{ disease }}</li>
+                }
+              </ul>
+            </div>
+          </section>
+        }
+        @case ('pedigree') {
+          <section class="tab-content">
+            <h2 class="tab-content__title">Pedigree e Standard</h2>
+            <div class="tab-content__item">
+              <h3>Standard</h3>
+              <p>{{ breedData.pedigree.standard }}</p>
+            </div>
+            <div class="tab-content__item">
+              <h3>Riconoscimenti</h3>
+              <div class="tab-content__badges">
+                @for (recognition of breedData.pedigree.recognitions; track recognition) {
+                  <span class="tab-content__badge">{{ recognition }}</span>
+                }
+              </div>
+            </div>
+          </section>
+        }
+      }
+    </main>
+
+    <!-- Footer CTA -->
+    <footer class="breed-detail__footer">
+      <button
+        type="button"
+        class="breed-detail__cta"
+        (click)="onSelectBreed()">
+        Questo è il mio pet!
+      </button>
+    </footer>
+  </div>
+} @else {
+  <div class="breed-detail breed-detail--not-found">
+    <p>Razza non trovata</p>
+    <button
+      type="button"
+      class="breed-detail__cta"
+      (click)="onBack()">
+      Torna alla lista
+    </button>
+  </div>
+}
