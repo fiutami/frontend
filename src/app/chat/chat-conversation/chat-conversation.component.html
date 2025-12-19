@@ -46,7 +46,7 @@
     <ng-container *ngFor="let message of messages; let i = index">
       <!-- Date Separator -->
       <div class="date-separator" *ngIf="shouldShowDateSeparator(i)">
-        <span>{{ formatMessageDate(message.timestamp) }}</span>
+        <span>{{ formatMessageDate(message.createdAt) }}</span>
       </div>
 
       <!-- Message Bubble -->
