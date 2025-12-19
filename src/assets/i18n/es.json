@@ -39,19 +39,19 @@
     "tagline": "Encuentra tu solución ideal",
     "subtitle": "Encuentra servicios y profesionales cerca de ti",
     "cta": "Comenzar",
-    "learnMore": "Aprende más"
+    "learnMore": "Saber más"
   },
   "navigation": {
     "home": "Inicio",
     "services": "Servicios",
-    "about": "Acerca de",
+    "about": "Nosotros",
     "contact": "Contacto",
     "profile": "Perfil",
     "settings": "Configuración"
   },
   "footer": {
     "company": "Empresa",
-    "aboutUs": "Acerca de nosotros",
+    "aboutUs": "Sobre nosotros",
     "careers": "Carreras",
     "press": "Prensa",
     "support": "Soporte",
@@ -85,6 +85,208 @@
     "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
     "passwordsMustMatch": "Las contraseñas deben coincidir",
     "termsRequired": "Debes aceptar los términos y condiciones"
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "¡Bienvenido a FIUTAMI!",
+      "question": "¿Ya tienes una mascota o te gustaría tener una?",
+      "hasPet": "Tengo una mascota",
+      "wantsPet": "Quiero una mascota",
+      "hasPetResponse": "¡Perfecto! Registremos juntos a tu mascota para poder entrar al mundo de Fiutami.",
+      "wantsPetResponse": "El mundo está lleno de animales maravillosos. Para ayudarte a encontrar el adecuado, empecemos a conocerte mejor."
+    },
+    "registerPet": {
+      "title": "¡Registra a tu amigo peludo!",
+      "petName": "Nombre de la mascota",
+      "petType": "Tipo de animal",
+      "breed": "Raza",
+      "age": "Edad",
+      "gender": "Sexo",
+      "male": "Macho",
+      "female": "Hembra"
+    },
+    "quizResult": {
+      "title": "¡Aquí está tu match perfecto!",
+      "compatibility": "Compatibilidad",
+      "viewDetails": "Ver detalles",
+      "tryAgain": "Repetir el quiz"
+    }
+  },
+  "quiz": {
+    "phase1": {
+      "title": "Estilo de vida",
+      "activity": {
+        "question": "¿Qué tan activo eres?",
+        "sedentary": "Sedentario",
+        "moderate": "Moderado",
+        "active": "Muy activo"
+      },
+      "location": {
+        "question": "¿Dónde vives?",
+        "city": "Ciudad",
+        "suburbs": "Suburbios",
+        "countryside": "Campo"
+      },
+      "otherPets": {
+        "question": "¿Tienes otras mascotas?",
+        "yes": "Sí",
+        "no": "No"
+      }
+    },
+    "phase2": {
+      "title": "Espacio",
+      "housing": {
+        "question": "¿Tipo de vivienda?",
+        "apartment": "Apartamento",
+        "house": "Casa",
+        "houseGarden": "Casa con jardín"
+      },
+      "size": {
+        "question": "¿Metros cuadrados?",
+        "small": "<50m²",
+        "medium": "50-100m²",
+        "large": ">100m²"
+      },
+      "outdoor": {
+        "question": "¿Tienes espacio exterior?",
+        "yes": "Sí",
+        "no": "No"
+      }
+    },
+    "phase3": {
+      "title": "Tiempo",
+      "hours": {
+        "question": "¿Horas disponibles al día?",
+        "few": "<1h",
+        "some": "1-3h",
+        "many": ">3h"
+      },
+      "travel": {
+        "question": "¿Viajas seguido?",
+        "yes": "Sí",
+        "no": "No"
+      },
+      "experience": {
+        "question": "¿Experiencia con animales?",
+        "none": "Ninguna",
+        "little": "Poca",
+        "much": "Mucha"
+      }
+    }
+  },
+  "languages": {
+    "it": "Italiano",
+    "en": "Inglés",
+    "pt-BR": "Portugués (Brasil)",
+    "ar": "Árabe",
+    "fr": "Francés",
+    "es": "Español",
+    "zh": "Chino",
+    "ja": "Japonés",
+    "hi": "Hindi"
+  },
+  "drawer": {
+    "subtitle": "Configuración y actividades",
+    "account": "Cuenta",
+    "activity": "Tus actividades",
+    "notifications": "Configuración de notificaciones",
+    "saved": "Guardados",
+    "adopt": "Adoptar",
+    "addPet": "Agregar mascotas",
+    "petFriends": "Amigos de mascotas",
+    "inviteFriends": "Invitar amigos",
+    "lostPets": "Animales perdidos",
+    "blockedUsers": "Usuarios bloqueados",
+    "terms": "Términos de servicio",
+    "subscriptions": "Suscripciones",
+    "contact": "Contáctanos",
+    "privacy": "Privacidad",
+    "logout": "Cerrar sesión"
+  },
+  "search": {
+    "placeholder": "Buscar mascotas, lugares, razas...",
+    "results": "resultados",
+    "suggestions": "Sugerencias",
+    "recent": "Búsquedas recientes",
+    "categories": {
+      "all": "Todos",
+      "pets": "Mascotas",
+      "users": "Usuarios",
+      "places": "Lugares",
+      "breeds": "Razas",
+      "events": "Eventos"
+    },
+    "noResults": {
+      "title": "Sin resultados",
+      "subtitle": "Intenta con otros términos"
+    }
+  },
+  "petProfile": {
+    "loading": "Cargando perfil...",
+    "tabs": {
+      "gallery": "Galería",
+      "friends": "Amigos",
+      "memories": "Recuerdos",
+      "info": "Info"
+    },
+    "stats": {
+      "weight": "Peso",
+      "sex": "Sexo",
+      "chip": "Chip",
+      "male": "Macho",
+      "female": "Hembra"
+    },
+    "gallery": {
+      "title": "Galería",
+      "add": "Agregar",
+      "addPhoto": "Agregar foto",
+      "emptyTitle": "Aquí guardas los momentos más bonitos con tu mascota.",
+      "emptyMessage": "Sube tu primer recuerdo salvaje"
+    },
+    "friends": {
+      "title": "Amigos",
+      "online": "En línea ahora",
+      "offline": "Desconectado",
+      "findFriends": "Encontrar amigos",
+      "emptyTitle": "Aquí encuentras a tu banda peluda.",
+      "emptyMessage": "Amigos con los que ya has interactuado"
+    },
+    "memories": {
+      "title": "Recuerdos",
+      "add": "Agregar",
+      "addMemory": "Agregar recuerdo",
+      "emptyTitle": "Cada mes un recuerdo,",
+      "emptySubtitle": "Cada recuerdo una ferocidad",
+      "days": "DÍAS",
+      "months": "MESES",
+      "years": "AÑOS"
+    },
+    "info": {
+      "breedFacts": "Datos salvajes",
+      "discoverBreed": "Descubre la raza",
+      "careNeeds": "Cuidado y necesidades",
+      "activity": "Actividad",
+      "grooming": "Aseo",
+      "care": "Cuidado",
+      "details": "Detalles",
+      "color": "Color",
+      "microchip": "Microchip",
+      "neutered": "Esterilizado",
+      "birthDate": "Fecha de nacimiento",
+      "registeredOn": "Registrado el",
+      "healthNotes": "Notas de salud",
+      "appointments": "Citas",
+      "documents": "Documentos",
+      "vaccinations": "Lista de vacunación",
+      "allergies": "Alergias y notas médicas",
+      "activityDiary": "Diario de actividades",
+      "weightCondition": "Peso y condición física",
+      "low": "Bajo",
+      "medium": "Medio",
+      "high": "Alto",
+      "yes": "Sí",
+      "no": "No"
+    }
   },
   "premium": {
     "title": "Suscripciones",
