@@ -11,8 +11,7 @@
     "search": "Buscar",
     "loading": "Carregando...",
     "error": "Erro",
-    "success": "Sucesso",
-    "continue": "Continuar"
+    "success": "Sucesso"
   },
   "auth": {
     "login": "Entrar",
@@ -23,11 +22,11 @@
     "confirmPassword": "Confirmar Senha",
     "forgotPassword": "Esqueceu a senha?",
     "resetPassword": "Redefinir Senha",
-    "termsAccept": "Ao entrar voc� aceita nossos Termos e Privacidade",
-    "termsAndConditions": "Termos e Condi��es",
-    "privacyPolicy": "Pol�tica de Privacidade",
-    "alreadyHaveAccount": "J� tem uma conta?",
-    "dontHaveAccount": "N�o tem uma conta?",
+    "termsAccept": "Ao entrar você aceita nossos Termos e Privacidade",
+    "termsAndConditions": "Termos e Condições",
+    "privacyPolicy": "Política de Privacidade",
+    "alreadyHaveAccount": "Já tem uma conta?",
+    "dontHaveAccount": "Não tem uma conta?",
     "loginButton": "Entrar",
     "signupButton": "Cadastrar",
     "loginTitle": "Entrar",
@@ -37,22 +36,22 @@
     "confirmPasswordPlaceholder": "Confirme sua senha"
   },
   "hero": {
-    "tagline": "Fareja sua solu��o ideal",
-    "subtitle": "Encontre servi�os e profissionais perto de voc�",
-    "cta": "Come�ar agora",
+    "tagline": "Fareja sua solução ideal",
+    "subtitle": "Encontre serviços e profissionais perto de você",
+    "cta": "Começar agora",
     "learnMore": "Saiba mais"
   },
   "navigation": {
-    "home": "In�cio",
-    "services": "Servi�os",
-    "about": "Sobre N�s",
+    "home": "Início",
+    "services": "Serviços",
+    "about": "Sobre Nós",
     "contact": "Contato",
     "profile": "Perfil",
-    "settings": "Configura��es"
+    "settings": "Configurações"
   },
   "footer": {
     "company": "Empresa",
-    "aboutUs": "Sobre N�s",
+    "aboutUs": "Sobre Nós",
     "careers": "Carreiras",
     "press": "Imprensa",
     "support": "Suporte",
@@ -60,54 +59,54 @@
     "faq": "FAQ",
     "contact": "Fale Conosco",
     "legal": "Legal",
-    "terms": "Termos de Servi�o",
+    "terms": "Termos de Serviço",
     "privacy": "Privacidade",
     "cookies": "Cookies",
     "followUs": "Siga-nos",
-    "copyright": "� {{year}} Fiutami. Todos os direitos reservados."
+    "copyright": "© {{year}} Fiutami. Todos os direitos reservados."
   },
   "errors": {
-    "required": "Este campo � obrigat�rio",
-    "invalidEmail": "Email inv�lido",
-    "passwordMismatch": "As senhas n�o coincidem",
-    "minLength": "M�nimo de {{length}} caracteres",
-    "maxLength": "M�ximo de {{length}} caracteres",
-    "invalidFormat": "Formato inv�lido",
+    "required": "Este campo é obrigatório",
+    "invalidEmail": "Email inválido",
+    "passwordMismatch": "As senhas não coincidem",
+    "minLength": "Mínimo de {{length}} caracteres",
+    "maxLength": "Máximo de {{length}} caracteres",
+    "invalidFormat": "Formato inválido",
     "serverError": "Erro do servidor. Tente novamente mais tarde.",
-    "networkError": "Erro de conex�o. Verifique sua rede.",
-    "unauthorized": "N�o autorizado",
-    "notFound": "N�o encontrado",
+    "networkError": "Erro de conexão. Verifique sua rede.",
+    "unauthorized": "Não autorizado",
+    "notFound": "Não encontrado",
     "forbidden": "Acesso negado"
   },
   "validation": {
-    "emailRequired": "O email � obrigat�rio",
-    "emailInvalid": "Digite um email v�lido",
-    "passwordRequired": "A senha � obrigat�ria",
+    "emailRequired": "O email é obrigatório",
+    "emailInvalid": "Digite um email válido",
+    "passwordRequired": "A senha é obrigatória",
     "passwordMinLength": "A senha deve ter pelo menos 8 caracteres",
     "passwordsMustMatch": "As senhas devem ser iguais",
-    "termsRequired": "Voc� deve aceitar os termos e condi��es"
+    "termsRequired": "Você deve aceitar os termos e condições"
   },
   "onboarding": {
     "welcome": {
       "title": "Bem-vindo ao FIUTAMI!",
-      "question": "Voc� j� tem um animal ou gostaria de ter um?",
+      "question": "Você já tem um animal ou gostaria de ter um?",
       "hasPet": "Tenho um animal",
       "wantsPet": "Quero um animal",
       "hasPetResponse": "Perfeito! Vamos cadastrar seu animal juntos para entrar no mundo do Fiutami.",
-      "wantsPetResponse": "O mundo est� cheio de animais maravilhosos. Para te ajudar a encontrar o certo, vamos te conhecer melhor."
+      "wantsPetResponse": "O mundo está cheio de animais maravilhosos. Para te ajudar a encontrar o certo, vamos te conhecer melhor."
     },
     "registerPet": {
       "title": "Cadastre seu amigo peludo!",
       "petName": "Nome do animal",
       "petType": "Tipo de animal",
-      "breed": "Ra�a",
+      "breed": "Raça",
       "age": "Idade",
       "gender": "Sexo",
       "male": "Macho",
-      "female": "F�mea"
+      "female": "Fêmea"
     },
     "quizResult": {
-      "title": "Aqui est� seu par perfeito!",
+      "title": "Aqui está seu par perfeito!",
       "compatibility": "Compatibilidade",
       "viewDetails": "Ver detalhes",
       "tryAgain": "Refazer o quiz"
@@ -117,25 +116,25 @@
     "phase1": {
       "title": "Estilo de vida",
       "activity": {
-        "question": "Qu�o ativo voc� �?",
-        "sedentary": "Sedent�rio",
+        "question": "Quão ativo você é?",
+        "sedentary": "Sedentário",
         "moderate": "Moderado",
         "active": "Muito ativo"
       },
       "location": {
-        "question": "Onde voc� mora?",
+        "question": "Onde você mora?",
         "city": "Cidade",
-        "suburbs": "Sub�rbio",
+        "suburbs": "Subúrbio",
         "countryside": "Campo"
       },
       "otherPets": {
-        "question": "Voc� tem outros animais?",
+        "question": "Você tem outros animais?",
         "yes": "Sim",
-        "no": "N�o"
+        "no": "Não"
       }
     },
     "phase2": {
-      "title": "Espa�o",
+      "title": "Espaço",
       "housing": {
         "question": "Tipo de moradia?",
         "apartment": "Apartamento",
@@ -144,31 +143,31 @@
       },
       "size": {
         "question": "Metros quadrados?",
-        "small": "<50m�",
-        "medium": "50-100m�",
-        "large": ">100m�"
+        "small": "<50m²",
+        "medium": "50-100m²",
+        "large": ">100m²"
       },
       "outdoor": {
-        "question": "Voc� tem espa�o externo?",
+        "question": "Você tem espaço externo?",
         "yes": "Sim",
-        "no": "N�o"
+        "no": "Não"
       }
     },
     "phase3": {
       "title": "Tempo",
       "hours": {
-        "question": "Horas dispon�veis por dia?",
+        "question": "Horas disponíveis por dia?",
         "few": "<1h",
         "some": "1-3h",
         "many": ">3h"
       },
       "travel": {
-        "question": "Voc� viaja com frequ�ncia?",
+        "question": "Você viaja com frequência?",
         "yes": "Sim",
-        "no": "N�o"
+        "no": "Não"
       },
       "experience": {
-        "question": "Experi�ncia com animais?",
+        "question": "Experiência com animais?",
         "none": "Nenhuma",
         "little": "Pouca",
         "much": "Muita"
@@ -203,6 +202,91 @@
     "contact": "Fale conosco",
     "privacy": "Privacidade",
     "logout": "Sair"
+  },
+  "search": {
+    "placeholder": "Busque pets, lugares, raças...",
+    "results": "resultados",
+    "suggestions": "Sugestões",
+    "recent": "Buscas recentes",
+    "categories": {
+      "all": "Todos",
+      "pets": "Pets",
+      "users": "Usuários",
+      "places": "Lugares",
+      "breeds": "Raças",
+      "events": "Eventos"
+    },
+    "noResults": {
+      "title": "Nenhum resultado",
+      "subtitle": "Tente com termos diferentes"
+    }
+  },
+  "petProfile": {
+    "loading": "Carregando perfil...",
+    "tabs": {
+      "gallery": "Galeria",
+      "friends": "Amigos",
+      "memories": "Memórias",
+      "info": "Info"
+    },
+    "stats": {
+      "weight": "Peso",
+      "sex": "Sexo",
+      "chip": "Chip",
+      "male": "Macho",
+      "female": "Fêmea"
+    },
+    "gallery": {
+      "title": "Galeria",
+      "add": "Adicionar",
+      "addPhoto": "Adicionar Foto",
+      "emptyTitle": "Aqui você guarda os melhores momentos com seu pet.",
+      "emptyMessage": "Envie sua primeira lembrança feroz"
+    },
+    "friends": {
+      "title": "Amigos",
+      "online": "Online agora",
+      "offline": "Offline",
+      "findFriends": "Encontrar amigos",
+      "emptyTitle": "Aqui você encontra sua turma peluda.",
+      "emptyMessage": "Os amigos com quem você já interagiu"
+    },
+    "memories": {
+      "title": "Memórias",
+      "add": "Adicionar",
+      "addMemory": "Adicionar memória",
+      "emptyTitle": "Cada mês uma memória,",
+      "emptySubtitle": "Cada memória uma ferocidade",
+      "days": "DIAS",
+      "months": "MESES",
+      "years": "ANOS"
+    },
+    "info": {
+      "breedFacts": "Fatos Bestiais",
+      "discoverBreed": "Descubra a raça",
+      "careNeeds": "Cuidados e Necessidades",
+      "activity": "Atividade",
+      "grooming": "Tosa",
+      "care": "Cuidados",
+      "details": "Detalhes",
+      "color": "Cor",
+      "microchip": "Microchip",
+      "neutered": "Castrado",
+      "birthDate": "Data de nascimento",
+      "registeredOn": "Registrado em",
+      "healthNotes": "Notas de Saúde",
+      "appointments": "Compromissos",
+      "documents": "Documentos",
+      "vaccinations": "Lista de Vacinação",
+      "allergies": "Alergias e notas médicas",
+      "activityDiary": "Diário de atividades",
+      "weightCondition": "Peso e condição física",
+      "low": "Baixo",
+      "medium": "Médio",
+      "high": "Alto",
+      "yes": "Sim",
+      "no": "Não"
+    }
   },
   "premium": {
     "title": "Assinaturas",
