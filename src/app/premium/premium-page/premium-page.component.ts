@@ -1,8 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { PremiumPlan, UserSubscription } from '../models/premium.models';
+import { Subject, takeUntil, forkJoin } from 'rxjs';
+import { Plan, Subscription } from '../models/premium.models';
+import { PremiumService } from '../services/premium.service';
 
 @Component({
   selector: 'app-premium-page',
@@ -11,72 +13,60 @@ import { PremiumPlan, UserSubscription } from '../models/premium.models';
   templateUrl: './premium-page.component.html',
   styleUrl: './premium-page.component.scss'
 })
-export class PremiumPageComponent {
-  plans: PremiumPlan[] = [
-    {
-      id: 'free',
-      name: 'Free',
-      price: 0,
-      period: 'month',
-      features: ['1 pet', 'Profilo base', 'Mappa POI']
-    },
-    {
-      id: 'premium-monthly',
-      name: 'Premium',
-      price: 4.99,
-      period: 'month',
-      features: [
-        '3 pet',
-        'Profilo completo',
-        'Chat illimitata',
-        'Galleria illimitata',
-        'Statistiche avanzate',
-        'Nessuna pubblicità'
-      ],
-      isPopular: true
-    },
-    {
-      id: 'premium-yearly',
-      name: 'Premium Annuale',
-      price: 39.99,
-      period: 'year',
-      features: [
-        '3 pet',
-        'Profilo completo',
-        'Chat illimitata',
-        'Galleria illimitata',
-        'Statistiche avanzate',
-        'Nessuna pubblicità'
-      ],
-      savings: 'Risparmia 33%'
-    },
-    {
-      id: 'pro',
-      name: 'PRO',
-      price: 9.99,
-      period: 'month',
-      features: [
-        'Pet illimitati',
-        'Tutte le features Premium',
-        'Badge verificato',
-        'Supporto prioritario',
-        'Accesso anticipato'
-      ]
-    }
-  ];
+export class PremiumPageComponent implements OnInit, OnDestroy {
+  plans: Plan[] = [];
+  loading = signal<boolean>(true);
+  subscribing = signal<boolean>(false);
+  error = signal<string>('');
 
-  // Mock current subscription - in production this would come from a service
   currentPlan = signal<string>('free');
-  userSubscription = signal<UserSubscription | null>(null);
+  userSubscription = signal<Subscription | null>(null);
 
-  // Features not included in Free plan
   private excludedFreeFeatures = [
     'Chat illimitata',
     'Galleria illimitata',
     'Statistiche avanzate'
   ];
 
-  constructor(private router: Router) {}
+  private destroy$ = new Subject<void>();
+
+  constructor(
+    private router: Router,
+    private premiumService: PremiumService
+  ) {}
+
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  loadData(): void {
+    this.loading.set(true);
+    this.error.set('');
+
+    forkJoin({
+      plans: this.premiumService.getPlans(),
+      subscription: this.premiumService.getSubscription()
+    }).pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: ({ plans, subscription }) => {
+          this.plans = plans;
+          this.userSubscription.set(subscription);
+          if (subscription) {
+            this.currentPlan.set(subscription.planId);
+          }
+          this.loading.set(false);
+        },
+        error: () => {
+          this.loading.set(false);
+          this.error.set('Errore nel caricamento dei piani');
+        }
+      });
+  }
 
   goBack(): void {
     this.router.navigate(['/home']);
@@ -86,21 +76,21 @@ export class PremiumPageComponent {
     return this.currentPlan() === planId;
   }
 
-  isFeatureIncluded(plan: PremiumPlan, feature: string): boolean {
+  isFeatureIncluded(plan: Plan, feature: string): boolean {
     if (plan.id === 'free') {
       return !this.excludedFreeFeatures.includes(feature);
     }
     return true;
   }
 
-  getExcludedFeatures(plan: PremiumPlan): string[] {
+  getExcludedFeatures(plan: Plan): string[] {
     if (plan.id === 'free') {
       return this.excludedFreeFeatures;
     }
     return [];
   }
 
-  getAllFeatures(plan: PremiumPlan): { name: string; included: boolean }[] {
+  getAllFeatures(plan: Plan): { name: string; included: boolean }[] {
     if (plan.id === 'free') {
       return [
         ...plan.features.map(f => ({ name: f, included: true })),
@@ -110,29 +100,62 @@ export class PremiumPageComponent {
     return plan.features.map(f => ({ name: f, included: true }));
   }
 
-  selectPlan(plan: PremiumPlan): void {
-    if (this.isCurrentPlan(plan.id)) {
+  selectPlan(plan: Plan): void {
+    if (this.isCurrentPlan(plan.id) || this.subscribing()) {
       return;
     }
-    // TODO: Navigate to payment flow or show confirmation modal
-    console.log('Selected plan:', plan);
+
+    this.subscribing.set(true);
+    this.error.set('');
+
+    this.premiumService.subscribe(plan.id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (subscription) => {
+          this.userSubscription.set(subscription);
+          this.currentPlan.set(subscription.planId);
+          this.subscribing.set(false);
+        },
+        error: (err) => {
+          this.error.set(err.error?.error || 'Errore durante l\'abbonamento');
+          this.subscribing.set(false);
+        }
+      });
   }
 
-  formatPrice(plan: PremiumPlan): string {
+  cancelSubscription(): void {
+    const sub = this.userSubscription();
+    if (!sub || sub.planId === 'free') return;
+
+    if (!confirm('Sei sicuro di voler annullare l\'abbonamento?')) return;
+
+    this.premiumService.cancelSubscription()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: () => {
+          this.loadData();
+        },
+        error: () => {
+          this.error.set('Errore durante l\'annullamento');
+        }
+      });
+  }
+
+  formatPrice(plan: Plan): string {
     if (plan.price === 0) {
       return 'Gratis';
     }
     return `€${plan.price.toFixed(2)}`;
   }
 
-  getPeriodLabel(plan: PremiumPlan): string {
+  getPeriodLabel(plan: Plan): string {
     if (plan.price === 0) {
       return '';
     }
     return plan.period === 'month' ? '/mese' : '/anno';
   }
 
-  getButtonLabel(plan: PremiumPlan): string {
+  getButtonLabel(plan: Plan): string {
     if (this.isCurrentPlan(plan.id)) {
       return 'Piano attuale';
     }
@@ -140,5 +163,14 @@ export class PremiumPageComponent {
       return 'Passa a PRO';
     }
     return 'Abbonati ora';
+  }
+
+  formatDate(date: Date | string | undefined): string {
+    if (!date) return '';
+    return new Date(date).toLocaleDateString('it-IT', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
   }
 }
