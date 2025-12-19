@@ -221,25 +221,6 @@
       "subtitle": "Try different search terms"
     }
   },
-  "premium": {
-    "title": "Subscriptions",
-    "hero": {
-      "title": "Go Premium!",
-      "subtitle": "Unlock all features"
-    },
-    "currentPlan": "Current plan",
-    "expiresAt": "Expires on",
-    "manage": "Manage",
-    "subscribe": "Subscribe now",
-    "upgrade": "Upgrade to PRO",
-    "popular": "Most popular",
-    "perMonth": "/month",
-    "perYear": "/year",
-    "free": "Free",
-    "terms": "Terms and conditions",
-    "refund": "Refund policy",
-    "cancelAnytime": "You can cancel anytime"
-  },
   "petProfile": {
     "loading": "Loading profile...",
     "tabs": {
@@ -306,6 +287,25 @@
       "yes": "Yes",
       "no": "No"
     }
+  },
+  "premium": {
+    "title": "Subscriptions",
+    "hero": {
+      "title": "Go Premium!",
+      "subtitle": "Unlock all features"
+    },
+    "currentPlan": "Current plan",
+    "expiresAt": "Expires on",
+    "manage": "Manage",
+    "subscribe": "Subscribe now",
+    "upgrade": "Upgrade to PRO",
+    "popular": "Most popular",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "free": "Free",
+    "terms": "Terms and conditions",
+    "refund": "Refund policy",
+    "cancelAnytime": "You can cancel anytime"
   },
   "chat": {
     "title": "Messages",
