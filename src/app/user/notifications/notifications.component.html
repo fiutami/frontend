@@ -1,0 +1,46 @@
+<div class="notifications-page">
+  <!-- Header -->
+  <header class="notifications-header">
+    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <h1 class="notifications-header__title">Impostazioni Notifiche</h1>
+  </header>
+
+  <!-- Settings List -->
+  <div class="settings-list">
+    <div
+      class="setting-item"
+      *ngFor="let setting of notificationSettings"
+    >
+      <span class="setting-item__label">{{ setting.label }}</span>
+      <button
+        class="toggle"
+        [class.toggle--on]="setting.enabled"
+        [class.toggle--off]="!setting.enabled"
+        (click)="toggleSetting(setting)"
+        [attr.aria-pressed]="setting.enabled"
+        [attr.aria-label]="setting.label + (setting.enabled ? ' attivo' : ' disattivo')"
+      >
+        <span class="toggle__thumb"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Success Message -->
+  <div class="success-message" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="button"
+    class="btn-submit"
+    [disabled]="isLoading"
+    (click)="updateProfile()"
+  >
+    {{ isLoading ? 'Salvataggio...' : 'Aggiorna Profilo' }}
+  </button>
+</div>

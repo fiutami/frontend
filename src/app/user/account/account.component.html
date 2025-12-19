@@ -1,223 +1,130 @@
-<div class="account">
-  <h1 class="account__title">Account</h1>
-  <p class="account__subtitle">Gestisci il tuo account e i tuoi dati</p>
-
-  <!-- Account Overview -->
-  <section class="account__section">
-    <h2 class="account__section-title">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-        <circle cx="12" cy="7" r="4"></circle>
+<div class="account-page">
+  <!-- Header -->
+  <header class="account-header">
+    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      Panoramica Account
-    </h2>
-
-    <div class="account__info-grid">
-      <div class="account__info-item">
-        <span class="account__info-label">Email</span>
-        <span class="account__info-value">{{ user?.email }}</span>
-      </div>
-      <div class="account__info-item">
-        <span class="account__info-label">Tipo Account</span>
-        <span class="account__info-value">{{ user?.provider === 'google' ? 'Google' : 'Email' }}</span>
-      </div>
-      <div class="account__info-item">
-        <span class="account__info-label">Data Registrazione</span>
-        <span class="account__info-value">{{ user?.createdAt | date:'dd MMMM yyyy' }}</span>
-      </div>
-      <div class="account__info-item">
-        <span class="account__info-label">Stato Account</span>
-        <span class="account__info-value account__info-value--active">
-          <span class="account__status-dot"></span>
-          Attivo
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Data Management -->
-  <section class="account__section">
-    <h2 class="account__section-title">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
-      Gestione Dati
-    </h2>
-
-    <p class="account__section-desc">
-      In conformità con il GDPR, puoi esportare tutti i tuoi dati personali in qualsiasi momento.
-    </p>
-
-    <button type="button" class="btn btn--outline" (click)="openExportModal()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
-      Esporta i miei dati
     </button>
-  </section>
+    <h1 class="account-header__title">Account</h1>
+  </header>
 
-  <!-- Danger Zone -->
-  <section class="account__section account__section--danger">
-    <h2 class="account__section-title account__section-title--danger">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-        <line x1="12" y1="9" x2="12" y2="13"></line>
-        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-      </svg>
-      Zona Pericolosa
-    </h2>
-
-    <div class="account__danger-box">
-      <div class="account__danger-info">
-        <strong>Elimina Account</strong>
-        <p>
-          Una volta eliminato, il tuo account e tutti i dati associati verranno rimossi permanentemente
-          dopo un periodo di grazia di 30 giorni. Questa azione non può essere annullata.
-        </p>
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <div class="avatar-container">
+      <div class="avatar">
+        <img
+          src="assets/images/default-avatar.png"
+          [alt]="userFullName"
+          class="avatar__image"
+        />
       </div>
-      <button type="button" class="btn btn--danger" (click)="openDeleteConfirm()">
-        Elimina Account
-      </button>
-    </div>
-  </section>
-</div>
-
-<!-- Delete Confirmation Modal -->
-<div class="modal-overlay" *ngIf="showDeleteConfirm" (click)="closeDeleteConfirm()">
-  <div class="modal" (click)="$event.stopPropagation()">
-    <div class="modal__header">
-      <h3 class="modal__title">Conferma Eliminazione Account</h3>
-      <button type="button" class="modal__close" (click)="closeDeleteConfirm()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
+      <button class="avatar-edit" (click)="onEditAvatar()" aria-label="Modifica foto profilo">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
     </div>
 
-    <div class="modal__body">
-      <div class="modal__warning">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-          <line x1="12" y1="9" x2="12" y2="13"></line>
-          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-      </div>
+    <h2 class="profile-name">{{ userFullName }}</h2>
+    <p class="profile-email">{{ user?.email || 'madisons@example.com' }}</p>
+    <p class="profile-birthday">Birthday: April 1st</p>
+  </section>
 
-      <p class="modal__text">
-        Stai per richiedere l'eliminazione del tuo account. Questa azione:
-      </p>
+  <!-- Pet Stats Box -->
+  <div class="pet-stats">
+    <div class="pet-stat">
+      <span class="pet-stat__value">{{ pet.weight }} Kg</span>
+      <span class="pet-stat__label">Peso</span>
+    </div>
+    <div class="pet-stat-divider"></div>
+    <div class="pet-stat">
+      <span class="pet-stat__value">{{ pet.age }}</span>
+      <span class="pet-stat__label">Anni</span>
+    </div>
+    <div class="pet-stat-divider"></div>
+    <div class="pet-stat">
+      <span class="pet-stat__value">{{ pet.petAge }}</span>
+      <span class="pet-stat__label">Eta Pet</span>
+    </div>
+    <div class="pet-stat-divider"></div>
+    <div class="pet-stat">
+      <span class="pet-stat__value">{{ pet.sex }}</span>
+      <span class="pet-stat__label">Sesso</span>
+    </div>
+  </div>
 
-      <ul class="modal__list">
-        <li>Avvierà un periodo di grazia di 30 giorni</li>
-        <li>Durante questo periodo potrai annullare la richiesta effettuando il login</li>
-        <li>Dopo 30 giorni, tutti i tuoi dati verranno eliminati definitivamente</li>
-        <li>Non potrai più accedere ai servizi con questo account</li>
-      </ul>
-
-      <div class="modal__confirm-input">
-        <label for="deleteConfirmInput">Per confermare, digita <strong>elimina</strong> nel campo sottostante:</label>
+  <!-- Form Section -->
+  <form [formGroup]="userForm" (ngSubmit)="saveProfile()" class="account-form">
+    <div class="form-group">
+      <label class="form-label">Nome</label>
+      <div class="form-input-wrapper">
         <input
-          id="deleteConfirmInput"
           type="text"
-          [(ngModel)]="deleteConfirmText"
-          placeholder="elimina"
+          formControlName="fullName"
           class="form-input"
-          autocomplete="off"
-        >
+          placeholder="Il tuo nome"
+        />
+        <button type="button" class="input-arrow" aria-label="Modifica">
+          <svg width="6" height="12" viewBox="0 0 6 12" fill="none">
+            <path d="M1 1L5 6L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
+    </div>
 
-      <div class="modal__error" *ngIf="deleteError">
-        {{ deleteError }}
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <div class="form-input-wrapper">
+        <input
+          type="email"
+          formControlName="email"
+          class="form-input form-input--readonly"
+          readonly
+        />
+        <button type="button" class="input-arrow" aria-label="Visualizza">
+          <svg width="6" height="12" viewBox="0 0 6 12" fill="none">
+            <path d="M1 1L5 6L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
     </div>
 
-    <div class="modal__footer">
-      <button type="button" class="btn btn--ghost" (click)="closeDeleteConfirm()">
-        Annulla
-      </button>
-      <button
-        type="button"
-        class="btn btn--danger"
-        [disabled]="!canDelete || isDeleting"
-        (click)="confirmDelete()"
-      >
-        {{ isDeleting ? 'Eliminazione in corso...' : 'Elimina il mio account' }}
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Export Data Modal -->
-<div class="modal-overlay" *ngIf="showExportModal" (click)="closeExportModal()">
-  <div class="modal modal--small" (click)="$event.stopPropagation()">
-    <div class="modal__header">
-      <h3 class="modal__title">Esporta Dati</h3>
-      <button type="button" class="modal__close" (click)="closeExportModal()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-
-    <div class="modal__body">
-      <div class="modal__icon" *ngIf="!exportSuccess">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
+    <div class="form-group">
+      <label class="form-label">Animale domestico</label>
+      <div class="form-input-wrapper">
+        <input
+          type="text"
+          formControlName="petName"
+          class="form-input"
+          placeholder="Nome del tuo pet"
+        />
+        <button type="button" class="input-arrow" aria-label="Modifica">
+          <svg width="6" height="12" viewBox="0 0 6 12" fill="none">
+            <path d="M1 1L5 6L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
-
-      <div class="modal__success" *ngIf="exportSuccess">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-        </svg>
-      </div>
-
-      <p class="modal__text" *ngIf="!exportSuccess">
-        Esporteremo tutti i tuoi dati personali in formato JSON. Questo include:
-      </p>
-
-      <ul class="modal__list" *ngIf="!exportSuccess">
-        <li>Informazioni del profilo</li>
-        <li>Impostazioni account</li>
-        <li>Cronologia sessioni</li>
-        <li>Log attività</li>
-      </ul>
-
-      <p class="modal__text modal__text--success" *ngIf="exportSuccess">
-        I tuoi dati sono stati esportati con successo! Il download dovrebbe essere iniziato automaticamente.
-      </p>
     </div>
 
-    <div class="modal__footer">
-      <button type="button" class="btn btn--ghost" (click)="closeExportModal()" *ngIf="!exportSuccess">
-        Annulla
-      </button>
-      <button
-        type="button"
-        class="btn btn--primary"
-        [disabled]="isExporting"
-        (click)="exportData()"
-        *ngIf="!exportSuccess"
-      >
-        {{ isExporting ? 'Esportazione...' : 'Esporta Dati' }}
-      </button>
-      <button
-        type="button"
-        class="btn btn--primary"
-        (click)="closeExportModal()"
-        *ngIf="exportSuccess"
-      >
-        Chiudi
-      </button>
+    <button type="button" class="add-pet-link" (click)="addPet()">
+      Aggiungi animale domestico
+    </button>
+    <div class="add-pet-underline"></div>
+
+    <!-- Success Message -->
+    <div class="success-message" *ngIf="successMessage">
+      {{ successMessage }}
     </div>
-  </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn-submit"
+      [disabled]="userForm.invalid || isLoading"
+    >
+      {{ isLoading ? 'Salvataggio...' : 'Aggiorna Profilo' }}
+    </button>
+  </form>
 </div>

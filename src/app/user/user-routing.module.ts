@@ -6,6 +6,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SecurityComponent } from './security/security.component';
 import { AccountComponent } from './account/account.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ActivityComponent } from './activity/activity.component';
 
 const routes: Routes = [
   {
@@ -17,7 +19,9 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'security', component: SecurityComponent },
-      { path: 'account', component: AccountComponent }
+      { path: 'account', component: AccountComponent },
+      { path: 'notifications', component: NotificationsComponent },
+      { path: 'activity', component: ActivityComponent }
     ]
   }
 ];

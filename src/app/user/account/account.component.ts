@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 import { AuthService, User } from '../../core/services/auth.service';
-import { AccountService } from '../../core/services/account.service';
-import { environment } from '../../../environments/environment';
+
+interface PetInfo {
+  name: string;
+  weight: number;
+  age: number;
+  sex: 'male' | 'female';
+  petAge: number;
+}
 
 @Component({
   selector: 'app-account',
@@ -12,101 +19,70 @@ import { environment } from '../../../environments/environment';
 })
 export class AccountComponent implements OnInit {
   user: User | null = null;
+  userForm!: FormGroup;
+  isLoading = false;
+  successMessage = '';
 
-  showDeleteConfirm = false;
-  deleteConfirmText = '';
-  isDeleting = false;
-  deleteError = '';
-
-  showExportModal = false;
-  isExporting = false;
-  exportSuccess = false;
+  pet: PetInfo = {
+    name: 'Thor',
+    weight: 30,
+    age: 9,
+    sex: 'male',
+    petAge: 60
+  };
 
   constructor(
+    private fb: FormBuilder,
     private router: Router,
-    private http: HttpClient,
-    private authService: AuthService,
-    private accountService: AccountService
+    private location: Location,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.user = this.authService.getCurrentUser();
+    this.initForm();
   }
 
-  get canDelete(): boolean {
-    return this.deleteConfirmText.toLowerCase() === 'elimina';
+  get userFullName(): string {
+    if (!this.user) return 'Madison Smith';
+    return `${this.user.firstName} ${this.user.lastName}`.trim() || 'Madison Smith';
   }
 
-  openDeleteConfirm(): void {
-    this.showDeleteConfirm = true;
-    this.deleteConfirmText = '';
-    this.deleteError = '';
-  }
-
-  closeDeleteConfirm(): void {
-    this.showDeleteConfirm = false;
-    this.deleteConfirmText = '';
-    this.deleteError = '';
-  }
-
-  confirmDelete(): void {
-    if (!this.canDelete || this.isDeleting) return;
-
-    this.isDeleting = true;
-    this.deleteError = '';
-
-    // Use soft deletion with 30-day grace period
-    this.accountService.deleteAccount({
-      password: '', // Not required for OAuth users
-      deletionType: 'soft',
-      reason: 'Richiesta utente'
-    }).subscribe({
-      next: () => {
-        this.isDeleting = false;
-        this.authService.logout();
-        this.router.navigate(['/'], {
-          queryParams: { deleted: 'pending' }
-        });
-      },
-      error: (err: { error?: { message?: string } }) => {
-        this.isDeleting = false;
-        this.deleteError = err.error?.message || 'Errore durante la richiesta di eliminazione.';
-      }
+  private initForm(): void {
+    this.userForm = this.fb.group({
+      fullName: [this.userFullName, Validators.required],
+      email: [{ value: this.user?.email || 'madisons@example.com', disabled: true }],
+      petName: [this.pet.name || '']
     });
   }
 
-  openExportModal(): void {
-    this.showExportModal = true;
-    this.exportSuccess = false;
+  goBack(): void {
+    this.location.back();
   }
 
-  closeExportModal(): void {
-    this.showExportModal = false;
+  onEditAvatar(): void {
+    // TODO: Implement avatar edit
+    console.log('Edit avatar');
   }
 
-  exportData(): void {
-    if (this.isExporting) return;
+  addPet(): void {
+    this.router.navigate(['/onboarding/pet']);
+  }
 
-    this.isExporting = true;
+  async saveProfile(): Promise<void> {
+    if (this.userForm.invalid || this.isLoading) return;
 
-    // GDPR data export endpoint
-    this.http.get(`${environment.apiUrl}/account/export`, { responseType: 'blob' }).subscribe({
-      next: (blob: Blob) => {
-        this.isExporting = false;
-        this.exportSuccess = true;
+    this.isLoading = true;
+    this.successMessage = '';
 
-        // Create download link
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `fiutami-data-${new Date().toISOString().split('T')[0]}.json`;
-        link.click();
-        window.URL.revokeObjectURL(url);
-      },
-      error: () => {
-        this.isExporting = false;
-        // Still close modal on error
-      }
-    });
+    try {
+      // TODO: Call API to update profile
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      this.successMessage = 'Profilo aggiornato con successo!';
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

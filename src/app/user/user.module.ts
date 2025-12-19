@@ -13,6 +13,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SecurityComponent } from './security/security.component';
 import { AccountComponent } from './account/account.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ActivityComponent } from './activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AccountComponent } from './account/account.component';
     ProfileComponent,
     SettingsComponent,
     SecurityComponent,
-    AccountComponent
+    AccountComponent,
+    NotificationsComponent,
+    ActivityComponent
   ],
   imports: [
     CommonModule,

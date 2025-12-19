@@ -1,0 +1,131 @@
+<div class="friends-page">
+  <!-- Header -->
+  <header class="friends-header">
+    <div class="friends-header__top">
+      <button class="friends-header__back" (click)="goBack()">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <circle cx="17" cy="17" r="17" fill="white"/>
+          <path d="M20 10L13 17L20 24" stroke="#4A74F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <h1 class="friends-header__title">Amici Pets</h1>
+    </div>
+
+    <p class="friends-header__subtitle">
+      La community cresce<br>
+      anche grazie a te.<br>
+      Ecco il tuo branco FiutaMi
+    </p>
+
+    <!-- Search Bar -->
+    <div class="friends-header__search">
+      <div class="search-box">
+        <svg class="search-box__icon" width="17" height="17" viewBox="0 0 17 17" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="#4A74F0" stroke-width="2"/>
+          <path d="M11 11L15 15" stroke="#4A74F0" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input
+          type="text"
+          class="search-box__input"
+          placeholder="Cerca"
+          [(ngModel)]="searchQuery"
+          (input)="onSearch(searchQuery)"
+        />
+        <svg class="search-box__filter" width="16" height="20" viewBox="0 0 16 20" fill="none">
+          <path d="M1 4H15M3 10H13M5 16H11" stroke="#4A74F0" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="friends-content">
+    <!-- Section Header -->
+    <div class="friends-content__header">
+      <span class="friends-content__label">Amici Bestiali</span>
+      <div class="friends-content__line"></div>
+      <button
+        class="friends-content__select"
+        [class.friends-content__select--active]="isSelecting"
+        (click)="toggleSelecting()"
+      >
+        {{ isSelecting ? 'Annulla' : 'Seleziona' }}
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="friends-empty" *ngIf="isEmpty">
+      <div class="friends-empty__icon">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="#E0E0E0" stroke-width="4"/>
+          <path d="M28 48C28 48 33 54 40 54C47 54 52 48 52 48" stroke="#E0E0E0" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="30" cy="35" r="4" fill="#E0E0E0"/>
+          <circle cx="50" cy="35" r="4" fill="#E0E0E0"/>
+        </svg>
+      </div>
+      <p class="friends-empty__title">Nessun amico pet</p>
+      <p class="friends-empty__text">Trova amici per il tuo pet!</p>
+      <button class="friends-empty__btn" (click)="searchFriends()">
+        Cerca amici
+      </button>
+    </div>
+
+    <!-- Pending Requests -->
+    <div class="friends-requests" *ngIf="pendingRequests.length > 0">
+      <h3 class="friends-requests__title">
+        Richieste in attesa
+        <span class="friends-requests__badge">{{ pendingRequests.length }}</span>
+      </h3>
+      <div class="friends-requests__list">
+        <div class="request-item" *ngFor="let request of pendingRequests">
+          <div class="request-item__avatar">
+            <img [src]="request.from.avatarUrl" [alt]="request.from.petName" onerror="this.src='assets/images/default-pet.png'"/>
+          </div>
+          <span class="request-item__name">{{ request.from.petName }}</span>
+          <div class="request-item__actions">
+            <button class="request-item__accept" (click)="acceptRequest(request)">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10L8 14L16 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="request-item__reject" (click)="rejectRequest(request)">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 5L15 15M15 5L5 15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Friends List -->
+    <div class="friends-list" *ngIf="!isEmpty">
+      <div
+        class="friend-item"
+        *ngFor="let friend of filteredFriends"
+        [class.friend-item--selected]="isFriendSelected(friend)"
+        (click)="openFriendProfile(friend)"
+      >
+        <div class="friend-item__avatar">
+          <img [src]="friend.avatarUrl" [alt]="friend.petName" onerror="this.src='assets/images/default-pet.png'"/>
+          <span class="friend-item__status" *ngIf="friend.isOnline"></span>
+        </div>
+        <span class="friend-item__name">{{ friend.petName }}</span>
+        <div class="friend-item__check" *ngIf="isSelecting">
+          <svg *ngIf="isFriendSelected(friend)" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="10" fill="#4A74F0"/>
+            <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span *ngIf="!isFriendSelected(friend)" class="friend-item__check-empty"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Selected -->
+    <div class="friends-actions" *ngIf="isSelecting && selectedFriends.size > 0">
+      <button class="friends-actions__delete" (click)="deleteSelected()">
+        Rimuovi selezionati ({{ selectedFriends.size }})
+      </button>
+    </div>
+  </main>
+</div>

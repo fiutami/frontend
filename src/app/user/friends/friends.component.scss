@@ -1,0 +1,373 @@
+.friends-page {
+  min-height: 100vh;
+  background: #4A74F0;
+}
+
+// Header
+.friends-header {
+  padding: 49px 28px 20px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__back {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.22;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  &__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.22;
+    color: white;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__search {
+    margin: 0 -7px;
+  }
+}
+
+// Search Box
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid rgba(229, 229, 229, 0.33);
+  border-radius: 62px;
+  padding: 10px 16px;
+
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+
+    &::placeholder {
+      color: #4A74F0;
+    }
+  }
+
+  &__filter {
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+}
+
+// Content
+.friends-content {
+  background: white;
+  border-radius: 34px 34px 0 0;
+  min-height: calc(100vh - 300px);
+  padding: 20px 21px;
+  margin-top: 10px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.54;
+    letter-spacing: -0.5%;
+    color: #F2B830;
+    flex-shrink: 0;
+  }
+
+  &__line {
+    flex: 1;
+    height: 2px;
+    background: rgba(74, 116, 240, 0.2);
+  }
+
+  &__select {
+    background: #F2B830;
+    border: none;
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.54;
+    color: white;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transition: background 0.2s;
+
+    &--active {
+      background: #666;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+// Empty State
+.friends-empty {
+  text-align: center;
+  padding: 60px 20px;
+
+  &__icon {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+  }
+
+  &__btn {
+    background: #4A74F0;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #3a5fd0;
+    }
+  }
+}
+
+// Pending Requests
+.friends-requests {
+  margin-bottom: 24px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  &__badge {
+    background: #FF5252;
+    color: white;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.request-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #F5F5F5;
+  border-radius: 12px;
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    flex: 1;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__accept,
+  &__reject {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__accept {
+    background: #4CAF50;
+  }
+
+  &__reject {
+    background: #FF5252;
+  }
+}
+
+// Friends List
+.friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(74, 116, 240, 0.05);
+  }
+
+  &--selected {
+    background: rgba(74, 116, 240, 0.1);
+  }
+
+  &__avatar {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__status {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: #4CAF50;
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+
+  &__name {
+    flex: 1;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.625%;
+    color: white;
+  }
+
+  &__check {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__check-empty {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #D6D6D6;
+    border-radius: 50%;
+  }
+}
+
+// Actions
+.friends-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 21px;
+  background: white;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+
+  &__delete {
+    width: 100%;
+    background: #FF5252;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #e04545;
+    }
+  }
+}
