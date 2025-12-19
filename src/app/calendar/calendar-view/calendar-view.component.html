@@ -1,0 +1,113 @@
+<div class="calendar">
+  <!-- Header -->
+  <header class="calendar__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+    <h1 class="calendar__title">Calendario</h1>
+    <div class="calendar__header-spacer"></div>
+  </header>
+
+  <!-- Month Navigation -->
+  <div class="calendar__month-nav">
+    <button
+      class="calendar__nav-btn"
+      (click)="prevMonth()"
+      aria-label="Mese precedente">
+      <span class="calendar__nav-arrow">&lt;</span>
+    </button>
+    <span class="calendar__month-name">{{ currentMonthName() }}</span>
+    <button
+      class="calendar__nav-btn"
+      (click)="nextMonth()"
+      aria-label="Mese successivo">
+      <span class="calendar__nav-arrow">&gt;</span>
+    </button>
+  </div>
+
+  <!-- Selected Date Display -->
+  <div class="calendar__selected-date">
+    {{ formattedSelectedDate() }}
+  </div>
+
+  <!-- Calendar Grid -->
+  <div class="calendar__grid-container">
+    <!-- Day Names Header -->
+    <div class="calendar__day-names">
+      @for (day of dayNames; track day) {
+        <div class="calendar__day-name">{{ day }}</div>
+      }
+    </div>
+
+    <!-- Days Grid -->
+    <div class="calendar__days-grid">
+      @for (day of calendarDays(); track trackByDay($index, day)) {
+        <button
+          class="calendar__day"
+          [class.calendar__day--other-month]="!day.isCurrentMonth"
+          [class.calendar__day--today]="day.isToday"
+          [class.calendar__day--selected]="day.isSelected"
+          [class.calendar__day--has-events]="day.events.length > 0"
+          (click)="selectDay(day)">
+          <span class="calendar__day-number">{{ day.dayOfMonth }}</span>
+          @if (day.events.length > 0) {
+            <div class="calendar__day-dots">
+              @for (event of day.events.slice(0, 3); track event.id) {
+                <span
+                  class="calendar__day-dot"
+                  [style.background-color]="eventColors[event.type]">
+                </span>
+              }
+            </div>
+          }
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Events Section -->
+  <div class="calendar__events-section">
+    <div class="calendar__events-header">
+      <h2 class="calendar__events-title">Eventi del giorno</h2>
+      <button
+        class="calendar__create-btn"
+        (click)="onCreateEvent()">
+        + Crea Evento
+      </button>
+    </div>
+
+    @if (selectedDayEvents().length === 0) {
+      <div class="calendar__no-events">
+        <span class="calendar__no-events-icon">📅</span>
+        <p class="calendar__no-events-text">Nessun evento per questo giorno</p>
+      </div>
+    } @else {
+      <div class="calendar__events-list">
+        @for (event of selectedDayEvents(); track trackByEvent($index, event)) {
+          <button
+            class="calendar__event-card"
+            (click)="onEventClick(event)">
+            <div
+              class="calendar__event-icon"
+              [style.background-color]="eventColors[event.type]">
+              {{ getEventIcon(event.type) }}
+            </div>
+            <div class="calendar__event-info">
+              <span class="calendar__event-title">{{ event.title }}</span>
+              <span class="calendar__event-meta">
+                @if (event.time) {
+                  <span class="calendar__event-time">{{ event.time }}</span>
+                }
+                @if (event.petName) {
+                  <span class="calendar__event-pet">{{ event.petName }}</span>
+                }
+              </span>
+            </div>
+            <span class="calendar__event-arrow">&gt;</span>
+          </button>
+        }
+      </div>
+    }
+  </div>
+</div>

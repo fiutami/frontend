@@ -11,6 +11,44 @@
   <main class="register-pet__content">
     <h1 class="register-pet__title">Registra il tuo amico peloso!</h1>
 
+    <!-- Photo upload section -->
+    <div class="register-pet__photo-section">
+      <div
+        class="register-pet__photo-upload"
+        (click)="triggerFileInput()"
+        [class.register-pet__photo-upload--has-photo]="photoPreview()">
+        @if (photoPreview()) {
+          <img
+            [src]="photoPreview()"
+            alt="Anteprima foto"
+            class="register-pet__photo-preview" />
+          <button
+            type="button"
+            class="register-pet__photo-remove"
+            (click)="removePhoto($event)"
+            aria-label="Rimuovi foto">
+            &times;
+          </button>
+        } @else {
+          <div class="register-pet__photo-placeholder-inner">
+            <span class="register-pet__photo-icon">📷</span>
+            <span class="register-pet__photo-text">Aggiungi foto</span>
+          </div>
+        }
+      </div>
+      <input
+        #fileInput
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        (change)="onFileSelected($event)"
+        hidden />
+      @if (uploadError()) {
+        <p class="register-pet__photo-error">{{ uploadError() }}</p>
+      } @else {
+        <p class="register-pet__photo-hint">Facoltativo - potrai aggiungerla dopo</p>
+      }
+    </div>
+
     <!-- Error message -->
     @if (errorMessage()) {
       <div class="register-pet__error">
@@ -143,21 +181,15 @@
           rows="3"></textarea>
       </div>
 
-      <!-- Foto (placeholder) -->
-      <div class="register-pet__field">
-        <label class="register-pet__label">Foto</label>
-        <div class="register-pet__photo-placeholder">
-          <span class="material-icons">add_a_photo</span>
-          <span>Aggiungi foto (presto disponibile)</span>
-        </div>
-      </div>
-
       <!-- Submit button -->
       <button
         type="submit"
         class="register-pet__submit"
-        [disabled]="isLoading()">
-        @if (isLoading()) {
+        [disabled]="isLoading() || isUploading()">
+        @if (isUploading()) {
+          <span class="register-pet__spinner"></span>
+          Caricamento foto...
+        } @else if (isLoading()) {
           <span class="register-pet__spinner"></span>
           Registrazione...
         } @else {

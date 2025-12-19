@@ -121,3 +121,98 @@ export type NotificationType =
   | 'appointment'
   | 'system'
   | 'promotion';
+
+// ============================================================
+// Pet Profile Models (Path A - Real Pet Profile)
+// ============================================================
+
+export interface PetProfile {
+  id: string;
+  name: string;
+  species: string;
+  speciesId: string;
+  breed: string;
+  breedId?: string;
+  birthDate: string | null;
+  age: string;
+  weight: number | null;
+  sex: 'M' | 'F';
+  color: string | null;
+  microchip: string | null;
+  profilePhotoUrl: string | null;
+  coverPhotoUrl: string | null;
+  notes: string | null;
+  isNeutered: boolean;
+  createdAt: string;
+}
+
+export interface PetPhoto {
+  id: string;
+  petId: string;
+  url: string;
+  thumbnailUrl: string | null;
+  caption: string | null;
+  isProfilePhoto: boolean;
+  isFavorite: boolean;
+  location: string | null;
+  takenAt: string | null;
+  uploadedAt: string;
+}
+
+export interface PetFriendProfile {
+  id: string;
+  petId: string;
+  name: string;
+  species: string;
+  breed: string;
+  profilePhotoUrl: string | null;
+  isOnline: boolean;
+  lastSeen: string | null;
+  ownerName: string;
+  location: string | null;
+  friendsSince: string;
+}
+
+export interface PetMemory {
+  id: string;
+  petId: string;
+  title: string;
+  description: string | null;
+  date: string;
+  type: MemoryType;
+  photoUrl: string | null;
+  thumbnailUrl: string | null;
+  location: string | null;
+  createdAt: string;
+}
+
+export type MemoryType =
+  | 'milestone'
+  | 'adventure'
+  | 'health'
+  | 'birthday'
+  | 'adoption'
+  | 'achievement'
+  | 'other';
+
+export interface CreateMemoryRequest {
+  title: string;
+  description?: string | null;
+  date: string;
+  type: MemoryType;
+  location?: string | null;
+}
+
+export interface BreedFacts {
+  breedId: string;
+  breedName: string;
+  species: string;
+  origin: string | null;
+  lifespan: string | null;
+  temperament: string[];
+  characteristics: string[];
+  funFacts: string[];
+  careLevel: 'low' | 'medium' | 'high';
+  exerciseNeeds: 'low' | 'medium' | 'high';
+  groomingNeeds: 'low' | 'medium' | 'high';
+}

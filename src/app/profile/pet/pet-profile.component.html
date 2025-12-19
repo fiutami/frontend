@@ -1,0 +1,435 @@
+<div class="pet-profile">
+  <!-- Loading State -->
+  @if (loading()) {
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>{{ 'petProfile.loading' | translate }}</p>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (error() && !loading()) {
+    <div class="error-container">
+      <p class="error-message">{{ error() }}</p>
+      <button class="btn-primary" (click)="goBack()">
+        {{ 'common.back' | translate }}
+      </button>
+    </div>
+  }
+
+  <!-- Profile Content -->
+  @if (pet() && !loading()) {
+    <!-- Cover & Header Section -->
+    <header class="profile-header">
+      <!-- Cover Photo -->
+      <div class="cover-photo" [style.backgroundImage]="pet()!.coverPhotoUrl ? 'url(' + pet()!.coverPhotoUrl + ')' : ''">
+        <div class="cover-gradient"></div>
+
+        <!-- Navigation Buttons -->
+        <div class="header-nav">
+          <button class="btn-back" (click)="goBack()" aria-label="Indietro">
+            <span class="icon">&#8592;</span>
+          </button>
+          <button class="btn-settings" (click)="goToEdit()" aria-label="Modifica">
+            <span class="icon">&#9881;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pet Info Card -->
+      <div class="pet-info-card">
+        <!-- Profile Photo -->
+        <div class="profile-photo-container">
+          @if (pet()!.profilePhotoUrl) {
+            <img
+              [src]="pet()!.profilePhotoUrl"
+              [alt]="pet()!.name"
+              class="profile-photo"
+            />
+          } @else {
+            <div class="profile-photo placeholder">
+              <span>{{ pet()!.name.charAt(0) }}</span>
+            </div>
+          }
+        </div>
+
+        <!-- Pet Name & Details -->
+        <h1 class="pet-name">{{ pet()!.name }}</h1>
+        <p class="pet-breed">{{ pet()!.species }} - {{ pet()!.breed }}</p>
+        <p class="pet-age">{{ pet()!.age }}</p>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-value">{{ formatWeight(pet()!.weight) }}</span>
+            <span class="stat-label">Peso</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">{{ getSexIcon(pet()!.sex) }}</span>
+            <span class="stat-label">{{ getSexLabel(pet()!.sex) }}</span>
+          </div>
+          @if (pet()!.microchip) {
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-value microchip-icon">&#128179;</span>
+              <span class="stat-label">Chip</span>
+            </div>
+          }
+        </div>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-navigation">
+      <button
+        class="tab-item"
+        [class.active]="activeTab() === 'gallery'"
+        (click)="setActiveTab('gallery')"
+      >
+        <span class="tab-icon">&#128247;</span>
+        <span class="tab-label">Galleria</span>
+      </button>
+      <button
+        class="tab-item"
+        [class.active]="activeTab() === 'friends'"
+        (click)="setActiveTab('friends')"
+      >
+        <span class="tab-icon">&#128062;</span>
+        <span class="tab-label">Amici</span>
+      </button>
+      <button
+        class="tab-item"
+        [class.active]="activeTab() === 'memories'"
+        (click)="setActiveTab('memories')"
+      >
+        <span class="tab-icon">&#128197;</span>
+        <span class="tab-label">Ricordi</span>
+      </button>
+      <button
+        class="tab-item"
+        [class.active]="activeTab() === 'info'"
+        (click)="setActiveTab('info')"
+      >
+        <span class="tab-icon">&#8505;</span>
+        <span class="tab-label">Info</span>
+      </button>
+    </nav>
+
+    <!-- Tab Content -->
+    <main class="tab-content">
+      <!-- Gallery Tab -->
+      @if (activeTab() === 'gallery') {
+        <section class="gallery-section">
+          @if (hasPhotos()) {
+            <div class="photo-grid">
+              <!-- Add Photo Button -->
+              <button class="add-photo-card" (click)="onAddPhoto()">
+                <span class="add-icon">+</span>
+                <span class="add-label">Aggiungi</span>
+              </button>
+
+              <!-- Photo Items -->
+              @for (photo of photos(); track photo.id) {
+                <div class="photo-card" (click)="onPhotoClick(photo)">
+                  <img
+                    [src]="photo.thumbnailUrl || photo.url"
+                    [alt]="photo.caption || 'Foto'"
+                    loading="lazy"
+                  />
+                  @if (photo.isFavorite) {
+                    <span class="favorite-badge">&#9733;</span>
+                  }
+                </div>
+              }
+            </div>
+          } @else {
+            <!-- Empty State -->
+            <div class="empty-state">
+              <div class="empty-banner gallery-banner">
+                <div class="banner-content">
+                  <p class="banner-title">Qui custodisci i momenti piu belli con il tuo pet.</p>
+                  <div class="banner-grid">
+                    @for (i of [1,2,3,4,5,6]; track i) {
+                      <div class="placeholder-photo" (click)="onAddPhoto()">
+                        <span class="upload-icon">&#128247;</span>
+                      </div>
+                    }
+                  </div>
+                </div>
+                <div class="mascot-container">
+                  <div class="speech-bubble">
+                    <p>Carica il tuo primo ricordo ferocissimo</p>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-primary btn-add" (click)="onAddPhoto()">
+                Aggiungi Foto
+              </button>
+            </div>
+          }
+        </section>
+      }
+
+      <!-- Friends Tab -->
+      @if (activeTab() === 'friends') {
+        <section class="friends-section">
+          @if (hasFriends()) {
+            <!-- Friends Grid -->
+            <div class="friends-header">
+              <h2>Amici</h2>
+              <span class="friends-count">{{ friends().length }}</span>
+            </div>
+
+            <!-- Online Friends -->
+            @if (onlineFriends().length > 0) {
+              <div class="online-section">
+                <h3>Online ora</h3>
+                <div class="friends-scroll">
+                  @for (friend of onlineFriends(); track friend.id) {
+                    <div class="friend-card online" (click)="goToFriendProfile(friend)">
+                      @if (friend.profilePhotoUrl) {
+                        <img [src]="friend.profilePhotoUrl" [alt]="friend.name" class="friend-photo" />
+                      } @else {
+                        <div class="friend-photo placeholder">{{ friend.name.charAt(0) }}</div>
+                      }
+                      <span class="online-indicator"></span>
+                      <p class="friend-name">{{ friend.name }}</p>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+
+            <!-- All Friends -->
+            <div class="all-friends">
+              @for (friend of friends(); track friend.id) {
+                <div class="friend-list-item" (click)="goToFriendProfile(friend)">
+                  <div class="friend-avatar">
+                    @if (friend.profilePhotoUrl) {
+                      <img [src]="friend.profilePhotoUrl" [alt]="friend.name" />
+                    } @else {
+                      <div class="placeholder">{{ friend.name.charAt(0) }}</div>
+                    }
+                    @if (friend.isOnline) {
+                      <span class="online-dot"></span>
+                    }
+                  </div>
+                  <div class="friend-info">
+                    <p class="friend-name">{{ friend.name }}</p>
+                    <p class="friend-breed">{{ friend.species }} - {{ friend.breed }}</p>
+                    @if (!friend.isOnline && friend.lastSeen) {
+                      <p class="last-seen">{{ formatRelativeTime(friend.lastSeen) }}</p>
+                    }
+                  </div>
+                  @if (friend.location) {
+                    <span class="friend-location">{{ friend.location }}</span>
+                  }
+                </div>
+              }
+            </div>
+          } @else {
+            <!-- Empty State -->
+            <div class="empty-state">
+              <div class="empty-banner friends-banner">
+                <p class="banner-title">Qui trovi la tua banda pelosa.</p>
+                <p class="banner-subtitle">Gli amici con cui hai gia interagito</p>
+              </div>
+              <button class="btn-primary" (click)="goToDiscover()">
+                Trova amici
+              </button>
+            </div>
+          }
+        </section>
+      }
+
+      <!-- Memories Tab -->
+      @if (activeTab() === 'memories') {
+        <section class="memories-section">
+          @if (hasMemories()) {
+            <div class="memories-header">
+              <h2>Ricordi</h2>
+              <button class="btn-add-memory" (click)="onAddMemory()">
+                <span>+</span> Aggiungi
+              </button>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline">
+              @for (memory of sortedMemories(); track memory.id) {
+                <div class="timeline-item">
+                  <div class="timeline-date">
+                    <span class="day">{{ memory.date | date:'d' }}</span>
+                    <span class="month">{{ memory.date | date:'MMM' }}</span>
+                    <span class="year">{{ memory.date | date:'yyyy' }}</span>
+                  </div>
+                  <div class="timeline-line"></div>
+                  <div class="timeline-content">
+                    <div class="memory-card">
+                      @if (memory.thumbnailUrl || memory.photoUrl) {
+                        <img
+                          [src]="memory.thumbnailUrl || memory.photoUrl"
+                          [alt]="memory.title"
+                          class="memory-photo"
+                        />
+                      }
+                      <div class="memory-info">
+                        <span class="memory-icon">{{ getMemoryIcon(memory.type) }}</span>
+                        <h4>{{ memory.title }}</h4>
+                        @if (memory.description) {
+                          <p class="memory-description">{{ memory.description }}</p>
+                        }
+                        @if (memory.location) {
+                          <p class="memory-location">
+                            <span class="location-icon">&#128205;</span>
+                            {{ memory.location }}
+                          </p>
+                        }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <!-- Empty State -->
+            <div class="empty-state">
+              <div class="empty-banner memories-banner">
+                <h3>Ogni mese un ricordo,</h3>
+                <h3>Ogni ricordo una ferocia</h3>
+                <div class="memory-cards-preview">
+                  <div class="preview-card">
+                    <span class="label">GIORNI</span>
+                  </div>
+                  <div class="preview-card">
+                    <span class="label">MESI</span>
+                  </div>
+                  <div class="preview-card">
+                    <span class="label">ANNI</span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-primary" (click)="onAddMemory()">
+                Aggiungi ricordo
+              </button>
+            </div>
+          }
+        </section>
+      }
+
+      <!-- Info Tab -->
+      @if (activeTab() === 'info') {
+        <section class="info-section">
+          <!-- Breed Facts Section -->
+          @if (breedFacts()) {
+            <div class="info-card breed-facts">
+              <h3>Fatti Bestiali</h3>
+              <div class="facts-list">
+                @for (fact of breedFacts()!.funFacts; track $index) {
+                  <div class="fact-item">
+                    <span class="fact-icon">&#128161;</span>
+                    <p>{{ fact }}</p>
+                  </div>
+                }
+              </div>
+              <button class="btn-link" (click)="goToBreedDetails()">
+                Scopri la razza &#8594;
+              </button>
+            </div>
+
+            <!-- Care Info -->
+            <div class="info-card care-info">
+              <h3>Cura e Necessita</h3>
+              <div class="care-grid">
+                <div class="care-item">
+                  <span class="care-icon">&#128170;</span>
+                  <span class="care-label">Attivita</span>
+                  <span class="care-value">{{ getCareLabel(breedFacts()!.exerciseNeeds) }}</span>
+                </div>
+                <div class="care-item">
+                  <span class="care-icon">&#128021;</span>
+                  <span class="care-label">Toelettatura</span>
+                  <span class="care-value">{{ getCareLabel(breedFacts()!.groomingNeeds) }}</span>
+                </div>
+                <div class="care-item">
+                  <span class="care-icon">&#10084;&#65039;</span>
+                  <span class="care-label">Cura</span>
+                  <span class="care-value">{{ getCareLabel(breedFacts()!.careLevel) }}</span>
+                </div>
+              </div>
+            </div>
+          }
+
+          <!-- Pet Details -->
+          <div class="info-card pet-details">
+            <h3>Dettagli</h3>
+            <div class="details-list">
+              @if (pet()!.color) {
+                <div class="detail-row">
+                  <span class="detail-label">Colore</span>
+                  <span class="detail-value">{{ pet()!.color }}</span>
+                </div>
+              }
+              @if (pet()!.microchip) {
+                <div class="detail-row">
+                  <span class="detail-label">Microchip</span>
+                  <span class="detail-value">{{ pet()!.microchip }}</span>
+                </div>
+              }
+              <div class="detail-row">
+                <span class="detail-label">Sterilizzato</span>
+                <span class="detail-value">{{ pet()!.isNeutered ? 'Si' : 'No' }}</span>
+              </div>
+              @if (pet()!.birthDate) {
+                <div class="detail-row">
+                  <span class="detail-label">Data di nascita</span>
+                  <span class="detail-value">{{ formatDate(pet()!.birthDate!) }}</span>
+                </div>
+              }
+              <div class="detail-row">
+                <span class="detail-label">Registrato il</span>
+                <span class="detail-value">{{ formatDate(pet()!.createdAt) }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Health Notes -->
+          @if (pet()!.notes) {
+            <div class="info-card health-notes">
+              <h3>Note Salute</h3>
+              <p>{{ pet()!.notes }}</p>
+            </div>
+          }
+
+          <!-- Accordion Sections (Future) -->
+          <div class="accordion-section">
+            <button class="accordion-item">
+              <span>Appuntamenti</span>
+              <span class="chevron">&#8250;</span>
+            </button>
+            <button class="accordion-item">
+              <span>Documenti</span>
+              <span class="chevron">&#8250;</span>
+            </button>
+            <button class="accordion-item">
+              <span>Lista Vaccinazione</span>
+              <span class="chevron">&#8250;</span>
+            </button>
+            <button class="accordion-item">
+              <span>Allergie e note mediche</span>
+              <span class="chevron">&#8250;</span>
+            </button>
+            <button class="accordion-item disabled">
+              <span>Diario attivita</span>
+              <span class="chevron">&#8250;</span>
+            </button>
+            <button class="accordion-item disabled">
+              <span>Peso e condizione fisica</span>
+              <span class="chevron">&#8250;</span>
+            </button>
+          </div>
+        </section>
+      }
+    </main>
+  }
+</div>

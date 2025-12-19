@@ -7,7 +7,13 @@ import {
   PetUpdateRequest,
   PetResponse,
   PetListResponse,
-  PetPhotoResponse
+  PetPhotoResponse,
+  PetProfile,
+  PetPhoto,
+  PetFriendProfile,
+  PetMemory,
+  CreateMemoryRequest,
+  BreedFacts
 } from '../models/pet.models';
 
 @Injectable({
@@ -232,5 +238,115 @@ export class PetService {
    */
   clearError(): void {
     this.errorSignal.set(null);
+  }
+
+  // ============================================================
+  // Pet Profile Operations (Path A)
+  // ============================================================
+
+  /**
+   * Get full pet profile with all details
+   */
+  getPetProfile(petId: string): Observable<PetProfile> {
+    return this.http.get<PetProfile>(`${this.baseUrl}/${petId}/profile`).pipe(
+      catchError(error => {
+        this.errorSignal.set(error?.error?.message || 'Failed to load pet profile');
+        return throwError(() => error);
+      })
+    );
+  }
+
+  /**
+   * Get all photos for a pet (gallery)
+   */
+  getPetGallery(petId: string): Observable<PetPhoto[]> {
+    return this.http.get<PetPhoto[]>(`${this.baseUrl}/${petId}/gallery`);
+  }
+
+  /**
+   * Get pet's friends list
+   */
+  getPetFriends(petId: string): Observable<PetFriendProfile[]> {
+    return this.http.get<PetFriendProfile[]>(`${this.baseUrl}/${petId}/friends`);
+  }
+
+  /**
+   * Get pet's memories/timeline
+   */
+  getPetMemories(petId: string): Observable<PetMemory[]> {
+    return this.http.get<PetMemory[]>(`${this.baseUrl}/${petId}/memories`);
+  }
+
+  /**
+   * Add a new memory
+   */
+  addPetMemory(petId: string, memory: CreateMemoryRequest, photo?: File): Observable<PetMemory> {
+    const formData = new FormData();
+    formData.append('title', memory.title);
+    formData.append('date', memory.date);
+    formData.append('type', memory.type);
+    if (memory.description) {
+      formData.append('description', memory.description);
+    }
+    if (memory.location) {
+      formData.append('location', memory.location);
+    }
+    if (photo) {
+      formData.append('photo', photo);
+    }
+
+    return this.http.post<PetMemory>(`${this.baseUrl}/${petId}/memories`, formData);
+  }
+
+  /**
+   * Delete a memory
+   */
+  deletePetMemory(petId: string, memoryId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${petId}/memories/${memoryId}`);
+  }
+
+  /**
+   * Upload photo to gallery
+   */
+  uploadGalleryPhoto(petId: string, file: File, caption?: string): Observable<PetPhoto> {
+    const formData = new FormData();
+    formData.append('file', file);
+    if (caption) {
+      formData.append('caption', caption);
+    }
+
+    return this.http.post<PetPhoto>(`${this.baseUrl}/${petId}/gallery`, formData);
+  }
+
+  /**
+   * Delete photo from gallery
+   */
+  deleteGalleryPhoto(petId: string, photoId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${petId}/gallery/${photoId}`);
+  }
+
+  /**
+   * Toggle photo favorite status
+   */
+  togglePhotoFavorite(petId: string, photoId: string): Observable<PetPhoto> {
+    return this.http.put<PetPhoto>(`${this.baseUrl}/${petId}/gallery/${photoId}/favorite`, {});
+  }
+
+  /**
+   * Get breed facts/info
+   */
+  getBreedFacts(breedId: string): Observable<BreedFacts> {
+    return this.http.get<BreedFacts>(`${environment.apiUrl}/breeds/${breedId}/facts`);
+  }
+
+  /**
+   * Set cover photo for pet profile
+   */
+  setCoverPhoto(petId: string, photoId: string): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}/${petId}/cover-photo/${photoId}`, {}).pipe(
+      tap(() => {
+        this.getPet(petId).subscribe();
+      })
+    );
   }
 }

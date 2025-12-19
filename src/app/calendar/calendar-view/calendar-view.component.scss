@@ -1,0 +1,379 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// CALENDAR VIEW COMPONENT
+// Monthly calendar with events
+// Based on Figma: mob_calendar_month_jan (12271-5501)
+// ===========================================
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: $color-ai-primary;
+
+  // ===========================================
+  // HEADER
+  // ===========================================
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md;
+    padding-top: $spacing-lg;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-text-inverse;
+    text-transform: capitalize;
+  }
+
+  &__header-spacer {
+    width: 34px; // Same as back button for centering
+  }
+
+  // ===========================================
+  // MONTH NAVIGATION
+  // ===========================================
+
+  &__month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-lg;
+    padding: $spacing-sm $spacing-md;
+  }
+
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &__nav-arrow {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-text-inverse;
+  }
+
+  &__month-name {
+    font-family: 'Moul', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: $color-cta-primary;
+    text-transform: uppercase;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  // ===========================================
+  // SELECTED DATE DISPLAY
+  // ===========================================
+
+  &__selected-date {
+    padding: $spacing-xs $spacing-md;
+    font-family: 'Irish Grover', cursive, $font-family-body;
+    font-size: 14px;
+    color: $color-text-inverse;
+    text-align: center;
+  }
+
+  // ===========================================
+  // CALENDAR GRID
+  // ===========================================
+
+  &__grid-container {
+    padding: 0 $spacing-md;
+    margin-bottom: $spacing-md;
+  }
+
+  &__day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__day-name {
+    padding: $spacing-xs;
+    font-family: $font-family-body;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  &__day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: $border-radius-sm;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &--other-month {
+      .calendar__day-number {
+        opacity: 0.3;
+      }
+    }
+
+    &--today {
+      background-color: $color-cta-primary;
+
+      .calendar__day-number {
+        color: $color-text-dark;
+        font-weight: 700;
+      }
+    }
+
+    &--selected:not(&--today) {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid $color-cta-primary;
+    }
+
+    &--has-events {
+      position: relative;
+    }
+  }
+
+  &__day-number {
+    font-family: 'Inria Sans', $font-family-body;
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    line-height: 1;
+  }
+
+  &__day-dots {
+    display: flex;
+    gap: 2px;
+    margin-top: 2px;
+    height: 6px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__day-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  // ===========================================
+  // EVENTS SECTION
+  // ===========================================
+
+  &__events-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-md;
+    background-color: $color-background-primary;
+    border-radius: $border-radius-page $border-radius-page 0 0;
+    margin-top: auto;
+  }
+
+  &__events-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-md;
+  }
+
+  &__events-title {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-text-primary;
+  }
+
+  &__create-btn {
+    padding: $spacing-xs $spacing-sm;
+    background-color: $color-cta-primary;
+    border: none;
+    border-radius: 100px;
+    font-family: $font-family-body;
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-text-dark;
+    cursor: pointer;
+    box-shadow: $shadow-md;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: $shadow-lg;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // ===========================================
+  // NO EVENTS STATE
+  // ===========================================
+
+  &__no-events {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-xl;
+    gap: $spacing-sm;
+  }
+
+  &__no-events-icon {
+    font-size: 48px;
+    opacity: 0.5;
+  }
+
+  &__no-events-text {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 14px;
+    color: $color-text-secondary;
+    text-align: center;
+  }
+
+  // ===========================================
+  // EVENTS LIST
+  // ===========================================
+
+  &__events-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__event-card {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    background-color: $color-background-secondary;
+    border: none;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background-color: darken(#F5F5F5, 3%);
+    }
+  }
+
+  &__event-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius-md;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  &__event-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__event-title {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-primary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__event-meta {
+    display: flex;
+    gap: $spacing-sm;
+    font-family: $font-family-body;
+    font-size: 12px;
+    color: $color-text-secondary;
+  }
+
+  &__event-time {
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background-color: currentColor;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+  }
+
+  &__event-pet {
+    opacity: 0.8;
+  }
+
+  &__event-arrow {
+    font-size: 16px;
+    color: $color-text-secondary;
+    flex-shrink: 0;
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    &__grid-container {
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__events-section {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

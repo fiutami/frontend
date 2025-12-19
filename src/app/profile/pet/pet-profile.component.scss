@@ -1,0 +1,1027 @@
+@import 'src/styles/tokens-figma';
+
+// ============================================================
+// Pet Profile Component Styles
+// ============================================================
+
+.pet-profile {
+  min-height: 100vh;
+  background: linear-gradient(125deg, #FCEFD1 0%, #F8D78B 19%, #F2B830 82%);
+  padding-bottom: calc(#{$tab-bar-height} + 20px);
+}
+
+// ============================================================
+// Loading & Error States
+// ============================================================
+
+.loading-container,
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: $spacing-lg;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba($color-ai-primary, 0.2);
+  border-top-color: $color-ai-primary;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  color: $color-error;
+  margin-bottom: $spacing-lg;
+  font-size: $typography-body-size;
+}
+
+// ============================================================
+// Header & Cover
+// ============================================================
+
+.profile-header {
+  position: relative;
+}
+
+.cover-photo {
+  height: 200px;
+  background-color: $color-ai-primary;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.cover-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+}
+
+.header-nav {
+  position: absolute;
+  top: $spacing-md;
+  left: $spacing-md;
+  right: $spacing-md;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.btn-back,
+.btn-settings {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-auth-back-button;
+  transition: $transition-fast;
+
+  .icon {
+    font-size: 20px;
+    color: $color-white-100;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// ============================================================
+// Pet Info Card
+// ============================================================
+
+.pet-info-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  margin: -40px $spacing-md 0;
+  padding: $spacing-lg $spacing-md;
+  border-radius: $border-radius-lg;
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  box-shadow: $shadow-lg;
+}
+
+.profile-photo-container {
+  margin-top: -60px;
+  margin-bottom: $spacing-sm;
+}
+
+.profile-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid $color-white-100;
+  object-fit: cover;
+  box-shadow: $shadow-md;
+
+  &.placeholder {
+    background: $color-cta-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-size: 32px;
+      font-weight: 700;
+      color: $color-white-100;
+    }
+  }
+}
+
+.pet-name {
+  font-family: $font-family-body;
+  font-size: 24px;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 4px;
+}
+
+.pet-breed {
+  font-size: 14px;
+  color: $color-text-secondary;
+  margin: 0 0 2px;
+}
+
+.pet-age {
+  font-size: 13px;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-md;
+}
+
+// ============================================================
+// Stats Row
+// ============================================================
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-md;
+  padding-top: $spacing-sm;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-text-primary;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: $color-text-secondary;
+  margin-top: 2px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.microchip-icon {
+  font-size: 16px;
+}
+
+// ============================================================
+// Tab Navigation
+// ============================================================
+
+.tab-navigation {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.7);
+  margin: $spacing-md;
+  border-radius: $border-radius-md;
+  padding: $spacing-xs;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: $spacing-sm $spacing-xs;
+  background: transparent;
+  border: none;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  .tab-icon {
+    font-size: 20px;
+  }
+
+  .tab-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: $color-text-secondary;
+  }
+
+  &.active {
+    background: $color-white-100;
+    box-shadow: $shadow-sm;
+
+    .tab-label {
+      color: $color-cta-primary;
+      font-weight: 600;
+    }
+  }
+
+  &:not(.active):hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+// ============================================================
+// Tab Content
+// ============================================================
+
+.tab-content {
+  padding: 0 $spacing-md $spacing-lg;
+}
+
+// ============================================================
+// Gallery Tab
+// ============================================================
+
+.gallery-section {
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .add-photo-card {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px dashed $color-cta-primary;
+    border-radius: $border-radius-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    .add-icon {
+      font-size: 28px;
+      color: $color-cta-primary;
+    }
+
+    .add-label {
+      font-size: 11px;
+      color: $color-cta-primary;
+      margin-top: 4px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  .photo-card {
+    aspect-ratio: 1;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    .favorite-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      color: $color-cta-primary;
+      font-size: 14px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// ============================================================
+// Empty States
+// ============================================================
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.empty-banner {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.gallery-banner {
+  .banner-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin-bottom: $spacing-md;
+  }
+
+  .banner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: $spacing-md;
+  }
+
+  .placeholder-photo {
+    aspect-ratio: 1;
+    background: rgba(217, 217, 217, 0.55);
+    border-radius: 22px 22px 2px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    .upload-icon {
+      font-size: 24px;
+      opacity: 0.5;
+    }
+
+    &:hover {
+      background: rgba(217, 217, 217, 0.8);
+    }
+  }
+
+  .mascot-container {
+    margin-top: $spacing-md;
+  }
+
+  .speech-bubble {
+    background: $color-white-100;
+    border: 3px solid $color-cta-primary;
+    border-radius: $border-radius-lg;
+    padding: $spacing-md;
+    box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.25);
+
+    p {
+      font-size: 14px;
+      color: $color-text-primary;
+      margin: 0;
+    }
+  }
+}
+
+// ============================================================
+// Friends Tab
+// ============================================================
+
+.friends-section {
+  .friends-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .friends-count {
+      background: $color-ai-primary;
+      color: $color-white-100;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  .online-section {
+    margin-bottom: $spacing-lg;
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: $color-text-secondary;
+      margin: 0 0 $spacing-sm;
+    }
+  }
+
+  .friends-scroll {
+    display: flex;
+    gap: $spacing-sm;
+    overflow-x: auto;
+    padding-bottom: $spacing-xs;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .friend-card {
+    flex-shrink: 0;
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+
+    .friend-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid $color-white-100;
+      box-shadow: $shadow-sm;
+
+      &.placeholder {
+        background: $color-cta-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 700;
+        color: $color-white-100;
+      }
+    }
+
+    &.online {
+      position: relative;
+
+      .online-indicator {
+        position: absolute;
+        bottom: 24px;
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        background: #4FAF5A;
+        border: 2px solid $color-white-100;
+        border-radius: 50%;
+      }
+    }
+
+    .friend-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: $color-text-primary;
+      margin: 6px 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .all-friends {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  .friend-list-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    background: rgba(255, 255, 255, 0.7);
+    padding: $spacing-sm;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .friend-avatar {
+      position: relative;
+      flex-shrink: 0;
+
+      img,
+      .placeholder {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .placeholder {
+        background: $color-cta-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: $color-white-100;
+      }
+
+      .online-dot {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 12px;
+        height: 12px;
+        background: #4FAF5A;
+        border: 2px solid $color-white-100;
+        border-radius: 50%;
+      }
+    }
+
+    .friend-info {
+      flex: 1;
+      min-width: 0;
+
+      .friend-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: $color-text-primary;
+        margin: 0;
+      }
+
+      .friend-breed {
+        font-size: 12px;
+        color: $color-text-secondary;
+        margin: 2px 0 0;
+      }
+
+      .last-seen {
+        font-size: 11px;
+        color: $color-text-secondary;
+        margin: 2px 0 0;
+      }
+    }
+
+    .friend-location {
+      font-size: 11px;
+      color: $color-text-secondary;
+    }
+  }
+}
+
+.friends-banner {
+  .banner-title,
+  .banner-subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-white-100;
+    margin: 0;
+    text-align: center;
+  }
+
+  .banner-subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: $spacing-xs;
+  }
+
+  background: $color-ai-primary;
+}
+
+// ============================================================
+// Memories Tab
+// ============================================================
+
+.memories-section {
+  .memories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+
+  .btn-add-memory {
+    background: $color-cta-primary;
+    color: $color-text-primary;
+    border: none;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-full;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 80px;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: $spacing-lg;
+
+    &:last-child {
+      padding-bottom: 0;
+
+      .timeline-line {
+        display: none;
+      }
+    }
+  }
+
+  .timeline-date {
+    position: absolute;
+    left: -80px;
+    width: 60px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+
+    .day {
+      font-size: 20px;
+      font-weight: 700;
+      color: $color-text-primary;
+      line-height: 1;
+    }
+
+    .month {
+      font-size: 12px;
+      color: $color-text-secondary;
+      text-transform: uppercase;
+    }
+
+    .year {
+      font-size: 11px;
+      color: $color-text-secondary;
+    }
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: -12px;
+    top: 8px;
+    bottom: -$spacing-lg;
+    width: 2px;
+    background: $color-cta-primary;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -4px;
+      width: 10px;
+      height: 10px;
+      background: $color-cta-primary;
+      border-radius: 50%;
+    }
+  }
+
+  .timeline-content {
+    padding-left: $spacing-md;
+  }
+
+  .memory-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-sm;
+
+    .memory-photo {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .memory-info {
+      padding: $spacing-sm;
+      position: relative;
+
+      .memory-icon {
+        position: absolute;
+        top: -16px;
+        right: $spacing-sm;
+        font-size: 24px;
+        background: $color-white-100;
+        padding: 4px;
+        border-radius: 50%;
+        box-shadow: $shadow-sm;
+      }
+
+      h4 {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 4px;
+        color: $color-text-primary;
+      }
+
+      .memory-description {
+        font-size: 12px;
+        color: $color-text-secondary;
+        margin: 0 0 4px;
+      }
+
+      .memory-location {
+        font-size: 11px;
+        color: $color-text-secondary;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin: 0;
+
+        .location-icon {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.memories-banner {
+  background: linear-gradient(180deg, $color-ai-primary 0%, #4FAF5A 100%);
+  color: $color-white-100;
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+
+    &:first-child {
+      margin-bottom: 4px;
+    }
+  }
+
+  .memory-cards-preview {
+    display: flex;
+    gap: $spacing-sm;
+    margin-top: $spacing-lg;
+
+    .preview-card {
+      flex: 1;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 22px 0 22px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .label {
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+// ============================================================
+// Info Tab
+// ============================================================
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-sm;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-sm;
+  }
+}
+
+.breed-facts {
+  .facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  .fact-item {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: flex-start;
+
+    .fact-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    p {
+      font-size: 13px;
+      color: $color-text-secondary;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+
+  .btn-link {
+    background: none;
+    border: none;
+    color: $color-ai-primary;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0;
+    margin-top: $spacing-sm;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.care-info {
+  .care-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-sm;
+  }
+
+  .care-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: $spacing-sm;
+    background: rgba($color-ai-primary, 0.1);
+    border-radius: $border-radius-md;
+
+    .care-icon {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .care-label {
+      font-size: 10px;
+      color: $color-text-secondary;
+    }
+
+    .care-value {
+      font-size: 12px;
+      font-weight: 600;
+      color: $color-text-primary;
+    }
+  }
+}
+
+.pet-details {
+  .details-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-xs 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      font-size: 13px;
+      color: $color-text-secondary;
+    }
+
+    .detail-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: $color-text-primary;
+    }
+  }
+}
+
+.health-notes {
+  p {
+    font-size: 13px;
+    color: $color-text-secondary;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.accordion-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.accordion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  padding: $spacing-sm $spacing-md;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:first-child {
+    border-radius: $border-radius-md $border-radius-md 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 $border-radius-md $border-radius-md;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  &.disabled {
+    color: rgba($color-text-primary, 0.4);
+    cursor: not-allowed;
+  }
+
+  .chevron {
+    font-size: 18px;
+    color: $color-text-secondary;
+  }
+}
+
+// ============================================================
+// Common Buttons
+// ============================================================
+
+.btn-primary {
+  background: $color-cta-primary;
+  color: $color-text-primary;
+  border: none;
+  padding: $spacing-sm $spacing-xl;
+  border-radius: $border-radius-full;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: $shadow-auth-back-button;
+  transition: $transition-fast;
+
+  &:hover {
+    background: darken($color-cta-primary, 5%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btn-add {
+  margin-top: $spacing-md;
+}

@@ -47,6 +47,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Calendar - requires authentication
+  {
+    path: 'calendar',
+    loadChildren: () => import('./calendar/calendar.module').then(m => m.CalendarModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',
