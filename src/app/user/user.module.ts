@@ -15,6 +15,9 @@ import { SecurityComponent } from './security/security.component';
 import { AccountComponent } from './account/account.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ActivityComponent } from './activity/activity.component';
+import { SavedComponent } from './saved/saved.component';
+import { FriendsComponent } from './friends/friends.component';
+import { InviteComponent } from './invite/invite.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { ActivityComponent } from './activity/activity.component';
     SecurityComponent,
     AccountComponent,
     NotificationsComponent,
-    ActivityComponent
+    ActivityComponent,
+    SavedComponent,
+    FriendsComponent,
+    InviteComponent
   ],
   imports: [
     CommonModule,

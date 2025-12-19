@@ -1,0 +1,154 @@
+<div class="invite-page">
+  <!-- Header -->
+  <header class="invite-header">
+    <div class="invite-header__top">
+      <button class="invite-header__back" (click)="goBack()">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <circle cx="17" cy="17" r="17" fill="white"/>
+          <path d="M20 10L13 17L20 24" stroke="#4A74F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <h1 class="invite-header__title">Invita Amici</h1>
+    </div>
+
+    <p class="invite-header__subtitle">
+      La community cresce<br>
+      correndo insieme.<br>
+      Porta qui i tuoi amici
+    </p>
+
+    <!-- Search Bar -->
+    <div class="invite-header__search">
+      <div class="search-box">
+        <svg class="search-box__icon" width="17" height="17" viewBox="0 0 17 17" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="#4A74F0" stroke-width="2"/>
+          <path d="M11 11L15 15" stroke="#4A74F0" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input
+          type="text"
+          class="search-box__input"
+          placeholder="Cerca"
+          [(ngModel)]="searchQuery"
+          (input)="onSearch(searchQuery)"
+        />
+        <svg class="search-box__filter" width="16" height="20" viewBox="0 0 16 20" fill="none">
+          <path d="M1 4H15M3 10H13M5 16H11" stroke="#4A74F0" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="invite-content">
+    <!-- Referral Card -->
+    <div class="referral-card">
+      <div class="referral-card__icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="24" fill="#F2B830" fill-opacity="0.2"/>
+          <path d="M24 14V34M14 24H34" stroke="#F2B830" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="referral-card__info">
+        <p class="referral-card__text">Ogni amico che si iscrive ti regala</p>
+        <p class="referral-card__points">{{ pointsPerInvite }} punti</p>
+      </div>
+    </div>
+
+    <!-- Referral Code -->
+    <div class="referral-code">
+      <span class="referral-code__label">Il tuo codice:</span>
+      <div class="referral-code__box">
+        <span class="referral-code__value">{{ referralCode }}</span>
+        <button
+          class="referral-code__copy"
+          [class.referral-code__copy--copied]="copiedCode"
+          (click)="copyCode()"
+        >
+          <svg *ngIf="!copiedCode" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="6" y="6" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 6V4C14 2.89543 13.1046 2 12 2H4C2.89543 2 2 2.89543 2 4V12C2 13.1046 2.89543 14 4 14H6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <svg *ngIf="copiedCode" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10L8 14L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Share Buttons -->
+    <div class="share-buttons">
+      <button class="share-btn share-btn--whatsapp" (click)="shareVia('whatsapp')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.49l4.597-1.462A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.684-5.834-1.846l-.418-.287-2.727.867.792-2.684-.324-.482A9.778 9.778 0 012.182 12c0-5.423 4.395-9.818 9.818-9.818S21.818 6.577 21.818 12 17.423 21.818 12 21.818z" fill="white"/>
+        </svg>
+        <span>WhatsApp</span>
+      </button>
+      <button class="share-btn share-btn--telegram" (click)="shareVia('telegram')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141a.506.506 0 01.171.325c.016.093.036.306.02.472z" fill="white"/>
+        </svg>
+        <span>Telegram</span>
+      </button>
+      <button class="share-btn share-btn--email" (click)="shareVia('email')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="4" width="20" height="16" rx="2" stroke="white" stroke-width="2"/>
+          <path d="M2 6L12 13L22 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Email</span>
+      </button>
+      <button class="share-btn share-btn--more" (click)="shareVia('native')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="5" r="2" fill="white"/>
+          <circle cx="12" cy="12" r="2" fill="white"/>
+          <circle cx="12" cy="19" r="2" fill="white"/>
+        </svg>
+        <span>Altro</span>
+      </button>
+    </div>
+
+    <!-- Section Header -->
+    <div class="invite-content__header">
+      <span class="invite-content__label">Contatti Rubrica</span>
+      <div class="invite-content__line"></div>
+      <button
+        class="invite-content__select"
+        [class.invite-content__select--active]="isSelecting"
+        (click)="toggleSelecting()"
+      >
+        {{ isSelecting ? 'Annulla' : 'Seleziona' }}
+      </button>
+    </div>
+
+    <!-- Contacts List -->
+    <div class="contacts-list">
+      <div
+        class="contact-item"
+        *ngFor="let contact of filteredContacts"
+        [class.contact-item--selected]="isContactSelected(contact)"
+        [class.contact-item--invited]="contact.invited"
+        (click)="onContactClick(contact)"
+      >
+        <div class="contact-item__avatar">
+          <img [src]="contact.avatarUrl" [alt]="contact.name" onerror="this.src='assets/images/default-avatar.png'"/>
+        </div>
+        <span class="contact-item__name">{{ contact.name }}</span>
+        <span class="contact-item__status" *ngIf="contact.invited">Invitato</span>
+        <div class="contact-item__check" *ngIf="isSelecting && !contact.invited">
+          <svg *ngIf="isContactSelected(contact)" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="10" fill="#4A74F0"/>
+            <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span *ngIf="!isContactSelected(contact)" class="contact-item__check-empty"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Send Invites -->
+    <div class="invite-actions" *ngIf="isSelecting && selectedContacts.size > 0">
+      <button class="invite-actions__send" (click)="sendInvites()">
+        Invia invito ({{ selectedContacts.size }})
+      </button>
+    </div>
+  </main>
+</div>

@@ -8,6 +8,9 @@ import { SecurityComponent } from './security/security.component';
 import { AccountComponent } from './account/account.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ActivityComponent } from './activity/activity.component';
+import { SavedComponent } from './saved/saved.component';
+import { FriendsComponent } from './friends/friends.component';
+import { InviteComponent } from './invite/invite.component';
 
 const routes: Routes = [
   {
@@ -21,7 +24,10 @@ const routes: Routes = [
       { path: 'security', component: SecurityComponent },
       { path: 'account', component: AccountComponent },
       { path: 'notifications', component: NotificationsComponent },
-      { path: 'activity', component: ActivityComponent }
+      { path: 'activity', component: ActivityComponent },
+      { path: 'saved', component: SavedComponent },
+      { path: 'friends', component: FriendsComponent },
+      { path: 'invite', component: InviteComponent }
     ]
   }
 ];
