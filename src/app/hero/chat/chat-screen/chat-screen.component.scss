@@ -1,37 +1,58 @@
-@import 'src/styles/tokens-figma';
+@import 'src/styles/_tokens-figma';
+
+// Colors from Figma
+$chat-header-bg: #4A74F0;
+$chat-bubble-received: rgba(228, 228, 228, 0.83);
+$chat-bubble-sent: rgba(74, 116, 240, 0.2);
+$chat-online-dot: #66BA00;
+$chat-gradient-start: rgba(252, 239, 209, 1);
+$chat-gradient-mid: rgba(248, 215, 139, 1);
+$chat-gradient-end: rgba(242, 184, 48, 1);
 
 .chat-screen {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: $color-background-secondary;
+  background: linear-gradient(125deg, $chat-gradient-start 0%, $chat-gradient-mid 19%, $chat-gradient-end 82%);
 
   &__header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  &__header-bg {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: $spacing-md;
-    background: $color-background-primary;
-    border-bottom: 1px solid $color-background-secondary;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: $shadow-sm;
+    padding-top: calc($spacing-md + env(safe-area-inset-top, 0px));
+    background: $chat-header-bg;
+    border-radius: 103px 0 228px 15px;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
+    min-height: 73px;
   }
 
-  &__back-btn,
-  &__more-btn {
-    width: 44px;
-    height: 44px;
+  &__header-separator {
+    height: 1px;
+    background: rgba(228, 228, 228, 0.83);
+    margin: 0 $spacing-md;
+  }
+
+  &__back-btn {
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $color-text-primary;
+    color: $color-text-inverse;
     border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transition: $transition-fast;
 
     &:hover {
-      background: $color-background-secondary;
+      background: rgba(255, 255, 255, 0.2);
     }
 
     &:active {
@@ -44,29 +65,107 @@
     display: flex;
     align-items: center;
     gap: $spacing-sm;
-    padding: 0 $spacing-sm;
+    padding: 0 $spacing-md;
   }
 
-  &__avatar-small {
-    width: 40px;
-    height: 40px;
+  &__avatar {
+    width: 49px;
+    height: 50px;
     border-radius: 50%;
-    background: $color-primary-500;
+    background: linear-gradient(180deg, #ccc 0%, #aaa 100%);
     color: $color-text-inverse;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: $typography-body-size;
+    font-size: $typography-button-size;
     font-weight: 600;
     flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__online-dot,
+  &__avatar-dot {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 8px;
+    height: 8px;
+    background: $chat-online-dot;
+    border-radius: 50%;
+    border: 2px solid $color-text-inverse;
+  }
+
+  &__name-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
   &__name {
+    font-family: $font-family-body;
     font-size: $typography-button-size;
-    font-weight: 600;
-    color: $color-text-primary;
+    font-weight: 700;
+    color: $color-text-inverse;
+    line-height: 1.22;
   }
 
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: $font-family-body;
+    font-size: 10px;
+    font-weight: 400;
+    color: #E2F163;
+    line-height: 1.22;
+  }
+
+  &__status-dot {
+    width: 7px;
+    height: 8px;
+    background: $chat-online-dot;
+    border-radius: 50%;
+  }
+
+  &__header-actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__action-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-inverse;
+    border-radius: 50%;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // Messages Area
   &__messages {
     flex: 1;
     overflow-y: auto;
@@ -78,15 +177,32 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-sm;
+    padding-bottom: $spacing-lg;
+  }
+
+  &__date-separator {
+    display: flex;
+    justify-content: center;
+    margin: $spacing-lg 0;
+
+    span {
+      font-family: $font-family-body;
+      font-size: 14px;
+      font-weight: 700;
+      color: $chat-header-bg;
+      line-height: 1.22;
+    }
   }
 
   &__message {
     display: flex;
+    gap: $spacing-sm;
     max-width: 80%;
 
     &--sent {
       align-self: flex-end;
       justify-content: flex-end;
+      flex-direction: row-reverse;
     }
 
     &--received {
@@ -95,34 +211,66 @@
     }
   }
 
+  &__message-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #ccc 0%, #aaa 100%);
+    color: $color-text-inverse;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
   &__bubble {
     display: flex;
     flex-direction: column;
     gap: $spacing-xs;
-    padding: $spacing-sm $spacing-md;
-    border-radius: $border-radius-lg;
+    padding: 8px 21px;
     word-wrap: break-word;
     max-width: 100%;
 
     .chat-screen__message--sent & {
-      background: $color-primary-500;
-      color: $color-text-inverse;
-      border-bottom-right-radius: $spacing-xs;
+      background: $chat-bubble-sent;
+      border-radius: 20px 20px 0px 20px;
     }
 
     .chat-screen__message--received & {
-      background: $color-background-primary;
-      color: $color-text-primary;
-      border-bottom-left-radius: $spacing-xs;
-      box-shadow: $shadow-sm;
+      background: $chat-bubble-received;
+      border-radius: 20px 20px 20px 0px;
     }
   }
 
+  &__attachment {
+    max-width: 200px;
+    border-radius: $border-radius-md;
+    margin-bottom: $spacing-xs;
+  }
+
   &__text {
+    font-family: $font-family-body;
     font-size: $typography-body-size;
-    line-height: $typography-body-line-height;
+    line-height: 1.22;
     margin: 0;
-    white-space: pre-wrap;
+
+    .chat-screen__message--sent & {
+      color: #000000;
+    }
+
+    .chat-screen__message--received & {
+      color: #383737;
+    }
   }
 
   &__time {
@@ -130,7 +278,7 @@
     align-self: flex-end;
 
     .chat-screen__message--sent & {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(0, 0, 0, 0.6);
     }
 
     .chat-screen__message--received & {
@@ -138,10 +286,18 @@
     }
   }
 
+  &__typing {
+    font-family: $font-family-body;
+    font-size: 12px;
+    font-weight: 500;
+    color: #71757A;
+    text-align: right;
+    padding: $spacing-sm $spacing-md;
+  }
+
   // Input Area
   &__input-area {
-    background: $color-background-primary;
-    border-top: 1px solid $color-background-secondary;
+    background: transparent;
     padding: $spacing-md;
     position: sticky;
     bottom: 0;
@@ -151,30 +307,12 @@
   &__input-wrapper {
     display: flex;
     align-items: center;
-    gap: $spacing-sm;
-    background: $color-background-secondary;
-    border-radius: $border-radius-full;
-    padding: $spacing-xs $spacing-md;
-  }
-
-  &__attach-btn {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-text-secondary;
-    border-radius: 50%;
-    transition: $transition-fast;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
+    gap: 0;
+    background: #F6F6F6;
+    border-radius: 28px;
+    padding: 0;
+    height: 50px;
+    overflow: hidden;
   }
 
   &__input {
@@ -182,29 +320,56 @@
     border: none;
     outline: none;
     background: transparent;
+    font-family: $font-family-body;
     font-size: $typography-body-size;
-    color: $color-text-primary;
-    padding: $spacing-sm 0;
+    color: #E4E4E4;
+    padding: $spacing-sm $spacing-md;
+    height: 100%;
 
     &::placeholder {
-      color: $color-text-secondary;
+      color: #4A74F0;
     }
   }
 
-  &__send-btn {
-    flex-shrink: 0;
+  &__input-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-right: 0;
+  }
+
+  &__input-btn {
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $color-primary-500;
+    color: $color-text-inverse;
+    border-radius: 50%;
+    transition: $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__send-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, $chat-header-bg 0%, $chat-header-bg 100%);
     color: $color-text-inverse;
     border-radius: 50%;
     transition: $transition-fast;
 
     &:not(:disabled):hover {
-      background: darken($color-primary-500, 10%);
+      opacity: 0.9;
       transform: scale(1.05);
     }
 
@@ -216,6 +381,36 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
+  }
+}
+
+// Voice wave animation placeholder
+.chat-screen__voice-wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 30px;
+
+  span {
+    width: 2.5px;
+    background: $chat-header-bg;
+    border-radius: 2px;
+    animation: wave 1s ease-in-out infinite;
+
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.05}s;
+      }
+    }
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    height: 10px;
+  }
+  50% {
+    height: 25px;
   }
 }
 

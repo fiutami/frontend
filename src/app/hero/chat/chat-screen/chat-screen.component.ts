@@ -17,6 +17,13 @@ export interface Message {
   text: string;
   sent: boolean; // true = sent by user, false = received
   time: string;
+  attachmentUrl?: string;
+}
+
+export interface ConversationInfo {
+  name: string;
+  avatar: string | null;
+  isOnline: boolean;
 }
 
 @Component({
@@ -35,17 +42,20 @@ export class ChatScreenComponent implements OnInit, AfterViewInit {
 
   conversationId = signal<string>('');
   conversationName = signal<string>('');
+  recipientAvatar = signal<string | null>(null);
+  isOnline = signal<boolean>(true);
+  isTyping = signal<boolean>(false);
   messageInput = signal<string>('');
 
   // Mock messages data
   messages = signal<Message[]>([]);
 
   // Mock conversations map for names
-  private conversationsMap: Record<string, string> = {
-    '1': 'Marco',
-    '2': 'Sara',
-    '3': 'Luca',
-    '4': 'Giulia',
+  private conversationsMap: Record<string, ConversationInfo> = {
+    '1': { name: 'Marco', avatar: null, isOnline: true },
+    '2': { name: 'Sara', avatar: null, isOnline: false },
+    '3': { name: 'Luca', avatar: null, isOnline: true },
+    '4': { name: 'Giulia', avatar: null, isOnline: false },
   };
 
   // Mock messages per conversation
@@ -53,21 +63,39 @@ export class ChatScreenComponent implements OnInit, AfterViewInit {
     '1': [
       {
         id: 1,
-        text: 'Ciao! Come sta il tuo cagnolino?',
+        text: 'Are you still travelling?',
         sent: false,
-        time: '10:28',
+        time: '10:20',
       },
       {
         id: 2,
-        text: 'Benissimo! Oggi siamo andati al parco',
+        text: 'Yes, i\'m at Istanbul..',
         sent: true,
-        time: '10:29',
+        time: '10:25',
       },
       {
         id: 3,
-        text: 'Ci vediamo al parco?',
+        text: 'OoOo, Thats so Cool!',
         sent: false,
-        time: '10:30',
+        time: '10:26',
+      },
+      {
+        id: 4,
+        text: 'Raining??',
+        sent: false,
+        time: '10:27',
+      },
+      {
+        id: 5,
+        text: 'Hi, Did you heared?',
+        sent: false,
+        time: '14:30',
+      },
+      {
+        id: 6,
+        text: 'Ok!',
+        sent: false,
+        time: '14:35',
       },
     ],
     '2': [
@@ -124,7 +152,14 @@ export class ChatScreenComponent implements OnInit, AfterViewInit {
     const id = this.route.snapshot.paramMap.get('conversationId');
     if (id) {
       this.conversationId.set(id);
-      this.conversationName.set(this.conversationsMap[id] || 'Utente');
+      const info = this.conversationsMap[id];
+      if (info) {
+        this.conversationName.set(info.name);
+        this.recipientAvatar.set(info.avatar);
+        this.isOnline.set(info.isOnline);
+      } else {
+        this.conversationName.set('Utente');
+      }
       this.messages.set(this.messagesMap[id] || []);
     } else {
       // No conversation ID, redirect back to list
@@ -139,6 +174,14 @@ export class ChatScreenComponent implements OnInit, AfterViewInit {
 
   goBack(): void {
     this.router.navigate(['/home/chat']);
+  }
+
+  getDateLabel(): string {
+    // Return a formatted date label
+    const days = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+    const today = new Date();
+    const dayName = days[today.getDay()];
+    return `${dayName} ${today.getFullYear()}`;
   }
 
   sendMessage(): void {
@@ -162,8 +205,12 @@ export class ChatScreenComponent implements OnInit, AfterViewInit {
     // Scroll to bottom after sending
     setTimeout(() => this.scrollToBottom(), 100);
 
-    // Mock auto-reply after 2 seconds
-    setTimeout(() => this.sendAutoReply(), 2000);
+    // Show typing indicator and mock auto-reply
+    this.isTyping.set(true);
+    setTimeout(() => {
+      this.isTyping.set(false);
+      this.sendAutoReply();
+    }, 2000);
   }
 
   private sendAutoReply(): void {

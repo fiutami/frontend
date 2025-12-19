@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   inject,
   OnInit,
+  computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
@@ -11,15 +12,7 @@ import {
   BottomTabBarComponent,
   TabItem,
 } from '../../../shared/components/bottom-tab-bar';
-
-export interface Conversation {
-  id: string;
-  name: string;
-  avatar: string | null;
-  lastMessage: string;
-  time: string;
-  unread: number;
-}
+import { ChatService, Conversation } from '../services/chat.service';
 
 @Component({
   selector: 'app-chat-list',
@@ -32,42 +25,10 @@ export interface Conversation {
 export class ChatListComponent implements OnInit {
   private drawerService = inject(DrawerService);
   private router = inject(Router);
+  private chatService = inject(ChatService);
 
-  // Mock conversations data
-  conversations: Conversation[] = [
-    {
-      id: '1',
-      name: 'Marco',
-      avatar: null,
-      lastMessage: 'Ci vediamo al parco?',
-      time: '10:30',
-      unread: 2,
-    },
-    {
-      id: '2',
-      name: 'Sara',
-      avatar: null,
-      lastMessage: 'Grazie per i consigli!',
-      time: 'Ieri',
-      unread: 0,
-    },
-    {
-      id: '3',
-      name: 'Luca',
-      avatar: null,
-      lastMessage: 'Il mio cane è bellissimo!',
-      time: 'Ieri',
-      unread: 1,
-    },
-    {
-      id: '4',
-      name: 'Giulia',
-      avatar: null,
-      lastMessage: 'Perfetto, a dopo!',
-      time: 'Lunedì',
-      unread: 0,
-    },
-  ];
+  conversations = this.chatService.getConversations();
+  hasConversations = computed(() => this.conversations().length > 0);
 
   // Bottom tab bar configuration
   tabs: TabItem[] = [
@@ -84,7 +45,7 @@ export class ChatListComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    // Load conversations from API in real implementation
+    this.chatService.loadConversations();
   }
 
   openDrawer(): void {
@@ -96,11 +57,19 @@ export class ChatListComponent implements OnInit {
   }
 
   openConversation(conversationId: string): void {
+    this.chatService.markAsRead(conversationId);
     this.router.navigate(['/home/chat', conversationId]);
   }
 
   getAvatarPlaceholder(name: string): string {
-    // Return first letter of name for placeholder
     return name.charAt(0).toUpperCase();
+  }
+
+  formatTime(date: Date): string {
+    return this.chatService.formatTime(date);
+  }
+
+  findFriends(): void {
+    this.router.navigate(['/home/friends']);
   }
 }

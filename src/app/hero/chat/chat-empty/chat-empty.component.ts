@@ -17,13 +17,21 @@ import { RouterModule, Router } from '@angular/router';
 export class ChatEmptyComponent {
   private router = inject(Router);
 
+  goBack(): void {
+    this.router.navigate(['/home/chat']);
+  }
+
   goToHome(): void {
     this.router.navigate(['/home/main']);
   }
 
   goToExplore(): void {
-    // Navigate to explore/discover feature
-    // For now, go to home
-    this.router.navigate(['/home/main']);
+    // Navigate to explore/discover friends feature
+    this.router.navigate(['/home/friends']);
+  }
+
+  startNewChat(): void {
+    // Navigate to find friends or start a new conversation
+    this.router.navigate(['/home/friends']);
   }
 }
