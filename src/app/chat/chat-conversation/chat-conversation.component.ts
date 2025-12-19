@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { Message, Conversation } from '../models/chat.models';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-chat-conversation',
@@ -12,104 +14,110 @@ import { Message, Conversation } from '../models/chat.models';
   templateUrl: './chat-conversation.component.html',
   styleUrls: ['./chat-conversation.component.scss']
 })
-export class ChatConversationComponent implements OnInit, AfterViewChecked {
+export class ChatConversationComponent implements OnInit, OnDestroy, AfterViewChecked {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
 
-  conversationId: string = '';
-  newMessage: string = '';
+  conversationId = '';
+  newMessage = '';
   messages: Message[] = [];
   recipient: Partial<Conversation> = {};
-  isTyping: boolean = false;
-  private shouldScrollToBottom = true;
+  isTyping = false;
+  loading = true;
+  sending = false;
 
-  // Mock messages
-  mockMessages: Message[] = [
-    {
-      id: '1',
-      conversationId: '1',
-      senderId: 'other',
-      text: 'Are you still travelling?',
-      timestamp: new Date(Date.now() - 86400000 * 2),
-      isRead: true,
-      isMine: false
-    },
-    {
-      id: '2',
-      conversationId: '1',
-      senderId: 'other',
-      text: 'OoOo, Thats so Cool!',
-      timestamp: new Date(Date.now() - 86400000 * 2),
-      isRead: true,
-      isMine: false
-    },
-    {
-      id: '3',
-      conversationId: '1',
-      senderId: 'other',
-      text: 'Raining??',
-      timestamp: new Date(Date.now() - 86400000 * 2),
-      isRead: true,
-      isMine: false
-    },
-    {
-      id: '4',
-      conversationId: '1',
-      senderId: 'me',
-      text: 'Yes, i\'m at Istanbul..',
-      timestamp: new Date(Date.now() - 86400000 * 2),
-      isRead: true,
-      isMine: true
-    },
-    {
-      id: '5',
-      conversationId: '1',
-      senderId: 'other',
-      text: 'Hi, Did you heared?',
-      timestamp: new Date(Date.now() - 3600000),
-      isRead: true,
-      isMine: false
-    },
-    {
-      id: '6',
-      conversationId: '1',
-      senderId: 'other',
-      text: 'Ok!',
-      timestamp: new Date(Date.now() - 1800000),
-      isRead: true,
-      isMine: false
-    }
-  ];
+  private destroy$ = new Subject<void>();
+  private pollSubscription?: Subscription;
+  private shouldScrollToBottom = false;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private chatService: ChatService
   ) {}
 
   ngOnInit(): void {
     this.conversationId = this.route.snapshot.paramMap.get('id') || '';
-    this.loadConversation();
     this.loadMessages();
+    this.startPolling();
+    this.markAsRead();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.stopPolling();
   }
 
   ngAfterViewChecked(): void {
     if (this.shouldScrollToBottom) {
       this.scrollToBottom();
+      this.shouldScrollToBottom = false;
     }
   }
 
-  loadConversation(): void {
-    // TODO: Replace with API call
-    this.recipient = {
-      recipientName: 'Smith Mathew',
-      recipientAvatar: 'assets/images/avatars/avatar1.jpg',
-      isOnline: true
-    };
+  loadMessages(): void {
+    this.loading = true;
+    this.chatService.getMessages(this.conversationId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (messages) => {
+          this.messages = messages;
+          this.loading = false;
+          this.shouldScrollToBottom = true;
+          // Extract recipient info from first message if available
+          if (messages.length > 0) {
+            const otherMessage = messages.find(m => !m.isMine);
+            if (otherMessage) {
+              this.recipient = {
+                recipientName: 'Chat',
+                isOnline: true
+              };
+            }
+          }
+        },
+        error: () => {
+          this.loading = false;
+        }
+      });
   }
 
-  loadMessages(): void {
-    // TODO: Replace with API call
-    this.messages = this.mockMessages;
-    this.shouldScrollToBottom = true;
+  // POLLING every 5 seconds for new messages
+  startPolling(): void {
+    this.pollSubscription = this.chatService
+      .pollMessages(this.conversationId, () => this.getLastMessageTime())
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (newMessages) => {
+          if (newMessages.length > 0) {
+            // Add only new messages
+            const existingIds = new Set(this.messages.map(m => m.id));
+            const toAdd = newMessages.filter(m => !existingIds.has(m.id));
+            if (toAdd.length > 0) {
+              this.messages.push(...toAdd);
+              this.shouldScrollToBottom = true;
+              this.markAsRead();
+            }
+          }
+        }
+      });
+  }
+
+  stopPolling(): void {
+    if (this.pollSubscription) {
+      this.pollSubscription.unsubscribe();
+    }
+  }
+
+  getLastMessageTime(): Date | undefined {
+    if (this.messages.length === 0) return undefined;
+    const last = this.messages[this.messages.length - 1];
+    return new Date(last.createdAt);
+  }
+
+  markAsRead(): void {
+    this.chatService.markAsRead(this.conversationId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
   }
 
   goBack(): void {
@@ -117,21 +125,25 @@ export class ChatConversationComponent implements OnInit, AfterViewChecked {
   }
 
   sendMessage(): void {
-    if (!this.newMessage.trim()) return;
+    if (!this.newMessage.trim() || this.sending) return;
 
-    const message: Message = {
-      id: Date.now().toString(),
-      conversationId: this.conversationId,
-      senderId: 'me',
-      text: this.newMessage.trim(),
-      timestamp: new Date(),
-      isRead: false,
-      isMine: true
-    };
-
-    this.messages.push(message);
+    this.sending = true;
+    const text = this.newMessage.trim();
     this.newMessage = '';
-    this.shouldScrollToBottom = true;
+
+    this.chatService.sendMessage(this.conversationId, { text })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (message) => {
+          this.messages.push(message);
+          this.shouldScrollToBottom = true;
+          this.sending = false;
+        },
+        error: () => {
+          this.newMessage = text; // Restore on error
+          this.sending = false;
+        }
+      });
   }
 
   onKeyPress(event: KeyboardEvent): void {
@@ -166,9 +178,9 @@ export class ChatConversationComponent implements OnInit, AfterViewChecked {
     console.log('Open call');
   }
 
-  formatMessageDate(date: Date): string {
-    const today = new Date();
+  formatMessageDate(date: Date | string): string {
     const msgDate = new Date(date);
+    const today = new Date();
 
     if (msgDate.toDateString() === today.toDateString()) {
       return 'Oggi';
@@ -187,7 +199,7 @@ export class ChatConversationComponent implements OnInit, AfterViewChecked {
     });
   }
 
-  formatTime(date: Date): string {
+  formatTime(date: Date | string): string {
     return new Date(date).toLocaleTimeString('it-IT', {
       hour: '2-digit',
       minute: '2-digit'
@@ -197,8 +209,8 @@ export class ChatConversationComponent implements OnInit, AfterViewChecked {
   shouldShowDateSeparator(index: number): boolean {
     if (index === 0) return true;
 
-    const currentDate = new Date(this.messages[index].timestamp).toDateString();
-    const prevDate = new Date(this.messages[index - 1].timestamp).toDateString();
+    const currentDate = new Date(this.messages[index].createdAt).toDateString();
+    const prevDate = new Date(this.messages[index - 1].createdAt).toDateString();
 
     return currentDate !== prevDate;
   }
@@ -208,7 +220,6 @@ export class ChatConversationComponent implements OnInit, AfterViewChecked {
       if (this.messagesContainer) {
         this.messagesContainer.nativeElement.scrollTop =
           this.messagesContainer.nativeElement.scrollHeight;
-        this.shouldScrollToBottom = false;
       }
     } catch (err) {
       // Handle error silently

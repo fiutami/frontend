@@ -1,4 +1,4 @@
-export interface PremiumPlan {
+export interface Plan {
   id: string;
   name: string;
   price: number;
@@ -8,8 +8,15 @@ export interface PremiumPlan {
   savings?: string;
 }
 
-export interface UserSubscription {
+export interface Subscription {
+  id: string;
   planId: string;
+  planName: string;
   status: 'active' | 'cancelled' | 'expired';
-  expiresAt: Date;
+  startedAt: Date;
+  expiresAt?: Date;
 }
+
+// Alias for backward compatibility
+export type PremiumPlan = Plan;
+export type UserSubscription = Subscription;
