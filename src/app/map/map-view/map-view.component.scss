@@ -1,0 +1,738 @@
+@import 'src/styles/tokens-figma';
+
+// Map page wrapper
+.map-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+
+  &__background {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(125deg, #FFFFFF 0%, rgba(255, 255, 255, 0.67) 0%, #FCFED1 0%, #F8D78B 19%, #F2B830 82%);
+    z-index: -1;
+  }
+}
+
+// Header
+.map-header {
+  padding: 32px 16px 16px;
+  position: relative;
+  z-index: 10;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-text-inverse;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    text-align: center;
+    line-height: 1.22;
+    margin: 0;
+  }
+}
+
+// Back button
+.back-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(228, 228, 228, 0.2);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  .material-icons {
+    font-size: 20px;
+    color: $color-text-inverse;
+  }
+}
+
+// Menu button
+.menu-button {
+  width: 34px;
+  height: 61px;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6.6px;
+  cursor: pointer;
+
+  .material-icons {
+    font-size: 24px;
+    color: $color-text-inverse;
+  }
+}
+
+// Search container
+.search-container {
+  padding: 0 16px;
+  margin-bottom: 12px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: $color-background-primary;
+  border: 1px solid #D6D6D6;
+  border-radius: 40px;
+
+  .search-icon {
+    color: #878787;
+    font-size: 18px;
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: $font-family-body;
+    font-size: 12px;
+    color: $color-text-primary;
+    background: transparent;
+
+    &::placeholder {
+      color: #878787;
+    }
+  }
+
+  .filter-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    .material-icons {
+      font-size: 18px;
+      color: #878787;
+    }
+  }
+}
+
+// Action buttons
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.action-btn {
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: none;
+  font-family: $font-family-body;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.5%;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: $transition-base;
+
+  &--primary {
+    background: #F2B830;
+    color: $color-text-inverse;
+
+    &:hover {
+      background: #DAA500;
+    }
+  }
+}
+
+// Filter chips
+.filter-chips {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.filter-chip {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-family: $font-family-body;
+  font-size: 14px;
+  font-weight: 600;
+  color: #979EA6;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &--active {
+    color: $color-text-inverse;
+    background: var(--chip-color, $color-ai-primary);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.38);
+  }
+
+  &__text {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Map container
+.map-container {
+  position: relative;
+  margin: 0 16px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
+  border: 1px solid $color-ai-primary;
+}
+
+.map {
+  width: 100%;
+  height: 220px;
+}
+
+// User location marker styles
+:global {
+  .user-location-marker {
+    position: relative;
+  }
+
+  .user-marker-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(74, 116, 240, 0.3);
+    animation: pulse 2s infinite;
+  }
+
+  .user-marker-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50%;
+    background: $color-ai-primary;
+    border: 2px solid $color-text-inverse;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+
+  // Custom marker pin
+  .custom-marker {
+    background: transparent;
+    border: none;
+  }
+
+  .marker-pin {
+    width: 36px;
+    height: 36px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .marker-icon {
+    transform: rotate(45deg);
+    font-size: 16px;
+  }
+}
+
+// Location button
+.location-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $color-text-inverse;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: $transition-base;
+
+  .material-icons {
+    font-size: 20px;
+    color: #878787;
+  }
+
+  &--active .material-icons {
+    color: $color-ai-primary;
+  }
+}
+
+// Current location indicator
+.current-location {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: $color-text-inverse;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+
+  &__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .material-icons {
+      font-size: 18px;
+      color: $color-ai-primary;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    font-family: $font-family-body;
+    font-size: 12px;
+    color: #606060;
+  }
+
+  &__name {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-primary;
+  }
+
+  &__arrow {
+    font-size: 18px;
+    color: $color-text-primary;
+  }
+}
+
+// Mascot bubble
+.mascot-bubble {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.speech-bubble {
+  position: relative;
+  background: $color-text-inverse;
+  padding: 16px;
+  border-radius: 16px;
+  border: 3px solid #F2B830;
+  box-shadow: 3px 4px 0px rgba(0, 0, 0, 0.25);
+  max-width: 160px;
+
+  p {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 14px;
+    color: $color-text-dark;
+    line-height: 1.22;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    bottom: 16px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid #F2B830;
+  }
+}
+
+.mascot-image {
+  width: 86px;
+  height: 118px;
+  object-fit: contain;
+}
+
+// Section title
+.section-title {
+  padding: 0 20px;
+  margin-bottom: 8px;
+
+  h2 {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0;
+    line-height: 1.22;
+  }
+}
+
+// Promo banner
+.promo-banner {
+  margin: 8px 16px 16px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #4A74F0 0%, #4FAF5A 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 17px 16px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/assets/images/pattern-promo.png') repeat;
+    opacity: 0.1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__text {
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0 0 8px;
+    max-width: 346px;
+  }
+
+  &__button {
+    padding: 8px 16px;
+    border-radius: 40px;
+    background: $color-text-primary;
+    border: none;
+    font-family: 'SF Pro', sans-serif;
+    font-size: 12px;
+    font-weight: 590;
+    color: $color-text-inverse;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+      background: lighten($color-text-primary, 10%);
+    }
+  }
+
+  &__indicator {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px;
+    background: $color-text-inverse;
+    border-radius: 40px;
+
+    .dot {
+      width: 8px;
+      height: 4px;
+      border-radius: 4px;
+      background: rgba(16, 16, 16, 0.1);
+
+      &.active {
+        background: #4FAF5A;
+        width: 16px;
+      }
+    }
+  }
+}
+
+// Location toggle
+.location-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin: 0 16px 16px;
+
+  &__label {
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-ai-primary;
+  }
+}
+
+.toggle-switch {
+  width: 31px;
+  height: 15px;
+  border-radius: 100px;
+  background: #F2B830;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  transition: $transition-base;
+
+  &__slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: $color-text-inverse;
+    transition: $transition-base;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &--active &__slider {
+    left: calc(100% - 13px);
+  }
+}
+
+// POI Card (bottom sheet)
+.poi-card {
+  position: fixed;
+  bottom: 80px;
+  left: 16px;
+  right: 16px;
+  background: $color-text-inverse;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  animation: slideUp 0.3s ease;
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #F5F5F5;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .material-icons {
+      font-size: 16px;
+      color: #666;
+    }
+  }
+
+  &__header {
+    margin-bottom: 12px;
+  }
+
+  &__type-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: $color-text-inverse;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  &__name {
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin: 0 0 4px;
+  }
+
+  &__address {
+    font-family: $font-family-body;
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+
+  &__details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .star {
+      font-size: 16px;
+      color: #FFD700;
+    }
+
+    .rating-value {
+      font-weight: 600;
+      color: $color-text-primary;
+    }
+
+    .review-count {
+      font-size: 12px;
+      color: #666;
+    }
+  }
+
+  &__distance {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+    font-size: 14px;
+
+    .material-icons {
+      font-size: 16px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+.poi-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  font-family: $font-family-body;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-base;
+
+  .material-icons {
+    font-size: 20px;
+  }
+
+  &--directions {
+    background: $color-ai-primary;
+    color: $color-text-inverse;
+
+    &:hover {
+      background: darken($color-ai-primary, 10%);
+    }
+  }
+
+  &--save {
+    background: #F5F5F5;
+    color: $color-text-primary;
+
+    &:hover {
+      background: #E5E5E5;
+    }
+  }
+
+  &--saved {
+    background: #FFF3CD;
+    color: #B8860B;
+  }
+}
+
+// Leaflet override
+:host ::ng-deep {
+  .leaflet-control-zoom {
+    border: none !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    a {
+      width: 32px !important;
+      height: 32px !important;
+      line-height: 32px !important;
+      font-size: 18px !important;
+      color: $color-text-primary !important;
+      background: $color-text-inverse !important;
+      border: none !important;
+
+      &:hover {
+        background: #F5F5F5 !important;
+      }
+    }
+
+    a:first-child {
+      border-radius: 8px 8px 0 0 !important;
+    }
+
+    a:last-child {
+      border-radius: 0 0 8px 8px !important;
+    }
+  }
+
+  .leaflet-control-attribution {
+    display: none;
+  }
+}

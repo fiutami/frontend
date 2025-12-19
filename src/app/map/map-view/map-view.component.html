@@ -1,0 +1,196 @@
+<div class="map-page">
+  <!-- Background gradient -->
+  <div class="map-page__background"></div>
+
+  <!-- Header -->
+  <header class="map-header">
+    <div class="map-header__top">
+      <button class="back-button" (click)="goBack()" aria-label="Torna indietro">
+        <span class="material-icons">arrow_back</span>
+      </button>
+      <h1 class="map-header__title">Mappa</h1>
+      <button class="menu-button" aria-label="Menu">
+        <span class="material-icons">menu</span>
+      </button>
+    </div>
+
+    <!-- Subtitle -->
+    <p class="map-header__subtitle">
+      Attività, eventi e amici<br>
+      Trova ciò che serve al tuo pet, proprio dove sei
+    </p>
+  </header>
+
+  <!-- Search bar -->
+  <div class="search-container">
+    <div class="search-box">
+      <span class="material-icons search-icon">search</span>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Cosa stai cercando"
+        [value]="searchQuery()"
+        (input)="onSearch($event)"
+      >
+      <button class="filter-button" aria-label="Filtri">
+        <span class="material-icons">tune</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="action-buttons">
+    <button class="action-btn action-btn--primary">
+      Attività
+    </button>
+    <button class="action-btn action-btn--primary">
+      Eventi
+    </button>
+    <button class="action-btn action-btn--primary">
+      Localizzati dagli amici
+    </button>
+  </div>
+
+  <!-- Filter chips -->
+  <div class="filter-chips">
+    @for (filter of filters(); track filter.type) {
+      <button
+        class="filter-chip"
+        [class.filter-chip--active]="filter.active"
+        [style.--chip-color]="filter.color"
+        (click)="toggleFilter(filter)"
+      >
+        <span class="filter-chip__text">{{ filter.label }}</span>
+      </button>
+    }
+  </div>
+
+  <!-- Map container -->
+  <div class="map-container">
+    <div id="map" class="map"></div>
+
+    <!-- Location button -->
+    <button
+      class="location-button"
+      [class.location-button--active]="isLocationEnabled()"
+      (click)="centerOnUser()"
+      aria-label="La mia posizione"
+    >
+      <span class="material-icons">my_location</span>
+    </button>
+
+    <!-- Current location indicator -->
+    <div class="current-location">
+      <div class="current-location__icon">
+        <span class="material-icons">place</span>
+      </div>
+      <div class="current-location__info">
+        <span class="current-location__label">Current location</span>
+        <span class="current-location__name">{{ currentLocationName() }}</span>
+      </div>
+      <span class="material-icons current-location__arrow">arrow_drop_down</span>
+    </div>
+  </div>
+
+  <!-- Mascot bubble -->
+  <div class="mascot-bubble">
+    <div class="speech-bubble">
+      <p>Andiamo a Fiutare il mondo?</p>
+    </div>
+    <img
+      src="assets/images/mascot-fiuto.png"
+      alt="Fiuto mascot"
+      class="mascot-image"
+    >
+  </div>
+
+  <!-- POI section title -->
+  <div class="section-title">
+    <h2>Scopri fiutati speciali vicino a te.</h2>
+  </div>
+
+  <!-- Promo banner -->
+  <div class="promo-banner">
+    <div class="promo-banner__content">
+      <p class="promo-banner__text">Fiuta a pieno, con il Pluss</p>
+      <button class="promo-banner__button">Order now</button>
+    </div>
+    <div class="promo-banner__indicator">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- Location toggle -->
+  <div class="location-toggle">
+    <span class="location-toggle__label">Attiva location</span>
+    <button
+      class="toggle-switch"
+      [class.toggle-switch--active]="isLocationEnabled()"
+      (click)="centerOnUser()"
+      role="switch"
+      [attr.aria-checked]="isLocationEnabled()"
+    >
+      <span class="toggle-switch__slider"></span>
+    </button>
+  </div>
+
+  <!-- POI Card (bottom sheet) -->
+  @if (selectedPOI(); as poi) {
+    <div class="poi-card" (click)="$event.stopPropagation()">
+      <button class="poi-card__close" (click)="closePOICard()">
+        <span class="material-icons">close</span>
+      </button>
+
+      <div class="poi-card__header">
+        <div class="poi-card__type-badge" [style.background-color]="markerColors[poi.type]">
+          {{ poi.type | titlecase }}
+        </div>
+        <h3 class="poi-card__name">{{ poi.name }}</h3>
+        <p class="poi-card__address">{{ poi.address }}</p>
+      </div>
+
+      <div class="poi-card__details">
+        @if (poi.rating) {
+          <div class="poi-card__rating">
+            <span class="material-icons star">star</span>
+            <span class="rating-value">{{ formatRating(poi.rating) }}</span>
+            @if (poi.reviewCount) {
+              <span class="review-count">({{ poi.reviewCount }})</span>
+            }
+          </div>
+        }
+        @if (poi.distance) {
+          <div class="poi-card__distance">
+            <span class="material-icons">place</span>
+            <span>{{ formatDistance(poi.distance) }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="poi-card__actions">
+        <button class="poi-action-btn poi-action-btn--directions" (click)="openDirections(poi)">
+          <span class="material-icons">directions</span>
+          <span>Indicazioni</span>
+        </button>
+        <button
+          class="poi-action-btn poi-action-btn--save"
+          [class.poi-action-btn--saved]="poi.isFavorite"
+          (click)="toggleFavorite(poi)"
+        >
+          <span class="material-icons">{{ poi.isFavorite ? 'bookmark' : 'bookmark_border' }}</span>
+          <span>{{ poi.isFavorite ? 'Salvato' : 'Salva' }}</span>
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Bottom tab bar -->
+  <app-bottom-tab-bar
+    [tabs]="tabs"
+    [activeTabId]="'map'"
+    [showLabels]="false"
+    [safeArea]="true"
+  />
+</div>

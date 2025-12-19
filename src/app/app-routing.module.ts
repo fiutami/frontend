@@ -54,6 +54,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Map - dog-friendly POI map
+  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then(m => m.MapModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',
