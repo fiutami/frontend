@@ -288,6 +288,25 @@
       "no": "No"
     }
   },
+  "premium": {
+    "title": "Abbonamenti",
+    "hero": {
+      "title": "Passa a Premium!",
+      "subtitle": "Sblocca tutte le funzionalità"
+    },
+    "currentPlan": "Piano attuale",
+    "expiresAt": "Scade il",
+    "manage": "Gestisci",
+    "subscribe": "Abbonati ora",
+    "upgrade": "Passa a PRO",
+    "popular": "Più popolare",
+    "perMonth": "/mese",
+    "perYear": "/anno",
+    "free": "Gratis",
+    "terms": "Termini e condizioni",
+    "refund": "Politica di rimborso",
+    "cancelAnytime": "Puoi annullare in qualsiasi momento"
+  },
   "chat": {
     "title": "Messaggi",
     "placeholder": "Scrivi un messaggio...",

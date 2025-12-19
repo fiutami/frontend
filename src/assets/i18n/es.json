@@ -85,5 +85,40 @@
     "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
     "passwordsMustMatch": "Las contraseñas deben coincidir",
     "termsRequired": "Debes aceptar los términos y condiciones"
+  },
+  "premium": {
+    "title": "Suscripciones",
+    "hero": {
+      "title": "¡Pasa a Premium!",
+      "subtitle": "Desbloquea todas las funciones"
+    },
+    "currentPlan": "Plan actual",
+    "expiresAt": "Expira el",
+    "manage": "Gestionar",
+    "subscribe": "Suscribirse ahora",
+    "upgrade": "Pasar a PRO",
+    "popular": "Más popular",
+    "perMonth": "/mes",
+    "perYear": "/año",
+    "free": "Gratis",
+    "terms": "Términos y condiciones",
+    "refund": "Política de reembolso",
+    "cancelAnytime": "Puedes cancelar en cualquier momento"
+  },
+  "chat": {
+    "title": "Mensajes",
+    "placeholder": "Escribe un mensaje...",
+    "newMessage": "Nuevo mensaje",
+    "recentContacts": "Contactos recientes",
+    "todayMessages": "Mensajes de hoy",
+    "yesterdayMessages": "Mensajes de ayer",
+    "olderMessages": "Mensajes anteriores",
+    "typing": "está escribiendo...",
+    "empty": {
+      "title": "Aún no hay chats",
+      "subtitle": "¡Empieza a chatear con otros dueños de mascotas!",
+      "findFriends": "Encontrar amigos",
+      "mascotMessage": "Fiuto siempre encuentra a alguien con quien hablar."
+    }
   }
 }

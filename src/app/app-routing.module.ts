@@ -75,6 +75,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Chat - messaging between users
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',

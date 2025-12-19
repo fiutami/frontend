@@ -1,0 +1,98 @@
+<div class="premium-page">
+  <!-- Header -->
+  <header class="premium-header">
+    <button class="back-button" (click)="goBack()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <h1 class="header-title">{{ 'premium.title' | translate }}</h1>
+  </header>
+
+  <main class="premium-content">
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4L30.18 16.52L44 18.54L34 28.28L36.36 42L24 35.52L11.64 42L14 28.28L4 18.54L17.82 16.52L24 4Z" fill="white"/>
+        </svg>
+      </div>
+      <h2 class="hero-title">{{ 'premium.hero.title' | translate }}</h2>
+      <p class="hero-subtitle">{{ 'premium.hero.subtitle' | translate }}</p>
+    </section>
+
+    <!-- Current Plan Section (if has subscription) -->
+    @if (userSubscription()) {
+      <section class="current-plan-section">
+        <h3 class="section-title">{{ 'premium.currentPlan' | translate }}</h3>
+        <div class="current-plan-card">
+          <div class="plan-info">
+            <span class="plan-name">{{ userSubscription()?.planId }}</span>
+            <span class="plan-expiry">{{ 'premium.expiresAt' | translate }}: {{ userSubscription()?.expiresAt | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <button class="manage-button">{{ 'premium.manage' | translate }}</button>
+        </div>
+      </section>
+    }
+
+    <!-- Plans Section -->
+    <section class="plans-section">
+      @for (plan of plans; track plan.id) {
+        <div class="plan-card" [class.popular]="plan.isPopular" [class.current]="isCurrentPlan(plan.id)">
+          <!-- Badges -->
+          @if (plan.isPopular) {
+            <span class="badge popular-badge">{{ 'premium.popular' | translate }}</span>
+          }
+          @if (plan.savings) {
+            <span class="badge savings-badge">{{ plan.savings }}</span>
+          }
+
+          <!-- Plan Header -->
+          <div class="plan-header">
+            <h3 class="plan-name">{{ plan.name }}</h3>
+            <div class="plan-price">
+              <span class="price">{{ formatPrice(plan) }}</span>
+              <span class="period">{{ getPeriodLabel(plan) }}</span>
+            </div>
+          </div>
+
+          <!-- Features -->
+          <ul class="features-list">
+            @for (feature of getAllFeatures(plan); track feature.name) {
+              <li class="feature-item" [class.excluded]="!feature.included">
+                @if (feature.included) {
+                  <svg class="feature-icon included" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                } @else {
+                  <svg class="feature-icon excluded" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                }
+                <span class="feature-text">{{ feature.name }}</span>
+              </li>
+            }
+          </ul>
+
+          <!-- CTA Button -->
+          <button
+            class="cta-button"
+            [class.disabled]="isCurrentPlan(plan.id)"
+            [disabled]="isCurrentPlan(plan.id)"
+            (click)="selectPlan(plan)">
+            {{ getButtonLabel(plan) }}
+          </button>
+        </div>
+      }
+    </section>
+
+    <!-- Footer Links -->
+    <footer class="premium-footer">
+      <div class="footer-links">
+        <a href="#" class="footer-link">{{ 'premium.terms' | translate }}</a>
+        <a href="#" class="footer-link">{{ 'premium.refund' | translate }}</a>
+      </div>
+      <p class="footer-note">{{ 'premium.cancelAnytime' | translate }}</p>
+    </footer>
+  </main>
+</div>

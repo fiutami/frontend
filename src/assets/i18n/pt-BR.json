@@ -203,5 +203,40 @@
     "contact": "Fale conosco",
     "privacy": "Privacidade",
     "logout": "Sair"
+  },
+  "premium": {
+    "title": "Assinaturas",
+    "hero": {
+      "title": "Vá para o Premium!",
+      "subtitle": "Desbloqueie todas as funcionalidades"
+    },
+    "currentPlan": "Plano atual",
+    "expiresAt": "Expira em",
+    "manage": "Gerenciar",
+    "subscribe": "Assinar agora",
+    "upgrade": "Mudar para PRO",
+    "popular": "Mais popular",
+    "perMonth": "/mês",
+    "perYear": "/ano",
+    "free": "Grátis",
+    "terms": "Termos e condições",
+    "refund": "Política de reembolso",
+    "cancelAnytime": "Você pode cancelar a qualquer momento"
+  },
+  "chat": {
+    "title": "Mensagens",
+    "placeholder": "Escreva uma mensagem...",
+    "newMessage": "Nova mensagem",
+    "recentContacts": "Contatos recentes",
+    "todayMessages": "Mensagens de hoje",
+    "yesterdayMessages": "Mensagens de ontem",
+    "olderMessages": "Mensagens anteriores",
+    "typing": "está digitando...",
+    "empty": {
+      "title": "Nenhuma conversa ainda",
+      "subtitle": "Comece a conversar com outros donos de pets!",
+      "findFriends": "Encontrar amigos",
+      "mascotMessage": "Fiuto sempre encontra alguém para conversar."
+    }
   }
 }
