@@ -202,5 +202,72 @@
     "contact": "Contact us",
     "privacy": "Privacy",
     "logout": "Logout"
+  },
+  "petProfile": {
+    "loading": "Loading profile...",
+    "tabs": {
+      "gallery": "Gallery",
+      "friends": "Friends",
+      "memories": "Memories",
+      "info": "Info"
+    },
+    "stats": {
+      "weight": "Weight",
+      "sex": "Sex",
+      "chip": "Chip",
+      "male": "Male",
+      "female": "Female"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "add": "Add",
+      "addPhoto": "Add Photo",
+      "emptyTitle": "This is where you keep the most beautiful moments with your pet.",
+      "emptyMessage": "Upload your first ferocious memory"
+    },
+    "friends": {
+      "title": "Friends",
+      "online": "Online now",
+      "offline": "Offline",
+      "findFriends": "Find friends",
+      "emptyTitle": "This is where you find your furry gang.",
+      "emptyMessage": "Friends you've already interacted with"
+    },
+    "memories": {
+      "title": "Memories",
+      "add": "Add",
+      "addMemory": "Add memory",
+      "emptyTitle": "Every month a memory,",
+      "emptySubtitle": "Every memory a ferocity",
+      "days": "DAYS",
+      "months": "MONTHS",
+      "years": "YEARS"
+    },
+    "info": {
+      "breedFacts": "Beast Facts",
+      "discoverBreed": "Discover the breed",
+      "careNeeds": "Care and Needs",
+      "activity": "Activity",
+      "grooming": "Grooming",
+      "care": "Care",
+      "details": "Details",
+      "color": "Color",
+      "microchip": "Microchip",
+      "neutered": "Neutered",
+      "birthDate": "Birth date",
+      "registeredOn": "Registered on",
+      "healthNotes": "Health Notes",
+      "appointments": "Appointments",
+      "documents": "Documents",
+      "vaccinations": "Vaccination List",
+      "allergies": "Allergies and medical notes",
+      "activityDiary": "Activity diary",
+      "weightCondition": "Weight and physical condition",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "yes": "Yes",
+      "no": "No"
+    }
   }
 }

@@ -202,5 +202,72 @@
     "contact": "Contattaci",
     "privacy": "Privacy",
     "logout": "Esci"
+  },
+  "petProfile": {
+    "loading": "Caricamento profilo...",
+    "tabs": {
+      "gallery": "Galleria",
+      "friends": "Amici",
+      "memories": "Ricordi",
+      "info": "Info"
+    },
+    "stats": {
+      "weight": "Peso",
+      "sex": "Sesso",
+      "chip": "Chip",
+      "male": "Maschio",
+      "female": "Femmina"
+    },
+    "gallery": {
+      "title": "Galleria",
+      "add": "Aggiungi",
+      "addPhoto": "Aggiungi Foto",
+      "emptyTitle": "Qui custodisci i momenti più belli con il tuo pet.",
+      "emptyMessage": "Carica il tuo primo ricordo ferocissimo"
+    },
+    "friends": {
+      "title": "Amici",
+      "online": "Online ora",
+      "offline": "Offline",
+      "findFriends": "Trova amici",
+      "emptyTitle": "Qui trovi la tua banda pelosa.",
+      "emptyMessage": "Gli amici con cui hai già interagito"
+    },
+    "memories": {
+      "title": "Ricordi",
+      "add": "Aggiungi",
+      "addMemory": "Aggiungi ricordo",
+      "emptyTitle": "Ogni mese un ricordo,",
+      "emptySubtitle": "Ogni ricordo una ferocia",
+      "days": "GIORNI",
+      "months": "MESI",
+      "years": "ANNI"
+    },
+    "info": {
+      "breedFacts": "Fatti Bestiali",
+      "discoverBreed": "Scopri la razza",
+      "careNeeds": "Cura e Necessità",
+      "activity": "Attività",
+      "grooming": "Toelettatura",
+      "care": "Cura",
+      "details": "Dettagli",
+      "color": "Colore",
+      "microchip": "Microchip",
+      "neutered": "Sterilizzato",
+      "birthDate": "Data di nascita",
+      "registeredOn": "Registrato il",
+      "healthNotes": "Note Salute",
+      "appointments": "Appuntamenti",
+      "documents": "Documenti",
+      "vaccinations": "Lista Vaccinazione",
+      "allergies": "Allergie e note mediche",
+      "activityDiary": "Diario attività",
+      "weightCondition": "Peso e condizione fisica",
+      "low": "Basso",
+      "medium": "Medio",
+      "high": "Alto",
+      "yes": "Sì",
+      "no": "No"
+    }
   }
 }

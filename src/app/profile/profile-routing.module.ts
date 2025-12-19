@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilePrototypeComponent } from './prototype/profile-prototype.component';
+import { PetProfileComponent } from './pet/pet-profile.component';
 
 const routes: Routes = [
   {
     path: 'prototype',
     component: ProfilePrototypeComponent,
     title: 'Profilo Prototipo - FiutaMi',
+  },
+  {
+    path: 'pet/:id',
+    component: PetProfileComponent,
+    title: 'Profilo Pet - FiutaMi',
   },
   {
     path: '',
