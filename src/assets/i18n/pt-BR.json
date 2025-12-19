@@ -23,11 +23,11 @@
     "confirmPassword": "Confirmar Senha",
     "forgotPassword": "Esqueceu a senha?",
     "resetPassword": "Redefinir Senha",
-    "termsAccept": "Ao entrar você aceita nossos Termos e Privacidade",
-    "termsAndConditions": "Termos e Condições",
-    "privacyPolicy": "Política de Privacidade",
-    "alreadyHaveAccount": "Já tem uma conta?",
-    "dontHaveAccount": "Não tem uma conta?",
+    "termsAccept": "Ao entrar vocï¿½ aceita nossos Termos e Privacidade",
+    "termsAndConditions": "Termos e Condiï¿½ï¿½es",
+    "privacyPolicy": "Polï¿½tica de Privacidade",
+    "alreadyHaveAccount": "Jï¿½ tem uma conta?",
+    "dontHaveAccount": "Nï¿½o tem uma conta?",
     "loginButton": "Entrar",
     "signupButton": "Cadastrar",
     "loginTitle": "Entrar",
@@ -37,22 +37,22 @@
     "confirmPasswordPlaceholder": "Confirme sua senha"
   },
   "hero": {
-    "tagline": "Fareja sua solução ideal",
-    "subtitle": "Encontre serviços e profissionais perto de você",
-    "cta": "Começar agora",
+    "tagline": "Fareja sua soluï¿½ï¿½o ideal",
+    "subtitle": "Encontre serviï¿½os e profissionais perto de vocï¿½",
+    "cta": "Comeï¿½ar agora",
     "learnMore": "Saiba mais"
   },
   "navigation": {
-    "home": "Início",
-    "services": "Serviços",
-    "about": "Sobre Nós",
+    "home": "Inï¿½cio",
+    "services": "Serviï¿½os",
+    "about": "Sobre Nï¿½s",
     "contact": "Contato",
     "profile": "Perfil",
-    "settings": "Configurações"
+    "settings": "Configuraï¿½ï¿½es"
   },
   "footer": {
     "company": "Empresa",
-    "aboutUs": "Sobre Nós",
+    "aboutUs": "Sobre Nï¿½s",
     "careers": "Carreiras",
     "press": "Imprensa",
     "support": "Suporte",
@@ -60,54 +60,54 @@
     "faq": "FAQ",
     "contact": "Fale Conosco",
     "legal": "Legal",
-    "terms": "Termos de Serviço",
+    "terms": "Termos de Serviï¿½o",
     "privacy": "Privacidade",
     "cookies": "Cookies",
     "followUs": "Siga-nos",
-    "copyright": "© {{year}} Fiutami. Todos os direitos reservados."
+    "copyright": "ï¿½ {{year}} Fiutami. Todos os direitos reservados."
   },
   "errors": {
-    "required": "Este campo é obrigatório",
-    "invalidEmail": "Email inválido",
-    "passwordMismatch": "As senhas não coincidem",
-    "minLength": "Mínimo de {{length}} caracteres",
-    "maxLength": "Máximo de {{length}} caracteres",
-    "invalidFormat": "Formato inválido",
+    "required": "Este campo ï¿½ obrigatï¿½rio",
+    "invalidEmail": "Email invï¿½lido",
+    "passwordMismatch": "As senhas nï¿½o coincidem",
+    "minLength": "Mï¿½nimo de {{length}} caracteres",
+    "maxLength": "Mï¿½ximo de {{length}} caracteres",
+    "invalidFormat": "Formato invï¿½lido",
     "serverError": "Erro do servidor. Tente novamente mais tarde.",
-    "networkError": "Erro de conexão. Verifique sua rede.",
-    "unauthorized": "Não autorizado",
-    "notFound": "Não encontrado",
+    "networkError": "Erro de conexï¿½o. Verifique sua rede.",
+    "unauthorized": "Nï¿½o autorizado",
+    "notFound": "Nï¿½o encontrado",
     "forbidden": "Acesso negado"
   },
   "validation": {
-    "emailRequired": "O email é obrigatório",
-    "emailInvalid": "Digite um email válido",
-    "passwordRequired": "A senha é obrigatória",
+    "emailRequired": "O email ï¿½ obrigatï¿½rio",
+    "emailInvalid": "Digite um email vï¿½lido",
+    "passwordRequired": "A senha ï¿½ obrigatï¿½ria",
     "passwordMinLength": "A senha deve ter pelo menos 8 caracteres",
     "passwordsMustMatch": "As senhas devem ser iguais",
-    "termsRequired": "Você deve aceitar os termos e condições"
+    "termsRequired": "Vocï¿½ deve aceitar os termos e condiï¿½ï¿½es"
   },
   "onboarding": {
     "welcome": {
       "title": "Bem-vindo ao FIUTAMI!",
-      "question": "Você já tem um animal ou gostaria de ter um?",
+      "question": "Vocï¿½ jï¿½ tem um animal ou gostaria de ter um?",
       "hasPet": "Tenho um animal",
       "wantsPet": "Quero um animal",
       "hasPetResponse": "Perfeito! Vamos cadastrar seu animal juntos para entrar no mundo do Fiutami.",
-      "wantsPetResponse": "O mundo está cheio de animais maravilhosos. Para te ajudar a encontrar o certo, vamos te conhecer melhor."
+      "wantsPetResponse": "O mundo estï¿½ cheio de animais maravilhosos. Para te ajudar a encontrar o certo, vamos te conhecer melhor."
     },
     "registerPet": {
       "title": "Cadastre seu amigo peludo!",
       "petName": "Nome do animal",
       "petType": "Tipo de animal",
-      "breed": "Raça",
+      "breed": "Raï¿½a",
       "age": "Idade",
       "gender": "Sexo",
       "male": "Macho",
-      "female": "Fêmea"
+      "female": "Fï¿½mea"
     },
     "quizResult": {
-      "title": "Aqui está seu par perfeito!",
+      "title": "Aqui estï¿½ seu par perfeito!",
       "compatibility": "Compatibilidade",
       "viewDetails": "Ver detalhes",
       "tryAgain": "Refazer o quiz"
@@ -117,25 +117,25 @@
     "phase1": {
       "title": "Estilo de vida",
       "activity": {
-        "question": "Quão ativo você é?",
-        "sedentary": "Sedentário",
+        "question": "Quï¿½o ativo vocï¿½ ï¿½?",
+        "sedentary": "Sedentï¿½rio",
         "moderate": "Moderado",
         "active": "Muito ativo"
       },
       "location": {
-        "question": "Onde você mora?",
+        "question": "Onde vocï¿½ mora?",
         "city": "Cidade",
-        "suburbs": "Subúrbio",
+        "suburbs": "Subï¿½rbio",
         "countryside": "Campo"
       },
       "otherPets": {
-        "question": "Você tem outros animais?",
+        "question": "Vocï¿½ tem outros animais?",
         "yes": "Sim",
-        "no": "Não"
+        "no": "Nï¿½o"
       }
     },
     "phase2": {
-      "title": "Espaço",
+      "title": "Espaï¿½o",
       "housing": {
         "question": "Tipo de moradia?",
         "apartment": "Apartamento",
@@ -144,31 +144,31 @@
       },
       "size": {
         "question": "Metros quadrados?",
-        "small": "<50m²",
-        "medium": "50-100m²",
-        "large": ">100m²"
+        "small": "<50mï¿½",
+        "medium": "50-100mï¿½",
+        "large": ">100mï¿½"
       },
       "outdoor": {
-        "question": "Você tem espaço externo?",
+        "question": "Vocï¿½ tem espaï¿½o externo?",
         "yes": "Sim",
-        "no": "Não"
+        "no": "Nï¿½o"
       }
     },
     "phase3": {
       "title": "Tempo",
       "hours": {
-        "question": "Horas disponíveis por dia?",
+        "question": "Horas disponï¿½veis por dia?",
         "few": "<1h",
         "some": "1-3h",
         "many": ">3h"
       },
       "travel": {
-        "question": "Você viaja com frequência?",
+        "question": "Vocï¿½ viaja com frequï¿½ncia?",
         "yes": "Sim",
-        "no": "Não"
+        "no": "Nï¿½o"
       },
       "experience": {
-        "question": "Experiência com animais?",
+        "question": "Experiï¿½ncia com animais?",
         "none": "Nenhuma",
         "little": "Pouca",
         "much": "Muita"
@@ -177,13 +177,31 @@
   },
   "languages": {
     "it": "Italiano",
-    "en": "Inglês",
-    "pt-BR": "Português (Brasil)",
-    "ar": "Árabe",
-    "fr": "Francês",
+    "en": "InglÃªs",
+    "pt-BR": "PortuguÃªs (Brasil)",
+    "ar": "Ãrabe",
+    "fr": "FrancÃªs",
     "es": "Espanhol",
-    "zh": "Chinês",
-    "ja": "Japonês",
+    "zh": "ChinÃªs",
+    "ja": "JaponÃªs",
     "hi": "Hindi"
+  },
+  "drawer": {
+    "subtitle": "ConfiguraÃ§Ãµes e atividades",
+    "account": "Conta",
+    "activity": "Suas atividades",
+    "notifications": "ConfiguraÃ§Ãµes de notificaÃ§Ãµes",
+    "saved": "Salvos",
+    "adopt": "Adotar",
+    "addPet": "Adicionar Pets",
+    "petFriends": "Amigos Pets",
+    "inviteFriends": "Convidar Amigos",
+    "lostPets": "Animais perdidos",
+    "blockedUsers": "UsuÃ¡rios Bloqueados",
+    "terms": "Termos de serviÃ§o",
+    "subscriptions": "Assinaturas",
+    "contact": "Fale conosco",
+    "privacy": "Privacidade",
+    "logout": "Sair"
   }
 }

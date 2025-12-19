@@ -10,25 +10,36 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Subject, takeUntil, fromEvent, debounceTime, startWith } from 'rxjs';
 import { DrawerService } from './drawer.service';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService, User } from '../../../core/services/auth.service';
 
 export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' | 'foldable-unfolded';
 
 export interface DrawerMenuItem {
-  label: string;
+  labelKey: string;
   route?: string;
   icon?: string;
   action?: () => void;
-  separator?: boolean;
+  isLogout?: boolean;
+}
+
+export interface DrawerMenuSection {
+  items: DrawerMenuItem[];
+}
+
+export interface Language {
+  code: string;
+  label: string;
+  flag: string;
 }
 
 @Component({
   selector: 'app-drawer',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './drawer.component.html',
   styleUrls: ['./drawer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,11 +59,30 @@ export interface DrawerMenuItem {
 export class DrawerComponent implements OnInit, OnDestroy {
   private drawerService = inject(DrawerService);
   private authService = inject(AuthService);
+  private translateService = inject(TranslateService);
   private router = inject(Router);
   private destroy$ = new Subject<void>();
 
   isOpen = false;
   searchQuery = '';
+  showLanguageDropdown = false;
+  currentLang = 'it';
+
+  // User from auth service
+  user$ = this.authService.currentUser$;
+
+  // Available languages
+  languages: Language[] = [
+    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+    { code: 'en', label: 'English', flag: '🇬🇧' },
+    { code: 'pt-BR', label: 'Português', flag: '🇧🇷' },
+    { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+  ];
+
+  // App version
+  appVersion = '1.0.0';
 
   // Viewport size detection for responsive layout indicators
   private windowWidth = signal(typeof window !== 'undefined' ? window.innerWidth : 375);
@@ -86,42 +116,64 @@ export class DrawerComponent implements OnInit, OnDestroy {
     return 'desktop';
   });
 
-  menuItems: DrawerMenuItem[] = [
-    { label: 'Account', route: '/home/account', icon: 'person' },
-    { label: 'La tua attività', route: '/home/activity', icon: 'history' },
-    { label: 'Notifiche', route: '/home/notifications', icon: 'notifications' },
-    { label: 'Preferiti', route: '/home/favorites', icon: 'favorite' },
-    { separator: true, label: '' },
-    { label: 'Adottare', route: '/home/adopt', icon: 'pets' },
-    { label: 'Aggiungi Pets', route: '/home/pet-register', icon: 'add_circle' },
-    { label: 'Amici Pets', route: '/home/friends', icon: 'group' },
-    { label: 'Invita Amici', route: '/home/invite', icon: 'share' },
-    { separator: true, label: '' },
-    { label: 'Animali Smarriti', route: '/home/lost-pets', icon: 'search' },
-    { label: 'Utenti Bloccati', route: '/home/blocked', icon: 'block' },
-    { label: 'Termini di servizio', route: '/home/terms', icon: 'description' },
-    { label: 'Abbonamenti', route: '/home/subscriptions', icon: 'card_membership' },
-    { label: 'Contattaci', route: '/home/contact', icon: 'mail' },
-    { label: 'Privacy', route: '/home/privacy', icon: 'security' },
-    { separator: true, label: '' },
-    { label: 'Esci', icon: 'logout', action: () => this.logout() },
+  // Menu sections matching Figma mob_drawer_menu design
+  menuSections: DrawerMenuSection[] = [
+    {
+      // Primary section - Account & Activity
+      items: [
+        { labelKey: 'drawer.account', route: '/user/account', icon: 'person' },
+        { labelKey: 'drawer.activity', route: '/user/activity', icon: 'history' },
+        { labelKey: 'drawer.notifications', route: '/user/notifications', icon: 'notifications' },
+        { labelKey: 'drawer.saved', route: '/user/saved', icon: 'bookmark' },
+      ]
+    },
+    {
+      // Pets section
+      items: [
+        { labelKey: 'drawer.adopt', route: '/adopt', icon: 'pets' },
+        { labelKey: 'drawer.addPet', route: '/onboarding/register-pet', icon: 'add_circle' },
+        { labelKey: 'drawer.petFriends', route: '/user/friends', icon: 'group' },
+        { labelKey: 'drawer.inviteFriends', route: '/user/invite', icon: 'share' },
+        { labelKey: 'drawer.lostPets', route: '/lost-pets', icon: 'search' },
+      ]
+    },
+    {
+      // Settings section
+      items: [
+        { labelKey: 'drawer.blockedUsers', route: '/user/blocked', icon: 'block' },
+        { labelKey: 'drawer.terms', route: '/terms', icon: 'description' },
+        { labelKey: 'drawer.subscriptions', route: '/user/subscription', icon: 'card_membership' },
+        { labelKey: 'drawer.contact', route: '/contact', icon: 'mail' },
+        { labelKey: 'drawer.privacy', route: '/privacy', icon: 'security' },
+      ]
+    },
+    {
+      // Logout section
+      items: [
+        { labelKey: 'drawer.logout', icon: 'logout', isLogout: true },
+      ]
+    }
   ];
 
-  get filteredMenuItems(): DrawerMenuItem[] {
-    if (!this.searchQuery.trim()) {
-      return this.menuItems;
-    }
-    const query = this.searchQuery.toLowerCase();
-    return this.menuItems.filter(
-      item => item.separator || item.label.toLowerCase().includes(query)
-    );
+  get currentLanguage(): Language {
+    return this.languages.find(l => l.code === this.currentLang) || this.languages[0];
   }
 
   ngOnInit(): void {
+    // Get saved language or default
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang && this.languages.some(l => l.code === savedLang)) {
+      this.currentLang = savedLang;
+    }
+
     this.drawerService.isOpen$
       .pipe(takeUntil(this.destroy$))
       .subscribe(isOpen => {
         this.isOpen = isOpen;
+        // Close language dropdown when drawer closes
+        if (!isOpen) {
+          this.showLanguageDropdown = false;
+        }
       });
 
     // Listen for window resize events for viewport detection
@@ -160,12 +212,12 @@ export class DrawerComponent implements OnInit, OnDestroy {
   }
 
   onMenuItemClick(item: DrawerMenuItem): void {
-    if (item.action) {
-      item.action();
+    if (item.isLogout) {
+      this.logout();
     } else if (item.route) {
       this.router.navigate([item.route]);
+      this.close();
     }
-    this.close();
   }
 
   onSearchChange(event: Event): void {
@@ -178,8 +230,28 @@ export class DrawerComponent implements OnInit, OnDestroy {
     this.close();
   }
 
-  private logout(): void {
+  toggleLanguageDropdown(): void {
+    this.showLanguageDropdown = !this.showLanguageDropdown;
+  }
+
+  onLanguageChange(langCode: string): void {
+    this.currentLang = langCode;
+    this.translateService.use(langCode);
+    localStorage.setItem('lang', langCode);
+    this.showLanguageDropdown = false;
+  }
+
+  logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
+    this.close();
+  }
+
+  getUserDisplayName(user: User | null): string {
+    if (!user) return '';
+    if (user.firstName && user.lastName) {
+      return `${user.firstName} ${user.lastName}`;
+    }
+    return user.firstName || user.email.split('@')[0];
   }
 }

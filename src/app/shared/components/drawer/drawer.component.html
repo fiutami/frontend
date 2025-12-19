@@ -16,41 +16,23 @@
   [attr.data-viewport]="viewportSize()"
   data-testid="drawer-container"
 >
-  <!-- Header -->
+  <!-- Close button (top right) -->
+  <button
+    class="drawer__close"
+    (click)="close()"
+    aria-label="Chiudi menu"
+    type="button"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+    </svg>
+  </button>
+
+  <!-- Header with title -->
   <header class="drawer__header">
-    <!-- Back button -->
-    <button
-      class="drawer__back"
-      (click)="close()"
-      aria-label="Chiudi menu"
-      type="button"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-      </svg>
-    </button>
-
-    <!-- Avatar -->
-    <button
-      class="drawer__avatar"
-      (click)="navigateToProfile()"
-      aria-label="Vai al profilo"
-      type="button"
-    >
-      <img
-        src="assets/images/default-pet-avatar.png"
-        alt="Avatar pet"
-        class="drawer__avatar-img"
-        loading="lazy"
-      />
-    </button>
+    <h1 class="drawer__title">FiutaMi</h1>
+    <p class="drawer__subtitle">{{ 'drawer.subtitle' | translate }}</p>
   </header>
-
-  <!-- Title -->
-  <div class="drawer__title-section">
-    <h2 class="drawer__title">FiutaMi</h2>
-    <p class="drawer__subtitle">Impostazioni e attività</p>
-  </div>
 
   <!-- Search bar -->
   <div class="drawer__search">
@@ -60,34 +42,82 @@
     <input
       type="text"
       class="drawer__search-input"
-      placeholder="Cerca..."
+      [placeholder]="'common.search' | translate"
       [value]="searchQuery"
       (input)="onSearchChange($event)"
       aria-label="Cerca nel menu"
     />
   </div>
 
-  <!-- Menu items -->
+  <!-- Menu sections -->
   <nav class="drawer__nav" aria-label="Menu principale">
-    <ul class="drawer__menu">
-      @for (item of filteredMenuItems; track item.label) {
-        @if (item.separator) {
-          <li class="drawer__separator" role="separator"></li>
-        } @else {
-          <li class="drawer__menu-item">
+    @for (section of menuSections; track $index; let isLast = $last) {
+      <ul class="drawer__menu">
+        @for (item of section.items; track item.labelKey) {
+          <li class="drawer__menu-item" [class.drawer__menu-item--logout]="item.isLogout">
             <button
               class="drawer__menu-button"
+              [class.drawer__menu-button--logout]="item.isLogout"
               (click)="onMenuItemClick(item)"
               type="button"
             >
-              <span class="drawer__menu-label">{{ item.label }}</span>
-              <svg class="drawer__menu-arrow" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+              <span class="drawer__menu-label">{{ item.labelKey | translate }}</span>
+              <svg class="drawer__menu-arrow" width="8" height="14" viewBox="0 0 8 14" fill="currentColor">
+                <path d="M1.5 1L7 7L1.5 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
               </svg>
             </button>
           </li>
         }
+      </ul>
+      @if (!isLast) {
+        <div class="drawer__separator"></div>
       }
-    </ul>
+    }
   </nav>
+
+  <!-- Footer with language selector and version -->
+  <footer class="drawer__footer">
+    <!-- Language selector -->
+    <div class="drawer__language">
+      <button
+        class="drawer__language-button"
+        (click)="toggleLanguageDropdown()"
+        type="button"
+        [attr.aria-expanded]="showLanguageDropdown"
+      >
+        <span class="drawer__language-flag">{{ currentLanguage.flag }}</span>
+        <span class="drawer__language-label">{{ currentLanguage.label }}</span>
+        <svg
+          class="drawer__language-chevron"
+          [class.drawer__language-chevron--open]="showLanguageDropdown"
+          width="12"
+          height="8"
+          viewBox="0 0 12 8"
+          fill="currentColor"
+        >
+          <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </button>
+
+      <!-- Language dropdown -->
+      @if (showLanguageDropdown) {
+        <div class="drawer__language-dropdown">
+          @for (lang of languages; track lang.code) {
+            <button
+              class="drawer__language-option"
+              [class.drawer__language-option--active]="lang.code === currentLang"
+              (click)="onLanguageChange(lang.code)"
+              type="button"
+            >
+              <span class="drawer__language-flag">{{ lang.flag }}</span>
+              <span>{{ lang.label }}</span>
+            </button>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- App version -->
+    <p class="drawer__version">v{{ appVersion }}</p>
+  </footer>
 </aside>

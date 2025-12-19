@@ -184,5 +184,23 @@
     "zh": "Chinese",
     "ja": "Japanese",
     "hi": "Hindi"
+  },
+  "drawer": {
+    "subtitle": "Settings and activity",
+    "account": "Account",
+    "activity": "Your activity",
+    "notifications": "Notification settings",
+    "saved": "Saved",
+    "adopt": "Adopt",
+    "addPet": "Add Pets",
+    "petFriends": "Pet Friends",
+    "inviteFriends": "Invite Friends",
+    "lostPets": "Lost animals",
+    "blockedUsers": "Blocked Users",
+    "terms": "Terms of service",
+    "subscriptions": "Subscriptions",
+    "contact": "Contact us",
+    "privacy": "Privacy",
+    "logout": "Logout"
   }
 }
