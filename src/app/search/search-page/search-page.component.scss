@@ -172,6 +172,29 @@ $badge-events: #e91e63;
   overflow-y: auto;
 }
 
+// Loading state
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $border-color;
+    border-top-color: $header-bg;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 // Sections
 .section {
   margin-bottom: 24px;

@@ -41,8 +41,15 @@
 
   <!-- Content -->
   <main class="search-content">
+    <!-- Loading State -->
+    @if (loading()) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+      </div>
+    }
+
     <!-- Suggestions & Recent (when no query) -->
-    @if (showSuggestions()) {
+    @if (!loading() && showSuggestions()) {
       <div class="suggestions-section">
         <!-- Suggestions -->
         <div class="section">
@@ -78,9 +85,9 @@
           </div>
         }
       </div>
-    } @else {
+    } @else if (!loading()) {
       <!-- Results -->
-      @if (resultCount() > 0) {
+      @if (results().length > 0) {
         <div class="results-section">
           <p class="results-count">
             {{ resultCount() }} {{ 'search.results' | translate }}

@@ -9,6 +9,13 @@ export interface SearchResult {
   route: string;
 }
 
+export interface SearchResponse {
+  query: string;
+  category: string;
+  totalCount: number;
+  results: SearchResult[];
+}
+
 export interface CategoryFilter {
   id: SearchCategory;
   labelKey: string;

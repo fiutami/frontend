@@ -4,30 +4,33 @@ import {
   signal,
   computed,
   OnInit,
+  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { Subject, takeUntil, debounceTime, distinctUntilChanged } from 'rxjs';
+import { SearchService } from '../services/search.service';
 import {
   SearchCategory,
   SearchResult,
+  SearchResponse,
   SEARCH_CATEGORIES,
   CategoryFilter,
 } from '../models/search.models';
 
-const RECENT_SEARCHES_KEY = 'fiutami_recent_searches';
-const MAX_RECENT_SEARCHES = 5;
-
 /**
- * SearchPageComponent - Global search with filters and categories
+ * SearchPageComponent - Global search with filters and API integration
  *
  * Features:
  * - Yellow header with search input
  * - Category filter pills (horizontal scroll)
+ * - Debounced API search
  * - Suggestions and recent searches when input empty
  * - Results list when searching
  * - Empty state when no results
+ * - Loading state during API calls
  */
 @Component({
   selector: 'app-search-page',
@@ -37,7 +40,7 @@ const MAX_RECENT_SEARCHES = 5;
   styleUrls: ['./search-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchPageComponent implements OnInit {
+export class SearchPageComponent implements OnInit, OnDestroy {
   /** Search query */
   protected query = signal<string>('');
 
@@ -47,88 +50,61 @@ export class SearchPageComponent implements OnInit {
   /** Recent searches from localStorage */
   protected recentSearches = signal<string[]>([]);
 
+  /** Search results from API */
+  protected results = signal<SearchResult[]>([]);
+
+  /** Total result count from API */
+  protected totalCount = signal<number>(0);
+
+  /** Loading state */
+  protected loading = signal<boolean>(false);
+
+  /** Has performed a search */
+  protected searched = signal<boolean>(false);
+
   /** Available categories */
   protected readonly categories: CategoryFilter[] = SEARCH_CATEGORIES;
 
   /** Suggestions */
   protected readonly suggestions = [
     'Golden Retriever',
-    'Veterinario Roma',
+    'Veterinario',
     'Parchi dog-friendly',
+    'Toelettatura',
   ];
 
-  /** Mock results data */
-  private readonly mockResults: SearchResult[] = [
-    {
-      id: '1',
-      type: 'pets',
-      title: 'Luna',
-      subtitle: 'Golden Retriever - Roma',
-      imageUrl: 'assets/images/pets/default-dog.png',
-      route: '/profile/pet/1',
-    },
-    {
-      id: '2',
-      type: 'breeds',
-      title: 'Golden Retriever',
-      subtitle: 'Cane - Molto popolare',
-      imageUrl: 'assets/images/breeds/golden-retriever.png',
-      route: '/breeds/golden-retriever',
-    },
-    {
-      id: '3',
-      type: 'places',
-      title: 'Parco Villa Borghese',
-      subtitle: 'Area cani - Roma',
-      imageUrl: 'assets/images/places/park.png',
-      route: '/map?poi=1',
-    },
-    {
-      id: '4',
-      type: 'users',
-      title: 'Maria Rossi',
-      subtitle: '2 pet - Roma',
-      imageUrl: 'assets/images/users/default-avatar.png',
-      route: '/user/profile/1',
-    },
-    {
-      id: '5',
-      type: 'events',
-      title: 'Dog Day Roma',
-      subtitle: '25 Dic - Parco Centrale',
-      imageUrl: 'assets/images/events/default-event.png',
-      route: '/calendar?event=1',
-    },
-  ];
+  /** Show suggestions (when no query and not searched) */
+  protected showSuggestions = computed(() => !this.query().trim() && !this.searched());
 
-  /** Filtered results based on query and category */
-  protected results = computed<SearchResult[]>(() => {
-    const q = this.query().toLowerCase().trim();
-    const category = this.activeCategory();
+  /** Result count for display */
+  protected resultCount = computed(() => this.totalCount());
 
-    if (!q) {
-      return [];
-    }
+  private destroy$ = new Subject<void>();
+  private searchSubject$ = new Subject<string>();
 
-    return this.mockResults.filter((result) => {
-      const matchesQuery =
-        result.title.toLowerCase().includes(q) ||
-        result.subtitle.toLowerCase().includes(q);
-      const matchesCategory = category === 'all' || result.type === category;
-      return matchesQuery && matchesCategory;
-    });
-  });
-
-  /** Result count */
-  protected resultCount = computed(() => this.results().length);
-
-  /** Show suggestions (when no query) */
-  protected showSuggestions = computed(() => !this.query().trim());
-
-  constructor(private router: Router) {}
+  constructor(
+    private searchService: SearchService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.loadRecentSearches();
+    this.recentSearches.set(this.searchService.getRecentSearches());
+
+    // Debounce search with API call
+    this.searchSubject$.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      takeUntil(this.destroy$)
+    ).subscribe(query => {
+      if (query.trim()) {
+        this.performSearch(query);
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   /**
@@ -136,6 +112,40 @@ export class SearchPageComponent implements OnInit {
    */
   onQueryChange(value: string): void {
     this.query.set(value);
+
+    if (!value.trim()) {
+      this.results.set([]);
+      this.totalCount.set(0);
+      this.searched.set(false);
+      return;
+    }
+
+    this.searchSubject$.next(value);
+  }
+
+  /**
+   * Perform search via API
+   */
+  private performSearch(query: string): void {
+    this.loading.set(true);
+    this.searched.set(true);
+
+    this.searchService.search(query, this.activeCategory())
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (response: SearchResponse) => {
+          this.results.set(response.results);
+          this.totalCount.set(response.totalCount);
+          this.loading.set(false);
+          this.searchService.saveRecentSearch(query);
+          this.recentSearches.set(this.searchService.getRecentSearches());
+        },
+        error: () => {
+          this.loading.set(false);
+          this.results.set([]);
+          this.totalCount.set(0);
+        }
+      });
   }
 
   /**
@@ -143,13 +153,19 @@ export class SearchPageComponent implements OnInit {
    */
   onClearSearch(): void {
     this.query.set('');
+    this.results.set([]);
+    this.totalCount.set(0);
+    this.searched.set(false);
   }
 
   /**
-   * Set active category filter
+   * Set active category filter and re-search
    */
   onCategorySelect(category: SearchCategory): void {
     this.activeCategory.set(category);
+    if (this.query().trim()) {
+      this.performSearch(this.query());
+    }
   }
 
   /**
@@ -157,7 +173,7 @@ export class SearchPageComponent implements OnInit {
    */
   onSuggestionClick(suggestion: string): void {
     this.query.set(suggestion);
-    this.saveRecentSearch(suggestion);
+    this.performSearch(suggestion);
   }
 
   /**
@@ -165,6 +181,7 @@ export class SearchPageComponent implements OnInit {
    */
   onRecentSearchClick(search: string): void {
     this.query.set(search);
+    this.performSearch(search);
   }
 
   /**
@@ -172,16 +189,15 @@ export class SearchPageComponent implements OnInit {
    */
   onRemoveRecentSearch(search: string, event: Event): void {
     event.stopPropagation();
-    const updated = this.recentSearches().filter((s) => s !== search);
+    const updated = this.searchService.removeRecentSearch(search);
     this.recentSearches.set(updated);
-    this.saveRecentSearchesToStorage(updated);
   }
 
   /**
    * Navigate to result
    */
   onResultClick(result: SearchResult): void {
-    this.saveRecentSearch(this.query());
+    this.searchService.saveRecentSearch(this.query());
     this.router.navigateByUrl(result.route);
   }
 
@@ -234,44 +250,5 @@ export class SearchPageComponent implements OnInit {
    */
   trackByCategoryId(_index: number, category: CategoryFilter): string {
     return category.id;
-  }
-
-  /**
-   * Load recent searches from localStorage
-   */
-  private loadRecentSearches(): void {
-    try {
-      const stored = localStorage.getItem(RECENT_SEARCHES_KEY);
-      if (stored) {
-        this.recentSearches.set(JSON.parse(stored));
-      }
-    } catch {
-      this.recentSearches.set([]);
-    }
-  }
-
-  /**
-   * Save a search to recent searches
-   */
-  private saveRecentSearch(search: string): void {
-    if (!search.trim()) return;
-
-    const current = this.recentSearches();
-    const filtered = current.filter((s) => s !== search);
-    const updated = [search, ...filtered].slice(0, MAX_RECENT_SEARCHES);
-
-    this.recentSearches.set(updated);
-    this.saveRecentSearchesToStorage(updated);
-  }
-
-  /**
-   * Save recent searches to localStorage
-   */
-  private saveRecentSearchesToStorage(searches: string[]): void {
-    try {
-      localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(searches));
-    } catch {
-      // Ignore storage errors
-    }
   }
 }
