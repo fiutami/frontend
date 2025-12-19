@@ -1,0 +1,125 @@
+<div class="search-page">
+  <!-- Header -->
+  <header class="search-header">
+    <div class="search-header__top">
+      <button class="btn-back" (click)="onBack()" aria-label="Back">
+        <span class="material-icons">arrow_back</span>
+      </button>
+
+      <div class="search-input-wrapper">
+        <span class="material-icons search-icon">search</span>
+        <input
+          type="text"
+          class="search-input"
+          [placeholder]="'search.placeholder' | translate"
+          [value]="query()"
+          (input)="onQueryChange($any($event.target).value)"
+          autocomplete="off"
+        />
+        @if (query()) {
+          <button class="btn-clear" (click)="onClearSearch()" aria-label="Clear">
+            <span class="material-icons">close</span>
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Category filters -->
+    <div class="category-filters">
+      @for (category of categories; track trackByCategoryId($index, category)) {
+        <button
+          class="category-pill"
+          [class.category-pill--active]="activeCategory() === category.id"
+          (click)="onCategorySelect(category.id)"
+        >
+          <span class="material-icons category-pill__icon">{{ category.icon }}</span>
+          <span class="category-pill__label">{{ category.labelKey | translate }}</span>
+        </button>
+      }
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="search-content">
+    <!-- Suggestions & Recent (when no query) -->
+    @if (showSuggestions()) {
+      <div class="suggestions-section">
+        <!-- Suggestions -->
+        <div class="section">
+          <h3 class="section__title">{{ 'search.suggestions' | translate }}</h3>
+          <div class="chips">
+            @for (suggestion of suggestions; track suggestion) {
+              <button class="chip" (click)="onSuggestionClick(suggestion)">
+                {{ suggestion }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- Recent searches -->
+        @if (recentSearches().length > 0) {
+          <div class="section">
+            <h3 class="section__title">{{ 'search.recent' | translate }}</h3>
+            <ul class="recent-list">
+              @for (search of recentSearches(); track search) {
+                <li class="recent-item" (click)="onRecentSearchClick(search)">
+                  <span class="material-icons recent-item__icon">history</span>
+                  <span class="recent-item__text">{{ search }}</span>
+                  <button
+                    class="recent-item__remove"
+                    (click)="onRemoveRecentSearch(search, $event)"
+                    aria-label="Remove"
+                  >
+                    <span class="material-icons">close</span>
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    } @else {
+      <!-- Results -->
+      @if (resultCount() > 0) {
+        <div class="results-section">
+          <p class="results-count">
+            {{ resultCount() }} {{ 'search.results' | translate }}
+          </p>
+
+          <ul class="results-list">
+            @for (result of results(); track trackByResultId($index, result)) {
+              <li class="result-card" (click)="onResultClick(result)">
+                <div class="result-card__image">
+                  @if (result.imageUrl) {
+                    <img [src]="result.imageUrl" [alt]="result.title" />
+                  } @else {
+                    <span class="material-icons result-card__placeholder">
+                      {{ getTypeIcon(result.type) }}
+                    </span>
+                  }
+                </div>
+
+                <div class="result-card__content">
+                  <span class="result-card__badge" [ngClass]="getBadgeClass(result.type)">
+                    {{ 'search.categories.' + result.type | translate }}
+                  </span>
+                  <h4 class="result-card__title">{{ result.title }}</h4>
+                  <p class="result-card__subtitle">{{ result.subtitle }}</p>
+                </div>
+
+                <span class="material-icons result-card__arrow">chevron_right</span>
+              </li>
+            }
+          </ul>
+        </div>
+      } @else {
+        <!-- Empty state -->
+        <div class="empty-state">
+          <span class="material-icons empty-state__icon">search_off</span>
+          <h3 class="empty-state__title">{{ 'search.noResults.title' | translate }}</h3>
+          <p class="empty-state__subtitle">{{ 'search.noResults.subtitle' | translate }}</p>
+        </div>
+      }
+    }
+  </main>
+</div>

@@ -203,6 +203,24 @@
     "privacy": "Privacy",
     "logout": "Esci"
   },
+  "search": {
+    "placeholder": "Cerca pet, luoghi, razze...",
+    "results": "risultati",
+    "suggestions": "Suggerimenti",
+    "recent": "Ricerche recenti",
+    "categories": {
+      "all": "Tutti",
+      "pets": "Pet",
+      "users": "Utenti",
+      "places": "Luoghi",
+      "breeds": "Razze",
+      "events": "Eventi"
+    },
+    "noResults": {
+      "title": "Nessun risultato",
+      "subtitle": "Prova con termini diversi"
+    }
+  },
   "petProfile": {
     "loading": "Caricamento profilo...",
     "tabs": {
@@ -268,6 +286,22 @@
       "high": "Alto",
       "yes": "Sì",
       "no": "No"
+    }
+  },
+  "chat": {
+    "title": "Messaggi",
+    "placeholder": "Scrivi un messaggio...",
+    "newMessage": "Nuovo messaggio",
+    "recentContacts": "Contatti recenti",
+    "todayMessages": "Messaggi di oggi",
+    "yesterdayMessages": "Messaggi di ieri",
+    "olderMessages": "Messaggi precedenti",
+    "typing": "sta scrivendo...",
+    "empty": {
+      "title": "Ancora Nessuna Chat",
+      "subtitle": "Inizia a chattare con altri pet owner!",
+      "findFriends": "Trova amici",
+      "mascotMessage": "Fiuto trova sempre qualcuno con cui parlare."
     }
   }
 }

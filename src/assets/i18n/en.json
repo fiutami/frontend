@@ -203,6 +203,43 @@
     "privacy": "Privacy",
     "logout": "Logout"
   },
+  "search": {
+    "placeholder": "Search pets, places, breeds...",
+    "results": "results",
+    "suggestions": "Suggestions",
+    "recent": "Recent searches",
+    "categories": {
+      "all": "All",
+      "pets": "Pets",
+      "users": "Users",
+      "places": "Places",
+      "breeds": "Breeds",
+      "events": "Events"
+    },
+    "noResults": {
+      "title": "No results",
+      "subtitle": "Try different search terms"
+    }
+  },
+  "premium": {
+    "title": "Subscriptions",
+    "hero": {
+      "title": "Go Premium!",
+      "subtitle": "Unlock all features"
+    },
+    "currentPlan": "Current plan",
+    "expiresAt": "Expires on",
+    "manage": "Manage",
+    "subscribe": "Subscribe now",
+    "upgrade": "Upgrade to PRO",
+    "popular": "Most popular",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "free": "Free",
+    "terms": "Terms and conditions",
+    "refund": "Refund policy",
+    "cancelAnytime": "You can cancel anytime"
+  },
   "petProfile": {
     "loading": "Loading profile...",
     "tabs": {
@@ -268,6 +305,22 @@
       "high": "High",
       "yes": "Yes",
       "no": "No"
+    }
+  },
+  "chat": {
+    "title": "Messages",
+    "placeholder": "Write a message...",
+    "newMessage": "New message",
+    "recentContacts": "Recent contacts",
+    "todayMessages": "Today's messages",
+    "yesterdayMessages": "Yesterday's messages",
+    "olderMessages": "Older messages",
+    "typing": "is typing...",
+    "empty": {
+      "title": "No Messages Yet",
+      "subtitle": "Start chatting with other pet owners!",
+      "findFriends": "Find friends",
+      "mascotMessage": "Fiuto always finds someone to talk to."
     }
   }
 }

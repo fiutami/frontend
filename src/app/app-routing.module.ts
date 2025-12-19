@@ -61,6 +61,20 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Search - global search with filters
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then(m => m.SearchModule),
+    canActivate: [AuthGuard]
+  },
+
+  // Premium subscriptions
+  {
+    path: 'premium',
+    loadChildren: () => import('./premium/premium.module').then(m => m.PremiumModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',
