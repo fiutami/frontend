@@ -22,22 +22,22 @@
     "confirmPassword": "Passwort bestätigen",
     "forgotPassword": "Passwort vergessen?",
     "resetPassword": "Passwort zurücksetzen",
-    "termsAccept": "Durch die Anmeldung akzeptieren Sie unsere Bedingungen & Datenschutz",
+    "termsAccept": "Mit der Anmeldung akzeptierst du unsere AGB & Datenschutz",
     "termsAndConditions": "Allgemeine Geschäftsbedingungen",
     "privacyPolicy": "Datenschutzrichtlinie",
-    "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
-    "dontHaveAccount": "Sie haben noch kein Konto?",
+    "alreadyHaveAccount": "Hast du schon ein Konto?",
+    "dontHaveAccount": "Hast du noch kein Konto?",
     "loginButton": "Anmelden",
     "signupButton": "Registrieren",
     "loginTitle": "Anmelden",
     "signupTitle": "Registrieren",
-    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
-    "passwordPlaceholder": "Geben Sie Ihr Passwort ein",
-    "confirmPasswordPlaceholder": "Bestätigen Sie Ihr Passwort"
+    "emailPlaceholder": "Gib deine E-Mail ein",
+    "passwordPlaceholder": "Gib dein Passwort ein",
+    "confirmPasswordPlaceholder": "Bestätige dein Passwort"
   },
   "hero": {
-    "tagline": "Finden Sie Ihre ideale Lösung",
-    "subtitle": "Finden Sie Dienstleistungen und Fachleute in Ihrer Nähe",
+    "tagline": "Finde deine ideale Lösung",
+    "subtitle": "Finde Dienstleistungen und Fachleute in deiner Nähe",
     "cta": "Jetzt starten",
     "learnMore": "Mehr erfahren"
   },
@@ -57,12 +57,12 @@
     "support": "Support",
     "help": "Hilfe",
     "faq": "FAQ",
-    "contact": "Kontaktieren Sie uns",
+    "contact": "Kontaktiere uns",
     "legal": "Rechtliches",
     "terms": "Nutzungsbedingungen",
     "privacy": "Datenschutz",
     "cookies": "Cookies",
-    "followUs": "Folgen Sie uns",
+    "followUs": "Folge uns",
     "copyright": "© {{year}} Fiutami. Alle Rechte vorbehalten."
   },
   "errors": {
@@ -72,24 +72,226 @@
     "minLength": "Mindestens {{length}} Zeichen erforderlich",
     "maxLength": "Maximal {{length}} Zeichen erlaubt",
     "invalidFormat": "Ungültiges Format",
-    "serverError": "Serverfehler. Bitte versuchen Sie es später erneut.",
-    "networkError": "Verbindungsfehler. Überprüfen Sie Ihr Netzwerk.",
+    "serverError": "Serverfehler. Bitte versuche es später erneut.",
+    "networkError": "Verbindungsfehler. Überprüfe dein Netzwerk.",
     "unauthorized": "Nicht autorisiert",
     "notFound": "Nicht gefunden",
     "forbidden": "Zugriff verweigert"
   },
   "validation": {
     "emailRequired": "E-Mail ist erforderlich",
-    "emailInvalid": "Bitte geben Sie eine gültige E-Mail ein",
+    "emailInvalid": "Bitte gib eine gültige E-Mail ein",
     "passwordRequired": "Passwort ist erforderlich",
     "passwordMinLength": "Passwort muss mindestens 8 Zeichen lang sein",
     "passwordsMustMatch": "Passwörter müssen übereinstimmen",
-    "termsRequired": "Sie müssen die Geschäftsbedingungen akzeptieren"
+    "termsRequired": "Du musst die Geschäftsbedingungen akzeptieren"
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Willkommen bei FIUTAMI!",
+      "question": "Hast du schon ein Tier oder möchtest du eins haben?",
+      "hasPet": "Ich habe ein Tier",
+      "wantsPet": "Ich möchte ein Tier",
+      "hasPetResponse": "Perfekt! Lass uns dein Tier registrieren, damit wir in die Welt von Fiutami eintauchen können.",
+      "wantsPetResponse": "Die Welt ist voller wunderbarer Tiere. Um dir zu helfen, das richtige zu finden, lass uns dich besser kennenlernen."
+    },
+    "registerPet": {
+      "title": "Registriere deinen pelzigen Freund!",
+      "petName": "Tiername",
+      "petType": "Tierart",
+      "breed": "Rasse",
+      "age": "Alter",
+      "gender": "Geschlecht",
+      "male": "Männlich",
+      "female": "Weiblich"
+    },
+    "quizResult": {
+      "title": "Hier ist dein perfektes Match!",
+      "compatibility": "Kompatibilität",
+      "viewDetails": "Details ansehen",
+      "tryAgain": "Quiz wiederholen"
+    }
+  },
+  "quiz": {
+    "phase1": {
+      "title": "Lebensstil",
+      "activity": {
+        "question": "Wie aktiv bist du?",
+        "sedentary": "Inaktiv",
+        "moderate": "Moderat",
+        "active": "Sehr aktiv"
+      },
+      "location": {
+        "question": "Wo wohnst du?",
+        "city": "Stadt",
+        "suburbs": "Vorort",
+        "countryside": "Land"
+      },
+      "otherPets": {
+        "question": "Hast du andere Tiere?",
+        "yes": "Ja",
+        "no": "Nein"
+      }
+    },
+    "phase2": {
+      "title": "Platz",
+      "housing": {
+        "question": "Wohnungstyp?",
+        "apartment": "Wohnung",
+        "house": "Haus",
+        "houseGarden": "Haus mit Garten"
+      },
+      "size": {
+        "question": "Quadratmeter?",
+        "small": "<50m²",
+        "medium": "50-100m²",
+        "large": ">100m²"
+      },
+      "outdoor": {
+        "question": "Hast du Außenbereich?",
+        "yes": "Ja",
+        "no": "Nein"
+      }
+    },
+    "phase3": {
+      "title": "Zeit",
+      "hours": {
+        "question": "Verfügbare Stunden pro Tag?",
+        "few": "<1h",
+        "some": "1-3h",
+        "many": ">3h"
+      },
+      "travel": {
+        "question": "Reist du oft?",
+        "yes": "Ja",
+        "no": "Nein"
+      },
+      "experience": {
+        "question": "Erfahrung mit Tieren?",
+        "none": "Keine",
+        "little": "Wenig",
+        "much": "Viel"
+      }
+    }
+  },
+  "languages": {
+    "it": "Italienisch",
+    "en": "Englisch",
+    "pt-BR": "Portugiesisch (Brasilien)",
+    "ar": "Arabisch",
+    "fr": "Französisch",
+    "es": "Spanisch",
+    "zh": "Chinesisch",
+    "ja": "Japanisch",
+    "hi": "Hindi"
+  },
+  "drawer": {
+    "subtitle": "Einstellungen und Aktivitäten",
+    "account": "Konto",
+    "activity": "Deine Aktivitäten",
+    "notifications": "Benachrichtigungseinstellungen",
+    "saved": "Gespeichert",
+    "adopt": "Adoptieren",
+    "addPet": "Haustiere hinzufügen",
+    "petFriends": "Haustier-Freunde",
+    "inviteFriends": "Freunde einladen",
+    "lostPets": "Vermisste Tiere",
+    "blockedUsers": "Blockierte Benutzer",
+    "terms": "Nutzungsbedingungen",
+    "subscriptions": "Abonnements",
+    "contact": "Kontaktiere uns",
+    "privacy": "Datenschutz",
+    "logout": "Abmelden"
+  },
+  "search": {
+    "placeholder": "Suche Haustiere, Orte, Rassen...",
+    "results": "Ergebnisse",
+    "suggestions": "Vorschläge",
+    "recent": "Letzte Suchen",
+    "categories": {
+      "all": "Alle",
+      "pets": "Haustiere",
+      "users": "Benutzer",
+      "places": "Orte",
+      "breeds": "Rassen",
+      "events": "Veranstaltungen"
+    },
+    "noResults": {
+      "title": "Keine Ergebnisse",
+      "subtitle": "Versuche andere Suchbegriffe"
+    }
+  },
+  "petProfile": {
+    "loading": "Profil wird geladen...",
+    "tabs": {
+      "gallery": "Galerie",
+      "friends": "Freunde",
+      "memories": "Erinnerungen",
+      "info": "Info"
+    },
+    "stats": {
+      "weight": "Gewicht",
+      "sex": "Geschlecht",
+      "chip": "Chip",
+      "male": "Männlich",
+      "female": "Weiblich"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "add": "Hinzufügen",
+      "addPhoto": "Foto hinzufügen",
+      "emptyTitle": "Hier bewahrst du die schönsten Momente mit deinem Haustier auf.",
+      "emptyMessage": "Lade deine erste wilde Erinnerung hoch"
+    },
+    "friends": {
+      "title": "Freunde",
+      "online": "Jetzt online",
+      "offline": "Offline",
+      "findFriends": "Freunde finden",
+      "emptyTitle": "Hier findest du deine pelzige Bande.",
+      "emptyMessage": "Freunde, mit denen du schon interagiert hast"
+    },
+    "memories": {
+      "title": "Erinnerungen",
+      "add": "Hinzufügen",
+      "addMemory": "Erinnerung hinzufügen",
+      "emptyTitle": "Jeden Monat eine Erinnerung,",
+      "emptySubtitle": "Jede Erinnerung eine Wildheit",
+      "days": "TAGE",
+      "months": "MONATE",
+      "years": "JAHRE"
+    },
+    "info": {
+      "breedFacts": "Wilde Fakten",
+      "discoverBreed": "Rasse entdecken",
+      "careNeeds": "Pflege und Bedürfnisse",
+      "activity": "Aktivität",
+      "grooming": "Fellpflege",
+      "care": "Pflege",
+      "details": "Details",
+      "color": "Farbe",
+      "microchip": "Mikrochip",
+      "neutered": "Kastriert",
+      "birthDate": "Geburtsdatum",
+      "registeredOn": "Registriert am",
+      "healthNotes": "Gesundheitsnotizen",
+      "appointments": "Termine",
+      "documents": "Dokumente",
+      "vaccinations": "Impfliste",
+      "allergies": "Allergien und medizinische Notizen",
+      "activityDiary": "Aktivitätstagebuch",
+      "weightCondition": "Gewicht und körperliche Verfassung",
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch",
+      "yes": "Ja",
+      "no": "Nein"
+    }
   },
   "premium": {
     "title": "Abonnements",
     "hero": {
-      "title": "Wechseln Sie zu Premium!",
+      "title": "Wechsle zu Premium!",
       "subtitle": "Alle Funktionen freischalten"
     },
     "currentPlan": "Aktueller Plan",
@@ -103,7 +305,7 @@
     "free": "Kostenlos",
     "terms": "Allgemeine Geschäftsbedingungen",
     "refund": "Rückerstattungsrichtlinie",
-    "cancelAnytime": "Sie können jederzeit kündigen"
+    "cancelAnytime": "Du kannst jederzeit kündigen"
   },
   "chat": {
     "title": "Nachrichten",
@@ -116,7 +318,7 @@
     "typing": "schreibt...",
     "empty": {
       "title": "Noch keine Chats",
-      "subtitle": "Beginnen Sie mit anderen Tierbesitzern zu chatten!",
+      "subtitle": "Beginne mit anderen Tierbesitzern zu chatten!",
       "findFriends": "Freunde finden",
       "mascotMessage": "Fiuto findet immer jemanden zum Reden."
     }
