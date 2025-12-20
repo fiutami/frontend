@@ -9,7 +9,7 @@
 
   <!-- Main content -->
   <main class="register-pet__content">
-    <h1 class="register-pet__title">Registra il tuo amico peloso!</h1>
+    <h1 class="register-pet__title">{{ 'onboarding.registerPet.title' | translate }}</h1>
 
     <!-- Photo upload section -->
     <div class="register-pet__photo-section">
@@ -20,19 +20,19 @@
         @if (photoPreview()) {
           <img
             [src]="photoPreview()"
-            alt="Anteprima foto"
+            [alt]="'onboarding.registerPet.addPhoto' | translate"
             class="register-pet__photo-preview" />
           <button
             type="button"
             class="register-pet__photo-remove"
             (click)="removePhoto($event)"
-            aria-label="Rimuovi foto">
+            [attr.aria-label]="'common.remove' | translate">
             &times;
           </button>
         } @else {
           <div class="register-pet__photo-placeholder-inner">
             <span class="register-pet__photo-icon">📷</span>
-            <span class="register-pet__photo-text">Aggiungi foto</span>
+            <span class="register-pet__photo-text">{{ 'onboarding.registerPet.addPhoto' | translate }}</span>
           </div>
         }
       </div>
@@ -45,7 +45,7 @@
       @if (uploadError()) {
         <p class="register-pet__photo-error">{{ uploadError() }}</p>
       } @else {
-        <p class="register-pet__photo-hint">Facoltativo - potrai aggiungerla dopo</p>
+        <p class="register-pet__photo-hint">{{ 'onboarding.registerPet.photoHint' | translate }}</p>
       }
     </div>
 
@@ -65,14 +65,14 @@
       <!-- Nome -->
       <div class="register-pet__field">
         <label class="register-pet__label" for="nome">
-          Nome <span class="register-pet__required">*</span>
+          {{ 'onboarding.registerPet.petName' | translate }} <span class="register-pet__required">*</span>
         </label>
         <input
           type="text"
           id="nome"
           formControlName="nome"
           class="register-pet__input"
-          placeholder="Come si chiama?"
+          [placeholder]="'onboarding.registerPet.petNamePlaceholder' | translate"
           [class.register-pet__input--error]="getFieldError('nome')" />
         @if (getFieldError('nome')) {
           <span class="register-pet__field-error">{{ getFieldError('nome') }}</span>
@@ -82,12 +82,12 @@
       <!-- Specie -->
       <div class="register-pet__field">
         <label class="register-pet__label" for="specie">
-          Specie <span class="register-pet__required">*</span>
+          {{ 'onboarding.registerPet.species' | translate }} <span class="register-pet__required">*</span>
         </label>
         @if (isLoadingSpecies()) {
           <div class="register-pet__loading-field">
             <span class="register-pet__spinner-small"></span>
-            Caricamento specie...
+            {{ 'onboarding.registerPet.loadingSpecies' | translate }}
           </div>
         } @else if (speciesError()) {
           <div class="register-pet__field-error-box">
@@ -99,7 +99,7 @@
             formControlName="specie"
             class="register-pet__select"
             [class.register-pet__select--error]="getFieldError('specie')">
-            <option value="" disabled>Seleziona specie</option>
+            <option value="" disabled>{{ 'onboarding.registerPet.speciesPlaceholder' | translate }}</option>
             @for (option of speciesOptions; track option.value) {
               <option [value]="option.value">{{ option.label }}</option>
             }
@@ -112,18 +112,18 @@
 
       <!-- Razza -->
       <div class="register-pet__field">
-        <label class="register-pet__label" for="razza">Razza</label>
+        <label class="register-pet__label" for="razza">{{ 'onboarding.registerPet.breedOptional' | translate }}</label>
         @if (isLoadingBreeds()) {
           <div class="register-pet__loading-field">
             <span class="register-pet__spinner-small"></span>
-            Caricamento razze...
+            {{ 'onboarding.registerPet.loadingBreeds' | translate }}
           </div>
         } @else if (breedOptions.length > 0) {
           <select
             id="razza"
             formControlName="razza"
             class="register-pet__select">
-            <option value="">Seleziona razza (opzionale)</option>
+            <option value="">{{ 'onboarding.registerPet.breedPlaceholder' | translate }}</option>
             @for (option of breedOptions; track option.value) {
               <option [value]="option.label">{{ option.label }}</option>
             }
@@ -134,14 +134,14 @@
             id="razza"
             formControlName="razza"
             class="register-pet__input"
-            placeholder="Es. Labrador, Persiano..." />
+            [placeholder]="'onboarding.registerPet.breedPlaceholder' | translate" />
         }
       </div>
 
       <!-- Sesso -->
       <div class="register-pet__field">
         <label class="register-pet__label">
-          Sesso <span class="register-pet__required">*</span>
+          {{ 'onboarding.registerPet.gender' | translate }} <span class="register-pet__required">*</span>
         </label>
         <div class="register-pet__radio-group">
           <label class="register-pet__radio">
@@ -149,14 +149,14 @@
               type="radio"
               formControlName="sesso"
               value="male" />
-            <span class="register-pet__radio-label">Maschio</span>
+            <span class="register-pet__radio-label">{{ 'onboarding.registerPet.male' | translate }}</span>
           </label>
           <label class="register-pet__radio">
             <input
               type="radio"
               formControlName="sesso"
               value="female" />
-            <span class="register-pet__radio-label">Femmina</span>
+            <span class="register-pet__radio-label">{{ 'onboarding.registerPet.female' | translate }}</span>
           </label>
         </div>
         @if (getFieldError('sesso')) {
@@ -166,7 +166,7 @@
 
       <!-- Data di nascita -->
       <div class="register-pet__field">
-        <label class="register-pet__label" for="dataNascita">Data di nascita</label>
+        <label class="register-pet__label" for="dataNascita">{{ 'onboarding.registerPet.birthDate' | translate }}</label>
         <input
           type="date"
           id="dataNascita"
@@ -176,36 +176,36 @@
 
       <!-- Peso -->
       <div class="register-pet__field">
-        <label class="register-pet__label" for="peso">Peso (kg)</label>
+        <label class="register-pet__label" for="peso">{{ 'onboarding.registerPet.weight' | translate }}</label>
         <input
           type="number"
           id="peso"
           formControlName="peso"
           class="register-pet__input"
-          placeholder="Es. 5.5"
+          [placeholder]="'onboarding.registerPet.weightPlaceholder' | translate"
           step="0.1"
           min="0" />
       </div>
 
       <!-- Colore -->
       <div class="register-pet__field">
-        <label class="register-pet__label" for="colore">Colore</label>
+        <label class="register-pet__label" for="colore">{{ 'onboarding.registerPet.color' | translate }}</label>
         <input
           type="text"
           id="colore"
           formControlName="colore"
           class="register-pet__input"
-          placeholder="Es. Nero, Bianco e marrone..." />
+          [placeholder]="'onboarding.registerPet.colorPlaceholder' | translate" />
       </div>
 
       <!-- Segni particolari -->
       <div class="register-pet__field">
-        <label class="register-pet__label" for="segniParticolari">Segni particolari</label>
+        <label class="register-pet__label" for="segniParticolari">{{ 'onboarding.registerPet.specialMarks' | translate }}</label>
         <textarea
           id="segniParticolari"
           formControlName="segniParticolari"
           class="register-pet__textarea"
-          placeholder="Macchie, cicatrici, particolarita..."
+          [placeholder]="'onboarding.registerPet.specialMarksPlaceholder' | translate"
           rows="3"></textarea>
       </div>
 
@@ -216,12 +216,12 @@
         [disabled]="isLoading() || isUploading() || isLoadingSpecies() || speciesError()">
         @if (isUploading()) {
           <span class="register-pet__spinner"></span>
-          Caricamento foto...
+          {{ 'onboarding.registerPet.uploadingPhoto' | translate }}
         } @else if (isLoading()) {
           <span class="register-pet__spinner"></span>
-          Registrazione...
+          {{ 'onboarding.registerPet.registering' | translate }}
         } @else {
-          Continua
+          {{ 'onboarding.registerPet.submit' | translate }}
         }
       </button>
     </form>

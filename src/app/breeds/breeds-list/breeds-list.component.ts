@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 import { Species, SPECIES_CONFIG, SpeciesConfig } from '../breeds.models';
 
@@ -23,7 +24,7 @@ type ViewMode = 'species' | 'breeds';
 @Component({
   selector: 'app-breeds-list',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, TranslateModule],
   templateUrl: './breeds-list.component.html',
   styleUrls: ['./breeds-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

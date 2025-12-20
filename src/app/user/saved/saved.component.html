@@ -26,7 +26,7 @@
         <input
           type="text"
           class="search-input__field"
-          placeholder="Cosa stai cercando"
+          [placeholder]="'user.saved.searchPlaceholder' | translate"
           [(ngModel)]="searchQuery"
           (input)="onSearch(searchQuery)"
         />

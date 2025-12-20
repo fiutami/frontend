@@ -12,7 +12,8 @@
     "loading": "Loading...",
     "error": "Error",
     "success": "Success",
-    "next": "Next"
+    "next": "Next",
+    "remove": "Remove"
   },
   "auth": {
     "login": "Login",
@@ -107,17 +108,28 @@
       "speciesPlaceholder": "Select species",
       "breed": "Breed",
       "breedPlaceholder": "Select breed",
+      "breedOptional": "Breed (optional)",
       "age": "Age",
       "agePlaceholder": "e.g. 2 years",
+      "birthDate": "Birth date",
       "gender": "Gender",
       "male": "Male",
       "female": "Female",
       "addPhoto": "Add photo",
       "photoHint": "Optional - you can add it later",
       "removePhoto": "Remove photo",
-      "submit": "Register",
+      "submit": "Continue",
       "loading": "Loading...",
-      "loadingSpecies": "Loading species..."
+      "loadingSpecies": "Loading species...",
+      "loadingBreeds": "Loading breeds...",
+      "weight": "Weight (kg)",
+      "weightPlaceholder": "e.g. 5.5",
+      "color": "Color",
+      "colorPlaceholder": "e.g. Black, White and brown...",
+      "specialMarks": "Distinguishing marks",
+      "specialMarksPlaceholder": "Spots, scars, peculiarities...",
+      "uploadingPhoto": "Uploading photo...",
+      "registering": "Registering..."
     },
     "quizResult": {
       "title": "Here's your perfect match!",

@@ -12,7 +12,8 @@
     "loading": "Caricamento...",
     "error": "Errore",
     "success": "Successo",
-    "next": "Avanti"
+    "next": "Avanti",
+    "remove": "Rimuovi"
   },
   "auth": {
     "login": "Accedi",
@@ -107,17 +108,28 @@
       "speciesPlaceholder": "Seleziona specie",
       "breed": "Razza",
       "breedPlaceholder": "Seleziona razza",
+      "breedOptional": "Razza (opzionale)",
       "age": "Età",
       "agePlaceholder": "Es. 2 anni",
+      "birthDate": "Data di nascita",
       "gender": "Sesso",
       "male": "Maschio",
       "female": "Femmina",
       "addPhoto": "Aggiungi foto",
       "photoHint": "Facoltativo - potrai aggiungerla dopo",
       "removePhoto": "Rimuovi foto",
-      "submit": "Registra",
+      "submit": "Continua",
       "loading": "Caricamento...",
-      "loadingSpecies": "Caricamento specie..."
+      "loadingSpecies": "Caricamento specie...",
+      "loadingBreeds": "Caricamento razze...",
+      "weight": "Peso (kg)",
+      "weightPlaceholder": "Es. 5.5",
+      "color": "Colore",
+      "colorPlaceholder": "Es. Nero, Bianco e marrone...",
+      "specialMarks": "Segni particolari",
+      "specialMarksPlaceholder": "Macchie, cicatrici, particolarità...",
+      "uploadingPhoto": "Caricamento foto...",
+      "registering": "Registrazione..."
     },
     "quizResult": {
       "title": "Ecco il tuo match perfetto!",

@@ -27,7 +27,7 @@
         <input
           type="text"
           class="search-box__input"
-          placeholder="Cerca"
+          [placeholder]="'user.friends.searchPlaceholder' | translate"
           [(ngModel)]="searchQuery"
           (input)="onSearch(searchQuery)"
         />

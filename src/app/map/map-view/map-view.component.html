@@ -5,19 +5,19 @@
   <!-- Header -->
   <header class="map-header">
     <div class="map-header__top">
-      <button class="back-button" (click)="goBack()" aria-label="Torna indietro">
+      <button class="back-button" (click)="goBack()" [attr.aria-label]="'map.back' | translate">
         <span class="material-icons">arrow_back</span>
       </button>
-      <h1 class="map-header__title">Mappa</h1>
-      <button class="menu-button" aria-label="Menu">
+      <h1 class="map-header__title">{{ 'map.title' | translate }}</h1>
+      <button class="menu-button" [attr.aria-label]="'map.menu' | translate">
         <span class="material-icons">menu</span>
       </button>
     </div>
 
     <!-- Subtitle -->
     <p class="map-header__subtitle">
-      Attività, eventi e amici<br>
-      Trova ciò che serve al tuo pet, proprio dove sei
+      {{ 'map.subtitle' | translate }}<br>
+      {{ 'map.description' | translate }}
     </p>
   </header>
 
@@ -28,11 +28,11 @@
       <input
         type="text"
         class="search-input"
-        placeholder="Cosa stai cercando"
+        [placeholder]="'map.searchPlaceholder' | translate"
         [value]="searchQuery()"
         (input)="onSearch($event)"
       >
-      <button class="filter-button" aria-label="Filtri">
+      <button class="filter-button" [attr.aria-label]="'map.filters' | translate">
         <span class="material-icons">tune</span>
       </button>
     </div>
@@ -41,13 +41,13 @@
   <!-- Action buttons -->
   <div class="action-buttons">
     <button class="action-btn action-btn--primary">
-      Attività
+      {{ 'map.activities' | translate }}
     </button>
     <button class="action-btn action-btn--primary">
-      Eventi
+      {{ 'map.events' | translate }}
     </button>
     <button class="action-btn action-btn--primary">
-      Localizzati dagli amici
+      {{ 'map.friends' | translate }}
     </button>
   </div>
 
