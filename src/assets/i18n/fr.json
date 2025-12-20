@@ -33,7 +33,10 @@
     "signupTitle": "Inscription",
     "emailPlaceholder": "Entre ton email",
     "passwordPlaceholder": "Entre ton mot de passe",
-    "confirmPasswordPlaceholder": "Confirme ton mot de passe"
+    "confirmPasswordPlaceholder": "Confirme ton mot de passe",
+    "forgotPasswordTitle": "Mot de passe oublié",
+    "forgotPasswordDescription": "Entre ton email et nous t'enverrons un code pour réinitialiser ton mot de passe.",
+    "sendCode": "Envoyer le code"
   },
   "hero": {
     "tagline": "Trouve ta solution idéale",

@@ -33,7 +33,10 @@
     "signupTitle": "Cadastrar",
     "emailPlaceholder": "Digite seu email",
     "passwordPlaceholder": "Digite sua senha",
-    "confirmPasswordPlaceholder": "Confirme sua senha"
+    "confirmPasswordPlaceholder": "Confirme sua senha",
+    "forgotPasswordTitle": "Esqueceu a senha",
+    "forgotPasswordDescription": "Digite seu email e enviaremos um código para redefinir sua senha.",
+    "sendCode": "Enviar código"
   },
   "hero": {
     "tagline": "Fareja sua solução ideal",
