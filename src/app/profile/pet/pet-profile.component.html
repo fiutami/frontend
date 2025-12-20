@@ -56,7 +56,15 @@
         <!-- Pet Name & Details -->
         <h1 class="pet-name">{{ pet()!.name }}</h1>
         <p class="pet-breed">{{ pet()!.species }} - {{ pet()!.breed }}</p>
-        <p class="pet-age">{{ pet()!.age }}</p>
+        <div class="pet-age-container">
+          <p class="pet-age">{{ pet()!.age }}</p>
+          @if (humanAge()) {
+            <p class="human-age">
+              <span class="human-age-value">~{{ humanAge()!.humanYears }} anni umani</span>
+              <span class="human-age-stage">({{ humanAge()!.stage }})</span>
+            </p>
+          }
+        </div>
 
         <!-- Stats Row -->
         <div class="stats-row">

@@ -165,10 +165,34 @@
   margin: 0 0 2px;
 }
 
+.pet-age-container {
+  margin: 0 0 $spacing-md;
+  text-align: center;
+}
+
 .pet-age {
   font-size: 13px;
   color: $color-text-secondary;
-  margin: 0 0 $spacing-md;
+  margin: 0;
+}
+
+.human-age {
+  font-size: 12px;
+  color: $color-cta-primary;
+  margin: 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  .human-age-value {
+    font-weight: 500;
+  }
+
+  .human-age-stage {
+    color: $color-text-secondary;
+    font-style: italic;
+  }
 }
 
 // ============================================================
