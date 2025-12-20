@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { HERO_DOG_ASSET, HERO_WORDMARK_ASSET } from './hero-assets';
+import { environment } from '../../environments/environment';
 
 interface LanguageOption {
   code: string;
@@ -54,8 +55,8 @@ export class HeroComponent implements OnInit {
   ];
 
   readonly legalLinks = [
-    { id: 'terms', label: 'Termini', url: 'https://fiutami.example/terms' },
-    { id: 'privacy', label: 'Privacy', url: 'https://fiutami.example/privacy' },
+    { id: 'terms', label: 'Termini', url: environment.legalUrls.terms },
+    { id: 'privacy', label: 'Privacy', url: environment.legalUrls.privacy },
   ];
 
   private readonly languageState = signal<LanguageOption>(this.languages[0]);

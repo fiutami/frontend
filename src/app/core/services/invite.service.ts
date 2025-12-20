@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export type InviteMethod = 'whatsapp' | 'sms' | 'email' | 'copy' | 'share';
 export type InviteStatus = 'pending' | 'accepted' | 'expired';
@@ -34,8 +35,12 @@ export interface InviteStats {
   providedIn: 'root'
 })
 export class InviteService {
+  // TODO: Fetch invite code from backend API in production
   private inviteCode = 'FIUTAMI2024';
-  private inviteLink = 'https://fiutami.app/invite/FIUTAMI2024';
+
+  private get inviteLink(): string {
+    return `${environment.appUrl}/invite/${this.inviteCode}`;
+  }
 
   getInviteOptions(): InviteOption[] {
     return [
@@ -108,7 +113,8 @@ export class InviteService {
       },
       {
         id: 'inv_4',
-        recipientEmail: 'test@email.com',
+        recipientName: 'Paolo Neri',
+        recipientEmail: 'paolo.neri@email.com',
         method: 'email',
         sentAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 10), // 10 giorni fa
         status: 'expired'

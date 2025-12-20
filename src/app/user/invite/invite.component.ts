@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 export interface Contact {
   id: string;
@@ -21,6 +22,7 @@ export class InviteComponent implements OnInit {
   selectedContacts: Set<string> = new Set();
   copiedCode = false;
 
+  // TODO: Fetch referral code from backend API
   referralCode = 'FIDO2024';
   invitesSent = 0;
   pointsEarned = 0;
@@ -47,7 +49,7 @@ export class InviteComponent implements OnInit {
   }
 
   get inviteUrl(): string {
-    return `https://fiutami.pet/invite/${this.referralCode}`;
+    return `${environment.appUrl}/invite/${this.referralCode}`;
   }
 
   get inviteText(): string {
