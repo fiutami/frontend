@@ -214,7 +214,9 @@
     "hi": "Hindi"
   },
   "drawer": {
+    "title": "Menú",
     "subtitle": "Configuración y actividades",
+    "guest": "Invitado",
     "account": "Cuenta",
     "activity": "Tus actividades",
     "notifications": "Configuración de notificaciones",

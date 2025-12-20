@@ -71,6 +71,9 @@ export class DrawerComponent implements OnInit, OnDestroy {
   // User from auth service
   user$ = this.authService.currentUser$;
 
+  // User avatar URL (from profile)
+  userAvatarUrl: string | null = null;
+
   // Available languages
   languages: Language[] = [
     { code: 'it', label: 'Italiano', flag: '🇮🇹' },
@@ -253,5 +256,11 @@ export class DrawerComponent implements OnInit, OnDestroy {
       return `${user.firstName} ${user.lastName}`;
     }
     return user.firstName || user.email.split('@')[0];
+  }
+
+  getUserInitials(user: User): string {
+    const first = user.firstName?.charAt(0) || '';
+    const last = user.lastName?.charAt(0) || '';
+    return (first + last) || user.email?.charAt(0)?.toUpperCase() || '?';
   }
 }

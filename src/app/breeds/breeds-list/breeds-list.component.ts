@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 import { Species, SPECIES_CONFIG, SpeciesConfig } from '../breeds.models';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button';
 
 type ViewMode = 'species' | 'breeds';
 
@@ -24,7 +25,7 @@ type ViewMode = 'species' | 'breeds';
 @Component({
   selector: 'app-breeds-list',
   standalone: true,
-  imports: [CommonModule, SharedModule, TranslateModule],
+  imports: [CommonModule, SharedModule, TranslateModule, AvatarButtonComponent],
   templateUrl: './breeds-list.component.html',
   styleUrls: ['./breeds-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

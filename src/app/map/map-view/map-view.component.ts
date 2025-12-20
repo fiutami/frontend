@@ -17,6 +17,7 @@ import { POI, POIFilter, POIType } from '../../core/models/poi.models';
 import { POIService } from '../services/poi.service';
 import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar/bottom-tab-bar.component';
 import { TabItem } from '../../shared/components/bottom-tab-bar/bottom-tab-bar.models';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button';
 
 // Fix Leaflet default marker icons
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -29,7 +30,7 @@ L.Icon.Default.mergeOptions({
 @Component({
   selector: 'app-map-view',
   standalone: true,
-  imports: [CommonModule, FormsModule, BottomTabBarComponent, TranslateModule],
+  imports: [CommonModule, FormsModule, BottomTabBarComponent, TranslateModule, AvatarButtonComponent],
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -52,29 +52,81 @@
     }
   }
 
-  // Header
-  &__header {
-    padding: 75px $spacing-lg $spacing-md;
-    text-align: center;
+  // User Header Section
+  &__user-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px $spacing-lg;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin: 16px;
+    margin-top: 56px; // Space for close button
+  }
+
+  &__user-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--placeholder {
+      svg {
+        fill: $color-drawer-text;
+        opacity: 0.9;
+      }
+    }
   }
 
-  &__title {
-    font-family: 'Irish Grover', $font-family-display;
-    font-size: 20px;
-    font-weight: 400;
+  &__user-initials {
     color: $color-drawer-text;
-    margin: 0 0 4px;
-    line-height: 1.21;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
-  &__subtitle {
-    font-family: 'Instrument Sans', $font-family-body;
-    font-size: 12px;
-    font-weight: 400;
+  &__user-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__user-name {
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 18px;
+    font-weight: 600;
     color: $color-drawer-text;
     margin: 0;
-    line-height: 1.22;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__user-email {
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 4px 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Language Section (prominent position)
+  &__language-section {
+    margin: 16px;
+    position: relative;
   }
 
   // Search bar
@@ -195,17 +247,12 @@
     border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  // Language selector
-  &__language {
-    position: relative;
-    margin-bottom: $spacing-md;
-  }
-
+  // Language button (in language-section)
   &__language-button {
     display: flex;
     align-items: center;
     gap: $spacing-sm;
-    padding: $spacing-sm $spacing-md;
+    padding: 12px $spacing-md;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: $border-radius-md;
@@ -218,20 +265,37 @@
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.5);
     }
   }
 
+  &__language-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__language-current {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    flex: 1;
+  }
+
   &__language-flag {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   &__language-label {
-    flex: 1;
-    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    color: $color-drawer-text;
   }
 
   &__language-chevron {
     transition: transform 0.2s ease;
+    color: rgba(255, 255, 255, 0.7);
 
     &--open {
       transform: rotate(180deg);
@@ -240,28 +304,29 @@
 
   &__language-dropdown {
     position: absolute;
-    bottom: 100%;
+    top: 100%;
     left: 0;
     right: 0;
-    margin-bottom: $spacing-xs;
+    margin-top: $spacing-xs;
     background: #3a64e0;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: $border-radius-md;
     overflow: hidden;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    z-index: 10;
   }
 
   &__language-option {
     display: flex;
     align-items: center;
     gap: $spacing-sm;
-    padding: $spacing-sm $spacing-md;
+    padding: 12px $spacing-md;
     width: 100%;
     background: transparent;
     border: none;
     color: $color-drawer-text;
     font-family: 'Montserrat', $font-family-body;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
     transition: $transition-fast;
     text-align: left;
@@ -272,7 +337,20 @@
 
     &--active {
       background: rgba(255, 255, 255, 0.15);
+      font-weight: 500;
     }
+  }
+
+  &__language-check {
+    margin-left: auto;
+    color: $color-drawer-text;
+  }
+
+  // Menu icon
+  &__menu-icon {
+    font-size: 20px;
+    margin-right: 12px;
+    color: rgba(255, 255, 255, 0.8);
   }
 
   &__version {

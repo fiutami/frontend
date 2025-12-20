@@ -17,13 +17,7 @@
     <img src="assets/images/species/btn-back.svg" alt="" />
   </button>
 
-  <button
-    type="button"
-    class="breeds-page__btn-drawer"
-    (click)="onOpenDrawer()"
-    [attr.aria-label]="'breeds.openMenu' | translate">
-    <img src="assets/images/species/btn-drawer-menu.svg" alt="" />
-  </button>
+  <app-avatar-button size="medium" class="breeds-page__btn-drawer"></app-avatar-button>
 
   <!-- Species Selector Switch -->
   <div class="breeds-page__selector">
