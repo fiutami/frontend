@@ -12,24 +12,7 @@
 
     <div class="home__header-actions">
       <!-- Menu avatar (apre drawer con profilo e impostazioni) -->
-      <button
-        class="home__menu-avatar"
-        (click)="openDrawer()"
-        aria-label="Apri menu profilo"
-      >
-        @if (showInitials()) {
-          <div class="home__menu-avatar-initials" [attr.aria-label]="(petName() || userName()) + ' avatar'">
-            {{ initials() }}
-          </div>
-        } @else {
-          <img
-            [src]="avatarUrl()"
-            [alt]="(petName() || userName()) + ' avatar'"
-            class="home__menu-avatar-img"
-            loading="lazy"
-          />
-        }
-      </button>
+      <app-avatar-button size="large" class="home__avatar-btn"></app-avatar-button>
     </div>
   </header>
 

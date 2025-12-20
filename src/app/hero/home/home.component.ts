@@ -16,6 +16,7 @@ import {
 import { SearchBoxComponent } from '../../shared/components/search-box';
 import { EventsWidgetComponent, EventItem } from '../../shared/components/events-widget';
 import { PageBackgroundComponent } from '../../shared/components/page-background';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button';
 import { AuthService } from '../../core/services/auth.service';
 import { PetService } from '../../core/services/pet.service';
 import { DashboardService, Suggestion } from './dashboard.service';
@@ -38,6 +39,7 @@ interface QuickAction {
     SearchBoxComponent,
     EventsWidgetComponent,
     PageBackgroundComponent,
+    AvatarButtonComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
