@@ -1,6 +1,7 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, delay, map } from 'rxjs';
+import { Observable, of, delay, map, tap, catchError, finalize } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import {
   Species,
   Breed,
@@ -8,6 +9,36 @@ import {
   MOCK_SPECIES,
   MOCK_BREEDS
 } from './models/breed.model';
+
+/**
+ * Backend API response interfaces
+ */
+export interface SpeciesApiResponse {
+  id: string;
+  code: string;
+  name: string;
+  category: string;
+  scientificName?: string;
+  description?: string;
+  imageUrl?: string;
+  emoji?: string;
+  isPopular: boolean;
+  displayOrder: number;
+}
+
+export interface BreedApiResponse {
+  id: string;
+  speciesId: string;
+  name: string;
+  origin?: string;
+  description?: string;
+  imageUrl?: string;
+  size?: string;
+  weight?: { min: number; max: number };
+  lifespan?: { min: number; max: number };
+  temperament?: string[];
+  isPopular: boolean;
+}
 
 /**
  * BreedsService - State management and API calls for Breeds module
@@ -58,79 +89,125 @@ export class BreedsService {
   });
 
   /**
-   * Load all species - MVP uses mock data
+   * Load all species from backend API
    */
   loadSpecies(): Observable<Species[]> {
     this.isLoading.set(true);
     this.error.set(null);
 
-    // MVP: Use mock data with simulated delay
-    return of(MOCK_SPECIES).pipe(
-      delay(300),
-      map(species => {
-        this.speciesList.set(species);
-        this.isLoading.set(false);
-        return species;
-      })
+    return this.http.get<SpeciesApiResponse[]>(`${environment.apiUrl}/species`).pipe(
+      map(response => this.mapSpeciesResponse(response)),
+      tap(species => this.speciesList.set(species)),
+      catchError(err => {
+        console.error('Failed to load species from API, using fallback:', err);
+        this.error.set('Errore nel caricamento delle specie');
+        // Fallback to mock data if API fails
+        this.speciesList.set(MOCK_SPECIES);
+        return of(MOCK_SPECIES);
+      }),
+      finalize(() => this.isLoading.set(false))
     );
-
-    // TODO: Real API integration
-    // return this.http.get<Species[]>('/api/species').pipe(
-    //   tap(species => this.speciesList.set(species)),
-    //   catchError(err => {
-    //     this.error.set('Errore nel caricamento delle specie');
-    //     throw err;
-    //   }),
-    //   finalize(() => this.isLoading.set(false))
-    // );
   }
 
   /**
-   * Get breeds by species ID
+   * Map API response to frontend Species model
+   */
+  private mapSpeciesResponse(response: SpeciesApiResponse[]): Species[] {
+    return response.map(s => ({
+      id: s.id,
+      name: s.name,
+      icon: s.emoji || 'pets',
+      imageUrl: s.imageUrl || `/assets/species/${s.code}.jpg`,
+      category: s.category as any,
+      description: s.description
+    }));
+  }
+
+  /**
+   * Get breeds by species ID from backend API
    */
   getBreedsBySpecies(speciesId: string): Observable<Breed[]> {
     this.isLoading.set(true);
     this.error.set(null);
 
-    // MVP: Filter mock data
-    const filtered = MOCK_BREEDS.filter(b => b.speciesId === speciesId);
-    return of(filtered).pipe(
-      delay(200),
-      map(breeds => {
-        this.breedsList.set(breeds);
-        this.isLoading.set(false);
-        return breeds;
-      })
+    return this.http.get<BreedApiResponse[]>(`${environment.apiUrl}/species/${speciesId}/breeds`).pipe(
+      map(response => this.mapBreedsResponse(response)),
+      tap(breeds => this.breedsList.set(breeds)),
+      catchError(err => {
+        console.error('Failed to load breeds from API, using fallback:', err);
+        // Fallback to mock data filtered by speciesId
+        const filtered = MOCK_BREEDS.filter(b => b.speciesId === speciesId);
+        this.breedsList.set(filtered);
+        return of(filtered);
+      }),
+      finalize(() => this.isLoading.set(false))
     );
-
-    // TODO: Real API
-    // return this.http.get<Breed[]>(`/api/species/${speciesId}/breeds`);
   }
 
   /**
-   * Get breed details by ID
+   * Get breed details by ID from backend API
    */
   getBreedDetails(breedId: string): Observable<Breed | null> {
     this.isLoading.set(true);
     this.error.set(null);
 
-    // MVP: Find in mock data
-    const breed = MOCK_BREEDS.find(b => b.id === breedId) || null;
-    return of(breed).pipe(
-      delay(200),
-      map(result => {
-        if (result) {
-          this.selectedBreed.set(result);
+    return this.http.get<BreedApiResponse>(`${environment.apiUrl}/breeds/${breedId}`).pipe(
+      map(response => this.mapBreedResponse(response)),
+      tap(breed => {
+        if (breed) {
+          this.selectedBreed.set(breed);
         } else {
           this.error.set('Razza non trovata');
         }
-        this.isLoading.set(false);
-        return result;
-      })
+      }),
+      catchError(err => {
+        console.error('Failed to load breed details from API:', err);
+        // Fallback to mock data
+        const breed = MOCK_BREEDS.find(b => b.id === breedId) || null;
+        if (breed) {
+          this.selectedBreed.set(breed);
+        } else {
+          this.error.set('Razza non trovata');
+        }
+        return of(breed);
+      }),
+      finalize(() => this.isLoading.set(false))
     );
+  }
 
-    // TODO: Real API
-    // return this.http.get<Breed>(`/api/breeds/${breedId}`);
+  /**
+   * Map API response to frontend Breed model
+   */
+  private mapBreedsResponse(response: BreedApiResponse[]): Breed[] {
+    return response.map(b => this.mapBreedResponse(b));
+  }
+
+  /**
+   * Map single API response to frontend Breed model
+   */
+  private mapBreedResponse(b: BreedApiResponse): Breed {
+    return {
+      id: b.id,
+      speciesId: b.speciesId,
+      name: b.name,
+      origin: b.origin || '',
+      recognition: '',
+      imageUrl: b.imageUrl || `/assets/breeds/${b.id}.jpg`,
+      size: b.size ? {
+        height: { min: 0, max: 0, unit: 'cm' },
+        weight: b.weight ? { min: b.weight.min, max: b.weight.max, unit: 'kg' } : { min: 0, max: 0, unit: 'kg' },
+        coat: '',
+        colors: [],
+        lifespan: b.lifespan
+      } : undefined,
+      temperament: b.temperament ? {
+        energy: 'media',
+        sociality: 'media',
+        trainability: 'media',
+        traits: b.temperament
+      } : undefined,
+      history: b.description
+    };
   }
 
   /**
@@ -171,21 +248,29 @@ export class BreedsService {
   }
 
   /**
-   * Search breeds by query
+   * Search breeds by query - uses backend search API
    */
   searchBreeds(query: string): Observable<Breed[]> {
     this.searchQuery.set(query);
 
     if (!query.trim()) {
-      return of(MOCK_BREEDS);
+      return of(this.breedsList());
     }
 
-    const filtered = MOCK_BREEDS.filter(b =>
-      b.name.toLowerCase().includes(query.toLowerCase()) ||
-      b.origin.toLowerCase().includes(query.toLowerCase())
+    return this.http.get<BreedApiResponse[]>(`${environment.apiUrl}/breeds/search`, {
+      params: { q: query }
+    }).pipe(
+      map(response => this.mapBreedsResponse(response)),
+      catchError(err => {
+        console.error('Failed to search breeds:', err);
+        // Fallback to local filtering
+        const filtered = this.breedsList().filter(b =>
+          b.name.toLowerCase().includes(query.toLowerCase()) ||
+          b.origin.toLowerCase().includes(query.toLowerCase())
+        );
+        return of(filtered);
+      })
     );
-
-    return of(filtered).pipe(delay(100));
   }
 
   /**
