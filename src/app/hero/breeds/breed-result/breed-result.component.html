@@ -64,7 +64,7 @@
 
       <!-- Info Sections -->
       <section class="info-sections">
-        @for (section of infoSections; track trackBySection($index, section)) {
+        @for (section of infoSections(); track trackBySection($index, section)) {
           @if (getSectionContent(section.id)) {
             <div
               class="info-card"

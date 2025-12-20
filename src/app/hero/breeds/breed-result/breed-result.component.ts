@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { BreedsService } from '../breeds.service';
 import { Breed, InfoSection } from '../models/breed.model';
+import { SpeciesInfoService, InsightSection } from '../../../core/services/species-info.service';
 
 @Component({
   selector: 'app-breed-result',
@@ -15,6 +16,7 @@ export class BreedResultComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly breedsService = inject(BreedsService);
+  private readonly speciesInfoService = inject(SpeciesInfoService);
 
   // State
   readonly breed = signal<Breed | null>(null);
@@ -22,15 +24,8 @@ export class BreedResultComponent implements OnInit {
   readonly error = this.breedsService.error;
   readonly expandedSectionId = signal<string | null>(null);
 
-  // Info sections configuration
-  readonly infoSections: InfoSection[] = [
-    { id: 'dna', icon: 'biotech', title: 'DNA Bestiale' },
-    { id: 'size', icon: 'straighten', title: 'Stazza & Pelliccia' },
-    { id: 'temperament', icon: 'pets', title: 'Indole da Zampa' },
-    { id: 'rituals', icon: 'schedule', title: 'Rituali' },
-    { id: 'health', icon: 'healing', title: 'Rischi di salute' },
-    { id: 'history', icon: 'auto_stories', title: 'Oltre l\'aspetto' },
-  ];
+  // Info sections from backend
+  readonly infoSections = signal<InfoSection[]>([]);
 
   // Computed values
   readonly speciesName = computed(() => {
@@ -41,11 +36,42 @@ export class BreedResultComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    // Load insight sections from backend
+    this.loadInsightSections();
+
     // Get breed ID from route
     this.route.params.subscribe(params => {
       const breedId = params['id'];
       if (breedId) {
         this.loadBreed(breedId);
+      }
+    });
+  }
+
+  private loadInsightSections(): void {
+    this.speciesInfoService.getInsightSections().subscribe({
+      next: (sections) => {
+        // Map backend InsightSection to frontend InfoSection format
+        const mapped: InfoSection[] = sections
+          .sort((a, b) => a.displayOrder - b.displayOrder)
+          .map(s => ({
+            id: s.code,
+            icon: s.icon,
+            title: s.titleIt || s.title
+          }));
+        this.infoSections.set(mapped);
+      },
+      error: (err) => {
+        console.error('Error loading insight sections:', err);
+        // Use defaults
+        this.infoSections.set([
+          { id: 'dna', icon: 'biotech', title: 'DNA Bestiale' },
+          { id: 'size', icon: 'straighten', title: 'Stazza & Pelliccia' },
+          { id: 'temperament', icon: 'pets', title: 'Indole da Zampa' },
+          { id: 'rituals', icon: 'schedule', title: 'Rituali' },
+          { id: 'health', icon: 'healing', title: 'Rischi di salute' },
+          { id: 'history', icon: 'auto_stories', title: 'Oltre l\'aspetto' },
+        ]);
       }
     });
   }

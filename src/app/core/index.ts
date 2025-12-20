@@ -12,6 +12,7 @@ export { SessionService } from './services/session.service';
 export * from './services/pet.service';
 export * from './services/notification.service';
 export * from './services/viewport.service';
+export * from './services/species-info.service';
 
 // Config
 export * from './config';
