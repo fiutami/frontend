@@ -35,7 +35,7 @@
   <app-icon-button
     class="login__back"
     variant="glass"
-    ariaLabel="Torna indietro"
+    [ariaLabel]="'common.back' | translate"
     (clicked)="onBackClick()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -46,14 +46,14 @@
   <div class="login__content">
     <app-auth-card>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login__form">
-        <h2 class="login__title">Accedi</h2>
+        <h2 class="login__title">{{ 'auth.loginTitle' | translate }}</h2>
 
         <!-- Email Input -->
         <app-form-input
-          label="Email"
+          [label]="'auth.email' | translate"
           type="email"
           formControlName="email"
-          placeholder="inserisci la tua email"
+          [placeholder]="'auth.emailPlaceholder' | translate"
           autocomplete="email"
           [hasError]="!!(email?.invalid && email?.touched)"
           [errorMessage]="getEmailError()">
@@ -61,10 +61,10 @@
 
         <!-- Password Input -->
         <app-form-input
-          label="Password"
+          [label]="'auth.password' | translate"
           type="password"
           formControlName="password"
-          placeholder="inserisci la tua password"
+          [placeholder]="'auth.passwordPlaceholder' | translate"
           autocomplete="current-password"
           [hasError]="!!(password?.invalid && password?.touched)"
           [errorMessage]="getPasswordError()">
@@ -76,7 +76,7 @@
             type="button"
             class="login__forgot-link"
             (click)="onForgotPasswordClick()">
-            Dimenticata la password?
+            {{ 'auth.forgotPassword' | translate }}
           </button>
         </div>
 
@@ -87,7 +87,7 @@
           [fullWidth]="true"
           [disabled]="loginForm.invalid"
           [loading]="isSubmitting">
-          Accedi
+          {{ 'auth.loginButton' | translate }}
         </app-button>
 
         <!-- Error Message -->

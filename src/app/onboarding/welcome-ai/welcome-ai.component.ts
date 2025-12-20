@@ -3,13 +3,18 @@ import {
   ChangeDetectionStrategy,
   inject,
   signal,
+  OnInit,
+  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
 import { SharedModule } from '../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../shared/components/speech-bubble';
 import { AiMessageBubbleComponent } from '../../shared/components/ai-message-bubble';
 import { LanguageBottomSheetComponent } from '../../hero/language-bottom-sheet';
+import { LanguageService, SupportedLanguage } from '../../core/i18n/language.service';
 
 /**
  * WelcomeAiComponent - Onboarding welcome screen
@@ -25,6 +30,7 @@ import { LanguageBottomSheetComponent } from '../../hero/language-bottom-sheet';
   standalone: true,
   imports: [
     CommonModule,
+    TranslateModule,
     SharedModule,
     SpeechBubbleComponent,
     AiMessageBubbleComponent,
@@ -34,8 +40,11 @@ import { LanguageBottomSheetComponent } from '../../hero/language-bottom-sheet';
   styleUrls: ['./welcome-ai.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WelcomeAiComponent {
+export class WelcomeAiComponent implements OnInit, OnDestroy {
   private readonly router = inject(Router);
+  private readonly languageService = inject(LanguageService);
+  private readonly translateService = inject(TranslateService);
+  private destroy$ = new Subject<void>();
 
   /**
    * Whether the language bottom sheet is open
@@ -43,16 +52,9 @@ export class WelcomeAiComponent {
   protected showLanguageSheet = signal(false);
 
   /**
-   * Current selected language
+   * Fiuto's current message
    */
-  protected currentLanguage = signal('it');
-
-  /**
-   * Fiuto's current message (Figma text)
-   */
-  protected fiutoMessage = signal(
-    'Hai già un animale o vorresti averne uno?'
-  );
+  protected fiutoMessage = signal('');
 
   /**
    * Whether user has made a selection (shows response message)
@@ -63,6 +65,37 @@ export class WelcomeAiComponent {
    * Which option was selected
    */
   protected selectedOption = signal<'has-pet' | 'wants-pet' | null>(null);
+
+  /**
+   * Current language code for bottom sheet
+   */
+  get currentLanguage(): string {
+    return this.languageService.currentLanguage;
+  }
+
+  ngOnInit(): void {
+    this.updateFiutoMessage('onboarding.welcome.question');
+
+    // Update message when language changes
+    this.languageService.currentLanguage$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        if (!this.hasSelected()) {
+          this.updateFiutoMessage('onboarding.welcome.question');
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private updateFiutoMessage(key: string): void {
+    this.translateService.get(key).subscribe(msg => {
+      this.fiutoMessage.set(msg);
+    });
+  }
 
   /**
    * Handle back button click - return to login
@@ -82,8 +115,7 @@ export class WelcomeAiComponent {
    * Handle language selection
    */
   onLanguageSelected(code: string): void {
-    this.currentLanguage.set(code);
-    // TODO: Implement actual language change logic
+    this.languageService.setLanguage(code as SupportedLanguage);
   }
 
   /**
@@ -99,9 +131,7 @@ export class WelcomeAiComponent {
   onHasPetClick(): void {
     this.selectedOption.set('has-pet');
     this.hasSelected.set(true);
-    this.fiutoMessage.set(
-      'Perfetto! Registriamo insieme il tuo animale così potremo entrare nel mondo di Fiutami.'
-    );
+    this.updateFiutoMessage('onboarding.welcome.hasPetResponse');
 
     // Navigate after a short delay to show the response
     setTimeout(() => {
@@ -115,9 +145,7 @@ export class WelcomeAiComponent {
   onWantsPetClick(): void {
     this.selectedOption.set('wants-pet');
     this.hasSelected.set(true);
-    this.fiutoMessage.set(
-      'Il mondo è pieno di animali meravigliosi. Per aiutarti a trovare quello giusto, iniziamo a conoscerti meglio.'
-    );
+    this.updateFiutoMessage('onboarding.welcome.wantsPetResponse');
 
     // Navigate after a short delay to show the response
     setTimeout(() => {

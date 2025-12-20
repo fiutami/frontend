@@ -15,7 +15,7 @@
       (click)="toggleLanguageMenu()" (keydown.escape)="closeLanguageMenu()"
     >
       <img class="hero-language__icon" src="assets/Ui/Globe.svg" alt="">
-      <span class="hero-language__label">{{ currentLanguage.label }}</span>
+      <span class="hero-language__label">{{ currentLanguage.flag }} {{ currentLanguage.nativeName }}</span>
     </button>
 
     <ul
@@ -33,7 +33,7 @@
           [attr.aria-selected]="language.code === currentLanguage.code"
           (click)="selectLanguage(language)"
         >
-          {{ language.label }}
+          {{ language.flag }} {{ language.nativeName }}
         </button>
       </li>
     </ul>
@@ -61,26 +61,26 @@
       <img [src]="wordmarkAsset" alt="FiutaMi" class="hero-logo__image">
     </div>
 
-    <p class="hero-claim">{{ claim }}</p>
+    <p class="hero-claim">{{ 'hero.tagline' | translate }}</p>
 
     <div class="hero-ctas">
       <button class="hero-cta hero-cta--primary" type="button" (click)="onPrimaryCta()">
-        Accedi
+        {{ 'auth.login' | translate }}
       </button>
       <button class="hero-cta hero-cta--secondary" type="button" (click)="onSecondaryCta()">
-        Registrati
+        {{ 'auth.signup' | translate }}
       </button>
     </div>
 
     <p class="hero-legal">
-      Accedendo accetti i nostri
+      {{ 'auth.termsAccept' | translate }}
       <a
         class="hero-legal__link"
         [href]="legalLinks[0].url"
         target="_blank"
         rel="noopener noreferrer"
       >
-        {{ legalLinks[0].label }}
+        {{ legalLinks[0].labelKey | translate }}
       </a>
       &amp;
       <a
@@ -89,7 +89,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        {{ legalLinks[1].label }}
+        {{ legalLinks[1].labelKey | translate }}
       </a>
     </p>
 
