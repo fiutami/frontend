@@ -10,7 +10,7 @@
       type="button"
       class="welcome-ai__language-btn"
       (click)="onLanguageClick()"
-      aria-label="Cambia lingua">
+      [attr.aria-label]="'common.language' | translate">
       <span class="material-icons">language</span>
     </button>
   </header>
@@ -18,7 +18,7 @@
   <!-- Main content -->
   <main class="welcome-ai__content">
     <!-- Title -->
-    <h1 class="welcome-ai__title">Benvenuto in FIUTAMI!</h1>
+    <h1 class="welcome-ai__title">{{ 'onboarding.welcome.title' | translate }}</h1>
 
     <!-- Fiuto message -->
     <div class="welcome-ai__message">
@@ -38,7 +38,7 @@
           class="welcome-ai__choice-btn welcome-ai__choice-btn--primary"
           (click)="onHasPetClick()">
           <span class="welcome-ai__choice-icon">&#x1F415;</span>
-          <span class="welcome-ai__choice-text">Ho già un animale</span>
+          <span class="welcome-ai__choice-text">{{ 'onboarding.welcome.hasPet' | translate }}</span>
         </button>
 
         <button
@@ -46,7 +46,7 @@
           class="welcome-ai__choice-btn welcome-ai__choice-btn--secondary"
           (click)="onWantsPetClick()">
           <span class="welcome-ai__choice-icon">&#x1F4AD;</span>
-          <span class="welcome-ai__choice-text">Vorrei averne uno</span>
+          <span class="welcome-ai__choice-text">{{ 'onboarding.welcome.wantsPet' | translate }}</span>
         </button>
       </div>
     }
@@ -55,7 +55,7 @@
     @if (hasSelected()) {
       <div class="welcome-ai__loading">
         <div class="welcome-ai__spinner"></div>
-        <p class="welcome-ai__loading-text">Un momento...</p>
+        <p class="welcome-ai__loading-text">{{ 'common.loading' | translate }}</p>
       </div>
     }
   </main>
@@ -72,7 +72,7 @@
 <!-- Language Bottom Sheet -->
 <app-language-bottom-sheet
   [isOpen]="showLanguageSheet()"
-  [selectedLanguage]="currentLanguage()"
+  [selectedLanguage]="currentLanguage"
   (languageSelected)="onLanguageSelected($event)"
   (closed)="onLanguageSheetClosed()">
 </app-language-bottom-sheet>

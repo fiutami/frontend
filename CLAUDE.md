@@ -30,6 +30,8 @@
 | search | `src/app/search/` | Ricerca globale |
 | shared | `src/app/shared/` | Componenti condivisi, drawer |
 | user | `src/app/user/` | Account, notifications, saved, friends |
+| adoption | `src/app/adoption/` | Lista/dettaglio adozioni |
+| lost-pets | `src/app/lost-pets/` | Animali smarriti, segnalazioni |
 
 ## Altre Paths
 | Task | Path |

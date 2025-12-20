@@ -4,19 +4,18 @@ import {
   EventEmitter,
   HostListener,
   OnInit,
+  OnDestroy,
   Output,
   PLATFORM_ID,
   inject,
   signal
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
 import { HERO_DOG_ASSET, HERO_WORDMARK_ASSET } from './hero-assets';
 import { environment } from '../../environments/environment';
-
-interface LanguageOption {
-  code: string;
-  label: string;
-}
+import { LanguageService, Language, SupportedLanguage } from '../core/i18n/language.service';
 
 interface SocialProvider {
   id: 'apple' | 'google';
@@ -29,25 +28,26 @@ type LayoutMode = 'portrait' | 'landscape';
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroComponent implements OnInit {
+export class HeroComponent implements OnInit, OnDestroy {
   private readonly heroDogScaleState = signal(1);
   private readonly layoutModeState = signal<LayoutMode>('portrait');
   private readonly headroomRatio = HERO_DOG_ASSET.headroomRatio ?? 0.12;
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly languageService = inject(LanguageService);
+  private destroy$ = new Subject<void>();
 
   readonly heroVariant = 'mobile-v3' as const;
   readonly wordmarkAsset = HERO_WORDMARK_ASSET;
   readonly heroIllustration = HERO_DOG_ASSET;
 
-  readonly languages: LanguageOption[] = [
-    { code: 'it', label: 'Italiano' },
-    { code: 'en', label: 'English' },
-  ];
+  get languages(): Language[] {
+    return this.languageService.availableLanguages;
+  }
 
   readonly socialProviders: SocialProvider[] = [
     { id: 'apple', label: 'Continua con Apple', icon: 'assets/Icon-Brands/Apple.svg' },
@@ -55,30 +55,19 @@ export class HeroComponent implements OnInit {
   ];
 
   readonly legalLinks = [
-    { id: 'terms', label: 'Termini', url: environment.legalUrls.terms },
-    { id: 'privacy', label: 'Privacy', url: environment.legalUrls.privacy },
+    { id: 'terms', labelKey: 'auth.termsAndConditions', url: environment.legalUrls.terms },
+    { id: 'privacy', labelKey: 'auth.privacyPolicy', url: environment.legalUrls.privacy },
   ];
 
-  private readonly languageState = signal<LanguageOption>(this.languages[0]);
   private readonly languageMenuState = signal(false);
-
-  private readonly claims: Record<string, string> = {
-    it: 'Fiuta la tua soluzione ideale',
-    en: 'Sniff your perfect match',
-  };
 
   @Output() readonly login = new EventEmitter<void>();
   @Output() readonly register = new EventEmitter<void>();
   @Output() readonly languageChanged = new EventEmitter<string>();
   @Output() readonly socialSelected = new EventEmitter<'apple' | 'google'>();
 
-  get currentLanguage(): LanguageOption {
-    return this.languageState();
-  }
-
-  get claim(): string {
-    const code = this.currentLanguage.code;
-    return this.claims[code] ?? this.claims["it"];
+  get currentLanguage(): Language {
+    return this.languageService.currentLanguageConfig || this.languages[0];
   }
 
   get isLanguageMenuOpen(): boolean {
@@ -100,6 +89,11 @@ export class HeroComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   @HostListener('window:resize')
   onWindowResize(): void {
     if (this.isBrowser()) {
@@ -112,13 +106,13 @@ export class HeroComponent implements OnInit {
     this.languageMenuState.update((open) => !open);
   }
 
-  selectLanguage(language: LanguageOption): void {
+  selectLanguage(language: Language): void {
     if (language.code === this.currentLanguage.code) {
       this.languageMenuState.set(false);
       return;
     }
 
-    this.languageState.set(language);
+    this.languageService.setLanguage(language.code);
     this.languageChanged.emit(language.code);
     this.languageMenuState.set(false);
   }

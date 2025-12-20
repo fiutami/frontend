@@ -35,7 +35,7 @@
   <app-icon-button
     class="signup__back"
     variant="glass"
-    ariaLabel="Torna indietro"
+    [ariaLabel]="'common.back' | translate"
     (clicked)="onBackClick()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -46,14 +46,14 @@
   <div class="signup__content">
     <app-auth-card>
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup__form">
-        <h2 class="signup__title">Registrati</h2>
+        <h2 class="signup__title">{{ 'auth.signupTitle' | translate }}</h2>
 
         <!-- Email Input -->
         <app-form-input
-          label="Email"
+          [label]="'auth.email' | translate"
           type="email"
           formControlName="email"
-          placeholder="inserisci la tua email"
+          [placeholder]="'auth.emailPlaceholder' | translate"
           autocomplete="email"
           [hasError]="!!(email?.invalid && email?.touched)"
           [errorMessage]="getEmailError()">
@@ -61,22 +61,22 @@
 
         <!-- Password Input -->
         <app-form-input
-          label="Password"
+          [label]="'auth.password' | translate"
           type="password"
           formControlName="password"
-          placeholder="minimo 8 caratteri"
+          [placeholder]="'auth.passwordPlaceholder' | translate"
           autocomplete="new-password"
-          hint="Usa almeno 8 caratteri con lettere e numeri"
+          [hint]="'validation.passwordMinLength' | translate"
           [hasError]="!!(password?.invalid && password?.touched)"
           [errorMessage]="getPasswordError()">
         </app-form-input>
 
         <!-- Confirm Password Input -->
         <app-form-input
-          label="Conferma Password"
+          [label]="'auth.confirmPassword' | translate"
           type="password"
           formControlName="confirmPassword"
-          placeholder="conferma la tua password"
+          [placeholder]="'auth.confirmPasswordPlaceholder' | translate"
           autocomplete="new-password"
           [hasError]="!!(getConfirmPasswordError())"
           [errorMessage]="getConfirmPasswordError()">
@@ -89,7 +89,7 @@
           [fullWidth]="true"
           [disabled]="signupForm.invalid"
           [loading]="isSubmitting">
-          Registrati
+          {{ 'auth.signupButton' | translate }}
         </app-button>
 
         <!-- Error Message -->
