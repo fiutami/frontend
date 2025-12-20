@@ -144,12 +144,11 @@ export class RegisterPetComponent implements OnInit {
   private loadBreedsForSpecies(speciesId: string): void {
     this.isLoadingBreeds.set(true);
     this.breeds.set([]);
+    // Reset breed selection when species changes
+    this.petForm.get('razza')?.setValue('');
 
-    // Map species ID to breeds service ID format
-    const selectedSpecies = this.backendSpecies().find(s => s.id === speciesId);
-    const speciesCode = selectedSpecies?.code?.toLowerCase() || '';
-
-    this.breedsService.getBreedsBySpecies(speciesCode).subscribe({
+    // Use species UUID directly for API call
+    this.breedsService.getBreedsBySpecies(speciesId).subscribe({
       next: (breeds) => {
         this.breeds.set(breeds);
         this.isLoadingBreeds.set(false);

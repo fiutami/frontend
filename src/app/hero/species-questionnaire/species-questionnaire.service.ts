@@ -179,15 +179,25 @@ export class SpeciesQuestionnaireService {
 
   /**
    * Get all species from server
+   * Tries /api/species first, falls back to /api/questionnaire/species
    */
   async getAllSpecies(): Promise<SpeciesDto[]> {
     try {
+      // Try main species endpoint first
       return await firstValueFrom(
-        this.http.get<SpeciesDto[]>(`${this.apiUrl}/species`)
+        this.http.get<SpeciesDto[]>(`${environment.apiUrl}/species`)
       );
     } catch (error) {
-      console.warn('Failed to get species list:', error);
-      return [];
+      console.warn('Failed to get species from /api/species, trying questionnaire endpoint:', error);
+      try {
+        // Fallback to questionnaire endpoint
+        return await firstValueFrom(
+          this.http.get<SpeciesDto[]>(`${this.apiUrl}/species`)
+        );
+      } catch (fallbackError) {
+        console.warn('Failed to get species list:', fallbackError);
+        return [];
+      }
     }
   }
 
