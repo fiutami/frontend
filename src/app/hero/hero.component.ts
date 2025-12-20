@@ -59,7 +59,7 @@ export class HeroComponent implements OnInit, OnDestroy {
     { id: 'privacy', labelKey: 'auth.privacyPolicy', url: environment.legalUrls.privacy },
   ];
 
-  private readonly languageMenuState = signal(false);
+  readonly languageMenuOpen = signal(false);
 
   @Output() readonly login = new EventEmitter<void>();
   @Output() readonly register = new EventEmitter<void>();
@@ -68,10 +68,6 @@ export class HeroComponent implements OnInit, OnDestroy {
 
   get currentLanguage(): Language {
     return this.languageService.currentLanguageConfig || this.languages[0];
-  }
-
-  get isLanguageMenuOpen(): boolean {
-    return this.languageMenuState();
   }
 
   get heroDogScale(): number {
@@ -103,22 +99,22 @@ export class HeroComponent implements OnInit, OnDestroy {
   }
 
   toggleLanguageMenu(): void {
-    this.languageMenuState.update((open) => !open);
+    this.languageMenuOpen.update((open) => !open);
   }
 
   selectLanguage(language: Language): void {
     if (language.code === this.currentLanguage.code) {
-      this.languageMenuState.set(false);
+      this.languageMenuOpen.set(false);
       return;
     }
 
     this.languageService.setLanguage(language.code);
     this.languageChanged.emit(language.code);
-    this.languageMenuState.set(false);
+    this.languageMenuOpen.set(false);
   }
 
   closeLanguageMenu(): void {
-    this.languageMenuState.set(false);
+    this.languageMenuOpen.set(false);
   }
 
   onPrimaryCta(): void {
