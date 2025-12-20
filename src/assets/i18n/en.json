@@ -11,7 +11,8 @@
     "search": "Search",
     "loading": "Loading...",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "next": "Next"
   },
   "auth": {
     "login": "Login",
@@ -407,6 +408,77 @@
       "publish": "Publish listing",
       "noPets": "You have no registered pets",
       "addPet": "Register a pet"
+    }
+  },
+  "lostPets": {
+    "title": "Lost Pets",
+    "heroSubtitle": "Looking for your pet?\nHere you can find all missing pet\nreports in Italy",
+    "emergencyContacts": "Animal rescue services",
+    "reportLost": "Create Report",
+    "nearby": "Near you",
+    "allItaly": "All Italy",
+    "sightings": "sightings",
+    "owner": "Owner",
+    "color": "Color",
+    "lastSeen": "Last seen",
+    "location": "Location",
+    "description": "Description",
+    "found": "Found",
+    "info": "Information",
+    "contact": "Contact",
+    "contactOwner": "Contact owner",
+    "reportSighting": "Report sighting",
+    "viewInYourArea": "View in your area",
+    "searchPlaceholder": "What are you looking for",
+    "detailTitle": "Lost Pet Details",
+    "sightingsTitle": "Sightings",
+    "verified": "Verified",
+    "empty": {
+      "title": "No reports",
+      "subtitle": "No lost pets in your area"
+    },
+    "report": {
+      "title": "Report lost pet",
+      "step1": "Pet",
+      "step2": "Details",
+      "step3": "Contact",
+      "selectPet": "Which pet did you lose?",
+      "noPets": "You have no registered pets",
+      "addPetFirst": "Register a pet first",
+      "locationTime": "Where and when?",
+      "lastSeen": "Last location",
+      "lastSeenPlaceholder": "e.g. Central Park, New York",
+      "city": "City",
+      "cityPlaceholder": "e.g. New York",
+      "when": "When did you last see them?",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe your pet, collar, distinguishing marks...",
+      "descriptionMinLength": "Description must be at least 20 characters",
+      "contactInfo": "How can people reach you?",
+      "phone": "Contact phone",
+      "phonePlaceholder": "+1 555 123 4567",
+      "invalidPhone": "Invalid phone number",
+      "email": "Email",
+      "emailPlaceholder": "example@email.com",
+      "reward": "Reward (optional)",
+      "rewardPlaceholder": "0",
+      "rewardHint": "Optional. May encourage sightings",
+      "summary": "Summary",
+      "pet": "Pet",
+      "submit": "Publish report"
+    },
+    "sighting": {
+      "title": "Report sighting",
+      "formTitle": "Where did you see them?",
+      "where": "Location",
+      "wherePlaceholder": "e.g. 45 Main Street, New York",
+      "when": "When?",
+      "description": "Description (optional)",
+      "descriptionPlaceholder": "Describe what you saw...",
+      "submit": "Submit report",
+      "successTitle": "Thank you for reporting!",
+      "successMessage": "The owner will be notified of your sighting. Together we can help reunite lost pets with their families.",
+      "backToList": "Back to list"
     }
   }
 }

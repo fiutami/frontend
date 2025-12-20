@@ -1,0 +1,399 @@
+.detail-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 100px;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #4A74F0;
+  color: #fff;
+
+  h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .back-btn,
+  .share-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #4A74F0;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+.pet-image-section {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: #e5e5e5;
+
+  .pet-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    background: #e5e5e5;
+  }
+
+  .status-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34, 197, 94, 0.8);
+
+    span {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  .reward-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #F4AE1A;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.info-card {
+  margin: -24px 16px 16px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  .pet-header {
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+
+    h2 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1F2A37;
+    }
+
+    .species-breed {
+      margin: 0;
+      font-size: 14px;
+      color: #4B5563;
+    }
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    .info-item {
+      &.full-width {
+        grid-column: 1 / -1;
+      }
+
+      .label {
+        display: block;
+        font-size: 12px;
+        color: #9ca3af;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .value {
+        font-size: 14px;
+        color: #1F2A37;
+        font-weight: 500;
+
+        &.location {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+
+          svg {
+            flex-shrink: 0;
+            stroke: #4A74F0;
+          }
+        }
+      }
+    }
+  }
+
+  .description-section {
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1F2A37;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #4B5563;
+      line-height: 1.6;
+    }
+  }
+}
+
+.sightings-section {
+  margin: 0 16px 16px;
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F2A37;
+
+    svg {
+      stroke: #4A74F0;
+    }
+  }
+
+  .sightings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sighting-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    &.verified {
+      border-left: 3px solid #22c55e;
+    }
+
+    .sighting-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .reporter {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1F2A37;
+      }
+
+      .time {
+        font-size: 12px;
+        color: #9ca3af;
+      }
+    }
+
+    .sighting-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 8px;
+      font-size: 13px;
+      color: #4B5563;
+
+      svg {
+        flex-shrink: 0;
+        stroke: #4A74F0;
+      }
+    }
+
+    .sighting-description {
+      margin: 0;
+      font-size: 13px;
+      color: #6B7280;
+      font-style: italic;
+    }
+
+    .verified-badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 2px 8px;
+      background: #dcfce7;
+      color: #16a34a;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+  }
+}
+
+.action-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+
+  button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .sighting-btn {
+    background: #F2B830;
+    border: none;
+    color: #fff;
+
+    svg {
+      stroke: #fff;
+    }
+  }
+
+  .contact-btn {
+    background: #4A74F0;
+    border: none;
+    color: #fff;
+
+    svg {
+      stroke: #fff;
+    }
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.contact-modal {
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+
+  .close-modal {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+  }
+
+  h3 {
+    margin: 0 0 24px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F2A37;
+    text-align: center;
+  }
+
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .contact-option {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: #f5f5f5;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: #eee;
+      }
+
+      svg {
+        stroke: #4A74F0;
+        flex-shrink: 0;
+      }
+
+      span {
+        font-size: 16px;
+        color: #1F2A37;
+        font-weight: 500;
+      }
+    }
+  }
+}

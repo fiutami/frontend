@@ -89,6 +89,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Lost Pets - missing animals reports and sightings
+  {
+    path: 'lost-pets',
+    loadChildren: () => import('./lost-pets/lost-pets.module').then(m => m.LostPetsModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',
