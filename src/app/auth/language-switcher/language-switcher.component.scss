@@ -88,7 +88,10 @@
     min-width: 180px;
     z-index: 101;
 
-    @include respond(md) {
+    // On desktop, menu opens toward the right (into screen)
+    @include respond(lg) {
+      right: auto;
+      left: 0;
       background: rgba(255, 255, 255, 0.98);
     }
   }
