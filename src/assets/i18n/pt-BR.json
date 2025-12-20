@@ -41,7 +41,8 @@
     "sendCode": "Enviar código"
   },
   "hero": {
-    "tagline": "Fareja sua solução ideal",
+    "tagline": "Fiuta sua solução ideal",
+    "taglineSub": "sua solução ideal",
     "subtitle": "Encontre serviços e profissionais perto de você",
     "cta": "Começar agora",
     "learnMore": "Saiba mais"

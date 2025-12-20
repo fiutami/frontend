@@ -41,7 +41,8 @@
     "sendCode": "Send Code"
   },
   "hero": {
-    "tagline": "Sniff out your ideal solution",
+    "tagline": "Fiuta your ideal solution",
+    "taglineSub": "your ideal solution",
     "subtitle": "Find services and professionals near you",
     "cta": "Get Started",
     "learnMore": "Learn More"

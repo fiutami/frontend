@@ -64,7 +64,9 @@
       <img [src]="wordmarkAsset" alt="FiutaMi" class="hero-logo__image">
     </div>
 
-    <p class="hero-claim">{{ 'hero.tagline' | translate }}</p>
+    <p class="hero-claim">
+      <em><strong>"Fiuta"</strong></em> {{ 'hero.taglineSub' | translate }}
+    </p>
 
     <div class="hero-ctas">
       <button class="hero-cta hero-cta--primary" type="button" (click)="onPrimaryCta()">
