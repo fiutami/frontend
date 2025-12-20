@@ -44,8 +44,7 @@
   }
 
   // ===== Navigation Buttons =====
-  &__btn-back,
-  &__btn-drawer {
+  &__btn-back {
     position: absolute;
     z-index: 10;
     background: transparent;
@@ -53,6 +52,10 @@
     cursor: pointer;
     padding: 0;
     transition: transform 0.2s ease, opacity 0.2s ease;
+    top: 49px;
+    left: 28px;
+    width: 34px;
+    height: 34px;
 
     &:hover {
       opacity: 0.8;
@@ -70,31 +73,17 @@
 
     img {
       display: block;
-    }
-  }
-
-  &__btn-back {
-    top: 49px;
-    left: 28px;
-    width: 34px;
-    height: 34px;
-
-    img {
       width: 100%;
       height: 100%;
     }
   }
 
+  // Avatar button positioning (component has its own styles)
   &__btn-drawer {
-    top: 32px;
+    position: absolute;
+    z-index: 10;
+    top: 40px;
     right: 20px;
-    width: 34px;
-    height: 61px;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   // ===== Selector Switch =====
