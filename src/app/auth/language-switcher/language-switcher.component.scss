@@ -2,70 +2,127 @@
 @import 'src/styles/mixins';
 
 // ===========================================
-// LANGUAGE SWITCHER - Responsive Design
-// Mobile: White text/icon (on dark background)
-// Tablet/Desktop: DARK text (from Figma - black text visible)
+// LANGUAGE SWITCHER - Dropdown with Menu
 // ===========================================
 
 .language-switcher {
+  position: relative;
   display: inline-flex;
-  align-items: center;
-  gap: $spacing-xs;
-  padding: $spacing-xs $spacing-sm;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: $border-radius-full;
-  color: $color-text-inverse; // White on mobile
-  font-size: $typography-terms-size-mobile;
-  font-weight: 500;
-  cursor: pointer;
-  transition: $transition-base;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 100;
 
-  @include focus-ring(rgba(255, 255, 255, 0.8));
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-sm;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-full;
+    color: $color-text-inverse;
+    font-size: $typography-terms-size-mobile;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition-base;
+    min-height: 44px;
 
-  // Tablet/Desktop: Dark text, no background (from Figma)
-  @include respond(md) {
-    padding: $spacing-sm $spacing-md;
-    font-size: 13px;
-    background: transparent;
-    backdrop-filter: none;
-    border: none;
-    color: $color-text-dark; // Black text on tablet/desktop
-
-    @include focus-ring($color-text-dark);
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-1px);
+    @include focus-ring(rgba(255, 255, 255, 0.8));
 
     @include respond(md) {
-      background: rgba(0, 0, 0, 0.05);
-      border-color: transparent;
+      padding: $spacing-sm $spacing-md;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: $color-text-dark;
+
+      @include focus-ring($color-text-dark);
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-1px);
+
+      @include respond(md) {
+        background: rgba(255, 255, 255, 1);
+        border-color: rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 
-  &:active {
-    transform: translateY(0);
-  }
-
   &__icon {
-    width: 16px;
-    height: 16px;
-    filter: brightness(0) invert(1); // White icon on mobile
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
 
     @include respond(md) {
-      width: 22px;
-      height: 22px;
-      filter: none; // Original dark icon on tablet/desktop
+      width: 20px;
+      height: 20px;
+      filter: none;
     }
   }
 
   &__text {
-    @media (max-width: 360px) {
-      @include visually-hidden;
+    white-space: nowrap;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+    z-index: 101;
+
+    @include respond(md) {
+      background: rgba(255, 255, 255, 0.98);
+    }
+  }
+
+  &__menu-item {
+    margin: 0;
+    padding: 0;
+
+    button {
+      width: 100%;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 12px;
+      background: transparent;
+      color: $color-text-dark;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.06);
+      }
+
+      &[aria-selected='true'] {
+        background: rgba(0, 0, 0, 0.08);
+        font-weight: 600;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $color-primary-500;
+        outline-offset: 2px;
+      }
     }
   }
 }
