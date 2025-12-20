@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of, delay, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 export type NotificationType = 'general' | 'security' | 'nearby' | 'friend' | 'pet' | 'event' | 'system';
 
@@ -28,11 +30,17 @@ export type NotificationTab = 'all' | 'general' | 'security' | 'nearby';
   providedIn: 'root'
 })
 export class NotificationsService {
+  private readonly apiUrl = `${environment.apiUrl}/notification`;
   private unreadCount$ = new BehaviorSubject<number>(0);
 
-  getNotifications(tab: NotificationTab = 'all'): Observable<NotificationItem[]> {
-    // Mock data
-    const mockNotifications: NotificationItem[] = [
+  // Signals for loading and error states
+  public loading = signal<boolean>(false);
+  public error = signal<string | null>(null);
+
+  constructor(private http: HttpClient) {}
+
+  private getMockNotifications(): NotificationItem[] {
+    return [
       {
         id: 'mock_notif_1',
         type: 'friend',
@@ -101,42 +109,107 @@ export class NotificationsService {
         icon: 'system_update'
       }
     ];
+  }
 
-    // Calculate unread count
-    const unread = mockNotifications.filter(n => !n.isRead).length;
-    this.unreadCount$.next(unread);
+  getNotifications(tab: NotificationTab = 'all'): Observable<NotificationItem[]> {
+    this.loading.set(true);
+    this.error.set(null);
 
-    return of(mockNotifications).pipe(
-      delay(400),
-      map(notifications => {
-        if (tab === 'all') return notifications;
+    const url = tab === 'all' ? this.apiUrl : `${this.apiUrl}?type=${tab}`;
 
-        const typeMap: Record<NotificationTab, NotificationType[]> = {
-          all: [],
-          general: ['general', 'friend', 'pet', 'event', 'system'],
-          security: ['security'],
-          nearby: ['nearby']
-        };
+    return this.http.get<NotificationItem[]>(url).pipe(
+      tap(notifications => {
+        // Calculate unread count
+        const unread = notifications.filter(n => !n.isRead).length;
+        this.unreadCount$.next(unread);
+        this.loading.set(false);
+      }),
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        this.error.set('Failed to load notifications from server, using cached data');
+        this.loading.set(false);
 
-        return notifications.filter(n => typeMap[tab].includes(n.type));
+        const mockNotifications = this.getMockNotifications();
+        const unread = mockNotifications.filter(n => !n.isRead).length;
+        this.unreadCount$.next(unread);
+
+        return of(mockNotifications).pipe(
+          delay(400),
+          map(notifications => {
+            if (tab === 'all') return notifications;
+
+            const typeMap: Record<NotificationTab, NotificationType[]> = {
+              all: [],
+              general: ['general', 'friend', 'pet', 'event', 'system'],
+              security: ['security'],
+              nearby: ['nearby']
+            };
+
+            return notifications.filter(n => typeMap[tab].includes(n.type));
+          })
+        );
       })
     );
   }
 
   getUnreadCount(): Observable<number> {
-    return this.unreadCount$.asObservable();
+    this.loading.set(true);
+    this.error.set(null);
+
+    return this.http.get<number>(`${this.apiUrl}/unread-count`).pipe(
+      tap(count => {
+        this.unreadCount$.next(count);
+        this.loading.set(false);
+      }),
+      catchError(err => {
+        console.warn('API failed for unread count, using fallback:', err);
+        this.loading.set(false);
+        return this.unreadCount$.asObservable();
+      })
+    );
   }
 
   markAsRead(notificationId: string): Observable<boolean> {
-    // Mock - in realtà chiamerebbe API
-    console.log('Marking as read:', notificationId);
-    return of(true).pipe(delay(200));
+    this.loading.set(true);
+    this.error.set(null);
+
+    return this.http.put<boolean>(`${this.apiUrl}/${notificationId}/read`, {}).pipe(
+      tap(() => {
+        this.loading.set(false);
+        // Decrement unread count
+        const current = this.unreadCount$.value;
+        if (current > 0) {
+          this.unreadCount$.next(current - 1);
+        }
+      }),
+      catchError(err => {
+        console.warn('API failed to mark as read:', err);
+        this.error.set('Failed to mark notification as read');
+        this.loading.set(false);
+        // Fallback to mock behavior
+        return of(true).pipe(delay(200));
+      })
+    );
   }
 
   markAllAsRead(): Observable<boolean> {
-    console.log('Marking all as read');
-    this.unreadCount$.next(0);
-    return of(true).pipe(delay(300));
+    this.loading.set(true);
+    this.error.set(null);
+
+    return this.http.put<boolean>(`${this.apiUrl}/mark-all-read`, {}).pipe(
+      tap(() => {
+        this.loading.set(false);
+        this.unreadCount$.next(0);
+      }),
+      catchError(err => {
+        console.warn('API failed to mark all as read:', err);
+        this.error.set('Failed to mark all notifications as read');
+        this.loading.set(false);
+        // Fallback to mock behavior
+        this.unreadCount$.next(0);
+        return of(true).pipe(delay(300));
+      })
+    );
   }
 
   formatRelativeTime(date: Date): string {

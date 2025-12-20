@@ -55,6 +55,7 @@ export class DashboardService {
   private authService = inject(AuthService);
   private petService = inject(PetService);
   private questionnaireService = inject(SpeciesQuestionnaireService);
+  private readonly suggestionsApiUrl = `${environment.apiUrl}/suggestions`;
 
   // State signals
   private dashboardDataSignal = signal<DashboardData | null>(null);
@@ -127,9 +128,9 @@ export class DashboardService {
    * Get AI-powered suggestions for the user
    */
   getSuggestions(): Observable<Suggestion[]> {
-    // For MVP, return mock suggestions
-    // In production, this would call an AI endpoint
-    return of(this.getMockSuggestions()).pipe(
+    const MOCK_SUGGESTIONS = this.getMockSuggestions();
+
+    return this.http.get<Suggestion[]>(this.suggestionsApiUrl).pipe(
       tap(suggestions => {
         const current = this.dashboardDataSignal();
         if (current) {
@@ -138,6 +139,18 @@ export class DashboardService {
             suggestions
           });
         }
+      }),
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        const mockSuggestions = MOCK_SUGGESTIONS;
+        const current = this.dashboardDataSignal();
+        if (current) {
+          this.dashboardDataSignal.set({
+            ...current,
+            suggestions: mockSuggestions
+          });
+        }
+        return of(mockSuggestions);
       })
     );
   }

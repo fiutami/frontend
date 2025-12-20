@@ -322,5 +322,29 @@
       "findFriends": "Find friends",
       "mascotMessage": "Fiuto always finds someone to talk to."
     }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "intro": "Have questions, suggestions or need help? We're here for you!",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "selectSubject": "Select a topic",
+    "message": "Message",
+    "messagePlaceholder": "Write your message...",
+    "send": "Send message",
+    "directContacts": "Direct contacts",
+    "subjects": {
+      "support": "Technical support",
+      "bug": "Report a problem",
+      "feature": "Suggest a feature",
+      "partnership": "Partnership",
+      "other": "Other"
+    },
+    "success": {
+      "title": "Message sent!",
+      "subtitle": "We'll get back to you as soon as possible",
+      "back": "Go back"
+    }
   }
 }

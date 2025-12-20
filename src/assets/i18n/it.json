@@ -322,5 +322,29 @@
       "findFriends": "Trova amici",
       "mascotMessage": "Fiuto trova sempre qualcuno con cui parlare."
     }
+  },
+  "contact": {
+    "title": "Contattaci",
+    "intro": "Hai domande, suggerimenti o bisogno di aiuto? Siamo qui per te!",
+    "name": "Nome",
+    "email": "Email",
+    "subject": "Oggetto",
+    "selectSubject": "Seleziona un argomento",
+    "message": "Messaggio",
+    "messagePlaceholder": "Scrivi il tuo messaggio...",
+    "send": "Invia messaggio",
+    "directContacts": "Contatti diretti",
+    "subjects": {
+      "support": "Supporto tecnico",
+      "bug": "Segnala un problema",
+      "feature": "Suggerisci una funzionalità",
+      "partnership": "Partnership",
+      "other": "Altro"
+    },
+    "success": {
+      "title": "Messaggio inviato!",
+      "subtitle": "Ti risponderemo il prima possibile",
+      "back": "Torna indietro"
+    }
   }
 }

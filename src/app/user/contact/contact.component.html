@@ -1,0 +1,81 @@
+<div class="contact-container">
+  <header class="contact-header">
+    <button class="back-btn" (click)="goBack()">&#8592;</button>
+    <h1>{{ 'contact.title' | translate }}</h1>
+  </header>
+
+  <div class="contact-content">
+    <!-- Success State -->
+    <div *ngIf="sent" class="success-state">
+      <div class="icon">&#10004;</div>
+      <h2>{{ 'contact.success.title' | translate }}</h2>
+      <p>{{ 'contact.success.subtitle' | translate }}</p>
+      <button class="btn-primary" (click)="goBack()">
+        {{ 'contact.success.back' | translate }}
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form *ngIf="!sent" (ngSubmit)="submitForm()">
+      <div class="intro">
+        <p>{{ 'contact.intro' | translate }}</p>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'contact.name' | translate }}</label>
+        <input type="text" [(ngModel)]="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'contact.email' | translate }}</label>
+        <input type="email" [(ngModel)]="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'contact.subject' | translate }}</label>
+        <select [(ngModel)]="subject" name="subject" required>
+          <option value="">{{ 'contact.selectSubject' | translate }}</option>
+          <option *ngFor="let s of subjects" [value]="s.value">
+            {{ s.label | translate }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'contact.message' | translate }}</label>
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          rows="5"
+          required
+          placeholder="{{ 'contact.messagePlaceholder' | translate }}"></textarea>
+      </div>
+
+      <div class="error" *ngIf="error">{{ error }}</div>
+
+      <button type="submit" class="btn-submit" [disabled]="sending">
+        {{ sending ? '...' : ('contact.send' | translate) }}
+      </button>
+    </form>
+
+    <!-- Contatti Diretti -->
+    <div class="direct-contacts" *ngIf="!sent">
+      <h3>{{ 'contact.directContacts' | translate }}</h3>
+
+      <a href="mailto:support@fiutami.pet" class="contact-item">
+        <span class="icon">&#128231;</span>
+        <span class="text">support&#64;fiutami.pet</span>
+      </a>
+
+      <a href="https://instagram.com/fiutami" target="_blank" class="contact-item">
+        <span class="icon">&#128248;</span>
+        <span class="text">&#64;fiutami</span>
+      </a>
+
+      <a href="https://facebook.com/fiutami" target="_blank" class="contact-item">
+        <span class="icon">&#128077;</span>
+        <span class="text">FIUTAMI</span>
+      </a>
+    </div>
+  </div>
+</div>

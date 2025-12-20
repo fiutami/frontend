@@ -252,7 +252,8 @@ export class MapViewComponent implements AfterViewInit, OnDestroy {
   }
 
   toggleFavorite(poi: POI): void {
-    this.poiService.toggleFavorite(poi.id).subscribe(isFavorite => {
+    const newFavoriteState = !poi.isFavorite;
+    this.poiService.toggleFavorite(poi.id, newFavoriteState).subscribe(isFavorite => {
       const updatedPOIs = this.pois().map(p =>
         p.id === poi.id ? { ...p, isFavorite } : p
       );

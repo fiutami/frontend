@@ -11,6 +11,7 @@ import { ActivityComponent } from './activity/activity.component';
 import { SavedComponent } from './saved/saved.component';
 import { FriendsComponent } from './friends/friends.component';
 import { InviteComponent } from './invite/invite.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
       { path: 'activity', component: ActivityComponent },
       { path: 'saved', component: SavedComponent },
       { path: 'friends', component: FriendsComponent },
-      { path: 'invite', component: InviteComponent }
+      { path: 'invite', component: InviteComponent },
+      { path: 'contact', component: ContactComponent }
     ]
   }
 ];

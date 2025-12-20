@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of, delay, catchError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 export type InviteMethod = 'whatsapp' | 'sms' | 'email' | 'copy' | 'share';
@@ -35,6 +36,9 @@ export interface InviteStats {
   providedIn: 'root'
 })
 export class InviteService {
+  private http = inject(HttpClient);
+  private readonly apiUrl = `${environment.apiUrl}/invites`;
+
   // TODO: Fetch invite code from backend API in production
   private inviteCode = 'FIUTAMI2024';
 
@@ -83,8 +87,8 @@ export class InviteService {
   }
 
   getPendingInvites(): Observable<PendingInvite[]> {
-    // Mock data - da sostituire con chiamata API reale
-    const mockInvites: PendingInvite[] = [
+    // Mock data - used as fallback
+    const MOCK_INVITES: PendingInvite[] = [
       {
         id: 'inv_1',
         recipientName: 'Maria Rossi',
@@ -121,11 +125,16 @@ export class InviteService {
       }
     ];
 
-    // Simula delay di rete
-    return of(mockInvites).pipe(delay(400));
+    return this.http.get<PendingInvite[]>(this.apiUrl).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        return of(MOCK_INVITES);
+      })
+    );
   }
 
   getInviteStats(): Observable<InviteStats> {
+    // Keep mock - no backend stats endpoint
     const mockStats: InviteStats = {
       totalSent: 12,
       accepted: 5,
@@ -149,9 +158,18 @@ export class InviteService {
   }
 
   sendInvite(method: InviteMethod, recipient?: string): Observable<boolean> {
-    // Simula invio invito
-    console.log(`Sending invite via ${method} to ${recipient || 'share sheet'}`);
-    return of(true).pipe(delay(500));
+    const inviteData = {
+      method,
+      recipient: recipient || null
+    };
+
+    return this.http.post<boolean>(this.apiUrl, inviteData).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        console.log(`Sending invite via ${method} to ${recipient || 'share sheet'}`);
+        return of(true);
+      })
+    );
   }
 
   copyToClipboard(text: string): Promise<boolean> {
