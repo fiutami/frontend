@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy, signal, computed } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Subject, takeUntil, forkJoin, of, catchError } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetService } from '../../core/services/pet.service';
+import { SpeciesInfoService } from '../../core/services/species-info.service';
 import {
   PetProfile,
   PetPhoto,
@@ -23,6 +24,7 @@ type ProfileTab = 'gallery' | 'friends' | 'memories' | 'info';
 })
 export class PetProfileComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
+  private speciesInfoService = inject(SpeciesInfoService);
 
   // State signals
   pet = signal<PetProfile | null>(null);
@@ -33,6 +35,9 @@ export class PetProfileComponent implements OnInit, OnDestroy {
   loading = signal<boolean>(true);
   error = signal<string | null>(null);
   activeTab = signal<ProfileTab>('gallery');
+
+  // Human age conversion
+  humanAge = signal<{ humanYears: number; stage: string } | null>(null);
 
   // Computed values
   hasPhotos = computed(() => this.photos().length > 0);
@@ -102,6 +107,11 @@ export class PetProfileComponent implements OnInit, OnDestroy {
           if (data.profile.breedId) {
             this.loadBreedFacts(data.profile.breedId);
           }
+
+          // Calculate human age if birthDate is available
+          if (data.profile.birthDate) {
+            this.calculateHumanAge(data.profile);
+          }
         } else {
           this.error.set('Pet not found');
         }
@@ -123,6 +133,50 @@ export class PetProfileComponent implements OnInit, OnDestroy {
       )
       .subscribe(facts => {
         this.breedFacts.set(facts);
+      });
+  }
+
+  /**
+   * Calculate human-equivalent age for the pet
+   */
+  private calculateHumanAge(profile: PetProfile): void {
+    if (!profile.birthDate) return;
+
+    // Calculate pet age in months
+    const birthDate = new Date(profile.birthDate);
+    const now = new Date();
+    const diffMs = now.getTime() - birthDate.getTime();
+    const petAgeMonths = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 30.44));
+
+    // Determine species code from species name
+    const speciesLower = profile.species.toLowerCase();
+    let speciesCode: string;
+    if (speciesLower.includes('gatto') || speciesLower.includes('cat')) {
+      speciesCode = 'cat';
+    } else if (speciesLower.includes('cane') || speciesLower.includes('dog')) {
+      speciesCode = 'dog';
+    } else {
+      speciesCode = 'other';
+    }
+
+    // Determine size category for dogs based on weight
+    let sizeCategory: 'small' | 'medium' | 'large' | 'giant' | undefined;
+    if (speciesCode === 'dog' && profile.weight) {
+      if (profile.weight < 10) {
+        sizeCategory = 'small';
+      } else if (profile.weight < 25) {
+        sizeCategory = 'medium';
+      } else if (profile.weight < 45) {
+        sizeCategory = 'large';
+      } else {
+        sizeCategory = 'giant';
+      }
+    }
+
+    this.speciesInfoService.calculateHumanAge(speciesCode, petAgeMonths, sizeCategory)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(result => {
+        this.humanAge.set(result);
       });
   }
 
