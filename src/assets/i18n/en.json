@@ -360,5 +360,53 @@
     },
     "info": "Blocked users cannot send you messages, see your profile, or interact with your content.",
     "confirmUnblock": "Do you want to unblock this user?"
+  },
+  "adoption": {
+    "title": "Adoptions",
+    "allSpecies": "All species",
+    "cityPlaceholder": "City...",
+    "createAd": "Create listing",
+    "free": "Free",
+    "sponsorText": "FIUTAMI partner shelters",
+    "empty": {
+      "title": "No listings",
+      "subtitle": "No pets looking for homes in your area"
+    },
+    "status": {
+      "available": "Available",
+      "pending": "Pending",
+      "adopted": "Adopted",
+      "cancelled": "Cancelled"
+    },
+    "detail": {
+      "contact": "Contact",
+      "requirements": "Requirements",
+      "adoptionFee": "Adoption fee",
+      "description": "Description",
+      "postedBy": "Posted by",
+      "views": "views",
+      "markAdopted": "Mark as adopted",
+      "cancelListing": "Remove listing"
+    },
+    "create": {
+      "title": "Create listing",
+      "editTitle": "Edit listing",
+      "selectPet": "Select pet",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe the personality, habits and why you're looking for a new family...",
+      "fee": "Adoption fee",
+      "feePlaceholder": "0",
+      "feeHint": "Leave empty for free",
+      "location": "Location",
+      "locationPlaceholder": "e.g. Milan, Lombardy",
+      "city": "City",
+      "cityPlaceholder": "e.g. Milan",
+      "requirements": "Requirements for adopter",
+      "requirementsPlaceholder": "e.g. Garden, experience with dogs...",
+      "allowMessages": "Allow messages",
+      "publish": "Publish listing",
+      "noPets": "You have no registered pets",
+      "addPet": "Register a pet"
+    }
   }
 }

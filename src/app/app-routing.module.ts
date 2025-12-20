@@ -82,6 +82,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Adoption - pet adoption listings
+  {
+    path: 'adoption',
+    loadChildren: () => import('./adoption/adoption.module').then(m => m.AdoptionModule),
+    canActivate: [AuthGuard]
+  },
+
   // Test route - Hero with video instead of image (no auth required for testing)
   {
     path: 'test-video',

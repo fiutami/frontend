@@ -1,0 +1,105 @@
+<div class="detail-container">
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error && !loading" class="error-container">
+    <button class="back-btn" (click)="goBack()">←</button>
+    <p>{{ 'errors.notFound' | translate }}</p>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="!loading && !error && adoption" class="content">
+    <!-- Header with image -->
+    <div class="photo-header">
+      <button class="back-btn" (click)="goBack()">←</button>
+      <img *ngIf="adoption.petPhotoUrl" [src]="adoption.petPhotoUrl" [alt]="adoption.petName">
+      <div *ngIf="!adoption.petPhotoUrl" class="photo-placeholder">
+        <span>🐾</span>
+      </div>
+      <div class="status-chip" [attr.data-status]="adoption.status">
+        {{ getStatusLabel(adoption.status) | translate }}
+      </div>
+    </div>
+
+    <!-- Pet Info -->
+    <div class="info-section">
+      <h1>{{ adoption.petName }}</h1>
+      <div class="meta-row">
+        <span class="species">{{ adoption.petSpecies }}</span>
+        <span *ngIf="adoption.petBreed" class="breed">• {{ adoption.petBreed }}</span>
+        <span *ngIf="adoption.petAge" class="age">• {{ adoption.petAge }}</span>
+      </div>
+      <div class="location">
+        <span class="icon">📍</span>
+        <span>{{ adoption.city || adoption.location }}</span>
+      </div>
+    </div>
+
+    <!-- Fee -->
+    <div class="fee-section" *ngIf="adoption.adoptionFee !== undefined">
+      <h3>{{ 'adoption.detail.adoptionFee' | translate }}</h3>
+      <span class="fee-amount">
+        {{ adoption.adoptionFee === 0 ? ('adoption.free' | translate) : '€' + adoption.adoptionFee }}
+      </span>
+    </div>
+
+    <!-- Description -->
+    <div class="description-section">
+      <h3>{{ 'adoption.detail.description' | translate }}</h3>
+      <p>{{ adoption.description }}</p>
+    </div>
+
+    <!-- Requirements -->
+    <div class="requirements-section" *ngIf="adoption.requirements">
+      <h3>{{ 'adoption.detail.requirements' | translate }}</h3>
+      <p>{{ adoption.requirements }}</p>
+    </div>
+
+    <!-- Owner Info -->
+    <div class="owner-section">
+      <h3>{{ 'adoption.detail.postedBy' | translate }}</h3>
+      <div class="owner-row">
+        <div class="owner-avatar">👤</div>
+        <div class="owner-info">
+          <span class="owner-name">{{ adoption.ownerName }}</span>
+          <span class="post-date">{{ adoption.createdAt | date:'dd/MM/yyyy' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+      <div class="stat">
+        <span class="icon">👁️</span>
+        <span class="value">{{ adoption.viewCount }}</span>
+        <span class="label">{{ 'adoption.detail.views' | translate }}</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions" *ngIf="adoption.status === 'available'">
+      <button
+        *ngIf="adoption.allowMessages && !isOwner"
+        class="btn-primary"
+        (click)="contactOwner()">
+        {{ 'adoption.detail.contact' | translate }}
+      </button>
+
+      <!-- Owner actions -->
+      <ng-container *ngIf="isOwner">
+        <button class="btn-secondary" (click)="editAdoption()">
+          {{ 'common.edit' | translate }}
+        </button>
+        <button class="btn-success" (click)="markAsAdopted()">
+          {{ 'adoption.detail.markAdopted' | translate }}
+        </button>
+        <button class="btn-danger" (click)="cancelAdoption()">
+          {{ 'adoption.detail.cancelListing' | translate }}
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
