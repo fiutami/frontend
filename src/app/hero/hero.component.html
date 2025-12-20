@@ -10,7 +10,7 @@
       class="hero-language__button"
       type="button"
       aria-haspopup="listbox"
-      [attr.aria-expanded]="isLanguageMenuOpen"
+      [attr.aria-expanded]="languageMenuOpen()"
       aria-controls="hero-language-menu"
       (click)="toggleLanguageMenu()" (keydown.escape)="closeLanguageMenu()"
     >
@@ -18,25 +18,28 @@
       <span class="hero-language__label">{{ currentLanguage.flag }} {{ currentLanguage.nativeName }}</span>
     </button>
 
-    <ul
-      *ngIf="isLanguageMenuOpen"
-      id="hero-language-menu"
-      class="hero-language__menu"
-      role="listbox"
-      tabindex="-1"
-      (keydown.escape)="closeLanguageMenu()"
-    >
-      <li *ngFor="let language of languages" class="hero-language__menu-item">
-        <button
-          type="button"
-          role="option"
-          [attr.aria-selected]="language.code === currentLanguage.code"
-          (click)="selectLanguage(language)"
-        >
-          {{ language.flag }} {{ language.nativeName }}
-        </button>
-      </li>
-    </ul>
+    @if (languageMenuOpen()) {
+      <ul
+        id="hero-language-menu"
+        class="hero-language__menu"
+        role="listbox"
+        tabindex="-1"
+        (keydown.escape)="closeLanguageMenu()"
+      >
+        @for (language of languages; track language.code) {
+          <li class="hero-language__menu-item">
+            <button
+              type="button"
+              role="option"
+              [attr.aria-selected]="language.code === currentLanguage.code"
+              (click)="selectLanguage(language)"
+            >
+              {{ language.flag }} {{ language.nativeName }}
+            </button>
+          </li>
+        }
+      </ul>
+    }
   </header>
 
   <div class="hero-illustration" aria-hidden="true">

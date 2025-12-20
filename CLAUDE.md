@@ -62,8 +62,10 @@ npm test        # Unit tests
 | /api/notification | Notifiche |
 | /api/activity | Feed attività |
 | /api/saved | Elementi salvati |
-| /api/friends | Amicizie pet |
-| /api/block | Utenti bloccati |
+| /api/friends | Amicizie utente |
+| /api/pets/:id/friends | Amicizie pet |
+| /api/pets/:id/antagonists | Nemici pet |
+| /api/users/blocked | Utenti bloccati |
 | /api/invites | Inviti |
 | /api/suggestions | Suggerimenti AI |
 | /api/adoption | Adozioni |
