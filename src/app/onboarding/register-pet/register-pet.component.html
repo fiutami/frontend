@@ -84,30 +84,58 @@
         <label class="register-pet__label" for="specie">
           Specie <span class="register-pet__required">*</span>
         </label>
-        <select
-          id="specie"
-          formControlName="specie"
-          class="register-pet__select"
-          [class.register-pet__select--error]="getFieldError('specie')">
-          <option value="" disabled>Seleziona specie</option>
-          @for (option of speciesOptions; track option.value) {
-            <option [value]="option.value">{{ option.label }}</option>
+        @if (isLoadingSpecies()) {
+          <div class="register-pet__loading-field">
+            <span class="register-pet__spinner-small"></span>
+            Caricamento specie...
+          </div>
+        } @else if (speciesError()) {
+          <div class="register-pet__field-error-box">
+            {{ speciesError() }}
+          </div>
+        } @else {
+          <select
+            id="specie"
+            formControlName="specie"
+            class="register-pet__select"
+            [class.register-pet__select--error]="getFieldError('specie')">
+            <option value="" disabled>Seleziona specie</option>
+            @for (option of speciesOptions; track option.value) {
+              <option [value]="option.value">{{ option.label }}</option>
+            }
+          </select>
+          @if (getFieldError('specie')) {
+            <span class="register-pet__field-error">{{ getFieldError('specie') }}</span>
           }
-        </select>
-        @if (getFieldError('specie')) {
-          <span class="register-pet__field-error">{{ getFieldError('specie') }}</span>
         }
       </div>
 
       <!-- Razza -->
       <div class="register-pet__field">
         <label class="register-pet__label" for="razza">Razza</label>
-        <input
-          type="text"
-          id="razza"
-          formControlName="razza"
-          class="register-pet__input"
-          placeholder="Es. Labrador, Persiano..." />
+        @if (isLoadingBreeds()) {
+          <div class="register-pet__loading-field">
+            <span class="register-pet__spinner-small"></span>
+            Caricamento razze...
+          </div>
+        } @else if (breedOptions.length > 0) {
+          <select
+            id="razza"
+            formControlName="razza"
+            class="register-pet__select">
+            <option value="">Seleziona razza (opzionale)</option>
+            @for (option of breedOptions; track option.value) {
+              <option [value]="option.label">{{ option.label }}</option>
+            }
+          </select>
+        } @else {
+          <input
+            type="text"
+            id="razza"
+            formControlName="razza"
+            class="register-pet__input"
+            placeholder="Es. Labrador, Persiano..." />
+        }
       </div>
 
       <!-- Sesso -->
@@ -185,7 +213,7 @@
       <button
         type="submit"
         class="register-pet__submit"
-        [disabled]="isLoading() || isUploading()">
+        [disabled]="isLoading() || isUploading() || isLoadingSpecies() || speciesError()">
         @if (isUploading()) {
           <span class="register-pet__spinner"></span>
           Caricamento foto...
