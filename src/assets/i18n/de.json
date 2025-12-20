@@ -325,5 +325,288 @@
       "findFriends": "Freunde finden",
       "mascotMessage": "Fiuto findet immer jemanden zum Reden."
     }
+  },
+  "adoption": {
+    "title": "Adoptionen",
+    "allSpecies": "Alle Tierarten",
+    "cityPlaceholder": "Stadt...",
+    "createAd": "Anzeige erstellen",
+    "free": "Kostenlos",
+    "sponsorText": "FIUTAMI Partner-Tierheime",
+    "empty": {
+      "title": "Keine Anzeigen",
+      "subtitle": "Keine Tiere suchen ein Zuhause in deiner Nähe"
+    },
+    "status": {
+      "available": "Verfügbar",
+      "pending": "Ausstehend",
+      "adopted": "Adoptiert",
+      "cancelled": "Storniert"
+    },
+    "detail": {
+      "contact": "Kontakt",
+      "requirements": "Anforderungen",
+      "adoptionFee": "Adoptionsgebühr",
+      "description": "Beschreibung",
+      "postedBy": "Veröffentlicht von",
+      "views": "Aufrufe",
+      "markAdopted": "Als adoptiert markieren",
+      "cancelListing": "Anzeige entfernen"
+    },
+    "create": {
+      "title": "Anzeige erstellen",
+      "editTitle": "Anzeige bearbeiten",
+      "selectPet": "Haustier auswählen",
+      "description": "Beschreibung",
+      "descriptionPlaceholder": "Beschreibe den Charakter, Gewohnheiten und warum du eine neue Familie suchst...",
+      "fee": "Adoptionsgebühr",
+      "feePlaceholder": "0",
+      "feeHint": "Leer lassen für kostenlos",
+      "location": "Standort",
+      "locationPlaceholder": "z.B. München, Bayern",
+      "city": "Stadt",
+      "cityPlaceholder": "z.B. München",
+      "requirements": "Anforderungen an Adoptierende",
+      "requirementsPlaceholder": "z.B. Garten, Erfahrung mit Hunden...",
+      "allowMessages": "Nachrichten erlauben",
+      "publish": "Anzeige veröffentlichen",
+      "noPets": "Du hast keine registrierten Haustiere",
+      "addPet": "Haustier registrieren"
+    }
+  },
+  "blocked": {
+    "title": "Blockierte Benutzer",
+    "subtitle": "Jede Gruppe hat ihr Gleichgewicht. Wenn jemand nicht zu dir passt, kannst du ihn hier blockieren.",
+    "sectionTitle": "Blockierte Benutzer",
+    "select": "Auswählen",
+    "cancel": "Abbrechen",
+    "unblock": "Entsperren",
+    "unblockSelected": "Ausgewählte entsperren",
+    "empty": {
+      "text": "Du hast keine Benutzer blockiert"
+    },
+    "info": "Blockierte Benutzer können dir keine Nachrichten senden, dein Profil sehen oder mit deinen Inhalten interagieren.",
+    "confirmUnblock": "Möchtest du diesen Benutzer entsperren?"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "intro": "Hast du Fragen, Vorschläge oder brauchst Hilfe? Wir sind für dich da!",
+    "name": "Name",
+    "email": "E-Mail",
+    "subject": "Betreff",
+    "selectSubject": "Thema auswählen",
+    "message": "Nachricht",
+    "messagePlaceholder": "Schreibe deine Nachricht...",
+    "send": "Nachricht senden",
+    "directContacts": "Direktkontakte",
+    "subjects": {
+      "support": "Technischer Support",
+      "bug": "Problem melden",
+      "feature": "Funktion vorschlagen",
+      "partnership": "Partnerschaft",
+      "other": "Sonstiges"
+    },
+    "success": {
+      "title": "Nachricht gesendet!",
+      "subtitle": "Wir antworten so schnell wie möglich",
+      "back": "Zurück"
+    }
+  },
+  "lostPets": {
+    "title": "Vermisste Tiere",
+    "heroSubtitle": "Suchst du dein Haustier?\nHier findest du alle Anzeigen von vermissten Tieren\nin Deutschland",
+    "emergencyContacts": "Tierrettungsstellen",
+    "reportLost": "Anzeige erstellen",
+    "nearby": "In deiner Nähe",
+    "allItaly": "Ganz Deutschland",
+    "sightings": "Sichtungen",
+    "owner": "Besitzer",
+    "color": "Farbe",
+    "lastSeen": "Zuletzt gesehen",
+    "location": "Standort",
+    "description": "Beschreibung",
+    "found": "Gefunden",
+    "info": "Informationen",
+    "contact": "Kontakt",
+    "contactOwner": "Besitzer kontaktieren",
+    "reportSighting": "Sichtung melden",
+    "viewInYourArea": "In deiner Nähe ansehen",
+    "searchPlaceholder": "Was suchst du",
+    "detailTitle": "Details zur Vermisstenanzeige",
+    "sightingsTitle": "Sichtungen",
+    "verified": "Verifiziert",
+    "empty": {
+      "title": "Keine Meldungen",
+      "subtitle": "Keine vermissten Tiere in deiner Nähe"
+    },
+    "report": {
+      "title": "Vermisst melden",
+      "step1": "Tier",
+      "step2": "Details",
+      "step3": "Kontakt",
+      "selectPet": "Welches Tier hast du verloren?",
+      "noPets": "Du hast keine registrierten Haustiere",
+      "addPetFirst": "Registriere zuerst ein Haustier",
+      "locationTime": "Wo und wann?",
+      "lastSeen": "Letzter Standort",
+      "lastSeenPlaceholder": "z.B. Englischer Garten, München",
+      "city": "Stadt",
+      "cityPlaceholder": "z.B. München",
+      "when": "Wann hast du es zuletzt gesehen?",
+      "description": "Beschreibung",
+      "descriptionPlaceholder": "Beschreibe dein Tier, Halsband, besondere Merkmale...",
+      "descriptionMinLength": "Die Beschreibung muss mindestens 20 Zeichen haben",
+      "contactInfo": "Wie kann man dich erreichen?",
+      "phone": "Kontakttelefon",
+      "phonePlaceholder": "+49 170 1234567",
+      "invalidPhone": "Ungültige Telefonnummer",
+      "email": "E-Mail",
+      "emailPlaceholder": "beispiel@email.de",
+      "reward": "Belohnung (optional)",
+      "rewardPlaceholder": "0",
+      "rewardHint": "Optional. Kann Sichtungen fördern",
+      "summary": "Zusammenfassung",
+      "pet": "Tier",
+      "submit": "Meldung veröffentlichen"
+    },
+    "sighting": {
+      "title": "Sichtung melden",
+      "formTitle": "Wo hast du es gesehen?",
+      "where": "Standort",
+      "wherePlaceholder": "z.B. Hauptstraße 45, München",
+      "when": "Wann?",
+      "description": "Beschreibung (optional)",
+      "descriptionPlaceholder": "Beschreibe was du gesehen hast...",
+      "submit": "Sichtung senden",
+      "successTitle": "Danke für die Meldung!",
+      "successMessage": "Der Besitzer wird informiert. Gemeinsam können wir helfen, vermisste Tiere zu finden.",
+      "backToList": "Zurück zur Liste"
+    }
+  },
+  "breeds": {
+    "title": "Tierarten",
+    "subtitle": "Schnüffle und entdecke",
+    "description": "Jede Art erzählt eine Geschichte",
+    "searchPlaceholder": "Rasse suchen...",
+    "back": "Zurück",
+    "openMenu": "Menü öffnen",
+    "speciesInfo": "Arteninformationen",
+    "noResults": "Keine Rassen gefunden",
+    "loading": "Laden...",
+    "tabs": {
+      "dna": "DNA & Herkunft",
+      "size": "Größe & Fell",
+      "temperament": "Temperament",
+      "rituals": "Routine",
+      "risks": "Risiken",
+      "pedigree": "Stammbaum"
+    }
+  },
+  "map": {
+    "title": "Karte",
+    "subtitle": "Aktivitäten, Events und Freunde",
+    "description": "Finde was dein Haustier braucht, genau wo du bist",
+    "searchPlaceholder": "Was suchst du",
+    "back": "Zurück",
+    "menu": "Menü",
+    "filters": "Filter",
+    "activities": "Aktivitäten",
+    "events": "Events",
+    "friends": "Freunde in der Nähe",
+    "loading": "Karte wird geladen...",
+    "locationError": "Standort konnte nicht ermittelt werden",
+    "enableLocation": "Standortdienste aktivieren"
+  },
+  "home": {
+    "greeting": "Hallo",
+    "greetingMorning": "Guten Morgen",
+    "greetingAfternoon": "Guten Tag",
+    "greetingEvening": "Guten Abend",
+    "subtitle": "Was machen wir heute?",
+    "suggestions": {
+      "title": "Vorschläge für dich",
+      "viewAll": "Alle anzeigen"
+    },
+    "quickActions": {
+      "calendar": "Kalender",
+      "map": "Karte",
+      "gallery": "Galerie",
+      "breeds": "Rassen"
+    },
+    "noPets": {
+      "title": "Keine Haustiere registriert",
+      "subtitle": "Registriere deinen ersten pelzigen Freund",
+      "cta": "Haustier hinzufügen"
+    }
+  },
+  "calendar": {
+    "title": "Kalender",
+    "subtitle": "Deine Termine und Veranstaltungen",
+    "today": "Heute",
+    "month": "Monat",
+    "week": "Woche",
+    "day": "Tag",
+    "addEvent": "Termin hinzufügen",
+    "noEvents": "Keine Termine",
+    "noEventsToday": "Heute keine Termine",
+    "types": {
+      "vet": "Tierarzt",
+      "grooming": "Fellpflege",
+      "walk": "Spaziergang",
+      "vaccine": "Impfung",
+      "medicine": "Medikament",
+      "birthday": "Geburtstag",
+      "other": "Sonstiges"
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "tabs": {
+      "info": "Info",
+      "gallery": "Galerie",
+      "friends": "Freunde",
+      "memories": "Erinnerungen"
+    },
+    "stats": {
+      "age": "Alter",
+      "weight": "Gewicht",
+      "friends": "Freunde",
+      "photos": "Fotos"
+    },
+    "empty": {
+      "gallery": "Noch keine Fotos",
+      "friends": "Noch keine Freunde",
+      "memories": "Noch keine Erinnerungen"
+    }
+  },
+  "user": {
+    "account": {
+      "title": "Konto",
+      "back": "Zurück",
+      "name": "Name",
+      "namePlaceholder": "Dein Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "phonePlaceholder": "+49 170 1234567",
+      "save": "Änderungen speichern",
+      "changePassword": "Passwort ändern",
+      "deleteAccount": "Konto löschen"
+    },
+    "notifications": {
+      "back": "Zurück"
+    },
+    "saved": {
+      "searchPlaceholder": "Was suchst du"
+    },
+    "friends": {
+      "searchPlaceholder": "Freunde suchen..."
+    },
+    "invite": {
+      "searchPlaceholder": "Kontakt suchen",
+      "email": "E-Mail"
+    },
+    "activity": {
+      "back": "Zurück"
+    }
   }
 }

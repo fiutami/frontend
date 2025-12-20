@@ -325,5 +325,288 @@
       "findFriends": "Trouver des amis",
       "mascotMessage": "Fiuto trouve toujours quelqu'un avec qui parler."
     }
+  },
+  "adoption": {
+    "title": "Adoptions",
+    "allSpecies": "Toutes les espèces",
+    "cityPlaceholder": "Ville...",
+    "createAd": "Créer une annonce",
+    "free": "Gratuit",
+    "sponsorText": "Refuges partenaires FIUTAMI",
+    "empty": {
+      "title": "Aucune annonce",
+      "subtitle": "Aucun animal ne cherche un foyer dans ta région"
+    },
+    "status": {
+      "available": "Disponible",
+      "pending": "En attente",
+      "adopted": "Adopté",
+      "cancelled": "Annulé"
+    },
+    "detail": {
+      "contact": "Contacter",
+      "requirements": "Conditions",
+      "adoptionFee": "Frais d'adoption",
+      "description": "Description",
+      "postedBy": "Publié par",
+      "views": "vues",
+      "markAdopted": "Marquer comme adopté",
+      "cancelListing": "Supprimer l'annonce"
+    },
+    "create": {
+      "title": "Créer une annonce",
+      "editTitle": "Modifier l'annonce",
+      "selectPet": "Sélectionne l'animal",
+      "description": "Description",
+      "descriptionPlaceholder": "Décris le caractère, les habitudes et pourquoi tu cherches une nouvelle famille...",
+      "fee": "Frais d'adoption",
+      "feePlaceholder": "0",
+      "feeHint": "Laisse vide pour gratuit",
+      "location": "Lieu",
+      "locationPlaceholder": "ex. Paris, Île-de-France",
+      "city": "Ville",
+      "cityPlaceholder": "ex. Paris",
+      "requirements": "Conditions pour l'adoptant",
+      "requirementsPlaceholder": "ex. Jardin, expérience avec les chiens...",
+      "allowMessages": "Autoriser les messages",
+      "publish": "Publier l'annonce",
+      "noPets": "Tu n'as pas d'animaux enregistrés",
+      "addPet": "Enregistrer un animal"
+    }
+  },
+  "blocked": {
+    "title": "Utilisateurs Bloqués",
+    "subtitle": "Chaque groupe a son équilibre. Si quelqu'un ne correspond pas à tes vibrations, tu peux le bloquer ici.",
+    "sectionTitle": "Utilisateurs Bloqués",
+    "select": "Sélectionner",
+    "cancel": "Annuler",
+    "unblock": "Débloquer",
+    "unblockSelected": "Débloquer les sélectionnés",
+    "empty": {
+      "text": "Tu n'as bloqué aucun utilisateur"
+    },
+    "info": "Les utilisateurs bloqués ne peuvent pas t'envoyer de messages, voir ton profil ou interagir avec ton contenu.",
+    "confirmUnblock": "Veux-tu débloquer cet utilisateur ?"
+  },
+  "contact": {
+    "title": "Contacte-nous",
+    "intro": "Tu as des questions, suggestions ou besoin d'aide ? Nous sommes là pour toi !",
+    "name": "Nom",
+    "email": "Email",
+    "subject": "Sujet",
+    "selectSubject": "Sélectionne un sujet",
+    "message": "Message",
+    "messagePlaceholder": "Écris ton message...",
+    "send": "Envoyer le message",
+    "directContacts": "Contacts directs",
+    "subjects": {
+      "support": "Support technique",
+      "bug": "Signaler un problème",
+      "feature": "Suggérer une fonctionnalité",
+      "partnership": "Partenariat",
+      "other": "Autre"
+    },
+    "success": {
+      "title": "Message envoyé !",
+      "subtitle": "Nous te répondrons dès que possible",
+      "back": "Retour"
+    }
+  },
+  "lostPets": {
+    "title": "Animaux Perdus",
+    "heroSubtitle": "Tu cherches ton animal ?\nIci tu trouves toutes les annonces d'animaux\nperdus en France",
+    "emergencyContacts": "Organismes de secours animalier",
+    "reportLost": "Créer une Annonce",
+    "nearby": "Près de toi",
+    "allItaly": "Toute la France",
+    "sightings": "signalements",
+    "owner": "Propriétaire",
+    "color": "Couleur",
+    "lastSeen": "Vu pour la dernière fois",
+    "location": "Lieu",
+    "description": "Description",
+    "found": "Trouvé",
+    "info": "Informations",
+    "contact": "Contact",
+    "contactOwner": "Contacter le propriétaire",
+    "reportSighting": "Signaler un aperçu",
+    "viewInYourArea": "Voir dans ta région",
+    "searchPlaceholder": "Que cherches-tu",
+    "detailTitle": "Détails de la Disparition",
+    "sightingsTitle": "Signalements",
+    "verified": "Vérifié",
+    "empty": {
+      "title": "Aucun signalement",
+      "subtitle": "Pas d'animaux perdus dans ta région"
+    },
+    "report": {
+      "title": "Signaler une disparition",
+      "step1": "Animal",
+      "step2": "Détails",
+      "step3": "Contact",
+      "selectPet": "Quel animal as-tu perdu ?",
+      "noPets": "Tu n'as pas d'animaux enregistrés",
+      "addPetFirst": "Enregistre d'abord un animal",
+      "locationTime": "Où et quand ?",
+      "lastSeen": "Dernière position",
+      "lastSeenPlaceholder": "ex. Jardin du Luxembourg, Paris",
+      "city": "Ville",
+      "cityPlaceholder": "ex. Paris",
+      "when": "Quand l'as-tu vu pour la dernière fois ?",
+      "description": "Description",
+      "descriptionPlaceholder": "Décris ton animal, collier, signes particuliers...",
+      "descriptionMinLength": "La description doit faire au moins 20 caractères",
+      "contactInfo": "Comment te contacter ?",
+      "phone": "Téléphone de contact",
+      "phonePlaceholder": "+33 6 12 34 56 78",
+      "invalidPhone": "Numéro de téléphone invalide",
+      "email": "Email",
+      "emailPlaceholder": "exemple@email.fr",
+      "reward": "Récompense (optionnel)",
+      "rewardPlaceholder": "0",
+      "rewardHint": "Optionnel. Peut encourager les signalements",
+      "summary": "Récapitulatif",
+      "pet": "Animal",
+      "submit": "Publier le signalement"
+    },
+    "sighting": {
+      "title": "Signaler un aperçu",
+      "formTitle": "Où l'as-tu vu ?",
+      "where": "Lieu",
+      "wherePlaceholder": "ex. Rue de Rivoli 45, Paris",
+      "when": "Quand ?",
+      "description": "Description (optionnel)",
+      "descriptionPlaceholder": "Décris ce que tu as vu...",
+      "submit": "Envoyer le signalement",
+      "successTitle": "Merci pour le signalement !",
+      "successMessage": "Le propriétaire sera informé. Ensemble, nous pouvons aider à retrouver les animaux perdus.",
+      "backToList": "Retour à la liste"
+    }
+  },
+  "breeds": {
+    "title": "Espèces",
+    "subtitle": "Renifle et découvre",
+    "description": "Chaque espèce raconte une histoire",
+    "searchPlaceholder": "Rechercher race...",
+    "back": "Retour",
+    "openMenu": "Ouvrir menu",
+    "speciesInfo": "Informations sur l'espèce",
+    "noResults": "Aucune race trouvée",
+    "loading": "Chargement...",
+    "tabs": {
+      "dna": "ADN et Origines",
+      "size": "Taille et Pelage",
+      "temperament": "Tempérament",
+      "rituals": "Routine",
+      "risks": "Risques",
+      "pedigree": "Pedigree"
+    }
+  },
+  "map": {
+    "title": "Carte",
+    "subtitle": "Activités, événements et amis",
+    "description": "Trouve ce dont ton animal a besoin, là où tu es",
+    "searchPlaceholder": "Que cherches-tu",
+    "back": "Retour",
+    "menu": "Menu",
+    "filters": "Filtres",
+    "activities": "Activités",
+    "events": "Événements",
+    "friends": "Amis proches",
+    "loading": "Chargement de la carte...",
+    "locationError": "Impossible d'obtenir la position",
+    "enableLocation": "Activer la localisation"
+  },
+  "home": {
+    "greeting": "Salut",
+    "greetingMorning": "Bonjour",
+    "greetingAfternoon": "Bon après-midi",
+    "greetingEvening": "Bonsoir",
+    "subtitle": "Que fait-on aujourd'hui ?",
+    "suggestions": {
+      "title": "Suggestions pour toi",
+      "viewAll": "Voir tout"
+    },
+    "quickActions": {
+      "calendar": "Calendrier",
+      "map": "Carte",
+      "gallery": "Galerie",
+      "breeds": "Races"
+    },
+    "noPets": {
+      "title": "Aucun animal enregistré",
+      "subtitle": "Enregistre ton premier ami à quatre pattes",
+      "cta": "Ajouter animal"
+    }
+  },
+  "calendar": {
+    "title": "Calendrier",
+    "subtitle": "Tes événements et rendez-vous",
+    "today": "Aujourd'hui",
+    "month": "Mois",
+    "week": "Semaine",
+    "day": "Jour",
+    "addEvent": "Ajouter événement",
+    "noEvents": "Aucun événement",
+    "noEventsToday": "Aucun événement aujourd'hui",
+    "types": {
+      "vet": "Vétérinaire",
+      "grooming": "Toilettage",
+      "walk": "Promenade",
+      "vaccine": "Vaccin",
+      "medicine": "Médicament",
+      "birthday": "Anniversaire",
+      "other": "Autre"
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "tabs": {
+      "info": "Info",
+      "gallery": "Galerie",
+      "friends": "Amis",
+      "memories": "Souvenirs"
+    },
+    "stats": {
+      "age": "Âge",
+      "weight": "Poids",
+      "friends": "Amis",
+      "photos": "Photos"
+    },
+    "empty": {
+      "gallery": "Aucune photo pour l'instant",
+      "friends": "Aucun ami pour l'instant",
+      "memories": "Aucun souvenir pour l'instant"
+    }
+  },
+  "user": {
+    "account": {
+      "title": "Compte",
+      "back": "Retour",
+      "name": "Nom",
+      "namePlaceholder": "Ton nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+33 6 12 34 56 78",
+      "save": "Enregistrer les modifications",
+      "changePassword": "Changer le mot de passe",
+      "deleteAccount": "Supprimer le compte"
+    },
+    "notifications": {
+      "back": "Retour"
+    },
+    "saved": {
+      "searchPlaceholder": "Que cherches-tu"
+    },
+    "friends": {
+      "searchPlaceholder": "Rechercher des amis..."
+    },
+    "invite": {
+      "searchPlaceholder": "Rechercher un contact",
+      "email": "Email"
+    },
+    "activity": {
+      "back": "Retour"
+    }
   }
 }

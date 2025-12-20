@@ -325,5 +325,288 @@
       "findFriends": "Encontrar amigos",
       "mascotMessage": "Fiuto sempre encontra alguém para conversar."
     }
+  },
+  "adoption": {
+    "title": "Adoções",
+    "allSpecies": "Todas as espécies",
+    "cityPlaceholder": "Cidade...",
+    "createAd": "Criar anúncio",
+    "free": "Gratuito",
+    "sponsorText": "Abrigos parceiros FIUTAMI",
+    "empty": {
+      "title": "Nenhum anúncio",
+      "subtitle": "Não há animais procurando um lar na sua região"
+    },
+    "status": {
+      "available": "Disponível",
+      "pending": "Pendente",
+      "adopted": "Adotado",
+      "cancelled": "Cancelado"
+    },
+    "detail": {
+      "contact": "Contatar",
+      "requirements": "Requisitos",
+      "adoptionFee": "Taxa de adoção",
+      "description": "Descrição",
+      "postedBy": "Publicado por",
+      "views": "visualizações",
+      "markAdopted": "Marcar como adotado",
+      "cancelListing": "Remover anúncio"
+    },
+    "create": {
+      "title": "Criar anúncio",
+      "editTitle": "Editar anúncio",
+      "selectPet": "Selecione o pet",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Descreva a personalidade, hábitos e por que procura uma nova família...",
+      "fee": "Taxa de adoção",
+      "feePlaceholder": "0",
+      "feeHint": "Deixe em branco para gratuito",
+      "location": "Localização",
+      "locationPlaceholder": "ex. São Paulo, SP",
+      "city": "Cidade",
+      "cityPlaceholder": "ex. São Paulo",
+      "requirements": "Requisitos para o adotante",
+      "requirementsPlaceholder": "ex. Quintal, experiência com cães...",
+      "allowMessages": "Permitir mensagens",
+      "publish": "Publicar anúncio",
+      "noPets": "Você não tem pets registrados",
+      "addPet": "Registrar um pet"
+    }
+  },
+  "blocked": {
+    "title": "Usuários Bloqueados",
+    "subtitle": "Cada grupo tem seu equilíbrio. Se alguém não combina com suas vibrações, você pode bloqueá-lo aqui.",
+    "sectionTitle": "Usuários Bloqueados",
+    "select": "Selecionar",
+    "cancel": "Cancelar",
+    "unblock": "Desbloquear",
+    "unblockSelected": "Desbloquear selecionados",
+    "empty": {
+      "text": "Você não bloqueou nenhum usuário"
+    },
+    "info": "Usuários bloqueados não podem enviar mensagens, ver seu perfil ou interagir com seu conteúdo.",
+    "confirmUnblock": "Deseja desbloquear este usuário?"
+  },
+  "contact": {
+    "title": "Fale Conosco",
+    "intro": "Tem dúvidas, sugestões ou precisa de ajuda? Estamos aqui para você!",
+    "name": "Nome",
+    "email": "Email",
+    "subject": "Assunto",
+    "selectSubject": "Selecione um assunto",
+    "message": "Mensagem",
+    "messagePlaceholder": "Escreva sua mensagem...",
+    "send": "Enviar mensagem",
+    "directContacts": "Contatos diretos",
+    "subjects": {
+      "support": "Suporte técnico",
+      "bug": "Reportar um problema",
+      "feature": "Sugerir uma funcionalidade",
+      "partnership": "Parceria",
+      "other": "Outro"
+    },
+    "success": {
+      "title": "Mensagem enviada!",
+      "subtitle": "Responderemos o mais rápido possível",
+      "back": "Voltar"
+    }
+  },
+  "lostPets": {
+    "title": "Animais Perdidos",
+    "heroSubtitle": "Está procurando seu pet?\nAqui você encontra todos os anúncios de animais\nperdidos no Brasil",
+    "emergencyContacts": "Órgãos de resgate animal",
+    "reportLost": "Criar Anúncio",
+    "nearby": "Perto de você",
+    "allItaly": "Todo o Brasil",
+    "sightings": "avistamentos",
+    "owner": "Dono",
+    "color": "Cor",
+    "lastSeen": "Visto pela última vez",
+    "location": "Localização",
+    "description": "Descrição",
+    "found": "Encontrado",
+    "info": "Informações",
+    "contact": "Contato",
+    "contactOwner": "Contatar o dono",
+    "reportSighting": "Reportar avistamento",
+    "viewInYourArea": "Ver na sua região",
+    "searchPlaceholder": "O que você está procurando",
+    "detailTitle": "Detalhes do Desaparecimento",
+    "sightingsTitle": "Avistamentos",
+    "verified": "Verificado",
+    "empty": {
+      "title": "Nenhum registro",
+      "subtitle": "Não há animais perdidos na sua região"
+    },
+    "report": {
+      "title": "Reportar desaparecimento",
+      "step1": "Pet",
+      "step2": "Detalhes",
+      "step3": "Contato",
+      "selectPet": "Qual pet você perdeu?",
+      "noPets": "Você não tem pets registrados",
+      "addPetFirst": "Registre um pet primeiro",
+      "locationTime": "Onde e quando?",
+      "lastSeen": "Última localização",
+      "lastSeenPlaceholder": "ex. Parque Ibirapuera, São Paulo",
+      "city": "Cidade",
+      "cityPlaceholder": "ex. São Paulo",
+      "when": "Quando você o viu pela última vez?",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Descreva seu pet, coleira, marcas especiais...",
+      "descriptionMinLength": "A descrição deve ter pelo menos 20 caracteres",
+      "contactInfo": "Como te contatar?",
+      "phone": "Telefone de contato",
+      "phonePlaceholder": "+55 11 99999-9999",
+      "invalidPhone": "Número de telefone inválido",
+      "email": "Email",
+      "emailPlaceholder": "exemplo@email.com",
+      "reward": "Recompensa (opcional)",
+      "rewardPlaceholder": "0",
+      "rewardHint": "Opcional. Pode incentivar os avistamentos",
+      "summary": "Resumo",
+      "pet": "Pet",
+      "submit": "Publicar registro"
+    },
+    "sighting": {
+      "title": "Reportar avistamento",
+      "formTitle": "Onde você o viu?",
+      "where": "Localização",
+      "wherePlaceholder": "ex. Rua das Flores 45, São Paulo",
+      "when": "Quando?",
+      "description": "Descrição (opcional)",
+      "descriptionPlaceholder": "Descreva o que você viu...",
+      "submit": "Enviar avistamento",
+      "successTitle": "Obrigado pelo avistamento!",
+      "successMessage": "O dono será informado. Juntos podemos ajudar a encontrar animais perdidos.",
+      "backToList": "Voltar à lista"
+    }
+  },
+  "breeds": {
+    "title": "Espécies",
+    "subtitle": "Farejar e descobrir",
+    "description": "Cada espécie conta uma história",
+    "searchPlaceholder": "Buscar raça...",
+    "back": "Voltar",
+    "openMenu": "Abrir menu",
+    "speciesInfo": "Informações da espécie",
+    "noResults": "Nenhuma raça encontrada",
+    "loading": "Carregando...",
+    "tabs": {
+      "dna": "DNA e Origens",
+      "size": "Tamanho e Pelagem",
+      "temperament": "Temperamento",
+      "rituals": "Rotina",
+      "risks": "Riscos",
+      "pedigree": "Pedigree"
+    }
+  },
+  "map": {
+    "title": "Mapa",
+    "subtitle": "Atividades, eventos e amigos",
+    "description": "Encontre o que seu pet precisa, onde você está",
+    "searchPlaceholder": "O que você está procurando",
+    "back": "Voltar",
+    "menu": "Menu",
+    "filters": "Filtros",
+    "activities": "Atividades",
+    "events": "Eventos",
+    "friends": "Amigos próximos",
+    "loading": "Carregando mapa...",
+    "locationError": "Não foi possível obter localização",
+    "enableLocation": "Ativar localização"
+  },
+  "home": {
+    "greeting": "Oi",
+    "greetingMorning": "Bom dia",
+    "greetingAfternoon": "Boa tarde",
+    "greetingEvening": "Boa noite",
+    "subtitle": "O que vamos fazer hoje?",
+    "suggestions": {
+      "title": "Sugestões para você",
+      "viewAll": "Ver todos"
+    },
+    "quickActions": {
+      "calendar": "Calendário",
+      "map": "Mapa",
+      "gallery": "Galeria",
+      "breeds": "Raças"
+    },
+    "noPets": {
+      "title": "Nenhum pet registrado",
+      "subtitle": "Registre seu primeiro amigo de quatro patas",
+      "cta": "Adicionar pet"
+    }
+  },
+  "calendar": {
+    "title": "Calendário",
+    "subtitle": "Seus eventos e compromissos",
+    "today": "Hoje",
+    "month": "Mês",
+    "week": "Semana",
+    "day": "Dia",
+    "addEvent": "Adicionar evento",
+    "noEvents": "Nenhum evento",
+    "noEventsToday": "Nenhum evento para hoje",
+    "types": {
+      "vet": "Veterinário",
+      "grooming": "Banho e tosa",
+      "walk": "Passeio",
+      "vaccine": "Vacina",
+      "medicine": "Medicamento",
+      "birthday": "Aniversário",
+      "other": "Outro"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "tabs": {
+      "info": "Info",
+      "gallery": "Galeria",
+      "friends": "Amigos",
+      "memories": "Memórias"
+    },
+    "stats": {
+      "age": "Idade",
+      "weight": "Peso",
+      "friends": "Amigos",
+      "photos": "Fotos"
+    },
+    "empty": {
+      "gallery": "Nenhuma foto ainda",
+      "friends": "Nenhum amigo ainda",
+      "memories": "Nenhuma memória ainda"
+    }
+  },
+  "user": {
+    "account": {
+      "title": "Conta",
+      "back": "Voltar",
+      "name": "Nome",
+      "namePlaceholder": "Seu nome",
+      "email": "Email",
+      "phone": "Telefone",
+      "phonePlaceholder": "+55 11 99999-9999",
+      "save": "Salvar alterações",
+      "changePassword": "Alterar senha",
+      "deleteAccount": "Excluir conta"
+    },
+    "notifications": {
+      "back": "Voltar"
+    },
+    "saved": {
+      "searchPlaceholder": "O que você está procurando"
+    },
+    "friends": {
+      "searchPlaceholder": "Buscar amigos..."
+    },
+    "invite": {
+      "searchPlaceholder": "Buscar contato",
+      "email": "Email"
+    },
+    "activity": {
+      "back": "Voltar"
+    }
   }
 }
