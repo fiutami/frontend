@@ -1,0 +1,74 @@
+<div class="adoption-container">
+  <header class="adoption-header">
+    <button class="back-btn" (click)="goBack()">←</button>
+    <h1>{{ 'adoption.title' | translate }}</h1>
+    <button class="create-btn" (click)="createAdoption()">+</button>
+  </header>
+
+  <!-- Filtri -->
+  <div class="filters">
+    <select [(ngModel)]="selectedSpecies" (change)="onFilterChange()">
+      <option value="">{{ 'adoption.allSpecies' | translate }}</option>
+      <option *ngFor="let species of speciesOptions" [value]="species">{{ species }}</option>
+    </select>
+    <input
+      type="text"
+      [(ngModel)]="selectedCity"
+      (input)="onFilterChange()"
+      [placeholder]="'adoption.cityPlaceholder' | translate">
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !loading" class="error-state">
+    <p>{{ 'errors.serverError' | translate }}</p>
+    <button class="btn-retry" (click)="loadAdoptions()">{{ 'common.retry' | translate }}</button>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && !error && adoptions.length === 0" class="empty-state">
+    <div class="illustration">🏠</div>
+    <h2>{{ 'adoption.empty.title' | translate }}</h2>
+    <p>{{ 'adoption.empty.subtitle' | translate }}</p>
+    <button class="btn-primary" (click)="createAdoption()">
+      {{ 'adoption.createAd' | translate }}
+    </button>
+  </div>
+
+  <!-- Lista Annunci -->
+  <div class="adoption-list" *ngIf="!loading && !error && adoptions.length > 0">
+    <div
+      *ngFor="let adoption of adoptions"
+      class="adoption-card"
+      (click)="openDetail(adoption)">
+
+      <div class="pet-photo">
+        <img *ngIf="adoption.petPhotoUrl" [src]="adoption.petPhotoUrl" [alt]="adoption.petName">
+        <div *ngIf="!adoption.petPhotoUrl" class="photo-placeholder">🐾</div>
+        <span class="status-badge" [attr.data-status]="adoption.status">
+          {{ adoption.status === 'available' ? '🟢' : adoption.status === 'pending' ? '🟡' : '✅' }}
+        </span>
+      </div>
+
+      <div class="card-content">
+        <h3>{{ adoption.petName }}</h3>
+        <p class="species">{{ adoption.petSpecies }} <span *ngIf="adoption.petBreed">• {{ adoption.petBreed }}</span></p>
+        <p class="location">📍 {{ adoption.city || adoption.location }}</p>
+        <p class="fee" *ngIf="adoption.adoptionFee !== undefined">
+          {{ adoption.adoptionFee === 0 ? ('adoption.free' | translate) : '€' + adoption.adoptionFee }}
+        </p>
+      </div>
+
+      <span class="arrow">→</span>
+    </div>
+  </div>
+
+  <!-- Sponsor Banner -->
+  <div class="sponsor-banner">
+    <p>{{ 'adoption.sponsorText' | translate }}</p>
+  </div>
+</div>

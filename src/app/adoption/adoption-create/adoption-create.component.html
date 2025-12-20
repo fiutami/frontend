@@ -1,0 +1,132 @@
+<div class="create-container">
+  <header class="create-header">
+    <button class="back-btn" (click)="goBack()">←</button>
+    <h1>{{ (isEditMode ? 'adoption.create.editTitle' : 'adoption.create.title') | translate }}</h1>
+    <div class="spacer"></div>
+  </header>
+
+  <!-- Loading -->
+  <div *ngIf="loading || loadingPets" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Form -->
+  <form *ngIf="!loading && !loadingPets" [formGroup]="form" (ngSubmit)="onSubmit()" class="form-content">
+    <!-- Select Pet -->
+    <div class="form-section">
+      <label>{{ 'adoption.create.selectPet' | translate }} *</label>
+
+      <div *ngIf="userPets.length === 0" class="no-pets-warning">
+        <p>{{ 'adoption.create.noPets' | translate }}</p>
+        <button type="button" class="btn-link" routerLink="/onboarding/register-pet">
+          {{ 'adoption.create.addPet' | translate }}
+        </button>
+      </div>
+
+      <div *ngIf="userPets.length > 0" class="pet-selector">
+        <div
+          *ngFor="let pet of userPets"
+          class="pet-option"
+          [class.selected]="form.value.petId === pet.id"
+          (click)="form.patchValue({ petId: pet.id })">
+          <div class="pet-avatar">
+            <img *ngIf="pet.profilePhotoUrl" [src]="pet.profilePhotoUrl" [alt]="pet.name">
+            <span *ngIf="!pet.profilePhotoUrl">🐾</span>
+          </div>
+          <div class="pet-info">
+            <span class="name">{{ pet.name }}</span>
+            <span class="species">{{ pet.speciesName }}</span>
+          </div>
+          <div class="check" *ngIf="form.value.petId === pet.id">✓</div>
+        </div>
+      </div>
+      <div class="error-text" *ngIf="form.get('petId')?.touched && form.get('petId')?.invalid">
+        {{ 'errors.required' | translate }}
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-section">
+      <label>{{ 'adoption.create.description' | translate }} *</label>
+      <textarea
+        formControlName="description"
+        rows="5"
+        [placeholder]="'adoption.create.descriptionPlaceholder' | translate">
+      </textarea>
+      <div class="error-text" *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">
+        {{ 'errors.required' | translate }}
+      </div>
+      <div class="error-text" *ngIf="form.get('description')?.touched && form.get('description')?.hasError('minlength')">
+        {{ 'errors.minLength' | translate:{ length: 20 } }}
+      </div>
+    </div>
+
+    <!-- Adoption Fee -->
+    <div class="form-section">
+      <label>{{ 'adoption.create.fee' | translate }}</label>
+      <div class="input-with-prefix">
+        <span class="prefix">€</span>
+        <input
+          type="number"
+          formControlName="adoptionFee"
+          min="0"
+          [placeholder]="'adoption.create.feePlaceholder' | translate">
+      </div>
+      <p class="hint">{{ 'adoption.create.feeHint' | translate }}</p>
+    </div>
+
+    <!-- Location -->
+    <div class="form-section">
+      <label>{{ 'adoption.create.location' | translate }} *</label>
+      <input
+        type="text"
+        formControlName="location"
+        [placeholder]="'adoption.create.locationPlaceholder' | translate">
+      <div class="error-text" *ngIf="form.get('location')?.touched && form.get('location')?.invalid">
+        {{ 'errors.required' | translate }}
+      </div>
+    </div>
+
+    <!-- City -->
+    <div class="form-section">
+      <label>{{ 'adoption.create.city' | translate }}</label>
+      <input
+        type="text"
+        formControlName="city"
+        [placeholder]="'adoption.create.cityPlaceholder' | translate">
+    </div>
+
+    <!-- Requirements -->
+    <div class="form-section">
+      <label>{{ 'adoption.create.requirements' | translate }}</label>
+      <textarea
+        formControlName="requirements"
+        rows="3"
+        [placeholder]="'adoption.create.requirementsPlaceholder' | translate">
+      </textarea>
+    </div>
+
+    <!-- Allow Messages -->
+    <div class="form-section toggle-section">
+      <label>{{ 'adoption.create.allowMessages' | translate }}</label>
+      <label class="toggle">
+        <input type="checkbox" formControlName="allowMessages">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="error" class="error-banner">
+      {{ error | translate }}
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn-primary"
+      [disabled]="form.invalid || submitting || userPets.length === 0">
+      <span *ngIf="!submitting">{{ 'adoption.create.publish' | translate }}</span>
+      <div *ngIf="submitting" class="spinner-small"></div>
+    </button>
+  </form>
+</div>

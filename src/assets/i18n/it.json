@@ -360,5 +360,53 @@
     },
     "info": "Gli utenti bloccati non possono inviarti messaggi, vedere il tuo profilo o interagire con i tuoi contenuti.",
     "confirmUnblock": "Vuoi sbloccare questo utente?"
+  },
+  "adoption": {
+    "title": "Adozioni",
+    "allSpecies": "Tutte le specie",
+    "cityPlaceholder": "Città...",
+    "createAd": "Crea annuncio",
+    "free": "Gratuito",
+    "sponsorText": "Canili partner FIUTAMI",
+    "empty": {
+      "title": "Nessun annuncio",
+      "subtitle": "Non ci sono animali in cerca di casa nella tua zona"
+    },
+    "status": {
+      "available": "Disponibile",
+      "pending": "In attesa",
+      "adopted": "Adottato",
+      "cancelled": "Annullato"
+    },
+    "detail": {
+      "contact": "Contatta",
+      "requirements": "Requisiti",
+      "adoptionFee": "Contributo adozione",
+      "description": "Descrizione",
+      "postedBy": "Pubblicato da",
+      "views": "visualizzazioni",
+      "markAdopted": "Segna come adottato",
+      "cancelListing": "Rimuovi annuncio"
+    },
+    "create": {
+      "title": "Crea annuncio",
+      "editTitle": "Modifica annuncio",
+      "selectPet": "Seleziona il pet",
+      "description": "Descrizione",
+      "descriptionPlaceholder": "Descrivi il carattere, le abitudini e perché cerchi una nuova famiglia...",
+      "fee": "Contributo adozione",
+      "feePlaceholder": "0",
+      "feeHint": "Lascia vuoto per gratuito",
+      "location": "Località",
+      "locationPlaceholder": "es. Milano, Lombardia",
+      "city": "Città",
+      "cityPlaceholder": "es. Milano",
+      "requirements": "Requisiti per l'adottante",
+      "requirementsPlaceholder": "es. Giardino, esperienza con cani...",
+      "allowMessages": "Permetti messaggi",
+      "publish": "Pubblica annuncio",
+      "noPets": "Non hai pet registrati",
+      "addPet": "Registra un pet"
+    }
   }
 }

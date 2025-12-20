@@ -1,0 +1,246 @@
+.adoption-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 80px;
+}
+
+.adoption-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #F4AE1A;
+  color: #fff;
+
+  .back-btn, .create-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+
+  select, input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+
+    &:focus {
+      border-color: #F4AE1A;
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+
+  .illustration {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 24px;
+  }
+
+  .btn-primary {
+    background: #F4AE1A;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #e09f15;
+    }
+  }
+}
+
+.error-state {
+  text-align: center;
+  padding: 60px 24px;
+
+  p {
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  .btn-retry {
+    background: #F4AE1A;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+.adoption-list {
+  padding: 16px;
+}
+
+.adoption-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .pet-photo {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #eee;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      font-size: 12px;
+    }
+  }
+
+  .card-content {
+    flex: 1;
+    padding: 0 12px;
+    min-width: 0;
+
+    h3 {
+      margin: 0 0 4px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    p {
+      margin: 0;
+      font-size: 13px;
+      color: #666;
+
+      &.species {
+        margin-bottom: 2px;
+      }
+
+      &.location {
+        margin-bottom: 2px;
+      }
+
+      &.fee {
+        color: #F4AE1A;
+        font-weight: 600;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .arrow {
+    color: #ccc;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+}
+
+.sponsor-banner {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #F4AE1A, #F6C450);
+  padding: 12px 16px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+
+  p {
+    margin: 0;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #eee;
+    border-top-color: #F4AE1A;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
