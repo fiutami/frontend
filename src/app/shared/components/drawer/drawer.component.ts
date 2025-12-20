@@ -1,6 +1,7 @@
 import {
   Component,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   inject,
   OnInit,
   OnDestroy,
@@ -61,6 +62,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
   private authService = inject(AuthService);
   private translateService = inject(TranslateService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
   private destroy$ = new Subject<void>();
 
   isOpen = false;
@@ -177,6 +179,8 @@ export class DrawerComponent implements OnInit, OnDestroy {
         if (!isOpen) {
           this.showLanguageDropdown = false;
         }
+        // Trigger change detection for OnPush strategy
+        this.cdr.markForCheck();
       });
 
     // Listen for window resize events for viewport detection

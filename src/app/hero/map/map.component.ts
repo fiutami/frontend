@@ -9,6 +9,7 @@ import {
   BottomTabBarComponent,
   TabItem,
 } from '../../shared/components/bottom-tab-bar';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button';
 
 interface PetFriendlyPlace {
   id: string;
@@ -22,7 +23,7 @@ interface PetFriendlyPlace {
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [CommonModule, RouterModule, BottomTabBarComponent],
+  imports: [CommonModule, RouterModule, BottomTabBarComponent, AvatarButtonComponent],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
