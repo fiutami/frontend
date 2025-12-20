@@ -730,5 +730,44 @@
         "subtitle": "Your active promotions will appear here"
       }
     }
+  },
+  "userArea": {
+    "title": "User Area",
+    "tabs": {
+      "account": "Account",
+      "profile": "Profile",
+      "security": "Security",
+      "settings": "Settings"
+    },
+    "actions": {
+      "notifications": "Notifications",
+      "activity": "Activity",
+      "saved": "Saved",
+      "subscription": "Subscription",
+      "editProfile": "Edit Profile",
+      "friends": "Friends",
+      "invite": "Invite Friends",
+      "privacy": "Privacy",
+      "blocked": "Blocked Users",
+      "terms": "Terms",
+      "language": "Language",
+      "contact": "Contact Us",
+      "premium": "Premium",
+      "chat": "Messages"
+    },
+    "subSections": {
+      "notifications": "Notifications",
+      "activity": "Your Activity",
+      "saved": "Saved",
+      "friends": "Friends",
+      "blocked": "Blocked Users",
+      "invite": "Invite Friends",
+      "subscription": "Subscription",
+      "privacy": "Privacy",
+      "terms": "Terms of Service",
+      "contact": "Contact Us"
+    },
+    "logout": "Logout",
+    "comingSoon": "Content coming soon..."
   }
 }

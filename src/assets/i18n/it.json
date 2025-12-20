@@ -730,5 +730,44 @@
         "subtitle": "Le tue promozioni attive appariranno qui"
       }
     }
+  },
+  "userArea": {
+    "title": "Area Utente",
+    "tabs": {
+      "account": "Account",
+      "profile": "Profilo",
+      "security": "Sicurezza",
+      "settings": "Impostazioni"
+    },
+    "actions": {
+      "notifications": "Notifiche",
+      "activity": "Attività",
+      "saved": "Salvati",
+      "subscription": "Abbonamento",
+      "editProfile": "Modifica Profilo",
+      "friends": "Amici",
+      "invite": "Invita Amici",
+      "privacy": "Privacy",
+      "blocked": "Utenti Bloccati",
+      "terms": "Termini",
+      "language": "Lingua",
+      "contact": "Contattaci",
+      "premium": "Premium",
+      "chat": "Messaggi"
+    },
+    "subSections": {
+      "notifications": "Notifiche",
+      "activity": "Le tue attività",
+      "saved": "Salvati",
+      "friends": "Amici",
+      "blocked": "Utenti Bloccati",
+      "invite": "Invita Amici",
+      "subscription": "Abbonamento",
+      "privacy": "Privacy",
+      "terms": "Termini di Servizio",
+      "contact": "Contattaci"
+    },
+    "logout": "Esci",
+    "comingSoon": "Contenuto in arrivo..."
   }
 }

@@ -1,0 +1,168 @@
+<!-- Backdrop with blur -->
+<div
+  class="user-area-backdrop"
+  [@fadeBackdrop]="animationState"
+  (click)="onBackdropClick($event)"
+  [attr.aria-hidden]="!isOpen">
+
+  <!-- Modal Container -->
+  <aside
+    class="user-area-modal"
+    [@slideUp]="animationState"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="'userArea.title' | translate"
+    (click)="$event.stopPropagation()">
+
+    <!-- Header -->
+    <header class="user-area-modal__header">
+      <button
+        type="button"
+        class="user-area-modal__back"
+        (click)="goBack()"
+        [attr.aria-label]="(currentSubSection ? 'common.back' : 'common.close') | translate">
+        <span class="material-icons">{{ currentSubSection ? 'arrow_back' : 'close' }}</span>
+      </button>
+
+      <h1 class="user-area-modal__title">
+        @if (currentSubSection) {
+          {{ getSubSectionTitle() | translate }}
+        } @else {
+          {{ 'userArea.title' | translate }}
+        }
+      </h1>
+
+      <button
+        type="button"
+        class="user-area-modal__close"
+        (click)="close()"
+        [attr.aria-label]="'common.close' | translate">
+        <span class="material-icons">close</span>
+      </button>
+    </header>
+
+    <!-- User Profile Card (only on main view) -->
+    @if (!currentSubSection && user) {
+      <div class="user-area-modal__profile">
+        <div class="user-area-modal__avatar">
+          <span class="user-area-modal__avatar-initials">{{ getUserInitials() }}</span>
+        </div>
+        <div class="user-area-modal__user-info">
+          <h2 class="user-area-modal__user-name">{{ getUserDisplayName() }}</h2>
+          <p class="user-area-modal__user-email">{{ user.email }}</p>
+        </div>
+        <button
+          type="button"
+          class="user-area-modal__edit-btn"
+          (click)="navigateToEditProfile()"
+          [attr.aria-label]="'userArea.actions.editProfile' | translate">
+          <span class="material-icons">edit</span>
+        </button>
+      </div>
+    }
+
+    <!-- Tab Navigation (only on main view) -->
+    @if (!currentSubSection) {
+      <nav class="user-area-modal__tabs" role="tablist">
+        @for (tab of tabs; track tab.id) {
+          <button
+            type="button"
+            class="user-area-modal__tab"
+            [class.user-area-modal__tab--active]="currentSection === tab.id"
+            (click)="selectTab(tab)"
+            role="tab"
+            [attr.aria-selected]="currentSection === tab.id"
+            [attr.aria-controls]="'panel-' + tab.id">
+            <span class="material-icons user-area-modal__tab-icon">{{ tab.icon }}</span>
+            <span class="user-area-modal__tab-label">{{ tab.labelKey | translate }}</span>
+          </button>
+        }
+      </nav>
+    }
+
+    <!-- Content Area -->
+    <main class="user-area-modal__content" [attr.id]="'panel-' + currentSection">
+      <!-- Main Section View (actions grid) -->
+      @if (!currentSubSection) {
+        <div class="user-area-modal__actions">
+          @for (action of currentActions; track action.id) {
+            <button
+              type="button"
+              class="user-area-modal__action-card"
+              (click)="onActionClick(action)">
+              <div class="user-area-modal__action-icon">
+                <span class="material-icons">{{ action.icon }}</span>
+                @if (action.badge && action.badge > 0) {
+                  <span class="user-area-modal__action-badge">{{ action.badge }}</span>
+                }
+              </div>
+              <span class="user-area-modal__action-label">{{ action.labelKey | translate }}</span>
+              <span class="material-icons user-area-modal__action-arrow">chevron_right</span>
+            </button>
+          }
+        </div>
+
+        <!-- Language Dropdown (in settings tab) -->
+        @if (currentSection === 'settings' && showLanguageDropdown) {
+          <div class="user-area-modal__language-dropdown">
+            @for (lang of languages; track lang.code) {
+              <button
+                type="button"
+                class="user-area-modal__language-option"
+                [class.user-area-modal__language-option--active]="currentLang === lang.code"
+                (click)="onLanguageChange(lang.code)">
+                <span class="user-area-modal__language-flag">{{ lang.flag }}</span>
+                <span class="user-area-modal__language-label">{{ lang.label }}</span>
+                @if (currentLang === lang.code) {
+                  <span class="material-icons user-area-modal__language-check">check</span>
+                }
+              </button>
+            }
+          </div>
+        }
+
+        <!-- Logout Button -->
+        <div class="user-area-modal__logout-section">
+          <button
+            type="button"
+            class="user-area-modal__logout-btn"
+            (click)="logout()">
+            <span class="material-icons">logout</span>
+            <span>{{ 'userArea.logout' | translate }}</span>
+          </button>
+        </div>
+      }
+
+      <!-- Sub-section Content -->
+      @if (currentSubSection) {
+        <div class="user-area-modal__subsection">
+          <!-- Placeholder content for sub-sections -->
+          <!-- These will be replaced with actual content components -->
+          <div class="user-area-modal__subsection-placeholder">
+            <span class="material-icons user-area-modal__subsection-icon">
+              @switch (currentSubSection) {
+                @case ('notifications') { notifications }
+                @case ('activity') { history }
+                @case ('saved') { bookmark }
+                @case ('friends') { group }
+                @case ('blocked') { block }
+                @case ('invite') { share }
+                @case ('subscription') { card_membership }
+                @case ('privacy') { security }
+                @case ('terms') { description }
+                @case ('contact') { mail }
+              }
+            </span>
+            <p class="user-area-modal__subsection-text">
+              {{ getSubSectionTitle() | translate }}
+            </p>
+            <p class="user-area-modal__subsection-coming">
+              {{ 'userArea.comingSoon' | translate }}
+            </p>
+          </div>
+        </div>
+      }
+    </main>
+
+  </aside>
+</div>

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { DrawerComponent } from './shared/components/drawer';
+import { UserAreaModalComponent } from './shared/components/user-area-modal';
 import { I18nModule } from './core/i18n/i18n.module';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { I18nModule } from './core/i18n/i18n.module';
     HttpClientModule,
     AppRoutingModule,
     I18nModule,
-    DrawerComponent
+    DrawerComponent,
+    UserAreaModalComponent
   ],
   providers: [
     {

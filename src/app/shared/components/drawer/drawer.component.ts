@@ -126,30 +126,30 @@ export class DrawerComponent implements OnInit, OnDestroy {
     {
       // Primary section - Account & Activity
       items: [
-        { labelKey: 'drawer.account', route: '/user/account', icon: 'person' },
-        { labelKey: 'drawer.activity', route: '/user/activity', icon: 'history' },
-        { labelKey: 'drawer.notifications', route: '/user/notifications', icon: 'notifications' },
-        { labelKey: 'drawer.saved', route: '/user/saved', icon: 'bookmark' },
+        { labelKey: 'drawer.account', route: '/home/account', icon: 'person' },
+        { labelKey: 'drawer.activity', route: '/home/activity', icon: 'history' },
+        { labelKey: 'drawer.notifications', route: '/home/notifications', icon: 'notifications' },
+        { labelKey: 'drawer.saved', route: '/home/saved', icon: 'bookmark' },
       ]
     },
     {
       // Pets section
       items: [
-        { labelKey: 'drawer.adopt', route: '/adopt', icon: 'pets' },
+        { labelKey: 'drawer.adopt', route: '/home/adopt', icon: 'pets' },
         { labelKey: 'drawer.addPet', route: '/onboarding/register-pet', icon: 'add_circle' },
-        { labelKey: 'drawer.petFriends', route: '/user/friends', icon: 'group' },
-        { labelKey: 'drawer.inviteFriends', route: '/user/invite', icon: 'share' },
+        { labelKey: 'drawer.petFriends', route: '/home/friends', icon: 'group' },
+        { labelKey: 'drawer.inviteFriends', route: '/home/invite', icon: 'share' },
         { labelKey: 'drawer.lostPets', route: '/lost-pets', icon: 'search' },
       ]
     },
     {
       // Settings section
       items: [
-        { labelKey: 'drawer.blockedUsers', route: '/user/blocked', icon: 'block' },
-        { labelKey: 'drawer.terms', route: '/terms', icon: 'description' },
-        { labelKey: 'drawer.subscriptions', route: '/user/subscription', icon: 'card_membership' },
-        { labelKey: 'drawer.contact', route: '/contact', icon: 'mail' },
-        { labelKey: 'drawer.privacy', route: '/privacy', icon: 'security' },
+        { labelKey: 'drawer.blockedUsers', route: '/home/blocked', icon: 'block' },
+        { labelKey: 'drawer.terms', route: '/home/terms', icon: 'description' },
+        { labelKey: 'drawer.subscriptions', route: '/home/subscriptions', icon: 'card_membership' },
+        { labelKey: 'drawer.contact', route: '/home/contact', icon: 'mail' },
+        { labelKey: 'drawer.privacy', route: '/home/privacy', icon: 'security' },
       ]
     },
     {

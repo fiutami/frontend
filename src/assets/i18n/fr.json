@@ -635,5 +635,44 @@
     "activity": {
       "back": "Retour"
     }
+  },
+  "userArea": {
+    "title": "Espace Utilisateur",
+    "tabs": {
+      "account": "Compte",
+      "profile": "Profil",
+      "security": "Sécurité",
+      "settings": "Paramètres"
+    },
+    "actions": {
+      "notifications": "Notifications",
+      "activity": "Activité",
+      "saved": "Enregistrés",
+      "subscription": "Abonnement",
+      "editProfile": "Modifier le Profil",
+      "friends": "Amis",
+      "invite": "Inviter des Amis",
+      "privacy": "Confidentialité",
+      "blocked": "Utilisateurs Bloqués",
+      "terms": "Conditions",
+      "language": "Langue",
+      "contact": "Contactez-nous",
+      "premium": "Premium",
+      "chat": "Messages"
+    },
+    "subSections": {
+      "notifications": "Notifications",
+      "activity": "Votre Activité",
+      "saved": "Enregistrés",
+      "friends": "Amis",
+      "blocked": "Utilisateurs Bloqués",
+      "invite": "Inviter des Amis",
+      "subscription": "Abonnement",
+      "privacy": "Confidentialité",
+      "terms": "Conditions d'Utilisation",
+      "contact": "Contactez-nous"
+    },
+    "logout": "Déconnexion",
+    "comingSoon": "Contenu à venir..."
   }
 }

@@ -635,5 +635,44 @@
     "activity": {
       "back": "Voltar"
     }
+  },
+  "userArea": {
+    "title": "Área do Usuário",
+    "tabs": {
+      "account": "Conta",
+      "profile": "Perfil",
+      "security": "Segurança",
+      "settings": "Configurações"
+    },
+    "actions": {
+      "notifications": "Notificações",
+      "activity": "Atividade",
+      "saved": "Salvos",
+      "subscription": "Assinatura",
+      "editProfile": "Editar Perfil",
+      "friends": "Amigos",
+      "invite": "Convidar Amigos",
+      "privacy": "Privacidade",
+      "blocked": "Usuários Bloqueados",
+      "terms": "Termos",
+      "language": "Idioma",
+      "contact": "Contate-nos",
+      "premium": "Premium",
+      "chat": "Mensagens"
+    },
+    "subSections": {
+      "notifications": "Notificações",
+      "activity": "Sua Atividade",
+      "saved": "Salvos",
+      "friends": "Amigos",
+      "blocked": "Usuários Bloqueados",
+      "invite": "Convidar Amigos",
+      "subscription": "Assinatura",
+      "privacy": "Privacidade",
+      "terms": "Termos de Serviço",
+      "contact": "Contate-nos"
+    },
+    "logout": "Sair",
+    "comingSoon": "Conteúdo em breve..."
   }
 }

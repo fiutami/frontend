@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DrawerService } from '../drawer/drawer.service';
+import { UserAreaModalService } from '../user-area-modal/user-area-modal.service';
 import { AuthService, User } from '../../../core/services/auth.service';
 import { Observable } from 'rxjs';
 
@@ -19,7 +20,7 @@ import { Observable } from 'rxjs';
       [class.avatar-button--small]="size === 'small'"
       [class.avatar-button--medium]="size === 'medium'"
       [class.avatar-button--large]="size === 'large'"
-      (click)="openDrawer()"
+      (click)="onClick()"
       type="button"
       [attr.aria-label]="'Apri menu utente'"
     >
@@ -113,15 +114,22 @@ import { Observable } from 'rxjs';
 })
 export class AvatarButtonComponent {
   private drawerService = inject(DrawerService);
+  private userAreaModalService = inject(UserAreaModalService);
   private authService = inject(AuthService);
 
   @Input() size: 'small' | 'medium' | 'large' = 'medium';
   @Input() avatarUrl?: string;
+  /** If true, opens drawer instead of user area modal */
+  @Input() openDrawerMode = false;
 
   user$: Observable<User | null> = this.authService.currentUser$;
 
-  openDrawer(): void {
-    this.drawerService.open();
+  onClick(): void {
+    if (this.openDrawerMode) {
+      this.drawerService.open();
+    } else {
+      this.userAreaModalService.open();
+    }
   }
 
   getInitials(user: User): string {
