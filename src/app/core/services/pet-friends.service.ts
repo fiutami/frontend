@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 export type PetType = 'dog' | 'cat' | 'rabbit' | 'bird' | 'other';
 
@@ -27,10 +30,10 @@ export interface PetFriend {
   providedIn: 'root'
 })
 export class PetFriendsService {
+  private readonly http = inject(HttpClient);
+  private readonly apiUrl = `${environment.apiUrl}/friends`;
 
-  getPetFriends(): Observable<PetFriend[]> {
-    // Mock data - da sostituire con chiamata API reale
-    const mockFriends: PetFriend[] = [
+  private readonly MOCK_DATA: PetFriend[] = [
       {
         id: 'friend_1',
         userName: 'Marco Rossi',
@@ -94,18 +97,23 @@ export class PetFriendsService {
       }
     ];
 
-    // Simula delay di rete
-    return of(mockFriends).pipe(delay(500));
+  getPetFriends(): Observable<PetFriend[]> {
+    return this.http.get<PetFriend[]>(this.apiUrl).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        return of(this.MOCK_DATA);
+      })
+    );
   }
 
   getPetFriendById(id: string): Observable<PetFriend | null> {
-    return new Observable(observer => {
-      this.getPetFriends().subscribe(friends => {
-        const friend = friends.find(f => f.id === id) || null;
-        observer.next(friend);
-        observer.complete();
-      });
-    });
+    return this.http.get<PetFriend>(`${this.apiUrl}/${id}`).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        const friend = this.MOCK_DATA.find(f => f.id === id) || null;
+        return of(friend);
+      })
+    );
   }
 
   getPetTypeIcon(type: PetType): string {

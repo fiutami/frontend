@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { Observable, of, delay, catchError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 export type PetType = 'dog' | 'cat' | 'rabbit' | 'bird' | 'other';
 export type AdoptionStatus = 'available' | 'pending' | 'adopted';
@@ -26,10 +28,73 @@ export interface AdoptionAd {
   providedIn: 'root'
 })
 export class AdoptService {
+  private readonly apiUrl = `${environment.apiUrl}/adoption`;
+
+  constructor(private http: HttpClient) {}
 
   getAdoptionAds(): Observable<AdoptionAd[]> {
-    // Mock data - da sostituire con chiamata API reale
-    const mockAds: AdoptionAd[] = [
+    return this.http.get<AdoptionAd[]>(this.apiUrl).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        return of(MOCK_DATA);
+      })
+    );
+  }
+
+  getAdoptionAdById(id: string): Observable<AdoptionAd | null> {
+    return this.http.get<AdoptionAd>(`${this.apiUrl}/${id}`).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        const ad = MOCK_DATA.find(a => a.id === id) || null;
+        return of(ad);
+      })
+    );
+  }
+
+  getPetTypeIcon(type: PetType): string {
+    const iconMap: Record<PetType, string> = {
+      dog: 'pets',
+      cat: 'pets',
+      rabbit: 'cruelty_free',
+      bird: 'flutter',
+      other: 'eco'
+    };
+    return iconMap[type] || 'pets';
+  }
+
+  getPetTypeLabel(type: PetType): string {
+    const labelMap: Record<PetType, string> = {
+      dog: 'Cane',
+      cat: 'Gatto',
+      rabbit: 'Coniglio',
+      bird: 'Uccello',
+      other: 'Altro'
+    };
+    return labelMap[type] || 'Animale';
+  }
+
+  formatRelativeTime(date: Date): string {
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffMins = Math.floor(diffMs / (1000 * 60));
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffMins < 1) return 'Adesso';
+    if (diffMins < 60) return `${diffMins} min fa`;
+    if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? 'ora' : 'ore'} fa`;
+    if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? 'giorno' : 'giorni'} fa`;
+
+    return date.toLocaleDateString('it-IT', {
+      day: 'numeric',
+      month: 'short',
+      year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
+    });
+  }
+}
+
+// Mock data as fallback
+const MOCK_DATA: AdoptionAd[] = [
       {
         id: 'adopt_1',
         petName: 'Luna',
@@ -102,59 +167,3 @@ export class AdoptService {
         shelterName: 'Oasi Felina Firenze'
       }
     ];
-
-    // Simula delay di rete
-    return of(mockAds).pipe(delay(600));
-  }
-
-  getAdoptionAdById(id: string): Observable<AdoptionAd | null> {
-    return new Observable(observer => {
-      this.getAdoptionAds().subscribe(ads => {
-        const ad = ads.find(a => a.id === id) || null;
-        observer.next(ad);
-        observer.complete();
-      });
-    });
-  }
-
-  getPetTypeIcon(type: PetType): string {
-    const iconMap: Record<PetType, string> = {
-      dog: 'pets',
-      cat: 'pets',
-      rabbit: 'cruelty_free',
-      bird: 'flutter',
-      other: 'eco'
-    };
-    return iconMap[type] || 'pets';
-  }
-
-  getPetTypeLabel(type: PetType): string {
-    const labelMap: Record<PetType, string> = {
-      dog: 'Cane',
-      cat: 'Gatto',
-      rabbit: 'Coniglio',
-      bird: 'Uccello',
-      other: 'Altro'
-    };
-    return labelMap[type] || 'Animale';
-  }
-
-  formatRelativeTime(date: Date): string {
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / (1000 * 60));
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    if (diffMins < 1) return 'Adesso';
-    if (diffMins < 60) return `${diffMins} min fa`;
-    if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? 'ora' : 'ore'} fa`;
-    if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? 'giorno' : 'giorni'} fa`;
-
-    return date.toLocaleDateString('it-IT', {
-      day: 'numeric',
-      month: 'short',
-      year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
-    });
-  }
-}

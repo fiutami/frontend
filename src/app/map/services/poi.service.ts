@@ -1,12 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of, delay } from 'rxjs';
+import { tap, catchError, map } from 'rxjs/operators';
 import { POI, POIFilter, POIType } from '../../core/models/poi.models';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class POIService {
-  private readonly mockPOIs: POI[] = [
+  private readonly apiUrl = `${environment.apiUrl}/poi`;
+  private loadingSignal = signal(false);
+
+  constructor(private http: HttpClient) {}
+
+  private readonly MOCK_DATA: POI[] = [
     // Veterinari
     {
       id: '1',
@@ -182,14 +190,41 @@ export class POIService {
     ];
   }
 
-  getPOIs(activeFilters: POIType[]): Observable<POI[]> {
-    const filtered = this.mockPOIs.filter(poi => activeFilters.includes(poi.type));
-    return of(filtered).pipe(delay(100)); // Simula latenza API
+  getPOIs(activeFilters: POIType[], lat?: number, lng?: number): Observable<POI[]> {
+    this.loadingSignal.set(true);
+
+    // Build query params
+    const params: any = {};
+    if (lat !== undefined) params.lat = lat.toString();
+    if (lng !== undefined) params.lng = lng.toString();
+    if (activeFilters.length > 0) params.types = activeFilters.join(',');
+
+    return this.http.get<POI[]>(this.apiUrl, { params }).pipe(
+      tap(pois => {
+        this.loadingSignal.set(false);
+      }),
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        this.loadingSignal.set(false);
+        const filtered = this.MOCK_DATA.filter(poi => activeFilters.includes(poi.type));
+        return of(filtered);
+      })
+    );
   }
 
   getPOIById(id: string): Observable<POI | undefined> {
-    const poi = this.mockPOIs.find(p => p.id === id);
-    return of(poi).pipe(delay(50));
+    this.loadingSignal.set(true);
+    return this.http.get<POI>(`${this.apiUrl}/${id}`).pipe(
+      tap(() => {
+        this.loadingSignal.set(false);
+      }),
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        this.loadingSignal.set(false);
+        const poi = this.MOCK_DATA.find(p => p.id === id);
+        return of(poi);
+      })
+    );
   }
 
   calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
@@ -208,12 +243,30 @@ export class POIService {
     return deg * (Math.PI / 180);
   }
 
-  toggleFavorite(poiId: string): Observable<boolean> {
-    const poi = this.mockPOIs.find(p => p.id === poiId);
-    if (poi) {
-      poi.isFavorite = !poi.isFavorite;
-      return of(poi.isFavorite);
-    }
-    return of(false);
+  toggleFavorite(poiId: string, isFavorite: boolean): Observable<boolean> {
+    this.loadingSignal.set(true);
+
+    // If adding to favorites, use POST; if removing, use DELETE
+    const request = isFavorite
+      ? this.http.post<void>(`${this.apiUrl}/${poiId}/favorite`, {})
+      : this.http.delete<void>(`${this.apiUrl}/${poiId}/favorite`);
+
+    return request.pipe(
+      tap(() => {
+        this.loadingSignal.set(false);
+      }),
+      map(() => isFavorite),
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        this.loadingSignal.set(false);
+        // Fallback: update mock data
+        const poi = this.MOCK_DATA.find(p => p.id === poiId);
+        if (poi) {
+          poi.isFavorite = isFavorite;
+          return of(isFavorite);
+        }
+        return of(false);
+      })
+    );
   }
 }

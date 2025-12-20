@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of, delay } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 export interface ActivityItem {
   id: string;
@@ -20,10 +23,16 @@ export interface ActivityItem {
   providedIn: 'root'
 })
 export class ActivityService {
+  private readonly apiUrl = `${environment.apiUrl}/activity`;
 
-  getActivities(): Observable<ActivityItem[]> {
-    // Mock data - da sostituire con chiamata API reale
-    const mockActivities: ActivityItem[] = [
+  // Signals for loading and error states
+  public loading = signal<boolean>(false);
+  public error = signal<string | null>(null);
+
+  constructor(private http: HttpClient) {}
+
+  private getMockActivities(): ActivityItem[] {
+    return [
       {
         id: 'mock_act_1',
         type: 'pet_add',
@@ -77,9 +86,24 @@ export class ActivityService {
         metadata: { petName: 'Thor', petId: 'pet_1' }
       }
     ];
+  }
 
-    // Simula delay di rete
-    return of(mockActivities).pipe(delay(500));
+  getActivities(): Observable<ActivityItem[]> {
+    this.loading.set(true);
+    this.error.set(null);
+
+    return this.http.get<ActivityItem[]>(this.apiUrl).pipe(
+      tap(activities => {
+        this.loading.set(false);
+      }),
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        this.error.set('Failed to load activities from server, using cached data');
+        this.loading.set(false);
+        // Fallback to mock data
+        return of(this.getMockActivities()).pipe(delay(500));
+      })
+    );
   }
 
   formatRelativeTime(date: Date): string {

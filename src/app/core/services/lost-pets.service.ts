@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { Observable, of, delay, catchError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 export interface LostPet {
   id: string;
@@ -22,9 +24,71 @@ export interface LostPet {
   providedIn: 'root'
 })
 export class LostPetsService {
+  private readonly apiUrl = `${environment.apiUrl}/lost-pets`;
+
+  constructor(private http: HttpClient) {}
 
   getLostPets(): Observable<LostPet[]> {
-    const mockLostPets: LostPet[] = [
+    return this.http.get<LostPet[]>(this.apiUrl).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        return of(MOCK_DATA);
+      })
+    );
+  }
+
+  reportSighting(petId: string, location: string, notes: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/${petId}/sightings`, {
+      location,
+      notes
+    }).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        console.log('Sighting reported (fallback):', { petId, location, notes });
+        return of(true);
+      })
+    );
+  }
+
+  getSpeciesIcon(species: LostPet['species']): string {
+    const icons: Record<LostPet['species'], string> = {
+      dog: 'pets',
+      cat: 'pets',
+      bird: 'flutter_dash',
+      rabbit: 'cruelty_free',
+      other: 'pets'
+    };
+    return icons[species];
+  }
+
+  formatLastSeen(date: Date): string {
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffHours < 1) return 'Meno di un\'ora fa';
+    if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? 'ora' : 'ore'} fa`;
+    if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? 'giorno' : 'giorni'} fa`;
+
+    return date.toLocaleDateString('it-IT', {
+      day: 'numeric',
+      month: 'long'
+    });
+  }
+
+  getStatusLabel(status: LostPet['status']): string {
+    const labels: Record<LostPet['status'], string> = {
+      lost: 'Smarrito',
+      found: 'Ritrovato',
+      searching: 'In ricerca'
+    };
+    return labels[status];
+  }
+}
+
+// Mock data as fallback
+const MOCK_DATA: LostPet[] = [
       {
         id: 'lost_1',
         name: 'Luna',
@@ -90,48 +154,3 @@ export class LostPetsService {
         createdAt: new Date(Date.now() - 1000 * 60 * 60 * 48)
       }
     ];
-
-    return of(mockLostPets).pipe(delay(600));
-  }
-
-  reportSighting(petId: string, location: string, notes: string): Observable<boolean> {
-    console.log('Sighting reported:', { petId, location, notes });
-    return of(true).pipe(delay(300));
-  }
-
-  getSpeciesIcon(species: LostPet['species']): string {
-    const icons: Record<LostPet['species'], string> = {
-      dog: 'pets',
-      cat: 'pets',
-      bird: 'flutter_dash',
-      rabbit: 'cruelty_free',
-      other: 'pets'
-    };
-    return icons[species];
-  }
-
-  formatLastSeen(date: Date): string {
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    if (diffHours < 1) return 'Meno di un\'ora fa';
-    if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? 'ora' : 'ore'} fa`;
-    if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? 'giorno' : 'giorni'} fa`;
-
-    return date.toLocaleDateString('it-IT', {
-      day: 'numeric',
-      month: 'long'
-    });
-  }
-
-  getStatusLabel(status: LostPet['status']): string {
-    const labels: Record<LostPet['status'], string> = {
-      lost: 'Smarrito',
-      found: 'Ritrovato',
-      searching: 'In ricerca'
-    };
-    return labels[status];
-  }
-}

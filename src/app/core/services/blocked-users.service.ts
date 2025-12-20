@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, delay, map } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 export interface BlockedUser {
   id: string;
@@ -14,8 +17,10 @@ export interface BlockedUser {
   providedIn: 'root'
 })
 export class BlockedUsersService {
+  private readonly http = inject(HttpClient);
+  private readonly apiUrl = `${environment.apiUrl}/block`;
 
-  private mockBlockedUsers: BlockedUser[] = [
+  private readonly MOCK_DATA: BlockedUser[] = [
     {
       id: 'user_1',
       username: 'mario_rossi',
@@ -50,21 +55,31 @@ export class BlockedUsersService {
   ];
 
   getBlockedUsers(): Observable<BlockedUser[]> {
-    return of([...this.mockBlockedUsers]).pipe(delay(500));
+    return this.http.get<BlockedUser[]>(this.apiUrl).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        return of(this.MOCK_DATA);
+      })
+    );
   }
 
   unblockUser(userId: string): Observable<boolean> {
-    // Simula rimozione utente dalla lista
-    const index = this.mockBlockedUsers.findIndex(u => u.id === userId);
-    if (index > -1) {
-      this.mockBlockedUsers.splice(index, 1);
-    }
-    return of(true).pipe(delay(400));
+    return this.http.delete<boolean>(`${this.apiUrl}/${userId}`).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        return of(true);
+      })
+    );
   }
 
   blockUser(userId: string, reason?: string): Observable<boolean> {
-    console.log('User blocked:', { userId, reason });
-    return of(true).pipe(delay(400));
+    const payload = { userId, reason };
+    return this.http.post<boolean>(this.apiUrl, payload).pipe(
+      catchError(err => {
+        console.warn('API failed, using fallback:', err);
+        return of(true);
+      })
+    );
   }
 
   formatBlockedDate(date: Date): string {

@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   inject,
   OnInit,
+  signal,
   computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,7 +13,8 @@ import {
   BottomTabBarComponent,
   TabItem,
 } from '../../../shared/components/bottom-tab-bar';
-import { ChatService, Conversation } from '../services/chat.service';
+import { ChatService } from '../../../chat/services/chat.service';
+import { Conversation } from '../../../chat/models/chat.models';
 
 @Component({
   selector: 'app-chat-list',
@@ -27,7 +29,7 @@ export class ChatListComponent implements OnInit {
   private router = inject(Router);
   private chatService = inject(ChatService);
 
-  conversations = this.chatService.getConversations();
+  conversations = signal<Conversation[]>([]);
   hasConversations = computed(() => this.conversations().length > 0);
 
   // Bottom tab bar configuration
@@ -45,7 +47,13 @@ export class ChatListComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.chatService.loadConversations();
+    this.loadConversations();
+  }
+
+  private loadConversations(): void {
+    this.chatService.getConversations().subscribe(convs => {
+      this.conversations.set(convs);
+    });
   }
 
   openDrawer(): void {
@@ -57,7 +65,7 @@ export class ChatListComponent implements OnInit {
   }
 
   openConversation(conversationId: string): void {
-    this.chatService.markAsRead(conversationId);
+    this.chatService.markAsRead(conversationId).subscribe();
     this.router.navigate(['/home/chat', conversationId]);
   }
 
@@ -65,8 +73,21 @@ export class ChatListComponent implements OnInit {
     return name.charAt(0).toUpperCase();
   }
 
-  formatTime(date: Date): string {
-    return this.chatService.formatTime(date);
+  formatTime(date: Date | undefined): string {
+    if (!date) return '';
+    const d = new Date(date);
+    const now = new Date();
+    const diffMs = now.getTime() - d.getTime();
+    const diffMins = Math.floor(diffMs / (1000 * 60));
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffMins < 1) return 'Adesso';
+    if (diffMins < 60) return `${diffMins}m`;
+    if (diffHours < 24) return `${diffHours}h`;
+    if (diffDays < 7) return `${diffDays}g`;
+
+    return d.toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
   }
 
   findFriends(): void {
