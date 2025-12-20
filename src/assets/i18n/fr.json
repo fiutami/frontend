@@ -11,7 +11,9 @@
     "search": "Rechercher",
     "loading": "Chargement...",
     "error": "Erreur",
-    "success": "Succès"
+    "success": "Succès",
+    "next": "Suivant",
+    "remove": "Supprimer"
   },
   "auth": {
     "login": "Connexion",
@@ -99,14 +101,35 @@
       "wantsPetResponse": "Le monde est plein d'animaux merveilleux. Pour t'aider à trouver le bon, commençons par mieux te connaître."
     },
     "registerPet": {
-      "title": "Enregistre ton ami à poils !",
-      "petName": "Nom de l'animal",
-      "petType": "Type d'animal",
+      "title": "Enregistre ton ami à fourrure !",
+      "petName": "Nom",
+      "petNamePlaceholder": "Comment s'appelle-t-il ?",
+      "species": "Espèce",
+      "speciesPlaceholder": "Sélectionne une espèce",
       "breed": "Race",
+      "breedPlaceholder": "Sélectionne une race",
+      "breedOptional": "Race (optionnel)",
       "age": "Âge",
+      "agePlaceholder": "ex. 2 ans",
+      "birthDate": "Date de naissance",
       "gender": "Sexe",
       "male": "Mâle",
-      "female": "Femelle"
+      "female": "Femelle",
+      "addPhoto": "Ajouter photo",
+      "photoHint": "Optionnel - tu peux l'ajouter plus tard",
+      "removePhoto": "Supprimer photo",
+      "submit": "Continuer",
+      "loading": "Chargement...",
+      "loadingSpecies": "Chargement des espèces...",
+      "loadingBreeds": "Chargement des races...",
+      "weight": "Poids (kg)",
+      "weightPlaceholder": "ex. 5.5",
+      "color": "Couleur",
+      "colorPlaceholder": "ex. Noir, Blanc et marron...",
+      "specialMarks": "Marques distinctives",
+      "specialMarksPlaceholder": "Taches, cicatrices, particularités...",
+      "uploadingPhoto": "Téléchargement photo...",
+      "registering": "Enregistrement..."
     },
     "quizResult": {
       "title": "Voici ton match parfait !",
@@ -116,6 +139,7 @@
     }
   },
   "quiz": {
+    "phase": "Phase",
     "phase1": {
       "title": "Style de vie",
       "activity": {

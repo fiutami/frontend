@@ -11,7 +11,9 @@
     "search": "Buscar",
     "loading": "Cargando...",
     "error": "Error",
-    "success": "Éxito"
+    "success": "Éxito",
+    "next": "Siguiente",
+    "remove": "Eliminar"
   },
   "auth": {
     "login": "Iniciar sesión",
@@ -100,13 +102,34 @@
     },
     "registerPet": {
       "title": "¡Registra a tu amigo peludo!",
-      "petName": "Nombre de la mascota",
-      "petType": "Tipo de animal",
+      "petName": "Nombre",
+      "petNamePlaceholder": "¿Cómo se llama?",
+      "species": "Especie",
+      "speciesPlaceholder": "Selecciona especie",
       "breed": "Raza",
+      "breedPlaceholder": "Selecciona raza",
+      "breedOptional": "Raza (opcional)",
       "age": "Edad",
+      "agePlaceholder": "ej. 2 años",
+      "birthDate": "Fecha de nacimiento",
       "gender": "Sexo",
       "male": "Macho",
-      "female": "Hembra"
+      "female": "Hembra",
+      "addPhoto": "Añadir foto",
+      "photoHint": "Opcional - puedes añadirla después",
+      "removePhoto": "Eliminar foto",
+      "submit": "Continuar",
+      "loading": "Cargando...",
+      "loadingSpecies": "Cargando especies...",
+      "loadingBreeds": "Cargando razas...",
+      "weight": "Peso (kg)",
+      "weightPlaceholder": "ej. 5.5",
+      "color": "Color",
+      "colorPlaceholder": "ej. Negro, Blanco y marrón...",
+      "specialMarks": "Marcas especiales",
+      "specialMarksPlaceholder": "Manchas, cicatrices, peculiaridades...",
+      "uploadingPhoto": "Subiendo foto...",
+      "registering": "Registrando..."
     },
     "quizResult": {
       "title": "¡Aquí está tu match perfecto!",
@@ -116,6 +139,7 @@
     }
   },
   "quiz": {
+    "phase": "Fase",
     "phase1": {
       "title": "Estilo de vida",
       "activity": {

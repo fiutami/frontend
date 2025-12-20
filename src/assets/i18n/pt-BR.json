@@ -11,7 +11,9 @@
     "search": "Buscar",
     "loading": "Carregando...",
     "error": "Erro",
-    "success": "Sucesso"
+    "success": "Sucesso",
+    "next": "Próximo",
+    "remove": "Remover"
   },
   "auth": {
     "login": "Entrar",
@@ -99,14 +101,35 @@
       "wantsPetResponse": "O mundo está cheio de animais maravilhosos. Para te ajudar a encontrar o certo, vamos te conhecer melhor."
     },
     "registerPet": {
-      "title": "Cadastre seu amigo peludo!",
-      "petName": "Nome do animal",
-      "petType": "Tipo de animal",
+      "title": "Registre seu amigo peludo!",
+      "petName": "Nome",
+      "petNamePlaceholder": "Qual o nome dele?",
+      "species": "Espécie",
+      "speciesPlaceholder": "Selecione a espécie",
       "breed": "Raça",
+      "breedPlaceholder": "Selecione a raça",
+      "breedOptional": "Raça (opcional)",
       "age": "Idade",
+      "agePlaceholder": "Ex. 2 anos",
+      "birthDate": "Data de nascimento",
       "gender": "Sexo",
       "male": "Macho",
-      "female": "Fêmea"
+      "female": "Fêmea",
+      "addPhoto": "Adicionar foto",
+      "photoHint": "Opcional - você pode adicionar depois",
+      "removePhoto": "Remover foto",
+      "submit": "Continuar",
+      "loading": "Carregando...",
+      "loadingSpecies": "Carregando espécies...",
+      "loadingBreeds": "Carregando raças...",
+      "weight": "Peso (kg)",
+      "weightPlaceholder": "Ex. 5.5",
+      "color": "Cor",
+      "colorPlaceholder": "Ex. Preto, Branco e marrom...",
+      "specialMarks": "Marcas especiais",
+      "specialMarksPlaceholder": "Manchas, cicatrizes, peculiaridades...",
+      "uploadingPhoto": "Enviando foto...",
+      "registering": "Registrando..."
     },
     "quizResult": {
       "title": "Aqui está seu par perfeito!",
@@ -116,6 +139,7 @@
     }
   },
   "quiz": {
+    "phase": "Fase",
     "phase1": {
       "title": "Estilo de vida",
       "activity": {

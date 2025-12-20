@@ -10,6 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 import { PetService, PetCreateRequest, AuthService } from '../../core';
 import { SpeciesQuestionnaireService, SpeciesDto } from '../../hero/species-questionnaire/species-questionnaire.service';
@@ -31,6 +32,7 @@ import { Breed } from '../../hero/breeds/models/breed.model';
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
+    TranslateModule,
   ],
   templateUrl: './register-pet.component.html',
   styleUrls: ['./register-pet.component.scss'],
