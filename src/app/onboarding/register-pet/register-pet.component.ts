@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { PetService, PetCreateRequest, AuthService } from '../../core';
 import { SpeciesQuestionnaireService, SpeciesDto } from '../../hero/species-questionnaire/species-questionnaire.service';
+import { BreedsService } from '../../hero/breeds/breeds.service';
+import { Breed } from '../../hero/breeds/models/breed.model';
 
 /**
  * RegisterPetComponent - Single-form pet registration
@@ -40,6 +42,7 @@ export class RegisterPetComponent implements OnInit {
   private readonly petService = inject(PetService);
   private readonly authService = inject(AuthService);
   private readonly speciesService = inject(SpeciesQuestionnaireService);
+  private readonly breedsService = inject(BreedsService);
 
   /** File input reference */
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
@@ -65,23 +68,31 @@ export class RegisterPetComponent implements OnInit {
   /** Species from backend */
   protected backendSpecies = signal<SpeciesDto[]>([]);
 
+  /** Breeds for selected species */
+  protected breeds = signal<Breed[]>([]);
+
   /** Loading species state */
   protected isLoadingSpecies = signal(false);
 
-  /** Species options (computed from backend) */
+  /** Loading breeds state */
+  protected isLoadingBreeds = signal(false);
+
+  /** Species load error */
+  protected speciesError = signal<string | null>(null);
+
+  /** Species options (from backend only - no fallback) */
   protected get speciesOptions(): { value: string; label: string }[] {
-    const species = this.backendSpecies();
-    if (species.length === 0) {
-      // Fallback while loading
-      return [
-        { value: 'dog', label: 'Cane' },
-        { value: 'cat', label: 'Gatto' },
-        { value: 'other', label: 'Altro' },
-      ];
-    }
-    return species.map(s => ({
+    return this.backendSpecies().map(s => ({
       value: s.id,
       label: s.name
+    }));
+  }
+
+  /** Breed options for selected species */
+  protected get breedOptions(): { value: string; label: string }[] {
+    return this.breeds().map(b => ({
+      value: b.id,
+      label: b.name
     }));
   }
 
@@ -102,14 +113,51 @@ export class RegisterPetComponent implements OnInit {
    */
   async ngOnInit(): Promise<void> {
     this.isLoadingSpecies.set(true);
+    this.speciesError.set(null);
     try {
       const species = await this.speciesService.getAllSpecies();
-      this.backendSpecies.set(species);
+      if (species.length === 0) {
+        this.speciesError.set('Nessuna specie disponibile. Riprova più tardi.');
+      } else {
+        this.backendSpecies.set(species);
+      }
     } catch (error) {
       console.error('Failed to load species:', error);
+      this.speciesError.set('Errore nel caricamento delle specie. Riprova più tardi.');
     } finally {
       this.isLoadingSpecies.set(false);
     }
+
+    // Listen for species changes to load breeds
+    this.petForm.get('specie')?.valueChanges.subscribe(speciesId => {
+      if (speciesId) {
+        this.loadBreedsForSpecies(speciesId);
+      } else {
+        this.breeds.set([]);
+      }
+    });
+  }
+
+  /**
+   * Load breeds for selected species
+   */
+  private loadBreedsForSpecies(speciesId: string): void {
+    this.isLoadingBreeds.set(true);
+    this.breeds.set([]);
+
+    // Map species ID to breeds service ID format
+    const selectedSpecies = this.backendSpecies().find(s => s.id === speciesId);
+    const speciesCode = selectedSpecies?.code?.toLowerCase() || '';
+
+    this.breedsService.getBreedsBySpecies(speciesCode).subscribe({
+      next: (breeds) => {
+        this.breeds.set(breeds);
+        this.isLoadingBreeds.set(false);
+      },
+      error: () => {
+        this.isLoadingBreeds.set(false);
+      }
+    });
   }
 
   /**
@@ -123,7 +171,8 @@ export class RegisterPetComponent implements OnInit {
    * Check if form is valid for submission
    */
   get isFormValid(): boolean {
-    return this.petForm.valid;
+    // Form must be valid AND species must be loaded from backend
+    return this.petForm.valid && this.backendSpecies().length > 0 && !this.speciesError();
   }
 
   /**
