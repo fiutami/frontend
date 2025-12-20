@@ -11,6 +11,7 @@ import {
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import * as L from 'leaflet';
 import { POI, POIFilter, POIType } from '../../core/models/poi.models';
 import { POIService } from '../services/poi.service';
@@ -28,7 +29,7 @@ L.Icon.Default.mergeOptions({
 @Component({
   selector: 'app-map-view',
   standalone: true,
-  imports: [CommonModule, FormsModule, BottomTabBarComponent],
+  imports: [CommonModule, FormsModule, BottomTabBarComponent, TranslateModule],
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

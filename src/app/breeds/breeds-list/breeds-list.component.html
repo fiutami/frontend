@@ -13,7 +13,7 @@
     type="button"
     class="breeds-page__btn-back"
     (click)="onBack()"
-    aria-label="Torna indietro">
+    [attr.aria-label]="'breeds.back' | translate">
     <img src="assets/images/species/btn-back.svg" alt="" />
   </button>
 
@@ -21,7 +21,7 @@
     type="button"
     class="breeds-page__btn-drawer"
     (click)="onOpenDrawer()"
-    aria-label="Apri menu">
+    [attr.aria-label]="'breeds.openMenu' | translate">
     <img src="assets/images/species/btn-drawer-menu.svg" alt="" />
   </button>
 
@@ -36,8 +36,8 @@
 
   <!-- Title Section -->
   <div class="breeds-page__title">
-    <h1>Fiuta e scopri</h1>
-    <p>Ogni specie racconta qualcosa.</p>
+    <h1>{{ 'breeds.subtitle' | translate }}</h1>
+    <p>{{ 'breeds.description' | translate }}</p>
   </div>
 
   <!-- Species Grid -->

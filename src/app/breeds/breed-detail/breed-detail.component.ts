@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 import {
   BreedDetail,
@@ -27,7 +28,7 @@ import {
 @Component({
   selector: 'app-breed-detail',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, TranslateModule],
   templateUrl: './breed-detail.component.html',
   styleUrls: ['./breed-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

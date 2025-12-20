@@ -24,7 +24,7 @@
     </header>
 
     <!-- Tab Navigation -->
-    <nav class="breed-detail__tabs" aria-label="Informazioni razza">
+    <nav class="breed-detail__tabs" [attr.aria-label]="'breeds.speciesInfo' | translate">
       @for (tab of tabs; track tab.id) {
         <button
           type="button"
@@ -90,7 +90,7 @@
               <p>{{ breedData.temperament.behavior }}</p>
             </div>
             <div class="tab-content__item">
-              <h3>Socialità</h3>
+              <h3>Socialitï¿½</h3>
               <p>{{ breedData.temperament.sociability }}</p>
             </div>
           </section>
@@ -155,7 +155,7 @@
         type="button"
         class="breed-detail__cta"
         (click)="onSelectBreed()">
-        Questo è il mio pet!
+        Questo ï¿½ il mio pet!
       </button>
     </footer>
   </div>

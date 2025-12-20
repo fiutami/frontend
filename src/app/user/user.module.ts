@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
@@ -39,6 +40,7 @@ import { BlockedComponent } from './blocked/blocked.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
     UserRoutingModule,
     SharedModule
   ]

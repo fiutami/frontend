@@ -1,7 +1,7 @@
 <div class="account-page">
   <!-- Header -->
   <header class="account-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
+    <button class="back-btn" (click)="goBack()" [attr.aria-label]="'user.account.back' | translate">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -58,13 +58,13 @@
   <!-- Form Section -->
   <form [formGroup]="userForm" (ngSubmit)="saveProfile()" class="account-form">
     <div class="form-group">
-      <label class="form-label">Nome</label>
+      <label class="form-label">{{ 'user.account.name' | translate }}</label>
       <div class="form-input-wrapper">
         <input
           type="text"
           formControlName="fullName"
           class="form-input"
-          placeholder="Il tuo nome"
+          [placeholder]="'user.account.namePlaceholder' | translate"
         />
         <button type="button" class="input-arrow" aria-label="Modifica">
           <svg width="6" height="12" viewBox="0 0 6 12" fill="none">
@@ -75,7 +75,7 @@
     </div>
 
     <div class="form-group">
-      <label class="form-label">Email</label>
+      <label class="form-label">{{ 'user.account.email' | translate }}</label>
       <div class="form-input-wrapper">
         <input
           type="email"
