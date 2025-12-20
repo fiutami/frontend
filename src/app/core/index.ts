@@ -11,6 +11,10 @@ export { SettingsService } from './services/settings.service';
 export { SessionService } from './services/session.service';
 export * from './services/pet.service';
 export * from './services/notification.service';
+export * from './services/viewport.service';
+
+// Config
+export * from './config';
 
 // Models
 export * from './models/pet.models';
