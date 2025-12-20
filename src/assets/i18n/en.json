@@ -34,7 +34,10 @@
     "signupTitle": "Sign Up",
     "emailPlaceholder": "Enter your email",
     "passwordPlaceholder": "Enter your password",
-    "confirmPasswordPlaceholder": "Confirm your password"
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "forgotPasswordTitle": "Forgot Password",
+    "forgotPasswordDescription": "Enter your email and we'll send you a code to reset your password.",
+    "sendCode": "Send Code"
   },
   "hero": {
     "tagline": "Sniff out your ideal solution",
