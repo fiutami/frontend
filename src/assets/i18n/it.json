@@ -101,13 +101,23 @@
     },
     "registerPet": {
       "title": "Registra il tuo amico peloso!",
-      "petName": "Nome animale",
-      "petType": "Tipo animale",
+      "petName": "Nome",
+      "petNamePlaceholder": "Come si chiama?",
+      "species": "Specie",
+      "speciesPlaceholder": "Seleziona specie",
       "breed": "Razza",
+      "breedPlaceholder": "Seleziona razza",
       "age": "Età",
+      "agePlaceholder": "Es. 2 anni",
       "gender": "Sesso",
       "male": "Maschio",
-      "female": "Femmina"
+      "female": "Femmina",
+      "addPhoto": "Aggiungi foto",
+      "photoHint": "Facoltativo - potrai aggiungerla dopo",
+      "removePhoto": "Rimuovi foto",
+      "submit": "Registra",
+      "loading": "Caricamento...",
+      "loadingSpecies": "Caricamento specie..."
     },
     "quizResult": {
       "title": "Ecco il tuo match perfetto!",
@@ -117,6 +127,7 @@
     }
   },
   "quiz": {
+    "phase": "Fase",
     "phase1": {
       "title": "Stile di vita",
       "activity": {
@@ -482,6 +493,227 @@
       "successTitle": "Grazie per la segnalazione!",
       "successMessage": "Il proprietario sarà informato del tuo avvistamento. Insieme possiamo aiutare a ritrovare gli animali smarriti.",
       "backToList": "Torna alla lista"
+    }
+  },
+  "breeds": {
+    "title": "Specie",
+    "subtitle": "Fiuta e scopri",
+    "description": "Ogni specie racconta qualcosa",
+    "searchPlaceholder": "Cerca razza...",
+    "back": "Indietro",
+    "openMenu": "Apri menu",
+    "speciesInfo": "Informazioni sulla specie",
+    "noResults": "Nessuna razza trovata",
+    "loading": "Caricamento...",
+    "tabs": {
+      "dna": "DNA & Origini",
+      "size": "Taglia & Pelo",
+      "temperament": "Temperamento",
+      "rituals": "Routine",
+      "risks": "Rischi",
+      "pedigree": "Pedigree"
+    }
+  },
+  "calendar": {
+    "title": "Calendario",
+    "subtitle": "I tuoi eventi e appuntamenti",
+    "today": "Oggi",
+    "month": "Mese",
+    "week": "Settimana",
+    "day": "Giorno",
+    "addEvent": "Aggiungi evento",
+    "editEvent": "Modifica evento",
+    "deleteEvent": "Elimina evento",
+    "eventTitle": "Titolo evento",
+    "eventDate": "Data",
+    "eventTime": "Ora",
+    "eventLocation": "Luogo",
+    "eventDescription": "Descrizione",
+    "noEvents": "Nessun evento",
+    "noEventsToday": "Nessun evento per oggi",
+    "upcomingEvents": "Prossimi eventi",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "confirmDelete": "Sei sicuro di voler eliminare questo evento?",
+    "types": {
+      "vet": "Veterinario",
+      "grooming": "Toelettatura",
+      "walk": "Passeggiata",
+      "vaccine": "Vaccino",
+      "medicine": "Medicina",
+      "birthday": "Compleanno",
+      "other": "Altro"
+    }
+  },
+  "map": {
+    "title": "Mappa",
+    "subtitle": "Attività, eventi e amici",
+    "description": "Trova ciò che serve al tuo pet, proprio dove sei",
+    "searchPlaceholder": "Cosa stai cercando",
+    "back": "Torna indietro",
+    "menu": "Menu",
+    "filters": "Filtri",
+    "activities": "Attività",
+    "events": "Eventi",
+    "friends": "Localizzati dagli amici",
+    "loading": "Caricamento mappa...",
+    "locationError": "Impossibile ottenere la posizione",
+    "enableLocation": "Abilita la geolocalizzazione",
+    "poi": {
+      "verified": "Verificato",
+      "reviews": "recensioni",
+      "noReviews": "Nessuna recensione",
+      "directions": "Indicazioni",
+      "call": "Chiama",
+      "website": "Sito web",
+      "save": "Salva",
+      "saved": "Salvato",
+      "openNow": "Aperto ora",
+      "closed": "Chiuso"
+    }
+  },
+  "home": {
+    "greeting": "Ciao",
+    "greetingMorning": "Buongiorno",
+    "greetingAfternoon": "Buon pomeriggio",
+    "greetingEvening": "Buonasera",
+    "subtitle": "Cosa facciamo oggi?",
+    "suggestions": {
+      "title": "Suggerimenti per te",
+      "viewAll": "Vedi tutti"
+    },
+    "quickActions": {
+      "calendar": "Calendario",
+      "map": "Mappa",
+      "gallery": "Galleria",
+      "breeds": "Razze"
+    },
+    "noPets": {
+      "title": "Nessun pet registrato",
+      "subtitle": "Registra il tuo primo amico a quattro zampe",
+      "cta": "Aggiungi pet"
+    },
+    "fiutoSays": "Fiuto dice..."
+  },
+  "profile": {
+    "title": "Profilo",
+    "edit": "Modifica profilo",
+    "tabs": {
+      "info": "Info",
+      "gallery": "Galleria",
+      "friends": "Amici",
+      "memories": "Ricordi"
+    },
+    "info": {
+      "name": "Nome",
+      "species": "Specie",
+      "breed": "Razza",
+      "age": "Età",
+      "weight": "Peso",
+      "color": "Colore",
+      "birthday": "Data di nascita",
+      "gender": "Sesso",
+      "male": "Maschio",
+      "female": "Femmina"
+    },
+    "gallery": {
+      "title": "Galleria",
+      "addPhoto": "Aggiungi foto",
+      "empty": {
+        "title": "Nessuna foto",
+        "subtitle": "Aggiungi le prime foto del tuo pet"
+      }
+    },
+    "friends": {
+      "title": "Amici",
+      "count": "{{count}} amici",
+      "empty": {
+        "title": "Nessun amico ancora",
+        "subtitle": "Trova altri pet e stringi nuove amicizie"
+      }
+    },
+    "memories": {
+      "title": "Ricordi",
+      "addMemory": "Aggiungi ricordo",
+      "empty": {
+        "title": "Nessun ricordo",
+        "subtitle": "Salva i momenti speciali"
+      }
+    },
+    "stats": {
+      "age": "Età",
+      "weight": "Peso",
+      "friends": "Amici",
+      "photos": "Foto",
+      "years": "anni",
+      "months": "mesi",
+      "kg": "kg"
+    },
+    "prototype": {
+      "badge": "Profilo Prototipo",
+      "message": "Questo è un profilo di esempio. Registra un animale reale per sbloccare tutte le funzionalità.",
+      "cta": "Registra il tuo pet"
+    }
+  },
+  "user": {
+    "account": {
+      "title": "Account",
+      "back": "Torna indietro",
+      "personalInfo": "Informazioni personali",
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "email": "Email",
+      "phone": "Telefono",
+      "phonePlaceholder": "+39 333 1234567",
+      "save": "Salva modifiche",
+      "changePassword": "Cambia password",
+      "deleteAccount": "Elimina account"
+    },
+    "notifications": {
+      "title": "Notifiche",
+      "back": "Torna indietro",
+      "push": "Notifiche push",
+      "email": "Notifiche email",
+      "reminders": "Promemoria eventi",
+      "messages": "Nuovi messaggi"
+    },
+    "saved": {
+      "title": "Salvati",
+      "searchPlaceholder": "Cosa stai cercando",
+      "empty": {
+        "title": "Nessun elemento salvato",
+        "subtitle": "I luoghi e le attività che salvi appariranno qui"
+      }
+    },
+    "friends": {
+      "title": "Amici Pet",
+      "searchPlaceholder": "Cerca amici...",
+      "addFriend": "Aggiungi amico",
+      "removeFriend": "Rimuovi",
+      "accept": "Accetta",
+      "decline": "Rifiuta",
+      "empty": {
+        "title": "Nessun amico ancora",
+        "subtitle": "Trova altri pet e stringi nuove amicizie!"
+      }
+    },
+    "invite": {
+      "title": "Invita Amici",
+      "subtitle": "Invita i tuoi amici a FIUTAMI",
+      "searchPlaceholder": "Cerca contatto",
+      "email": "Email",
+      "yourCode": "Il tuo codice",
+      "copyCode": "Copia codice",
+      "copied": "Copiato!",
+      "share": "Condividi"
+    },
+    "activity": {
+      "title": "Attività",
+      "back": "Torna indietro",
+      "empty": {
+        "title": "Nessuna attività",
+        "subtitle": "Le tue promozioni attive appariranno qui"
+      }
     }
   }
 }
