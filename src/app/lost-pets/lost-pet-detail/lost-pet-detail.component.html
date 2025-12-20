@@ -1,0 +1,188 @@
+<div class="detail-container">
+  <!-- Header -->
+  <header class="detail-header">
+    <button class="back-btn" (click)="goBack()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <h1>{{ 'lostPets.detailTitle' | translate }}</h1>
+    <button class="share-btn" (click)="shareReport()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M4 12V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6L12 2L8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 2V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Loading -->
+  @if (loading()) {
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+  }
+
+  @if (!loading() && pet()) {
+    <!-- Pet Image -->
+    <div class="pet-image-section">
+      @if (pet()!.petPhotoUrl) {
+        <img [src]="pet()!.petPhotoUrl" [alt]="pet()!.petName" class="pet-photo" />
+      } @else {
+        <div class="photo-placeholder">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+            <path d="M10.5 14.5C10.5 15.3284 9.82843 16 9 16C8.17157 16 7.5 15.3284 7.5 14.5C7.5 13.6716 8.17157 13 9 13C9.82843 13 10.5 13.6716 10.5 14.5Z" fill="currentColor"/>
+            <path d="M16.5 14.5C16.5 15.3284 15.8284 16 15 16C14.1716 16 13.5 15.3284 13.5 14.5C13.5 13.6716 14.1716 13 15 13C15.8284 13 16.5 13.6716 16.5 14.5Z" fill="currentColor"/>
+            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+      }
+
+      @if (pet()!.status === 'found') {
+        <div class="status-overlay found">
+          <span>{{ 'lostPets.found' | translate }}</span>
+        </div>
+      }
+
+      @if (pet()!.reward) {
+        <div class="reward-badge">
+          {{ pet()!.reward | currency:'EUR':'symbol':'1.0-0' }}
+        </div>
+      }
+    </div>
+
+    <!-- Pet Info Card -->
+    <div class="info-card">
+      <div class="pet-header">
+        <h2>{{ pet()!.petName }}</h2>
+        <p class="species-breed">
+          {{ pet()!.petSpecies }}
+          @if (pet()!.petBreed) {
+            <span> &bull; {{ pet()!.petBreed }}</span>
+          }
+        </p>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">{{ 'lostPets.owner' | translate }}</span>
+          <span class="value">{{ pet()!.ownerName }}</span>
+        </div>
+        @if (pet()!.petColor) {
+          <div class="info-item">
+            <span class="label">{{ 'lostPets.color' | translate }}</span>
+            <span class="value">{{ pet()!.petColor }}</span>
+          </div>
+        }
+        <div class="info-item">
+          <span class="label">{{ 'lostPets.lastSeen' | translate }}</span>
+          <span class="value">{{ formatDate(pet()!.lastSeenDate) }}</span>
+        </div>
+        <div class="info-item full-width">
+          <span class="label">{{ 'lostPets.location' | translate }}</span>
+          <span class="value location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            {{ pet()!.lastSeenLocation }}
+          </span>
+        </div>
+      </div>
+
+      <div class="description-section">
+        <h3>{{ 'lostPets.description' | translate }}</h3>
+        <p>{{ pet()!.description }}</p>
+      </div>
+    </div>
+
+    <!-- Sightings Section -->
+    @if (sightings().length > 0) {
+      <div class="sightings-section">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          {{ 'lostPets.sightingsTitle' | translate }} ({{ sightings().length }})
+        </h3>
+
+        <div class="sightings-list">
+          @for (sighting of sightings(); track trackBySighting($index, sighting)) {
+            <div class="sighting-card" [class.verified]="sighting.isVerified">
+              <div class="sighting-header">
+                <span class="reporter">{{ sighting.reporterName }}</span>
+                <span class="time">{{ formatTime(sighting.sightingDate) }}</span>
+              </div>
+              <p class="sighting-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                  <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61 3.95 5.32 5.64 3.64C7.32 1.95 9.61 1 12 1C14.39 1 16.68 1.95 18.36 3.64C20.05 5.32 21 7.61 21 10Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                {{ sighting.location }}
+              </p>
+              @if (sighting.description) {
+                <p class="sighting-description">{{ sighting.description }}</p>
+              }
+              @if (sighting.isVerified) {
+                <span class="verified-badge">{{ 'lostPets.verified' | translate }}</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="sighting-btn" (click)="reportSighting()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        {{ 'lostPets.reportSighting' | translate }}
+      </button>
+      <button class="contact-btn" (click)="openContact()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M22 16.92V19.92C22 20.48 21.56 20.93 21 20.93C10.51 20.93 2 12.42 2 1.93C2 1.37 2.45 0.93 3.01 0.93H6.01C6.56 0.93 7.01 1.36 7.04 1.91C7.07 2.48 7.14 3.04 7.25 3.58C7.29 3.79 7.24 4.01 7.1 4.18L4.86 6.41C6.07 8.57 7.95 10.45 10.11 11.66L12.34 9.43C12.51 9.29 12.73 9.24 12.94 9.28C13.48 9.39 14.04 9.46 14.61 9.49C15.16 9.52 15.59 9.97 15.59 10.52V13.52C15.59 14.08 15.14 14.52 14.59 14.52" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        {{ 'lostPets.contactOwner' | translate }}
+      </button>
+    </div>
+  }
+
+  <!-- Contact Modal -->
+  @if (showContactModal()) {
+    <div class="modal-overlay" (click)="closeContact()">
+      <div class="contact-modal" (click)="$event.stopPropagation()">
+        <button class="close-modal" (click)="closeContact()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <h3>{{ 'lostPets.contactOwner' | translate }}</h3>
+
+        <div class="contact-options">
+          @if (pet()?.contactPhone) {
+            <button class="contact-option" (click)="callOwner()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M22 16.92V19.92C22 20.48 21.56 20.93 21 20.93C10.51 20.93 2 12.42 2 1.93C2 1.37 2.45 0.93 3.01 0.93H6.01C6.56 0.93 7.01 1.36 7.04 1.91" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span>{{ pet()!.contactPhone }}</span>
+            </button>
+          }
+
+          @if (pet()?.contactEmail) {
+            <button class="contact-option" (click)="emailOwner()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span>{{ pet()!.contactEmail }}</span>
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,241 @@
+<div class="report-container">
+  <!-- Header -->
+  <header class="report-header">
+    <button class="back-btn" (click)="goBack()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <h1>{{ 'lostPets.report.title' | translate }}</h1>
+    <div class="spacer"></div>
+  </header>
+
+  <!-- Progress Steps -->
+  <div class="progress-steps">
+    <div class="step" [class.active]="currentStep() >= 1" [class.completed]="currentStep() > 1">
+      <span class="step-number">1</span>
+      <span class="step-label">{{ 'lostPets.report.step1' | translate }}</span>
+    </div>
+    <div class="step-line" [class.active]="currentStep() > 1"></div>
+    <div class="step" [class.active]="currentStep() >= 2" [class.completed]="currentStep() > 2">
+      <span class="step-number">2</span>
+      <span class="step-label">{{ 'lostPets.report.step2' | translate }}</span>
+    </div>
+    <div class="step-line" [class.active]="currentStep() > 2"></div>
+    <div class="step" [class.active]="currentStep() >= 3">
+      <span class="step-number">3</span>
+      <span class="step-label">{{ 'lostPets.report.step3' | translate }}</span>
+    </div>
+  </div>
+
+  <form [formGroup]="reportForm" (ngSubmit)="submit()">
+    <!-- Step 1: Select Pet -->
+    @if (currentStep() === 1) {
+      <div class="step-content">
+        <h2>{{ 'lostPets.report.selectPet' | translate }}</h2>
+
+        @if (loading()) {
+          <div class="loading">
+            <div class="spinner"></div>
+          </div>
+        }
+
+        @if (!loading() && userPets().length === 0) {
+          <div class="empty-state">
+            <p>{{ 'lostPets.report.noPets' | translate }}</p>
+            <button type="button" class="add-pet-btn" routerLink="/onboarding/register-pet">
+              {{ 'lostPets.report.addPetFirst' | translate }}
+            </button>
+          </div>
+        }
+
+        @if (!loading() && userPets().length > 0) {
+          <div class="pets-grid">
+            @for (pet of userPets(); track trackByPet($index, pet)) {
+              <div
+                class="pet-card"
+                [class.selected]="selectedPet()?.id === pet.id"
+                (click)="selectPet(pet)">
+                <div class="pet-photo">
+                  @if (pet.photoUrl) {
+                    <img [src]="pet.photoUrl" [alt]="pet.name" />
+                  } @else {
+                    <div class="photo-placeholder">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                    </div>
+                  }
+                </div>
+                <div class="pet-info">
+                  <h3>{{ pet.name }}</h3>
+                  <p>{{ pet.species }} {{ pet.breed ? '• ' + pet.breed : '' }}</p>
+                </div>
+                <div class="check-icon" *ngIf="selectedPet()?.id === pet.id">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Step 2: Location & Time -->
+    @if (currentStep() === 2) {
+      <div class="step-content">
+        <h2>{{ 'lostPets.report.locationTime' | translate }}</h2>
+
+        <div class="form-group">
+          <label for="lastSeenLocation">{{ 'lostPets.report.lastSeen' | translate }} *</label>
+          <div class="input-with-button">
+            <input
+              type="text"
+              id="lastSeenLocation"
+              formControlName="lastSeenLocation"
+              [placeholder]="'lostPets.report.lastSeenPlaceholder' | translate" />
+            <button type="button" class="location-btn" (click)="getCurrentLocation()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+          @if (reportForm.get('lastSeenLocation')?.touched && reportForm.get('lastSeenLocation')?.errors?.['required']) {
+            <span class="error">{{ 'errors.required' | translate }}</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="lastSeenCity">{{ 'lostPets.report.city' | translate }}</label>
+          <input
+            type="text"
+            id="lastSeenCity"
+            formControlName="lastSeenCity"
+            [placeholder]="'lostPets.report.cityPlaceholder' | translate" />
+        </div>
+
+        <div class="form-group">
+          <label for="lastSeenDate">{{ 'lostPets.report.when' | translate }} *</label>
+          <input
+            type="date"
+            id="lastSeenDate"
+            formControlName="lastSeenDate"
+            [max]="today" />
+          @if (reportForm.get('lastSeenDate')?.touched && reportForm.get('lastSeenDate')?.errors?.['required']) {
+            <span class="error">{{ 'errors.required' | translate }}</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="description">{{ 'lostPets.report.description' | translate }} *</label>
+          <textarea
+            id="description"
+            formControlName="description"
+            rows="4"
+            [placeholder]="'lostPets.report.descriptionPlaceholder' | translate"></textarea>
+          @if (reportForm.get('description')?.touched && reportForm.get('description')?.errors?.['required']) {
+            <span class="error">{{ 'errors.required' | translate }}</span>
+          }
+          @if (reportForm.get('description')?.touched && reportForm.get('description')?.errors?.['minlength']) {
+            <span class="error">{{ 'lostPets.report.descriptionMinLength' | translate }}</span>
+          }
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="secondary-btn" (click)="prevStep()">
+            {{ 'common.back' | translate }}
+          </button>
+          <button
+            type="button"
+            class="primary-btn"
+            [disabled]="!reportForm.get('lastSeenLocation')?.valid || !reportForm.get('lastSeenDate')?.valid || !reportForm.get('description')?.valid"
+            (click)="nextStep()">
+            {{ 'common.next' | translate }}
+          </button>
+        </div>
+      </div>
+    }
+
+    <!-- Step 3: Contact & Reward -->
+    @if (currentStep() === 3) {
+      <div class="step-content">
+        <h2>{{ 'lostPets.report.contactInfo' | translate }}</h2>
+
+        <div class="form-group">
+          <label for="contactPhone">{{ 'lostPets.report.phone' | translate }}</label>
+          <input
+            type="tel"
+            id="contactPhone"
+            formControlName="contactPhone"
+            [placeholder]="'lostPets.report.phonePlaceholder' | translate" />
+          @if (reportForm.get('contactPhone')?.touched && reportForm.get('contactPhone')?.errors?.['pattern']) {
+            <span class="error">{{ 'lostPets.report.invalidPhone' | translate }}</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="contactEmail">{{ 'lostPets.report.email' | translate }}</label>
+          <input
+            type="email"
+            id="contactEmail"
+            formControlName="contactEmail"
+            [placeholder]="'lostPets.report.emailPlaceholder' | translate" />
+          @if (reportForm.get('contactEmail')?.touched && reportForm.get('contactEmail')?.errors?.['email']) {
+            <span class="error">{{ 'errors.invalidEmail' | translate }}</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="reward">{{ 'lostPets.report.reward' | translate }}</label>
+          <div class="input-with-prefix">
+            <span class="prefix">EUR</span>
+            <input
+              type="number"
+              id="reward"
+              formControlName="reward"
+              min="0"
+              max="10000"
+              [placeholder]="'lostPets.report.rewardPlaceholder' | translate" />
+          </div>
+          <span class="hint">{{ 'lostPets.report.rewardHint' | translate }}</span>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary-card">
+          <h3>{{ 'lostPets.report.summary' | translate }}</h3>
+          <div class="summary-row">
+            <span>{{ 'lostPets.report.pet' | translate }}:</span>
+            <span>{{ selectedPet()?.name }}</span>
+          </div>
+          <div class="summary-row">
+            <span>{{ 'lostPets.report.lastSeen' | translate }}:</span>
+            <span>{{ reportForm.get('lastSeenLocation')?.value }}</span>
+          </div>
+          <div class="summary-row">
+            <span>{{ 'lostPets.report.when' | translate }}:</span>
+            <span>{{ reportForm.get('lastSeenDate')?.value | date:'dd/MM/yyyy' }}</span>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="secondary-btn" (click)="prevStep()">
+            {{ 'common.back' | translate }}
+          </button>
+          <button
+            type="submit"
+            class="primary-btn submit-btn"
+            [disabled]="reportForm.invalid || submitting()">
+            @if (submitting()) {
+              <div class="btn-spinner"></div>
+            } @else {
+              {{ 'lostPets.report.submit' | translate }}
+            }
+          </button>
+        </div>
+      </div>
+    }
+  </form>
+</div>

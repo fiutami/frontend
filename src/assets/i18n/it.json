@@ -11,7 +11,8 @@
     "search": "Cerca",
     "loading": "Caricamento...",
     "error": "Errore",
-    "success": "Successo"
+    "success": "Successo",
+    "next": "Avanti"
   },
   "auth": {
     "login": "Accedi",
@@ -407,6 +408,77 @@
       "publish": "Pubblica annuncio",
       "noPets": "Non hai pet registrati",
       "addPet": "Registra un pet"
+    }
+  },
+  "lostPets": {
+    "title": "Animali Smarriti",
+    "heroSubtitle": "Stai cercando il tuo pet?\nQui trovi tutti gli annunci di animali\nsmarriti in Italia",
+    "emergencyContacts": "Enti di soccorso animale",
+    "reportLost": "Crea Annuncio",
+    "nearby": "Vicino a te",
+    "allItaly": "Tutta Italia",
+    "sightings": "avvistamenti",
+    "owner": "Padrone",
+    "color": "Colore",
+    "lastSeen": "Ultima volta visto",
+    "location": "Località",
+    "description": "Descrizione",
+    "found": "Trovato",
+    "info": "Informazioni",
+    "contact": "Contatta",
+    "contactOwner": "Contatta il proprietario",
+    "reportSighting": "Segnala avvistamento",
+    "viewInYourArea": "Guarda nella tua zona",
+    "searchPlaceholder": "Cosa stai cercando",
+    "detailTitle": "Dettaglio Smarrimento",
+    "sightingsTitle": "Avvistamenti",
+    "verified": "Verificato",
+    "empty": {
+      "title": "Nessuna segnalazione",
+      "subtitle": "Non ci sono animali smarriti nella tua zona"
+    },
+    "report": {
+      "title": "Segnala smarrimento",
+      "step1": "Pet",
+      "step2": "Dettagli",
+      "step3": "Contatto",
+      "selectPet": "Quale pet hai perso?",
+      "noPets": "Non hai pet registrati",
+      "addPetFirst": "Registra prima un pet",
+      "locationTime": "Dove e quando?",
+      "lastSeen": "Ultima posizione",
+      "lastSeenPlaceholder": "es. Parco Sempione, Milano",
+      "city": "Città",
+      "cityPlaceholder": "es. Milano",
+      "when": "Quando l'hai visto l'ultima volta?",
+      "description": "Descrizione",
+      "descriptionPlaceholder": "Descrivi il tuo pet, collare, segni particolari...",
+      "descriptionMinLength": "La descrizione deve essere di almeno 20 caratteri",
+      "contactInfo": "Come ti contattano?",
+      "phone": "Telefono di contatto",
+      "phonePlaceholder": "+39 333 1234567",
+      "invalidPhone": "Numero di telefono non valido",
+      "email": "Email",
+      "emailPlaceholder": "esempio@email.com",
+      "reward": "Ricompensa (opzionale)",
+      "rewardPlaceholder": "0",
+      "rewardHint": "Opzionale. Può incentivare le segnalazioni",
+      "summary": "Riepilogo",
+      "pet": "Pet",
+      "submit": "Pubblica segnalazione"
+    },
+    "sighting": {
+      "title": "Segnala avvistamento",
+      "formTitle": "Dove l'hai visto?",
+      "where": "Località",
+      "wherePlaceholder": "es. Via Roma 45, Milano",
+      "when": "Quando?",
+      "description": "Descrizione (opzionale)",
+      "descriptionPlaceholder": "Descrivi cosa hai visto...",
+      "submit": "Invia segnalazione",
+      "successTitle": "Grazie per la segnalazione!",
+      "successMessage": "Il proprietario sarà informato del tuo avvistamento. Insieme possiamo aiutare a ritrovare gli animali smarriti.",
+      "backToList": "Torna alla lista"
     }
   }
 }

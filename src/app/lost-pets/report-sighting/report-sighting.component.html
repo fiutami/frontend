@@ -1,0 +1,120 @@
+<div class="sighting-container">
+  <!-- Header -->
+  <header class="sighting-header">
+    <button class="back-btn" (click)="goBack()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <h1>{{ 'lostPets.sighting.title' | translate }}</h1>
+    <div class="spacer"></div>
+  </header>
+
+  <!-- Loading -->
+  @if (loading()) {
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+  }
+
+  <!-- Success State -->
+  @if (submitted()) {
+    <div class="success-state">
+      <div class="success-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#22c55e" stroke-width="2"/>
+          <path d="M8 12L11 15L16 9" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>{{ 'lostPets.sighting.successTitle' | translate }}</h2>
+      <p>{{ 'lostPets.sighting.successMessage' | translate }}</p>
+      <button class="primary-btn" (click)="goToList()">
+        {{ 'lostPets.sighting.backToList' | translate }}
+      </button>
+    </div>
+  }
+
+  @if (!loading() && !submitted() && pet()) {
+    <!-- Pet Info -->
+    <div class="pet-summary">
+      <div class="pet-photo">
+        @if (pet()!.petPhotoUrl) {
+          <img [src]="pet()!.petPhotoUrl" [alt]="pet()!.petName" />
+        } @else {
+          <div class="photo-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+        }
+      </div>
+      <div class="pet-info">
+        <h2>{{ pet()!.petName }}</h2>
+        <p>{{ pet()!.petSpecies }} {{ pet()!.petBreed ? '• ' + pet()!.petBreed : '' }}</p>
+        <p class="owner">{{ 'lostPets.owner' | translate }}: {{ pet()!.ownerName }}</p>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="sightingForm" (ngSubmit)="submit()" class="sighting-form">
+      <h3>{{ 'lostPets.sighting.formTitle' | translate }}</h3>
+
+      <div class="form-group">
+        <label for="location">{{ 'lostPets.sighting.where' | translate }} *</label>
+        <div class="input-with-button">
+          <input
+            type="text"
+            id="location"
+            formControlName="location"
+            [placeholder]="'lostPets.sighting.wherePlaceholder' | translate" />
+          <button type="button" class="location-btn" (click)="getCurrentLocation()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        @if (sightingForm.get('location')?.touched && sightingForm.get('location')?.errors?.['required']) {
+          <span class="error">{{ 'errors.required' | translate }}</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="sightingDate">{{ 'lostPets.sighting.when' | translate }} *</label>
+        <input
+          type="date"
+          id="sightingDate"
+          formControlName="sightingDate"
+          [max]="today" />
+        @if (sightingForm.get('sightingDate')?.touched && sightingForm.get('sightingDate')?.errors?.['required']) {
+          <span class="error">{{ 'errors.required' | translate }}</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="description">{{ 'lostPets.sighting.description' | translate }}</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          rows="4"
+          [placeholder]="'lostPets.sighting.descriptionPlaceholder' | translate"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="secondary-btn" (click)="goBack()">
+          {{ 'common.cancel' | translate }}
+        </button>
+        <button
+          type="submit"
+          class="primary-btn"
+          [disabled]="sightingForm.invalid || submitting()">
+          @if (submitting()) {
+            <div class="btn-spinner"></div>
+          } @else {
+            {{ 'lostPets.sighting.submit' | translate }}
+          }
+        </button>
+      </div>
+    </form>
+  }
+</div>
