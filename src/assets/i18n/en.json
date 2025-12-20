@@ -346,5 +346,19 @@
       "subtitle": "We'll get back to you as soon as possible",
       "back": "Go back"
     }
+  },
+  "blocked": {
+    "title": "Blocked Users",
+    "subtitle": "Every pack has its balance. If someone doesn't vibe with you, you can block them here.",
+    "sectionTitle": "Blocked Users",
+    "select": "Select",
+    "cancel": "Cancel",
+    "unblock": "Unblock",
+    "unblockSelected": "Unblock selected",
+    "empty": {
+      "text": "You haven't blocked any users"
+    },
+    "info": "Blocked users cannot send you messages, see your profile, or interact with your content.",
+    "confirmUnblock": "Do you want to unblock this user?"
   }
 }

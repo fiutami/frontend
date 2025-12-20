@@ -18,6 +18,7 @@ import { ActivityComponent } from './activity/activity.component';
 import { SavedComponent } from './saved/saved.component';
 import { FriendsComponent } from './friends/friends.component';
 import { InviteComponent } from './invite/invite.component';
+import { BlockedComponent } from './blocked/blocked.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { InviteComponent } from './invite/invite.component';
     ActivityComponent,
     SavedComponent,
     FriendsComponent,
-    InviteComponent
+    InviteComponent,
+    BlockedComponent
   ],
   imports: [
     CommonModule,

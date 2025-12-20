@@ -1,0 +1,125 @@
+<div class="blocked-page">
+  <!-- Header -->
+  <header class="blocked-header">
+    <div class="blocked-header__top">
+      <button class="blocked-header__back" (click)="goBack()">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <circle cx="17" cy="17" r="17" fill="white"/>
+          <path d="M20 10L13 17L20 24" stroke="#4A74F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <h1 class="blocked-header__title">Utenti Bloccati</h1>
+    </div>
+
+    <p class="blocked-header__subtitle">
+      Ogni branco ha i suoi equilibri.<br>
+      Se qualcuno stona con le tue vibrazioni,<br>
+      puoi bloccarlo da qui.
+    </p>
+
+    <!-- Search Bar -->
+    <div class="blocked-header__search">
+      <div class="search-box">
+        <svg class="search-box__icon" width="17" height="17" viewBox="0 0 17 17" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="#4A74F0" stroke-width="2"/>
+          <path d="M11 11L15 15" stroke="#4A74F0" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input
+          type="text"
+          class="search-box__input"
+          placeholder="Cerca"
+          [(ngModel)]="searchQuery"
+          (input)="onSearch(searchQuery)"
+        />
+        <svg class="search-box__filter" width="16" height="20" viewBox="0 0 16 20" fill="none">
+          <path d="M1 4H15M3 10H13M5 16H11" stroke="#4A74F0" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="blocked-content">
+    <!-- Loading State -->
+    <div class="blocked-loading" *ngIf="loading">
+      <div class="blocked-loading__spinner"></div>
+    </div>
+
+    <!-- Section Header -->
+    <div class="blocked-content__header" *ngIf="!loading">
+      <span class="blocked-content__label">Utenti Bloccati</span>
+      <div class="blocked-content__line"></div>
+      <button
+        class="blocked-content__select"
+        [class.blocked-content__select--active]="isSelecting"
+        (click)="toggleSelecting()"
+        *ngIf="!isEmpty"
+      >
+        {{ isSelecting ? 'Annulla' : 'Seleziona' }}
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="blocked-empty" *ngIf="!loading && isEmpty">
+      <div class="blocked-empty__icon">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="#E0E0E0" stroke-width="4"/>
+          <path d="M25 25L55 55M55 25L25 55" stroke="#E0E0E0" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="blocked-empty__text">Non hai bloccato nessun utente</p>
+    </div>
+
+    <!-- Blocked Users List -->
+    <div class="blocked-list" *ngIf="!loading && !isEmpty">
+      <div
+        class="blocked-item"
+        *ngFor="let user of filteredUsers"
+        [class.blocked-item--selected]="isUserSelected(user)"
+        (click)="isSelecting ? toggleUserSelection(user) : null"
+      >
+        <div class="blocked-item__avatar">
+          <img
+            *ngIf="user.avatarUrl"
+            [src]="user.avatarUrl"
+            [alt]="user.displayName"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+          />
+          <span class="blocked-item__initials" [style.display]="user.avatarUrl ? 'none' : 'flex'">
+            {{ getInitials(user.displayName) }}
+          </span>
+        </div>
+        <div class="blocked-item__info">
+          <span class="blocked-item__name">{{ user.displayName }}</span>
+          <span class="blocked-item__date">{{ formatBlockedDate(user.blockedAt) }}</span>
+        </div>
+        <div class="blocked-item__check" *ngIf="isSelecting">
+          <svg *ngIf="isUserSelected(user)" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="10" fill="#4A74F0"/>
+            <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span *ngIf="!isUserSelected(user)" class="blocked-item__check-empty"></span>
+        </div>
+        <button
+          class="blocked-item__unblock"
+          *ngIf="!isSelecting"
+          (click)="unblockUser(user); $event.stopPropagation()"
+        >
+          Sblocca
+        </button>
+      </div>
+    </div>
+
+    <!-- Unblock Selected Action -->
+    <div class="blocked-actions" *ngIf="isSelecting && selectedUsers.size > 0">
+      <button class="blocked-actions__unblock" (click)="unblockSelected()">
+        Sblocca selezionati ({{ selectedUsers.size }})
+      </button>
+    </div>
+
+    <!-- Info Box -->
+    <div class="blocked-info" *ngIf="!loading && !isEmpty">
+      <p>Gli utenti bloccati non possono inviarti messaggi, vedere il tuo profilo o interagire con i tuoi contenuti.</p>
+    </div>
+  </main>
+</div>

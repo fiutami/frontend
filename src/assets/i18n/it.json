@@ -346,5 +346,19 @@
       "subtitle": "Ti risponderemo il prima possibile",
       "back": "Torna indietro"
     }
+  },
+  "blocked": {
+    "title": "Utenti Bloccati",
+    "subtitle": "Ogni branco ha i suoi equilibri. Se qualcuno stona con le tue vibrazioni, puoi bloccarlo da qui.",
+    "sectionTitle": "Utenti Bloccati",
+    "select": "Seleziona",
+    "cancel": "Annulla",
+    "unblock": "Sblocca",
+    "unblockSelected": "Sblocca selezionati",
+    "empty": {
+      "text": "Non hai bloccato nessun utente"
+    },
+    "info": "Gli utenti bloccati non possono inviarti messaggi, vedere il tuo profilo o interagire con i tuoi contenuti.",
+    "confirmUnblock": "Vuoi sbloccare questo utente?"
   }
 }
