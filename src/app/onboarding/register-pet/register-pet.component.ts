@@ -5,12 +5,14 @@ import {
   signal,
   ViewChild,
   ElementRef,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { PetService, PetCreateRequest, AuthService } from '../../core';
+import { SpeciesQuestionnaireService, SpeciesDto } from '../../hero/species-questionnaire/species-questionnaire.service';
 
 /**
  * RegisterPetComponent - Single-form pet registration
@@ -32,11 +34,12 @@ import { PetService, PetCreateRequest, AuthService } from '../../core';
   styleUrls: ['./register-pet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegisterPetComponent {
+export class RegisterPetComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
   private readonly petService = inject(PetService);
   private readonly authService = inject(AuthService);
+  private readonly speciesService = inject(SpeciesQuestionnaireService);
 
   /** File input reference */
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
@@ -59,12 +62,28 @@ export class RegisterPetComponent {
   /** Upload error */
   protected uploadError = signal<string | null>(null);
 
-  /** Species options */
-  protected readonly speciesOptions = [
-    { value: 'dog', label: 'Cane' },
-    { value: 'cat', label: 'Gatto' },
-    { value: 'other', label: 'Altro' },
-  ];
+  /** Species from backend */
+  protected backendSpecies = signal<SpeciesDto[]>([]);
+
+  /** Loading species state */
+  protected isLoadingSpecies = signal(false);
+
+  /** Species options (computed from backend) */
+  protected get speciesOptions(): { value: string; label: string }[] {
+    const species = this.backendSpecies();
+    if (species.length === 0) {
+      // Fallback while loading
+      return [
+        { value: 'dog', label: 'Cane' },
+        { value: 'cat', label: 'Gatto' },
+        { value: 'other', label: 'Altro' },
+      ];
+    }
+    return species.map(s => ({
+      value: s.id,
+      label: s.name
+    }));
+  }
 
   /** Pet registration form */
   protected petForm: FormGroup = this.fb.group({
@@ -77,6 +96,21 @@ export class RegisterPetComponent {
     colore: [''],
     segniParticolari: [''],
   });
+
+  /**
+   * Load species from backend on init
+   */
+  async ngOnInit(): Promise<void> {
+    this.isLoadingSpecies.set(true);
+    try {
+      const species = await this.speciesService.getAllSpecies();
+      this.backendSpecies.set(species);
+    } catch (error) {
+      console.error('Failed to load species:', error);
+    } finally {
+      this.isLoadingSpecies.set(false);
+    }
+  }
 
   /**
    * Navigate back to welcome screen
@@ -180,15 +214,9 @@ export class RegisterPetComponent {
 
     const formValue = this.petForm.value;
 
-    // Map species to backend ID (placeholder - in production would fetch from API)
-    const speciesIdMap: Record<string, string> = {
-      dog: '00000000-0000-0000-0000-000000000001',
-      cat: '00000000-0000-0000-0000-000000000002',
-      other: '00000000-0000-0000-0000-000000000003',
-    };
-
+    // Species ID is now directly from backend (selected from speciesOptions)
     const request: PetCreateRequest = {
-      speciesId: speciesIdMap[formValue.specie] || speciesIdMap['other'],
+      speciesId: formValue.specie,
       name: formValue.nome,
       sex: formValue.sesso,
       birthDate: formValue.dataNascita || null,
