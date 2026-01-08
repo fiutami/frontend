@@ -15,6 +15,7 @@ export interface SignupData {
   password: string;
   firstName: string;
   lastName: string;
+  invitationCode?: string;
 }
 
 export interface AuthResponse {
@@ -26,6 +27,9 @@ export interface AuthResponse {
   refreshToken: string;
   expiresAt: string;
   hasCompletedOnboarding: boolean;
+  status?: 'active' | 'pending' | 'rejected'; // User account status
+  twoFactorRequired?: boolean; // If 2FA is enabled and needs verification
+  twoFactorToken?: string; // Temporary token for 2FA verification
 }
 
 export interface User {
@@ -36,6 +40,19 @@ export interface User {
   provider: string;
   createdAt: string;
   hasCompletedOnboarding: boolean;
+  status?: 'active' | 'pending' | 'rejected';
+  twoFactorEnabled?: boolean;
+}
+
+export interface TwoFactorSetupResponse {
+  secret: string;
+  qrCodeUrl: string;
+  backupCodes: string[];
+}
+
+export interface TwoFactorVerifyRequest {
+  token: string;
+  code: string; // TOTP code from authenticator
 }
 
 export interface ProfileData {
@@ -258,5 +275,89 @@ export class AuthService {
    */
   private hasToken(): boolean {
     return !!localStorage.getItem(this.ACCESS_TOKEN_KEY);
+  }
+
+  // ========================================
+  // TWO-FACTOR AUTHENTICATION (2FA) METHODS
+  // ========================================
+
+  /**
+   * Setup 2FA - Generate QR code and secret
+   */
+  setup2FA(): Observable<TwoFactorSetupResponse> {
+    return this.http.post<TwoFactorSetupResponse>(
+      `${environment.apiUrl}/auth/2fa/setup`,
+      {}
+    );
+  }
+
+  /**
+   * Enable 2FA after verifying TOTP code
+   */
+  enable2FA(code: string): Observable<{ backupCodes: string[] }> {
+    return this.http.post<{ backupCodes: string[] }>(
+      `${environment.apiUrl}/auth/2fa/enable`,
+      { code }
+    ).pipe(
+      tap(() => {
+        const user = this.getCurrentUser();
+        if (user) {
+          user.twoFactorEnabled = true;
+          localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+          this.currentUserSubject.next(user);
+        }
+      })
+    );
+  }
+
+  /**
+   * Disable 2FA
+   */
+  disable2FA(code: string): Observable<void> {
+    return this.http.post<void>(
+      `${environment.apiUrl}/auth/2fa/disable`,
+      { code }
+    ).pipe(
+      tap(() => {
+        const user = this.getCurrentUser();
+        if (user) {
+          user.twoFactorEnabled = false;
+          localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+          this.currentUserSubject.next(user);
+        }
+      })
+    );
+  }
+
+  /**
+   * Verify 2FA code during login
+   */
+  verify2FA(request: TwoFactorVerifyRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(
+      `${environment.apiUrl}/auth/2fa/verify`,
+      request
+    ).pipe(
+      tap(response => this.setAuthData(response))
+    );
+  }
+
+  /**
+   * Revoke 2FA for a user (admin only)
+   */
+  revoke2FA(userId: string): Observable<void> {
+    return this.http.post<void>(
+      `${environment.apiUrl}/auth/2fa/revoke`,
+      { userId }
+    );
+  }
+
+  /**
+   * Regenerate backup codes
+   */
+  regenerateBackupCodes(): Observable<{ backupCodes: string[] }> {
+    return this.http.post<{ backupCodes: string[] }>(
+      `${environment.apiUrl}/auth/2fa/regenerate-backup-codes`,
+      {}
+    );
   }
 }

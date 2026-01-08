@@ -1,0 +1,83 @@
+<div class="waitlist">
+  <!-- Background Image with Overlay -->
+  <div class="waitlist__background">
+    <picture>
+      <source
+        srcset="assets/images/auth-bg-480w.avif 480w,
+                assets/images/auth-bg-768w.avif 768w,
+                assets/images/auth-bg-1280w.avif 1280w,
+                assets/images/auth-bg.avif 1920w"
+        sizes="100vw"
+        type="image/avif">
+      <source
+        srcset="assets/images/auth-bg-480w.webp 480w,
+                assets/images/auth-bg-768w.webp 768w,
+                assets/images/auth-bg-1280w.webp 1280w,
+                assets/images/auth-bg.webp 1920w"
+        sizes="100vw"
+        type="image/webp">
+      <img
+        src="assets/images/auth-bg.png"
+        alt=""
+        class="waitlist__background-image"
+        role="presentation"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async" />
+    </picture>
+    <div class="waitlist__overlay" aria-hidden="true"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="waitlist__content">
+    <app-auth-card>
+      <div class="waitlist__container">
+        <!-- Icon -->
+        <div class="waitlist__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+
+        <!-- Title -->
+        <h2 class="waitlist__title">Registrazione in Attesa</h2>
+
+        <!-- Description -->
+        <p class="waitlist__description">
+          Grazie per esserti registrato su Fiutami!
+        </p>
+        <p class="waitlist__description">
+          Il tuo account è stato creato ma è in attesa di approvazione.
+          Ti contatteremo via email non appena il tuo profilo sarà stato verificato.
+        </p>
+
+        <!-- Info Box -->
+        <div class="waitlist__info">
+          <h3 class="waitlist__info-title">Cosa succede ora?</h3>
+          <ul class="waitlist__info-list">
+            <li>Il nostro team esaminerà la tua richiesta</li>
+            <li>Riceverai una email di conferma entro 48 ore</li>
+            <li>Potrai accedere alla app una volta approvato</li>
+          </ul>
+        </div>
+
+        <!-- Hint about invitation code -->
+        <div class="waitlist__hint">
+          <p>
+            <strong>Hai un codice invito?</strong>
+            Esci e registrati nuovamente inserendo il codice per accedere immediatamente.
+          </p>
+        </div>
+
+        <!-- Logout Button -->
+        <app-button
+          variant="secondary"
+          [fullWidth]="true"
+          (clicked)="logout()">
+          Esci
+        </app-button>
+      </div>
+    </app-auth-card>
+  </div>
+</div>

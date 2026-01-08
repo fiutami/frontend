@@ -1,0 +1,132 @@
+<div class="setup-2fa">
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="setup-2fa__loading">
+    <p>Caricamento...</p>
+  </div>
+
+  <!-- Setup Phase -->
+  <div *ngIf="!isLoading && !setupComplete" class="setup-2fa__setup">
+    <div class="setup-2fa__header">
+      <button class="setup-2fa__back" (click)="goBack()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 19l-7-7 7-7" />
+        </svg>
+        Indietro
+      </button>
+      <h2 class="setup-2fa__title">Configura Autenticazione a Due Fattori</h2>
+    </div>
+
+    <!-- Step 1: Scan QR Code -->
+    <div class="setup-2fa__step">
+      <h3 class="setup-2fa__step-title">1. Scansiona il QR Code</h3>
+      <p class="setup-2fa__step-description">
+        Usa un'app di autenticazione (Google Authenticator, Authy, Microsoft Authenticator)
+        per scansionare questo codice QR:
+      </p>
+
+      <div class="setup-2fa__qr-container">
+        <img [src]="qrCodeUrl" alt="QR Code 2FA" class="setup-2fa__qr-image" />
+      </div>
+    </div>
+
+    <!-- Step 2: Manual Entry (Alternative) -->
+    <div class="setup-2fa__step">
+      <h3 class="setup-2fa__step-title">2. Oppure inserisci manualmente</h3>
+      <p class="setup-2fa__step-description">
+        Se non puoi scansionare il QR code, inserisci questa chiave segreta:
+      </p>
+
+      <div class="setup-2fa__secret-container">
+        <code class="setup-2fa__secret">{{ secret }}</code>
+        <button class="setup-2fa__copy-btn" (click)="copySecret()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          Copia
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3: Verify Code -->
+    <div class="setup-2fa__step">
+      <h3 class="setup-2fa__step-title">3. Verifica il codice</h3>
+      <p class="setup-2fa__step-description">
+        Inserisci il codice a 6 cifre generato dall'app di autenticazione:
+      </p>
+
+      <app-form-input
+        label="Codice di verifica"
+        type="text"
+        [(ngModel)]="verificationCode"
+        placeholder="000000"
+        maxlength="6"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        autocomplete="one-time-code">
+      </app-form-input>
+
+      <app-button
+        variant="primary"
+        [fullWidth]="true"
+        [disabled]="verificationCode.length !== 6"
+        [loading]="isVerifying"
+        (clicked)="onVerify()">
+        Verifica e Attiva
+      </app-button>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="setup-2fa__error" role="alert">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Completion Phase - Backup Codes -->
+  <div *ngIf="!isLoading && setupComplete" class="setup-2fa__complete">
+    <div class="setup-2fa__success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+    </div>
+
+    <h2 class="setup-2fa__title">2FA Attivato!</h2>
+    <p class="setup-2fa__description">
+      L'autenticazione a due fattori è ora attiva sul tuo account.
+    </p>
+
+    <!-- Backup Codes -->
+    <div class="setup-2fa__backup">
+      <h3 class="setup-2fa__backup-title">Codici di Backup</h3>
+      <p class="setup-2fa__backup-description">
+        Salva questi codici in un luogo sicuro. Puoi usarli per accedere se perdi il tuo dispositivo.
+      </p>
+
+      <div class="setup-2fa__codes">
+        <div *ngFor="let code of backupCodes" class="setup-2fa__code">
+          <code>{{ code }}</code>
+        </div>
+      </div>
+
+      <app-button
+        variant="secondary"
+        [fullWidth]="true"
+        (clicked)="downloadBackupCodes()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Scarica Codici
+      </app-button>
+    </div>
+
+    <app-button
+      variant="primary"
+      [fullWidth]="true"
+      (clicked)="finish()">
+      Fine
+    </app-button>
+  </div>
+</div>

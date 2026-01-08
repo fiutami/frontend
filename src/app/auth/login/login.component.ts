@@ -32,6 +32,11 @@ export class LoginComponent {
   isSubmitting = false;
   errorMessage = '';
 
+  // 2FA state
+  requires2FA = false;
+  twoFactorToken = '';
+  twoFactorCode = '';
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -81,13 +86,20 @@ export class LoginComponent {
       this.loginSubmit.emit({ email, password });
 
       this.authService.login({ email, password }).subscribe({
-        next: () => {
-          // Navigate based on onboarding status
-          // Ha pet → home principale, No pet → onboarding
-          if (this.authService.hasCompletedOnboarding()) {
-            this.router.navigate(['/home/main']);
+        next: (response) => {
+          // Check if 2FA is required
+          if (response.twoFactorRequired && response.twoFactorToken) {
+            this.requires2FA = true;
+            this.twoFactorToken = response.twoFactorToken;
+            this.isSubmitting = false;
+            this.cdr.markForCheck();
           } else {
-            this.router.navigate(['/onboarding/welcome']);
+            // Normal login - navigate based on onboarding status
+            if (this.authService.hasCompletedOnboarding()) {
+              this.router.navigate(['/home/main']);
+            } else {
+              this.router.navigate(['/onboarding/welcome']);
+            }
           }
         },
         error: (err) => {
@@ -110,6 +122,46 @@ export class LoginComponent {
 
   onForgotPasswordClick(): void {
     this.forgotPasswordClick.emit();
+  }
+
+  /**
+   * Submit 2FA verification code
+   */
+  onSubmit2FA(): void {
+    if (this.twoFactorCode.length === 6 && !this.isSubmitting) {
+      this.isSubmitting = true;
+      this.errorMessage = '';
+
+      this.authService.verify2FA({
+        token: this.twoFactorToken,
+        code: this.twoFactorCode
+      }).subscribe({
+        next: () => {
+          // Navigate based on onboarding status
+          if (this.authService.hasCompletedOnboarding()) {
+            this.router.navigate(['/home/main']);
+          } else {
+            this.router.navigate(['/onboarding/welcome']);
+          }
+        },
+        error: (err) => {
+          this.isSubmitting = false;
+          this.errorMessage = err.error?.message || 'Codice 2FA non valido.';
+          this.twoFactorCode = '';
+          this.cdr.markForCheck();
+        }
+      });
+    }
+  }
+
+  /**
+   * Cancel 2FA and go back to login
+   */
+  cancel2FA(): void {
+    this.requires2FA = false;
+    this.twoFactorToken = '';
+    this.twoFactorCode = '';
+    this.errorMessage = '';
   }
 
   /**

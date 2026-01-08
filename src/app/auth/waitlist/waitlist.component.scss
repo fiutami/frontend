@@ -1,0 +1,137 @@
+.waitlist {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+
+  &__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    background: var(--color-primary-soft, #E3F2FD);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 48px;
+      height: 48px;
+      color: var(--color-primary, #2196F3);
+    }
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text-primary, #1a1a1a);
+  }
+
+  &__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--color-text-secondary, #666);
+  }
+
+  &__info {
+    width: 100%;
+    background: var(--color-background-soft, #f5f5f5);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: left;
+
+    &-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+      color: var(--color-text-primary, #1a1a1a);
+    }
+
+    &-list {
+      margin: 0;
+      padding-left: 1.25rem;
+      list-style: none;
+
+      li {
+        position: relative;
+        margin-bottom: 0.75rem;
+        padding-left: 0.5rem;
+        color: var(--color-text-secondary, #666);
+
+        &:before {
+          content: '✓';
+          position: absolute;
+          left: -1.25rem;
+          color: var(--color-success, #4CAF50);
+          font-weight: 700;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__hint {
+    width: 100%;
+    padding: 1rem;
+    background: var(--color-info-soft, #E3F2FD);
+    border-left: 4px solid var(--color-primary, #2196F3);
+    border-radius: 4px;
+    text-align: left;
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary, #666);
+
+      strong {
+        color: var(--color-text-primary, #1a1a1a);
+      }
+    }
+  }
+}

@@ -82,6 +82,17 @@
           [errorMessage]="getConfirmPasswordError()">
         </app-form-input>
 
+        <!-- Invitation Code Input (Optional) -->
+        <app-form-input
+          label="Codice Invito (opzionale)"
+          type="text"
+          formControlName="invitationCode"
+          placeholder="ABC123"
+          [hint]="'Senza codice invito sarai in lista d\'attesa per la valutazione'"
+          [hasError]="!!(invitationCode?.invalid && invitationCode?.touched)"
+          [errorMessage]="getInvitationCodeError()">
+        </app-form-input>
+
         <!-- Submit Button -->
         <app-button
           variant="primary"

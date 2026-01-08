@@ -45,7 +45,8 @@
   <!-- Main Content -->
   <div class="login__content">
     <app-auth-card>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login__form">
+      <!-- Normal Login Form -->
+      <form *ngIf="!requires2FA" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login__form">
         <h2 class="login__title">{{ 'auth.loginTitle' | translate }}</h2>
 
         <!-- Email Input -->
@@ -96,8 +97,48 @@
         </div>
       </form>
 
-      <!-- Social Login -->
-      <app-social-login (providerSelected)="onSocialLoginClick($event)"></app-social-login>
+      <!-- 2FA Verification Form -->
+      <div *ngIf="requires2FA" class="login__2fa">
+        <h2 class="login__title">Verifica a Due Fattori</h2>
+        <p class="login__2fa-description">
+          Inserisci il codice a 6 cifre dalla tua app di autenticazione
+        </p>
+
+        <app-form-input
+          label="Codice 2FA"
+          type="text"
+          [(ngModel)]="twoFactorCode"
+          placeholder="000000"
+          maxlength="6"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          autocomplete="one-time-code">
+        </app-form-input>
+
+        <app-button
+          variant="primary"
+          [fullWidth]="true"
+          [disabled]="twoFactorCode.length !== 6"
+          [loading]="isSubmitting"
+          (clicked)="onSubmit2FA()">
+          Verifica
+        </app-button>
+
+        <app-button
+          variant="secondary"
+          [fullWidth]="true"
+          (clicked)="cancel2FA()">
+          Annulla
+        </app-button>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="login__error" role="alert">
+          {{ errorMessage }}
+        </div>
+      </div>
+
+      <!-- Social Login (only for normal login) -->
+      <app-social-login *ngIf="!requires2FA" (providerSelected)="onSocialLoginClick($event)"></app-social-login>
     </app-auth-card>
   </div>
 </div>

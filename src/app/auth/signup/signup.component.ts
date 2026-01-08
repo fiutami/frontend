@@ -40,7 +40,8 @@ export class SignupComponent {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordStrengthValidator]],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]],
+      invitationCode: ['', [Validators.minLength(6)]] // Optional - if empty, user goes to waitlist
     }, {
       validators: this.passwordMatchValidator
     });
@@ -56,6 +57,10 @@ export class SignupComponent {
 
   get confirmPassword() {
     return this.signupForm.get('confirmPassword');
+  }
+
+  get invitationCode() {
+    return this.signupForm.get('invitationCode');
   }
 
   getEmailError(): string {
@@ -89,6 +94,13 @@ export class SignupComponent {
       if (this.signupForm.errors?.['passwordMismatch']) {
         return 'Le password non corrispondono';
       }
+    }
+    return '';
+  }
+
+  getInvitationCodeError(): string {
+    if (this.invitationCode?.errors?.['minlength']) {
+      return 'Codice invito minimo 6 caratteri';
     }
     return '';
   }
@@ -129,14 +141,30 @@ export class SignupComponent {
       this.isSubmitting = true;
       this.errorMessage = '';
 
-      const { email, password } = this.signupForm.value;
+      const { email, password, invitationCode } = this.signupForm.value;
       this.signupSubmit.emit({ email, password });
 
       // firstName and lastName are optional for now, user can complete profile later
-      this.authService.signup({ email, password, firstName: '', lastName: '' }).subscribe({
-        next: () => {
-          // New users always go to onboarding (no pets yet)
-          this.router.navigate(['/onboarding/welcome']);
+      this.authService.signup({
+        email,
+        password,
+        firstName: '',
+        lastName: '',
+        invitationCode: invitationCode || undefined
+      }).subscribe({
+        next: (response) => {
+          // Check user status
+          if (response.status === 'pending') {
+            // User without invitation code - goes to waitlist
+            this.router.navigate(['/auth/waitlist']);
+          } else {
+            // User with valid invitation code - normal flow
+            if (this.authService.hasCompletedOnboarding()) {
+              this.router.navigate(['/home/main']);
+            } else {
+              this.router.navigate(['/onboarding/welcome']);
+            }
+          }
         },
         error: (err) => {
           this.isSubmitting = false;
