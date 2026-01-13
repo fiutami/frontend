@@ -42,7 +42,7 @@ describe('SignupComponent', () => {
       schemas: [NO_ERRORS_SCHEMA]
     })
     .overrideComponent(SignupComponent, {
-      set: { template: '<form [formGroup]="signupForm"><input formControlName="email"><input formControlName="password"><input formControlName="confirmPassword"></form>' }
+      set: { template: '<form [formGroup]="signupForm"><input formControlName="email"><input formControlName="inviteCode"><input formControlName="password"><input formControlName="confirmPassword"></form>' }
     })
     .compileComponents();
   }));
@@ -63,12 +63,14 @@ describe('SignupComponent', () => {
     it('should initialize signup form with empty fields', () => {
       expect(component.signupForm).toBeDefined();
       expect(component.signupForm.get('email')?.value).toBe('');
+      expect(component.signupForm.get('inviteCode')?.value).toBe('');
       expect(component.signupForm.get('password')?.value).toBe('');
       expect(component.signupForm.get('confirmPassword')?.value).toBe('');
     });
 
     it('should have all required form controls', () => {
       expect(component.signupForm.contains('email')).toBeTruthy();
+      expect(component.signupForm.contains('inviteCode')).toBeTruthy();
       expect(component.signupForm.contains('password')).toBeTruthy();
       expect(component.signupForm.contains('confirmPassword')).toBeTruthy();
     });
@@ -326,6 +328,7 @@ describe('SignupComponent', () => {
       const credentials = { email: 'john@example.com', password: 'password123' };
       component.signupForm.patchValue({
         ...credentials,
+        inviteCode: '',
         confirmPassword: 'password123'
       });
       authService.signup.and.returnValue(of(mockAuthResponse));
@@ -337,6 +340,26 @@ describe('SignupComponent', () => {
         password: credentials.password,
         firstName: '',
         lastName: ''
+      });
+    });
+
+    it('should include invite code when provided', () => {
+      component.signupForm.patchValue({
+        email: 'john@example.com',
+        inviteCode: ' INVITE123 ',
+        password: 'password123',
+        confirmPassword: 'password123'
+      });
+      authService.signup.and.returnValue(of(mockAuthResponse));
+
+      component.onSubmit();
+
+      expect(authService.signup).toHaveBeenCalledWith({
+        email: 'john@example.com',
+        password: 'password123',
+        firstName: '',
+        lastName: '',
+        inviteCode: 'INVITE123'
       });
     });
 

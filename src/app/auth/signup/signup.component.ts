@@ -39,6 +39,7 @@ export class SignupComponent {
   ) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
+      inviteCode: [''],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordStrengthValidator]],
       confirmPassword: ['', [Validators.required]]
     }, {
@@ -129,11 +130,19 @@ export class SignupComponent {
       this.isSubmitting = true;
       this.errorMessage = '';
 
-      const { email, password } = this.signupForm.value;
+      const { email, password, inviteCode } = this.signupForm.value;
       this.signupSubmit.emit({ email, password });
+      const trimmedInviteCode = inviteCode?.trim();
+      const signupPayload = {
+        email,
+        password,
+        firstName: '',
+        lastName: '',
+        ...(trimmedInviteCode ? { inviteCode: trimmedInviteCode } : {})
+      };
 
       // firstName and lastName are optional for now, user can complete profile later
-      this.authService.signup({ email, password, firstName: '', lastName: '' }).subscribe({
+      this.authService.signup(signupPayload).subscribe({
         next: () => {
           // New users always go to onboarding (no pets yet)
           this.router.navigate(['/onboarding/welcome']);
