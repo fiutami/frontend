@@ -39,6 +39,7 @@ export class SignupComponent {
   ) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
+      inviteCode: ['', [Validators.required, this.inviteCodeValidator]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordStrengthValidator]],
       confirmPassword: ['', [Validators.required]]
     }, {
@@ -58,12 +59,26 @@ export class SignupComponent {
     return this.signupForm.get('confirmPassword');
   }
 
+  get inviteCode() {
+    return this.signupForm.get('inviteCode');
+  }
+
   getEmailError(): string {
     if (this.email?.errors?.['required']) {
       return 'Email obbligatoria';
     }
     if (this.email?.errors?.['email']) {
       return "Inserisci un'email valida";
+    }
+    return '';
+  }
+
+  getInviteCodeError(): string {
+    if (this.inviteCode?.errors?.['required']) {
+      return 'Codice invito obbligatorio';
+    }
+    if (this.inviteCode?.errors?.['invalidInviteCode']) {
+      return 'Il codice invito deve essere ILOVEFIUTAMI';
     }
     return '';
   }
@@ -124,16 +139,33 @@ export class SignupComponent {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
+  private inviteCodeValidator(control: AbstractControl): ValidationErrors | null {
+    const value = (control.value ?? '').trim();
+    if (!value) {
+      return null;
+    }
+
+    return value === 'ILOVEFIUTAMI' ? null : { invalidInviteCode: true };
+  }
+
   onSubmit(): void {
     if (this.signupForm.valid && !this.isSubmitting) {
       this.isSubmitting = true;
       this.errorMessage = '';
 
-      const { email, password } = this.signupForm.value;
+      const { email, password, inviteCode } = this.signupForm.value;
       this.signupSubmit.emit({ email, password });
+      const trimmedInviteCode = inviteCode.trim();
+      const signupPayload = {
+        email,
+        password,
+        firstName: '',
+        lastName: '',
+        inviteCode: trimmedInviteCode
+      };
 
       // firstName and lastName are optional for now, user can complete profile later
-      this.authService.signup({ email, password, firstName: '', lastName: '' }).subscribe({
+      this.authService.signup(signupPayload).subscribe({
         next: () => {
           // New users always go to onboarding (no pets yet)
           this.router.navigate(['/onboarding/welcome']);

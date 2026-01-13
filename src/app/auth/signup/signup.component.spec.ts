@@ -42,7 +42,7 @@ describe('SignupComponent', () => {
       schemas: [NO_ERRORS_SCHEMA]
     })
     .overrideComponent(SignupComponent, {
-      set: { template: '<form [formGroup]="signupForm"><input formControlName="email"><input formControlName="password"><input formControlName="confirmPassword"></form>' }
+      set: { template: '<form [formGroup]="signupForm"><input formControlName="email"><input formControlName="inviteCode"><input formControlName="password"><input formControlName="confirmPassword"></form>' }
     })
     .compileComponents();
   }));
@@ -63,12 +63,14 @@ describe('SignupComponent', () => {
     it('should initialize signup form with empty fields', () => {
       expect(component.signupForm).toBeDefined();
       expect(component.signupForm.get('email')?.value).toBe('');
+      expect(component.signupForm.get('inviteCode')?.value).toBe('');
       expect(component.signupForm.get('password')?.value).toBe('');
       expect(component.signupForm.get('confirmPassword')?.value).toBe('');
     });
 
     it('should have all required form controls', () => {
       expect(component.signupForm.contains('email')).toBeTruthy();
+      expect(component.signupForm.contains('inviteCode')).toBeTruthy();
       expect(component.signupForm.contains('password')).toBeTruthy();
       expect(component.signupForm.contains('confirmPassword')).toBeTruthy();
     });
@@ -87,6 +89,12 @@ describe('SignupComponent', () => {
       const email = component.signupForm.get('email');
       email?.setValue('');
       expect(email?.hasError('required')).toBeTruthy();
+    });
+
+    it('should make inviteCode required', () => {
+      const inviteCode = component.signupForm.get('inviteCode');
+      inviteCode?.setValue('');
+      expect(inviteCode?.hasError('required')).toBeTruthy();
     });
 
     it('should make password required', () => {
@@ -232,6 +240,7 @@ describe('SignupComponent', () => {
     it('should validate form when all fields are correct', () => {
       component.signupForm.patchValue({
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'password123'
       });
@@ -242,6 +251,7 @@ describe('SignupComponent', () => {
     it('should invalidate form when password mismatch', () => {
       component.signupForm.patchValue({
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'different123'
       });
@@ -254,6 +264,7 @@ describe('SignupComponent', () => {
     it('should emit signupSubmit event on valid form submit', () => {
       const userData = {
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'password123'
       };
@@ -272,6 +283,7 @@ describe('SignupComponent', () => {
     it('should not emit event when form is invalid', () => {
       component.signupForm.patchValue({
         email: '',
+        inviteCode: '',
         password: '',
         confirmPassword: ''
       });
@@ -285,6 +297,7 @@ describe('SignupComponent', () => {
     it('should not submit when passwords do not match', () => {
       component.signupForm.patchValue({
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'different123'
       });
@@ -298,6 +311,7 @@ describe('SignupComponent', () => {
     it('should set isSubmitting to true on valid submit', () => {
       component.signupForm.patchValue({
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'password123'
       });
@@ -311,6 +325,7 @@ describe('SignupComponent', () => {
     it('should not submit when already submitting', () => {
       component.signupForm.patchValue({
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'password123'
       });
@@ -326,6 +341,7 @@ describe('SignupComponent', () => {
       const credentials = { email: 'john@example.com', password: 'password123' };
       component.signupForm.patchValue({
         ...credentials,
+        inviteCode: 'ILOVEFIUTAMI',
         confirmPassword: 'password123'
       });
       authService.signup.and.returnValue(of(mockAuthResponse));
@@ -336,13 +352,51 @@ describe('SignupComponent', () => {
         email: credentials.email,
         password: credentials.password,
         firstName: '',
-        lastName: ''
+        lastName: '',
+        inviteCode: 'ILOVEFIUTAMI'
       });
+    });
+
+    it('should include invite code in payload', () => {
+      component.signupForm.patchValue({
+        email: 'john@example.com',
+        inviteCode: ' ILOVEFIUTAMI ',
+        password: 'password123',
+        confirmPassword: 'password123'
+      });
+      authService.signup.and.returnValue(of(mockAuthResponse));
+
+      component.onSubmit();
+
+      expect(authService.signup).toHaveBeenCalledWith({
+        email: 'john@example.com',
+        password: 'password123',
+        firstName: '',
+        lastName: '',
+        inviteCode: 'ILOVEFIUTAMI'
+      });
+    });
+
+    it('should not submit when invite code is invalid', () => {
+      component.signupForm.patchValue({
+        email: 'john@example.com',
+        inviteCode: 'WRONGCODE',
+        password: 'password123',
+        confirmPassword: 'password123'
+      });
+      authService.signup.and.returnValue(of(mockAuthResponse));
+      spyOn(component.signupSubmit, 'emit');
+
+      component.onSubmit();
+
+      expect(component.signupSubmit.emit).not.toHaveBeenCalled();
+      expect(authService.signup).not.toHaveBeenCalled();
     });
 
     it('should navigate to /home on successful signup', () => {
       component.signupForm.patchValue({
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'password123'
       });
@@ -357,6 +411,7 @@ describe('SignupComponent', () => {
     it('should set error message on signup failure', () => {
       component.signupForm.patchValue({
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'password123'
       });
@@ -373,6 +428,7 @@ describe('SignupComponent', () => {
     it('should set default error message on signup failure without message', () => {
       component.signupForm.patchValue({
         email: 'john@example.com',
+        inviteCode: 'ILOVEFIUTAMI',
         password: 'password123',
         confirmPassword: 'password123'
       });
