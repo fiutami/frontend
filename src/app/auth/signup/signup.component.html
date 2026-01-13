@@ -59,6 +59,15 @@
           [errorMessage]="getEmailError()">
         </app-form-input>
 
+        <!-- Invite Code Input -->
+        <app-form-input
+          [label]="'auth.inviteCode' | translate"
+          type="text"
+          formControlName="inviteCode"
+          [placeholder]="'auth.inviteCodePlaceholder' | translate"
+          autocomplete="off">
+        </app-form-input>
+
         <!-- Password Input -->
         <app-form-input
           [label]="'auth.password' | translate"
