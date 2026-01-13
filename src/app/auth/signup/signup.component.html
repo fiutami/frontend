@@ -65,7 +65,9 @@
           type="text"
           formControlName="inviteCode"
           [placeholder]="'auth.inviteCodePlaceholder' | translate"
-          autocomplete="off">
+          autocomplete="off"
+          [hasError]="!!(inviteCode?.invalid && inviteCode?.touched)"
+          [errorMessage]="getInviteCodeError()">
         </app-form-input>
 
         <!-- Password Input -->

@@ -15,7 +15,7 @@ export interface SignupData {
   password: string;
   firstName: string;
   lastName: string;
-  inviteCode?: string;
+  inviteCode: string;
 }
 
 export interface AuthResponse {
