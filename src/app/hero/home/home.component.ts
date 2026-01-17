@@ -84,9 +84,10 @@ export class HomeComponent implements OnInit {
   // Notification bell
   unreadNotifications = signal(0);
 
-  // Mascot bottom sheet
+  // Mascot bottom sheet / AI Mode
   showMascotSheet = signal(false);
   mascotSuggestions = signal<Suggestion[]>([]);
+  isAiModeActive = signal(false);
 
   // Bottom tab bar configuration - NEW ORDER: Home, Calendario, Mappa, Profilo Pet, Specie
   tabs: TabItem[] = [
@@ -182,6 +183,15 @@ export class HomeComponent implements OnInit {
       this.router.navigate([suggestion.actionUrl]);
     }
     this.closeMascotSheet();
+  }
+
+  onAiModeChange(active: boolean): void {
+    this.isAiModeActive.set(active);
+  }
+
+  onChatMessage(message: string): void {
+    console.log('Chat message to Fiuto:', message);
+    // TODO: Implement AI chat logic - send to backend and get response
   }
 
   private getInitials(name: string): string {

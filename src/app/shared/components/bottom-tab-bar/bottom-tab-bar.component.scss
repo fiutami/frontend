@@ -343,3 +343,42 @@
     }
   }
 }
+
+// ===========================================
+// HIDDEN STATE (AI Mode)
+// ===========================================
+
+.bottom-tab-bar--hidden {
+  transform: translateY(calc(100% - 4px));
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Show only a thin blue indicator bar
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $color-tab-bar-bg;
+    border-radius: 2px 2px 0 0;
+  }
+
+  // Hide all tab content
+  .bottom-tab-bar__tab {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+}
+
+// Normal state transition
+.bottom-tab-bar:not(.bottom-tab-bar--hidden) {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .bottom-tab-bar__tab {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.2s ease 0.1s;
+  }
+}

@@ -9,22 +9,36 @@
     (pointerup)="onPointerUp()"
     role="dialog"
     aria-modal="true"
-    aria-label="Fiuto ti suggerisce">
+    aria-label="Modalità AI - Fiuto">
 
     <div class="mascot-sheet__handle">
       <span class="mascot-sheet__handle-bar"></span>
     </div>
 
     <div class="mascot-sheet__header">
-      <div class="mascot-sheet__title">Fiuto ti suggerisce</div>
-      <img
-        class="mascot-sheet__icon"
-        src="assets/images/species/mascot-fiuto.svg"
-        alt="Fiuto"
-        loading="lazy" />
       <button class="mascot-sheet__close" type="button" (click)="close()" aria-label="Chiudi">
         <span class="material-icons">close</span>
       </button>
+
+      <div class="mascot-sheet__mascot-area">
+        @if (aiMessage) {
+          <app-speech-bubble variant="ai" tailPosition="right" [animated]="true" [maxWidth]="'220px'">
+            <span class="mascot-sheet__bubble-text">{{ displayedText() }}</span>
+            @if (isTyping()) {
+              <span class="mascot-sheet__cursor" aria-hidden="true">|</span>
+            }
+          </app-speech-bubble>
+        }
+
+        <!-- Mascot wrapper for future animation support -->
+        <div class="mascot-sheet__mascot-wrapper">
+          <img
+            class="mascot-sheet__mascot"
+            src="assets/images/species/mascot-fiuto.svg"
+            alt="Fiuto"
+            loading="lazy" />
+        </div>
+      </div>
     </div>
 
     <div class="mascot-sheet__content">
@@ -55,6 +69,26 @@
           }
         </div>
       }
+    </div>
+
+    <!-- Chat input -->
+    <div class="mascot-sheet__chat">
+      <form class="mascot-sheet__chat-form" (submit)="onChatSubmit($event)">
+        <input
+          type="text"
+          class="mascot-sheet__chat-input"
+          placeholder="Scrivi a Fiuto..."
+          [(ngModel)]="chatInput"
+          name="chatInput"
+          autocomplete="off" />
+        <button
+          type="submit"
+          class="mascot-sheet__chat-send"
+          [disabled]="!chatInput.trim()"
+          aria-label="Invia messaggio">
+          <span class="material-icons">send</span>
+        </button>
+      </form>
     </div>
   </div>
 }

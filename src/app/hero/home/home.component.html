@@ -53,14 +53,17 @@
     />
   </div>
 
-  <!-- Mascot Bottom Sheet -->
+  <!-- Mascot Bottom Sheet (AI Mode) -->
   <app-mascot-bottom-sheet
     [isOpen]="showMascotSheet()"
     [suggestions]="mascotSuggestions()"
+    [aiMessage]="'Ciao! Ecco cosa ho trovato per te oggi...'"
     (closed)="closeMascotSheet()"
-    (suggestionAction)="onMascotSuggestionClick($event)">
+    (suggestionAction)="onMascotSuggestionClick($event)"
+    (aiModeChange)="onAiModeChange($event)"
+    (chatMessage)="onChatMessage($event)">
   </app-mascot-bottom-sheet>
 
-  <!-- Bottom Tab Bar (Blue) -->
-  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'"></app-bottom-tab-bar>
+  <!-- Bottom Tab Bar (Blue) - hidden in AI Mode -->
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'" [hidden]="isAiModeActive()"></app-bottom-tab-bar>
 </div>

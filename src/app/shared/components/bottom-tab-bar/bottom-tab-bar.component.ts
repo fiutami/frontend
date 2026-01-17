@@ -84,6 +84,12 @@ export class BottomTabBarComponent {
   @Input() safeArea = true;
 
   /**
+   * Whether to hide the tab bar (AI mode)
+   * @default false
+   */
+  @Input() hidden = false;
+
+  /**
    * Emits when a tab is clicked
    */
   @Output() tabChange = new EventEmitter<TabItem>();
@@ -98,6 +104,7 @@ export class BottomTabBarComponent {
       [`bottom-tab-bar--${this.size}`]: true,
       'bottom-tab-bar--with-labels': this.showLabels,
       'bottom-tab-bar--safe-area': this.safeArea,
+      'bottom-tab-bar--hidden': this.hidden,
     };
   }
 
