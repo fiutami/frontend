@@ -1,0 +1,56 @@
+<div class="notification-bell">
+  <button
+    class="notification-bell__btn"
+    type="button"
+    (click)="toggle()"
+    aria-label="Notifiche"
+    [attr.aria-expanded]="isSheetOpen()">
+    <span class="material-icons notification-bell__icon">notifications</span>
+
+    @if (count > 0) {
+      <span class="notification-bell__badge">{{ count > 99 ? '99+' : count }}</span>
+    }
+  </button>
+
+  @if (isSheetOpen()) {
+    <div class="notification-bell__sheet" role="dialog" aria-modal="true" aria-label="Notifiche recenti">
+      <div class="notification-bell__sheet-header">
+        <span class="notification-bell__sheet-title">Notifiche</span>
+      </div>
+
+      <div class="notification-bell__sheet-body">
+        @if (isLoading()) {
+          <div class="notification-bell__empty">Caricamento...</div>
+        } @else if (notifications().length === 0) {
+          <div class="notification-bell__empty">Nessuna notifica</div>
+        } @else {
+          <div class="notification-bell__list">
+            @for (n of notifications(); track n.id) {
+              <button
+                type="button"
+                class="notification-bell__item"
+                [class.notification-bell__item--unread]="!n.isRead"
+                (click)="openNotification(n)">
+                <span class="material-icons notification-bell__item-icon">{{ n.icon }}</span>
+                <div class="notification-bell__item-content">
+                  <div class="notification-bell__item-title">{{ n.title }}</div>
+                  @if (n.message) {
+                    <div class="notification-bell__item-body">{{ n.message }}</div>
+                  }
+                  <div class="notification-bell__item-time">{{ formatTime(n.timestamp) }}</div>
+                </div>
+                @if (!n.isRead) {
+                  <span class="notification-bell__item-dot"></span>
+                }
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="notification-bell__sheet-footer">
+        <button type="button" class="notification-bell__all" (click)="goToAll()">Vedi tutte</button>
+      </div>
+    </div>
+  }
+</div>

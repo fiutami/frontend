@@ -152,6 +152,7 @@ export class BottomTabBarComponent {
 
   /**
    * Handle tab click
+   * If already on the same tab section, resets navigation to root of that section
    */
   onTabClick(tab: TabItem, event: Event): void {
     if (tab.disabled) {
@@ -162,7 +163,19 @@ export class BottomTabBarComponent {
     this.tabChange.emit(tab);
 
     if (this.useRouter && tab.route) {
-      this.router.navigate([tab.route]);
+      // Check if already on the root of this tab section
+      const isOnTabRoot = this.router.isActive(tab.route, {
+        paths: 'exact',
+        queryParams: 'ignored',
+        fragment: 'ignored',
+        matrixParams: 'ignored',
+      });
+
+      // If already at root, use replaceUrl to avoid adding to history
+      // If on a child page of this section (isActive but not isOnTabRoot), navigate to root
+      this.router.navigate([tab.route], {
+        replaceUrl: isOnTabRoot,
+      });
     }
   }
 

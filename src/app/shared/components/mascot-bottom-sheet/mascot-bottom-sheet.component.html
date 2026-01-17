@@ -1,0 +1,60 @@
+@if (isOpen) {
+  <div class="mascot-sheet__backdrop" (click)="onBackdropClick()"></div>
+
+  <div
+    class="mascot-sheet"
+    [style.transform]="sheetTransform()"
+    (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerUp()"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Fiuto ti suggerisce">
+
+    <div class="mascot-sheet__handle">
+      <span class="mascot-sheet__handle-bar"></span>
+    </div>
+
+    <div class="mascot-sheet__header">
+      <div class="mascot-sheet__title">Fiuto ti suggerisce</div>
+      <img
+        class="mascot-sheet__icon"
+        src="assets/images/species/mascot-fiuto.svg"
+        alt="Fiuto"
+        loading="lazy" />
+      <button class="mascot-sheet__close" type="button" (click)="close()" aria-label="Chiudi">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+
+    <div class="mascot-sheet__content">
+      @if (suggestions.length === 0) {
+        <div class="mascot-sheet__empty">
+          <span class="material-icons mascot-sheet__empty-icon">lightbulb</span>
+          <p>Nessun suggerimento al momento</p>
+        </div>
+      } @else {
+        <div class="mascot-sheet__list">
+          @for (s of suggestions; track s.id) {
+            <button
+              type="button"
+              class="mascot-sheet__item"
+              [class.mascot-sheet__item--clickable]="s.actionUrl"
+              (click)="onSuggestionClick(s)">
+              <span class="material-icons mascot-sheet__item-icon">{{ s.icon }}</span>
+              <div class="mascot-sheet__item-text">
+                <div class="mascot-sheet__item-title">{{ s.title }}</div>
+                @if (s.description) {
+                  <div class="mascot-sheet__item-desc">{{ s.description }}</div>
+                }
+              </div>
+              @if (s.actionUrl) {
+                <span class="material-icons mascot-sheet__item-arrow">chevron_right</span>
+              }
+            </button>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}

@@ -30,151 +30,36 @@
       }
     </section>
 
-    <!-- Pet Card (Path A) -->
-    @if (isPathA()) {
-      <section class="home__pet-card" (click)="navigateToPetProfile()">
-        <div class="home__pet-card-photo">
-          @if (petPhotoUrl()) {
-            <img [src]="petPhotoUrl()" [alt]="petName()" class="home__pet-card-img" />
-          } @else {
-            <div class="home__pet-card-placeholder">
-              <span class="material-icons">pets</span>
-            </div>
-          }
-        </div>
-        <div class="home__pet-card-info">
-          <h2 class="home__pet-card-name">{{ petName() }}</h2>
-          <p class="home__pet-card-species">
-            {{ petSpecies() }}
-            @if (petBreed()) {
-              <span>&middot; {{ petBreed() }}</span>
-            }
-          </p>
-          <div class="home__pet-card-stats">
-            @if (petAge()) {
-              <span class="home__pet-card-stat">
-                <span class="material-icons">cake</span>
-                {{ petAge() }}
-              </span>
-            }
-            @if (petWeight()) {
-              <span class="home__pet-card-stat">
-                <span class="material-icons">monitor_weight</span>
-                {{ petWeight() }} kg
-              </span>
-            }
-          </div>
-        </div>
-        <button class="home__pet-card-action" aria-label="Vai al profilo">
-          <span class="material-icons">chevron_right</span>
-        </button>
-      </section>
-    }
-
-    <!-- Prototype Card (Path B) -->
-    @if (isPathB()) {
-      <section class="home__prototype-card">
-        <div class="home__prototype-icon">
-          <span class="home__prototype-emoji">{{ prototypeEmoji() }}</span>
-        </div>
-        <div class="home__prototype-info">
-          <p class="home__prototype-label">Il tuo match perfetto:</p>
-          <h2 class="home__prototype-species">{{ prototypeSpecies() }}</h2>
-          <div class="home__prototype-compatibility">
-            <div class="home__prototype-bar">
-              <div
-                class="home__prototype-bar-fill"
-                [style.width.%]="prototypeCompatibility()">
-              </div>
-            </div>
-            <span class="home__prototype-percent">{{ prototypeCompatibility() }}% compatibile</span>
-          </div>
-        </div>
-        <div class="home__prototype-actions">
-          <button class="home__prototype-btn home__prototype-btn--primary" (click)="navigateToBreedDetails()">
-            Scopri di piu
-          </button>
-          <button class="home__prototype-btn home__prototype-btn--link" (click)="navigateToRegisterPet()">
-            Registra un pet
-          </button>
-        </div>
-      </section>
-    }
-
-    <!-- AI Suggestions (Horizontal Scroll) -->
-    @if (suggestions().length > 0) {
-      <section class="home__suggestions">
-        <h3 class="home__suggestions-title">Suggerimenti per te</h3>
-        <div class="home__suggestions-scroll">
-          @for (suggestion of suggestions(); track suggestion.id) {
-            <button
-              class="home__suggestion-card"
-              [class.home__suggestion-card--clickable]="suggestion.actionUrl"
-              (click)="onSuggestionClick(suggestion)">
-              <span class="home__suggestion-icon material-icons">{{ suggestion.icon }}</span>
-              <span class="home__suggestion-title">{{ suggestion.title }}</span>
-              @if (suggestion.description) {
-                <span class="home__suggestion-desc">{{ suggestion.description }}</span>
-              }
-            </button>
-          }
-        </div>
-      </section>
-    }
-
-    <!-- Quick Actions Grid -->
-    <section class="home__quick-actions">
-      @for (action of quickActions; track action.id) {
-        <button
-          class="home__quick-action"
-          (click)="navigateToQuickAction(action)">
-          <span class="home__quick-action-icon material-icons">{{ action.icon }}</span>
-          <span class="home__quick-action-label">{{ action.label }}</span>
-        </button>
-      }
-    </section>
-
-    <!-- Search bar -->
-    <div class="home__search-wrapper">
+    <!-- Search bar + Notification Bell -->
+    <div class="home__search-row">
       <app-search-box
+        class="home__search"
         placeholder="Cosa posso fiutare per te?"
         variant="glass"
         [value]="searchQuery"
         (search)="onSearch($event)">
       </app-search-box>
-    </div>
 
-    <!-- Upcoming events widget con campanella notifiche -->
-    <div class="home__events-wrapper">
-      <app-events-widget
-        title="Prossimi eventi"
-        [events]="upcomingEvents"
-        emptyMessage="Non c'e nessun evento in programma."
-        [showNotificationBell]="true"
-        [notificationCount]="notificationCount"
-        (eventClick)="onEventClick($event)"
-        (viewAllClick)="onViewAllEvents()"
-        (notificationClick)="navigateToCalendar()">
-      </app-events-widget>
+      <app-notification-bell [count]="unreadNotifications()"></app-notification-bell>
     </div>
   </main>
 
   <!-- Fiuto Mascot -->
-  <div class="home__mascot" (click)="toggleMascotBubble()">
+  <div class="home__mascot" (click)="onMascotClick()">
     <img
       src="assets/images/species/mascot-fiuto.svg"
       alt="Fiuto mascotte"
       class="home__mascot-img"
     />
-    @if (showMascotBubble()) {
-      <div class="home__mascot-bubble">
-        <button class="home__mascot-bubble-close" (click)="closeMascotBubble(); $event.stopPropagation()">
-          <span class="material-icons">close</span>
-        </button>
-        <p class="home__mascot-bubble-text">{{ mascotMessage() }}</p>
-      </div>
-    }
   </div>
+
+  <!-- Mascot Bottom Sheet -->
+  <app-mascot-bottom-sheet
+    [isOpen]="showMascotSheet()"
+    [suggestions]="mascotSuggestions()"
+    (closed)="closeMascotSheet()"
+    (suggestionAction)="onMascotSuggestionClick($event)">
+  </app-mascot-bottom-sheet>
 
   <!-- Bottom Tab Bar (Blue) -->
   <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'"></app-bottom-tab-bar>

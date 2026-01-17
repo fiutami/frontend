@@ -1,6 +1,7 @@
 import {
   Component,
   ChangeDetectionStrategy,
+  DestroyRef,
   inject,
   OnInit,
   signal,
@@ -8,26 +9,24 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 import { DrawerService } from '../../shared/components/drawer';
 import {
   BottomTabBarComponent,
   TabItem,
 } from '../../shared/components/bottom-tab-bar';
 import { SearchBoxComponent } from '../../shared/components/search-box';
-import { EventsWidgetComponent, EventItem } from '../../shared/components/events-widget';
 import { PageBackgroundComponent } from '../../shared/components/page-background';
 import { AvatarButtonComponent } from '../../shared/components/avatar-button';
-import { AuthService } from '../../core/services/auth.service';
-import { PetService } from '../../core/services/pet.service';
-import { DashboardService, Suggestion } from './dashboard.service';
-import { SpeciesQuestionnaireService } from '../species-questionnaire/species-questionnaire.service';
 
-interface QuickAction {
-  id: string;
-  icon: string;
-  label: string;
-  route: string;
-}
+import { AuthService } from '../../core/services/auth.service';
+import { NotificationsService } from '../../core/services/notifications.service';
+
+import { DashboardService, Suggestion } from './dashboard.service';
+
+import { NotificationBellComponent } from '../../shared/components/notification-bell/notification-bell.component';
+import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet/mascot-bottom-sheet.component';
 
 @Component({
   selector: 'app-home',
@@ -37,21 +36,22 @@ interface QuickAction {
     RouterModule,
     BottomTabBarComponent,
     SearchBoxComponent,
-    EventsWidgetComponent,
     PageBackgroundComponent,
     AvatarButtonComponent,
+    NotificationBellComponent,
+    MascotBottomSheetComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
+  private readonly destroyRef = inject(DestroyRef);
   private drawerService = inject(DrawerService);
   private router = inject(Router);
   private authService = inject(AuthService);
-  private petService = inject(PetService);
   private dashboardService = inject(DashboardService);
-  private questionnaireService = inject(SpeciesQuestionnaireService);
+  private notificationsService = inject(NotificationsService);
 
   // User data
   userName = signal('');
@@ -59,11 +59,6 @@ export class HomeComponent implements OnInit {
 
   // Pet data (Path A)
   petName = signal('');
-  petSpecies = signal('');
-  petBreed = signal('');
-  petAge = signal('');
-  petWeight = signal<number | null>(null);
-  petPhotoUrl = signal<string | null>(null);
   petId = signal<string | null>(null);
 
   // Prototype data (Path B)
@@ -76,45 +71,35 @@ export class HomeComponent implements OnInit {
   isPathA = signal(false);
   isPathB = signal(false);
 
-  // AI Suggestions
-  suggestions = signal<Suggestion[]>([]);
-
-  // Mascot state
-  mascotMessage = signal('Ciao! Cosa vuoi fare oggi?');
-  showMascotBubble = signal(true);
-
   // Loading state
   isLoading = signal(true);
 
   // Computed properties for avatar display
-  showInitials = computed(() => !this.petPhotoUrl() && !this.userAvatarUrl());
-  avatarUrl = computed(() => this.userAvatarUrl() || this.petPhotoUrl());
-  initials = computed(() => this.getInitials(this.petName() || this.userName()));
+  showInitials = computed(() => !this.userAvatarUrl());
+  avatarUrl = computed(() => this.userAvatarUrl());
+  initials = computed(() => this.getInitials(this.userName()));
 
-  notificationCount = 2;
-  upcomingEvents: EventItem[] = [];
   searchQuery = '';
 
-  // Quick actions
-  quickActions: QuickAction[] = [
-    { id: 'calendar', icon: 'calendar_today', label: 'Calendario', route: '/home/calendar' },
-    { id: 'map', icon: 'place', label: 'Mappa', route: '/home/map' },
-    { id: 'gallery', icon: 'photo_library', label: 'Galleria', route: '/home/pet-profile' },
-    { id: 'breeds', icon: 'pets', label: 'Razze', route: '/home/breeds' },
-  ];
+  // Notification bell
+  unreadNotifications = signal(0);
 
-  // Bottom tab bar configuration
+  // Mascot bottom sheet
+  showMascotSheet = signal(false);
+  mascotSuggestions = signal<Suggestion[]>([]);
+
+  // Bottom tab bar configuration - NEW ORDER: Home, Calendario, Mappa, Profilo Pet, Specie
   tabs: TabItem[] = [
     { id: 'home', icon: 'home', iconSrc: 'assets/icons/nav/home.svg', activeIconSrc: 'assets/icons/nav/home-active.svg', route: '/home/main', label: 'Home' },
     { id: 'calendar', icon: 'calendar_today', iconSrc: 'assets/icons/nav/calendar.svg', activeIconSrc: 'assets/icons/nav/calendar-active.svg', route: '/home/calendar', label: 'Calendario' },
     { id: 'location', icon: 'place', iconSrc: 'assets/icons/nav/map.svg', activeIconSrc: 'assets/icons/nav/map-active.svg', route: '/home/map', label: 'Mappa' },
+    { id: 'pet-profile', icon: 'pets', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/home/pet-profile', label: 'Profilo Pet' },
     { id: 'species', icon: 'pets', iconSrc: 'assets/icons/nav/species.svg', activeIconSrc: 'assets/icons/nav/species-active.svg', route: '/home/species', label: 'Specie' },
-    { id: 'profile', icon: 'person', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/user/profile', label: 'Profilo' },
   ];
 
   ngOnInit(): void {
     this.loadDashboardData();
-    this.loadUpcomingEvents();
+    this.loadUnreadNotificationsCount();
   }
 
   private loadDashboardData(): void {
@@ -127,62 +112,50 @@ export class HomeComponent implements OnInit {
     }
 
     // Load dashboard through service
-    this.dashboardService.loadDashboard().subscribe({
-      next: (data) => {
-        // Set user data
-        this.userName.set(data.user.name);
+    this.dashboardService.loadDashboard()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (data) => {
+          // Set user data
+          this.userName.set(data.user.name);
 
-        // Check path
-        if (data.pet) {
-          // Path A - has pet
-          this.isPathA.set(true);
-          this.isPathB.set(false);
-          this.petId.set(data.pet.id);
-          this.petName.set(data.pet.name);
-          this.petSpecies.set(data.pet.species);
-          this.petBreed.set(data.pet.breed || '');
-          this.petAge.set(data.pet.age);
-          this.petWeight.set(data.pet.weight || null);
-          this.petPhotoUrl.set(data.pet.photoUrl);
+          // Check path
+          if (data.pet) {
+            // Path A - has pet
+            this.isPathA.set(true);
+            this.isPathB.set(false);
+            this.petId.set(data.pet.id);
+            this.petName.set(data.pet.name);
 
-          // Update quick actions for Path A
-          this.quickActions = [
-            { id: 'calendar', icon: 'calendar_today', label: 'Calendario', route: '/home/calendar' },
-            { id: 'map', icon: 'place', label: 'Mappa', route: '/home/map' },
-            { id: 'gallery', icon: 'photo_library', label: 'Galleria', route: `/home/pet-profile/${data.pet.id}/gallery` },
-            { id: 'breeds', icon: 'pets', label: 'Razze', route: '/home/breeds' },
-          ];
+          } else if (data.prototype) {
+            // Path B - has prototype
+            this.isPathA.set(false);
+            this.isPathB.set(true);
+            this.prototypeSpecies.set(data.prototype.speciesName);
+            this.prototypeEmoji.set(this.dashboardService.getSpeciesEmoji(data.prototype.speciesCode));
+            this.prototypeCompatibility.set(data.prototype.compatibility);
+            this.prototypeSpeciesId.set(data.prototype.speciesId);
 
-          // Mascot message for pet owners
-          this.mascotMessage.set(`Come sta ${data.pet.name} oggi?`);
+          } else {
+            // Unknown path
+            this.isPathA.set(false);
+            this.isPathB.set(false);
+          }
 
-        } else if (data.prototype) {
-          // Path B - has prototype
-          this.isPathA.set(false);
-          this.isPathB.set(true);
-          this.prototypeSpecies.set(data.prototype.speciesName);
-          this.prototypeEmoji.set(this.dashboardService.getSpeciesEmoji(data.prototype.speciesCode));
-          this.prototypeCompatibility.set(data.prototype.compatibility);
-          this.prototypeSpeciesId.set(data.prototype.speciesId);
-
-          // Mascot message for potential owners
-          this.mascotMessage.set('Pronto a trovare il tuo compagno?');
-
-        } else {
-          // Unknown path
-          this.isPathA.set(false);
-          this.isPathB.set(false);
-          this.mascotMessage.set('Inizia la tua avventura!');
+          // Set suggestions for mascot bottom sheet
+          this.mascotSuggestions.set(data.suggestions || []);
+          this.isLoading.set(false);
+        },
+        error: () => {
+          this.isLoading.set(false);
         }
+      });
+  }
 
-        // Set suggestions
-        this.suggestions.set(data.suggestions);
-        this.isLoading.set(false);
-      },
-      error: () => {
-        this.isLoading.set(false);
-      }
-    });
+  private loadUnreadNotificationsCount(): void {
+    this.notificationsService.getUnreadCount()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((count) => this.unreadNotifications.set(count ?? 0));
   }
 
   openDrawer(): void {
@@ -192,77 +165,23 @@ export class HomeComponent implements OnInit {
   onSearch(query: string): void {
     this.searchQuery = query;
     console.log('Search query:', query);
-    // Implement search logic
+    // Navigate to search results or implement search logic
   }
 
-  onEventClick(event: EventItem): void {
-    this.router.navigate(['/home/calendar'], {
-      queryParams: { eventId: event.id }
-    });
+  // Mascot bottom sheet methods
+  onMascotClick(): void {
+    this.showMascotSheet.set(true);
   }
 
-  onViewAllEvents(): void {
-    this.router.navigate(['/home/calendar']);
+  closeMascotSheet(): void {
+    this.showMascotSheet.set(false);
   }
 
-  navigateToCalendar(): void {
-    this.router.navigate(['/home/calendar']);
-  }
-
-  navigateToPetProfile(): void {
-    const id = this.petId();
-    if (id) {
-      this.router.navigate(['/home/pet-profile', id]);
-    } else {
-      this.router.navigate(['/home/pet-profile']);
-    }
-  }
-
-  navigateToBreedDetails(): void {
-    const speciesId = this.prototypeSpeciesId();
-    if (speciesId) {
-      this.router.navigate(['/home/breeds', speciesId]);
-    } else {
-      this.router.navigate(['/home/breeds']);
-    }
-  }
-
-  navigateToRegisterPet(): void {
-    this.router.navigate(['/home/pet-register']);
-  }
-
-  navigateToQuickAction(action: QuickAction): void {
-    this.router.navigate([action.route]);
-  }
-
-  onSuggestionClick(suggestion: Suggestion): void {
-    if (suggestion.actionUrl) {
+  onMascotSuggestionClick(suggestion: { actionUrl?: string }): void {
+    if (suggestion?.actionUrl) {
       this.router.navigate([suggestion.actionUrl]);
     }
-  }
-
-  toggleMascotBubble(): void {
-    this.showMascotBubble.update(v => !v);
-  }
-
-  closeMascotBubble(): void {
-    this.showMascotBubble.set(false);
-  }
-
-  getSuggestionTypeIcon(type: string): string {
-    const iconMap: Record<string, string> = {
-      'walk': 'directions_walk',
-      'health': 'vaccines',
-      'event': 'event',
-      'discovery': 'explore',
-      'tip': 'lightbulb'
-    };
-    return iconMap[type] || 'info';
-  }
-
-  private loadUpcomingEvents(): void {
-    // Mock - replace with API call
-    this.upcomingEvents = [];
+    this.closeMascotSheet();
   }
 
   private getInitials(name: string): string {

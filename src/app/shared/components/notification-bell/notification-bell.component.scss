@@ -1,0 +1,203 @@
+@import 'src/styles/tokens-figma';
+
+.notification-bell {
+  position: relative;
+
+  &__btn {
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 999px;
+    background: #4A74F0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(74, 116, 240, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__icon {
+    font-size: 20px;
+    color: $color-text-inverse;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: #E53935;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  &__sheet {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: min(70vw, 300px);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    animation: bellDrop 160ms ease-out;
+    z-index: 200;
+  }
+
+  &__sheet-header {
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.55);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  &__sheet-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-text-primary;
+  }
+
+  &__sheet-body {
+    max-height: 280px;
+    overflow-y: auto;
+    padding: 8px;
+  }
+
+  &__empty {
+    padding: 18px 12px;
+    font-size: 13px;
+    color: $color-text-secondary;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    border: 0;
+    border-radius: 12px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    &--unread {
+      background: rgba(74, 116, 240, 0.08);
+
+      &:hover {
+        background: rgba(74, 116, 240, 0.12);
+      }
+    }
+  }
+
+  &__item-icon {
+    font-size: 20px;
+    color: #4A74F0;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__item-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__item-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-text-primary;
+    line-height: 1.3;
+  }
+
+  &__item-body {
+    margin-top: 2px;
+    font-size: 12px;
+    color: $color-text-secondary;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__item-time {
+    margin-top: 4px;
+    font-size: 11px;
+    color: $color-text-secondary;
+    opacity: 0.7;
+  }
+
+  &__item-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4A74F0;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  &__sheet-footer {
+    padding: 10px 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.55);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__all {
+    border: 0;
+    background: transparent;
+    color: #4A74F0;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: rgba(74, 116, 240, 0.1);
+    }
+  }
+}
+
+@keyframes bellDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
