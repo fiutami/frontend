@@ -1,4 +1,7 @@
 {
+  "mascot": {
+    "speechBubble": "Posso aiutarti?"
+  },
   "common": {
     "language": "Lingua",
     "back": "Indietro",

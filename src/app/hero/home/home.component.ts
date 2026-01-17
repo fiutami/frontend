@@ -12,10 +12,8 @@ import { RouterModule, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { DrawerService } from '../../shared/components/drawer';
-import {
-  BottomTabBarComponent,
-  TabItem,
-} from '../../shared/components/bottom-tab-bar';
+import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar';
+import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 import { SearchBoxComponent } from '../../shared/components/search-box';
 import { PageBackgroundComponent } from '../../shared/components/page-background';
 import { AvatarButtonComponent } from '../../shared/components/avatar-button';
@@ -27,6 +25,7 @@ import { DashboardService, Suggestion } from './dashboard.service';
 
 import { NotificationBellComponent } from '../../shared/components/notification-bell/notification-bell.component';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet/mascot-bottom-sheet.component';
+import { MascotPeekComponent } from '../../shared/components/mascot-peek';
 
 @Component({
   selector: 'app-home',
@@ -40,6 +39,7 @@ import { MascotBottomSheetComponent } from '../../shared/components/mascot-botto
     AvatarButtonComponent,
     NotificationBellComponent,
     MascotBottomSheetComponent,
+    MascotPeekComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -89,14 +89,8 @@ export class HomeComponent implements OnInit {
   mascotSuggestions = signal<Suggestion[]>([]);
   isAiModeActive = signal(false);
 
-  // Bottom tab bar configuration - NEW ORDER: Home, Calendario, Mappa, Profilo Pet, Specie
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', iconSrc: 'assets/icons/nav/home.svg', activeIconSrc: 'assets/icons/nav/home-active.svg', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', iconSrc: 'assets/icons/nav/calendar.svg', activeIconSrc: 'assets/icons/nav/calendar-active.svg', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', iconSrc: 'assets/icons/nav/map.svg', activeIconSrc: 'assets/icons/nav/map-active.svg', route: '/home/map', label: 'Mappa' },
-    { id: 'pet-profile', icon: 'pets', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/home/pet-profile', label: 'Profilo Pet' },
-    { id: 'species', icon: 'pets', iconSrc: 'assets/icons/nav/species.svg', activeIconSrc: 'assets/icons/nav/species-active.svg', route: '/home/species', label: 'Specie' },
-  ];
+  // Bottom tab bar - configurazione centralizzata
+  tabs = MAIN_TAB_BAR_CONFIG;
 
   ngOnInit(): void {
     this.loadDashboardData();

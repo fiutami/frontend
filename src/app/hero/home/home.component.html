@@ -44,14 +44,11 @@
     </div>
   </main>
 
-  <!-- Fiuto Mascot -->
-  <div class="home__mascot" (click)="onMascotClick()">
-    <img
-      src="assets/images/species/mascot-fiuto.svg"
-      alt="Fiuto mascotte"
-      class="home__mascot-img"
-    />
-  </div>
+  <!-- Fiuto Mascot Peek (draggable from right edge) -->
+  <app-mascot-peek
+    [hidden]="showMascotSheet()"
+    (mascotTapped)="onMascotClick()">
+  </app-mascot-peek>
 
   <!-- Mascot Bottom Sheet (AI Mode) -->
   <app-mascot-bottom-sheet

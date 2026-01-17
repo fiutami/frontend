@@ -1,4 +1,7 @@
 {
+  "mascot": {
+    "speechBubble": "Puis-je t'aider ?"
+  },
   "common": {
     "language": "Langue",
     "back": "Retour",
@@ -600,7 +603,15 @@
       "age": "Âge",
       "weight": "Poids",
       "friends": "Amis",
-      "photos": "Photos"
+      "photos": "Photos",
+      "years": "ans",
+      "months": "mois",
+      "kg": "kg"
+    },
+    "prototype": {
+      "badge": "Profil Prototype",
+      "message": "Ceci est un profil d'exemple. Enregistre un vrai animal pour débloquer toutes les fonctionnalités.",
+      "cta": "Enregistre ton animal"
     },
     "empty": {
       "gallery": "Aucune photo pour l'instant",
@@ -612,6 +623,7 @@
     "account": {
       "title": "Compte",
       "back": "Retour",
+      "personalInfo": "Informations personnelles",
       "name": "Nom",
       "namePlaceholder": "Ton nom",
       "email": "Email",
@@ -622,20 +634,50 @@
       "deleteAccount": "Supprimer le compte"
     },
     "notifications": {
-      "back": "Retour"
+      "title": "Notifications",
+      "back": "Retour",
+      "push": "Notifications push",
+      "email": "Notifications email",
+      "reminders": "Rappels d'événements",
+      "messages": "Nouveaux messages"
     },
     "saved": {
-      "searchPlaceholder": "Que cherches-tu"
+      "title": "Enregistrés",
+      "searchPlaceholder": "Que cherches-tu",
+      "empty": {
+        "title": "Aucun élément enregistré",
+        "subtitle": "Les lieux et activités que tu enregistres apparaîtront ici"
+      }
     },
     "friends": {
-      "searchPlaceholder": "Rechercher des amis..."
+      "title": "Amis Pet",
+      "searchPlaceholder": "Rechercher des amis...",
+      "addFriend": "Ajouter un ami",
+      "removeFriend": "Supprimer",
+      "accept": "Accepter",
+      "decline": "Refuser",
+      "empty": {
+        "title": "Pas encore d'amis",
+        "subtitle": "Trouve d'autres pets et fais de nouvelles amitiés!"
+      }
     },
     "invite": {
+      "title": "Inviter des Amis",
+      "subtitle": "Invite tes amis sur FIUTAMI",
       "searchPlaceholder": "Rechercher un contact",
-      "email": "Email"
+      "email": "Email",
+      "yourCode": "Ton code",
+      "copyCode": "Copier le code",
+      "copied": "Copié!",
+      "share": "Partager"
     },
     "activity": {
-      "back": "Retour"
+      "title": "Activité",
+      "back": "Retour",
+      "empty": {
+        "title": "Aucune activité",
+        "subtitle": "Tes promotions actives apparaîtront ici"
+      }
     }
   },
   "userArea": {

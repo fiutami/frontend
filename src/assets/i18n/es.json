@@ -1,4 +1,7 @@
 {
+  "mascot": {
+    "speechBubble": "¿Puedo ayudarte?"
+  },
   "common": {
     "language": "Idioma",
     "back": "Volver",
@@ -600,7 +603,15 @@
       "age": "Edad",
       "weight": "Peso",
       "friends": "Amigos",
-      "photos": "Fotos"
+      "photos": "Fotos",
+      "years": "años",
+      "months": "meses",
+      "kg": "kg"
+    },
+    "prototype": {
+      "badge": "Perfil Prototipo",
+      "message": "Este es un perfil de ejemplo. Registra un animal real para desbloquear todas las funcionalidades.",
+      "cta": "Registra tu mascota"
     },
     "empty": {
       "gallery": "Sin fotos aún",
@@ -612,6 +623,7 @@
     "account": {
       "title": "Cuenta",
       "back": "Volver",
+      "personalInfo": "Información personal",
       "name": "Nombre",
       "namePlaceholder": "Tu nombre",
       "email": "Email",
@@ -622,20 +634,50 @@
       "deleteAccount": "Eliminar cuenta"
     },
     "notifications": {
-      "back": "Volver"
+      "title": "Notificaciones",
+      "back": "Volver",
+      "push": "Notificaciones push",
+      "email": "Notificaciones por email",
+      "reminders": "Recordatorios de eventos",
+      "messages": "Nuevos mensajes"
     },
     "saved": {
-      "searchPlaceholder": "Qué estás buscando"
+      "title": "Guardados",
+      "searchPlaceholder": "Qué estás buscando",
+      "empty": {
+        "title": "No hay elementos guardados",
+        "subtitle": "Los lugares y actividades que guardes aparecerán aquí"
+      }
     },
     "friends": {
-      "searchPlaceholder": "Buscar amigos..."
+      "title": "Amigos Pet",
+      "searchPlaceholder": "Buscar amigos...",
+      "addFriend": "Agregar amigo",
+      "removeFriend": "Eliminar",
+      "accept": "Aceptar",
+      "decline": "Rechazar",
+      "empty": {
+        "title": "Aún no hay amigos",
+        "subtitle": "¡Encuentra otras mascotas y haz nuevas amistades!"
+      }
     },
     "invite": {
+      "title": "Invitar Amigos",
+      "subtitle": "Invita a tus amigos a FIUTAMI",
       "searchPlaceholder": "Buscar contacto",
-      "email": "Email"
+      "email": "Email",
+      "yourCode": "Tu código",
+      "copyCode": "Copiar código",
+      "copied": "¡Copiado!",
+      "share": "Compartir"
     },
     "activity": {
-      "back": "Volver"
+      "title": "Actividad",
+      "back": "Volver",
+      "empty": {
+        "title": "Sin actividad",
+        "subtitle": "Tus promociones activas aparecerán aquí"
+      }
     }
   },
   "userArea": {

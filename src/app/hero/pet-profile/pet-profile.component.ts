@@ -9,15 +9,15 @@ import {
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { DrawerService } from '../../shared/components/drawer';
-import {
-  BottomTabBarComponent,
-  TabItem,
-} from '../../shared/components/bottom-tab-bar';
+import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar';
+import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 import {
   PetInfoCardComponent,
   PetInfoItem,
 } from '../../shared/components/pet-info-card';
 import { SpeechBubbleComponent } from '../../shared/components/speech-bubble';
+import { MascotPeekComponent } from '../../shared/components/mascot-peek';
+import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
 import { PetService } from '../../core/services/pet.service';
 import { PetResponse } from '../../core/models/pet.models';
 
@@ -48,6 +48,8 @@ export interface FriendPet {
     BottomTabBarComponent,
     PetInfoCardComponent,
     SpeechBubbleComponent,
+    MascotPeekComponent,
+    MascotBottomSheetComponent,
   ],
   templateUrl: './pet-profile.component.html',
   styleUrls: ['./pet-profile.component.scss'],
@@ -59,6 +61,9 @@ export class PetProfileComponent implements OnInit {
   private router = inject(Router);
   private petService = inject(PetService);
   private cdr = inject(ChangeDetectorRef);
+
+  // Mascot sheet state
+  showMascotSheet = signal(false);
 
   // Loading and error state
   isLoading = signal(false);
@@ -79,14 +84,8 @@ export class PetProfileComponent implements OnInit {
   // Info card data for PetInfoCardComponent
   petInfoItems: PetInfoItem[] = [];
 
-  // Bottom tab bar configuration
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', iconSrc: 'assets/icons/nav/home.svg', activeIconSrc: 'assets/icons/nav/home-active.svg', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', iconSrc: 'assets/icons/nav/calendar.svg', activeIconSrc: 'assets/icons/nav/calendar-active.svg', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', iconSrc: 'assets/icons/nav/map.svg', activeIconSrc: 'assets/icons/nav/map-active.svg', route: '/home/map', label: 'Mappa' },
-    { id: 'species', icon: 'pets', iconSrc: 'assets/icons/nav/species.svg', activeIconSrc: 'assets/icons/nav/species-active.svg', route: '/home/species', label: 'Specie' },
-    { id: 'profile', icon: 'person', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/user/profile', label: 'Profilo' },
-  ];
+  // Bottom tab bar - configurazione centralizzata
+  tabs = MAIN_TAB_BAR_CONFIG;
 
   notificationCount = 2;
 
@@ -279,5 +278,14 @@ export class PetProfileComponent implements OnInit {
       { label: 'Peso', value: this.pet.weight > 0 ? `${this.pet.weight} kg` : 'N/D' },
       { label: 'Razza', value: this.pet.breed },
     ];
+  }
+
+  // Mascot methods
+  onMascotClick(): void {
+    this.showMascotSheet.set(true);
+  }
+
+  closeMascotSheet(): void {
+    this.showMascotSheet.set(false);
   }
 }

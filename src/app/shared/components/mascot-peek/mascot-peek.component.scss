@@ -1,0 +1,189 @@
+@import 'src/styles/tokens-figma';
+
+// ===========================================
+// MASCOT PEEK COMPONENT
+// Draggable mascot peeking from tab bar edge
+// ===========================================
+
+$mascot-width: 100px;
+$mascot-height: 120px;
+$peek-amount: 36px; // How much nose peeks out (more visible)
+
+.mascot-peek {
+  position: fixed;
+  bottom: $tab-bar-height; // Sitting on top of tab bar
+  right: calc(-#{$mascot-width} + #{$peek-amount}); // Only nose visible
+  width: $mascot-width;
+  height: $mascot-height;
+  z-index: 1001; // Above tab bar
+  cursor: grab;
+  touch-action: pan-x;
+  user-select: none;
+  -webkit-user-select: none;
+
+  // Smooth transform for non-dragging state
+  &:not(:active) {
+    transition: transform 0.1s ease-out;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  // Expanded state
+  &--expanded {
+    .mascot-peek__handle {
+      opacity: 0;
+    }
+  }
+
+  // Hidden state (when conversation active)
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100px) !important;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  // ===========================================
+  // SPEECH BUBBLE
+  // ===========================================
+
+  &__bubble {
+    position: absolute;
+    left: -150px;
+    top: 15px;
+    z-index: 1;
+    animation: bubble-pop 0.3s ease-out;
+  }
+
+  &__bubble-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  // ===========================================
+  // MASCOT IMAGE
+  // ===========================================
+
+  &__mascot {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom right;
+    filter: drop-shadow(-2px 2px 4px rgba(0, 0, 0, 0.15));
+
+    // Subtle bounce animation when idle
+    animation: mascot-idle 3s ease-in-out infinite;
+  }
+
+  // ===========================================
+  // DRAG HANDLE
+  // ===========================================
+
+  &__handle {
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  &__handle-line {
+    width: 3px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// ===========================================
+// ANIMATIONS
+// ===========================================
+
+// Idle breathing animation
+@keyframes mascot-idle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.02);
+  }
+}
+
+// Speech bubble pop animation
+@keyframes bubble-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+// ===========================================
+// SAFE AREA ADJUSTMENT
+// ===========================================
+
+@supports (bottom: env(safe-area-inset-bottom)) {
+  .mascot-peek {
+    bottom: calc(#{$tab-bar-height} + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+// ===========================================
+// RESPONSIVE
+// ===========================================
+
+// Slightly smaller on very small screens
+@media (max-width: 359px) {
+  .mascot-peek {
+    width: 80px;
+    height: 96px;
+    right: calc(-80px + 28px);
+  }
+}
+
+// Larger on tablets
+@media (min-width: 768px) {
+  .mascot-peek {
+    width: 120px;
+    height: 144px;
+    right: calc(-120px + 40px);
+  }
+}
+
+// ===========================================
+// HOVER EFFECTS (desktop)
+// ===========================================
+
+@media (hover: hover) {
+  .mascot-peek:hover {
+    .mascot-peek__handle {
+      opacity: 1;
+    }
+
+    .mascot-peek__image {
+      animation-play-state: paused;
+      transform: translateY(-2px);
+    }
+  }
+}

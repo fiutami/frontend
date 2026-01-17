@@ -1,0 +1,37 @@
+<!-- Mascot Peek Container -->
+<div
+  #mascotContainer
+  class="mascot-peek"
+  [class.mascot-peek--expanded]="isExpanded()"
+  [class.mascot-peek--hidden]="hidden"
+  [style.transform]="transformStyle()"
+  (mousedown)="onDragStart($event)"
+  (touchstart)="onDragStart($event)"
+  (click)="onMascotTap($event)"
+>
+  <!-- Speech Bubble (visible when expanded) -->
+  @if (isExpanded()) {
+    <div class="mascot-peek__bubble">
+      <app-speech-bubble variant="ai" tailPosition="right" [maxWidth]="'140px'">
+        <span class="mascot-peek__bubble-text">{{ 'mascot.speechBubble' | translate }}</span>
+      </app-speech-bubble>
+    </div>
+  }
+
+  <!-- Mascot Image (Fiuto) -->
+  <div class="mascot-peek__mascot">
+    <img
+      src="assets/images/species/mascot-fiuto.svg"
+      alt="Fiuto"
+      class="mascot-peek__image"
+      draggable="false"
+    />
+  </div>
+
+  <!-- Drag Handle Indicator -->
+  <div class="mascot-peek__handle" aria-hidden="true">
+    <span class="mascot-peek__handle-line"></span>
+    <span class="mascot-peek__handle-line"></span>
+    <span class="mascot-peek__handle-line"></span>
+  </div>
+</div>

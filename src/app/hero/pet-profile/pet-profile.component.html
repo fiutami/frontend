@@ -206,6 +206,19 @@
     } <!-- End of @if pet.id -->
   </main>
 
+  <!-- Mascot Peek -->
+  <app-mascot-peek
+    [hidden]="showMascotSheet()"
+    (mascotTapped)="onMascotClick()">
+  </app-mascot-peek>
+
+  <!-- Mascot Bottom Sheet -->
+  <app-mascot-bottom-sheet
+    [isOpen]="showMascotSheet()"
+    [aiMessage]="'Ciao! Come posso aiutarti?'"
+    (closed)="closeMascotSheet()">
+  </app-mascot-bottom-sheet>
+
   <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'pet'"></app-bottom-tab-bar>
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'pet-profile'"></app-bottom-tab-bar>
 </div>
