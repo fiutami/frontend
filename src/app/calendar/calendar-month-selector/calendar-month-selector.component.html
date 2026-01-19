@@ -1,0 +1,74 @@
+<div class="month-selector">
+  <!-- Header -->
+  <header class="month-selector__header">
+    <app-back-button
+      variant="solid"
+      (clicked)="onBack()">
+    </app-back-button>
+    <h1 class="month-selector__title">Calendario</h1>
+    <div class="month-selector__header-spacer"></div>
+  </header>
+
+  <!-- Date Display -->
+  <div class="month-selector__date">
+    {{ formattedDate() }}
+  </div>
+
+  <!-- Question Text (Mascot prompt) -->
+  <div class="month-selector__prompt">
+    In che mese andiamo a mettere il naso?
+  </div>
+
+  <!-- Year Navigation -->
+  <div class="month-selector__year-nav">
+    <button
+      class="month-selector__year-btn"
+      (click)="prevYear()"
+      aria-label="Anno precedente">
+      <span class="month-selector__year-arrow">&lt;</span>
+    </button>
+    <span class="month-selector__year">{{ selectedYear() }}</span>
+    <button
+      class="month-selector__year-btn"
+      (click)="nextYear()"
+      aria-label="Anno successivo">
+      <span class="month-selector__year-arrow">&gt;</span>
+    </button>
+  </div>
+
+  <!-- Month Grid -->
+  <div class="month-selector__grid">
+    <!-- Left Column -->
+    <div class="month-selector__column">
+      @for (month of leftColumnMonths; track trackByMonth($index, month)) {
+        <button
+          class="month-selector__month-btn"
+          [class.month-selector__month-btn--current]="isCurrentMonth(month.index)"
+          (click)="selectMonth(month.index)">
+          {{ month.name }}
+        </button>
+      }
+    </div>
+
+    <!-- Right Column -->
+    <div class="month-selector__column">
+      @for (month of rightColumnMonths; track trackByMonth($index, month)) {
+        <button
+          class="month-selector__month-btn"
+          [class.month-selector__month-btn--current]="isCurrentMonth(month.index)"
+          (click)="selectMonth(month.index)">
+          {{ month.name }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="month-selector__actions">
+    <button
+      class="month-selector__action-btn month-selector__action-btn--primary"
+      (click)="onCreateEvent()">
+      + Nuovo Evento
+    </button>
+  </div>
+</div>

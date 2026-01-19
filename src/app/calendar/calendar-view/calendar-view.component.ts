@@ -4,9 +4,10 @@ import {
   signal,
   computed,
   inject,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 
 /**
@@ -80,8 +81,9 @@ const EVENT_COLORS: Record<CalendarEventType, string> = {
   styleUrls: ['./calendar-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CalendarViewComponent {
+export class CalendarViewComponent implements OnInit {
   private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
   /** Day names for header */
   protected readonly dayNames = DAY_NAMES;
@@ -164,6 +166,26 @@ export class CalendarViewComponent {
   });
 
   /**
+   * Initialize component with query params if present
+   */
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const month = params['month'];
+      const year = params['year'];
+
+      if (month !== undefined && year !== undefined) {
+        const monthNum = parseInt(month, 10);
+        const yearNum = parseInt(year, 10);
+
+        if (!isNaN(monthNum) && !isNaN(yearNum)) {
+          this.currentDate.set(new Date(yearNum, monthNum, 1));
+          this.selectedDate.set(new Date(yearNum, monthNum, 1));
+        }
+      }
+    });
+  }
+
+  /**
    * Navigate to previous month
    */
   prevMonth(): void {
@@ -187,10 +209,10 @@ export class CalendarViewComponent {
   }
 
   /**
-   * Navigate back
+   * Navigate back to month selector
    */
   onBack(): void {
-    this.router.navigate(['/home/main']);
+    this.router.navigate(['/home/calendar']);
   }
 
   /**

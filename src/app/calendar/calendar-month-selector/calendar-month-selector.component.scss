@@ -1,0 +1,227 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// CALENDAR MONTH SELECTOR COMPONENT
+// First level calendar - month picker grid
+// Based on Figma: mob_calendar (12271-6457)
+// ===========================================
+
+.month-selector {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: $color-ai-primary;
+  padding-bottom: calc(#{$tab-bar-height} + env(safe-area-inset-bottom, 0));
+
+  // ===========================================
+  // HEADER
+  // ===========================================
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md;
+    padding-top: $spacing-lg;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-text-inverse;
+    text-transform: capitalize;
+  }
+
+  &__header-spacer {
+    width: 34px; // Same as back button for centering
+  }
+
+  // ===========================================
+  // DATE DISPLAY
+  // ===========================================
+
+  &__date {
+    padding: $spacing-xs $spacing-md;
+    font-family: 'Irish Grover', cursive, $font-family-body;
+    font-size: 14px;
+    color: $color-text-inverse;
+    text-align: center;
+  }
+
+  // ===========================================
+  // PROMPT TEXT (Mascot question)
+  // ===========================================
+
+  &__prompt {
+    padding: $spacing-md;
+    font-family: 'Moul', serif;
+    font-size: 16px;
+    color: $color-cta-primary;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  // ===========================================
+  // YEAR NAVIGATION
+  // ===========================================
+
+  &__year-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-lg;
+    padding: $spacing-sm $spacing-md;
+    margin-bottom: $spacing-md;
+  }
+
+  &__year-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &__year-arrow {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-inverse;
+  }
+
+  &__year {
+    font-family: 'Moul', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: $color-cta-primary;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  // ===========================================
+  // MONTH GRID
+  // ===========================================
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+    padding: 0 $spacing-md;
+    flex: 1;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__month-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 52px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    font-family: 'Moul', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $color-text-inverse;
+    text-transform: uppercase;
+    transition: all 150ms ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(0);
+    }
+
+    // Current month highlight
+    &--current {
+      background-color: $color-cta-primary;
+      color: $color-text-dark;
+      border-color: $color-cta-primary;
+
+      &:hover {
+        background-color: darken(#F2B830, 5%);
+      }
+    }
+  }
+
+  // ===========================================
+  // ACTION BUTTONS
+  // ===========================================
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    padding: $spacing-lg $spacing-md;
+    margin-top: auto;
+  }
+
+  &__action-btn {
+    padding: $spacing-sm $spacing-lg;
+    border: none;
+    border-radius: 100px;
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 150ms ease;
+
+    &--primary {
+      background-color: $color-cta-primary;
+      color: $color-text-dark;
+      box-shadow: $shadow-md;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-lg;
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // ===========================================
+  // RESPONSIVE
+  // ===========================================
+
+  @include respond(md) {
+    &__grid {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    &__actions {
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
