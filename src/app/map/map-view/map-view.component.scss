@@ -363,51 +363,6 @@
   }
 }
 
-// Mascot bubble
-.mascot-bubble {
-  display: flex;
-  align-items: flex-end;
-  gap: 16px;
-  padding: 16px;
-  margin-top: 16px;
-}
-
-.speech-bubble {
-  position: relative;
-  background: $color-text-inverse;
-  padding: 16px;
-  border-radius: 16px;
-  border: 3px solid #F2B830;
-  box-shadow: 3px 4px 0px rgba(0, 0, 0, 0.25);
-  max-width: 160px;
-
-  p {
-    margin: 0;
-    font-family: $font-family-body;
-    font-size: 14px;
-    color: $color-text-dark;
-    line-height: 1.22;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    right: -12px;
-    bottom: 16px;
-    width: 0;
-    height: 0;
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent;
-    border-left: 12px solid #F2B830;
-  }
-}
-
-.mascot-image {
-  width: 86px;
-  height: 118px;
-  object-fit: contain;
-}
-
 // Section title
 .section-title {
   padding: 0 20px;

@@ -1,5 +1,7 @@
 export const environment = {
   production: false,
+  // DEV ONLY: Bypass authentication for local testing
+  devBypassAuth: true,
   // Use proxy to avoid CORS issues in development
   apiUrl: '/api',
   // App base URL for sharing/invites

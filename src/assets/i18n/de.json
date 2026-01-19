@@ -1,4 +1,7 @@
 {
+  "mascot": {
+    "speechBubble": "Kann ich dir helfen?"
+  },
   "common": {
     "language": "Sprache",
     "back": "Zurück",
@@ -600,18 +603,27 @@
       "age": "Alter",
       "weight": "Gewicht",
       "friends": "Freunde",
-      "photos": "Fotos"
+      "photos": "Fotos",
+      "years": "Jahre",
+      "months": "Monate",
+      "kg": "kg"
     },
     "empty": {
       "gallery": "Noch keine Fotos",
       "friends": "Noch keine Freunde",
       "memories": "Noch keine Erinnerungen"
+    },
+    "prototype": {
+      "badge": "Prototyp-Profil",
+      "message": "Dies ist ein Prototyp-Profil. Einige Funktionen sind noch nicht verfügbar.",
+      "cta": "Mehr erfahren"
     }
   },
   "user": {
     "account": {
       "title": "Konto",
       "back": "Zurück",
+      "personalInfo": "Persönliche Informationen",
       "name": "Name",
       "namePlaceholder": "Dein Name",
       "email": "E-Mail",
@@ -622,20 +634,50 @@
       "deleteAccount": "Konto löschen"
     },
     "notifications": {
-      "back": "Zurück"
+      "title": "Benachrichtigungen",
+      "back": "Zurück",
+      "push": "Push-Benachrichtigungen",
+      "email": "E-Mail-Benachrichtigungen",
+      "reminders": "Terminerinnerungen",
+      "messages": "Neue Nachrichten"
     },
     "saved": {
-      "searchPlaceholder": "Was suchst du"
+      "title": "Gespeichert",
+      "searchPlaceholder": "Was suchst du",
+      "empty": {
+        "title": "Keine gespeicherten Elemente",
+        "subtitle": "Orte und Aktivitäten, die du speicherst, erscheinen hier"
+      }
     },
     "friends": {
-      "searchPlaceholder": "Freunde suchen..."
+      "title": "Pet Freunde",
+      "searchPlaceholder": "Freunde suchen...",
+      "addFriend": "Freund hinzufügen",
+      "removeFriend": "Entfernen",
+      "accept": "Akzeptieren",
+      "decline": "Ablehnen",
+      "empty": {
+        "title": "Noch keine Freunde",
+        "subtitle": "Finde andere Pets und schließe neue Freundschaften!"
+      }
     },
     "invite": {
+      "title": "Freunde einladen",
+      "subtitle": "Lade deine Freunde zu FIUTAMI ein",
       "searchPlaceholder": "Kontakt suchen",
-      "email": "E-Mail"
+      "email": "E-Mail",
+      "yourCode": "Dein Code",
+      "copyCode": "Code kopieren",
+      "copied": "Kopiert!",
+      "share": "Teilen"
     },
     "activity": {
-      "back": "Zurück"
+      "title": "Aktivität",
+      "back": "Zurück",
+      "empty": {
+        "title": "Keine Aktivität",
+        "subtitle": "Deine aktiven Aktionen erscheinen hier"
+      }
     }
   },
   "userArea": {

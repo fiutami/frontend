@@ -1,0 +1,96 @@
+@if (isOpen) {
+  <div class="mascot-sheet__backdrop" (click)="onBackdropClick()"></div>
+
+  <div
+    class="mascot-sheet"
+    [style.transform]="sheetTransform()"
+    (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerUp()"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Modalità AI - Fiuto">
+
+    <div class="mascot-sheet__handle">
+      <span class="mascot-sheet__handle-bar"></span>
+    </div>
+
+    <div class="mascot-sheet__header">
+      <button class="mascot-sheet__close" type="button" (click)="close()" aria-label="Chiudi">
+        <span class="material-icons">close</span>
+      </button>
+
+      <div class="mascot-sheet__mascot-area">
+        @if (aiMessage) {
+          <app-speech-bubble variant="ai" tailPosition="right" [animated]="true" [maxWidth]="'220px'">
+            <span class="mascot-sheet__bubble-text">{{ displayedText() }}</span>
+            @if (isTyping()) {
+              <span class="mascot-sheet__cursor" aria-hidden="true">|</span>
+            }
+          </app-speech-bubble>
+        }
+
+        <!-- Mascot wrapper - hidden when using external mascot-peek -->
+        @if (!hideMascot) {
+          <div class="mascot-sheet__mascot-wrapper">
+            <img
+              class="mascot-sheet__mascot"
+              src="assets/images/species/mascot-fiuto.svg"
+              alt="Fiuto"
+              loading="lazy" />
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="mascot-sheet__content">
+      @if (suggestions.length === 0) {
+        <div class="mascot-sheet__empty">
+          <span class="material-icons mascot-sheet__empty-icon">lightbulb</span>
+          <p>Nessun suggerimento al momento</p>
+        </div>
+      } @else {
+        <div class="mascot-sheet__list">
+          @for (s of suggestions; track s.id) {
+            <button
+              type="button"
+              class="mascot-sheet__item"
+              [class.mascot-sheet__item--clickable]="s.actionUrl"
+              (click)="onSuggestionClick(s)">
+              <span class="material-icons mascot-sheet__item-icon">{{ s.icon }}</span>
+              <div class="mascot-sheet__item-text">
+                <div class="mascot-sheet__item-title">{{ s.title }}</div>
+                @if (s.description) {
+                  <div class="mascot-sheet__item-desc">{{ s.description }}</div>
+                }
+              </div>
+              @if (s.actionUrl) {
+                <span class="material-icons mascot-sheet__item-arrow">chevron_right</span>
+              }
+            </button>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Chat input -->
+    <div class="mascot-sheet__chat">
+      <form class="mascot-sheet__chat-form" (submit)="onChatSubmit($event)">
+        <input
+          type="text"
+          class="mascot-sheet__chat-input"
+          placeholder="Scrivi a Fiuto..."
+          [(ngModel)]="chatInput"
+          name="chatInput"
+          autocomplete="off" />
+        <button
+          type="submit"
+          class="mascot-sheet__chat-send"
+          [disabled]="!chatInput.trim()"
+          aria-label="Invia messaggio">
+          <span class="material-icons">send</span>
+        </button>
+      </form>
+    </div>
+  </div>
+}

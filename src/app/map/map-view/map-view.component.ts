@@ -6,7 +6,8 @@ import {
   ChangeDetectorRef,
   inject,
   signal,
-  computed
+  computed,
+  ViewChild
 } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,8 @@ import { POIService } from '../services/poi.service';
 import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar/bottom-tab-bar.component';
 import { TabItem } from '../../shared/components/bottom-tab-bar/bottom-tab-bar.models';
 import { AvatarButtonComponent } from '../../shared/components/avatar-button';
+import { MascotPeekComponent } from '../../shared/components/mascot-peek';
+import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
 
 // Fix Leaflet default marker icons
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -30,7 +33,7 @@ L.Icon.Default.mergeOptions({
 @Component({
   selector: 'app-map-view',
   standalone: true,
-  imports: [CommonModule, FormsModule, BottomTabBarComponent, TranslateModule, AvatarButtonComponent],
+  imports: [CommonModule, FormsModule, BottomTabBarComponent, TranslateModule, AvatarButtonComponent, MascotPeekComponent, MascotBottomSheetComponent],
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -44,6 +47,10 @@ export class MapViewComponent implements AfterViewInit, OnDestroy {
   private map!: L.Map;
   private markersLayer = L.layerGroup();
   private userMarker?: L.Marker;
+
+  // Mascot sheet state
+  showMascotSheet = signal(false);
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // Signals
   readonly userLocation = signal<[number, number]>([41.9028, 12.4964]); // Roma default
@@ -289,5 +296,15 @@ export class MapViewComponent implements AfterViewInit, OnDestroy {
 
   getFilterIcon(filter: POIFilter): string {
     return filter.icon;
+  }
+
+  // Mascot methods
+  onMascotClick(): void {
+    this.showMascotSheet.set(true);
+  }
+
+  closeMascotSheet(): void {
+    this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 }

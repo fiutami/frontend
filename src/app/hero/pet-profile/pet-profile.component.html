@@ -12,63 +12,11 @@
       </svg>
     </button>
 
-    <div class="pet-profile__header-right">
-      <!-- Avatar -->
-      <button
-        class="pet-profile__avatar"
-        routerLink="/user/profile"
-        aria-label="Vai al profilo utente"
-      >
-        <img
-          [src]="pet.photoUrl"
-          [alt]="pet.name"
-          class="pet-profile__avatar-img"
-        />
-      </button>
+    <!-- Spacer -->
+    <div class="pet-profile__header-spacer"></div>
 
-      <!-- Hamburger -->
-      <button
-        class="pet-profile__icon-btn"
-        (click)="openDrawer()"
-        aria-label="Apri menu"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Side icons -->
-    <div class="pet-profile__side-icons">
-      <button class="pet-profile__icon-btn" (click)="navigateToCalendar()" aria-label="Calendario">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/>
-        </svg>
-      </button>
-      <button class="pet-profile__icon-btn pet-profile__icon-btn--with-badge" aria-label="Notifiche">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-        </svg>
-        @if (notificationCount > 0) {
-          <span class="pet-profile__badge">{{ notificationCount }}</span>
-        }
-      </button>
-      <button class="pet-profile__icon-btn" (click)="navigateToEdit()" aria-label="Modifica">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-        </svg>
-      </button>
-      <button class="pet-profile__icon-btn" (click)="navigateToChat()" aria-label="Chat">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-      </button>
-      <button class="pet-profile__icon-btn" (click)="navigateToSaved()" aria-label="Salvati">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
-        </svg>
-      </button>
-    </div>
+    <!-- User avatar button (opens drawer with profile, settings, etc.) -->
+    <app-avatar-button size="large"></app-avatar-button>
   </header>
 
   <!-- Scrollable content -->
@@ -206,6 +154,21 @@
     } <!-- End of @if pet.id -->
   </main>
 
+  <!-- Mascot Peek -->
+  <app-mascot-peek
+    #mascotPeek
+    [hidden]="showMascotSheet()"
+    (mascotTapped)="onMascotClick()">
+  </app-mascot-peek>
+
+  <!-- Mascot Bottom Sheet -->
+  <app-mascot-bottom-sheet
+    [isOpen]="showMascotSheet()"
+    [hideMascot]="true"
+    [aiMessage]="'Ciao! Come posso aiutarti?'"
+    (closed)="closeMascotSheet()">
+  </app-mascot-bottom-sheet>
+
   <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'pet'"></app-bottom-tab-bar>
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'pet-profile'"></app-bottom-tab-bar>
 </div>

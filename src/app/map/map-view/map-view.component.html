@@ -90,18 +90,6 @@
     </div>
   </div>
 
-  <!-- Mascot bubble -->
-  <div class="mascot-bubble">
-    <div class="speech-bubble">
-      <p>Andiamo a Fiutare il mondo?</p>
-    </div>
-    <img
-      src="assets/images/mascot-fiuto.png"
-      alt="Fiuto mascot"
-      class="mascot-image"
-    >
-  </div>
-
   <!-- POI section title -->
   <div class="section-title">
     <h2>Scopri fiutati speciali vicino a te.</h2>
@@ -183,6 +171,21 @@
       </div>
     </div>
   }
+
+  <!-- Mascot Peek -->
+  <app-mascot-peek
+    #mascotPeek
+    [hidden]="showMascotSheet()"
+    (mascotTapped)="onMascotClick()">
+  </app-mascot-peek>
+
+  <!-- Mascot Bottom Sheet -->
+  <app-mascot-bottom-sheet
+    [isOpen]="showMascotSheet()"
+    [hideMascot]="true"
+    [aiMessage]="'Ciao! Come posso aiutarti?'"
+    (closed)="closeMascotSheet()">
+  </app-mascot-bottom-sheet>
 
   <!-- Bottom tab bar -->
   <app-bottom-tab-bar

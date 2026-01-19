@@ -3,11 +3,18 @@ import {
   ChangeDetectionStrategy,
   signal,
   computed,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CalendarMonthComponent } from './calendar-month/calendar-month.component';
 import { EventCreateComponent } from './event-create/event-create.component';
+
+import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar';
+import { MascotPeekComponent } from '../../shared/components/mascot-peek';
+import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button';
+import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 
 export interface CalendarEvent {
   id: string;
@@ -20,12 +27,19 @@ export interface CalendarEvent {
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule, RouterModule, CalendarMonthComponent, EventCreateComponent],
+  imports: [CommonModule, RouterModule, CalendarMonthComponent, EventCreateComponent, BottomTabBarComponent, MascotPeekComponent, MascotBottomSheetComponent, AvatarButtonComponent],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent {
+  // Tab bar config
+  tabs = MAIN_TAB_BAR_CONFIG;
+
+  // Mascot sheet state
+  showMascotSheet = signal(false);
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
+
   // Current date state
   currentDate = signal(new Date());
 
@@ -142,5 +156,15 @@ export class CalendarComponent {
   // Navigation
   goBack(): void {
     window.history.back();
+  }
+
+  // Mascot methods
+  onMascotClick(): void {
+    this.showMascotSheet.set(true);
+  }
+
+  closeMascotSheet(): void {
+    this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 }

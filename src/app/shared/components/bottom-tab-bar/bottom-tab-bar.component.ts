@@ -84,6 +84,12 @@ export class BottomTabBarComponent {
   @Input() safeArea = true;
 
   /**
+   * Whether to hide the tab bar (AI mode)
+   * @default false
+   */
+  @Input() hidden = false;
+
+  /**
    * Emits when a tab is clicked
    */
   @Output() tabChange = new EventEmitter<TabItem>();
@@ -98,6 +104,7 @@ export class BottomTabBarComponent {
       [`bottom-tab-bar--${this.size}`]: true,
       'bottom-tab-bar--with-labels': this.showLabels,
       'bottom-tab-bar--safe-area': this.safeArea,
+      'bottom-tab-bar--hidden': this.hidden,
     };
   }
 
@@ -152,6 +159,7 @@ export class BottomTabBarComponent {
 
   /**
    * Handle tab click
+   * If already on the same tab section, resets navigation to root of that section
    */
   onTabClick(tab: TabItem, event: Event): void {
     if (tab.disabled) {
@@ -162,7 +170,19 @@ export class BottomTabBarComponent {
     this.tabChange.emit(tab);
 
     if (this.useRouter && tab.route) {
-      this.router.navigate([tab.route]);
+      // Check if already on the root of this tab section
+      const isOnTabRoot = this.router.isActive(tab.route, {
+        paths: 'exact',
+        queryParams: 'ignored',
+        fragment: 'ignored',
+        matrixParams: 'ignored',
+      });
+
+      // If already at root, use replaceUrl to avoid adding to history
+      // If on a child page of this section (isActive but not isOnTabRoot), navigate to root
+      this.router.navigate([tab.route], {
+        replaceUrl: isOnTabRoot,
+      });
     }
   }
 

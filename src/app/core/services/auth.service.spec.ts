@@ -103,7 +103,8 @@ describe('AuthService', () => {
       email: 'new@example.com',
       password: 'password123',
       firstName: 'New',
-      lastName: 'User'
+      lastName: 'User',
+      inviteCode: 'TEST-INVITE-CODE'
     };
 
     it('should signup successfully and store auth data', fakeAsync(() => {

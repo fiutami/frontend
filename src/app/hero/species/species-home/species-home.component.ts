@@ -4,13 +4,15 @@ import {
   inject,
   signal,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import {
-  BottomTabBarComponent,
-  TabItem,
-} from '../../../shared/components/bottom-tab-bar';
+import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar';
+import { MascotPeekComponent } from '../../../shared/components/mascot-peek';
+import { MascotBottomSheetComponent } from '../../../shared/components/mascot-bottom-sheet';
+import { AvatarButtonComponent } from '../../../shared/components/avatar-button';
+import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
 import { PageBackgroundComponent } from '../../../shared/components/page-background';
 
 export interface SpeciesCategory {
@@ -29,6 +31,9 @@ export interface SpeciesCategory {
     RouterLink,
     BottomTabBarComponent,
     PageBackgroundComponent,
+    MascotPeekComponent,
+    MascotBottomSheetComponent,
+    AvatarButtonComponent,
   ],
   templateUrl: './species-home.component.html',
   styleUrls: ['./species-home.component.scss'],
@@ -37,19 +42,17 @@ export interface SpeciesCategory {
 export class SpeciesHomeComponent implements OnInit {
   private readonly router = inject(Router);
 
+  // Mascot sheet state
+  showMascotSheet = signal(false);
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
+
   // State
   readonly categories = signal<SpeciesCategory[]>([]);
   readonly isLoading = signal(true);
   readonly selectedCategory = signal<string | null>(null);
 
-  // Bottom tab bar configuration
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', iconSrc: 'assets/icons/nav/home.svg', activeIconSrc: 'assets/icons/nav/home-active.svg', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', iconSrc: 'assets/icons/nav/calendar.svg', activeIconSrc: 'assets/icons/nav/calendar-active.svg', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', iconSrc: 'assets/icons/nav/map.svg', activeIconSrc: 'assets/icons/nav/map-active.svg', route: '/home/map', label: 'Mappa' },
-    { id: 'species', icon: 'pets', iconSrc: 'assets/icons/nav/species.svg', activeIconSrc: 'assets/icons/nav/species-active.svg', route: '/home/species', label: 'Specie' },
-    { id: 'profile', icon: 'person', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/user/profile', label: 'Profilo' },
-  ];
+  // Bottom tab bar - configurazione centralizzata
+  tabs = MAIN_TAB_BAR_CONFIG;
 
   ngOnInit(): void {
     this.loadCategories();
@@ -84,5 +87,15 @@ export class SpeciesHomeComponent implements OnInit {
 
   trackByCategory(index: number, category: SpeciesCategory): string {
     return category.id;
+  }
+
+  // Mascot methods
+  onMascotClick(): void {
+    this.showMascotSheet.set(true);
+  }
+
+  closeMascotSheet(): void {
+    this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 }

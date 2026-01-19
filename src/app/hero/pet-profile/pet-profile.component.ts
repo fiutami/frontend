@@ -5,19 +5,20 @@ import {
   OnInit,
   signal,
   ChangeDetectorRef,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
-import { DrawerService } from '../../shared/components/drawer';
-import {
-  BottomTabBarComponent,
-  TabItem,
-} from '../../shared/components/bottom-tab-bar';
+import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button';
+import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 import {
   PetInfoCardComponent,
   PetInfoItem,
 } from '../../shared/components/pet-info-card';
 import { SpeechBubbleComponent } from '../../shared/components/speech-bubble';
+import { MascotPeekComponent } from '../../shared/components/mascot-peek';
+import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
 import { PetService } from '../../core/services/pet.service';
 import { PetResponse } from '../../core/models/pet.models';
 
@@ -46,19 +47,25 @@ export interface FriendPet {
     CommonModule,
     RouterModule,
     BottomTabBarComponent,
+    AvatarButtonComponent,
     PetInfoCardComponent,
     SpeechBubbleComponent,
+    MascotPeekComponent,
+    MascotBottomSheetComponent,
   ],
   templateUrl: './pet-profile.component.html',
   styleUrls: ['./pet-profile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetProfileComponent implements OnInit {
-  private drawerService = inject(DrawerService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private petService = inject(PetService);
   private cdr = inject(ChangeDetectorRef);
+
+  // Mascot sheet state
+  showMascotSheet = signal(false);
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // Loading and error state
   isLoading = signal(false);
@@ -79,16 +86,8 @@ export class PetProfileComponent implements OnInit {
   // Info card data for PetInfoCardComponent
   petInfoItems: PetInfoItem[] = [];
 
-  // Bottom tab bar configuration
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', iconSrc: 'assets/icons/nav/home.svg', activeIconSrc: 'assets/icons/nav/home-active.svg', route: '/home/main', label: 'Home' },
-    { id: 'calendar', icon: 'calendar_today', iconSrc: 'assets/icons/nav/calendar.svg', activeIconSrc: 'assets/icons/nav/calendar-active.svg', route: '/home/calendar', label: 'Calendario' },
-    { id: 'location', icon: 'place', iconSrc: 'assets/icons/nav/map.svg', activeIconSrc: 'assets/icons/nav/map-active.svg', route: '/home/map', label: 'Mappa' },
-    { id: 'species', icon: 'pets', iconSrc: 'assets/icons/nav/species.svg', activeIconSrc: 'assets/icons/nav/species-active.svg', route: '/home/species', label: 'Specie' },
-    { id: 'profile', icon: 'person', iconSrc: 'assets/icons/nav/profile.svg', activeIconSrc: 'assets/icons/nav/profile-active.svg', route: '/user/profile', label: 'Profilo' },
-  ];
-
-  notificationCount = 2;
+  // Bottom tab bar - configurazione centralizzata
+  tabs = MAIN_TAB_BAR_CONFIG;
 
   // Online friends
   onlineFriends: FriendPet[] = [
@@ -122,30 +121,8 @@ export class PetProfileComponent implements OnInit {
     }
   }
 
-  openDrawer(): void {
-    this.drawerService.open();
-  }
-
   goBack(): void {
     window.history.back();
-  }
-
-  navigateToEdit(): void {
-    if (this.pet.id) {
-      this.router.navigate(['/home/pet-register/edit', this.pet.id]);
-    }
-  }
-
-  navigateToCalendar(): void {
-    this.router.navigate(['/home/calendar']);
-  }
-
-  navigateToChat(): void {
-    this.router.navigate(['/home/chat']);
-  }
-
-  navigateToSaved(): void {
-    this.router.navigate(['/home/favorites']);
   }
 
   // Yellow button actions
@@ -279,5 +256,15 @@ export class PetProfileComponent implements OnInit {
       { label: 'Peso', value: this.pet.weight > 0 ? `${this.pet.weight} kg` : 'N/D' },
       { label: 'Razza', value: this.pet.breed },
     ];
+  }
+
+  // Mascot methods
+  onMascotClick(): void {
+    this.showMascotSheet.set(true);
+  }
+
+  closeMascotSheet(): void {
+    this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 }

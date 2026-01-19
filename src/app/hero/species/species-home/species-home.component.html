@@ -17,7 +17,7 @@
       </svg>
     </button>
     <h1 class="species-home__title">Specie</h1>
-    <div class="species-home__header-spacer"></div>
+    <app-avatar-button size="medium"></app-avatar-button>
   </header>
 
   <!-- Main content -->
@@ -50,6 +50,21 @@
       </div>
     }
   </main>
+
+  <!-- Mascot Peek -->
+  <app-mascot-peek
+    #mascotPeek
+    [hidden]="showMascotSheet()"
+    (mascotTapped)="onMascotClick()">
+  </app-mascot-peek>
+
+  <!-- Mascot Bottom Sheet -->
+  <app-mascot-bottom-sheet
+    [isOpen]="showMascotSheet()"
+    [hideMascot]="true"
+    [aiMessage]="'Ciao! Come posso aiutarti?'"
+    (closed)="closeMascotSheet()">
+  </app-mascot-bottom-sheet>
 
   <!-- Bottom Tab Bar -->
   <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'species'"></app-bottom-tab-bar>

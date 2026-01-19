@@ -1,4 +1,7 @@
 {
+  "mascot": {
+    "speechBubble": "Can I help you?"
+  },
   "common": {
     "language": "Language",
     "back": "Back",

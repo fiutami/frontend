@@ -13,13 +13,16 @@
 
     <h1 class="calendar__title">Calendario</h1>
 
-    <button
-      class="calendar__today-btn"
-      (click)="goToToday()"
-      aria-label="Vai a oggi"
-    >
-      Oggi
-    </button>
+    <div class="calendar__header-actions">
+      <button
+        class="calendar__today-btn"
+        (click)="goToToday()"
+        aria-label="Vai a oggi"
+      >
+        Oggi
+      </button>
+      <app-avatar-button size="medium"></app-avatar-button>
+    </div>
   </header>
 
   <!-- Month navigation -->
@@ -102,4 +105,25 @@
       (cancel)="closeEventModal()"
     ></app-event-create>
   }
+
+  <!-- Mascot Peek -->
+  <app-mascot-peek
+    #mascotPeek
+    [hidden]="showMascotSheet()"
+    (mascotTapped)="onMascotClick()">
+  </app-mascot-peek>
+
+  <!-- Mascot Bottom Sheet -->
+  <app-mascot-bottom-sheet
+    [isOpen]="showMascotSheet()"
+    [hideMascot]="true"
+    [aiMessage]="'Ciao! Come posso aiutarti?'"
+    (closed)="closeMascotSheet()">
+  </app-mascot-bottom-sheet>
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar
+    [tabs]="tabs"
+    [activeTabId]="'calendar'">
+  </app-bottom-tab-bar>
 </div>
