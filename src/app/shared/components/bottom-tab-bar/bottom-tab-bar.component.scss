@@ -17,9 +17,9 @@
   z-index: 1000;
   height: $tab-bar-height;
 
-  // Enable horizontal scroll for very small screens
-  overflow-x: auto;
-  overflow-y: hidden;
+  // Allow selection circles to extend beyond bar (overflow visible)
+  // but clip horizontal scroll on very small screens
+  overflow: visible;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; // Firefox
 
@@ -171,6 +171,15 @@
     .bottom-tab-bar__tab {
       flex-direction: column;
       gap: 2px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    // Reduce label to allow better vertical centering
+    .bottom-tab-bar__label {
+      font-size: 8px;
+      line-height: 1;
+      margin-top: 2px;
     }
   }
 
@@ -184,15 +193,17 @@
     justify-content: center;
     flex: 1;
     flex-shrink: 0; // Prevent tabs from shrinking on scroll
-    min-width: 56px; // Minimum touch target width
+    min-width: clamp(56px, 14vw, 80px); // Responsive minimum touch target (larger for icons)
     height: 100%;
-    padding: $spacing-sm;
+    padding: 0; // No padding - let flexbox center content
     background: none;
     border: none;
     cursor: pointer;
     position: relative;
     transition: all 0.2s ease;
     -webkit-tap-highlight-color: transparent;
+    overflow: visible; // Allow yellow selection circle to extend beyond tab bounds
+    box-sizing: border-box;
 
     &:focus-visible {
       outline: 2px solid $color-tab-bar-active;
@@ -220,26 +231,50 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     transition: transform 0.2s ease;
+    z-index: 1; // Ensure icon container is above tab bar background
 
-    .bottom-tab-bar__tab--active & {
-      transform: scale(1.1);
+    // Selection circle (yellow ring) for active state
+    // Figma: 60x60px ellipse with 8px stroke #F5B132
+    &::before {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 6px solid $color-tab-bar-active;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      z-index: 0; // Circle behind the icon image
     }
   }
 
+  // Show selection circle when tab is active
+  &__tab--active &__icon::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
   &__icon-img {
-    width: 24px;
-    height: 24px;
+    // Icon size inside the selection circle
+    // Figma icons: ~22-26px, we scale proportionally
+    width: clamp(22px, 6vw, 28px);
+    height: clamp(22px, 6vw, 28px);
     object-fit: contain;
+    position: relative;
+    z-index: 1; // Icon above the selection circle
 
     .bottom-tab-bar--sm & {
-      width: 20px;
-      height: 20px;
+      width: clamp(18px, 5vw, 22px);
+      height: clamp(18px, 5vw, 22px);
     }
 
     .bottom-tab-bar--lg & {
-      width: 28px;
-      height: 28px;
+      width: clamp(26px, 7vw, 32px);
+      height: clamp(26px, 7vw, 32px);
     }
   }
 
@@ -279,19 +314,12 @@
   }
 
   // ===========================================
-  // INDICATOR
+  // INDICATOR (hidden - using SVG circle instead)
   // ===========================================
 
   &__indicator {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    width: 40px;
-    height: 3px;
-    border-radius: 0 0 3px 3px;
-    opacity: 0;
-    transition: all 0.2s ease;
+    // Hide completely - active state uses SVG yellow circle
+    display: none !important;
   }
 
   // ===========================================
