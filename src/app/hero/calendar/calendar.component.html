@@ -13,13 +13,16 @@
 
     <h1 class="calendar__title">Calendario</h1>
 
-    <button
-      class="calendar__today-btn"
-      (click)="goToToday()"
-      aria-label="Vai a oggi"
-    >
-      Oggi
-    </button>
+    <div class="calendar__header-actions">
+      <button
+        class="calendar__today-btn"
+        (click)="goToToday()"
+        aria-label="Vai a oggi"
+      >
+        Oggi
+      </button>
+      <app-avatar-button size="medium"></app-avatar-button>
+    </div>
   </header>
 
   <!-- Month navigation -->

@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
-import { DrawerService } from '../../shared/components/drawer';
 import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button';
 import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 import {
   PetInfoCardComponent,
@@ -47,6 +47,7 @@ export interface FriendPet {
     CommonModule,
     RouterModule,
     BottomTabBarComponent,
+    AvatarButtonComponent,
     PetInfoCardComponent,
     SpeechBubbleComponent,
     MascotPeekComponent,
@@ -57,7 +58,6 @@ export interface FriendPet {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetProfileComponent implements OnInit {
-  private drawerService = inject(DrawerService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private petService = inject(PetService);
@@ -88,8 +88,6 @@ export class PetProfileComponent implements OnInit {
 
   // Bottom tab bar - configurazione centralizzata
   tabs = MAIN_TAB_BAR_CONFIG;
-
-  notificationCount = 2;
 
   // Online friends
   onlineFriends: FriendPet[] = [
@@ -123,30 +121,8 @@ export class PetProfileComponent implements OnInit {
     }
   }
 
-  openDrawer(): void {
-    this.drawerService.open();
-  }
-
   goBack(): void {
     window.history.back();
-  }
-
-  navigateToEdit(): void {
-    if (this.pet.id) {
-      this.router.navigate(['/home/pet-register/edit', this.pet.id]);
-    }
-  }
-
-  navigateToCalendar(): void {
-    this.router.navigate(['/home/calendar']);
-  }
-
-  navigateToChat(): void {
-    this.router.navigate(['/home/chat']);
-  }
-
-  navigateToSaved(): void {
-    this.router.navigate(['/home/favorites']);
   }
 
   // Yellow button actions

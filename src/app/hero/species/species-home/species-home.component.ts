@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar';
 import { MascotPeekComponent } from '../../../shared/components/mascot-peek';
 import { MascotBottomSheetComponent } from '../../../shared/components/mascot-bottom-sheet';
+import { AvatarButtonComponent } from '../../../shared/components/avatar-button';
 import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
 import { PageBackgroundComponent } from '../../../shared/components/page-background';
 
@@ -32,6 +33,7 @@ export interface SpeciesCategory {
     PageBackgroundComponent,
     MascotPeekComponent,
     MascotBottomSheetComponent,
+    AvatarButtonComponent,
   ],
   templateUrl: './species-home.component.html',
   styleUrls: ['./species-home.component.scss'],
