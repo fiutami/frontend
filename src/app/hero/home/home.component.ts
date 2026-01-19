@@ -6,6 +6,7 @@ import {
   OnInit,
   signal,
   computed,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
@@ -92,6 +93,9 @@ export class HomeComponent implements OnInit {
   // Bottom tab bar - configurazione centralizzata
   tabs = MAIN_TAB_BAR_CONFIG;
 
+  // ViewChild for mascot-peek to call returnToPeek()
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
+
   ngOnInit(): void {
     this.loadDashboardData();
     this.loadUnreadNotificationsCount();
@@ -170,6 +174,7 @@ export class HomeComponent implements OnInit {
 
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 
   onMascotSuggestionClick(suggestion: { actionUrl?: string }): void {

@@ -5,6 +5,7 @@ import {
   OnInit,
   signal,
   ChangeDetectorRef,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
@@ -64,6 +65,7 @@ export class PetProfileComponent implements OnInit {
 
   // Mascot sheet state
   showMascotSheet = signal(false);
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // Loading and error state
   isLoading = signal(false);
@@ -287,5 +289,6 @@ export class PetProfileComponent implements OnInit {
 
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 }

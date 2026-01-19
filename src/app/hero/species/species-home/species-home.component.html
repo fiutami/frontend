@@ -53,6 +53,7 @@
 
   <!-- Mascot Peek -->
   <app-mascot-peek
+    #mascotPeek
     [hidden]="showMascotSheet()"
     (mascotTapped)="onMascotClick()">
   </app-mascot-peek>
@@ -60,6 +61,7 @@
   <!-- Mascot Bottom Sheet -->
   <app-mascot-bottom-sheet
     [isOpen]="showMascotSheet()"
+    [hideMascot]="true"
     [aiMessage]="'Ciao! Come posso aiutarti?'"
     (closed)="closeMascotSheet()">
   </app-mascot-bottom-sheet>

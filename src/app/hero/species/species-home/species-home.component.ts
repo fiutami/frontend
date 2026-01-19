@@ -4,6 +4,7 @@ import {
   inject,
   signal,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -41,6 +42,7 @@ export class SpeciesHomeComponent implements OnInit {
 
   // Mascot sheet state
   showMascotSheet = signal(false);
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // State
   readonly categories = signal<SpeciesCategory[]>([]);
@@ -92,5 +94,6 @@ export class SpeciesHomeComponent implements OnInit {
 
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 }

@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   signal,
   computed,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -36,6 +37,7 @@ export class CalendarComponent {
 
   // Mascot sheet state
   showMascotSheet = signal(false);
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // Current date state
   currentDate = signal(new Date());
@@ -162,5 +164,6 @@ export class CalendarComponent {
 
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 }

@@ -41,6 +41,7 @@ export class MascotBottomSheetComponent implements OnChanges, OnDestroy {
   @Input() isOpen = false;
   @Input() suggestions: MascotSuggestion[] = [];
   @Input() aiMessage = '';
+  @Input() hideMascot = false; // Hide mascot when using external mascot-peek
 
   @Output() closed = new EventEmitter<void>();
   @Output() suggestionAction = new EventEmitter<MascotSuggestion>();

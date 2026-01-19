@@ -46,6 +46,8 @@ export class MascotPeekComponent implements OnDestroy {
   // Position state (negative = pulled out from right)
   readonly dragOffset = signal(0);
   readonly isExpanded = signal(false);
+  readonly animatingToSheet = signal(false);
+  readonly atSheetPosition = signal(false); // Stays at sheet position
 
   // Animation frame ID for cleanup
   private animationFrameId: number | null = null;
@@ -164,9 +166,25 @@ export class MascotPeekComponent implements OnDestroy {
   // Handle tap on mascot
   onMascotTap(event: MouseEvent | TouchEvent): void {
     // Only trigger tap if not dragging significantly (< 10px movement)
-    if (this.dragDistance < 10) {
-      this.mascotTapped.emit();
+    if (this.dragDistance < 10 && !this.atSheetPosition()) {
+      // Start fly animation
+      this.animatingToSheet.set(true);
+
+      // Hide bubble immediately
+      this.isExpanded.set(false);
+
+      // After animation, stay at sheet position
+      setTimeout(() => {
+        this.animatingToSheet.set(false);
+        this.atSheetPosition.set(true);
+        this.mascotTapped.emit();
+      }, 600);
     }
+  }
+
+  // Return mascot to peek position (called when sheet closes)
+  returnToPeek(): void {
+    this.atSheetPosition.set(false);
   }
 
   // Utility to get clientX from touch or mouse event

@@ -46,6 +46,7 @@
 
   <!-- Fiuto Mascot Peek (draggable from right edge) -->
   <app-mascot-peek
+    #mascotPeek
     [hidden]="showMascotSheet()"
     (mascotTapped)="onMascotClick()">
   </app-mascot-peek>
@@ -53,6 +54,7 @@
   <!-- Mascot Bottom Sheet (AI Mode) -->
   <app-mascot-bottom-sheet
     [isOpen]="showMascotSheet()"
+    [hideMascot]="true"
     [suggestions]="mascotSuggestions()"
     [aiMessage]="'Ciao! Ecco cosa ho trovato per te oggi...'"
     (closed)="closeMascotSheet()"

@@ -6,7 +6,8 @@ import {
   ChangeDetectorRef,
   inject,
   signal,
-  computed
+  computed,
+  ViewChild
 } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -49,6 +50,7 @@ export class MapViewComponent implements AfterViewInit, OnDestroy {
 
   // Mascot sheet state
   showMascotSheet = signal(false);
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // Signals
   readonly userLocation = signal<[number, number]>([41.9028, 12.4964]); // Roma default
@@ -303,5 +305,6 @@ export class MapViewComponent implements AfterViewInit, OnDestroy {
 
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
+    this.mascotPeek?.returnToPeek();
   }
 }

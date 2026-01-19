@@ -3,13 +3,15 @@
   #mascotContainer
   class="mascot-peek"
   [class.mascot-peek--expanded]="isExpanded()"
-  [class.mascot-peek--hidden]="hidden"
+  [class.mascot-peek--hidden]="hidden && !atSheetPosition()"
+  [class.mascot-peek--animating-to-sheet]="animatingToSheet()"
+  [class.mascot-peek--at-sheet]="atSheetPosition()"
   [style.transform]="transformStyle()"
   (mousedown)="onDragStart($event)"
   (touchstart)="onDragStart($event)"
   (click)="onMascotTap($event)"
 >
-  <!-- Speech Bubble (visible when expanded) -->
+  <!-- Speech Bubble (visible only when expanded) -->
   @if (isExpanded()) {
     <div class="mascot-peek__bubble">
       <app-speech-bubble variant="ai" tailPosition="right" [maxWidth]="'140px'">
@@ -28,10 +30,4 @@
     />
   </div>
 
-  <!-- Drag Handle Indicator -->
-  <div class="mascot-peek__handle" aria-hidden="true">
-    <span class="mascot-peek__handle-line"></span>
-    <span class="mascot-peek__handle-line"></span>
-    <span class="mascot-peek__handle-line"></span>
-  </div>
 </div>

@@ -30,14 +30,16 @@
           </app-speech-bubble>
         }
 
-        <!-- Mascot wrapper for future animation support -->
-        <div class="mascot-sheet__mascot-wrapper">
-          <img
-            class="mascot-sheet__mascot"
-            src="assets/images/species/mascot-fiuto.svg"
-            alt="Fiuto"
-            loading="lazy" />
-        </div>
+        <!-- Mascot wrapper - hidden when using external mascot-peek -->
+        @if (!hideMascot) {
+          <div class="mascot-sheet__mascot-wrapper">
+            <img
+              class="mascot-sheet__mascot"
+              src="assets/images/species/mascot-fiuto.svg"
+              alt="Fiuto"
+              loading="lazy" />
+          </div>
+        }
       </div>
     </div>
 
