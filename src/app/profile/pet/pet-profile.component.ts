@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, signal, computed, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, computed, inject, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Subject, takeUntil, forkJoin, of, catchError } from 'rxjs';
@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PetService } from '../../core/services/pet.service';
 import { SpeciesInfoService } from '../../core/services/species-info.service';
 import { PhotoUploadService } from '../../core/services/photo-upload.service';
+import { DrawerService } from '../../shared/services/drawer.service';
 import { ProfileIconComponent } from '../../shared/components/profile-icons';
 import { PhotoUploadModalComponent } from '../../shared/components/photo-upload-modal';
 import {
@@ -13,10 +14,17 @@ import {
   PetPhoto,
   PetFriendProfile,
   PetMemory,
-  BreedFacts
+  BreedFacts,
+  PetResponse
 } from '../../core/models/pet.models';
 
-type ProfileTab = 'gallery' | 'friends' | 'memories' | 'info';
+/** Promo card interface */
+interface PromoCard {
+  id: string;
+  title: string;
+  imageUrl: string;
+  link?: string;
+}
 
 @Component({
   selector: 'app-pet-profile',
@@ -32,9 +40,12 @@ type ProfileTab = 'gallery' | 'friends' | 'memories' | 'info';
   styleUrl: './pet-profile.component.scss'
 })
 export class PetProfileComponent implements OnInit, OnDestroy {
+  @ViewChild('promoScrollContainer') promoScrollContainer?: ElementRef<HTMLDivElement>;
+
   private destroy$ = new Subject<void>();
   private speciesInfoService = inject(SpeciesInfoService);
   private photoUploadService = inject(PhotoUploadService);
+  private drawerService = inject(DrawerService);
 
   // State signals
   pet = signal<PetProfile | null>(null);
@@ -44,7 +55,9 @@ export class PetProfileComponent implements OnInit, OnDestroy {
   breedFacts = signal<BreedFacts | null>(null);
   loading = signal<boolean>(true);
   error = signal<string | null>(null);
-  activeTab = signal<ProfileTab>('gallery');
+
+  // User's pets for switching
+  userPets = signal<PetResponse[]>([]);
 
   // Human age conversion
   humanAge = signal<{ humanYears: number; stage: string } | null>(null);
@@ -55,6 +68,10 @@ export class PetProfileComponent implements OnInit, OnDestroy {
   isUploading = signal(false);
   uploadProgress = signal(0);
   uploadError = signal<string | null>(null);
+
+  // Promo carousel state
+  promoCards = signal<PromoCard[]>([]);
+  activePromoIndex = signal(0);
 
   // Computed values
   hasPhotos = computed(() => this.photos().length > 0);
@@ -81,6 +98,8 @@ export class PetProfileComponent implements OnInit, OnDestroy {
     this.petId = this.route.snapshot.paramMap.get('id');
     if (this.petId) {
       this.loadPetProfile(this.petId);
+      this.loadUserPets();
+      this.loadPromoCards();
     } else {
       this.error.set('Pet ID not found');
       this.loading.set(false);
@@ -90,6 +109,47 @@ export class PetProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  /**
+   * Load all user's pets for pet switching dots
+   */
+  private loadUserPets(): void {
+    this.petService.loadPets()
+      .pipe(
+        takeUntil(this.destroy$),
+        catchError(() => of({ items: [], totalCount: 0 }))
+      )
+      .subscribe(response => {
+        this.userPets.set(response.items || []);
+      });
+  }
+
+  /**
+   * Load promo cards for carousel
+   */
+  private loadPromoCards(): void {
+    // Static promo cards for now - can be replaced with API call
+    this.promoCards.set([
+      {
+        id: '1',
+        title: 'FIUTAMI Plus',
+        imageUrl: 'assets/images/promo/promo-1.png',
+        link: '/premium'
+      },
+      {
+        id: '2',
+        title: 'Scopri nuove funzioni',
+        imageUrl: 'assets/images/promo/promo-2.png',
+        link: '/features'
+      },
+      {
+        id: '3',
+        title: 'Invita un amico',
+        imageUrl: 'assets/images/promo/promo-3.png',
+        link: '/invite'
+      }
+    ]);
   }
 
   private loadPetProfile(petId: string): void {
@@ -197,9 +257,9 @@ export class PetProfileComponent implements OnInit, OnDestroy {
       });
   }
 
-  setActiveTab(tab: ProfileTab): void {
-    this.activeTab.set(tab);
-  }
+  // ============================================================
+  // Navigation Methods
+  // ============================================================
 
   goBack(): void {
     this.router.navigate(['/home']);
@@ -226,19 +286,75 @@ export class PetProfileComponent implements OnInit, OnDestroy {
     this.router.navigate(['/discover']);
   }
 
+  navigateTo(path: string): void {
+    this.router.navigateByUrl(path);
+  }
+
+  /**
+   * Switch to another pet
+   */
+  switchPet(petId: string): void {
+    if (petId !== this.petId) {
+      this.router.navigate(['/profile/pet', petId]);
+    }
+  }
+
+  /**
+   * Navigate to add new pet
+   */
+  onAddPet(): void {
+    this.router.navigate(['/onboarding/register-pet']);
+  }
+
+  /**
+   * Open drawer menu
+   */
+  openDrawer(): void {
+    this.drawerService.open('profile-menu');
+  }
+
+  /**
+   * Open FIUTO chat/assistant
+   */
+  openFiutoChat(): void {
+    this.router.navigate(['/chat/fiuto']);
+  }
+
+  // ============================================================
+  // Promo Carousel Methods
+  // ============================================================
+
+  onPromoClick(promo: PromoCard): void {
+    if (promo.link) {
+      this.router.navigateByUrl(promo.link);
+    }
+  }
+
+  scrollToPromo(index: number): void {
+    this.activePromoIndex.set(index);
+    const container = this.promoScrollContainer?.nativeElement;
+    if (container) {
+      const cardWidth = container.scrollWidth / this.promoCards().length;
+      container.scrollTo({
+        left: cardWidth * index,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // ============================================================
+  // Photo Upload Methods
+  // ============================================================
+
   onPhotoClick(photo: PetPhoto): void {
-    // TODO: Open lightbox/fullscreen view
     console.log('Photo clicked:', photo);
   }
 
   onAddPhoto(): void {
-    this.uploadAspectRatio.set(4 / 3); // Landscape for gallery
+    this.uploadAspectRatio.set(4 / 3);
     this.showUploadModal.set(true);
   }
 
-  /**
-   * Handle photo confirmed from upload modal
-   */
   async onPhotoConfirmed(blob: Blob): Promise<void> {
     this.showUploadModal.set(false);
 
@@ -260,7 +376,6 @@ export class PetProfileComponent implements OnInit, OnDestroy {
         (progress) => this.uploadProgress.set(progress)
       );
 
-      // Refresh gallery after successful upload
       this.loadPhotos();
     } catch (err) {
       console.error('Upload failed:', err);
@@ -271,16 +386,10 @@ export class PetProfileComponent implements OnInit, OnDestroy {
     }
   }
 
-  /**
-   * Handle upload modal cancelled
-   */
   onUploadCancelled(): void {
     this.showUploadModal.set(false);
   }
 
-  /**
-   * Reload photos from API
-   */
   private loadPhotos(): void {
     if (!this.petId) return;
 
@@ -295,9 +404,12 @@ export class PetProfileComponent implements OnInit, OnDestroy {
   }
 
   onAddMemory(): void {
-    // TODO: Implement add memory modal/page
     console.log('Add memory clicked');
   }
+
+  // ============================================================
+  // Utility Methods
+  // ============================================================
 
   getSexIcon(sex: 'M' | 'F'): string {
     return sex === 'M' ? '\u2642' : '\u2640';
