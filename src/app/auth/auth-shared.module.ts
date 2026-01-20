@@ -8,7 +8,8 @@ import {
   SocialAuthServiceConfig,
   GoogleLoginProvider,
   FacebookLoginProvider,
-  GoogleSigninButtonModule
+  GoogleSigninButtonModule,
+  SOCIAL_AUTH_CONFIG
 } from '@abacritt/angularx-social-login';
 import { environment } from '../../environments/environment';
 
@@ -36,7 +37,7 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
   ],
   providers: [
     {
-      provide: 'SocialAuthServiceConfig',
+      provide: SOCIAL_AUTH_CONFIG,
       useValue: {
         autoLogin: false,
         providers: [
@@ -57,7 +58,7 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
             })
           }
         ],
-        onError: (err) => console.error('Social login error:', err)
+        onError: (err: any) => console.error('Social login error:', err)
       } as SocialAuthServiceConfig
     }
   ],
