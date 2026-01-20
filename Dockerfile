@@ -5,8 +5,8 @@ WORKDIR /app
 # Copy package files from root
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies (legacy-peer-deps for Angular 18 compatibility)
+RUN npm ci --legacy-peer-deps
 
 # Copy source code
 COPY . .
