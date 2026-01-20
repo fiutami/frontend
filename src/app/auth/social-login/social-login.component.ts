@@ -46,7 +46,7 @@ export class SocialLoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Subscribe to auth state changes (handles Google sign-in via native button)
     this.authSubscription = this.socialAuthService.authState.subscribe((user: SocialUser | null) => {
-      if (user && !this.isProcessingAuth) {
+      if (user && user.provider && !this.isProcessingAuth) {
         console.log('Social user authenticated:', user.provider);
         this.providerSelected.emit(user.provider.toLowerCase() as 'google' | 'facebook');
         this.handleSocialUser(user);
@@ -71,7 +71,10 @@ export class SocialLoginComponent implements OnInit, OnDestroy {
     }
     this.isProcessingAuth = true;
 
-    this.setLoading(user.provider.toLowerCase() as any, true);
+    const provider = user.provider?.toLowerCase() as 'google' | 'facebook' | undefined;
+    if (provider) {
+      this.setLoading(provider, true);
+    }
 
     // Debug: log what tokens are available
     console.log('SocialUser received:', {
@@ -95,7 +98,8 @@ export class SocialLoginComponent implements OnInit, OnDestroy {
 
     console.log('Sending OAuth request with token type:', user.idToken ? 'idToken' : 'authToken');
 
-    this.authService.oauthLogin(user.provider.toLowerCase(), token).subscribe({
+    const providerName = user.provider?.toLowerCase() ?? 'unknown';
+    this.authService.oauthLogin(providerName, token).subscribe({
       next: () => {
         this.loginSuccess.emit();
         this.setLoading(null, false);
