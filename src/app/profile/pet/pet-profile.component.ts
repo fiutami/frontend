@@ -118,7 +118,7 @@ export class PetProfileComponent implements OnInit, OnDestroy {
     this.petService.loadPets()
       .pipe(
         takeUntil(this.destroy$),
-        catchError(() => of({ items: [], totalCount: 0 }))
+        catchError(() => of({ pets: [], totalCount: 0 }))
       )
       .subscribe(response => {
         this.userPets.set(response.pets || []);
