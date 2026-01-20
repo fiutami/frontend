@@ -1,0 +1,51 @@
+# Estratto da: INFO_salamandra-tritone.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.868Z
+# Caratteri: 1788
+# ---
+
+DIFFERENZE TRA TRITONE E SALAMANDRA
+
+Tritoni e salamandre sono animali strettamente imparentati, entrambi anfibi, ma non sono
+esattamente la stessa cosa.
+
+Differenze principali:
+• Entrambi appartengono all’ordine Caudata (o Urodela), che comprende gli anfibi
+con la coda, ma sono di generi diversi.
+• Salamandre:
+o Spesso si riferisce a specie del genere Salamandra (come la Salamandra
+salamandra, la salamandra comune).
+o Sono generalmente più grandi, terrestri o semi-terrestri.
+o Hanno pelle liscia o leggermente ruvida, spesso con colori vistosi.
+• Tritoni:
+o Sono salamandre acquatiche o semiacquatiche di altri generi, come Triturus,
+Ichthyosaura, Lissotriton.
+o Tendono a vivere più a lungo in acqua o ambienti umidi.
+o Hanno corpo più snello e spesso presentano creste durante la stagione
+riproduttiva (es. tritone crestato).
+
+In breve
+• Tutti i tritoni sono salamandre, ma non tutte le salamandre sono tritoni.
+• “Salamandra” è un termine più ampio e talvolta usato specificamente per alcune
+specie terrestri.
+“razze”
+
+Sì, sia i tritoni sia le salamandre hanno specie e varietà riconosciute, e alcune di queste sono
+comunemente tenute come animali domestici.
+
+Tritoni — specie riconosciute comuni in cattività
+
+1. Triturus cristatus – Tritone crestato
+2. Triturus marmoratus – Tritone marmorizzato
+3. Ichthyosaura alpestris – Tritone alpino
+4. Lissotriton vulgaris – Tritone comune
+5. Notophthalmus viridescens – Tritone dalla coda lunga (americano)
+
+Salamandre — specie riconosciute comuni in
+cattività
+
+1. Salamandra salamandra – Salamandra comune
+2. Ambystoma mexicanum – Axolotl (una salamandra acquatica neotenica)
+3. Ambystoma tigrinum – Salamandra tigre
+4. Cynops pyrrhogaster – Salamandra giapponese (salamandra dal ventre rosso)
+5. Triturus vittatus – Salamandra striata

@@ -1,0 +1,412 @@
+# Estratto da: DESCRIZIONE GRUPPO 1_razzacanine.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:39.860Z
+# Caratteri: 13067
+# ---
+
+DESCRIZIONE GRUPPO 1
+
+1. Australian Cattle Dog
+
+Descrizione: Cane da lavoro robusto e agile, pelo corto e resistente.
+Comportamento: Intelligente, energico, istintivamente protettivo.
+Problemi genetici: Displasia anca, sordità congenita, cataratta.
+Cure: Molto esercizio, stimoli mentali.
+Pro: Leale, instancabile lavoratore.
+Contro: Non adatto a stili di vita sedentari.
+
+2. Australian Kelpie
+
+Descrizione: Agile, pelo corto o medio, cane da pastore versatile.
+Comportamento: Vivace, intelligente, energico, molto attento.
+Problemi genetici: Displasia, atassia cerebellare.
+Cure: Necessita attività intensa e stimoli.
+Pro: Eccellente lavoratore.
+Contro: Può distruggere se annoiato.
+
+3. Australian Shepherd
+
+Descrizione: Pelo medio, versatile, molto intelligente.
+Comportamento: Socievole, fedele, energico, apprendimento rapido.
+Problemi genetici: Displasia, sordità, problemi oculari (CEA, PRA).
+Cure: Attività fisica e mentale intensa.
+Pro: Ottimo per sport e compagnia.
+Contro: Richiede impegno costante.
+
+4. Bearded Collie
+
+Descrizione: Pelo lungo, folto, agile.
+Comportamento: Giocherellone, energico, socievole.
+Problemi genetici: Displasia, ipotiroidismo, problemi oculari.
+Cure: Spazzolature frequenti.
+Pro: Amichevole, molto attivo.
+Contro: Pelo impegnativo.
+5. Beauceron
+
+Descrizione: Cane molossoide, robusto, pelo corto.
+Comportamento: Coraggioso, protettivo, equilibrato.
+Problemi genetici: Displasia, torsione gastrica.
+Cure: Esercizio fisico e mentale regolare.
+Pro: Ottimo cane da guardia e lavoro.
+Contro: Può essere dominante.
+
+6. Belgian Shepherd Dog (Malinois, Tervuren, Groenendael, Laekenois)
+
+Descrizione: Quattro varietà di pelo corto, medio, lungo e ruvido.
+Comportamento: Intelligente, energico, molto addestrabile.
+Problemi genetici: Displasia, epilessia, problemi oculari.
+Cure: Molti stimoli mentali e attività fisica.
+Pro: Cane da lavoro versatile.
+Contro: Richiede molta attività, non per proprietari sedentari.
+
+7. Bergamasco Shepherd Dog
+
+Descrizione: Pelo lungo, formato da ciuffi distintivi, di taglia media.
+Comportamento: Calmo, intelligente, affettuoso.
+Problemi genetici: Rari, ma può soffrire di displasia.
+Cure: Pelo che richiede particolare attenzione, spazzolatura per prevenire nodi.
+Pro: Ottimo cane da compagnia e guardia.
+Contro: Gestione del pelo impegnativa.
+
+8. Berger Blanc Suisse (Pastore Svizzero Bianco)
+
+Descrizione: Simile al Pastore Tedesco, ma con pelo bianco e più morbido.
+Comportamento: Leale, intelligente, molto affettuoso.
+Problemi genetici: Displasia, problemi spinali.
+Cure: Esercizio e addestramento regolare.
+Pro: Ottimo cane da famiglia e lavoro.
+Contro: Può soffrire di ansia da separazione.
+9. Border Collie
+
+Descrizione: Taglia media, pelo lungo o corto, estremamente intelligente.
+Comportamento: Molto energico, istinto al lavoro molto sviluppato.
+Problemi genetici: Displasia, epilessia, problemi oculari.
+Cure: Molto esercizio e stimoli mentali.
+Pro: Ottimo per lavoro e sport.
+Contro: Non adatto a chi non può gestire energia elevata.
+
+10. Bouvier des Ardennes
+
+Descrizione: Molossoide da lavoro, pelo ruvido e denso.
+Comportamento: Leale, protettivo, equilibrato.
+Problemi genetici: Displasia, torsione gastrica.
+Cure: Cura del pelo e attività regolare.
+Pro: Ottimo cane da guardia e compagnia.
+Contro: Richiede spazio e attività.
+
+11. Bouvier des Flandres
+
+Descrizione: Cane da lavoro robusto, pelo ruvido e folto.
+Comportamento: Calmo, leale, protettivo.
+Problemi genetici: Displasia, torsione gastrica, problemi cardiaci.
+Cure: Cura regolare del pelo e attività.
+Pro: Cane da guardia e famiglia.
+Contro: Richiede impegno e spazio.
+
+12. Briard
+
+Descrizione: Pelo lungo e folto, cane da pastore francese.
+Comportamento: Intelligente, protettivo, affettuoso.
+Problemi genetici: Displasia, problemi oculari, ipotiroidismo.
+Cure: Spazzolatura regolare.
+Pro: Buon cane da famiglia e lavoro.
+Contro: Pelo impegnativo.
+13. Cao da Serra de Aires
+
+Descrizione: Cão da Serra de Aires è un cane da pastore portoghese, pelo duro e medio-lungo.
+Comportamento: Attivo, intelligente, protettivo.
+Problemi genetici: Generalmente robusto, ma possibile displasia.
+Cure: Spazzolatura e attività fisica regolare.
+Pro: Ottimo cane da lavoro.
+Contro: Può essere testardo.
+
+14. Cão da Serra da Estrela
+
+Descrizione: Cane da montagna portoghese, pelo denso e lungo.
+Comportamento: Protettivo, calmo, leale.
+Problemi genetici: Displasia, problemi articolari.
+Cure: Cura del pelo e spazio per movimento.
+Pro: Ottimo guardiano.
+Contro: Può essere territoriale.
+
+15. Cão de Castro Laboreiro
+
+Descrizione: Cane da guardia portoghese, taglia media-grande, pelo spesso e duro.
+Comportamento: Protettivo, riservato, leale.
+Problemi genetici: Displasia, problemi articolari.
+Cure: Spazzolatura regolare e attività.
+Pro: Ottimo cane da guardia.
+Contro: Richiede socializzazione precoce.
+
+16. Catalan Sheepdog (Gos d'Atura Català)
+
+Descrizione: Pelo ruvido, taglia media, cane da pastore spagnolo.
+Comportamento: Intelligente, energico, protettivo.
+Problemi genetici: Raramente segnalati.
+Cure: Spazzolatura e attività fisica.
+Pro: Ottimo lavoratore.
+Contro: Può essere nervoso se poco stimolato.
+17. Collie (Rough)
+
+Descrizione: Pelo lungo e morbido, elegante.
+Comportamento: Dolce, intelligente, familiare.
+Problemi genetici: Collie Eye Anomaly, displasia, sensibilità farmaci.
+Cure: Spazzolatura impegnativa.
+Pro: Ottimo cane da famiglia.
+Contro: Pelo impegnativo.
+
+18. Collie (Smooth)
+
+Descrizione: Pelo corto e liscio, aspetto elegante.
+Comportamento: Simile al Rough, più facile da curare.
+Problemi genetici: Come Rough Collie.
+Cure: Facile cura del pelo.
+Pro: Facile gestione del mantello.
+Contro: Sensibilità farmaci.
+
+19. Croatian Sheepdog
+
+Descrizione: Taglia media, pelo nero e riccio, cane da lavoro.
+Comportamento: Energico, intelligente, fedele.
+Problemi genetici: Displasia.
+Cure: Attività regolare, spazzolatura.
+Pro: Cane da lavoro affidabile.
+Contro: Richiede stimoli.
+
+20. Dutch Shepherd Dog
+
+Descrizione: Pelo corto, medio o lungo, tricolore, robusto.
+Comportamento: Intelligente, energico, equilibrato.
+Problemi genetici: Displasia, epilessia.
+Cure: Esercizio e cura del pelo.
+Pro: Versatile cane da lavoro.
+Contro: Non adatto a sedentari.
+21. East European Shepherd
+
+Descrizione: Simile al Pastore Tedesco, più robusto e resistente.
+Comportamento: Coraggioso, protettivo, leale.
+Problemi genetici: Displasia, problemi articolari.
+Cure: Attività regolare.
+Pro: Ottimo cane da guardia.
+Contro: Richiede gestione esperta.
+
+22. German Shepherd Dog (Pastore Tedesco)
+
+Descrizione: Taglia media-grande, pelo corto o medio, molto intelligente e versatile.
+Comportamento: Fedele, coraggioso, addestrabile.
+Problemi genetici: Displasia, problemi spinali, epilessia.
+Cure: Molto esercizio, addestramento costante.
+Pro: Cane da lavoro eccellente.
+Contro: Può soffrire ansia da separazione.
+
+23. Komondor
+
+Descrizione: Pelo lungo, cordato, aspetto unico.
+Comportamento: Protettivo, indipendente, tranquillo.
+Problemi genetici: Displasia, problemi oculari.
+Cure: Cura del pelo molto impegnativa (cordoni).
+Pro: Ottimo guardiano.
+Contro: Pelo difficile da mantenere.
+
+24. Kuvasz
+
+Descrizione: Grande, pelo bianco, cane da guardia ungherese.
+Comportamento: Protettivo, indipendente, leale.
+Problemi genetici: Displasia, ipotiroidismo.
+Cure: Spazzolatura e attività regolare.
+Pro: Ottimo guardiano e compagno.
+Contro: Richiede guida ferma.
+25. Maremma and Abruzzese Sheepdog
+
+Descrizione: Cane da guardia italiano, grande e bianco.
+Comportamento: Calmo, protettivo, indipendente.
+Problemi genetici: Displasia, problemi articolari.
+Cure: Spazzolatura regolare, esercizio.
+Pro: Ottimo guardiano del bestiame.
+Contro: Indipendente, necessita socializzazione.
+
+26. Miniature American Shepherd
+
+Descrizione: Versione piccola dell’Australian Shepherd.
+Comportamento: Vivace, intelligente, affettuoso.
+Problemi genetici: Displasia, problemi oculari.
+Cure: Attività regolare e stimoli.
+Pro: Adatto a spazi più piccoli.
+Contro: Molta energia da gestire.
+
+27. Old English Sheepdog
+
+Descrizione: Pelo lungo e soffice, cane da pastore inglese.
+Comportamento: Dolce, energico, socievole.
+Problemi genetici: Displasia, problemi oculari, ipotiroidismo.
+Cure: Spazzolatura intensa.
+Pro: Buon cane da famiglia.
+Contro: Pelo impegnativo.
+
+28. Picardy Sheepdog (Berger Picard)
+
+Descrizione: Pelo ruvido e irsuto, taglia media.
+Comportamento: Intelligente, energico, protettivo.
+Problemi genetici: Displasia.
+Cure: Spazzolatura regolare.
+Pro: Cane versatile da lavoro.
+Contro: Richiede esercizio.
+
+29. Polish Lowland Sheepdog
+
+Descrizione: Pelo lungo e fitto, cane da pastore polacco.
+Comportamento: Affettuoso, intelligente, attivo.
+Problemi genetici: Displasia, problemi oculari.
+Cure: Cura impegnativa del pelo.
+Pro: Buon cane da compagnia e lavoro.
+Contro: Pelo impegnativo.
+30. Polish Tatra Sheepdog
+
+Descrizione: Grande, pelo lungo e folto, da montagna.
+Comportamento: Protettivo, calmo, leale.
+Problemi genetici: Displasia, problemi articolari.
+Cure: Cura del pelo e attività.
+Pro: Ottimo cane da guardia.
+Contro: Richiede spazio.
+
+31. Puli
+
+Descrizione: Pelo cordato caratteristico, piccolo-medium.
+Comportamento: Energico, intelligente, indipendente.
+Problemi genetici: Displasia.
+Cure: Gestione cordoni impegnativa.
+Pro: Cane da pastore eccezionale.
+Contro: Cura del pelo complessa.
+
+32. Pumi
+
+Descrizione: Pelo riccio, corto-media taglia, ungherese.
+Comportamento: Vivace, intelligente, vigile.
+Problemi genetici: Displasia.
+Cure: Spazzolatura regolare.
+Pro: Ottimo cane da lavoro.
+Contro: Richiede attività intensa.
+
+33. Pyrenean Shepherd (face rase e museau normal)
+
+Descrizione: Cane da pastore francese, pelo corto o medio.
+Comportamento: Vivace, intelligente, protettivo.
+Problemi genetici: Displasia.
+Cure: Cura pelo moderata.
+Pro: Ottimo cane da pastore.
+Contro: Energico.
+34. Romanian Bucovina Shepherd Dog
+
+Descrizione: Grande, pelo lungo, cane da guardia.
+Comportamento: Protettivo, indipendente.
+Problemi genetici: Displasia.
+Cure: Cura pelo e attività.
+Pro: Ottimo guardiano.
+Contro: Richiede socializzazione.
+
+35. Romanian Carpathian Shepherd Dog
+
+Descrizione: Simile al Bucovina, robusto e resistente.
+Comportamento: Protettivo, leale.
+Problemi genetici: Displasia.
+Cure: Cura pelo e attività.
+Pro: Ottimo guardiano.
+Contro: Richiede esperienza.
+
+36. Romanian Mioritic Shepherd Dog
+
+Descrizione: Grande, pelo lungo, molto folto.
+Comportamento: Calmo, protettivo, fedele.
+Problemi genetici: Displasia.
+Cure: Spazzolatura e attività.
+Pro: Buon cane da guardia.
+Contro: Pelo impegnativo.
+
+37. Schapendoes
+
+Descrizione: Pelo lungo e morbido, cane da pastore olandese.
+Comportamento: Vivace, intelligente, amichevole.
+Problemi genetici: Displasia.
+Cure: Spazzolatura regolare.
+Pro: Ottimo cane da compagnia.
+Contro: Pelo impegnativo.
+38. Shetland Sheepdog
+
+Descrizione: Piccolo, pelo lungo, simile al Collie.
+Comportamento: Intelligente, affettuoso, energico.
+Problemi genetici: Problemi oculari, displasia.
+Cure: Spazzolatura regolare.
+Pro: Ottimo cane da compagnia e sport.
+Contro: Richiede stimoli mentali.
+
+39. Slovak Cuvac
+
+Descrizione: Cane da montagna grande, pelo bianco.
+Comportamento: Protettivo, calmo, leale.
+Problemi genetici: Displasia.
+Cure: Cura pelo e attività.
+Pro: Ottimo guardiano.
+Contro: Richiede spazio.
+
+40. South Russian Shepherd Dog
+
+Descrizione: Grande, pelo lungo, cane da guardia.
+Comportamento: Protettivo, indipendente.
+Problemi genetici: Displasia.
+Cure: Spazzolatura e attività.
+Pro: Ottimo guardiano.
+Contro: Richiede esperienza.
+
+41. Spanish Water Dog
+
+Descrizione: Pelo riccio e lanoso, medio-piccolo.
+Comportamento: Intelligente, energico, affettuoso.
+Problemi genetici: Displasia.
+Cure: Cura pelo impegnativa.
+Pro: Ottimo cane da lavoro e compagnia.
+Contro: Cura pelo.
+
+42. Swedish Lapphund
+
+Descrizione: Pelo folto, taglia media, cane da pastore svedese.
+Comportamento: Dolce, intelligente, attivo.
+Problemi genetici: Displasia.
+Cure: Spazzolatura regolare.
+Pro: Cane familiare e da lavoro.
+Contro: Richiede stimoli.
+
+43. Swedish Vallhund
+
+Descrizione: Piccolo, pelo corto-medio, simile a un Corgi.
+Comportamento: Energico, intelligente, coraggioso.
+Problemi genetici: Displasia.
+Cure: Cura pelo facile.
+Pro: Ottimo cane da pastore e compagnia.
+Contro: Energia elevata.
+
+44. Welsh Corgi Cardigan
+
+Descrizione: Taglia piccola, corpo lungo, pelo corto.
+Comportamento: Leale, intelligente, affettuoso.
+Problemi genetici: Problemi alla schiena, displasia.
+Cure: Cura pelo semplice.
+Pro: Ottimo cane da compagnia.
+Contro: Problemi spinali.
+
+45. Welsh Corgi Pembroke
+
+Descrizione: Simile al Cardigan, ma coda più corta.
+Comportamento: Vivace, affettuoso, intelligente.
+Problemi genetici: Displasia, problemi alla schiena.
+Cure: Cura pelo semplice.
+Pro: Cane familiare e attivo.
+Contro: Problemi articolari.
+
+46. White Swiss Shepherd Dog
+
+Descrizione: Simile al Pastore Tedesco, pelo bianco.
+Comportamento: Dolce, intelligente, fedele.
+Problemi genetici: Displasia, epilessia.
+Cure: Cura e attività regolare.
+Pro: Ottimo cane da compagnia e lavoro.
+Contro: Richiede stimoli e spazio.

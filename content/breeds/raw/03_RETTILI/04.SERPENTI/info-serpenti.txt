@@ -1,0 +1,138 @@
+# Estratto da: INFO_serpenti.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.655Z
+# Caratteri: 3928
+# ---
+
+I serpenti hanno "razze" come i cani?
+
+No, i serpenti non hanno razze riconosciute come i cani o i gatti.
+Hanno invece specie (scientificamente classificate) e morph (varianti di colore e disegno
+create in cattività, come per il geco leopardino).
+
+Specie di serpenti comunemente tenuti come animali domestici
+
+Queste sono specie scientificamente riconosciute, allevate legalmente e adatte alla vita in
+terrario.
+
+Serpenti non velenosi, adatti a principianti/intermedi:
+
+Specie Nome comune Note
+
+Pantherophis guttatus Serpente del grano (Corn Docile, molto diffuso, molte
+snake) morph
+
+Python regius Pitone reale (Ball python) Tranquillo, si arrotola su sé
+stesso
+
+Lampropeltis Serpente reale californiano Attivo e curioso
+getula/californiae (King snake)
+
+Boa constrictor imperator Boa imperatore Più grande, per esperti
+
+Thamnophis sirtalis Serpente giarrettiera Piccolo e vivace
+
+Antaresia childreni Pitone dei bambini Tra i più piccoli pitoni
+
+Morelia spilota Pitone tappeto Più grande e per esperti
+
+Eryx colubrinus Boa delle sabbie keniota Piccolo e schivo
+
+Heterodon nasicus Serpente hognose occidentale Buffo muso a "suino",
+simulatore di morte
+Morph di serpenti
+
+Come per i gechi, molte specie hanno morph selezionate:
+
+• Corn snake → più di 100 morph: albino, snow, bloodred, anery, caramel, lavender,
+
+ecc.
+
+• Ball python → centinaia di morph: pastel, spider, banana, pied, mojave, fire, ecc.
+
+• King snake → morph bianco-nero, albino, lavender, jungle, ecc.
+
+Alcune morph sono legate a problemi neurologici o di salute (es. spider nel pitone reale
+→ sindrome da wobble).
+
+Conclusione:
+• Razze? No
+• Specie? Sì, molte, ognuna con caratteristiche e bisogni specifici
+• Morph? Sì, nei serpenti più comuni in cattività
+
+Cosa significa "morph" nei rettili
+(come serpenti, gechi, ecc)?
+
+Definizione
+
+Una morph è una variazione genetica ereditabile che cambia l’aspetto esteriore
+dell’animale:
+
+• colore
+
+• disegni (pattern)
+
+• a volte anche forma degli occhi o della testa
+
+La morph NON è una razza né una specie diversa.
+L’animale è sempre della stessa specie, ma con un look diverso dovuto a mutazioni
+selezionate in cattività.
+Esempio nel serpente del grano (Pantherophis guttatus):
+Specie: Pantherophis guttatus
+Morph:
+
+• Albino → senza pigmenti scuri (occhi rossi)
+• Snow → bianco con riflessi rosa
+• Anery → manca il pigmento rosso
+• Bloodred → rosso intenso, senza disegni
+• Lavender → grigio-lilla
+
+Esempio nel geco leopardino:
+Specie: Eublepharis macularius
+Morph:
+
+• High Yellow → base gialla intensa
+• Albino (Tremper, Bell, Rainwater) → occhi e pelle chiara
+• Blizzard → completamente bianco o grigio
+• Enigma → pattern irregolare, ma spesso con problemi neurologici
+• Super Hypo → senza macchie scure
+
+Come si ottengono?
+Le morph vengono ottenute tramite incroci selettivi di animali con mutazioni particolari,
+fatti da allevatori esperti in cattività.
+
+Pro delle morph
+• Esteticamente spettacolari
+• Ampia varietà per appassionati
+• Permettono di distinguere soggetti unici
+Contro delle morph
+
+• Alcune sono associate a malattie genetiche (es. Spider nei pitoni → problemi
+neurologici)
+
+• Non sempre l’aspetto indica un animale sano
+• Gli incroci intensivi possono generare problemi di consanguineità
+
+In sintesi
+
+• Morph = variante genetica dell’aspetto
+
+• Non cambia la specie
+
+• Può essere bellissima o problematica
+
+• Serve sempre informarsi bene prima di acquistarne una
+
+Ecco l’elenco delle specie di serpenti riconosciute
+e comunemente tenute come animali domestici
+(non velenosi o autorizzati):
+
+1. Pantherophis guttatus – Corn Snake
+2. Python regius – Ball Python
+3. Lampropeltis getula / Lampropeltis californiae – King Snake / California King
+4. Lampropeltis triangulum – Milk Snake
+5. Thamnophis sirtalis – Garter Snake
+6. Antaresia childreni – Children’s Python
+7. Boa constrictor / Boa imperator – Boa costrittore
+8. Gongylophis colubrinus – Kenyan Sand Boa
+9. Morelia viridis – Green Tree Python

@@ -1,0 +1,269 @@
+# Estratto da: DESCRIZIONE GRUPPO 2_razzacanina.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:39.894Z
+# Caratteri: 8540
+# ---
+
+GRUPPO 2
+
+1. Affenpinscher
+Descrizione: Piccolo, muso scimmiesco, pelo duro.
+Comportamento: Vivace, coraggioso, affettuoso.
+Problemi genetici: Lussazione rotulea, problemi dentali.
+Cure: Spazzolatura regolare.
+Pro: Adatto in appartamento.
+Contro: Tendenza ad abbaiare.
+
+2. Austrian Pinscher
+Descrizione: Taglia media, robusto, pelo corto.
+Comportamento: Sveglio, protettivo, affettuoso.
+Problemi genetici: Relativamente rustico.
+Cure: Minima cura del pelo.
+Pro: Ottimo cane da famiglia.
+Contro: Poco diffuso, difficile da reperire.
+
+3. Dobermann
+Descrizione: Elegante, atletico, taglia grande.
+Comportamento: Protettivo, intelligente, leale.
+Problemi genetici: Cardiomiopatia, problemi alla colonna.
+Cure: Attività ﬁsica regolare.
+Pro: Cane da guardia eccellente.
+Contro: Richiede leadership e addestramento costante.
+4. German Pinscher
+Descrizione: Taglia media, pelo corto.
+Comportamento: Vigile, energico, testardo.
+Problemi genetici: Displasia, problemi oculari.
+Cure: Minima cura del pelo.
+Pro: Cane sveglio e sportivo.
+Contro: Non adatto a tutti i proprietari.
+
+5. Miniature Pinscher
+Descrizione: Piccolo, snello, simile a un mini-Dobermann.
+Comportamento: Energico, curioso, sicuro.
+Problemi genetici: Lussazione rotulea.
+Cure: Molta attività nonostante la taglia.
+Pro: Cane da compagnia attento.
+Contro: Tende a dominare se non educato.
+
+6. Riesenschnauzer (Giant Schnauzer)
+Descrizione: Grande, forte, pelo duro.
+Comportamento: Protettivo, intelligente, serio.
+Problemi genetici: Displasia, problemi oculari.
+Cure: Toelettatura regolare.
+Pro: Ottimo cane da guardia.
+Contro: Esige impegno ﬁsico e mentale.
+7. Schnauzer (Standard)
+Descrizione: Taglia media, baffi e sopracciglia distintivi.
+Comportamento: Vigile, vivace, fedele.
+Problemi genetici: Displasia, problemi oculari.
+Cure: Toelettatura regolare.
+Pro: Buon cane familiare.
+Contro: Può essere testardo.
+
+8. Miniature Schnauzer
+Descrizione: Piccolo, pelo duro, aspetto curato.
+Comportamento: Attivo, socievole, curioso.
+Problemi genetici: Problemi urinari, pancreatite.
+Cure: Toelettatura costante.
+Pro: Buon cane da compagnia.
+Contro: Attenzione alla dieta.
+
+Sezione 2 – Molossoidi
+
+Tipo Mastino
+
+9. Bulldog
+Descrizione: Piccolo, muso schiacciato, robusto.
+Comportamento: Affettuoso, pigro, testardo.
+Problemi genetici: Respiratori, articolari, dermatologici.
+Cure: Monitoraggio costante.
+Pro: Dolce e fedele.
+Contro: Alta manutenzione sanitaria.
+10. Bullmastiff
+Descrizione: Grande, muscoloso, muso corto.
+Comportamento: Protettivo, silenzioso, calmo.
+Problemi genetici: Displasia, torsione gastrica.
+Cure: Attenzione all’alimentazione e attività moderata.
+Pro: Ottimo guardiano.
+Contro: Non adatto a chi non ha esperienza.
+
+11. Cane Corso
+Descrizione: Italiano, muscoloso, potente.
+Comportamento: Protettivo, intelligente, dominante.
+Problemi genetici: Displasia, entropion.
+Cure: Esercizio e socializzazione.
+Pro: Eccellente cane da guardia.
+Contro: Richiede polso e socializzazione precoce.
+
+12. Dogo Argentino
+Descrizione: Bianco, atletico, da caccia grossa.
+Comportamento: Coraggioso, affettuoso, energico.
+Problemi genetici: Sordità, displasia.
+Cure: Attività regolare.
+Pro: Protettivo e leale.
+Contro: Energia elevata, richiede addestramento esperto.
+13. Dogo Canario (Presa Canario)
+Descrizione: Massiccio, potente, muso squadrato.
+Comportamento: Dominante, sicuro, serio.
+Problemi genetici: Displasia, dermatiti.
+Cure: Attività e controllo comportamentale.
+Pro: Guardiano efficace.
+Contro: Richiede gestione esperta.
+
+14. Dogue de Bordeaux
+Descrizione: Molto grande, rugoso, potente.
+Comportamento: Calmo, leale, affettuoso.
+Problemi genetici: Cardiaci, displasia.
+Cure: Poco esercizio, molta attenzione alla salute.
+Pro: Dolce e protettivo.
+Contro: Vita breve, salute delicata.
+
+15. Fila Brasileiro
+Descrizione: Imponente, fedele, diffidente con estranei.
+Comportamento: Protettivo, serio, affettuoso in famiglia.
+Problemi genetici: Displasia, torsione.
+Cure: Socializzazione precoce.
+Pro: Leale e temibile guardiano.
+Contro: Può essere pericoloso se mal gestito.
+16. Mastiff
+Descrizione: Uno dei più grandi, dolce gigante.
+Comportamento: Calmo, affettuoso, protettivo.
+Problemi genetici: Displasia, problemi cardiaci.
+Cure: Esercizio moderato, dieta controllata.
+Pro: Ottimo con la famiglia.
+Contro: Vita breve, taglia imponente.
+
+17. Mastino Napoletano
+Descrizione: Rugoso, imponente, italiano.
+Comportamento: Protettivo, pigro, calmo.
+Problemi genetici: Displasia, problemi oculari.
+Cure: Igiene cutanea, spazio adeguato.
+Pro: Ottimo da guardia.
+Contro: Cura intensa.
+
+18. Pyrenean Mastiff
+Descrizione: Pelo lungo, bianco con macchie.
+Comportamento: Protettivo, equilibrato.
+Problemi genetici: Displasia.
+Cure: Cura pelo e dieta equilibrata.
+Pro: Dolce con la famiglia.
+Contro: Richiede spazio.
+19. Spanish Mastiff
+Descrizione: Molto grande, pelo medio-lungo.
+Comportamento: Calmo, indipendente.
+Problemi genetici: Displasia.
+Cure: Attività moderata, spazio.
+Pro: Cane da guardia eccellente.
+Contro: Non adatto in appartamento.
+
+20. Tibetan Mastiff
+Descrizione: Pelo lungo, leone dell’Himalaya.
+Comportamento: Indipendente, protettivo, ﬁero.
+Problemi genetici: Displasia, ipotiroidismo.
+Cure: Spazzolatura frequente.
+Pro: Guardiano eccellente.
+Contro: Non per neoﬁti.
+
+21. Tosa Inu
+Descrizione: Mastino giapponese, potente e calmo.
+Comportamento: Silenzioso, ﬁero, riservato.
+Problemi genetici: Displasia.
+Cure: Attenzione all'alimentazione.
+Pro: Nobile e imponente.
+Contro: In alcuni paesi è soggetto a restrizioni.
+Tipo Bovaro
+
+22. Anatolian Shepherd Dog (Kangal)
+Descrizione: Grande, resistente, da guardia.
+Comportamento: Protettivo, indipendente.
+Problemi genetici: Displasia.
+Cure: Attività ﬁsica, socializzazione.
+Pro: Eccellente cane da pastore.
+Contro: Può essere difficile da gestire.
+
+23. Broholmer
+Descrizione: Molosso danese, calmo e gigante.
+Comportamento: Tranquillo, leale, vigile.
+Problemi genetici: Displasia, cardiopatie.
+Cure: Cura moderata.
+Pro: Dolce e familiare.
+Contro: Non diffuso.
+
+24. Central Asian Shepherd Dog
+Descrizione: Antica razza protettiva e indipendente.
+Comportamento: Dominante, territoriale.
+Problemi genetici: Displasia.
+Cure: Socializzazione e spazio.
+Pro: Guardiano instancabile.
+Contro: Non adatto a chi è inesperto.
+25. Caucasian Shepherd Dog
+Descrizione: Molto grande, pelo lungo.
+Comportamento: Coraggioso, protettivo.
+Problemi genetici: Displasia.
+Cure: Cura pelo e socializzazione.
+Pro: Guardiano potente.
+Contro: Può essere aggressivo senza guida.
+
+26. Great Dane (Alano Tedesco)
+Descrizione: Altissimo, elegante.
+Comportamento: Dolce, tranquillo, maenergetico da giovane.
+Problemi genetici: Cardiopatie, displasia, torsione.
+Cure: Dieta curata e controlli veterinari.
+Pro: "Gigante buono".
+Contro: Vita breve.
+
+27. Leonberger
+Descrizione: Gigante dolce, aspetto da leone.
+Comportamento: Calmo, affettuoso.
+Problemi genetici: Displasia, problemi cardiaci.
+Cure: Spazzolatura e attività.
+Pro: Adatto alle famiglie.
+Contro: Cura del pelo.
+28. Newfoundland
+Descrizione: Molto grande, nuotatore eccellente.
+Comportamento: Dolce, calmo, affettuoso.
+Problemi genetici: Cardiopatie, displasia.
+Cure: Cura pelo e attenzione al peso.
+Pro: Ottimo con i bambini.
+Contro: Bava, cura intensa.
+
+29. Saint Bernard (pelo lungo e corto)
+Descrizione: Gigante gentile, famoso per i salvataggi.
+Comportamento: Tranquillo, amichevole.
+Problemi genetici: Displasia, torsione gastrica.
+Cure: Spazzolatura e alimentazione controllata.
+Pro: Adatto alla famiglia.
+Contro: Vita breve.
+
+Sezione 3 – Bovari Svizzeri
+
+30. Appenzeller Sennenhund
+Descrizione: Medio, energico, tri-color.
+Comportamento: Vivace, coraggioso, versatile.
+Problemi genetici: Displasia.
+Cure: Attività costante.
+Pro: Cane da lavoro e compagnia.
+Contro: Energia alta.
+31. Bernese Mountain Dog
+Descrizione: Grande, dolce, pelo lungo.
+Comportamento: Tranquillo, affettuoso, leale.
+Problemi genetici: Tumori, displasia.
+Cure: Spazzolatura e attenzione veterinaria.
+Pro: Fantastico con la famiglia.
+Contro: Vita breve.
+
+32. Entlebucher Sennenhund
+Descrizione: Il più piccolo dei Bovari, attivo.
+Comportamento: Intelligente, vivace, affezionato.
+Problemi genetici: Problemi oculari, displasia.
+Cure: Movimento regolare.
+Pro: Compagno instancabile.
+Contro: Necessita attività intensa.
+
+33. Greater Swiss Mountain Dog
+Descrizione: Grande, tri-color, muscoloso.
+Comportamento: Fedele, calmo, protettivo.
+Problemi genetici: Displasia, torsione gastrica.
+Cure: Esercizio moderato, attenzione alla dieta.
+Pro: Cane da famiglia e guardia.
+Contro: Non adatto a tutti per taglia.

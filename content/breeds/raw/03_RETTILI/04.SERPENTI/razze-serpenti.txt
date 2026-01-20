@@ -1,0 +1,149 @@
+# Estratto da: RAZZE_serpenti.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.684Z
+# Caratteri: 4306
+# ---
+
+DESCRIZIONE SERPENTI
+
+1. Pantherophis guttatus – Corn Snake
+
+Descrizione: Serpente lungo 120–180 cm, colori vivaci e pattern vari. Molto popolare come
+pet.
+Pro:
+
+• Docile e tranquillo
+• Facile da gestire per principianti
+• Longevità 15-20 anni
+• Ampia varietà di morph colorate
+
+Contro:
+• Può essere molto attivo e curioso, rischia di scappare se non ben contenuto
+• Richiede terrario con buona ventilazione e spazio
+
+Cura: Terrario 90x45x45 cm minimo, temperatura 24-30°C, umidità moderata. Dieta a
+base di topi congelati/scongelati.
+
+2. Python regius – Ball Python
+
+Descrizione: Pitone medio-piccolo, lungo 90–150 cm. Si arrotola a palla se stressato.
+Pro:
+
+• Temperamento molto calmo
+• Adatto a principianti
+• Longevità 20-30 anni
+• Ampia varietà di morph geneticamente selezionate
+
+Contro:
+• Talvolta può smettere di mangiare per settimane o mesi (letargo)
+• Richiede controllo attento di temperatura e umidità
+
+Cura: Terrario 90x45x45 cm minimo, temperatura 26-32°C con zone più fresche,
+umidità 50-60%. Dieta di roditori.
+3. Lampropeltis getula / L. californiae – King Snake /
+California King
+
+Descrizione: Serpenti lunghi 90–120 cm, con colori e pattern diversi (nero, bianco, rosso).
+Pro:
+
+• Molto resistenti e adattabili
+• Disponibili in molte morph
+• Temperamento generalmente tranquillo
+
+Contro:
+• Alcuni individui possono essere più nervosi o mordaci
+• Necessita terrario sicuro e pulito
+
+Cura: Terrario 90x45x45 cm minimo, temperatura 24-30°C, umidità bassa. Dieta di
+roditori congelati.
+
+4. Lampropeltis triangulum – Milk Snake
+
+Descrizione: Serpente colorato (anelli rossi, neri e bianchi), 60–150 cm.
+Pro:
+
+• Molto docile e curioso
+• Colorazioni vivaci e attraenti
+• Facile da allevare
+
+Contro:
+• Tendono a essere cannibalistici, vanno tenuti separati
+• Alcuni possono essere un po’ nervosi
+
+Cura: Terrario 75x45x45 cm minimo, temperatura 24-30°C, dieta roditori congelati.
+5. Thamnophis sirtalis – Garter Snake
+
+Descrizione: Serpente piccolo e vivace, 60–100 cm, colorato con strisce e macchie.
+Pro:
+
+• Socievole e tollerante al contatto
+• Può vivere anche in coppia o piccoli gruppi
+• Facile gestione in terrario
+
+Contro:
+• Dieta più varia (pesci, insetti, rane) che può risultare più complessa
+• Meno adatto a chi vuole un serpente da maneggiare molto spesso
+
+Cura: Terrario 75x45x45 cm minimo, temperatura 22-28°C, umidità moderata, dieta
+mista (pesci, insetti, rane).
+
+6. Antaresia childreni – Children’s Python
+Descrizione: Pitone piccolo, lungo circa 100 cm, corpo tozzo e macchie rossastre.
+Pro:
+
+• Piccolo e compatto, ideale per spazi contenuti
+• Temperamento docile
+• Longevità fino a 15-20 anni
+
+Contro:
+• Comportamento notturno, meno attivo di giorno
+• Alimentazione a base di uccelli e roditori piccoli, può essere esigente
+
+Cura: Terrario 60x40x40 cm minimo, temperatura 26-32°C, umidità moderata, dieta
+roditori piccoli e occasionalmente uccelli.
+
+7. Boa constrictor / Boa imperator – Boa costrittore
+Descrizione: Serpente robusto e lungo (fino a 3 metri), vari colori e morph.
+Pro:
+
+• Calmo e tollerante alla manipolazione
+• Affascinante per dimensioni e colori
+• Longevità 20-30 anni
+Contro:
+
+• Richiede spazio molto ampio
+• Crescita notevole, necessita esperienza
+• Alimentazione e gestione più complesse
+
+Cura: Terrario molto grande (minimo 120x60x60 cm per adulti), temperatura 26-32°C,
+umidità 50-60%, dieta roditori di taglia adeguata o conigli.
+
+8. Gongylophis colubrinus – Kenyan Sand Boa
+Descrizione: Pitone piccolo (~60 cm), corpo tozzo, si nasconde nella sabbia.
+Pro:
+
+• Molto docile e tranquillo
+• Adatto a principianti e spazi ridotti
+• Facile da gestire
+
+Contro:
+• Comportamento nascosto, poco visibile
+• Non molto attivo durante il giorno
+
+Cura: Terrario 45x30x30 cm minimo, substrato sabbioso, temperatura 26-32°C,
+umidità bassa, dieta roditori piccoli.
+
+9. Morelia viridis – Green Tree Python
+Descrizione: Pitone arboricolo, lungo 120–180 cm, colore verde brillante, vive sugli alberi.
+Pro:
+
+• Aspetto spettacolare e affascinante
+• Comportamento interessante (arboricolo)
+
+Contro:
+• Richiede esperienza e terrario specifico con rami e spazio verticale
+• Temperamento nervoso, meno adatto a principianti
+• Ha bisogno di controllo accurato di temperatura e umidità
+
+Cura: Terrario alto (>100 cm), temperatura 26-30°C, umidità 70-80%, dieta roditori e
+uccelli.

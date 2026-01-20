@@ -1,0 +1,77 @@
+# Estratto da: LISTA GATTI 2.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:40.352Z
+# Caratteri: 1578
+# ---
+
+LISTA GATTI 2
+
+Razze di gatti da inserire nell’app
+1. Abyssinian
+2. American Bobtail
+3. American Curl
+4. American Shorthair
+5. American Wirehair
+6. Balinese
+7. Bengal
+8. Birman
+9. Bombay
+10. British Shorthair
+11. Burmese
+12. Burmilla
+13. Chartreux
+14. Cornish Rex
+15. Cymric
+16. Devon Rex
+17. Egyptian Mau
+18. European Burmese
+19. Exotic Shorthair
+20. Havana Brown
+21. Japanese Bobtail
+22. Javanese
+23. Khao Manee
+24. Korat
+25. LaPerm
+26. Lykoi
+27. Maine Coon
+28. Manx
+29. Minskin
+30. Nebelung
+31. Norwegian Forest Cat
+32. Ocicat
+33. Oriental Shorthair
+34. Persian
+35. Peterbald
+36. Pixiebob
+37. Ragamuffin
+38. Ragdoll
+39. Russian Blue
+40. Savannah
+41. Scottish Fold
+42. Selkirk Rex
+43. Siamese
+44. Siberian
+45. Singapura
+46. Snowshoe
+47. Somali
+48. Sphynx
+49. Tonkinese
+50. Turkish Angora
+51. Turkish Van
+52. Ukrainian Levkoy
+53. York Chocolate
+Note importanti per la tua app:
+• Questa lista è un mix delle razze riconosciute principalmente da WCF e TICA, le due
+federazioni più complete e rappresentative per le razze domestiche.
+• Alcune razze sono più rare o poco diffuse (es. York Chocolate, Ukrainian Levkoy), ma
+sono comunque riconosciute ufficialmente o da federazioni importanti.
+• Se vuoi potrei creare una scheda sintetica per ogni razza con descrizione,
+caratteristiche, problemi genetici e cure.
+
+Se vuoi, posso fornirti anche le schede dettagliate per ogni razza o aiutarti a strutturare la
+base dati per l’inserimento nell’app.
+Ti interessa?
+
+Strumenti
+ChatGPT può commettere errori. Assicurati di veriﬁcare le informazioni importanti. Vedi
+Preferenze sui cookie.

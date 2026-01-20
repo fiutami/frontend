@@ -1,0 +1,98 @@
+# Estratto da: INFO_RAZZE_Insetto Stecco.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.859Z
+# Caratteri: 3574
+# ---
+
+CARATTERISTICHE RAZZE insetto srtecco
+
+1. Carausius morosus (Stecco indiano)
+Descrizione:
+Insetto stecco di dimensioni medie (6-8 cm), corpo allungato e cilindrico, colore verde o
+marrone chiaro, molto mimetico. Originario dell’India. È uno dei più diffusi come animale
+domestico.
+Pro:
+
+• Facile da allevare, ideale per principianti.
+• Si riproduce facilmente per partenogenesi (femmine da sole).
+• Richiede poco spazio e cure minime.
+• Comportamento calmo e lento, ottimo per osservazione.
+Contro:
+• Aspetto abbastanza semplice e meno spettacolare rispetto ad altre specie.
+• Sensibile a umidità troppo bassa, può perdere zampe se stressato.
+Cura:
+• Terrario ventilato con umidità intorno al 60-70%.
+• Alimentazione a base di foglie di rovo, edera, ortica.
+• Temperatura ideale 20-25°C.
+
+2. Extatosoma tiaratum (Stecco foglia spinoso)
+Descrizione:
+Insetto stecco con corpo più tozzo e fogliare, decorato con “spine” e protuberanze. Origine
+Australia. Può raggiungere 10-12 cm. I maschi sono più piccoli e snelli rispetto alle femmine.
+Pro:
+
+• Aspetto molto decorativo e interessante, con mimetismo fogliare.
+• Animale tranquillo e non aggressivo.
+• Buon modello per osservare adattamenti mimetici.
+Contro:
+• Richiede più attenzione a umidità e pulizia rispetto al Carausius.
+• Temperatura ottimale leggermente più alta (22-27°C).
+• Ciclo vitale un po’ più complesso, richiede pazienza per la crescita.
+
+Cura:
+• Terrario con buona umidità (70%), nebulizzazione frequente.
+• Alimentazione a base di foglie di eucalipto, quercia, rovo.
+• Temperatura 22-27°C.
+
+3. Heteropteryx dilatata (Stecco foglia gigante)
+Descrizione:
+Insetto stecco voluminoso e pesante, corpo ampio e piatto con appendici fogliose. Originario
+del Sud-est asiatico. Può superare i 15 cm. Maschi più agili, femmine più grandi e lente.
+Pro:
+
+• Aspetto molto impressionante e decorativo.
+• Buona longevità (fino a 2 anni).
+• Carattere relativamente docile.
+Contro:
+• Necessita di spazio più ampio e terrari ben strutturati.
+• Più difficile da allevare, sensibile a umidità e temperatura.
+• Richiede alimentazione varia e accurata.
+Cura:
+• Terrario spazioso con umidità alta (70-80%).
+• Temperatura 22-28°C.
+• Foglie di mango, quercia, rovo per alimentazione.
+• Pulizia frequente per evitare muffe.
+4. Peruphasma schultei (Stecco sangue)
+Descrizione:
+Insetto stecco unico per il suo colore nero lucido con ali rosse vivaci (da cui il nome
+“sangue”). Originario del Perù. Più attivo e veloce degli altri stecco, carnivoro/onnivoro.
+Pro:
+
+• Aspetto molto affascinante e unico.
+• Comportamento attivo e curioso, interessante da osservare.
+• Differente rispetto agli stecco classici, ottimo per collezionisti.
+Contro:
+• Non è un classico stecco erbivoro, ha esigenze alimentari particolari.
+• Meno tollerante a sbalzi ambientali.
+• Può mordere se molestato.
+Cura:
+• Terrario con substrato umido e vegetazione densa.
+• Temperatura 22-27°C, umidità 60-80%.
+• Dieta varia con foglie fresche e proteine animali (piccoli insetti).
+
+5. Medauroidea extradentata (Stecco del Vietnam)
+Descrizione:
+Insetto stecco lungo e snello, colore marrone-verdastro. Originario del Vietnam. Simile a
+Carausius ma più grande (fino a 15 cm).
+Pro:
+
+• Facile da allevare come Carausius.
+• Buona longevità e riproduzione semplice (anche partenogenesi).
+• Aspetto elegante, simile a ramoscello.
+Contro:
+• Richiede spazio leggermente maggiore rispetto al Carausius.
+• Sensibile a umidità bassa e temperature estreme.
+Cura:
+• Terrario con umidità intorno al 70%.
+• Temperatura 20-25°C.
+• Alimentazione a base di foglie di rovo, edera, ortica.

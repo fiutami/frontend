@@ -1,0 +1,105 @@
+# Estratto da: DESCRIZIONE-INFO_ razzefuretto.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:40.509Z
+# Caratteri: 3891
+# ---
+
+DESCRIZIONE/ INFO FURETTO
+
+i furetti domestici esistono, ma non esistono vere e proprie "razze" di furetti come accade
+per cani o conigli. Tutti i furetti domestici appartengono alla specie Mustela putorius furo,
+una sottospecie del furetto europeo, selezionata per la compagnia.
+Tuttavia, esistono varietà o tipologie di furetti domestici, che si distinguono per colorazione
+del mantello, lunghezza del pelo, e occhi. Ecco le principali:
+
+� Varietà di furetti domestici più comuni:
+� Per colore del mantello:
+
+• Standard (Sable): marrone con maschera scura sul muso, la più comune.
+• Albino: completamente bianco con occhi rossi.
+• Black sable: molto simile al sable ma più scuro, quasi nero.
+• Cinnamon: marrone rossastro, raro.
+• Champagne: beige con occhi chiari.
+• Chocolate: marrone cioccolato.
+• Silver: grigio argentato.
+• DEW (Dark-Eyed White): bianco con occhi scuri.
+• Panda: testa bianca e corpo colorato (non riconosciuto da alcuni standard perché
+
+associato a sordità).
+• Blaze: striscia bianca sulla fronte.
+� Per lunghezza del pelo:
+• Pelo corto (standard): la stragrande maggioranza dei furetti.
+• Angora (pelo lungo): selezione recente, pelo molto lungo e folto; meno diffuso, più
+
+delicato.
+� Per colore degli occhi:
+
+• Rosso (albino), blu, marrone scuro, neri — dipende dalla genetica e dalla varietà del
+mantello.
+� Quindi, per FiutaMi, puoi gestire il furetto come un'unica specie domestica (Mustela
+putorius furo), ma offrire scelte di varietà nei dati da inserire, come:
+
+• Colore del mantello
+• Lunghezza del pelo
+• Colore degli occhi
+
+Furetto domestico (Mustela putorius furo)
+Breve descrizione
+Il furetto domestico è un piccolo mammifero carnivoro appartenente alla famiglia dei
+mustelidi, addomesticato da secoli come animale da compagnia. Ha un corpo allungato,
+agile e ﬂessibile, con zampe corte e coda moderatamente lunga. La sua natura curiosa e
+socievole lo rende un compagno vivace e affettuoso.
+
+Varietà principali (per colore mantello, pelo e occhi)
+• Colori mantello: Standard (Sable), Albino, Black sable, Cinnamon, Champagne,
+Chocolate, Silver, DEW (Dark-Eyed White), Panda, Blaze.
+• Lunghezza pelo: Pelo corto (standard) e pelo lungo (Angora).
+• Occhi: Rosso (albino), blu, marrone scuro, nero.
+
+Comportamento
+• Socievole e curioso, ama esplorare.
+• Può essere molto affettuoso con il proprietario.
+• Richiede molta interazione e stimoli.
+• Nocturno o crepuscolare: più attivo di sera e notte.
+• Talvolta testardo o indipendente.
+
+Problemi genetici e di salute comuni
+• Insufficienza surrenalica (frequente, provoca perdita di pelo e problemi ormonali).
+• Linfoadenopatia proliferativa (malattia immunitaria).
+• Sordità (specialmente nelle varietà bianche tipo Panda).
+• Problemi dentali e infezioni respiratorie.
+• Obesità se alimentato male o poco attivo.
+
+Cure e gestione
+• Dieta carnivora speciﬁca: alta in proteine e grassi, povera di carboidrati.
+• Spazio per muoversi e arrampicarsi, giochi e stimoli.
+• Pulizia regolare della gabbia.
+• Visite veterinarie periodiche, vaccinazioni.
+• Attenzione a temperature estreme (sensibili al caldo).
+• Controllo periodico del pelo e delle unghie.
+
+Pro e contro
+
+Pro Contro
+
+Animale socievole e affettuoso Necessita di molta attenzione e stimoli
+
+Intelligente e curioso Problemi di salute frequenti (insufficienza surrenalica)
+
+Piccolo e adatto a spazi domestici Sensibile a temperature elevate
+
+Poco rumoroso Alimentazione speciﬁca e costosa
+
+Facile da trasportare Può mordere se spaventato o stressato
+
+Conclusione
+
+• Le varietà di colore e pelo inﬂuenzano soprattutto l’aspetto e la gestione della
+pelliccia.
+
+• Le differenze comportamentali o di salute sono minime e più legate a singoli individui
+che alla varietà.
+
+• Per la tua app FiutaMi, puoi includere le varianti colore/pelo come opzioni per
+personalizzare il proﬁlo del criceto, senza però complicare troppo la sezione “cura” o
+“comportamento”.

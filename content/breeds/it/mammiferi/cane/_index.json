@@ -1,0 +1,48 @@
+{
+  "generated": "2026-01-19T13:27:07.780Z",
+  "species": "cane",
+  "category": "mammiferi",
+  "count": 10,
+  "breeds": [
+    {
+      "id": "australian-cattle-dog",
+      "name": "Australian Cattle Dog"
+    },
+    {
+      "id": "australian-kelpie",
+      "name": "Australian Kelpie"
+    },
+    {
+      "id": "australian-shepherd",
+      "name": "Australian Shepherd"
+    },
+    {
+      "id": "bearded-collie",
+      "name": "Bearded Collie"
+    },
+    {
+      "id": "border-collie",
+      "name": "Border Collie"
+    },
+    {
+      "id": "german-shepherd-dog-pastore-tedesco",
+      "name": "German Shepherd Dog (Pastore Tedesco)"
+    },
+    {
+      "id": "golden-retriever",
+      "name": "Golden Retriever"
+    },
+    {
+      "id": "labrador-retriever",
+      "name": "Labrador Retriever"
+    },
+    {
+      "id": "welsh-corgi-pembroke",
+      "name": "Welsh Corgi Pembroke"
+    },
+    {
+      "id": "shetland-sheepdog",
+      "name": "Shetland Sheepdog"
+    }
+  ]
+}

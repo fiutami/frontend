@@ -1,0 +1,141 @@
+# Estratto da: DESCRIZIONE GRUPPO 10_razzacanine.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:39.825Z
+# Caratteri: 4844
+# ---
+
+GRUPPO 10
+
+1. Afghan Hound
+
+Descrizione: Levriero di taglia grande, mantello lungo e fluente.
+Carattere: Distaccato, elegante, ma affezionato al proprietario.
+Problemi comuni: Displasia, allergie cutanee.
+Cure: Spazzolatura frequente, attività intensa in spazi aperti.
+Pro: Splendido, atletico.
+Contro: Cura del pelo impegnativa, poco adatto alla vita domestica tranquilla.
+
+2. Azawakh
+
+Descrizione: Levriero africano slanciato e muscoloso, pelo corto.
+Carattere: Riservato, leale, molto legato alla famiglia.
+Problemi comuni: Sternite deforme, sensibilità a caldo.
+Cure: Protezione solare, passeggiate regolari.
+Pro: Cane elegante e poco odoroso.
+Contro: Richiede padrone consapevole delle esigenze termiche.
+
+3. Barzoi (Levrier Russo)
+
+Descrizione: Levriero russo, corporatura snella e pelo setoso.
+Carattere: Riservato, nobile, indipendente.
+Problemi comuni: Displasia, sensibilità anestetica.
+Cure: Toelettatura moderata, corsa regolare.
+Pro: Ottimo compagno silenzioso.
+Contro: Scappa dietro movimenti rapidi, richiede spazi.
+
+4. Deerhound Scozzese
+
+Descrizione: Grande levriero scozzese, pelo ruvido spesso.
+Carattere: Calmo, gentile, docile.
+Problemi comuni: Displasia, cardiomiopatie.
+Cure: Toelettatura leggera, passeggiate lunghe.
+Pro: Molto tranquillo in casa.
+Contro: Taglia grande, vita breve.
+5. Greyhound
+
+Descrizione: Il levriero per eccellenza: snello, alto, pelo corto.
+Carattere: Calmissimo in casa, esplosivo in corsa.
+Problemi comuni: Gastrite da stress, sensibilità anestetica.
+Cure: Corsa breve quotidiana, dieta bilanciata.
+Pro: Ottimo cane da adozione, tenero.
+Contro: Poca tolleranza al freddo, pelle sensibile.
+
+6. Ibizan Hound
+Descrizione: Levriero spagnolo alto e magro, pelo corto o duro.
+Carattere: Intelligente, attivo, affettuoso.
+Problemi comuni: Displasia.
+Cure: Protezione solare, movimento.
+Pro: Agile e affascinante.
+Contro: Non adatto ad appartamenti piccoli.
+
+7. Irish Wolfhound
+Descrizione: Il più imponente: taglia gigante, pelo ruvido.
+Carattere: Tranquillo, gentile, buono con i bambini.
+Problemi comuni: Displasia, torsione gastrica, cardiopatie.
+Cure: Motor light, grande spazio, visite cardiologiche.
+Pro: Gigante buono, ottimo guardiano “soft”.
+Contro: Vita brevissima, esigenza di ampi spazi.
+
+8. Italian Greyhound
+(già descritto in Gruppo 9)
+
+9. Magyar Agar (Ungherese)
+
+Descrizione: Levriero ungherese slanciato e muscoloso.
+Carattere: Leale, socievole, calmo in casa.
+Problemi comuni: Displasia, fratture ossee, sensibilità termica.
+Cure: Corsa quotidiana, protezione da freddo e caldo.
+Pro: Elegante e silenzioso.
+Contro: Fragile, richiede attenzione.
+10. Peruvian Inca Orchid
+
+Descrizione: Non un levriero, ma spesso associato; cane senza pelo o con topolino peloso,
+snello.
+Carattere: Dolce, nervoso, affettuoso.
+Problemi comuni: Pelle sensibile, denti.
+Cure: Protezione solare, spazzolatura dentale, igiene cutanea.
+Pro: Quasi ipoallergenico.
+Contro: Pelle delicata, non ama freddo e caldo.
+
+11. Pharaoh Hound
+
+Descrizione: Elegante levriero maltese rinfo, color sabbia.
+Carattere: Fiero, affettuoso, giocoso.
+Problemi comuni: Displasia.
+Cure: Attività regolare, spazzolatura leggera.
+Pro: Socievole ed estremamente bello.
+Contro: Temperamento fiero, può non essere dominabile.
+
+12. Portuguese Greyhound (Galgo Português)
+
+Descrizione: Levriero portoghese snello, pelo corto.
+Carattere: Dolce, molto tranquillo, fedele.
+Problemi comuni: Displasia, muscolari post abbandoni.
+Cure: Passeggiate non estreme, dieta corretta.
+Pro: Ottimo adozione, compatibile con famiglie.
+Contro: Richiede pazienza per integrazione.
+
+13. Saluki
+
+Descrizione: Levriero orientale alto, eleganza pura.
+Carattere: Riservato, elegante, indipendente.
+Problemi comuni: Displasia, patologie cardiache.
+Cure: Movimento libero quotidiano, protezione termica.
+Pro: Fascino esotico, silenzioso.
+Contro: Difficile da richiamare, serve padrone esperto.
+14. Sloughi
+Descrizione: Levriero nord-africano, pelo corto color sabbia/grigio.
+Carattere: Calmo, affezionato, riservato.
+Problemi comuni: Displasia, sensibilità termica.
+Cure: Corsa leggera, protezione ambientale.
+Pro: Elegante e discreto.
+Contro: Richiede spazio e ambiente adatto.
+
+15. Whippet
+Descrizione: Levriero inglese medio-piccolo, veloce e compatto.
+Carattere: Dolce, affettuoso, equilibrato.
+Problemi comuni: Displasia, sensibilità anestetica.
+Cure: Corsa breve, dieta controllata.
+Pro: Ottimo con bambini, adatto alla vita domestica.
+Contro: Scappa dietro piccoli animali, pelle delicata.
+
+16. Cirneco dell’Etna
+Descrizione: Levriero siciliano da coniglio, snello e rustico.
+Carattere: Intelligente, indipendente, fedele.
+Problemi comuni: Patologie articolari.
+Cure: Esercizio adatto a corse su terreni aperti.
+Pro: Indipendente e resistente.
+Contro: Poco adatto a vita urbana e domestica.
+
+17. Scottish Deerhound
+(Ripetuto al punto 4: Deerhound Scozzese)

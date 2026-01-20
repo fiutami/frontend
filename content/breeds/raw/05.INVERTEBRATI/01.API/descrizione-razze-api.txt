@@ -1,0 +1,776 @@
+# Estratto da: DESCRIZIONE_razze_api.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.692Z
+# Caratteri: 18341
+# ---
+
+DESCRIZIONE razze:
+
+Principali razze (sottospecie) di Apis mellifera usate in apicoltura
+
+Apis mellifera ligustica (Ape Italiana)
+
+• Descrizione: Originaria dell’Italia, è una delle api più usate al mondo. Colore
+
+giallo-dorato, aspetto armonioso.
+
+• Comportamento: Molto docile, con buona produttività di miele e bassa
+
+propensione alla sciamatura.
+
+• Problemi: Sensibile all’umidità e alle basse temperature.
+
+• Cure: Va protetta durante inverni rigidi; preferisce ambienti temperati.
+
+• Pro: Ottima per apicoltura stanziale, docile, buona produzione.
+
+• Contro: Non sempre adatta a climi freddi o montani.
+
+Apis mellifera carnica (Ape Carnica)
+
+• Descrizione: Originaria delle zone alpine e balcaniche. Colorazione scura, regina
+
+molto fertile.
+
+• Comportamento: Estremamente docile, molto efficiente nella raccolta
+
+primaverile.
+
+• Problemi: Tende alla sciamatura se non ben controllata.
+
+• Cure: Richiede attenzione in primavera per evitare sciamature.
+
+• Pro: Perfetta per climi montani e rigidi, ottima per apicoltura migratoria.
+
+• Contro: Più gestione in fase di sviluppo primaverile.
+
+Buckfast (Ibrido selezionato)
+
+• Descrizione: Linea artificiale ottenuta da incroci tra diverse sottospecie, creata in
+
+Inghilterra.
+
+• Comportamento: Alta docilità, elevata produttività, selezionata per resistenza.
+
+• Problemi: Ibrido instabile in riproduzione naturale (può generare figli aggressivi).
+
+• Cure: Da mantenere tramite reinserimento di regine selezionate.
+• Pro: Api “perfette” per produttività, adattabilità e mansuetudine.
+
+• Contro: Non si può riprodurre in purezza senza intervento umano.
+
+Apis mellifera mellifera (Ape nera europea)
+
+• Descrizione: Originaria dell’Europa centro-occidentale. Aspetto scuro, robusto.
+
+• Comportamento: Resistente al freddo, ma tendenzialmente nervosa e aggressiva.
+
+• Problemi: Poco produttiva rispetto ad altre razze, sciamatura frequente.
+
+• Cure: Richiede gestione esperta, può servire contenimento dell’aggressività.
+
+• Pro: Ideale per aree fredde e selvatiche, storicamente autoctona in molte regioni.
+
+• Contro: Poco adatta all’apicoltura moderna intensiva.
+
+Apis mellifera caucasica (Ape del Caucaso)
+
+• Descrizione: Originaria del Caucaso, di colore scuro e lingua molto lunga.
+
+• Comportamento: Docile, lavoratrice costante anche in climi freschi.
+
+• Problemi: Prolifica molta propoli (può ostacolare la gestione dell’arnia).
+
+• Cure: Pulizia frequente dell’arnia, gestione accurata delle aperture.
+
+• Pro: Ottima su fiori profondi, buona resistenza al freddo.
+
+• Contro: Forte propolizzazione, sviluppo primaverile lento.
+
+Apis mellifera sahariensis (Ape sahariana)
+
+• Descrizione: Originaria del Nord Africa, adattata a climi estremi.
+
+• Comportamento: Resistente a caldo e siccità, meno studiata in Europa.
+
+• Problemi: Poco adattabile ai climi temperati o umidi.
+
+• Cure: Da valutare bene in ambienti non desertici.
+
+• Pro: Ideale per climi aridi e caldi.
+
+• Contro: Poco utilizzabile fuori da zone desertiche o subdesertiche.
+Apis mellifera scutellata (Ape africana)
+
+• Descrizione: Originaria dell’Africa subsahariana. Usata per ibridazioni (es. ape
+
+africanizzata in Sud America).
+
+• Comportamento: Molto aggressiva, con comportamento difensivo accentuato.
+
+• Problemi: Pericolosa in apicoltura non controllata.
+
+• Cure: Non adatta a uso diretto in Europa; solo per scopi di ricerca o selezione
+
+genetica.
+
+• Pro: Alta capacità di sopravvivenza e difesa del nido.
+
+• Contro: Estremamente aggressiva, inadatta a contesti urbani o hobbistici.
+
+Apis mellifera iberiensis (Ape iberica)
+
+• Descrizione: Originaria della penisola iberica, scura con variabilità genetica.
+
+• Comportamento: Buona rusticità, tollera clima caldo e secco. Meno docile.
+
+• Problemi: Comportamento più aggressivo rispetto ad altre razze.
+
+• Cure: Richiede apicoltore esperto, evitare disturbi frequenti.
+
+• Pro: Buona per zone mediterranee, resistente al caldo.
+
+• Contro: Poco indicata per principianti o apicoltura urbana
+
+Varietà selezionate o ibride:
+
+Buckfast
+
+• Descrizione:
+
+Ibrido selezionato dall’Abate Adam dell’Abbazia di Buckfast (UK) a partire dagli anni
+
+’20. È un incrocio tra varie sottospecie europee e mediterranee (ligustica, mellifera,
+
+caucasica, ecc.), costantemente migliorato.
+
+• Comportamento:
+
+Estremamente docile, laboriosa, poco propensa alla sciamatura. Ottima gestione
+
+della covata. Buona igienicità.
+
+• Problemi:
+
+Non mantiene le caratteristiche in purezza nelle generazioni successive (instabilità
+genetica → necessità di reinserire regine selezionate). Ibridi F2 possono diventare
+aggressivi.
+
+• Cure:
+
+Necessita di acquisto regolare di regine selezionate da allevamenti certificati. Ideale
+
+per apicoltura razionale e professionale.
+
+• Pro:
+
+o Alta produttività
+o Docilità
+o Adattabile a diversi ambienti
+o Buona tolleranza a malattie (se selezionata)
+
+• Contro:
+
+o Non riproducibile in purezza senza controllo
+
+o Costi più elevati per mantenimento della linea
+
+o Poco adatta ad apicoltura "naturale" o rustica
+
+Abeille noire (Ape nera europea)
+
+• Descrizione:
+
+Apis mellifera mellifera locale, conservata in alcune zone montane e forestali di
+
+Francia e Svizzera. Ha colore molto scuro, corpo robusto, ali larghe.
+
+• Comportamento:
+
+Rustica, adatta ai climi freddi, ma più aggressiva rispetto ad altre razze. Lavoratrice
+
+costante anche in condizioni difficili.
+
+• Problemi:
+
+Rischia l’ibridazione con razze commerciali, spesso meno competitiva in apicoltura
+
+intensiva. Produzione di miele inferiore.
+
+• Cure:
+
+Richiede apicoltori esperti, gestione delicata in apertura arnie. Va protetta da incroci
+
+indesiderati se si vuole conservare la purezza.
+• Pro:
+
+o Alta resistenza climatica
+
+o Autoctona, importante per biodiversità
+
+o Più indipendente dall’uomo
+
+• Contro:
+
+o Meno docile
+
+o Produzione di miele più bassa
+
+o Comportamento più difensivo
+
+Ape sicula (Apis mellifera sicula)
+
+• Descrizione:
+
+Razza autoctona della Sicilia, probabilmente presente già in epoca classica. Di piccola
+
+taglia, colorazione scura con riflessi bronzei. È adattata a climi caldi e aridi.
+
+• Comportamento:
+
+Molto resistente alla siccità, capace di raccogliere nettare anche in condizioni di
+
+estrema scarsità. Comportamento variabile: può essere docile, ma anche reattiva.
+
+• Problemi:
+
+Razza a rischio di estinzione per via dell’ibridazione con razze commerciali (ligustica e
+
+buckfast). Protezione limitata a zone di conservazione.
+
+• Cure:
+
+Necessita di ambienti caldi, poca gestione intensiva. Indispensabile evitare incroci per
+
+mantenerne la purezza genetica.
+
+• Pro:
+
+o Alta adattabilità a climi aridi
+
+o Rustica e indipendente
+
+o Importanza per la biodiversità siciliana
+
+• Contro:
+
+o Rara e poco disponibile sul mercato
+
+o Meno produttiva in ambienti temperati
+
+o Poco adatta ad apicoltura intensiva non specializzata
+Razze alloctone (non europee)
+
+Ape caucasica – Apis mellifera caucasica
+
+• Descrizione: Originaria del Caucaso (Georgia, Armenia). Colore scuro, lingua
+
+molto lunga (fino a 7,2 mm). Utilizzata anche in Europa orientale.
+
+• Comportamento: Estremamente docile, costruisce molti favi. Attiva anche con
+
+clima fresco. Forte propolizzazione.
+
+• Problemi: Tendenza a sigillare tutto con propoli (difficoltà nella gestione
+
+dell’arnia). Sensibile alla Nosema.
+
+• Cure: Controllo della propolizzazione, attenzione all’umidità nell’arnia.
+
+• Pro:
+
+o Grande calma e docilità
+
+o Efficiente bottinatrice su fiori profondi
+
+o Buona invernalizzazione
+
+• Contro:
+
+o Troppa propoli
+
+o Sensibilità ad alcune patologie
+
+o Rischio di ibridazione
+
+Ape sahariana – Apis mellifera sahariensis
+
+• Descrizione: Originaria del Nord Africa (Sahara). Scura, piccola, molto resistente
+
+al calore estremo e alla scarsità d’acqua.
+
+• Comportamento: Forte adattabilità ai climi aridi. Buona tolleranza al calore.
+
+Produzione modesta.
+
+• Problemi: Poco studiata fuori dal contesto africano. Potrebbe non adattarsi ad
+
+ambienti umidi o freddi.
+
+• Cure: Ideale per ambienti caldi. Evitare climi umidi. Gestione semi-naturale.
+
+• Pro:
+
+o Elevata resistenza a stress idrico e climatico
+
+o Forte rusticità
+o Potenziale per selezione in zone desertiche
+
+• Contro:
+
+o Poco produttiva
+
+o Limitata distribuzione
+
+o Non adatta a climi europei
+
+Ape yemenita – Apis mellifera jemenitica
+
+• Descrizione: Originaria della Penisola Arabica e del Corno d’Africa. Molto piccola e
+
+leggera.
+
+• Comportamento: Estremamente attiva, veloce, adattata a climi torridi. Tendenza
+
+alla sciamatura.
+
+• Problemi: Poco adatta ad apicoltura razionale. Non tollera climi temperati. Poco
+
+docile.
+
+• Cure: Richiede ambienti caldi e secchi. Evitare sistemi di apicoltura intensiva.
+
+• Pro:
+
+o Ottima resistenza al calore
+
+o Foraggiante anche con alte temperature
+
+o Specie autoctona in ambienti estremi
+
+• Contro:
+
+o Poco docile
+
+o Scarso rendimento in miele
+
+o Tendenza a sciamare
+
+Ape africana orientale – Apis mellifera scutellata
+
+• Descrizione: Originaria dell’Africa centrale e orientale. È la base genetica dell’"ape
+
+africanizzata" (ibrido fuggito in America).
+
+• Comportamento: Estremamente aggressiva. Alta sciamatura. Forte competizione
+
+per le risorse.
+
+• Problemi: Aggressività pericolosa. Difficile gestione. Ibridazione incontrollata.
+• Cure: Inapplicabile in apicoltura ordinaria in Europa. Richiede contenimento e
+
+specifica formazione.
+
+• Pro:
+
+o Grande capacità di sopravvivenza
+
+o Resistenza a malattie e stress ambientali
+o Prolifica
+
+• Contro:
+
+o Pericolosa per uomo e animali
+o Impossibile da gestire in ambiti urbani o amatoriali
+
+o Produzione instabile
+
+Ape dell’Egitto – Apis mellifera lamarckii
+
+• Descrizione: Una delle razze più antiche, già nota agli Egizi. Piccola, gialla, poco
+
+propensa a produrre propoli o sigillare le arnie.
+
+• Comportamento: Molto attiva, buona raccolta in climi caldi. Sensibile al freddo.
+
+Aggressiva se disturbata.
+
+• Problemi: Poco resistente al freddo. Non adatta ad ambienti europei. Poco docile.
+
+• Cure: Va tenuta in zone calde e aride. Arnie ben ventilate.
+
+• Pro:
+
+o Alta efficienza nel calore
+
+o Razza storica
+
+o Ottima impollinatrice
+
+• Contro:
+
+o Scarso rendimento in zone fredde
+
+o Poco gestibile
+
+o Sensibile al cambiamento climatico
+Ape del Capo – Apis mellifera capensis
+
+• Descrizione: Endemica del Sudafrica (regione del Capo). Particolare per la
+
+capacità delle operaie di deporre uova fertili (tecloniche).
+
+• Comportamento: Può invadere altre colonie e sostituire le regine. Grande
+
+instabilità sociale.
+
+• Problemi: È considerata un rischio biologico per altre razze. Può causare il
+
+collasso di colonie altrui.
+
+• Cure: Solo in contesti di studio o conservazione. Non usata in apicoltura
+
+commerciale fuori dalla zona d’origine.
+
+• Pro:
+
+o Capacità riproduttiva unica
+
+o Interessante a fini scientifici
+
+• Contro:
+
+o Comportamento "parassitico"
+
+o Distruttiva per altri alveari
+
+o Non adatta all’allevamento ordinario
+
+Ape monticola – Apis mellifera monticola
+
+• Descrizione: Razza africana di montagna (Africa orientale, altopiani del Kenya e
+
+Tanzania). Di colore molto scuro, resistente al freddo e alle escursioni termiche.
+
+• Comportamento: Molto rustica, sopporta bene le basse temperature. Poca
+
+sciamatura.
+
+• Problemi: Poco conosciuta in apicoltura commerciale. Difficile da trovare e
+
+selezionare.
+
+• Cure: Richiede ambienti freschi e montani. Adatta a contesti di conservazione
+
+genetica.
+
+• Pro:
+
+o Grande rusticità
+
+o Adatta ad altitudini
+
+o Potenzialmente utile in climi montani
+• Contro:
+
+o Poco diffusa
+
+o Poco produttiva
+
+o Poco studiata fuori dall’Africa
+
+Ibridi selezionati e linee da apicoltura intensiva
+
+Ape Buckfast
+
+• Descrizione: Ibrido artificiale creato da Karl Kehrle (Frate Adam) all’Abbazia di
+
+Buckfast (UK). Incrocio tra Apis mellifera ligustica, mellifera, carnica, caucasica e altre,
+
+mantenuto stabile da allevatori selezionatori.
+
+• Comportamento: Estremamente docile, poco propensa alla sciamatura, molto
+
+produttiva. Ottimo equilibrio tra vitalità e gestibilità.
+
+• Problemi: Tendenza all’ibridazione non controllata. Richiede ricambio regolare
+
+delle regine da linee pure.
+
+• Cure: Mantenimento di linee genetiche certificate. Controllo della deriva genetica.
+
+• Pro:
+
+o Elevata produttività
+
+o Grande docilità
+
+o Ottima gestione per l’apicoltura razionale
+
+o Poco propensa a sciamare
+
+• Contro:
+
+o Rischio di perdita di caratteristiche se non selezionata
+
+o Non adatta alla selezione naturale autonoma
+
+o Dipendenza da fornitori selezionatori
+
+Ape Elgon
+
+• Descrizione: Ibrido selettivo tra Apis mellifera monticola (api africane montane) e
+
+Apis mellifera scutellata. Progetto di selezione svedese mirato a migliorare resistenza a
+
+Varroa e rusticità.
+
+• Comportamento: Buona resistenza alle malattie e alla Varroa. Attiva, ma docile se
+
+selezionata bene. Elevata adattabilità.
+• Problemi: Non completamente stabile a livello genetico. Alcune linee mostrano
+
+comportamento nervoso.
+
+• Cure: Richiede selezione accurata e mantenimento controllato delle linee.
+
+• Pro:
+
+o Alta resistenza naturale a Varroa
+
+o Adatta a climi montani e freschi
+o Potenziale evolutivo elevato
+
+• Contro:
+
+o Ancora in fase di studio e stabilizzazione
+o Docilità variabile
+o Non facile da reperire
+
+Hybrid VSH – Varroa Sensitive Hygiene
+
+• Descrizione: Linea genetica creata tramite selezione artificiale (non incrocio) di
+
+api capaci di individuare e rimuovere la covata infestata da Varroa destructor.
+
+• Comportamento: Altamente igieniche, rimuovono attivamente larve infette. Molto
+
+utili in apicoltura senza trattamenti chimici. Produzione buona, docilità variabile a
+
+seconda della base genetica.
+
+• Problemi: Linee ancora in fase di sviluppo. Devono essere rinnovate con regine
+
+certificate per mantenere la caratteristica VSH.
+
+• Cure: Richiede acquisto di regine VSH da selezione. Va gestita con attenzione alle
+
+ibridazioni.
+
+• Pro:
+
+o Forte resistenza naturale alla Varroa
+
+o Utile per apicoltura biologica o low-intervention
+
+o Riduce uso di acaricidi
+
+• Contro:
+
+o Caratteristica genetica facilmente diluibile
+
+o Disponibilità limitata
+
+o Prestazioni variabili in base alla linea base
+Ape Africanizzata (Africanized Honey Bee)
+
+• Descrizione: Ibrido tra Apis mellifera scutellata (ape africana orientale) e varie
+
+razze europee (ligustica, carnica, mellifera), originatosi in Brasile negli anni '50 e
+
+diffusosi in tutta l’America Latina e nel Sud degli USA.
+
+• Comportamento: Estremamente difensiva e aggressiva. Forte tendenza alla
+
+sciamatura. Alta sopravvivenza e resistenza alle malattie.
+
+• Problemi: Pericolosa per l’uomo e gli animali domestici. Difficile da contenere una
+
+volta introdotta in un’area. Attacchi in massa possibili.
+
+• Cure: Nessuna applicazione per apicoltura razionale europea. Richiede
+
+contenimento e precauzioni rigorose nei Paesi infestati.
+
+• Pro:
+
+o Altissima resilienza
+
+o Resistenza a Varroa e patogeni
+
+o Sopravvivenza anche in condizioni difficili
+
+• Contro:
+
+o Comportamento iper-aggressivo
+
+o Non gestibile in ambito urbano o amatoriale
+
+o Incompatibile con apicoltura europea
+
+Razze o varietà locali meno comuni (in conservazione)
+
+Ape corsa
+
+Apis mellifera mellifera (popolazione locale della Corsica)
+
+• Descrizione: Popolazione insulare derivata dalla mellifera europea, conservata in
+
+Corsica. Razza rustica e adattata a un ambiente isolato.
+
+• Comportamento: Piuttosto rustica, talvolta aggressiva. Buona sopravvivenza in
+
+condizioni difficili.
+
+• Problemi: Rischio di ibridazione con razze alloctone. Linea poco selezionata,
+
+comportamenti meno prevedibili.
+• Cure: Conservazione genetica e divieto di importazioni. Gestione con alveari
+
+rustici.
+
+• Pro:
+
+o Adattata al clima locale
+
+o Buona resistenza ambientale
+o Preserva la biodiversità
+
+• Contro:
+
+o Poco docile
+o Bassa produttività
+
+o Difficile da gestire in apicoltura commerciale
+
+Ape delle Azzorre
+
+Apis mellifera mellifera (popolazione isolata)
+
+• Descrizione: Popolazione insulare isolata delle Azzorre (Portogallo), originata da
+
+mellifera europea, probabilmente introdotta nel XIX secolo.
+
+• Comportamento: Molto rustica, adattata a clima oceanico umido.
+
+Comportamento difensivo marcato.
+
+• Problemi: Forte isolamento genetico → rischio di consanguineità.
+
+• Cure: Mantenimento in purezza genetica. Monitoraggio sanitario.
+
+• Pro:
+
+o Adattata localmente
+
+o Resistente al clima avverso
+
+o Potenziale valore conservativo
+
+• Contro:
+
+o Poco produttiva
+o Tendenza alla difesa attiva
+o Difficile da inserire in altri contesti
+Ape maltese
+
+Apis mellifera ruttneri
+
+• Descrizione: Razza autoctona delle isole di Malta. Piccola taglia, colorazione
+
+scura, adattata al clima arido e ventoso del Mediterraneo centrale.
+
+• Comportamento: Difensiva, sciamatrice, ma molto resistente alla siccità e
+
+parsimoniosa nelle risorse.
+
+• Problemi: Soggetta a contaminazione genetica da ligustica e carnica. Poco
+
+selezionata.
+
+• Cure: Necessaria conservazione in purezza. Ottima in sistemi estensivi.
+
+• Pro:
+
+o Adattamento perfetto all’ambiente caldo-secco
+o Buona sopravvivenza in scarsità di risorse
+o Resilienza
+
+• Contro:
+
+o Poco docile
+o Ridotta produttività
+
+o Rischio di perdita genetica
+
+Ape sarda
+
+Apis mellifera ligustica (linea locale)
+
+• Descrizione: Variante locale dell’ape italiana ligustica, diffusa e adattata alla
+
+Sardegna. Leggermente più rustica e meno docile della ligustica “continentale”.
+
+• Comportamento: Generalmente tranquilla, ma più attiva. Buona capacità di
+
+adattamento.
+
+• Problemi: Rischio di incroci con razze importate (es. Buckfast).
+
+• Cure: Protezione della linea e selezione di regine locali.
+
+• Pro:
+
+o Buon compromesso tra docilità e rusticità
+o Adatta all’ambiente mediterraneo
+o Preserva biodiversità regionale
+
+• Contro:
+
+o Poco standardizzata
+
+o Potenziale riduzione produttiva rispetto a ligustica selezionata
+
+Ape di Tell
+
+Apis mellifera intermissa (Algeria)
+
+• Descrizione: Razza nordafricana diffusa lungo la fascia costiera dell’Algeria.
+
+Medio-piccola, scura, molto attiva.
+
+• Comportamento: Nervosa, molto difensiva, ma fortemente adattata ai climi caldi.
+
+Produzione media.
+
+• Problemi: Non facilmente gestibile in apicoltura intensiva o urbana. Scarso
+
+controllo genetico.
+
+• Cure: Utilizzabile solo da apicoltori esperti. Non adatta a regioni temperate.
+
+• Pro:
+
+o Ottima resistenza al caldo
+
+o Buona resistenza a malattie locali
+
+o Alta attività di raccolta
+
+• Contro:
+
+o Comportamento aggressivo
+
+o Poco compatibile con altri ceppi europei
+
+o Non adatta a principianti

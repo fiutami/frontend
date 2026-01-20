@@ -1,0 +1,195 @@
+# Estratto da: INFO_Razze_corydoras.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.505Z
+# Caratteri: 5782
+# ---
+
+INFO Razze CORYDORAS
+
+Corydoras aeneus – Corydoras bronzo
+
+Descrizione:
+Specie tra le più diffuse e resistenti, dal corpo arrotondato e colorazione bronzo-verdastra con
+riflessi metallici. Esistono anche varietà albina e “gold”.
+
+Comportamento:
+Pacifico, gregario (da allevare in gruppi di almeno 5-6 esemplari), molto attivo sul fondo. Si adatta
+bene a molti contesti comunitari.
+
+Problemi genetici o di salute:
+Poche patologie ereditarie. Le varietà albine sono leggermente più sensibili alla luce intensa.
+
+Cure specifiche:
+Fondo morbido (sabbia o ghiaia fine) per evitare danni ai barbigli. Acqua pulita e ben ossigenata,
+alimentazione varia con pastiglie da fondo, larve e verdure bollite.
+
+Pro:
+
+• Molto resistente e adatto ai principianti
+• Compatibile con moltissime specie
+• Aiuta a tenere pulito il fondo
+
+Contro:
+
+• Vive meglio in gruppo, quindi va considerato lo spazio
+• Può stressarsi se il fondo è troppo ruvido o affilato
+
+Corydoras paleatus – Corydoras pepato
+
+Descrizione:
+Una delle specie più diffuse. Corpo grigio-argenteo con macchie scure irregolari (aspetto
+“pepato”).
+Comportamento:
+Molto sociale, pacifico e attivo. Vive in gruppo, esplora il fondo in cerca di cibo.
+Problemi genetici o di salute:
+Generalmente robusto. Sensibile a nitrati e fondi taglienti.
+Cure specifiche:
+Acqua fresca e ben ossigenata, fondo morbido, alimentazione varia. Tollera bene le basse
+temperature.
+Pro:
+• Robusto e facile da allevare
+• Adatto anche ad acquari non riscaldati
+• Ottimo pesce da fondo
+
+Contro:
+• Può risultare poco colorato in vasche molto luminose
+• Vive meglio in gruppo (va tenuto in 5+ esemplari)
+
+Corydoras panda
+
+Descrizione:
+Corpo chiaro con macchie nere su occhi, pinna dorsale e base della coda: ricorda una
+mascherina da panda.
+Comportamento:
+Vivace, socievole e molto pacifico. Necessita di compagnia.
+Problemi genetici o di salute:
+Leggermente più delicato di altre specie; sensibile ai valori dell'acqua.
+Cure specifiche:
+Acqua ben filtrata, pH leggermente acido, sabbia fine sul fondo. No a vasche con troppa
+corrente.
+Pro:
+
+• Esteticamente molto apprezzato
+• Ottimo per acquari comunitari
+• Comportamento interessante
+Contro:
+• Meno resistente di altre specie
+• Può soffrire l’inquinamento dell’acqua
+Corydoras sterbai
+
+Descrizione:
+Corpo bruno con macchie bianche punteggiate e pinne aranciate. Tra le più belle.
+Comportamento:
+Molto tranquillo, ideale per comunità. Ama il fondo e i nascondigli.
+Problemi genetici o di salute:
+Sensibile all’ossigenazione e ai nitrati.
+Cure specifiche:
+Predilige temperature più alte (24–28°C). Acqua ben ossigenata, sabbia fine, alimentazione
+ricca.
+Pro:
+
+• Colorazione molto appariscente
+• Compatibile con discus e altri tropicali
+• Personalità pacifica
+Contro:
+• Richiede più attenzione alla qualità dell’acqua
+• Prezzo più alto rispetto ad altri Cory
+
+Corydoras julii
+
+Descrizione:
+Corpo chiaro con linee e puntini neri eleganti. Facile da confondere con C. trilineatus.
+Comportamento:
+Timido ma sociale. Va allevato in piccoli branchi.
+Problemi genetici o di salute:
+Robusto ma non tollera sbalzi termici o acqua sporca.
+Cure specifiche:
+Acqua pulita e stabile, fondo sabbioso, cibo vario (pastiglie, chironomus, verdure).
+Pro:
+
+• Molto decorativo
+• Poco esigente se ben gestito
+• Ideale per nanoacquari
+Contro:
+• Facile da confondere con altre specie
+• Poco attivo se allevato da solo
+
+Corydoras trilineatus
+
+Descrizione:
+Simile al julii, ma con linea nera continua lungo il corpo e pattern a rete. Più comune.
+Comportamento:
+Curioso, pacifico, ama nascondersi e frugare.
+Problemi genetici o di salute:
+Abbastanza resistente. Evitare stress da isolamento.
+Cure specifiche:
+Acqua stabile, fondo morbido, nascondigli. Alimentazione varia e regolare.
+Pro:
+
+• Facile da trovare e allevare
+• Si integra bene in comunità
+• Aspetto interessante
+Contro:
+• Meno appariscente di altre varietà
+• Vive male in solitudine
+
+Corydoras habrosus
+
+Descrizione:
+Specie nana (2,5–3 cm), color argento con puntini neri. Ideale per nano-acquari.
+Comportamento:
+Attivo e gregario, ama stare in gruppo. Delicato ai cambi d’acqua.
+Problemi genetici o di salute:
+Sensibile ai valori dell’acqua e alle basse temperature.
+Cure specifiche:
+Acqua tenera, sabbia fine, filtrazione dolce. No a vasche con pesci più grandi.
+Pro:
+• Perfetto per vasche piccole
+• Dolce e molto vivace
+• Non danneggia piante o fondo
+
+Contro:
+• Delicato e sensibile
+• Richiede manutenzione costante
+
+Corydoras pygmaeus
+
+Descrizione:
+Nano (2–3 cm), corpo argenteo con linea orizzontale nera. Nuota anche a metà vasca.
+Comportamento:
+Molto attivo, meno "da fondo" rispetto ad altri Cory. Socialissimo.
+Problemi genetici o di salute:
+Fragile in caso di sbalzi o sovraffollamento.
+Cure specifiche:
+Acqua pulita e calda (24–27°C), fondo fine. Preferisce piccoli branchi numerosi.
+Pro:
+
+• Vivacissimo e simpatico
+• Adatto a nano-acquari
+• Fa compagnia anche in alto
+Contro:
+• Richiede una gestione delicata
+• Soffre lo stress facilmente
+Corydoras similis, duplicareus, schwartzi, gossei
+
+(specie meno comuni ma allevate in acquari domestici)
+Descrizione:
+
+• C. similis: simile al panda, ma più scuro e con macchie diverse.
+• C. duplicareus: simile allo sterbai, con differenze nei pattern.
+• C. schwartzi: corpo con banda centrale e riflessi metallici.
+• C. gossei: poco diffuso, con aspetto snello e disegni eleganti.
+Comportamento:
+Tutti molto pacifici, da allevare in gruppo. Alcuni più schivi.
+Problemi genetici o di salute:
+Simili agli altri Cory: attenzione alla qualità dell’acqua.
+Cure specifiche:
+Fondo morbido, alimentazione varia, acqua ben ossigenata. Alcuni prediligono temperature
+più alte.
+Pro:
+• Aspetto unico e meno comune
+• Comportamenti affascinanti
+• Compatibili con comunità pacifiche
+Contro:
+• Meno facili da reperire
+• Prezzo spesso più elevato

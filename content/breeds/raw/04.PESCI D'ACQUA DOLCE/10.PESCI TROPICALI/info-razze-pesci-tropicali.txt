@@ -1,0 +1,149 @@
+# Estratto da: INFO_RAZZE_pesci tropicali.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.632Z
+# Caratteri: 4305
+# ---
+
+Scheda sintetica specie tropicali popolari
+domestiche
+
+1. Betta splendens
+
+• Descrizione: Pesce combattente ricco di varietà cromatiche e forme di pinna (plakat,
+crowntail, rosetail). Singolarmente molto vistoso.
+
+• Pro:
+o Colori intensi e varietà spettacolari
+o Facile da allevare singolarmente
+o Personalità forte e interessante
+
+• Contro:
+o Aggressivo con altri maschi e talvolta altre specie
+o Necessita di acquari specifici e piccoli ma ben curati
+
+• Cure: Temperatura 24-28°C, acqua pulita e cambi regolari, alimentazione varia.
+
+2. Paracheirodon innesi (Neon Tetra)
+
+• Descrizione: Piccolo pesce pacifico con colori brillanti blu elettrico e rosso, ottimo per
+acquari comunitari. Varietà: standard, albino, black neon.
+
+• Pro:
+o Pacifico e compatibile con molti pesci
+o Ottimo per acquari comunitari
+o Facile da allevare
+
+• Contro:
+o Sensibile a cambiamenti bruschi di acqua
+o Richiede parametri stabili e buona ossigenazione
+
+• Cure: Temperatura 20-26°C, pH 6.0-7.0, alimentazione varia (fiocchi, micro-vivi).
+
+3. Poecilia reticulata (Guppy)
+
+• Descrizione: Pesce viviparo molto colorato con centinaia di varietà e pattern di coda. Molto
+prolifico e attivo.
+
+• Pro:
+o Facile riproduzione
+o Ampia varietà estetica
+o Adatto a principianti
+
+• Contro:
+o Talvolta prolifera troppo rapidamente
+o Alcune varietà selezionate possono avere salute più fragile
+
+• Cure: Temperatura 22-28°C, acqua pulita, dieta varia.
+4. Xiphophorus spp. (Platy e Molly)
+
+• Descrizione: Pesci vivipari colorati e robusti, con molte varietà di forma e pattern. Buoni
+per comunitari.
+
+• Pro:
+o Facili da allevare e prolifici
+o Compatibili con altri pesci pacifici
+o Varietà ornamentali molto apprezzate
+
+• Contro:
+o Sensibili alla qualità dell’acqua
+o Talvolta suscettibili a malattie fungine e batteriche
+
+• Cure: Temperatura 22-28°C, pH neutro, alimentazione varia (vegetali e proteine).
+
+5. Pterophyllum scalare (Angelfish)
+
+• Descrizione: Pesce elegante con pinne lunghe, forme e colori selezionati, anche con pinna a
+velo.
+
+• Pro:
+o Aspetto elegante e scenografico
+o Comportamento interessante (territoriale ma non troppo aggressivo)
+
+• Contro:
+o Può essere aggressivo con pesci più piccoli
+o Richiede acquari spaziosi
+
+• Cure: Temperatura 24-28°C, acqua pulita, dieta mista.
+
+6. Corydoras spp.
+
+• Descrizione: Pesci da fondo pacifici, con molte specie allevate come C. panda, C. julii, C.
+sterbai. Amanti del substrato morbido.
+
+• Pro:
+o Pulitori di fondo molto attivi
+o Compatibili con molti pesci
+o Facili da allevare
+
+• Contro:
+o Sensibili ad ammoniaca e nitriti
+o Necessitano di substrato fine e acqua pulita
+
+• Cure: Temperatura 22-26°C, pH neutro, alimentazione varia (pastiglie, larve)
+
+7. Danio rerio (Zebra Danio) e altre specie Danio
+
+• Descrizione: Pesci piccoli, attivi e molto resistenti, spesso con strisce orizzontali (come lo
+Zebra Danio). Ottimi per acquari comunitari.
+
+• Pro:
+o Molto resistenti e facili da allevare
+o Attivi e vivaci, portano movimento all’acquario
+o Compatibili con molti pesci pacifici
+• Contro:
+o A volte possono essere troppo attivi e stressare pesci più lenti
+o Tendono a nuotare in gruppi, quindi serve allevare almeno 6 esemplari
+
+• Cure: Temperatura 18-26°C, pH 6.5-7.5, alimentazione varia.
+
+8. Gourami (famiglia Osphronemidae)
+
+• Descrizione: Pesci di taglia medio-piccola, caratterizzati da colori vivaci e pinne allungate.
+Alcune specie comuni: Gourami nano, Gourami perlato, Gourami miele.
+
+• Pro:
+o Aspetto elegante e colori brillanti
+o Carattere generalmente pacifico
+o Interessanti comportamenti (uso della bolla d’aria per respirare)
+
+• Contro:
+o Alcune specie possono essere territoriali o aggressivi tra maschi
+o Necessitano di piante e zone nascoste in acquario
+
+• Cure: Temperatura 24-28°C, pH 6.0-7.5, dieta varia.
+
+9. Barbi (famiglia Cyprinidae, es. Barbo tigre, Barbo rosso)
+
+• Descrizione: Pesci vivaci e sociali, spesso con colori sgargianti e pinne vistose. Alcuni
+barbi possono essere aggressivi o territoriali.
+
+• Pro:
+o Molto resistenti e facili da allevare
+o Movimentano l’acquario con il loro comportamento attivo
+o Adatti a comunitari robusti
+
+• Contro:
+o Alcune specie possono beccare pinne di pesci più lenti (naso lungo o pinne lunghe)
+o Necessitano di gruppo numeroso per limitare aggressività
+
+• Cure: Temperatura 22-27°C, pH 6.5-7.5, dieta varia.

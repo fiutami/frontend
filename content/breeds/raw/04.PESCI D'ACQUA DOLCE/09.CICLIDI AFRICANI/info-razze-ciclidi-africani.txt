@@ -1,0 +1,89 @@
+# Estratto da: INFO_RAZZE_ciclidi africani.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.574Z
+# Caratteri: 3185
+# ---
+
+DESCRIZIONE “razze” CICLIDI AFRICANI
+
+������ Ciclidi del Lago Malawi
+
+������ Mbuna (rocciosi)
+
+Pseudotropheus demasoni
+
+• Descrizione: piccolo Mbuna con bande blu elettrico e nere, molto territoriale.
+• Comportamento: aggressivo, vive in gruppo, necessita molti rifugi.
+• Cure: acqua alcalina (pH 7.8–8.6), rocciosa, alimentazione vegetale.
+• Pro: colori intensi, interessante da osservare.
+• Contro: aggressività elevata, non adatto a comunitari pacifici.
+
+Maylandia estherae (Red Zebra)
+
+• Descrizione: corpo arancio-rosso, maschi e femmine con varianti cromatiche.
+• Comportamento: dominante, ma gestibile se ben allevato.
+• Cure: dieta a base vegetale, pH alcalino, arredo roccioso.
+• Pro: facile da trovare e riprodurre.
+• Contro: può stressare pesci meno territoriali.
+
+Pseudotropheus crabro (Bumblebee Cichlid)
+
+• Descrizione: striature nere/gialle simili a un'ape.
+• Comportamento: cambia colore quando dominante; semi-aggressivo.
+• Cure: ambientazione rocciosa, acqua dura.
+• Pro: aspetto insolito, interessante da allevare.
+• Contro: cambia colore, può essere meno appariscente in dominanza.
+
+Peacock Cichlid (Aulonocara spp.)
+
+Aulonocara nyassae / jacobfreibergi / stuartgranti
+
+• Descrizione: colori sgargianti (blu, rosso, arancio), corpo allungato.
+• Comportamento: più pacifici rispetto ai Mbuna.
+• Cure: spazio per nuotare, substrato sabbioso, dieta onnivora.
+• Pro: ideale per chi vuole colori vivaci e temperamento calmo.
+• Contro: i maschi possono essere aggressivi tra loro.
+Haplochromine / Utaka
+
+Copadichromis borleyi (Redfin Hap)
+
+• Descrizione: corpo blu metallico con pinne rosse.
+• Comportamento: nuotatore libero, meno territoriale.
+• Cure: acquario spazioso, alimentazione proteica.
+• Pro: più compatibile con altre specie Malawi.
+• Contro: cresce fino a 15–20 cm, richiede vasche grandi.
+
+Ciclidi del Lago Tanganyika
+
+Cyphotilapia frontosa (Frontosa)
+
+• Descrizione: grande cichlide con gobba frontale e bande verticali.
+• Comportamento: tranquillo, ma predatore notturno.
+• Cure: grande acquario (min 300 L), alimentazione varia.
+• Pro: maestoso, lunga vita, convivenza possibile con simili.
+• Contro: cresce molto, lento a riprodursi.
+
+Tropheus duboisi (White-Spot)
+
+• Descrizione: giovanili a pois bianchi, adulti con banda pallida.
+• Comportamento: molto attivo, gregario.
+• Cure: dieta a base vegetale, acqua estremamente stabile.
+• Pro: comportamento unico, molto dinamico.
+• Contro: delicato allo stress e alle variazioni d’acqua.
+
+Lamprologus ocellatus (Shell Dweller)
+
+• Descrizione: piccolo cichlide che vive in conchiglie.
+• Comportamento: territoriale, ma gestibile in nano-acquari.
+• Cure: fondo sabbioso, conchiglie, dieta onnivora.
+• Pro: affascinante interazione con ambiente, allevabile in 40–60 L.
+• Contro: sensibilità alle condizioni instabili, predazione tra piccoli.
+������ Ciclidi del Lago Vittoria e fiumi africani
+
+Pelvicachromis pulcher (Kribensis)
+
+• Descrizione: corpo compatto, livrea con ventre rosso acceso nei riproduttori.
+• Comportamento: pacifico, ideale per comunitari.
+• Cure: pH leggermente acido-neutro, cibo vario.
+• Pro: facile da allevare e riprodurre.
+• Contro: durante la riproduzione può diventare territoriale.

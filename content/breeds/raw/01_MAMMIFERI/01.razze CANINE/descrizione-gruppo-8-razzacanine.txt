@@ -1,0 +1,166 @@
+# Estratto da: DESCRIZIONE GRUPPO 8_razzacanine.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:40.088Z
+# Caratteri: 5523
+# ---
+
+GRUPPO 8
+
+1. Chesapeake Bay Retriever
+
+Descrizione: Solido cane da acqua con pelo oleoso e spesso.
+Comportamento: Leale, protettivo, tenace.
+Problemi comuni: Displasia, otiti.
+Cure: Toelettatura minima, sessioni di nuoto ed esercizio.
+Pro: Eccellente nuotatore e cane da lavoro.
+Contro: Può essere indipendente e diffidente.
+
+2. Curly-Coated Retriever
+
+Descrizione: Mantello riccio e impermeabile, aspetto distinto.
+Comportamento: Calmo, intelligente, un po' riservato.
+Problemi comuni: Displasia, epilessia.
+Cure: Spazzolatura del mantello riccio, esercizio.
+Pro: Personalità unica, ottimo riporto.
+Contro: Poco diffuso, pelo va curato.
+
+3. Flat-Coated Retriever
+
+Descrizione: Pelo liscio e lucido, cane elegante e atletico.
+Comportamento: Allegro, affettuoso, energico.
+Problemi comuni: Displasia, epilessia, tumori.
+Cure: Spazzolatura regolare, attività intensa.
+Pro: Ottimo compagno di famiglia e sport.
+Contro: Richiede molto esercizio.
+
+4. Golden Retriever
+
+Descrizione: Pelo dorato, folto e setoso, taglia medio-grande.
+Comportamento: Dolce, obbediente, affettuoso.
+Problemi comuni: Displasia, problemi cardiaci e cutanei, tumori.
+Cure: Toelettatura media, esercizio quotidiano.
+Pro: Estremamente adatto a famiglie e bambini.
+Contro: Perdita di pelo abbondante.
+5. Labrador Retriever
+
+Descrizione: Pelo corto, robusto, simbolo di famiglia e lavoro.
+Comportamento: Amichevole, intelligente, energico.
+Problemi comuni: Displasia, obesità, otiti.
+Cure: Controllo alimentare, esercizio quotidiano.
+Pro: Il cane da compagnia per eccellenza.
+Contro: Ama mangiare e può ingrassare facilmente.
+
+6. Nova Scotia Duck Tolling Retriever
+
+Descrizione: Taglia media, mantello rosso, attivo e agile.
+Comportamento: Vivace, intelligente, curioso.
+Problemi comuni: Displasia, epilettico.
+Cure: Stimoli fisici e mentali, pulizia occasionale.
+Pro: Ottimo compagno di caccia e famiglia.
+Contro: Richiede attività intensa.
+
+7. American Water Spaniel
+
+Descrizione: Pelo riccio-medio, taglia media, specialista di acqua.
+Comportamento: Intelligente, riservato, agile.
+Problemi comuni: Displasia, otiti.
+Cure: Toelettatura regolare, pulizia orecchie.
+Pro: Rugby in acqua, poco noto ma versatile.
+Contro: Poco diffuso.
+
+8. Barbet
+
+Descrizione: Pelo riccio e lanoso, antico retriever francese.
+Comportamento: Dolce, intelligente, amante dell’acqua.
+Problemi comuni: Displasia, problemi cutanei.
+Cure: Toelettatura intensiva, esercizio.
+Pro: Ottimo per famiglie attive e sport acquatici.
+Contro: Pelo da curare frequentemente.
+9. Boykin Spaniel
+
+Descrizione: Spaniel americano dal pelo medio e color bruno.
+Comportamento: Allegro, obbediente, energico.
+Problemi comuni: Displasia, otiti.
+Cure: Passeggiate e pulizia orecchie.
+Pro: Ottimo cane da caccia e compagnia.
+Contro: Inso di spazio per attività regolari.
+
+10. Clumber Spaniel
+
+Descrizione: Spaniel grande, testa larga, pelo corto.
+Comportamento: Calmo, affettuoso, determinato in caccia.
+Problemi comuni: Displasia, obesità, otiti.
+Cure: Controllo peso, esercizio, orecchie pulite.
+Pro: Buono e placido.
+Contro: Poco agile, adatto a case spaziose.
+
+11. Cocker Spaniel Inglese
+
+Descrizione: Spaniel elegante a pelo medio-lungo.
+Comportamento: Dolce, vivace, affezionato.
+Problemi comuni: Otiti, displasia, patologie oculari.
+Cure: Spazzolatura regolare, pulizia auricolare.
+Pro: Ottimo cane da famiglia e mostra.
+Contro: Richiede toelettatura costante.
+
+12. Cocker Spaniel Americano
+
+Descrizione: Variante compatta e dall'aspetto morbido.
+Comportamento: Socievole, affettuoso, più vivace rispetto all’Inglese.
+Problemi comuni: Otiti, allergie.
+Cure: Toelettatura continua, pulizia.
+Pro: Ideale in appartamento.
+Contro: Richiede cura attiva del pelo.
+13. English Water Spaniel
+
+Descrizione: Spaniel inglese raro, riccio e resistente all’acqua.
+Comportamento: Devoto, prudente, amante del nuoto.
+Problemi comuni: Displasia, otiti.
+Cure: Esercizio costante e pulizia orecchie.
+Pro: Buono nel lavoro acquatico.
+Contro: Estremamente raro.
+
+14. Irish Water Spaniel
+Descrizione: Pelo riccio, muscoloso, uno dei più grandi spaniel.
+Comportamento: Intelligente, indipendente, affezionato.
+Problemi comuni: Otiti, allergie.
+Cure: Toelettatura e igiene auricolare.
+Pro: Eccellente in acqua.
+Contro: Pelo va tenuto in ordine.
+
+15. Sussex Spaniel
+Descrizione: Spaniel compatto, dorato, pelo raso.
+Comportamento: Tranquillo, affettuoso, tenace.
+Problemi comuni: Obesità, displasia, otiti.
+Cure: Attività regolare e spazzolatura.
+Pro: Buon compagno da famiglia.
+Contro: Poco energico, può ingrassare.
+
+16. Welsh Springer Spaniel
+Descrizione: Spaniel medio-grande, mantello rosso-bianco.
+Comportamento: Allegro, energico, affettuoso.
+Problemi comuni: Otiti, displasia.
+Cure: Trekking e pulizia auricolare.
+Pro: Versatile, adatto all'acqua e campagna.
+Contro: Richiede esercizio quotidiano.
+
+17. American Cocker Spaniel
+(Vedi punto 12)
+18. Spanish Water Dog
+Descrizione: Pelo arricciato a ciocche, versatile da lavoro.
+Comportamento: Intelligente, energico, affezionato.
+Problemi comuni: Dermatiti, displasia.
+Cure: Toelettatura a ciocche, esercizio.
+Pro: Ottimo cane da utilità, basso rischio di allergia.
+Contro: Richiede gestione del pelo complessa.
+
+19. Lagotto Romagnolo
+Descrizione: Cane italiano da tartufo, pelo riccio lanoso.
+Comportamento: Dolce, intelligente, olfatto fine.
+Problemi comuni: Displasia, epilessia.
+Cure: Toelettatura specialistica, esercizio.
+Pro: Ideale per famiglie, lavori in tartufaia.
+Contro: Mantello va curato regolarmente.
+
+20. Irish Water Spaniel
+(Ripetuto al punto 14)

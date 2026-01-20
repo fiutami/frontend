@@ -1,0 +1,483 @@
+# Estratto da: INFO_RAZZE_discus.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.397Z
+# Caratteri: 15255
+# ---
+
+DESCRIZIONE “razze” DISCUS
+
+1. Symphysodon aequifasciatus – Discus Verde /
+Marrone
+
+Descrizione
+Specie selvatica originaria dell’Amazzonia occidentale (Perù, Brasile, Colombia). Corpo
+arrotondato, tendenzialmente marrone con riflessi verdi o rame. Presenta bande verticali
+visibili e leggere iridescenze sul corpo.
+
+Comportamento
+• Relativamente docile, ma può essere dominante nel gruppo.
+• Ama ambienti con vegetazione e radici.
+• Vive bene in gruppo (5+ esemplari).
+
+Cure specifiche
+• Acqua morbida, leggermente acida.
+• Temperature elevate (28–30 °C).
+• Richiede una dieta varia e una buona ossigenazione.
+• Meglio in vasche biotopo o molto naturali.
+
+Pro
+• Più resistente di altri Discus wild.
+• Aspetto naturale, adatto a biotopi amazzonici.
+• Comportamento equilibrato.
+
+Contro
+– Non tollera acque dure o pH neutro/alcalino.
+– Meno appariscente delle varietà ornamentali.
+– Sensibile allo stress da trasporto o cambi.
+2. Symphysodon haraldi – Discus Blu / Celeste
+
+Descrizione
+Originario del medio Rio Negro e Rio Solimões. Il corpo presenta sfumature bluastre o
+azzurre, con bande verticali scure meno marcate rispetto al S. discus. È la specie da cui
+derivano molte varietà blu ornamentali.
+
+Comportamento
+• Pacifico e cooperativo in gruppo.
+• Meno schivo rispetto ad altri wild.
+• Forma coppie stabili.
+
+Cure specifiche
+• Acqua molto tenera e acida (pH 5.5–6.5).
+• Temperatura ideale: 28–30 °C.
+• Richiede frequenti cambi d’acqua e stabilità.
+
+Pro
+• Elegante e luminoso anche in forma selvatica.
+• Comportamento più adattabile.
+• Buona base per allevamento selettivo.
+
+Contro
+– Sensibile alla qualità dell’acqua.
+– Alimentazione da curare (meglio vivo/congelato).
+– Soffre stress in vasche rumorose o sovraffollate.
+3. Symphysodon discus – Discus Heckel
+
+Descrizione
+Specie iconica del basso Rio Negro. Si distingue per la banda verticale centrale molto
+marcata (la 5ª delle 9 totali), che attraversa occhio e corpo. Colori variabili tra marrone,
+arancio e blu, con disegni a raggiera.
+
+Comportamento
+• Più schivo e territoriale.
+• Richiede un gruppo coeso o vasca monospecifica.
+• Timido ma elegante nei movimenti.
+
+Cure specifiche
+• Esige acqua purissima e molto acida (pH 4.8–6.0).
+• Molto sensibile a nitrati, ammoniaca e sbalzi.
+• Si adatta lentamente ai cambi.
+
+Pro
+• Molto ricercato dai puristi e appassionati di biotopo.
+• Aspetto selvatico autentico e affascinante.
+• Indole tranquilla e nobile.
+
+Contro
+– Il più delicato dei Discus.
+– Difficile da allevare e riprodurre in cattività.
+– Richiede competenza, pazienza e acqua osmotica/acidificata.
+
+Conclusione
+
+Specie Difficoltà Carattere Acqua ideale Per chi è adatto?
+
+S. aequifasciatus Media Equilibrato pH 6–6.8, GH basso Intermedi
+
+S. haraldi Media Pacifico pH 5.5–6.5 Appassionati esperti
+
+S. discus (Heckel) Alta Schivo, territoriale pH 4.8–6.0 Esperti di biotopo
+DESCRIZIONE DISCUS – TINTA UNITA
+
+Red Melon
+Descrizione
+Discus di colore rosso brillante su tutto il corpo, con o senza sfumature aranciate. Gli occhi
+sono solitamente rossi. Nessun pattern o banda visibile.
+Pro
+• Aspetto molto acceso e scenografico
+• Apprezzato negli aquascape minimal
+• Relativamente resistente tra le varietà rosse
+Contro
+– Meno naturale come aspetto
+– Può scolorire se stressato o malnutrito
+– Alcuni esemplari sono fotosensibili
+Cure
+• Richiede acqua morbida e pH 6–6.8
+• Dieta ricca di carote, artemia e spirulina per mantenere il colore
+• Temperatura: 28–30 °C
+
+Red Marlboro
+Descrizione
+Simile al Red Melon, ma presenta testa giallo/arancio e corpo rosso pieno, senza bande.
+Alcuni esemplari hanno occhi molto scuri in contrasto.
+Pro
+• Contrasto elegante testa-corpo
+• Colorazione stabile in buone condizioni
+• Facile da abbinare ad altre varietà
+Contro
+– Può perdere il rosso intenso se alimentato male
+– Più timido in acquario comunitario
+– Alcune linee hanno problemi genetici (fertilità bassa)
+
+Cure
+• Alimentazione mirata per esaltare pigmentazione
+• Parametri: pH 6.2–6.8, acqua tenera
+• Luce moderata
+
+Golden Yellow
+Descrizione
+Varietà dal corpo giallo pieno con sfumature dorate. Nessun pattern. Occhi generalmente
+rossi o arancio.
+Pro
+• Aspetto luminoso e solare
+• Ben visibile anche in vasche grandi
+• Di indole tranquilla
+Contro
+– Colorazione instabile in caso di stress
+– Alcune linee hanno crescita lenta
+– Delicati nei primi mesi di vita
+Cure
+• Necessita acqua molto pulita e dieta pigmentante
+• Temperatura 28–30 °C
+• Evitare luci troppo forti
+Snow White
+Descrizione
+Discus completamente bianco latte o madreperlato, occhi rossi. Molto apprezzato in
+vasche chiare o in contrasto con varietà scure.
+Pro
+• Elegante, unico nel suo genere
+• Ottimo in allestimenti moderni
+• Di indole molto tranquilla
+Contro
+– Molto sensibile allo stress ambientale
+– Tende a scolorire o mostrare pigmenti inquinanti
+– Occhi rossi possono essere un difetto soggettivo
+Cure
+• Acqua impeccabile: pH 6.0–6.5, nitrati <10
+• Dieta ricca ma povera di coloranti
+• Luce tenue, evitare riflessi diretti
+
+Blue Diamond
+Descrizione
+Corpo di un blu intenso metallico, uniforme, senza bande. Tra le varietà più iconiche e
+amate.
+Pro
+• Molto scenografico e fotogenico
+• Colorazione stabile anche in gruppo
+• Relativamente robusto
+Contro
+– Alcuni esemplari tendono a nervosismo
+– Può diventare dominante in vasche piccole
+– Alcune linee hanno problemi agli occhi (strabismo)
+Cure
+• Acqua tenera, pH 6.2–6.8
+• Alimentazione con spirulina e integratori minerali
+• Temperatura ideale: 28.5–29.5 °C
+
+White Butterfly
+Descrizione
+Discus bianco perlaceo con pinne trasparenti o rosate e riflessi leggeri. Occhi rossi.
+Elegante e delicato.
+Pro
+• Effetto “farfalla” molto ricercato
+• Aspetto etereo, perfetto in vasche minimal
+• Non aggressivo
+Contro
+– Tra le varietà più delicate
+– Stress facilmente visibile (pallore)
+– Sensibile a variazioni di pH e nitrati
+Cure
+• Qualità dell’acqua prioritaria
+• Non tollera luci forti o flussi aggressivi
+• Integrare dieta con fitonutrienti naturali
+Varietà con PATTERN
+
+1. Pigeon Blood
+
+Descrizione: Corpo chiaro o bianco con macchie rosse o arancioni a contrasto. Uno dei pattern più
+popolari.
+
+• Comportamento: Pacifico, ma talvolta un po’ più timido.
+• Cure: Richiede acqua pulita, temperature stabili (28–30°C) e alimentazione variata.
+• Problemi genetici/salute: Sensibile alle infezioni batteriche. Alcuni esemplari mostrano
+
+un’eccessiva produzione di melanina (peppering).
+
+• Pro: Aspetto molto appariscente, comune e ben selezionato.
+
+• Contro: Il “peppering” può alterare la bellezza del pattern.
+
+2. Turquoise (Blue o Red)
+
+Descrizione: Corpo decorato con bande turchesi (blu o rosse) su sfondo chiaro o scuro. Pattern ben
+distribuito.
+
+• Comportamento: Attivo e gregario, buono per gruppi.
+• Cure: Richiede buon filtraggio e acqua tenera/acida.
+• Problemi genetici/salute: Nessuna nota di rilievo.
+
+• Pro: Robusto, disponibile in molte varianti.
+
+• Contro: Meno “esotico” di altre varietà rare.
+
+3. Checkerboard Pigeon
+
+Descrizione: Simile al Pigeon Blood, ma con pattern a scacchiera o reticolare. Spesso combinato
+con riflessi metallici.
+
+• Comportamento: Tranquillo, adatto a vasche comunitarie.
+• Cure: Stesse attenzioni di altri discus; tolleranza buona a piccoli errori.
+• Problemi genetici/salute: Il rischio di peppering resta presente.
+
+• Pro: Aspetto unico e accattivante.
+
+• Contro: Difficile trovare esemplari ben disegnati (pattern nitido).
+4. Leopard
+
+Descrizione: Corpo decorato da punti rossi o blu su sfondo chiaro. Dalla selezione del Turquoise.
+
+• Comportamento: Socievole, ma sensibile allo stress.
+
+• Cure: Necessita alimentazione ricca e filtrazione eccellente.
+
+• Problemi genetici/salute: Sensibile a malattie intestinali se alimentato male.
+
+• Pro: Pattern raro e distintivo.
+
+• Contro: Più delicato di altre varietà.
+
+5. Snakeskin
+
+Descrizione: Linee sottili ondulate (tipo “pelle di serpente”) su tutto il corpo. Può essere rosso o
+blu.
+
+• Comportamento: Socievole, ideale per acquari ben gestiti.
+
+• Cure: Esigente in termini di qualità dell’acqua.
+
+• Problemi genetici/salute: Predisposizione a problemi osmotici se l’acqua non è tenera.
+
+• Pro: Elegante, apprezzato dagli allevatori esperti.
+
+• Contro: Pattern a volte poco visibile in esemplari di scarsa qualità.
+
+6. Leopard Snakeskin
+
+Descrizione: Ibrido tra Leopard e Snakeskin, con un pattern molto fitto di punti e linee. Spesso
+brillante.
+
+• Comportamento: Piuttosto attivo e socievole.
+
+• Cure: Come tutti i discus, teme sbalzi di temperatura e nitrati.
+
+• Problemi genetici/salute: Alcuni esemplari sono fragili nelle prime settimane.
+
+• Pro: Estremamente scenografico.
+
+• Contro: Difficile da reperire in alta qualità.
+
+7. Tiger
+
+Descrizione: Pattern a bande verticali marcate, simili a quelle di una tigre. Spesso su fondo rosso o
+arancio.
+
+• Comportamento: Attivo, a volte più dominante.
+
+• Cure: Acqua tenera, buon equilibrio tra proteine e vegetali nella dieta.
+
+• Problemi genetici/salute: Può sviluppare aggressività in vasche sovraffollate.
+
+• Pro: Aspetto fiero e insolito.
+
+• Contro: Non sempre facile da trovare.
+8. Ghost
+
+Descrizione: Colore pallido o traslucido, spesso con pochi disegni. Mutazione selettiva.
+
+• Comportamento: Tranquillo e meno territoriale.
+
+• Cure: Ideale per neofiti esperti. Acqua pulita, dieta varia.
+
+• Problemi genetici/salute: Più sensibile alla luce e allo stress.
+
+• Pro: Elegante e minimalista.
+
+• Contro: Poco visibile in vasche buie o piante fitte.
+
+9. Map / Maze Discus
+
+Descrizione: Linee intricate su tutto il corpo, simili a labirinti o mappe topografiche. Variante del
+Snakeskin.
+
+• Comportamento: Timido ma compatibile.
+
+• Cure: Richiede ambiente stabile e silenzioso.
+
+• Problemi genetici/salute: Qualche fragilità se la selezione genetica non è curata.
+
+• Pro: Pattern molto raro e spettacolare.
+
+• Contro: Prezzo elevato, richiede allevatori esperti.
+
+VARIETÀ IBRIDE PARTICOLARI
+
+1. Albino Discus
+
+(esistono versioni Albino Red, Albino Blue, ecc.)
+
+Descrizione: Caratterizzati da occhi rossi e colorazione pallida o “lattea” con toni pastello; il
+pattern può essere tenue o assente.
+
+• Comportamento: Tendenzialmente più timido e delicato.
+
+• Cure: Necessitano luce tenue, assenza di stress ambientale e acqua ultra-pulita.
+
+• Problemi genetici/salute: Vista più debole; elevata sensibilità a parassiti intestinali e
+a sbalzi chimici.
+
+• Pro: Aspetto etereo e raro, molto apprezzati per vasche monocromatiche.
+
+• Contro: Delicati; meno reattivi e competitivi a livello alimentare.
+2. Penang Eruption
+
+Descrizione: Discus con pattern estremamente fitto di macchie rosso intenso o arancio su
+fondo chiaro, spesso coprente quasi tutto il corpo. Molto scenografico.
+
+• Comportamento: Attivo, socializza facilmente.
+
+• Cure: Acqua morbida, dieta varia, attenzione a sovralimentazione.
+
+• Problemi genetici/salute: Alcuni esemplari possono essere predisposti a stress
+intestinale.
+
+• Pro: Pattern spettacolare; ideale per vasche show.
+
+• Contro: Prezzo elevato; sensibile alla qualità dell’acqua.
+
+3. Panthera
+
+Descrizione: Discus decorato con puntinature e striature scure simili al mantello di un felino
+(da cui il nome). Pattern a metà tra Leopard e Snakeskin.
+
+• Comportamento: Pacifico ma va tenuto in gruppo omogeneo.
+
+• Cure: Acqua molto pulita, temperatura costante (28–30°C).
+
+• Problemi genetici/salute: Alcune linee possono essere poco stabili dal punto di vista
+genetico.
+
+• Pro: Pattern raro e suggestivo, molto apprezzato dagli appassionati.
+
+• Contro: Ancora poco diffuso; qualità variabile.
+
+4. Golden Base Discus
+
+Descrizione: Base genetica dorata o gialla, usata per creare nuove linee selettive; spesso con
+pattern leggeri e riflessi metallici.
+
+• Comportamento: Molto tranquillo, adatto ad ambienti soft.
+• Cure: Alimentazione equilibrata, luce non troppo intensa.
+• Problemi genetici/salute: Alcune linee sono sterili o difficili da riprodurre.
+
+• Pro: Colori caldi e riflettenti, aspetto elegante.
+
+• Contro: Poco diffusi, fragili durante l'accrescimento.
+5. High Body Discus
+
+Descrizione: Discus con corpo più alto e tondeggiante, quasi sferico. Morfologia esagerata
+ottenuta per selezione.
+
+• Comportamento: Più lento, può essere dominato da compagni più agili.
+
+• Cure: Serve vasca ampia in altezza; attenzione al galleggiamento e alla dieta.
+
+• Problemi genetici/salute: Maggiore rischio di problemi di vescica natatoria o di
+equilibrio.
+
+• Pro: Aspetto imponente, ottimo come esemplare da esposizione.
+
+• Contro: Più soggetto a stress fisico; richiede gestione accurata.
+
+VARIETÀ WILD O "IBRIDI NATURALI"
+
+1. Royal Blue (forma selvatica)
+
+Descrizione:
+Variante wild caratterizzata da un colore blu intenso e metallizzato, corpo relativamente più
+snello rispetto alle forme ornamentali. Mantiene una colorazione più naturale rispetto alle
+varietà selezionate. Tipico del bacino del Rio Negro.
+
+Comportamento:
+Timido e riservato, tende a nascondersi soprattutto in ambienti rumorosi o con molti
+compagni aggressivi. Vive bene in piccoli gruppi stabili.
+
+Cure:
+Richiede acqua morbida e leggermente acida, temperatura tra 27-30°C, con filtri delicati e
+presenza di piante o rifugi. Alimentazione varia a base di larve, piccoli crostacei e mangime
+specifico per discus.
+
+Problemi genetici/salute:
+Più resistente rispetto agli ibridi selezionati, ma sensibile a variazioni improvvise di parametri
+chimici dell’acqua.
+
+Pro: Aspetto naturale molto bello, robusto e meno soggetto a malattie; ideale per chi
+preferisce l’allevamento "wild".
+
+Contro: Meno colorato e appariscente rispetto ai discus da esposizione; può essere
+timido e meno adatto ad acquari molto popolati.
+2. Tefe Green
+
+Descrizione:
+Varietà wild con colorazione prevalentemente verde oliva o verde scuro con riflessi metallici,
+originaria dell'area di Tefé (Amazonia). Corpo leggermente più allungato rispetto alle forme
+ornamentali.
+
+Comportamento:
+Piuttosto territoriale, preferisce spazi ampi e una certa densità di piante o strutture per
+nascondersi. Vive bene in piccoli gruppi.
+
+Cure:
+Acqua morbida, acida (pH 6.0-6.8), temperatura tra 27-30°C, buona ossigenazione e
+alimentazione ricca di proteine.
+
+Problemi genetici/salute:
+Generalmente robusto, ma come tutti i wild necessita di condizioni stabili per evitare stress e
+malattie.
+
+Pro: Colore unico e naturale, robusto, ottimo per acquari biotopi amazzonici.
+Contro: Meno disponibile sul mercato, richiede condizioni di allevamento più specifiche.
+
+3. Heckel Cross
+
+(Incroci tra Symphysodon discus e altre specie)
+
+Descrizione:
+Ibrido naturale o semi-naturale tra Symphysodon discus (Discus Heckel) e altre specie di
+discus (spesso S. aequifasciatus). Presenta caratteristiche miste di colore e forma, spesso
+con pattern meno definiti.
+
+Comportamento:
+Variabile in base alla prevalenza della specie parentale; generalmente pacifico ma può
+mostrare comportamenti territoriali.
+
+Cure:
+Richiede parametri d’acqua simili alle specie parentali: acqua morbida, calda (28-30°C),
+alimentazione ricca e varia.
+
+Problemi genetici/salute:
+A volte più resistente di alcune linee ornamentali, ma meno stabile da un punto di vista
+genetico, con possibile riduzione di fertilità in successive generazioni.
+
+Pro: Robusto e adattabile, spesso più semplice da allevare rispetto a varietà ornamentali
+selezionate.
+Contro: Aspetto meno definito e meno appariscente; non sempre facilmente reperibile
+nei negozi.

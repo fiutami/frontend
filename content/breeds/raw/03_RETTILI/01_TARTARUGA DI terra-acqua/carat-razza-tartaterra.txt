@@ -1,0 +1,111 @@
+# Estratto da: CARAT_razza_tartaTERRA.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.516Z
+# Caratteri: 4088
+# ---
+
+TARTA TERRESTI
+
+SPECIE SCIENTIFICHE E RICONOSCIUTE
+
+1. Testudo hermanni (Tartaruga di Hermann)
+
+Descrizione: Piccola tartaruga europea, guscio giallo-nero, robusta, vive fino a 80 anni.
+Comportamento: Diurna, tranquilla, poco aggressiva, ama il sole.
+Problemi: Parassiti intestinali, carenza di calcio se dieta sbagliata.
+Cure: Ampio recinto esterno, letargo invernale naturale.
+
+Pro: Resistente, longeva, facile da allevare.
+Contro: Letargo obbligatorio, documentazione CITES necessaria.
+
+2. Testudo graeca (Tartaruga greca)
+
+Descrizione: Simile alla Hermann, ma con colori più spenti; più fragile.
+Comportamento: Simile alla Hermann ma più schiva.
+Problemi: Sensibile all'umidità e a infezioni respiratorie.
+Cure: Clima secco, sole, protezione dalla pioggia.
+
+Pro: Bella e diffusa.
+Contro: Più delicata, meno adatta a climi umidi.
+
+3. Testudo marginata (Tartaruga marginata)
+
+Descrizione: La più grande tra le europee (fino a 5 kg), guscio nero allungato.
+Comportamento: Socievole ma più attiva.
+Problemi: Letargo problematico se in ambienti poco controllati.
+Cure: Recinti grandi, alimentazione ricca di fibre.
+
+Pro: Maestosa, resistente.
+Contro: Richiede più spazio e gestione attenta del letargo.
+
+4. Testudo horsfieldii (Tartaruga russa / di Horsfield)
+
+Descrizione: Piccola (max 1,5 kg), guscio chiaro, adatta a climi freddi e secchi.
+Comportamento: Attiva e scavatrice.
+Problemi: Tende all'obesità se troppo sedentaria.
+Cure: Spazi profondi per scavare, clima secco, letargo annuale.
+
+Pro: Adatta a climi italiani, resistente.
+Contro: Scava molto, rischio fuga.
+5. Testudo kleinmanni (Tartaruga egiziana)
+
+Descrizione: Piccolissima (10 cm), rarissima, delicata, in via di estinzione.
+Comportamento: Schiva, delicata, sensibile allo stress.
+Problemi: Estrema fragilità, immunodeficienza, malattie respiratorie.
+Cure: Ambienti interni caldi e secchi, no letargo.
+
+Pro: Molto rara e affascinante.
+Contro: Non adatta a principianti, difficile da trovare e costosa.
+
+6. Centrochelys sulcata (Tartaruga sulcata africana)
+
+Descrizione: Una delle più grandi al mondo (fino a 80 kg), guscio marrone.
+Comportamento: Attiva, energica, spesso distruttiva.
+Problemi: Crescita troppo rapida, artriti, problemi intestinali.
+Cure: Spazi enormi, ambiente caldo tutto l’anno, no letargo.
+
+Pro: Intelligente, interattiva.
+Contro: Cresce enormemente, difficile da gestire in casa.
+
+7. Stigmochelys pardalis (Tartaruga leopardo)
+
+Descrizione: Guscio chiaro con macchie nere, molto decorativa, fino a 20–30 kg.
+Comportamento: Tranquilla, non scavatrice.
+Problemi: Sensibile a umidità e freddo, problemi respiratori.
+Cure: Solo in ambiente caldo e asciutto, no letargo.
+
+Pro: Bellissima, docile.
+Contro: Richiede serra o terrario riscaldato tutto l’anno.
+
+8. Manouria emys (Tartaruga gigante asiatica)
+
+Descrizione: Grandi dimensioni (fino a 35 kg), guscio scuro, umida e tropicale.
+Comportamento: Socievole, ma ha bisogno di umidità costante.
+Problemi: Facilmente soggetta a micosi e problemi intestinali.
+Cure: Zona umida, alimentazione vegetale varia, no letargo.
+
+Pro: Interessante, poco comune.
+Contro: Necessita clima tropicale costante.
+9. Gopherus polyphemus (Tartaruga gopher americana)
+Descrizione: Originaria del sud-est USA, scava tane enormi, protetta in natura.
+Comportamento: Molto elusiva, difficile da gestire in cattività.
+Problemi: Protezione legale molto stringente.
+Cure: Inadatta come animale da compagnia in Europa.
+
+Pro: Curiosa e solitaria.
+Contro: Praticamente introvabile, non raccomandata.
+
+10. Gopherus agassizii (Tartaruga del deserto)
+Descrizione: Desertica, vive in ambienti secchi e caldi, fino a 7 kg.
+Comportamento: Solitaria, poco attiva.
+Problemi: Sensibile a dieta scorretta, infezioni respiratorie.
+Cure: Ambienti desertici, riposo invernale.
+
+Pro: Robusta, affascinante.
+Contro: Difficile reperibilità, habitat non semplice da ricreare.
+
+Tutte queste specie richiedono:
+• Certificato CITES (per la maggior parte)
+• Registrazione se >500g
+• Microchip per alcune (es. Testudo hermanni)
+• Ambiente dedicato: non sono animali da tenere in casa come un cane o un gatto

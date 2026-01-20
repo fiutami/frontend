@@ -1,0 +1,47 @@
+---
+# Fiutami Breed Content
+# Generated: 2026-01-19
+
+id: "thamnophis-sirtalis-garter-snake"
+name: "Thamnophis sirtalis – Garter Snake"
+species: "serpente"
+category: "rettili"
+lang: "it"
+
+# Metadata
+fci_group: null
+origin: ""
+lifespan: ""
+size: ""
+
+# Characteristics (1-5)
+energy_level: 3
+trainability: 3
+friendliness: 3
+grooming_needs: 3
+
+# Status
+status: "draft"
+needs_review: true
+last_updated: "2026-01-19"
+---
+
+# Thamnophis sirtalis – Garter Snake
+
+## Descrizione
+Serpente piccolo e vivace, 60–100 cm, colorato con strisce e macchie.
+
+## Comportamento
+_Da completare_
+
+## Problemi Genetici
+_Da completare_
+
+## Cure
+_Da completare_
+
+## Pro
+_Da completare_
+
+## Contro
+_Da completare_

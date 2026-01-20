@@ -1,0 +1,203 @@
+# Estratto da: INFO_razze_molly.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.233Z
+# Caratteri: 6039
+# ---
+
+DESCRIZIONE VARIETA
+
+Specie di base da cui derivano le varietà
+domestiche:
+
+Poecilia sphenops – Molly comune / Black Molly
+
+Descrizione:
+Specie base più diffusa negli acquari domestici. Corpo affusolato, pinne corte o
+moderatamente allungate. Colore naturale grigio-brunastro, ma la selezione ha prodotto
+varietà nere, bianche, arancioni e marmorizzate.
+Dimensione: 5–8 cm
+Origine: America Centrale (Messico, Venezuela)
+Longevità: 3–5 anni
+
+Comportamento:
+Pacifico, attivo, ama nuotare in gruppo. I maschi possono essere insistenti con le femmine. Va
+d’accordo con pesci di pari indole.
+
+Cure:
+
+• Acquario da almeno 60 litri
+
+• Temperatura: 24–28 °C
+
+• pH: 7,0–8,5
+
+• Tollera leggermente acqua salmastra
+
+• Alimentazione onnivora (vegetali + proteine)
+
+Pro:
+✔ Robusto, adatto ai principianti
+✔ Molto disponibile in commercio
+✔ Ampia varietà di colori e forme
+✔ Facile da allevare e riprodurre
+
+Contro:
+✖ Riproduzione abbondante
+✖ Alcuni ceppi selezionati sono più fragili
+✖ Maschi possono stressare le femmine
+Poecilia latipinna – Sailfin Molly (Molly a pinna a vela)
+
+Descrizione:
+Corpo più grande e allungato rispetto al sphenops. La caratteristica distintiva è la pinna
+dorsale ampia e alta, simile a una vela, soprattutto nei maschi. Colore naturale bruno-verde
+con riflessi bluastri e puntini chiari.
+Dimensione: 10–12 cm
+Origine: sud-est USA, Florida, Texas
+Longevità: 3–4 anni
+
+Comportamento:
+Pacifico ma dominante, soprattutto i maschi in presenza di altri con pinne simili. Ha bisogno
+di ampio spazio per nuotare.
+
+Cure:
+
+• Vasca grande: almeno 100 litri
+
+• Temperatura: 24–27 °C
+
+• Ama acque dure e leggermente salmastre
+
+• Alimentazione con buona quota vegetale
+
+Pro:
+✔ Molto decorativo
+✔ Pinna dorsale spettacolare nei maschi
+✔ Resistente se tenuto in vasche ampie
+✔ Si adatta anche ad ambienti salmastri
+
+Contro:
+✖ Necessita molto spazio e ossigenazione
+✖ I maschi possono essere territoriali
+✖ Poco adatto ad acquari piccoli o sovraffollati
+Poecilia velifera – Molly velifera
+
+Descrizione:
+La specie più grande e imponente tra i Molly. Molto simile alla latipinna, ma ancora più
+massiccia, con pinna dorsale altissima e ampia, e corpo robusto. Colorazione naturale
+argentata con riflessi verdi/blu.
+Dimensione: fino a 15 cm
+Origine: Penisola dello Yucatán (Messico)
+Longevità: 3–4 anni
+
+Comportamento:
+Tranquillo ma dominante, particolarmente sensibile alle condizioni dell’acqua. Vive bene in
+gruppi ma necessita di spazio.
+
+Cure:
+
+• Vasca molto ampia: almeno 150 litri
+
+• Acqua calda, pulita, con leggera salinità
+
+• Molta vegetazione e zone di nuoto libero
+
+• Alimentazione abbondante, anche vegetale
+
+Pro:
+✔ Spettacolare, ideale per show tank
+✔ Più raro, apprezzato dagli appassionati
+✔ Compatibile con altri pesci tranquilli
+
+Contro:
+✖ Poco adatto ai principianti
+✖ Richiede vasche grandi e filtraggio potente
+✖ Sensibile a cambi d’acqua e stress
+✖ Pinna dorsale soggetta a morsi o malattie in vasche inappropriate
+Varietà in base al colore
+
+Black Molly
+
+Descrizione: Interamente nera, corpo elegante e uniforme. Derivata da Poecilia sphenops.
+Pro: Elegante, resistente, molto comune.
+Contro: Può essere soggetta a micosi (pelle scura = meno evidenti).
+Cure: Nessuna esigenza particolare oltre quelle generali dei Molly.
+
+Dalmatian Molly
+
+Descrizione: Bianca con macchie nere irregolari, aspetto simile a un dalmata.
+Pro: Molto decorativa, facile da trovare.
+Contro: Macchie tendono a cambiare/disperdersi con l’età.
+Cure: Come il Black Molly.
+
+Gold Dust Molly
+
+Descrizione: Corpo nero con sfumature oro sulla parte anteriore.
+Pro: Aspetto unico e scintillante.
+Contro: Più delicata di altre; colori meno stabili geneticamente.
+Cure: Necessaria buona qualità dell’acqua per mantenerne la brillantezza.
+
+Silver Molly
+
+Descrizione: Argento brillante, riflessi metallici su corpo chiaro.
+Pro: Elegante, spesso usata in acquari moderni.
+Contro: Meno robusta rispetto al Black Molly.
+Cure: Necessita buona ossigenazione.
+
+Golden Molly
+
+Descrizione: Corpo color oro vivo, a volte con riflessi ramati.
+Pro: Molto visibile in vasca, ottimo contrasto con vegetazione.
+Contro: Colorazione può sbiadire in condizioni stressanti.
+Cure: Buona dieta e poca competizione in vasca.
+White Molly / Platinum Molly
+
+Descrizione: Bianca o perlacea, riflessi metallizzati.
+Pro: Elegante, ideale in acquari “minimal”.
+Contro: Delicata, visibili facilmente lesioni e malattie.
+Cure: Sensibile a micosi, attenzione alla qualità dell’acqua.
+
+Creamsicle Molly
+
+Descrizione: Arancio e bianco, simile a un gelato “creamsicle”.
+Pro: Vivace, allegra, adatta anche ai bambini.
+Contro: Non sempre facile da trovare nei negozi standard.
+Cure: Standard.
+
+Marble Molly
+
+Descrizione: Marmorizzata, con chiazze nere, grigie, bianche o dorate. Ogni esemplare è unico.
+Pro: Aspetto variabile e decorativo.
+Contro: Alcuni esemplari tendono a perdere il pattern nel tempo.
+Cure: Come le altre, attenzione a non sovraffollare.
+
+Varietà in base alla forma del corpo o delle
+pinne
+
+Lyretail Molly
+
+Descrizione: Coda “a lira” allungata e biforcuta, molto decorativa.
+Pro: Elegante e molto richiesta.
+Contro: Le pinne sono delicate, sensibili al morso di altri pesci.
+Cure: Evitare compagni mordipinne; acqua ben filtrata.
+Balloon Molly
+
+Descrizione: Corpo corto e bombato, ottenuto tramite selezione genetica.
+Pro: Aspetto simpatico, vivace.
+Contro: Molto controversa: soffre spesso di problemi alla vescica natatoria, difficoltà
+
+motorie, stress cronico.
+Cure: Evitare sovraffollamento; non adatta a vasche con corrente forte.
+
+Sailfin Molly (Poecilia latipinna)
+
+Descrizione: Grande pinna dorsale simile a una vela, specie robusta e più grande.
+Pro: Imponente e spettacolare; adatta anche ad acquari leggermente salmastri.
+Contro: Ha bisogno di molto spazio e ossigeno.
+Cure: Vasche da 100+ litri, buon filtro e piante robuste.
+
+Shortfin Molly
+
+Descrizione: Pinne corte, forma simile al Molly “selvatico” (più agile e naturale).
+Pro: Resistente, comportamento attivo, meno incline a problemi genetici.
+Contro: Meno ornamentale.
+Cure: Ottimo per acquari comunitari.

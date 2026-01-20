@@ -1,0 +1,270 @@
+# Estratto da: DESCRIZIONE GRUPPO 7_razzacanine.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:40.058Z
+# Caratteri: 8938
+# ---
+
+GRUPPO 7
+
+1. Bracco Italiano
+
+Descrizione: Cane da caccia italiano di taglia medio-grande, ottimo nuotatore con mantello
+corto.
+Comportamento: Dolce, equilibrato, molto intelligente e versatile.
+Problemi comuni: Otiti, displasia, allergie cutanee.
+Cure: Attività fisica quotidiana, pulizia orecchie, spazzolatura leggera.
+Pro: Eccellente cane per famiglie e cacciatori.
+Contro: Poca adattabilità alla vita urbana se non stimolato.
+
+2. Braque d'Auvergne
+
+Descrizione: Bracco francese con mantello tigrato blu e arancio.
+Comportamento: Calmo, sensibile, dedito al padrone.
+Problemi comuni: Otiti, displasia.
+Cure: Passeggiate regolari, cura del pelo corto, igiene auricolare.
+Pro: Ottimo nel riporto e lavoro in acqua.
+Contro: Raro e impegnativo nella gestione.
+
+3. Braque du Bourbonnais
+
+Descrizione: Bracco francese rustico, mantello maculato e corto.
+Comportamento: Affettuoso, dedito alla caccia con ottimo fiuto.
+Problemi comuni: Displasia, otiti.
+Cure: Movimento continuo, toelettatura base.
+Pro: Cane da caccia valido e affettuoso.
+Contro: Energico, non basta un giardino.
+
+4. Braque Français (Gascogne, Pyrénées)
+
+Descrizione: Due varietà tradizionali, eleganti e robuste, da caccia.
+Comportamento: Leali, collaborativi, instancabili.
+Problemi comuni: Otiti, displasia.
+Cure: Esercizio e pulizia orecchie.
+Pro: Instancabili nel lavoro.
+Contro: Molto attivi, poco adattabili a vita cittadina.
+5. Braque Saint-Germain
+
+Descrizione: Bracco francese medio, pratico e robusto.
+Comportamento: Intelligente, equilibrato, familiare.
+Problemi comuni: Otiti, displasia.
+Cure: Attività costante, spazzolatura.
+Pro: Buon cane da caccia e compagnia.
+Contro: Poco diffuso.
+
+6. Cesky Fousek
+
+Descrizione: Bracco ceco dal pelo ruvido corto e folto.
+Comportamento: Dolce, equilibrato, affettuoso.
+Problemi comuni: Otiti, displasia.
+Cure: Passeggiate lunghe, cura pelo ruvido.
+Pro: Versatile e ottimo con famiglia.
+Contro: Richiede molto esercizio.
+
+7. Deutsch Drahthaar
+
+Descrizione: Bracco tedesco a pelo duro, robusto e atletico.
+Comportamento: Intelligente, addestrabile, disciplinato.
+Problemi comuni: Otiti, displasia.
+Cure: Toelettatura con stripping, movimento regolare.
+Pro: Cane da caccia e sport cinofilo eccellente.
+Contro: Impegno notevole per addestramento + cura pelo.
+
+8. Deutsch Kurzhaar
+
+Descrizione: Bracco corto tedesco, atletico, pelo corto impermeabile.
+Comportamento: Intelligente, versatile, instancabile.
+Problemi comuni: Otiti, patologie articolari.
+Cure: Stimoli mentali, esercizio, igiene orecchie.
+Pro: Ottimo cane da caccia e lavoro.
+Contro: Energia alta, non adatto a proprietari inesperti.
+9. Drentsche Patrijshond
+
+Descrizione: Bracco olandese pelo medio ruvido, simpatico.
+Comportamento: Allegro, obbediente, affettuoso.
+Problemi comuni: Displasia, otiti.
+Cure: Spazzolatura regolare, attività.
+Pro: Ottimo cane da casa e caccia.
+Contro: Richiede spazio e attività.
+
+10. Épagneul Picard
+
+Descrizione: Spaniel francese a pelo lungo ruvido, rustico.
+Comportamento: Dolce, attento, ideale per famiglia.
+Problemi comuni: Otiti, allergie.
+Cure: Toelettatura leggera, pulizia orecchie.
+Pro: Versatile, adatto con bambini.
+Contro: Poco conosciuto, reperibilità limitata.
+
+11. Épagneul Pont-Audemer
+
+Descrizione: Spaniel acquatico francese, pelo ondulato, robusto.
+Comportamento: Energico, affettuoso, amante dell’acqua.
+Problemi comuni: Otiti, displasia.
+Cure: Asciugatura regolare dopo bagni, esercizio.
+Pro: Ottimo cacciatore d’acqua, buono con famiglie.
+Contro: Disperso, toelettatura impegnativa.
+
+12. Épagneul Bleu de Picardie
+
+Descrizione: Spaniel francese dal mantello blu-grigio, rustico.
+Comportamento: Socievole, stabile, ottimo fiuto.
+Problemi comuni: Otiti, displasia.
+Cure: Passeggiate e igiene auricolare.
+Pro: Affidabile per caccia e famiglia.
+Contro: Poco comune.
+13. English Setter
+
+Descrizione: Cane elegante, mantello setoso, taglia media-grande.
+Comportamento: Dolce, collaborativo, agile.
+Problemi comuni: Otiti, displasia, epilessia.
+Cure: Toelettatura del mantello, attività giornaliera.
+Pro: Ottimo cane da caccia e famiglia.
+Contro: Richiede cura del pelo regolare.
+
+14. English Pointer
+
+Descrizione: Bracco britannico snello, cane da punta iconico.
+Comportamento: Energico, equilibrato, instancabile.
+Problemi comuni: Otiti, problemi articolari.
+Cure: Stimoli costanti, igiene auricolare.
+Pro: Fantastico nel campo e nelle attività all’aperto.
+Contro: Energia elevata, richiede tempo.
+
+15. French Spaniel
+
+Descrizione: Spaniel francese classico, intellegente e solido.
+Comportamento: Equilibrato, affettuoso, vigile.
+Problemi comuni: Otiti, displasia.
+Cure: Spazzolatura leggera, esercizio.
+Pro: Versatile, adatto a famiglie.
+Contro: Poco diffuso.
+
+16. German Spaniel (Deutsche Wachtelhund)
+
+Descrizione: Spaniel tedesco a pelo ondulato, di media taglia.
+Comportamento: Dolce, laborioso, famigliare.
+Problemi comuni: Otiti, displasia.
+Cure: Attività regolare, cura del pelo umido.
+Pro: Ottimo in acqua e in famiglia.
+Contro: Poco diffuso in Italia.
+17. German Wirehaired Pointer
+
+Descrizione: Pointer tedesco a pelo duro e ispido.
+Comportamento: Intelligente, versatile, testardo.
+Problemi comuni: Otiti, displasia, allergie.
+Cure: Stripping setole, esercizio intenso.
+Pro: Cane da caccia e sport eccellente.
+Contro: Cura del pelo impegnativa.
+
+18. Irish Red and White Setter
+
+Descrizione: Setter irlandese bicolore, elegante e rustico.
+Comportamento: Energetico, affettuoso, collaborativo.
+Problemi comuni: Displasia, otiti.
+Cure: Toelettatura dettagliata, esercizio.
+Pro: Cane da lavoro e famiglia ideale.
+Contro: Richiede cura del mantello.
+
+19. Irish Setter
+
+Descrizione: Setter rosso vivo, molto elegante e atletico.
+Comportamento: Gioioso, indipendente, energico.
+Problemi comuni: Displasia, problemi cutanei.
+Cure: Toelettatura elaborata, movimento quotidiano.
+Pro: Splendido e vivace compagnia.
+Contro: Ha bisogno di spazio e cure.
+
+20. Italian Spinone
+
+Descrizione: Cane da caccia italiano a pelo ruvido e folto.
+Comportamento: Calmo, paziente, instancabile cacciatore.
+Problemi comuni: Otiti, displasia.
+Cure: Spazzolatura leggera, pulizia auricolare.
+Pro: Molto affettuoso, adatto a famiglie.
+Contro: Poco diffuso, necessita stimoli specifici.
+21. Large Münsterländer
+
+Descrizione: Bracco tedesco a pelo medio-lungo, tricolore.
+Comportamento: Dolce, intelligente, versatile.
+Problemi comuni: Otiti, displasia.
+Cure: Spazzolatura regolare, esercizio.
+Pro: Cane da caccia e famiglia ideale.
+Contro: Poco diffuso.
+
+22. Magyar Vizsla
+
+Descrizione: Bracco ungherese, pelo corto e lucido, atletico.
+Comportamento: Leale, energico, molto attaccato alla famiglia.
+Problemi comuni: Displasia, epilessia, allergie.
+Cure: Stimoli mentali, esercizio, pulizia orecchie.
+Pro: Cane da lavoro e companion eccezionale.
+Contro: Richiede attività costante.
+
+23. Norwegian Buhund
+
+(già descritto in gruppo 5, riporto solo pro/contro)
+Pro: Cane da pastore vivace e familiare.
+Contro: Richiede movimento e stimoli.
+
+24. Perdiguero de Burgos
+
+Descrizione: Segugio spagnolo da caccia, mantello corto.
+Comportamento: Coraggioso, affidabile, affettuoso.
+Problemi comuni: Displasia.
+Cure: Passeggiate regolari, spazzolatura leggera.
+Pro: Ottimo cane da caccia e famiglia.
+Contro: Poco noto in Italia.
+
+25. Pointer
+
+Descrizione: Bracco britannico iconico, elegante e atletico.
+Comportamento: Energico, equilibrato, intelligente.
+Problemi comuni: Otiti, displasia.
+Cure: Esercizio, igiene orecchie.
+Pro: Variante superiore da caccia e compagnia.
+Contro: Non adatto a ambienti sedentari.
+26. Polish Hunting Dog (Ogar Polski)
+
+Descrizione: Segugio polacco di taglia grande e robusta.
+Comportamento: Forte, fedele, coraggioso.
+Problemi comuni: Displasia.
+Cure: Movimento costante, dieta.
+Pro: Ottimo cane da caccia, vel covale.
+Contro: Poco comune.
+
+27. Portuguese Pointer
+
+Descrizione: Bracco portoghese elegante, robusto.
+Comportamento: Collaborativo, energico, intelligente.
+Problemi comuni: Otiti, displasia.
+Cure: Passeggiate lunghe, igiene.
+Pro: Cane da caccia versatile.
+Contro: Poco noto.
+
+28. Segugio Italiano (varie razze da caccia)
+
+Descrizione: Include diverse varietà tra pelo forte/raso, medie dimensioni.
+Comportamento: Tenaci, resistenti, docili.
+Problemi comuni: Displasia, otiti.
+Cure: Movimento quotidiano.
+Pro: Cani da caccia attivi e affettuosi.
+Contro: Richiedono spazi ampi.
+
+29. Small Münsterländer
+
+Descrizione: Bracco tedesco di taglia media, simile al Large.
+Comportamento: Dolce, intelligente, attivo.
+Problemi comuni: Otiti, allergie.
+Cure: Attività fisica e cura del mantello.
+Pro: Ottimo per sport e famiglia.
+Contro: Poco diffuso.
+30. Spinone Italiano
+(già descritto al punto 20)
+
+31. Weimaraner
+Descrizione: Cane da caccia tedesco grigio, elegante, atletico.
+Comportamento: Energico, intelligente, affettuoso.
+Problemi comuni: Displasia, problemi autoimmuni.
+Cure: Stimoli mentali, esercizio, dieta controllata.
+Pro: Cane da sport e famiglia.
+Contro: Richiede molta attività e impegno.

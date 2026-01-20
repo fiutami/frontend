@@ -1,0 +1,95 @@
+# Estratto da: INFO_CARAT_VARIETA_pescirossi.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.929Z
+# Caratteri: 3937
+# ---
+
+DESCRIZIONE VARIETA PESCI ROSSI
+
+Common Goldfish (Pesce rosso comune)
+Descrizione: Corpo allungato, singola pinna caudale, colore rosso o dorato.
+Comportamento: Molto attivo, curioso e resistente.
+Esigenze: Spazio ampio (vasche grandi o laghetti), temperatura 18–22°C, acqua ben filtrata.
+Pro: Facile da allevare, molto resistente, adatto ai principianti.
+Contro: Cresce molto (oltre 25 cm), ha bisogno di tanto spazio e può disturbare varietà più
+lente.
+
+Cometa (Comet Goldfish)
+Descrizione: Corpo snello come il Common, ma con pinna caudale molto lunga e biforcuta.
+Comportamento: Vivace, veloce, gregario.
+Esigenze: Acquario lungo o laghetto, buona ossigenazione, acqua pulita.
+Pro: Molto resistente, bello da vedere in movimento, si adatta bene ai laghetti.
+Contro: Può stressare varietà più lente, difficile da gestire in piccoli acquari.
+
+Shubunkin
+Descrizione: Corpo simile al Cometa, con colorazione calico (maculato rosso, blu, nero e
+bianco).
+Comportamento: Molto attivo, adatto alla vita in gruppo.
+Esigenze: Stesse del Cometa, ama la compagnia.
+Pro: Robusto, bella colorazione, ottimo per laghetti.
+Contro: Poco adatto a varietà ornamentali più lente.
+
+Fantail
+Descrizione: Corpo tozzo, pinna caudale doppia e arrotondata.
+Comportamento: Tranquillo, nuotatore lento.
+Esigenze: Vasca da almeno 60 litri, fondo liscio, temperatura 20–24°C.
+Pro: Buona via di mezzo tra robustezza e bellezza.
+Contro: Più sensibile dei Cometa, non ama la corrente forte.
+Ryukin
+
+Descrizione: Corpo compatto con una caratteristica gobba dorsale, doppia coda.
+Comportamento: Abbastanza vivace ma goffo nel nuoto.
+Esigenze: Vasca ampia e ben filtrata, fondo morbido.
+Pro: Aspetto decorativo, abbastanza resistente.
+Contro: Goffaggine nel nuoto può causare stress se in compagnia di varietà più attive.
+
+Oranda
+
+Descrizione: Simile al Fantail ma con una crescita carnosa (wen) sulla testa.
+Comportamento: Calmo, ama la compagnia di altri pesci lenti.
+Esigenze: Vasca pulita, attenzione a infezioni del wen, temperatura stabile.
+Pro: Aspetto iconico e decorativo.
+Contro: Sensibile a infezioni del wen, non adatto a principianti totali.
+
+Ranchu
+
+Descrizione: Corpo globoso, senza pinna dorsale, wen pronunciato sulla testa.
+Comportamento: Tranquillo, pigro nel nuoto.
+Esigenze: Vasca poco profonda, senza oggetti taglienti, temperatura 20–24°C.
+Pro: Molto ornamentale, apprezzato in Asia.
+Contro: Estremamente delicato, richiede esperienza.
+
+Lionhead
+
+Descrizione: Simile al Ranchu ma con crescita carnosa ancora più marcata sulla testa.
+Comportamento: Lentissimo, passivo.
+Esigenze: Acquario tranquillo e pulito, niente corrente.
+Pro: Aspetto unico e simpatico.
+Contro: Alta manutenzione, soggetto a infezioni e difficoltà visive.
+Telescope
+Descrizione: Occhi sporgenti, corpo compatto, doppia pinna caudale.
+Comportamento: Tranquillo ma vulnerabile.
+Esigenze: Fondo morbido, pochi ostacoli, vasca tranquilla.
+Pro: Aspetto molto particolare, disponibile in molti colori.
+Contro: Vista limitata, soggetto a lesioni oculari.
+
+Bubble Eye
+Descrizione: Occhi rivolti in alto con sacche piene di liquido sotto. Nessuna pinna dorsale.
+Comportamento: Estremamente lento e sensibile.
+Esigenze: Vasca priva di ostacoli, corrente minima, nessun coinquilino attivo.
+Pro: Affascinante per appassionati.
+Contro: Estremamente delicato, facile da ferire, richiede molta attenzione.
+
+Pearlscale
+Descrizione: Corpo tondo con scaglie sporgenti simili a perle.
+Comportamento: Calmo, poco agile.
+Esigenze: Alimentazione controllata, acqua pulita, attenzione al nuoto limitato.
+Pro: Aspetto curioso, ideale per acquari tranquilli.
+Contro: Sensibile a problemi di galleggiamento e costipazione.
+
+Celestial Eye
+Descrizione: Occhi rivolti verso l’alto, nessuna pinna dorsale.
+Comportamento: Molto passivo, goffo nel nuoto.
+Esigenze: Vasca dedicata, nessun oggetto sopra la testa.
+Pro: Rarissimo, collezionabile.
+Contro: Vista compromessa, vive bene solo da solo o con simili.

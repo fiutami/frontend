@@ -1,0 +1,110 @@
+# Estratto da: DESCRIZIONE GRUPPO 3_razzacanina.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:39.920Z
+# Caratteri: 4649
+# ---
+
+GRUPPO 3
+
+1. Airedale Terrier
+
+Descrizione generale: È il più grande tra i terrier, noto come “Re dei Terrier”. Cane robusto,
+atletico, con pelo duro e denso.
+Comportamento: Intelligente, energico, molto fedele e coraggioso. Adatto a famiglie attive.
+Problemi genetici: Displasia dell'anca, problemi cutanei, allergie.
+Cure: Toelettatura regolare per mantenere il pelo in ordine, esercizio quotidiano intenso.
+Pro: Ottimo cane da lavoro e da compagnia, molto versatile.
+Contro: Richiede molto esercizio e stimoli mentali, non adatto a chi cerca un cane tranquillo.
+
+2. American Staffordshire Terrier
+
+Descrizione generale: Cane muscoloso e compatto, con pelo corto e lucido. È noto per il suo
+coraggio e lealtà.
+Comportamento: Affettuoso con la famiglia, ma può essere dominante e necessita di
+socializzazione precoce.
+Problemi genetici: Displasia dell’anca, problemi cutanei, patologie cardiache.
+Cure: Esercizio regolare, addestramento costante, attenzione alla socializzazione.
+Pro: Ottimo cane da compagnia, coraggioso e protettivo.
+Contro: Può mostrare aggressività se non educato, necessità di un padrone esperto.
+
+3. Australian Terrier
+
+Descrizione generale: Piccolo ma robusto, pelo ruvido e resistente alle intemperie. Cane da
+lavoro e da compagnia.
+Comportamento: Vivace, coraggioso e molto fedele. Buon cane da guardia.
+Problemi genetici: Problemi oculari, displasia, allergie cutanee.
+Cure: Toelettatura regolare, esercizio quotidiano.
+Pro: Ottimo per la vita in famiglia, facile da gestire.
+Contro: Richiede stimoli e movimento, può essere testardo.
+4. Bedlington Terrier
+
+Descrizione generale: Aspetto peculiare con pelo riccio e forma simile a un agnello. Cane
+agile e resistente.
+Comportamento: Dolce, intelligente e molto affettuoso con i padroni.
+Problemi genetici: Malattia epatica ereditaria (cirrosi), problemi oculari.
+Cure: Toelettatura professionale, controlli veterinari regolari per fegato.
+Pro: Ottimo cane da compagnia, molto adattabile.
+Contro: Cura del pelo complessa, sensibilità a problemi epatici.
+
+5. Border Terrier
+
+Descrizione generale: Terrier compatto, pelo duro e resistente. Originariamente allevato per
+cacciare.
+Comportamento: Allegro, affettuoso e molto energico. Ottimo con bambini.
+Problemi genetici: Problemi agli occhi, displasia, allergie.
+Cure: Toelettatura semplice, necessità di molto esercizio.
+Pro: Cane equilibrato, affettuoso e robusto.
+Contro: Bisogna tenerlo occupato per evitare distruttività.
+
+6. Irish Terrier
+
+Descrizione generale: Terrier elegante con pelo rosso acceso, pelo duro e denso.
+Comportamento: Coraggioso, leale e molto protettivo verso la famiglia.
+Problemi genetici: Displasia, problemi cutanei.
+Cure: Spazzolatura regolare, esercizio quotidiano.
+Pro: Ottimo cane da guardia, affettuoso con i suoi.
+Contro: Può essere territoriale, richiede padrone deciso.
+
+7. Kerry Blue Terrier
+
+Descrizione generale: Terrier irlandese con pelo blu-grigio, morbido e riccio.
+Comportamento: Vivace, intelligente, con un carattere forte e indipendente.
+Problemi genetici: Problemi cutanei, displasia, glaucoma.
+Cure: Toelettatura complessa, attività fisica regolare.
+Pro: Ottimo cane da compagnia e da lavoro.
+Contro: Richiede cura del pelo intensiva, può essere testardo.
+8. Lakeland Terrier
+
+Descrizione generale: Terrier vivace e robusto, con pelo duro e denso.
+Comportamento: Energico, intelligente e indipendente.
+Problemi genetici: Problemi oculari, allergie.
+Cure: Toelettatura regolare, molta attività fisica.
+Pro: Buon cane da famiglia e da compagnia.
+Contro: Può essere territoriale e testardo.
+
+9. Manchester Terrier
+
+Descrizione generale: Terrier elegante con pelo corto nero e focature. Agile e scattante.
+Comportamento: Intelligente, affettuoso, con forte istinto di caccia.
+Problemi genetici: Problemi agli occhi, displasia.
+Cure: Toelettatura minima, esercizio regolare.
+Pro: Facile da curare, ottimo per famiglie.
+Contro: Può inseguire piccoli animali, ha bisogno di stimoli.
+
+10. Parson Russell Terrier
+
+Descrizione generale: Terrier vivace e atletico, pelo liscio o ruvido.
+Comportamento: Molto energico, intelligente e determinato.
+Problemi genetici: Problemi agli occhi, displasia.
+Cure: Spazzolatura regolare, esercizio intenso.
+Pro: Cane molto attivo e intelligente.
+Contro: Può essere difficile da gestire senza attività.
+
+11. Welsh Terrier
+
+Descrizione generale: Terrier compatto con pelo duro color marrone e nero.
+Comportamento: Vivace, affettuoso, ma anche indipendente.
+Problemi genetici: Allergie, displasia.
+Cure: Toelettatura regolare, esercizio quotidiano.
+Pro: Buon cane da famiglia, molto resistente.
+Contro: Può essere testardo, richiede educazione ferma.

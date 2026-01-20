@@ -1,0 +1,379 @@
+# Estratto da: elenco_ RAZZE CANINE.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:40.159Z
+# Caratteri: 9098
+# ---
+
+ELENCO RAZZE CANINE
+
+1. Suddividere le razze per i 10 gruppi FCI:
+o Gruppo 1: Sheepdogs & Cattledogs
+o Gruppo 2: Pinscher, Schnauzer, Molossian, Swiss Mountain
+o Gruppo 3: Terrier
+o Gruppo 4: Dachshunds
+o Gruppo 5: Spitz & Razze primitive
+o Gruppo 6: Segugi e affini
+o Gruppo 7: Bracchi (Pointing Dogs)
+o Gruppo 8: Retrievers & Water dogs
+o Gruppo 9: Companion & Toy
+o Gruppo 10: Levrieri (Sighthounds)
+
+� Gruppo 1 – Cani da pastore e bovari (esclusi bovari
+svizzeri)
+
+1. Australian Cattle Dog
+2. Australian Kelpie
+3. Australian Shepherd
+4. Bearded Collie
+5. Beauceron
+6. Belgian Shepherd Dog (Malinois, Tervuren, Groenendael, Laekenois)
+7. Bergamasco Shepherd Dog
+8. Berger Blanc Suisse (Pastore Svizzero Bianco)
+9. Border Collie
+10. Bouvier des Ardennes
+11. Bouvier des Flandres
+12. Briard
+13. Cao da Serra de Aires
+14. Cão da Serra da Estrela
+15. Cão de Castro Laboreiro
+16. Catalan Sheepdog (Gos d'Atura Català)
+17. Collie (Rough)
+18. Collie (Smooth)
+19. Croatian Sheepdog
+20. Dutch Shepherd Dog
+21. East European Shepherd
+22. German Shepherd Dog (Pastore Tedesco)
+23. Komondor
+24. Kuvasz
+25. Maremma and Abruzzese Sheepdog
+26. Miniature American Shepherd
+27. Old English Sheepdog
+28. Picardy Sheepdog (Berger Picard)
+29. Polish Lowland Sheepdog
+30. Polish Tatra Sheepdog
+31. Puli
+32. Pumi
+33. Pyrenean Shepherd (face rase e museau normal)
+34. Romanian Bucovina Shepherd Dog
+35. Romanian Carpathian Shepherd Dog
+36. Romanian Mioritic Shepherd Dog
+37. Schapendoes
+38. Shetland Sheepdog
+39. Slovak Cuvac
+40. South Russian Shepherd Dog
+41. Spanish Water Dog
+42. Swedish Lapphund
+43. Swedish Vallhund
+44. Welsh Corgi Cardigan
+45. Welsh Corgi Pembroke
+46. White Swiss Shepherd Dog
+
+Gruppo 2 – Pinscher, Schnauzer, Molossoidi e Bovari Svizzeri. Questo gruppo raccoglie cani
+robusti da guardia, difesa, utilità e pastorizia alpina.
+
+�� Gruppo 2 – Pinscher, Schnauzer, Molossoidi e Bovari
+Svizzeri
+
+Sezione 1 – Pinscher e Schnauzer
+
+1. Affenpinscher
+2. Austrian Pinscher
+3. Dobermann
+4. German Pinscher
+5. Miniature Pinscher
+6. Riesenschnauzer (Giant Schnauzer)
+7. Schnauzer (Standard)
+8. Miniature Schnauzer
+
+Sezione 2 – Molossoidi
+
+Tipo Mastino:
+
+9. Bulldog
+10. Bullmastiff
+11. Cane Corso
+12. Dogo Argentino
+13. Dogo Canario (Presa Canario)
+14. Dogue de Bordeaux
+15. Fila Brasileiro
+16. Mastiff
+17. Mastino Napoletano
+18. Pyrenean Mastiff
+19. Spanish Mastiff
+20. Tibetan Mastiff
+21. Tosa Inu
+
+Tipo Bovaro:
+
+22. Anatolian Shepherd Dog (Kangal)
+23. Broholmer
+24. Central Asian Shepherd Dog
+25. Caucasian Shepherd Dog
+26. Great Dane (Alano Tedesco)
+27. Leonberger
+28. Newfoundland
+29. Saint Bernard (a pelo lungo e corto)
+
+Sezione 3 – Bovari Svizzeri
+
+30. Appenzeller Sennenhund
+31. Bernese Mountain Dog (Bovaro del Bernese)
+32. Entlebucher Sennenhund
+33. Greater Swiss Mountain Dog (Bovaro Svizzero)
+
+il Gruppo 3 – Terrier. Questo gruppo comprende razze selezionate principalmente per la caccia a
+piccoli animali, come roditori e animali da tana, e si distingue per temperamento vivace, coraggio e
+determinazione.
+
+� Gruppo 3 – Terrier
+
+Sezione 1 – Terrier di grande e media taglia
+
+1. Airedale Terrier
+2. American Staffordshire Terrier
+3. Australian Terrier
+4. Bedlington Terrier
+5. Border Terrier
+6. Irish Terrier
+7. Kerry Blue Terrier
+8. Lakeland Terrier
+9. Manchester Terrier
+10. Parson Russell Terrier
+11. Welsh Terrier
+
+Sezione 2 – Terrier di piccola taglia
+
+12. Cairn Terrier
+13. Dandie Dinmont Terrier
+14. Fox Terrier (a pelo liscio)
+15. Fox Terrier (a pelo ruvido)
+16. Jack Russell Terrier
+17. Norfolk Terrier
+18. Norwich Terrier
+19. Scottish Terrier
+20. Sealyham Terrier
+21. Skye Terrier
+22. West Highland White Terrier
+23. Yorkshire Terrier
+
+Sezione 3 – Terrier da compagnia
+
+24. Australian Silky Terrier
+25. Cesky Terrier
+26. English Toy Terrier (Black and Tan)
+27. Japanese Terrier
+28. Miniature Bull Terrier
+29. Toy Fox Terrier
+
+il Gruppo 4 – Bassotti (Dachshund). Questo gruppo è dedicato esclusivamente a una sola razza, il
+Bassotto, che però si distingue in diverse varietà per taglia e tipo di pelo.
+
+� Gruppo 4 – Bassotti (Dachshund)
+
+Razza unica:
+
+1. Dachshund / Bassotto Tedesco
+
+Varietà per taglia:
+
+• Standard
+• Nano (Miniature)
+• Kaninchen (da coniglio)
+
+Varietà per tipo di pelo:
+
+• Pelo corto
+• Pelo duro
+• Pelo lungo
+
+� Combinazioni totali riconosciute:
+→ 3 taglie × 3 tipi di pelo = 9 varietà ufficiali
+Gruppo 5 – Spitz e razze primitive. Qui troviamo razze caratterizzate da pelo spesso, orecchie
+erette, coda arricciata e antiche origini, spesso usate come cani da caccia, da guardia o da
+compagnia.
+
+� Gruppo 5 – Spitz e Razze Primitive
+
+1. Alaskan Malamute
+2. American Eskimo Dog
+3. Canadian Eskimo Dog
+4. Chow Chow
+5. Eurasier
+6. Finnish Lapphund
+7. Finnish Spitz
+8. Greenland Dog
+9. Icelandic Sheepdog
+10. Japanese Akita Inu
+11. Keeshond
+12. Kishu Ken
+13. Norwegian Buhund
+14. Norwegian Elkhound
+15. Norwegian Lundehund
+16. Perro de Presa Canario (anche in Gruppo 2 ma a volte indicato qui)
+17. Pomsky (non ufficiale FCI, ma diffuso come incrocio)
+18. Samoyed
+19. Shiba Inu
+20. Siberian Husky
+21. Swedish Lapphund
+22. Swedish Vallhund
+23. Tamaskan Dog
+24. Utonagan
+25. Alano Español (Spanish Alano)
+26. Basenji
+27. Shikoku
+28. Kai Ken
+29. Laika (Razze Laika Russe varie: Russo-Europeo, West Siberian, East Siberian)
+
+Gruppo 6 – Segugi e cani per piste di sangue (Cani da caccia a olfatto), cani usati soprattutto
+per seguire la traccia olfattiva di selvaggina, apprezzati per fiuto e resistenza.
+
+� Gruppo 6 – Segugi e Cani per piste di sangue
+
+1. American Foxhound
+2. Anglo-Français de Petite Vénerie
+3. Ariegeois
+4. Basset Artesien Normand
+5. Basset Bleu de Gascogne
+6. Basset Fauve de Bretagne
+7. Basset Hound
+8. Beagle
+9. Bloodhound
+10. Bleu de Gascogne
+11. Bruno Jura Hound
+12. Chien de Saint-Hubert (Bloodhound)
+13. Drever
+14. English Foxhound
+15. Estonian Hound
+16. Grand Bleu de Gascogne
+17. Hamiltonstövare
+18. Harrier
+19. Istrian Shorthaired Hound
+20. Istrian Coarse-haired Hound
+21. Norwegian Elkhound
+22. Otterhound
+23. Poitevin
+24. Porcelaine
+25. Segugio Italiano a Pelo Forte
+26. Segugio Italiano a Pelo Raso
+27. Segugio Maremmano
+28. Schillerstövare
+29. Slovakian Rough-haired Pointer
+30. Styrian Coarse-haired Hound
+31. Swiss Hound
+32. Westphalian Dachsbracke
+33. West Highland White Terrier (anche in gruppo 3)
+34. Norwegian Lundehund (anche in gruppo 5)
+
+al Gruppo 7 – Bracchi e cani da punta (Pointing Dogs), cani da caccia specializzati nel
+localizzare la selvaggina e segnalarla con la postura.
+
+� Gruppo 7 – Bracchi e Cani da Punta
+
+1. Bracco Italiano
+2. Braque d'Auvergne
+3. Braque du Bourbonnais
+4. Braque Français (Gascogne, Pyrenean)
+5. Braque Saint-Germain
+6. Cesky Fousek
+7. Deutsch Drahthaar
+8. Deutsch Kurzhaar
+9. Drentsche Patrijshond
+10. Epagneul Picard
+11. Epagneul Pont-Audemer
+12. Epagneul Picard
+13. Epagneul Bleu de Picardie
+14. English Setter
+15. English Pointer
+16. French Spaniel
+17. German Spaniel
+18. German Wirehaired Pointer
+19. Irish Red and White Setter
+20. Irish Setter
+21. Italian Spinone
+22. Large Munsterlander
+23. Magyar Vizsla
+24. Norwegian Buhund (anche gruppo 5)
+25. Perdiguero de Burgos
+26. Pointer
+27. Polish Hunting Dog (Ogar Polski)
+28. Portuguese Pointer
+29. Segugio Italiano (varie razze da caccia)
+30. Small Munsterlander
+31. Spinone Italiano (variante del gruppo 7)
+32. Weimaraner
+
+Gruppo 8 – Retrievers, Cani da acqua e Cani da riporto, noti per le loro abilità nel recupero di
+selvaggina, nuoto e lavoro con cacciatori.
+
+� Gruppo 8 – Retrievers, Cani da acqua e Cani da riporto
+
+1. Chesapeake Bay Retriever
+2. Curly-Coated Retriever
+3. Flat-Coated Retriever
+4. Golden Retriever
+5. Labrador Retriever
+6. Nova Scotia Duck Tolling Retriever
+7. American Water Spaniel
+8. Barbet
+9. Boykin Spaniel
+10. Clumber Spaniel
+11. Cocker Spaniel Inglese
+12. Cocker Spaniel Americano
+13. English Water Spaniel
+14. Irish Water Spaniel
+15. Sussex Spaniel
+16. Welsh Springer Spaniel
+17. American Cocker Spaniel
+18. Spanish Water Dog
+19. Lagotto Romagnolo
+20. Irish Water Spaniel
+
+Gruppo 9 – Cani da compagnia e toy, piccoli cani selezionati per il carattere affettuoso, la
+compagnia e spesso la vita in ambienti urbani.
+
+� Gruppo 9 – Cani da compagnia e Toy
+
+1. Affenpinscher (piccola taglia, già visto in Gruppo 2)
+2. Bichon Frisé
+3. Bolognese
+4. Brussels Griffon
+5. Cavalier King Charles Spaniel
+6. Chihuahua
+7. Chinese Crested
+8. English Toy Terrier
+9. Havanese
+10. Italian Greyhound (Piccolo Levriero Italiano)
+11. Japanese Chin
+12. Maltese
+13. Miniature Pinscher
+14. Papillon
+15. Pekingese
+16. Petit Brabançon
+17. Pomeranian
+18. Pug (Carlino)
+19. Shih Tzu
+20. Silky Terrier
+21. Toy Poodle
+22. Yorkshire Terrier
+
+il Gruppo 10 – Levrieri (Sighthounds), cani specializzati nella caccia con vista e velocità.
+
+� Gruppo 10 – Levrieri (Sighthounds)
+
+1. Afghan Hound
+2. Azawakh
+3. Barzoi (Levrier Russo)
+4. Deerhound Scozzese
+5. Greyhound
+6. Ibizan Hound
+7. Irish Wolfhound
+8. Italian Greyhound
+9. Magyar Agar (Ungherese)
+10. Peruvian Inca Orchid (non un levriero ma spesso associato)
+11. Pharaoh Hound
+12. Portuguese Greyhound (Galgo Português)
+13. Saluki
+14. Sloughi
+15. Whippet
+16. Cirneco dell’Etna
+17. Scottish Deerhound

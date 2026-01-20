@@ -1,0 +1,718 @@
+# Estratto da: DESCRIZIONE_razze coniglio.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:40.428Z
+# Caratteri: 25399
+# ---
+
+DESCRIZIONE RAZZE CONIGLI :
+
+schede sintetiche delle razze elencate, ognuna con:
+
+• � Breve descrizione
+• � Comportamento
+• � Problemi genetici
+• � Cure consigliate
+• � Pro
+• � Contro
+
+Ti consegnerò il tutto in blocchi da 3-5 razze alla volta per chiarezza e revisione.
+Ecco il primo gruppo:
+
+� American
+
+• Descrizione: Razza americana di taglia media, corpo compatto, manto blu o bianco.
+• Comportamento: Tranquilla, docile, poco attiva.
+• Problemi genetici: Poche patologie ereditarie note, ma soggetta a obesità da vita sedentaria.
+• Cure: Spazzolatura settimanale, dieta bilanciata, stimoli ambientali.
+• Pro: Facile da gestire, ottima per principianti.
+• Contro: Poco energica, può annoiarsi facilmente.
+
+� American Chinchilla
+
+• Descrizione: Derivata dalla razza Chinchilla francese, con pelo grigio argentato.
+• Comportamento: Calma, socievole, ama la compagnia umana.
+• Problemi genetici: Occhi sensibili, predisposizione a problemi dentali.
+• Cure: Controllo denti, ambiente pulito e spazio per muoversi.
+• Pro: Affettuosa, ottima per famiglie.
+• Contro: Richiede più controlli sanitari.
+
+� American Fuzzy Lop
+
+• Descrizione: Simile al Holland Lop ma con pelo lungo e morbido.
+• Comportamento: Giocoso, affettuoso, socievole con umani e animali.
+• Problemi genetici: Predisposizione a grovigli nel pelo, otite (orecchie cadenti),
+
+malocclusione dentale.
+• Cure: Spazzolatura frequente (3–4 volte a settimana), pulizia orecchie, controllo denti.
+• Pro: Dolce e divertente, ottimo da compagnia.
+• Contro: Alta manutenzione del pelo e salute.
+� American Sable
+• � Pelo marrone scuro con sfumature più chiare sul corpo, occhi scuri, taglia media.
+• � Tranquillo, riservato ma affettuoso con chi conosce.
+• � Possibile sensibilità oculare, predisposizione a obesità.
+• � Alimentazione regolata, stimoli regolari, grooming settimanale.
+• � Dolce e calmo, adatto alla vita in appartamento.
+• � Poco socievole con estranei, va abituato con pazienza.
+
+� Argente Brun
+• � Pelo marrone brillante argentato, di taglia media-grande.
+• � Affettuoso, curioso, ama le attenzioni.
+• � Nessuna condizione genetica speciﬁca nota.
+• � Pelo folto, richiede spazzolatura; attenzione all’alimentazione.
+• � Socievole e bello da vedere.
+• � Tende ad ingrassare se poco attivo.
+
+� Belgian Hare
+• � Aspetto slanciato, ricorda una lepre, pelo corto e lucido.
+• � Molto vivace, ha bisogno di stimoli e spazi.
+• � Stress facilmente, sensibilità digestiva.
+• � Movimento quotidiano, spazio ampio, dieta ricca di ﬁbre.
+• � Elegante, molto intelligente.
+• � Non adatto a bambini o spazi ristretti.
+� Beveren
+• � Taglia grande, pelo spesso (bianco, blu, nero, fulvo).
+• � Tranquillo, docile, leggermente indipendente.
+• � Può sviluppare artrosi se poco attivo.
+• � Movimento regolare, controllo unghie e peso.
+• � Pelo magniﬁco, buon carattere.
+• � Necessita molto spazio e dieta controllata.
+
+� Blanc de Hotot
+• � Bianco puro con cerchi neri intorno agli occhi; taglia media.
+• � Calmo, amichevole, equilibrato.
+• � Problemi oculari (congiuntiviti), malocclusione.
+• � Controlli dentali e oculari regolari.
+• � Aspetto unico, buon temperamento.
+• � Cura degli occhi e dei denti frequente.
+
+� Britannia Petite
+• � Molto piccolo e compatto, aspetto raffinato.
+• � Vivace, reattivo, può essere nervoso.
+• � Fragilità ossea, problemi dentali.
+• � Maneggiato con cura, stimoli mentali e ﬁsici.
+• � Esteticamente raffinato, intelligente.
+• � Poco adatto a bambini o principianti.
+� Californian
+• � Bianco con orecchie, naso e piedi scuri; razza da carne, taglia media-grande.
+• � Docile, socievole, equilibrato.
+• � Sensibilità al caldo, problemi respiratori in ambienti umidi.
+• � Ventilazione adeguata, grooming leggero.
+• � Affidabile, resistente, poco esigente.
+• � Soffre il caldo, necessita igiene costante.
+
+� Champagne d’Argent
+• � Pelo argentato con base nera, medio-grande.
+• � Gentile, curioso, ama la compagnia.
+• � Tendenza all’obesità.
+• � Dieta equilibrata e attività ﬁsica quotidiana.
+• � Aspetto elegante, ottimo animale da compagnia.
+• � Può diventare pigro se lasciato inattivo.
+
+� Checkered Giant
+• � Molto grande, pezzato bianco/nero o bianco/blu, struttura potente.
+• � Energico, socievole ma indipendente.
+• � Problemi articolari, usura unghie, stress in gabbie piccole.
+• � Ampio spazio vitale, fondo morbido per zampe.
+• � Spettacolare da vedere, intelligente.
+• � Taglia impegnativa, richiede molto spazio.
+� Cinnamon
+• � Marrone caldo con riﬂessi arancio, taglia media.
+• � Affettuoso, tranquillo, adatto ai bambini.
+• � Nessuna patologia comune nota.
+• � Controlli standard, dieta equilibrata.
+• � Buon temperamento, facile gestione.
+• � Poco diffuso fuori dagli USA.
+
+� Creme d’Argent
+• � Pelo color crema-argento, taglia media.
+• � Calmo, leggermente timido.
+• � Predisposizione a problemi dentali.
+• � Controllo denti, movimento regolare.
+• � Molto bello, tranquillo.
+• � Poco socievole se non abituato da giovane.
+
+� Dutch
+• � Piccolo, con disegni bianchi su corpo colorato (nero, blu, cioccolato…).
+• � Docile, giocherellone, ottimo per bambini.
+• � Problemi dentali e respiratori.
+• � Pulizia regolare, alimentazione con ﬁeno.
+• � Simpatico, vivace, facile da gestire.
+• � Non ama la solitudine.
+� Dwarf Hotot
+• � Miniatura bianca con occhi cerchiati di nero.
+• � Dolce, affettuoso, ama stare in braccio.
+• � Malocclusione, problemi oculari.
+• � Controllo denti, pulizia occhi.
+• � Aspetto tenero, perfetto da compagnia.
+• � Alta manutenzione, fragile.
+
+� English Angora
+• � Pelo lunghissimo ovunque, anche sulla testa; taglia piccola-media.
+• � Tranquillo, adorabile, ama l’interazione.
+• � Noduli nel pelo, infezioni cutanee se trascurato.
+• � Spazzolatura quotidiana, tosatura periodica.
+• � Estetico, affettuoso.
+• � Altissima manutenzione, non adatto a principianti.
+
+� English Lop
+• � Grandi orecchie cadenti (le più lunghe fra i conigli), taglia grande.
+• � Molto docile e coccolone.
+• � Problemi alle orecchie (otite), ferite da trascinamento.
+• � Pulizia auricolare costante, lettiera morbida.
+• � Affettuoso e mansueto.
+• � Richiede molta cura speciﬁca per le orecchie.
+� English Spot
+• � Pelo bianco con macchie nere/blu lungo la spina dorsale e il naso.
+• � Vivace, curioso, adatto a chi ha esperienza.
+• � Nessuna condizione genetica comune.
+• � Movimento regolare, pulizia accurata.
+• � Bellissimo e attivo.
+• � Può essere troppo energico per bambini piccoli.
+
+� Flemish Giant
+• � Una delle razze più grandi al mondo (ﬁno a 7 kg), corpo massiccio.
+• � Molto docile, calmo, ama interagire.
+• � Problemi articolari, obesità, pododermatite.
+• � Spazio, fondo soffice, dieta leggera.
+• � Estremamente mansueto e maestoso.
+• � Grande impegno logistico (gabbia, lettiera, cibo).
+
+� Florida White
+• � Piccolo, bianco puro, occhi rossi.
+• � Calmo, obbediente, adatto a piccoli spazi.
+• � Orecchie delicate, rischio obesità.
+• � Movimento moderato, controllo dieta.
+• � Facile da gestire, ottimo per principianti.
+• � Sensibile al caldo e luce intensa.
+� French Angora
+• � Pelo lungo, ma meno impegnativo dell’English Angora.
+• � Tranquillo, coccolone.
+• � Rischio lanugo (palle di pelo), dermatiti.
+• � Spazzolatura 2–3 volte a settimana, tosatura regolare.
+• � Elegante e affettuoso.
+• � Necessita tempo per la cura del pelo.
+
+French Lop
+• � Grande, orecchie pendenti, corpo massiccio.
+• � Affettuoso, calmo, ama interagire con l’umano.
+• � Problemi articolari e pododermatite.
+• � Ampio spazio, fondo morbido, controllo peso.
+• � Docile e affettuoso, adatto ai bambini.
+• � Richiede molto spazio e cura delle zampe.
+
+� Giant Angora
+• � Taglia grande, pelo lungo e lanoso, solo bianco.
+• � Tranquillo, gentile, poco attivo.
+• � Rischio blocchi intestinali da ingestione pelo.
+• � Tosatura frequente, spazzolatura giornaliera, dieta ricca di ﬁbre.
+• � Ottimo da compagnia se ben curato.
+• � Altissima manutenzione, non adatto a inesperti.
+� Giant Chinchilla
+• � Molto grande (ﬁno a 6 kg), pelo grigio brillante, corpo allungato.
+• � Calmo, equilibrato, non ama essere sollevato.
+• � Problemi articolari e obesità.
+• � Attività quotidiana, dieta bilanciata.
+• � Docile e affascinante.
+• � Poco gestibile in spazi piccoli.
+
+� Harlequin
+• � Pelo tigrato o a bande alternate (solitamente arancio/nero), taglia media.
+• � Vivace, curioso, estroverso.
+• � Nessun problema genetico noto.
+• � Attività ﬁsica regolare, stimoli mentali.
+• � Aspetto unico, buon carattere.
+• � Richiede attenzioni e movimento.
+
+� Havana
+• � Piccolo, compatto, pelo lucido (cioccolato, blu, nero, broken).
+• � Affettuoso, molto legato al proprietario.
+• � Tendenza all’obesità e problemi dentali.
+• � Controllo peso e denti, attività leggera.
+• � Molto affettuoso, facile da gestire.
+• � Va stimolato per evitare noia.
+� Himalayan
+• � Piccolo, bianco con estremità colorate, occhi rossi.
+• � Tranquillo, adatto a tutti.
+• � Sensibilità al freddo/caldo, problemi oculari.
+• � Ambiente stabile, buona igiene.
+• � Molto docile, adatto a principianti.
+• � Richiede attenzione a sbalzi termici.
+
+� Holland Lop
+• � Molto piccolo (1–1,8 kg), orecchie pendenti, compatto.
+• � Giocoso, intelligente, coccolone.
+• � Problemi dentali, orecchie soggette a infezioni.
+• � Pulizia regolare, dieta con ﬁeno.
+• � Ideale per appartamenti e bambini.
+• � Fragile, va maneggiato con cura.
+
+� Jersey Wooly
+• � Miniatura con pelo lanoso, testa tonda e piccole orecchie dritte.
+• � Molto docile e tenero.
+• � Problemi dentali e blocchi da pelo.
+• � Spazzolatura regolare, dieta ricca di ﬁbre.
+• � Affettuoso, poco ingombrante.
+• � Mantello richiede manutenzione costante.
+� Lilac
+• � Pelo color grigio-lilla, corpo medio-piccolo.
+• � Tranquillo, pacato, socievole.
+• � Nessun disturbo genetico noto.
+• � Cure standard, movimento regolare.
+• � Elegante e facile da gestire.
+• � Poco diffuso, può essere difficile da trovare.
+
+� Lionhead
+• � Piccolo con "criniera" attorno alla testa.
+• � Vivace, curioso, ama interagire.
+• � Problemi dentali, nodi nel pelo, sensibilità respiratoria.
+• � Spazzolatura frequente, controllo denti.
+• � Aspetto adorabile, carattere affettuoso.
+• � Mantello delicato, richiede cura.
+
+� Mini Lop
+• � Piccolo e robusto, orecchie pendenti, pelo corto e denso.
+• � Giocherellone, ama la compagnia.
+• � Orecchie soggette a infezioni, problemi dentali.
+• � Igiene auricolare e dieta con ﬁeno.
+• � Perfetto per famiglie.
+• � Può diventare territoriale se non sterilizzato.
+� Mini Rex
+• � Pelo cortissimo e vellutato, piccolo, compatto.
+• � Dolce, tranquillo, ama le coccole.
+• � Problemi cutanei (pelle delicata).
+• � Fondo morbido, attenzione a graffi e piaghe.
+• � Facile da curare, ottimo da compagnia.
+• � Non adatto a superﬁci ruvide o dure.
+
+� Mini Satin
+• � Pelo lucido e corto, corpo piccolo e compatto.
+• � Vivace, intelligente, interattivo.
+• � Rischio di obesità e problemi dentali.
+• � Alimentazione equilibrata e gioco.
+• � Aspetto lucido, buon temperamento.
+• � Richiede attività quotidiana.
+
+� Netherland Dwarf
+• � Molto piccolo (0,9–1,2 kg), testa arrotondata e orecchie corte.
+• � Timido ma dolce, può diventare molto legato all’umano.
+• � Problemi dentali gravi (prognatismo), fragilità ossea.
+• � Controlli veterinari frequenti, dieta ﬁbrosa.
+• � Adorabile e piccolo.
+• � Molto delicato, non adatto a bambini.
+� New Zealand
+• � Taglia grande, solitamente bianco (ma anche nero, rosso), occhi rossi.
+• � Docile, tranquillo, gestibile.
+• � Problemi oculari e articolari.
+• � Spazio ampio, peso sotto controllo.
+• � Buon carattere, adatto a principianti.
+• � Richiede spazio e dieta bilanciata.
+
+� Palomino
+• � Medio-grande, colore dorato o crema.
+• � Calmo, amichevole, equilibrato.
+• � Nessuna condizione genetica speciﬁca.
+• � Cura base, esercizio quotidiano.
+• � Ottimo per famiglie, aspetto solare.
+• � Meno diffuso, poco conosciuto.
+
+� Polish
+• � Piccolissima (0,9–1,2 kg), corpo compatto, occhi grandi.
+• � Vivace ma docile, molto affettuoso.
+• � Problemi dentali, fragilità ossea.
+• � Dieta ﬁbrosa, attenzione a traumi.
+• � Dolce, adorabile, perfetto per spazi piccoli.
+• � Molto delicato, va maneggiato con cura.
+� Rex
+• � Pelo corto, denso e vellutato, taglia media.
+• � Tranquillo, affettuoso, adattabile.
+• � Pelle delicata, pododermatite.
+• � Fondo morbido, igiene regolare.
+• � Facile da curare, carattere equilibrato.
+• � Evitare superﬁci dure o abrasive.
+
+� Rhinelander
+• � Taglia media, mantello bianco con macchie colorate (simile al "farfalla").
+• � Attivo, socievole, ama esplorare.
+• � Nessun disturbo genetico noto.
+• � Stimoli mentali, spazio per muoversi.
+• � Aspetto originale, buon temperamento.
+• � Ha bisogno di attività quotidiana.
+
+� Satin
+• � Pelo lucido e setoso, taglia medio-grande.
+• � Calmo, socievole, gestibile.
+• � Obesità e problemi dentali se alimentato male.
+• � Dieta equilibrata, esercizio.
+• � Bellissimo manto, buon carattere.
+• � Da non confondere con Mini Satin (più piccolo).
+� Satin Angora
+• � Pelo lungo, lucido e ﬁne, tipo Angora ma più setoso.
+• � Docile, tranquillo, poco attivo.
+• � Blocco intestinale da pelo, dermatiti.
+• � Spazzolatura giornaliera, dieta ﬁbrosa.
+• � Ideale per chi cerca un coniglio ornamentale.
+• � Richiede moltissima cura del mantello.
+
+� Silver
+• � Piccolo (1,8–2,7 kg), pelo argentato, razza antica.
+• � Vivace, energico, indipendente.
+• � Nessun disturbo noto, ma poco selezionato.
+• � Cure base, attenzione alla socializzazione.
+• � Aspetto raro e pregiato.
+• � Poco diffuso, può essere schivo.
+
+� Silver Fox
+• � Taglia grande, pelo folto e lucido (simile a volpe artica).
+• � Equilibrato, affettuoso, ama la routine.
+• � Obesità, problemi articolari.
+• � Movimento quotidiano, buona dieta.
+• � Bello, raro, gestibile.
+• � Ha bisogno di spazio e attenzione al peso.
+� Silver Marten
+• � Piccolo/medio, nero (o blu, cioccolato) con marcature argentate.
+• � Giocherellone, sveglio, curioso.
+• � Predisposizione a stress e problemi dentali.
+• � Ambiente stimolante, controllo veterinario.
+• � Bellissimo mantello, ottima compagnia.
+• � Richiede stimoli continui per non annoiarsi.
+
+� Standard Chinchilla
+• � Pelo grigio argento simile al roditore omonimo, taglia media.
+• � Tranquillo, socievole, gestibile.
+• � Problemi dentali e obesità se sedentario.
+• � Dieta ﬁbrosa, movimento quotidiano.
+• � Elegante e facile da accudire.
+• � Rischia l’obesità se poco attivo.
+
+� Tan
+• � Piccolo, pelo lucido con ventre e occhi cerchiati (marcature caratteristiche).
+• � Molto attivo, energico, curioso.
+• � Stress, rischio di graffi e morsi se mal gestito.
+• � Ambiente ricco di stimoli, interazione quotidiana.
+• � Bell’aspetto, sveglio.
+• � Non ideale per principianti o bambini piccoli.
+� Thrianta
+• � Piccolo, mantello rosso intenso uniforme.
+• � Calmo, affettuoso, gestibile.
+• � Problemi dentali, fragilità ossea.
+• � Dieta con molto ﬁeno, attenzione a traumi.
+• � Colore unico, ottimo da compagnia.
+• � Poco diffuso, difficile da reperire.
+
+� Velveteen Lop
+• � Orecchie lunghe e pendenti, pelo vellutato come il Rex.
+• � Docile, affettuoso, curioso.
+• � Infezioni auricolari, problemi alla pelle.
+• � Controllo regolare delle orecchie, fondo morbido.
+• � Aspetto tenero, molto sociale.
+• � Ancora non riconosciuto da ARBA, difficile da trovare.
+
+� American Blue
+• � Taglia grande, pelo blu-grigio, corpo allungato.
+• � Tranquillo, poco attivo, affettuoso.
+• � Problemi articolari, obesità.
+• � Controllo peso, spazio per muoversi.
+• � Paciﬁco, resistente.
+• � Raro, poco diffuso oggi.
+� American White
+• � Variante bianca dell’American Blue, occhi rossi.
+• � Calmo, tollerante, poco reattivo.
+• � Problemi oculari, obesità.
+• � Stesse cure dell’American Blue.
+• � Dolce e facile da accudire.
+• � Poco reperibile.
+
+� Alaska
+• � Taglia media, pelo nero lucido e ﬁtto.
+• � Docile, socievole, abbastanza calmo.
+• � Problemi dentali possibili.
+• � Dieta ﬁbrosa e pulizia regolare del pelo.
+• � Bellissimo mantello, facile da gestire.
+• � Non adatto a climi troppo caldi.
+
+� Argenté Bleu
+• � Pelo blu-argento brillante, taglia media.
+• � Paciﬁco, poco attivo, gestibile.
+• � Nessun problema genetico noto.
+• � Cura base, spazzolatura settimanale.
+• � Colore raro, bel carattere.
+• � Poco comune al di fuori del Regno Unito.
+
+� Argenté Noir
+• � Simile al Bleu ma con riﬂessi neri sul mantello argentato.
+• � Calmo, curioso, buono in famiglia.
+• � Predisposizione a obesità.
+• � Controllo peso e dieta ﬁbrosa.
+• � Aspetto affascinante, poco esigente.
+• � Raro, difficile da reperire.
+
+� Astrex
+• � Pelo riccio e ondulato, unico nel suo genere.
+• � Curioso, giocherellone, affettuoso.
+• � Possibili problemi dermatologici.
+• � Spazzolatura frequente, attenzione alla cute.
+• � Aspetto curioso e divertente.
+• � Pelo fragile, non tollera umidità.
+
+� Beige
+• � Colore beige uniforme, taglia media.
+• � Tranquillo, affabile, socievole.
+• � Nessuna patologia genetica nota.
+• � Cura semplice, dieta equilibrata.
+• � Ottimo coniglio da compagnia.
+• � Molto raro, allevato da pochi selezionatori.
+
+� Blanc de Bouscat
+• � Coniglio bianco gigante, occhi rosa, orecchie lunghe.
+• � Molto docile, calmo, affettuoso.
+• � Problemi articolari, obesità.
+• � Ampio spazio, controllo peso.
+• � Indole mansueta, bello da accarezzare.
+• � Taglia impegnativa, serve spazio.
+
+� Cashmere Lop
+• � Versione a pelo lungo del Mini Lop.
+• � Affettuoso, giocoso, adora il contatto.
+• � Dermatiti, blocchi da pelo ingerito.
+• � Spazzolatura costante, dieta ﬁbrosa.
+• � Dolce e coccolone.
+• � Cura del pelo molto impegnativa.
+
+� Continental Giant
+• � Uno dei conigli più grandi al mondo, può superare i 10 kg.
+• � Paciﬁco, molto calmo, quasi “canino”.
+• � Artrosi, obesità, accorciamento vita.
+• � Ampi spazi, dieta rigorosa, controlli frequenti.
+• � Ottimo compagno, sorprendente per dimensione.
+• � Richiede tanto spazio e cura, poco longevo (4–6 anni).
+
+� Deilenaar
+• � Pelo marrone-rossastro intenso, taglia media.
+• � Energico, curioso, interattivo.
+• � Possibili problemi dentali.
+• � Ambiente ricco di stimoli, ﬁeno a volontà.
+• � Bellissimo colore, carattere vivace.
+• � Poco diffuso, da socializzare bene.
+� Fauve de Bourgogne
+• � Pelo rosso fulvo, denso, taglia medio-grande.
+• � Calmo, gestibile, familiare.
+• � Obesità se sedentario.
+• � Movimento quotidiano, dieta bilanciata.
+• � Bellissimo manto caldo, buono con i bambini.
+• � Tende a ingrassare, va stimolato.
+
+� German Lop
+• � Taglia medio-grande, orecchie pendenti, corpo robusto.
+• � Tranquillo, affettuoso, adatto anche a neoﬁti.
+• � Otite, problemi alle zampe.
+• � Controlli alle orecchie, fondo morbido.
+• � Ottimo compagno, gestibile.
+• � Sensibile alle infezioni auricolari.
+
+� Golden Glavcot
+• � Piccolo con pelo dorato e argentato, occhi scuri.
+• � Vivace ma gentile.
+• � Nessun difetto genetico noto.
+• � Cura base, dieta semplice.
+• � Aspetto raro e ornamentale.
+• � Razza poco diffusa.
+� Hulstlander
+• � Bianco con occhi blu, corpo compatto.
+• � Tranquillo, affettuoso, un po’ timido.
+• � Problemi oculari (occhi blu), sordità talvolta associata.
+• � Controllo vista e udito, ambiente calmo.
+• � Dolce e affezionato.
+• � Poco diffuso e sensibile alla luce.
+
+� Marburger Feh
+• � Pelo color blu-grigio perla, taglia piccola.
+• � Sveglio, curioso, socievole.
+• � Nessuna malattia nota.
+• � Cure base, stimoli ambientali.
+• � Elegante e poco esigente.
+• � Raro al di fuori della Germania.
+
+� Marten Sable
+• � Pelo marrone scuro/grigio fumo con sfumature più chiare, taglia media.
+• � Vivace, curioso, adatto alla compagnia.
+• � Possibili problemi oculari legati al gene del colore.
+• � Monitoraggio occhi, dieta ricca di ﬁbra.
+• � Aspetto elegante, buon carattere.
+• � Sensibile alla luce intensa.
+� Meissner Lop
+• � Coniglio a orecchie cadenti, taglia grande, mantello spesso grigio o blu.
+• � Docile, paciﬁco, adatto anche a bambini.
+• � Predisposizione a otiti.
+• � Pulizia orecchie regolare, ampi spazi.
+• � Molto affettuoso.
+• � Richiede spazio e monitoraggio costante delle orecchie.
+
+� Miniature Cashmere Lop
+• � Versione ridotta del Cashmere Lop, pelo lungo e soffice.
+• � Affettuoso, ama il contatto, socievole.
+• � Problemi di pelo ingerito, blocchi intestinali.
+• � Spazzolatura quotidiana, molta ﬁbra.
+• � Compagno adorabile.
+• � Esigente nella toelettatura.
+
+� Miniature Lion Lop
+• � Taglia piccola, pelo lungo attorno alla testa tipo “leoncino”.
+• � Vivace, intelligente, affettuoso.
+• � Problemi oculari e respiratori da pelo.
+• � Spazzolatura e pulizia occhi.
+• � Aspetto originale, ottimo da compagnia.
+• � Richiede attenzione regolare al mantello.
+� Opossum
+• � Razza rara con pelo denso e coda più lunga del normale, somigliante a un
+opossum.
+• � Schivo ma curioso.
+• � Poco documentati, possibile fragilità intestinale.
+• � Dieta bilanciata e ambiente tranquillo.
+• � Unico e raro.
+• � Poco adatto a famiglie inesperte.
+
+� Perlfee
+• � Colore perla cangiante, taglia media.
+• � Gentile, equilibrato, poco rumoroso.
+• � Tendenza a problemi oculari.
+• � Dieta standard, controlli regolari.
+• � Elegante e tranquillo.
+• � Rarissimo, difficile da trovare.
+
+� Pointed Beveren
+• � Variante del Beveren con punte colorate (orecchie, naso, zampe).
+• � Vivace ma gestibile.
+• � Nessun problema noto speciﬁco.
+• � Cura base, movimento quotidiano.
+• � Aspetto singolare.
+• � Poco diffuso fuori dall’Europa.
+� Sallander
+• � Colore chiaro con sfumature grigie/argento su orecchie, muso, dorso.
+• � Calmo, adattabile, socievole.
+• � Possibili patologie oculari.
+• � Ambiente luminoso ma non diretto.
+• � Bellissimo mantello, facile da gestire.
+• � Sensibile agli sbalzi di luce.
+
+� Schwarzgrannen
+• � Pelo chiaro con riﬂessi neri, simile al “frosted” ma più marcato.
+• � Tranquillo, un po’ timido.
+• � Nessuna patologia nota.
+• � Cura base, spazio adeguato.
+• � Aspetto raro e affascinante.
+• � Poco conosciuto fuori dalla Germania.
+
+� Siberian
+• � Pelo bianco con occhi blu, struttura compatta.
+• � Socievole, silenzioso, calmo.
+• � Talvolta problemi uditivi/visivi.
+• � Ambiente stabile, controlli frequenti.
+• � Bellissimo coniglio da compagnia.
+• � Sensibile alle patologie ereditarie.
+� Smoke Pearl
+• � Colore perla fumé, uniforme e delicato.
+• � Tranquillo, fedele, affettuoso.
+• � Possibili problemi agli occhi.
+• � Pulizia occhi, dieta ﬁbrosa.
+• � Elegante e poco esigente.
+• � Poco conosciuto.
+
+� Squirrel
+• � Variante blu-grigia del chinchilla, pelo brillante e morbido.
+• � Curioso, tranquillo.
+• � Nessuna patologia genetica speciﬁca.
+• � Cura base.
+• � Colore originale e molto bello.
+• � Raro, difficile da trovare.
+
+� Sussex
+• � Pelo corto, denso, color oro o crema.
+• � Amichevole, giocoso.
+• � Tendenza all’obesità.
+• � Movimento quotidiano e dieta controllata.
+• � Adatto a bambini.
+• � Attenzione all’alimentazione.
+� Sussex Marten
+• � Come il Sussex ma con segni scuri tipo martora.
+• � Dolce, paziente.
+• � Come il Sussex, attenzione al peso.
+• � Stessa cura: dieta + attività ﬁsica.
+• � Aspetto più raro e curioso.
+• � Poco diffuso.
+
+� Swiss Fox
+• � Pelo lungo, folto e morbido, simile alla volpe.
+• � Molto tranquillo, affettuoso.
+• � Dermatiti da pelo e ingestione eccessiva.
+• � Toelettatura costante, integratori se necessari.
+• � Morbidissimo e docile.
+• � Pelo molto impegnativo.
+
+� Vienna Coloured
+• � Mantello colorato con occhi blu, taglia media.
+• � Equilibrato, intelligente, giocoso.
+• � Problemi visivi rari ma possibili.
+• � Ambiente stabile, controlli regolari.
+• � Bellissimo e raro.
+• � Attenzione alle condizioni genetiche legate agli occhi blu.
+� Vienna White
+• � Pelo bianco neve, occhi blu, taglia media.
+• � Calmo, docile, adatto in casa.
+• � Problemi uditivi possibili (occhi blu).
+• � Monitoraggio udito e vista.
+• � Bellissimo e gentile.
+• � Sensibile alla luce e al rumore.
+
+� Wheaten
+• � Colore simile al grano maturo, taglia media.
+• � Vivace, curioso, simpatico.
+• � Nessuna malattia nota.
+• � Cure base, dieta ricca di ﬁeno.
+• � Molto carino e gestibile.
+• � Poco diffuso.
+
+� Wheaten Lynx
+• � Variante del Wheaten con sfumature argento-lince.
+• � Intelligente, affettuoso.
+• � Poco documentati, nessun difetto noto.
+• � Come il Wheaten.
+• � Aspetto bellissimo.
+• � Rarissimo.
+� American Blue (varietà)
+• � Variante dell’American con manto blu-ardesia uniforme.
+• � Tranquillo, resistente, socievole.
+• � Nessuna patologia genetica speciﬁca.
+• � Cura standard, attenzione al peso.
+• � Facile da allevare, bel colore.
+• � Poco diffuso al di fuori degli USA.
+
+� American White (varietà)
+• � Variante dell’American con pelo bianco e occhi grigio-blu.
+• � Docile, calmo, adatto alla compagnia.
+• � Possibile predisposizione a sordità legata agli occhi chiari.
+• � Controlli udito, dieta equilibrata.
+• � Ottimo per la compagnia.
+• � Sensibile al rumore e alla luce.
+
+� Satin Black
+• � Variante nera del Satin con pelo lucente effetto “seta”.
+• � Vivace, socievole, curioso.
+• � Rischio di obesità e problemi dentali.
+• � Dieta ricca di ﬁeno, stimolazione mentale.
+• � Pelo spettacolare, carattere amichevole.
+• � Mantello richiede spazzolatura frequente.
+� Satin White
+• � Variante bianca del Satin, pelo setoso, occhi rossi o blu.
+• � Tranquillo, intelligente, adattabile.
+• � Possibili problemi agli occhi e udito.
+• � Controlli regolari, attenzione alla vista.
+• � Elegante e gentile.
+• � Sensibile alla luce e a sbalzi termici.
+
+� Mini Rex Seal
+• � Variante del Mini Rex con manto “seal” (bruno molto scuro).
+• � Giocherellone, affettuoso, adatto ai bambini.
+• � Fragilità cutanea tipica dei Rex (dermatiti).
+• � Ambiente pulito, attenzione alla pelle.
+• � Pelo vellutato, molto amichevole.
+• � Pelle delicata, richiede buona igiene.

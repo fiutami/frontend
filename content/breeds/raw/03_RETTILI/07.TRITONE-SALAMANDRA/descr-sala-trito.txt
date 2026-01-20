@@ -1,0 +1,57 @@
+# Estratto da: DESCR _sala.trito.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.818Z
+# Caratteri: 1825
+# ---
+
+DESCRIZIONE:
+
+Salamandra Comune (Salamandra
+salamandra)
+
+Descrizione
+• Anfibio terrestre con corpo robusto, pelle liscia e lucida di colore nero con macchie
+gialle o arancioni (avvertimento di tossicità).
+• Lunghezza: 15-25 cm.
+• Vive in ambienti umidi come boschi, vicino a ruscelli e sottobosco.
+• È notturna e tende a nascondersi sotto sassi e legno durante il giorno.
+
+Cura
+• Terrario con substrato umido e profondo, foglie secche, legno, muschio.
+• Umidità alta (70-90%), temperatura tra 12-18°C.
+• Dieta: insetti, lombrichi, piccoli invertebrati vivi.
+• Non necessita di grande esposizione alla luce, ambiente ombreggiato.
+
+Pro
+• Aspetto unico e affascinante, colori vivaci.
+• Animale silenzioso e poco impegnativo.
+• Buona durata di vita (fino a 20 anni in cattività).
+
+Contro
+• Pelle secreta sostanze tossiche, manipolazione da evitare.
+• Richiede ambiente umido e fresco, non adatto a climi caldi.
+• Alimentazione esclusivamente carnivora, richiede prede vive.
+Tritone Crestato (Triturus cristatus)
+
+Descrizione
+• Anfibio semiacquatico, corpo slanciato con cresta dorsale evidente nei maschi
+durante la stagione riproduttiva.
+• Colori: dorso scuro con macchie gialle e ventre arancione.
+• Lunghezza: 12-16 cm.
+• Vive in stagni, paludi e ambienti umidi.
+
+Cura
+• Terrario con parte acquatica e parte terrestre (terra umida, foglie).
+• Temperatura 16-22°C, umidità elevata.
+• Alimentazione a base di insetti, lombrichi, piccoli crostacei.
+• Necessita di acqua pulita e ben ossigenata.
+
+Pro
+• Aspetto elegante e comportamenti interessanti (cresta nei maschi).
+• Adattabile a diversi ambienti in cattività.
+• Ottima specie per principianti con un minimo di esperienza.
+
+Contro
+• Necessità di spazio sia acquatico che terrestre.
+• Sensibile a inquinamento e qualità dell’acqua.
+• Periodo di riposo invernale da rispettare.

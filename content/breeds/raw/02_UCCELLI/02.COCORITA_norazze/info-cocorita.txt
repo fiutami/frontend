@@ -1,0 +1,111 @@
+# Estratto da: INFO_cocorita.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.103Z
+# Caratteri: 2919
+# ---
+
+COCORITA INFO E VARIETà “razzze”
+
+Le principali varietà di cocorita includono:
+
+Per colore:
+
+• Verde normale (colore selvatico)
+• Blu cielo
+• Giallo (lutino)
+• Bianco (albino)
+• Grigio
+• Cobalto
+• Oliva
+• Viola
+• Arlecchino (pied)
+
+Per tipo di mutazione:
+
+• Opaline
+• Cinnamon (cannella)
+• Spangle
+• Diluiti
+• Clearwing, greywing
+• Texas clearbody
+• Lacewing
+
+Per taglia:
+
+• Standard (quella più comune)
+• Inglese o da esposizione (più grande, con piumaggio più voluminoso e testa più
+
+arrotondata, allevata per concorsi)
+
+In sintesi:
+
+• Sì, esistono varietà di cocorite (in base a colore, piumaggio e taglia)
+
+• No, non esistono razze vere e proprie come nei cani
+Ecco una scheda sintetica delle principali varietà e mutazioni delle cocorite,
+
+suddivise per categoria (colore, piumaggio, taglia). Utile come riferimento per app, schede
+informative o contenuti educativi.
+
+Cocorita (Melopsittacus undulatus) – Varietà e Mutazioni
+
+1. Colorazioni Base
+
+Nome Descrizione
+
+Verde selvatico Colore originale: corpo verde brillante, maschera gialla, striature nere sulla testa.
+
+Blu cielo Sostituisce il verde con un azzurro chiaro, mantenendo la maschera gialla.
+
+Cobalto / Viola Tono più scuro del blu; le violette hanno riflessi intensi.
+
+Grigio Corpo grigio uniforme, maschera gialla; occhio con iride evidente.
+
+Lutino Giallo brillante, privo di barrature; occhi rossi (albinismo parziale).
+
+Albino Totalmente bianca con occhi rossi; priva di pigmenti.
+
+Oliva Variante molto scura del verde, quasi marrone-verdastro.
+
+2. Mutazioni del Disegno e del Piumaggio
+
+Nome Descrizione
+
+Opaline Barrature solo sulla nuca, colore del corpo più intenso.
+
+Spangle Le striature nere sono invertite, creando un effetto "chiaro" sulle ali.
+
+Cinnamon (Cannella) Striature marrone chiaro invece di nere; occhi normali.
+
+Lacewing Corpo chiaro con striature cannella e occhi rossi.
+
+Clearwing Ali chiare e corpo con colore brillante.
+
+Greywing Ali grigie e colore del corpo più tenue.
+
+Texas clearbody Corpo colorato, ali e testa chiare; ibrido tra clearwing e lutino/albino.
+
+Pied (arlecchino) Macchie casuali bianche o gialle su corpo e ali; disegno irregolare.
+
+3. Taglie
+
+Nome Descrizione
+
+Standard (domestica) Taglia normale (17–19 cm), agile, comune come pet.
+
+Inglese (da esposizione) Più grande (20–24 cm), piumaggio abbondante, testa grossa, meno attiva.
+4. Note Aggiuntive
+
+• Le mutazioni possono combinarsi: es. "Spangle blu cobalto opaline".
+• Le cocorite non cambiano personalità in base al colore, ma alcune varietà (es. inglese)
+
+sono più calme.
+• I maschi lutini/albini hanno cera (la parte sopra il becco) spesso più difficile da distinguere.
+
+Utile per l'app FiutaMi
+
+• Inserire un campo "Mutazione/Varietà" in fase di registrazione della cocorita.
+• Possibilità di selezionare: Colore base, Tipo piumaggio, Taglia.
+• Aggiungere immagini esemplificative per ogni varietà (su licenza o create in stile cartonato
+
+FiutaMi).

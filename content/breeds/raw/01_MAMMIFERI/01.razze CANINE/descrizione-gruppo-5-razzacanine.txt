@@ -1,0 +1,248 @@
+# Estratto da: DESCRIZIONE GRUPPO 5_razzacanine.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:39.975Z
+# Caratteri: 9001
+# ---
+
+Gruppo 5 – Spitz e Razze Primitive
+
+1. Alaskan Malamute
+Descrizione: Cane da slitta grande e potente, con mantello spesso e doppio.
+Comportamento: Forte, indipendente, leale e socievole, necessita di molto esercizio.
+Problemi: Displasia, problemi articolari, sensibilità a caldo.
+Cure: Spazzolatura frequente, esercizio intenso.
+Pro: Ottimo compagno di lavoro e famiglia, resistente.
+Contro: Richiede molto spazio e attività, non adatto a tutti.
+
+2. American Eskimo Dog
+Descrizione: Cane medio-piccolo, bianco, pelo folto e soffice.
+Comportamento: Intelligente, vigile, affettuoso, ottimo cane da compagnia.
+Problemi: Problemi oculari, displasia.
+Cure: Toelettatura regolare, esercizio moderato.
+Pro: Facile da addestrare, buon cane familiare.
+Contro: Tendenza a abbaiare, richiede attenzioni.
+
+3. Canadian Eskimo Dog
+Descrizione: Cane da slitta robusto, pelo doppio e resistente.
+Comportamento: Indipendente, forte, leale, adattato a climi freddi.
+Problemi: Problemi articolari, sensibilità al caldo.
+Cure: Esercizio e ambiente adatto al freddo.
+Pro: Ottimo cane da lavoro in ambienti estremi.
+Contro: Poco adatto alla vita urbana.
+
+4. Chow Chow
+Descrizione: Cane medio, pelo lungo o corto, con caratteristico muso leonino e lingua blu.
+Comportamento: Indipendente, riservato, a volte diffidente, molto leale.
+Problemi: Displasia, problemi agli occhi, allergie cutanee.
+Cure: Toelettatura impegnativa, esercizio moderato.
+Pro: Ottimo cane da guardia, distintivo.
+Contro: Può essere difficile da socializzare, necessita padrone esperto.
+5. Eurasier
+
+Descrizione: Cane di taglia media, aspetto equilibrato, pelo folto e morbido.
+Comportamento: Calmo, affettuoso, socievole, buono con bambini.
+Problemi: Displasia, problemi cutanei.
+Cure: Spazzolatura regolare, attività ﬁsica moderata.
+Pro: Ottimo cane da famiglia, equilibrato.
+Contro: Poco adatto a vita sedentaria.
+
+6. Finnish Lapphund
+
+Descrizione: Cane da pastore di taglia media, pelo folto e doppio.
+Comportamento: Dolce, intelligente, attivo, molto fedele.
+Problemi: Displasia, problemi agli occhi.
+Cure: Toelettatura regolare, esercizio quotidiano.
+Pro: Ottimo con bambini, cane da lavoro versatile.
+Contro: Richiede stimoli costanti.
+
+7. Finnish Spitz
+
+Descrizione: Cane di taglia media, pelo rosso, coda arricciata.
+Comportamento: Vivace, intelligente, amante della caccia, molto vocale.
+Problemi: Allergie, displasia.
+Cure: Spazzolatura, esercizio regolare.
+Pro: Cane attivo e allegro.
+Contro: Tendenza a abbaiare molto.
+
+8. Greenland Dog
+
+Descrizione: Cane da slitta molto robusto e resistente.
+Comportamento: Forte, indipendente, necessita di ampi spazi.
+Problemi: Sensibilità al caldo, problemi articolari.
+Cure: Ambiente freddo, molto esercizio.
+Pro: Cane da lavoro in ambienti estremi.
+Contro: Non adatto a vita urbana.
+9. Icelandic Sheepdog
+
+Descrizione: Cane da pastore di taglia media, pelo folto e morbido.
+Comportamento: Allegro, socievole, ottimo cane da famiglia e lavoro.
+Problemi: Displasia, problemi oculari.
+Cure: Toelettatura regolare, attività ﬁsica.
+Pro: Molto versatile, affettuoso.
+Contro: Può essere molto vocale.
+
+10. Japanese Akita Inu
+
+Descrizione: Cane di taglia grande, pelo folto, aspetto maestoso.
+Comportamento: Fiero, leale, protettivo, necessita di socializzazione precoce.
+Problemi: Displasia, problemi cutanei, autoimmuni.
+Cure: Spazzolatura regolare, esercizio moderato.
+Pro: Cane da guardia eccellente, fedele.
+Contro: Può essere dominante, richiede padrone esperto.
+
+11. Keeshond
+
+Descrizione: Cane di taglia media, pelo folto grigio con maschera nera.
+Comportamento: Socievole, intelligente, ottimo con bambini.
+Problemi: Problemi agli occhi, allergie.
+Cure: Toelettatura impegnativa, attività regolare.
+Pro: Cane da famiglia eccellente.
+Contro: Richiede molta cura del pelo.
+
+12. Kishu Ken
+
+Descrizione: Cane giapponese di taglia media, pelo corto e compatto.
+Comportamento: Riservato, fedele, cacciatore nato.
+Problemi: Generalmente sano, ma possibile displasia.
+Cure: Esercizio quotidiano, toelettatura semplice.
+Pro: Ottimo cane da caccia e compagnia.
+Contro: Può essere diffidente verso estranei.
+13. Norwegian Buhund
+
+Descrizione: Cane da pastore norvegese, pelo corto o medio, tarchiato e robusto.
+Comportamento: Attivo, intelligente, socievole.
+Problemi: Displasia, problemi oculari.
+Cure: Esercizio intenso, toelettatura moderata.
+Pro: Cane da lavoro versatile e famigliare.
+Contro: Richiede molto movimento.
+
+14. Norwegian Elkhound
+
+Descrizione: Cane da caccia di taglia media, pelo denso e grigio.
+Comportamento: Coraggioso, energico, fedele.
+Problemi: Displasia, obesità.
+Cure: Esercizio quotidiano, spazzolatura regolare.
+Pro: Cane da caccia e guardia eccellente.
+Contro: Può essere indipendente.
+
+15. Norwegian Lundehund
+
+Descrizione: Razza rara, caratterizzata da articolazioni molto mobili e 6 dita per zampa.
+Comportamento: Intelligente, agile, indipendente.
+Problemi: Problemi gastrointestinali, displasia.
+Cure: Esercizio, dieta attenta.
+Pro: Cane unico, agile.
+Contro: Richiede cure particolari per salute.
+
+16. Perro de Presa Canario
+
+Descrizione: Cane da presa, forte e muscoloso, pelo corto.
+Comportamento: Protettivo, coraggioso, leale.
+Problemi: Displasia, problemi articolari.
+Cure: Esercizio regolare, socializzazione precoce.
+Pro: Ottimo cane da guardia e difesa.
+Contro: Può essere dominante, necessita padrone esperto.
+17. Pomsky (incrocio non ufficiale)
+
+Descrizione: Incrocio tra Siberian Husky e Pomerania, aspetto simile a un mini husky.
+Comportamento: Vivace, intelligente, affettuoso.
+Problemi: Variabili, da monitorare.
+Cure: Toelettatura regolare, esercizio quotidiano.
+Pro: Aspetto affascinante, compagnia.
+Contro: Tendenza all’iperattività.
+
+18. Samoyed
+
+Descrizione: Cane da slitta bianco e folto, noto per il “sorriso”.
+Comportamento: Affettuoso, socievole, energico.
+Problemi: Problemi cutanei, displasia.
+Cure: Toelettatura impegnativa, esercizio intenso.
+Pro: Cane da famiglia ideale, molto bello.
+Contro: Richiede molta cura del pelo.
+
+19. Shiba Inu
+
+Descrizione: Cane giapponese piccolo e robusto, pelo corto.
+Comportamento: Indipendente, leale, intelligente.
+Problemi: Displasia, allergie.
+Cure: Esercizio regolare, toelettatura semplice.
+Pro: Ottimo cane da compagnia.
+Contro: Può essere testardo.
+
+20. Siberian Husky
+
+Descrizione: Cane da slitta medio-grande, pelo doppio folto.
+Comportamento: Socievole, energico, a volte testardo.
+Problemi: Displasia, problemi agli occhi.
+Cure: Spazzolatura regolare, esercizio intenso.
+Pro: Ottimo cane da lavoro e compagnia.
+Contro: Richiede molta attività, tende a scappare.
+21. Swedish Lapphund
+Descrizione: Cane da pastore svedese, pelo folto e morbido.
+Comportamento: Dolce, intelligente, attivo.
+Problemi: Displasia, allergie.
+Cure: Spazzolatura, esercizio quotidiano.
+Pro: Ottimo cane da famiglia.
+Contro: Richiede stimoli.
+
+22. Swedish Vallhund
+Descrizione: Cane svedese piccolo, pelo corto e robusto.
+Comportamento: Energico, intelligente, socievole.
+Problemi: Problemi agli occhi, displasia.
+Cure: Esercizio regolare,
+
+23. Tamaskan Dog
+Descrizione: Aspetto da lupo, incrocio tra Husky, Malamute e Pastore.
+Comportamento: Intelligente, sociale, attivo.
+Problemi: Displasia, problemi oculari.
+Cure: Esercizio molto intenso.
+Pro: Esteticamente affascinante.
+Contro: Non adatto a tutti, molto esigente.
+
+24. Utonagan
+Descrizione: Simile al Tamaskan, aspetto lupino.
+Comportamento: Affettuoso, docile, molto sociale.
+Problemi: Displasia, problemi comuni ai grandi cani.
+Cure: Esercizio quotidiano, socializzazione.
+Pro: Bel carattere, molto affettuoso.
+Contro: Esigenze simili a razze nordiche.
+
+25. Alano Español
+Descrizione: Molossoide spagnolo, usato per la caccia e guardia.
+Comportamento: Forte, protettivo, leale.
+Problemi: Displasia, problemi articolari.
+Cure: Esercizio regolare, socializzazione precoce.
+Pro: Cane da guardia eccellente.
+Contro: Richiede esperienza.
+
+26. Basenji
+Descrizione: Cane africano piccolo, noto per il fatto che non abbaia.
+Comportamento: Indipendente, pulito, curioso.
+Problemi: Problemi oculari, ernie.
+Cure: Attività regolare, poche cure del pelo.
+Pro: Silenzioso, pulito.
+Contro: Difficile da addestrare.
+
+27. Shikoku
+Descrizione: Cane giapponese da caccia, di taglia media.
+Comportamento: Vigile, leale, attivo.
+Problemi: Displasia, problemi oculari.
+Cure: Esercizio regolare.
+Pro: Ottimo compagno per attivi.
+Contro: Indipendente, richiede socializzazione precoce.
+
+28. Kai Ken
+Descrizione: Razza giapponese rara, nota per il mantello tigrato.
+Comportamento: Riservato, leale, cacciatore naturale.
+Problemi: Displasia, genetica poco conosciuta.
+Cure: Esercizio regolare.
+Pro: Aspetto particolare, affettuoso con la famiglia.
+Contro: Tende a essere diffidente.
+
+29. Laika (vari tipi russi)
+Descrizione: Cani da caccia e slitta russi, rustici e resistenti.
+Comportamento: Energici, indipendenti, coraggiosi.
+Problemi: Displasia, salute generalmente buona.
+Cure: Molto esercizio, ambiente adatto.
+Pro: Resistenti e affidabili.
+Contro: Poco adatti alla vita da appartamento.

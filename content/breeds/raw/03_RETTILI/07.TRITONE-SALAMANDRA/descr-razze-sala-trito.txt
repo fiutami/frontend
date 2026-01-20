@@ -1,0 +1,74 @@
+# Estratto da: DESCR_razze _sala.trito.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.844Z
+# Caratteri: 3329
+# ---
+
+Tritoni — specie riconosciute comuni in
+cattività
+
+1. Triturus cristatus – Tritone crestato
+• Descrizione: Corpo snello, dorso scuro con macchie gialle, cresta alta e dentellata nei
+maschi durante la stagione riproduttiva.
+• Cura: Terrario semiacquatico, acqua pulita, temperatura 16-22°C, umidità alta.
+• Pro: Aspetto spettacolare, comportamento interessante (cresta), resistente.
+• Contro: Richiede ambiente con acqua pulita e spazio sia terrestre che acquatico.
+
+2. Triturus marmoratus – Tritone marmorizzato
+• Descrizione: Dorso marmorizzato verde scuro e giallo, cresta meno sviluppata
+rispetto al tritone crestato.
+• Cura: Simile a T. cristatus, ambiente semiacquatico.
+• Pro: Aspetto unico marmorizzato, adatto a semiacquatici.
+• Contro: Sensibile a inquinanti, richiede buona manutenzione acqua.
+
+3. Ichthyosaura alpestris – Tritone alpino
+• Descrizione: Dorso marrone scuro con strisce gialle o arancioni, corpo sottile, cresta
+nei maschi.
+• Cura: Ambiente semiacquatico con zone terrestri, temperature fresche.
+• Pro: Specie adattabile, carino e vivace.
+• Contro: Sensibile alla temperatura, necessita di ambiente fresco.
+
+4. Lissotriton vulgaris – Tritone comune
+• Descrizione: Piccolo, dorso marrone con macchie scure, cresta sottile nei maschi.
+• Cura: Facile da allevare, semiacquatico, acqua pulita e spazio per nuotare.
+• Pro: Ottimo per principianti, adattabile.
+• Contro: Non molto vistoso rispetto ad altre specie.
+5. Notophthalmus viridescens – Tritone dalla coda lunga (americano)
+• Descrizione: Colori vivaci, dorso verde oliva, ventre arancione con macchie nere.
+• Cura: Necessita di acquario con acqua pulita, temperatura 18-24°C, buona filtrazione.
+• Pro: Animale attivo, colori accattivanti.
+• Contro: Più esigente per qualità acqua, meno resistente a inquinamento.
+
+Salamandre — specie riconosciute
+comuni in cattività
+
+1. Salamandra salamandra – Salamandra comune
+• Descrizione: Corpo nero con macchie gialle o arancioni, pelle liscia, terrestre.
+• Cura: Terrario umido, temperatura fresca 12-18°C, dieta di insetti vivi.
+• Pro: Aspetto unico e colorato, buona longevità.
+• Contro: Pelle tossica, richiede umidità e freschezza.
+
+2. Ambystoma mexicanum – Axolotl
+• Descrizione: Salamandra acquatica, pelle liscia, mantiene caratteristiche larvali
+(neotenia).
+• Cura: Acquario con acqua fresca, pH neutro, temperatura 14-18°C.
+• Pro: Facile da osservare, morph colorati disponibili.
+• Contro: Sensibile alla qualità dell’acqua, alimentazione specifica.
+
+3. Ambystoma tigrinum – Salamandra tigre
+• Descrizione: Corpo massiccio, colore giallo con macchie nere o marroni.
+• Cura: Acquario con acqua pulita, temperatura 18-22°C.
+• Pro: Aspetto impressionante, robusta.
+• Contro: Alimentazione esigente, necessita spazio.
+
+4. Cynops pyrrhogaster – Salamandra giapponese (dal ventre rosso)
+• Descrizione: Piccola, dorso scuro, ventre rosso acceso.
+• Cura: Acquario semiacquatico, temperatura 15-22°C, acqua pulita.
+• Pro: Colori vivaci, piccolo e gestibile.
+• Contro: Sensibile a parametri acqua, alimentazione specifica.
+5. Triturus vittatus – Salamandra striata
+
+• Descrizione: Corpo sottile con strisce longitudinali, colori scuri e chiari alternati.
+• Cura: Semiacquatico, temperatura fresca, acqua pulita.
+• Pro: Aspetto elegante, buona specie da allevare.
+• Contro: Necessita cura nell’ambiente e acqua.

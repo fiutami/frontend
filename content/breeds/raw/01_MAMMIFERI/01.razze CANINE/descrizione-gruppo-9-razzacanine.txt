@@ -1,0 +1,182 @@
+# Estratto da: DESCRIZIONE GRUPPO 9_razzacanine.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:40.121Z
+# Caratteri: 6202
+# ---
+
+GRUPPO 9
+
+1. Affenpinscher (già descritto)
+
+2. Bichon Frisé
+Descrizione: Piccolo, bianco, dal pelo morbido e riccio.
+Carattere: Allegro, socievole, affettuoso.
+Problemi: Cataratta, lussazione rotulea.
+Cure: Toelettatura regolare, Igiene orecchie.
+Pro: Ideale per appartamenti, adatto ai bambini.
+Contro: Richiede cura del pelo frequente.
+
+3. Bolognese
+Descrizione: Cane molossoide in miniatura, pelo lungo bianco.
+Carattere: Calmo, leale, adatto alla vita familiare.
+Problemi: Dermatiti, problemi oculari.
+Cure: Spazzola e tagli periodici al pelo.
+Pro: Ottimo cane da compagnia.
+Contro: Richiede toelettatura regolare.
+
+4. Brussels Griffon
+Descrizione: Piccolo, aspetto simpatico con musetto umanoide.
+Carattere: Intelligente, vivace, a volte sensibile.
+Problemi: Problemi oculari, respiratori (brachicefalia).
+Cure: Cura al mask (struppi intorno al muso).
+Pro: Cane da compagnia affezionato.
+Contro: Sensibile, può mostrare bisogni forti di attenzioni.
+
+5. Cavalier King Charles Spaniel
+Descrizione: Elegante, di taglia piccola, mantello setoso e orecchie lunghe.
+Carattere: Dolce, affettuoso, socievole.
+Problemi: Cardiopatie (MVD), problemi oculari, siringomielia.
+Cure: Controlli cardiaci/neurologici regolari, spazzolatura.
+Pro: Ideale per famiglie e persone anziane.
+Contro: Porzione di salute delicata, costi veterinari.
+6. Chihuahua
+
+Descrizione: Il cane più piccolo al mondo, vari colori e mantelli.
+Carattere: Coraggioso, attaccato al padrone, a volte aggresso nonostante le dimensioni.
+Problemi: Lussazione rotulea, collasso tracheale, problemi dentali.
+Cure: Attenzione ai denti, attività moderata.
+Pro: Ideale per piccoli spazi, portatile.
+Contro: Fragile, temperamento spesso dominante.
+
+7. Chinese Crested
+
+Descrizione: Cane nudo (o “powderpuff” con pelo), di piccola taglia e creatività.
+Carattere: Dolce, affettuoso, desideroso di coccole.
+Problemi: Pelle delicata, allergie, denti.
+Cure: Protezione solare e pulizie regolari.
+Pro: Quasi ipoallergenico, bellezza unica.
+Contro: Richiede cura della pelle, può raffreddare facilmente.
+
+8. English Toy Terrier
+
+Descrizione: Piccolo, elegante, simile al Doberman in miniatura.
+Carattere: Energico, vigile, attento.
+Problemi: Lussazione rotulea, problemi dentali.
+Cure: Attività leggera, igiene.
+Pro: Ottimo in appartamento, facilmente addestrabile.
+Contro: Fragile, non per famiglie rumorose.
+
+9. Havanese
+
+Descrizione: Cane cubano a pelo lungo, morbido e lucente.
+Carattere: Dolce, allegro, molto socievole.
+Problemi: Patologie oculari, lussazione rotulea.
+Cure: Toelettatura frequente, spazzolatura giornaliera.
+Pro: Uno dei migliori per famiglie, socievole.
+Contro: Tendenza a diventare troppo attaccato se non gestito.
+10. Italian Greyhound
+
+Descrizione: Levriero piccolo, snello e raffinato.
+Carattere: Timido, affettuoso, elegante.
+Problemi: Fratture ossee, problemi dentali.
+Cure: Attività moderata, coperte al freddo, controllo peso.
+Pro: Adatto a appartamenti, molto elegante.
+Contro: Fragile, timido con estranei.
+
+11. Japanese Chin
+Descrizione: Piccolo, testa larga, pelo setoso.
+Carattere: Dolce, riservato, elegante.
+Problemi: Brachicefalia, patologie oculari, problemi respiratori.
+Cure: Cura mask, pulizia periodica.
+Pro: Esteticamente raffinato, adatto a piccoli spazi.
+Contro: Necessita cure particolari, riservato.
+
+12. Maltese
+Descrizione: Piccolo, tutto bianco, pelo lungo.
+Carattere: Dolce, vivace, molto affettuoso.
+Problemi: Dermatiti, lacrimazione e denti.
+Cure: Toelettatura costante.
+Pro: Ideale come cane da compagnia.
+Contro: Richiede gestione diligente del mantello.
+
+13. Miniature Pinscher
+(già descritto)
+
+14. Papillon
+
+Descrizione: Piccolo, orecchie a farfalla, pelo fine.
+Carattere: Vivace, intelligente, addestrabile.
+Problemi: Lussazione rotulea, epilessia.
+Cure: Attività mentale regolare, cura orecchie.
+Pro: Eccellente in agility, compagnia vivace.
+Contro: Richiede stimoli mentali.
+15. Pekingese
+
+Descrizione: Bassotto asiatico con testa larga, pelo lungo e muso schiacciato.
+Carattere: Fiero, leale, un po’ arrogante.
+Problemi: Brachicefalia, problemi oculari, respiratori.
+Cure: Cura alla maschera, pulizia naso/occhi.
+Pro: Cane da compagnia distintivo.
+Contro: Richiede manutenzione elevata, sensibile.
+
+16. Petit Brabançon
+
+Descrizione: Piccolo, musetto espressivo, pelo duro.
+Carattere: Vivace, affettuoso, curioso.
+Problemi: Dermatiti, denti.
+Cure: Toelettatura del pelo duro, cura igiene orale.
+Pro: Piccolo e adatto a vita in appartamento.
+Contro: Richiede stimoli e attenzione.
+
+17. Pomeranian
+
+Descrizione: Volpino di piccola taglia, pelo folto.
+Carattere: Energico, fiero, spesso dominante.
+Problemi: Lussazione rotulea, problemi dentali, collasso tracheale.
+Cure: Toelettatura regolare, igiene dentale.
+Pro: Simpatico e portatile.
+Contro: Sensibile e può essere rumoroso.
+
+18. Pug (Carlino)
+
+Descrizione: Brachicefalo, muso schiacciato, orecchie cadenti.
+Carattere: Affettuoso, giocherellone, pigro.
+Problemi: Respiratori, oculari, obesità.
+Cure: Controllo peso, pulizia volto e pieghe.
+Pro: Sorridente, ottimo come cane da salotto.
+Contro: Molto manutentivo a livello sanitario.
+19. Shih Tzu
+
+Descrizione: Cane decorativo con pelo lungo e muso piatto.
+Carattere: Dolce, affettuoso, adatto alla vita familiare.
+Problemi: Respiratori, oculari, denti.
+Cure: Toelettatura quotidiana, igiene viso.
+Pro: Ideale per appartamenti e famiglie.
+Contro: Richiede toelettatura costante.
+
+20. Silky Terrier
+
+Descrizione: Variante lucida e setosa del Yorkshire.
+Carattere: Vivace, intelligente, affezionato.
+Problemi: Lussazione rotulea, patologie dentali.
+Cure: Toelettatura del mantello, igiene orale.
+Pro: Attivo e divertente.
+Contro: Pelo da curare.
+
+21. Toy Poodle
+
+Descrizione: Barboncino in miniatura, pelo riccio.
+Carattere: Intelligente, vivace, addestrabile.
+Problemi: Epilessia, lussazione rotulea.
+Cure: Toelettatura professionale, attività mentale.
+Pro: Poco allergenico, versatile.
+Contro: Cura continue e costose.
+
+22. Yorkshire Terrier
+
+Descrizione: Piccolo, pelo lungo setoso, brillante e lucente.
+Carattere: Vivace, coraggioso, affezionato.
+Problemi: Collasso tracheale, denti.
+Cure: Toelettatura regolare, igiene orale.
+Pro: Adatto agli spazi ridotti.
+Contro: Pelo molto impegnativo.

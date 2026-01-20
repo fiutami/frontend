@@ -1,0 +1,73 @@
+# Estratto da: INFO_razze_neon.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.445Z
+# Caratteri: 1815
+# ---
+
+Ecco le schede per le tre varietà NEON
+
+Neon Tetra Standard (Paracheirodon innesi)
+
+Descrizione:
+Classico e più conosciuto, presenta una striscia blu elettrico brillante che corre lungo tutto il corpo,
+accompagnata da una banda rossa intensa che occupa la parte posteriore. Piccolo, vivace e pacifico,
+è l’ideale per acquari comunitari.
+
+Pro:
+
+• Colori vivaci e molto decorativi.
+• Facilmente reperibile e allevabile.
+• Socievole, forma banchi numerosi.
+
+Contro:
+
+• Sensibile a variazioni di parametri acqua.
+• Non tollera pesci aggressivi.
+
+Cure ed esigenze:
+
+• Temperatura: 20–26 °C
+• pH: 5.5–7.0
+• Acqua morbida, ben filtrata
+• Alimentazione varia e di qualità
+
+Albino Neon Tetra
+
+Descrizione:
+Varietà dal corpo bianco trasparente con riflessi rossi sulle pinne e una sfumatura rosata sul corpo.
+Meno comune del classico, offre un effetto più delicato e luminoso.
+
+Pro:
+
+• Aspetto elegante e particolare.
+• Meno stressato da luci forti rispetto al classico.
+
+Contro:
+
+• Più delicato e sensibile allo stress.
+• Colori meno vivaci, può passare inosservato in gruppi misti.
+Cure ed esigenze:
+
+• Simili al Neon standard, con attenzione a condizioni stabili e acqua pulita.
+• Alimentazione bilanciata per mantenere salute e colore.
+
+Black Neon Tetra
+
+Descrizione:
+Ha una striscia nera più marcata e il corpo meno brillante rispetto al Neon standard. I colori sono
+più scuri e meno vivaci, ma offre un contrasto molto elegante.
+
+Pro:
+
+• Aspetto distintivo e raffinato.
+• Più resistente a condizioni leggermente più dure rispetto al Neon standard.
+
+Contro:
+
+• Meno appariscente, quindi meno scelto per acquari molto colorati.
+• Può essere confuso con altre specie simili se non si presta attenzione.
+
+Cure ed esigenze:
+
+• Parametri acqua simili al Neon standard.
+• Preferisce acquari ben piantumati e con luci moderate.

@@ -1,0 +1,141 @@
+# Estratto da: CARAT_razza_tartaACQUA.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.485Z
+# Caratteri: 5732
+# ---
+
+Pseudemys concinna (Tartaruga dipinta del fiume)
+
+Descrizione: Taglia medio-grande (fino a 30 cm), guscio scuro con disegni vivaci.
+Comportamento: Tranquilla, prevalentemente vegetariana, ama nuotare molto.
+Problemi: Carenze nutrizionali se alimentata male.
+Cure: Ampio acquaterrario, dieta vegetale, zona basking, UVB.
+
+Pro: Docile e longeva.
+Contro: Richiede spazio e filtro potente.
+
+Graptemys pseudogeographica (Tartaruga dal muso stretto)
+
+Descrizione: Fino a 18–20 cm, guscio seghettato, muso appuntito e striature gialle.
+Comportamento: Attiva ma timida, ama nascondersi.
+Problemi: Sensibile a inquinamento dell'acqua, infezioni agli occhi.
+Cure: Vasca pulita, UVB, dieta mista.
+
+Pro: Bell'aspetto, piccola.
+Contro: Poco adatta a essere maneggiata, si stressa facilmente.
+
+Pelomedusa subrufa (Tartaruga elmetto africana)
+
+Descrizione: Guscio marrone tondeggiante, collo retrattile lateralmente.
+Comportamento: Molto attiva, può essere territoriale.
+Problemi: Soffre facilmente carenze vitaminiche se alimentata solo con carne.
+Cure: Acquario profondo, acqua calda (24–28 °C), nascondigli.
+
+Pro: Robusta, interessante da osservare.
+Contro: Non adatta al freddo, non va manipolata spesso.
+
+Pelusios castaneus (Tartaruga africana dalla corazza molle)
+
+Descrizione: Molto simile alla Pelomedusa, ma con guscio più scuro e arrotondato.
+Comportamento: Curiosa, ma facilmente stressabile.
+Problemi: Sensibile al freddo, infezioni cutanee in acqua sporca.
+Cure: Acquario tropicale con UVB e zona asciutta.
+
+Pro: Robusta se tenuta bene.
+Contro: Poco tollerante agli sbalzi termici.
+Chelydra serpentina (Tartaruga azzannatrice)
+
+Descrizione: Grande, preistorica, con potenti mascelle. Può superare i 40 cm.
+Comportamento: Aggressiva, predatrice, non va mai maneggiata.
+Problemi: Ferite da lotta, infezioni se non curata bene.
+Cure: Vasca enorme, dieta carnivora, assolutamente per esperti.
+
+Pro: Estremamente longeva e affascinante.
+Contro: Vietata in molte regioni, pericolosa, non adatta alla casa.
+
+Apalone spinifera (Tartaruga dal guscio molle spinosa)
+
+Descrizione: Guscio molle e piatto, carnivora, molto veloce.
+Comportamento: Nervosa, non ama interazioni, morde.
+Problemi: Infezioni cutanee, acqua sempre pulitissima.
+Cure: Acquario sabbioso, profondo, con riscaldamento e UVB.
+
+Pro: Aspetto particolare, molto attiva.
+Contro: Molto delicata, morde, solo per esperti.
+
+Mauremys reevesii (Tartaruga di Reeves)
+
+Descrizione: Piccola, fino a 15–20 cm, guscio scuro con tre carene longitudinali.
+Comportamento: Tranquilla ma riservata. Predilige zone poco profonde e calde.
+Problemi: Delicata a livello respiratorio e digerente.
+Cure: Acquario con zona emersa, temperatura dell’acqua 24–28 °C, UVB.
+
+Pro: Di piccole dimensioni, adatta a vasche medie.
+Contro: Sensibile agli sbalzi termici, spesso timida.
+
+Mauremys sinensis (Tartaruga d'acqua cinese)
+
+Descrizione: Guscio ovale, color marrone–oliva, più grande della Reeves.
+Comportamento: Socievole ma non ama essere maneggiata.
+Problemi: Carenze di calcio e malformazioni se non ben alimentata.
+Cure: Vasca ampia, zona basking, dieta varia con vegetali e insetti.
+
+Pro: Poco aggressiva, adatta alla convivenza con altre specie simili.
+Contro: Può stressarsi facilmente.
+Kinosternon spp. (Tartarughe fango americane – es. Kinosternon subrubrum,
+
+Kinosternon scorpioides)
+
+Descrizione: Piccole (10–15 cm), guscio scuro e bombato, odore forte.
+Comportamento: Notturne, timide, scavano molto.
+Problemi: Rischio di infezioni se l’acqua non è pulitissima.
+Cure: Vasca bassa ma ampia, substrato sabbioso, molti rifugi.
+
+Pro: Occupa poco spazio, non aggressiva.
+Contro: Non adatta a essere osservata spesso, secrezioni odorose.
+
+Trachemys scripta scripta (Tartaruga dalle orecchie gialle)
+
+Descrizione: Sottospecie di Trachemys scripta; presenta macchie gialle dietro gli occhi.
+Comportamento: Attiva e resistente, spesso dominante con altre tartarughe.
+Problemi: Cresce molto (fino a 30 cm), può sviluppare micosi o carenza di calcio.
+Cure: Vasca molto ampia (almeno 120 L), zona emersa con lampada UVB e spot.
+
+Pro: Facile da reperire, molto robusta.
+Contro: Crescita rapida, sporca molto, richiede filtro potente.
+
+Trachemys scripta elegans (Tartaruga dalle orecchie rosse)
+
+Descrizione: Una delle tartarughe d’acqua più diffuse in passato, con chiazze rosse sulle
+guance.
+
+Stato legale: Vietata in UE dal 2016 perché specie invasiva (Regolamento UE
+1143/2014).
+Comportamento: Resistente e onnivora, spesso aggressiva con altre tartarughe.
+Problemi: Tende a dominare e mordere; può vivere 30+ anni.
+Cure: Come la scripta scripta, ma spesso richiede più attenzione alla convivenza.
+
+Pro: Longeva, adattabile.
+Contro: Illegale acquistare o vendere in Europa; gestione impegnativa.
+Graptemys spp. (Tartarughe dal muso stretto – es. Graptemys pseudogeographica,
+
+Graptemys kohnii, ecc.)
+
+Descrizione: Piccole-medie (15–20 cm), guscio seghettato e decorato, muso appuntito.
+Comportamento: Timide, agili nuotatrici, spesso restano in acqua.
+Problemi: Sensibili alla qualità dell’acqua e alle variazioni di temperatura.
+Cure: Vasca spaziosa, zona basking, alimentazione varia (insetti, pesce, vegetali).
+
+Pro: Dimensioni contenute, bellissimo aspetto.
+Contro: Poco tolleranti allo stress e al maneggiamento.
+
+Sternotherus odoratus (Tartaruga muschiata)
+
+Descrizione: Piccola (10–14 cm), guscio scuro e alto, emette un odore muschiato se
+disturbata.
+Comportamento: Notturna, sedentaria, resta spesso nascosta.
+Problemi: Soffre se l'acqua è sporca o fredda, può essere aggressiva in spazi stretti.
+Cure: Vasca ampia ma poco profonda, fondale sabbioso, alimentazione proteica.
+
+Pro: Richiede meno spazio, facile da nutrire.
+Contro: Odorosa, non adatta alla manipolazione, poco attiva di giorno.

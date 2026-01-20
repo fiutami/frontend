@@ -1,0 +1,77 @@
+# Estratto da: DESCR_Axolotl.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:41.712Z
+# Caratteri: 2744
+# ---
+
+Axolotl (Ambystoma mexicanum)
+
+Descrizione
+L’axolotl è un anfibio appartenente alla famiglia degli Ambystomatidi, noto per la sua
+capacità di mantenere caratteristiche giovanili per tutta la vita (neotenia), come le
+branchie esterne piumate. Originario dei laghi del Messico, è famoso per la sua forma unica e
+la capacità di rigenerare arti, cuore e altre parti del corpo.
+
+Morph (varianti cromatiche più comuni)
+• Wild type (colore naturale scuro con macchie dorate)
+• Leucistic (bianco-rosato con occhi neri)
+• Albino (bianco/giallo chiaro con occhi rossi)
+• Melanoid (totalmente nero)
+• Axanthic (grigio-argenteo senza giallo)
+• Golden albino (giallo/oro)
+• Copper (ramato)
+• GFP (fluorescente verde sotto UV, geneticamente modificato)
+
+Pro
+• Aspetto unico e affascinante
+• Capacità di rigenerazione degli arti e tessuti
+• Animale relativamente resistente se curato correttamente
+• Ottimo animale da compagnia per chi ama animali acquatici
+• Morfologie e colori variabili, interessanti da collezionare
+• Non richiede illuminazione forte né ambienti complessi
+Contro
+• Necessita di un ambiente acquatico specifico e ben mantenuto (vasca, filtro,
+temperatura controllata)
+• Sensibile a condizioni di acqua non ottimali (cloro, nitrati, pH sbagliato)
+• Non adatto a chi non ha tempo per la manutenzione regolare
+• Non ama interazioni frequenti o manipolazioni
+• Richiede alimentazione specifica (larve, vermi, pellet speciali)
+• Può vivere fino a 10-15 anni, quindi impegno a lungo termine
+
+Cura e gestione
+Acquario/Vasca
+
+• Volume minimo consigliato: 40 litri per un esemplare adulto
+• Acqua dolce, non clorata, con parametri stabili:
+
+o Temperatura: 16-20 °C (temperatura più alta può causare stress)
+o pH: 6.5-8.0
+o Durezza: morbida a media
+• Filtro delicato per evitare aspirazione (sono delicati)
+• Cambi d’acqua regolari (circa 20-30% a settimana)
+Alimentazione
+• Dieta carnivora: vermi di sangue, larve di zanzara, pellet specifici per axolotl, piccoli
+insetti
+• Evitare cibo troppo grande o non digeribile
+• Alimentare ogni 2-3 giorni, con quantità controllate
+Comportamento
+• Solitario, non aggressivo
+• Preferisce ambienti tranquilli e poco illuminati
+• Può nuotare o stare fermo sul fondo, con branchie esterne visibili
+Riproduzione
+• Riprodurre in cattività richiede condizioni particolari di temperatura e luce
+• Femmina può deporre centinaia di uova
+
+Pro e Contro in sintesi
+
+Pro Contro
+
+Aspetto affascinante e unico Cura dell’acqua delicata e impegnativa
+
+Capacità di rigenerazione Non adatto a principianti senza esperienza
+
+Longevità (10-15 anni) Alimentazione specifica e delicata
+
+Varietà di colorazioni disponibili Poco interattivo e manipolabile
+
+Buono per chi ama animali acquatici Necessita spazio e manutenzione costante

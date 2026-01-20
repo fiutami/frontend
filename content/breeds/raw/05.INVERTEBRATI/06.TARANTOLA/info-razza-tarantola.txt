@@ -1,0 +1,196 @@
+# Estratto da: INFO_RAZZA_tarantola.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.920Z
+# Caratteri: 4724
+# ---
+
+DESCRIZIONE RAZZE TARANTOLA:
+
+1. Grammostola rosea (Tarantola cilena rosa)
+Descrizione:
+
+Tarantola terrestre dal corpo marrone e riflessi rosati. Originaria del Cile. Dimensioni medie
+(12–15 cm con le zampe).
+
+Comportamento:
+Molto docile, lenta e timida. Reagisce raramente con aggressività.
+
+Pro:
+• Ottima per principianti
+• Poco aggressiva
+• Non richiede molta umidità
+• Vive a lungo (fino a 20 anni le femmine)
+Contro:
+• Periodi lunghi di inattività (possono sembrare “morte”)
+• Alimentazione sporadica, può rifiutare il cibo per settimane
+Cure:
+• Terrario 30x30x30 cm
+• Substrato profondo (torba o fibra di cocco)
+• Temperatura 22–26 °C, umidità 60–70%
+• Nascondiglio indispensabile
+
+2. Brachypelma smithi (Tarantola messicana rossa delle ginocchia)
+Descrizione:
+
+Tarantola iconica, con zampe nere e bande rosso-arancio sulle articolazioni. Terrestre,
+originaria del Messico.
+
+Comportamento:
+Docile ma può difendersi con peli urticanti.
+Pro:
+• Aspetto spettacolare
+• Docile
+• Vive a lungo (femmine > 20 anni)
+• Buona per neofiti
+Contro:
+• Peli urticanti fastidiosi
+• Crescita molto lenta
+Cure:
+• Terrario 30x30x30 cm
+• Temperatura 24–28 °C
+• Umidità 60–70%
+• Substrato spesso per scavare
+
+3. Avicularia avicularia (Tarantola rosa arboricola)
+Descrizione:
+
+Tarantola arboricola con zampe colorate (rosa, verdi, bluastre). Originaria del Sud America.
+Comportamento:
+
+Attiva, curiosa ma raramente aggressiva. Salta e si muove velocemente.
+Pro:
+• Bellissima
+• Relativamente tranquilla
+• Interessante da osservare
+Contro:
+• Terrario verticale necessario
+• Umidità e ventilazione vanno bilanciate con attenzione
+• Più nervosa se disturbata
+Cure:
+• Terrario verticale 30x30x45 cm
+• Umidità 70–80%, ventilazione eccellente
+• Nascondigli in altezza (corteccia verticale, tubi di sughero)
+
+4. Poecilotheria regalis (Tarantola reale indiana)
+Descrizione:
+
+Specie arboricola con disegni bianchi e neri molto eleganti. Veloce e potenzialmente
+pericolosa. Originaria dell’India.
+
+Comportamento:
+Molto rapida, tendenzialmente schiva ma difensiva se provocata.
+
+Pro:
+• Aspetto magnifico
+• Interessante per appassionati esperti
+• Costruttrice di tele
+Contro:
+• Non per principianti
+• Può mordere in difesa, veleno più attivo della media
+• Necessita di spazio e ambienti verticali
+Cure:
+• Terrario verticale grande (es. 40x40x60 cm)
+• Umidità 70–80%, temperatura 24–28 °C
+• Nascondigli in altezza, forte arieggiamento
+
+5. Chilobrachys spp. (Tarantole asiatiche)
+Descrizione:
+
+Specie sotterranee, rapide e nervose. Colori bruni o metallici (alcune blu). Origine: Asia Sud-
+Orientale.
+
+Comportamento:
+Molto rapide, facilmente irritabili, spesso difensive.
+Pro:
+• Crescono velocemente
+• Alcune specie molto belle (es. Chilobrachys fimbriatus)
+Contro:
+• Nervose, mordono facilmente
+• Non adatte a principianti
+• Richiedono spazio per scavare
+Cure:
+• Substrato profondo (fino a 20 cm)
+• Umidità alta (70–80%)
+• Scarso disturbo
+
+6. Theraphosa blondi (Tarantola Golia)
+Descrizione:
+
+La più grande tarantola esistente (fino a 30 cm con le zampe), di colore marrone. Originaria
+della foresta amazzonica.
+
+Comportamento:
+Tendenzialmente difensiva, lancia peli urticanti molto irritanti.
+
+Pro:
+• Imponente, affascinante
+• Spettacolare da osservare
+Contro:
+• Peli urticanti molto potenti
+• Necessita ampi spazi e alta umidità
+• Non maneggiabile
+Cure:
+• Terrario minimo 60x45x30 cm
+• Substrato profondo e umido
+• Umidità 80%, temperatura 26–28 °C
+7. Psalmopoeus spp.
+Descrizione:
+
+Tarantole arboricole tropicali con colori vivaci (es. Psalmopoeus irminia: nera con bande
+arancio).
+
+Comportamento:
+Veloci, schive, non urticanti ma possono mordere.
+
+Pro:
+• Bellissime
+• Crescono bene
+• Attive e visibili
+Contro:
+• Veloci e nervose
+• Non adatte al contatto umano
+• Reagiscono se disturbate
+Cure:
+• Terrario verticale con rifugi in alto
+• Umidità 70–80%
+• Temperatura 24–28 °C
+
+8. Lasiodora parahybana
+Descrizione:
+
+Tarantola terrestre brasiliana, molto grande e robusta. Colore scuro con riflessi rossi.
+Comportamento:
+
+Relativamente calma ma pronta a difendersi. Crescita rapida.
+Pro:
+• Facile da allevare
+• Crescita veloce
+• Imponente
+Contro:
+• Peli urticanti
+• Spazio necessario
+• Non sempre gestibile a mano
+Cure:
+• Terrario ampio
+• Substrato spesso per scavare
+• Umidità 65–75%, temperatura 25–28 °C
+
+9. Aphonopelma chalcodes (Tarantola del deserto)
+Descrizione:
+
+Tarantola terrestre americana, dal colore sabbia. Lenta e longeva.
+Comportamento:
+
+Molto docile, lenta nei movimenti. Perfetta per chi cerca un animale calmo.
+Pro:
+• Temperamento ideale per neofiti
+• Resistente
+• Non richiede umidità elevata
+Contro:
+• Poco attiva
+• Crescita lenta
+Cure:
+• Terrario 30x30x30 cm
+• Temperatura 22–28 °C
+• Umidità bassa (50–60%)
+• Rifugio e substrato secco

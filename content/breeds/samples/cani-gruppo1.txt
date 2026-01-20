@@ -1,0 +1,79 @@
+1. Australian Cattle Dog
+Descrizione: Cane da lavoro robusto e agile, pelo corto e resistente.
+Comportamento: Intelligente, energico, istintivamente protettivo.
+Problemi genetici: Displasia anca, sordità congenita, cataratta.
+Cure: Molto esercizio, stimoli mentali.
+Pro: Leale, instancabile lavoratore.
+Contro: Non adatto a stili di vita sedentari.
+
+2. Australian Kelpie
+Descrizione: Agile, pelo corto o medio, cane da pastore versatile.
+Comportamento: Vivace, intelligente, energico, molto attento.
+Problemi genetici: Displasia, atassia cerebellare.
+Cure: Necessita attività intensa e stimoli.
+Pro: Eccellente lavoratore.
+Contro: Può distruggere se annoiato.
+
+3. Australian Shepherd
+Descrizione: Pelo medio, versatile, molto intelligente.
+Comportamento: Socievole, fedele, energico, apprendimento rapido.
+Problemi genetici: Displasia, sordità, problemi oculari (CEA, PRA).
+Cure: Attività fisica e mentale intensa.
+Pro: Ottimo per sport e compagnia.
+Contro: Richiede impegno costante.
+
+4. Bearded Collie
+Descrizione: Pelo lungo, folto, agile.
+Comportamento: Giocherellone, energico, socievole.
+Problemi genetici: Displasia, ipotiroidismo, problemi oculari.
+Cure: Spazzolature frequenti.
+Pro: Amichevole, molto attivo.
+Contro: Pelo impegnativo.
+
+5. Border Collie
+Descrizione: Taglia media, pelo lungo o corto, estremamente intelligente.
+Comportamento: Molto energico, istinto al lavoro molto sviluppato.
+Problemi genetici: Displasia, epilessia, problemi oculari.
+Cure: Molto esercizio e stimoli mentali.
+Pro: Ottimo per lavoro e sport.
+Contro: Non adatto a chi non può gestire energia elevata.
+
+6. German Shepherd Dog (Pastore Tedesco)
+Descrizione: Taglia media-grande, pelo corto o medio, molto intelligente e versatile.
+Comportamento: Fedele, coraggioso, addestrabile.
+Problemi genetici: Displasia, problemi spinali, epilessia.
+Cure: Molto esercizio, addestramento costante.
+Pro: Cane da lavoro eccellente.
+Contro: Può soffrire ansia da separazione.
+
+7. Golden Retriever
+Descrizione: Taglia grande, pelo lungo e dorato, muscoloso e armonioso.
+Comportamento: Affettuoso, intelligente, socievole con tutti.
+Problemi genetici: Displasia anca e gomito, problemi cardiaci, tumori.
+Cure: Spazzolatura regolare, esercizio moderato.
+Pro: Ottimo cane da famiglia, versatile.
+Contro: Predisposto a problemi di salute.
+
+8. Labrador Retriever
+Descrizione: Taglia grande, pelo corto e denso, corpo robusto.
+Comportamento: Amichevole, energico, intelligente, ama l'acqua.
+Problemi genetici: Displasia, obesità, problemi oculari.
+Cure: Esercizio regolare, controllo peso.
+Pro: Versatile, ottimo con bambini.
+Contro: Tendenza ad ingrassare.
+
+9. Welsh Corgi Pembroke
+Descrizione: Taglia piccola, corpo lungo, pelo corto.
+Comportamento: Vivace, affettuoso, intelligente.
+Problemi genetici: Displasia, problemi alla schiena.
+Cure: Cura pelo semplice.
+Pro: Cane familiare e attivo.
+Contro: Problemi articolari.
+
+10. Shetland Sheepdog
+Descrizione: Piccolo, pelo lungo, simile al Collie.
+Comportamento: Intelligente, affettuoso, energico.
+Problemi genetici: Problemi oculari, displasia.
+Cure: Spazzolatura regolare.
+Pro: Ottimo cane da compagnia e sport.
+Contro: Richiede stimoli mentali.

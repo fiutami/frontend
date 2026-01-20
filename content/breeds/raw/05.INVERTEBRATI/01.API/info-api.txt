@@ -1,0 +1,194 @@
+# Estratto da: INFO_api.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.728Z
+# Caratteri: 6368
+# ---
+
+INFORMAZIONI SULLE API
+
+Sì, in apicoltura si allevano razze (o più correttamente, sottospecie) di Apis mellifera, l’ape
+da miele europea, che è la specie più diffusa e domesticata nel mondo. Esistono anche altre
+specie di api da miele (come Apis cerana o Apis dorsata), ma in apicoltura occidentale si
+usano quasi esclusivamente varietà di Apis mellifera, selezionate per:
+
+• docilità
+
+• produttività di miele
+
+• resistenza alle malattie
+
+• adattamento al clima locale
+
+Principali razze (sottospecie) di Apis mellifera
+usate in apicoltura
+
+Nome comune Nome scientifico Origine Caratteristiche principali
+
+Italiana Apis mellifera Italia Docile, produttiva, poco propensa
+ligustica alla sciamatura
+
+Carnica Apis mellifera carnica Alpi e Balcani Molto docile, ottima
+invernalizzazione, precoce nella
+ripresa primaverile
+
+Buckfast Ibrido selezionato UK (Abbazia di Molto produttiva, controllata per
+(non è una
+sottospecie) Buckfast) docilità e resistenza
+
+Mellifera (Nera Apis mellifera Europa centro- Resistente al freddo, più
+occidentale aggressiva, meno produttiva
+europea) mellifera
+
+Caucasica Apis mellifera Caucaso Molto calma, lingua lunga (buona
+caucasica su fiori profondi), forte
+propolizzazione
+
+Sahariensis Apis mellifera Nord Africa Resistente a climi aridi e caldi
+sahariensis
+
+Scutellata (ape Apis mellifera Africa Molto aggressiva, usata in
+ibridazioni (es. Africanizzate)
+africana) scutellata
+Nome comune Nome scientifico Origine Caratteristiche principali
+
+Iberica Apis mellifera Penisola iberica Meno docile, buona rusticità
+iberiensis
+
+Varietà selezionate o ibride:
+
+• Buckfast: incrocio stabile di diverse razze, molto usato in apicoltura professionale.
+• Abeille noire (Ape nera): razza locale conservata in alcune aree della Francia e
+
+Svizzera.
+• Ape sicula (Apis mellifera sicula): razza autoctona della Sicilia, resistente alla siccità.
+
+Le api in apicoltura sono considerate "domestiche"?
+Sì, Apis mellifera è considerata domestica nelle normative di molti Paesi, anche se non è
+addomesticata come un cane o un gatto. È gestita attivamente dall’uomo, selezionata
+geneticamente, e allevata in arnie.
+
+Ecco l’elenco delle principali razze (sottospecie) e linee selezionate di
+
+Apis mellifera allevate in apicoltura, suddivise tra razze autoctone, razze alloctone, ibridi
+selezionati e razze locali meno comuni:
+
+1. Razze autoctone europee di Apis mellifera
+
+Nome comune Nome scientifico
+
+Ape italiana Apis mellifera ligustica
+
+Ape carnica Apis mellifera carnica
+
+Ape nera europea Apis mellifera mellifera
+
+Ape iberica Apis mellifera iberiensis
+
+Ape sicula Apis mellifera sicula
+
+Ape macedone Apis mellifera macedonica
+Nome comune Nome scientifico
+
+Ape cecropia (greca) Apis mellifera cecropia
+
+Ape anatolica Apis mellifera anatoliaca
+
+Ape armena Apis mellifera remipes
+
+2. Razze alloctone (non europee)
+
+Nome comune Nome scientifico
+
+Ape caucasica Apis mellifera caucasica
+
+Ape sahariana Apis mellifera sahariensis
+
+Ape yemenita Apis mellifera jemenitica
+
+Ape africana orientale Apis mellifera scutellata
+
+Ape dell’Egitto Apis mellifera lamarckii
+
+Ape del Capo Apis mellifera capensis
+
+Ape monticola Apis mellifera monticola
+
+3. Ibridi selezionati e linee da apicoltura intensiva
+
+Nome comune Composizione
+Ape Buckfast Ibrido selezionato da ligustica, mellifera, carnica,
+caucasica, ecc.
+Ape Elgon Incrocio Apis mellifera monticola × Apis mellifera
+Hybrid VSH (Varroa Sensitive scutellata
+Hygiene)
+Ape Africanizzata Linee selezionate geneticamente per resistenza alla Varroa
+
+Ibrido selvatico scutellata × razze europee (America Latina
+e Sud USA)
+4. Razze o varietà locali meno comuni (in
+conservazione)
+
+Nome comune Nome scientifico
+
+Ape corsa Apis mellifera mellifera (locale)
+
+Ape delle Azzorre Apis mellifera mellifera (popolazione isolata)
+
+Ape maltese Apis mellifera ruttneri
+
+Ape sarda Apis mellifera ligustica (linea locale)
+
+Ape di Tell (Algeria) Apis mellifera intermissa
+
+CARATTERISTICHE:
+
+Apis mellifera – L’Ape domestica da
+miele
+
+Descrizione
+L’ape domestica (Apis mellifera) è un insetto sociale appartenente alla famiglia degli Apidi.
+Vive in colonie organizzate in casta: regina (una sola), api operaie (migliaia) e fuchi (maschi
+riproduttori, presenti solo in certe stagioni). È la specie di ape più diffusa in apicoltura per la
+produzione di miele, propoli, cera e come impollinatore.
+
+Comportamento
+• Estremamente sociale, vive in alveari permanenti o arnie artificiali.
+• Comunica tramite danze e feromoni.
+• Le operaie svolgono ruoli diversi in base all’età (nutrici, guardiane, bottinatrici…).
+• Mostra fedeltà al nido e ottima capacità di orientamento.
+• Tende a difendere l’alveare se minacciata (alcune razze sono più aggressive di altre).
+Problemi genetici / di salute comuni
+• Varroa destructor: acaro parassita molto pericoloso.
+• Nosema spp.: fungo intestinale debilitante.
+• Peste americana / europea: malattie batteriche delle larve.
+• Virus delle ali deformate (DWV): spesso associato alla Varroa.
+• Depauperamento genetico: causato da selezione forzata o incroci mal gestiti.
+
+Cure e gestione
+• Richiede ispezioni regolari dell’arnia.
+• Trattamenti antivarroa obbligatori e normati.
+• Fornire nutrizione supplementare in periodi critici (es. scorte scarse).
+• Prevenzione della sciamatura e controllo della regina.
+• Eventuale sostituzione della regina per mantenere la produttività.
+
+Pro
+• Impollinatrice essenziale per molte colture e piante spontanee.
+• Produce miele, propoli, cera, pappa reale, veleno (apiterapia).
+• Alta produttività (a seconda della razza e ambiente).
+• Adatta a diversi climi e ambienti (con razze selezionate).
+• Si adatta a gestione intensiva o stanziale.
+• Razze docili disponibili (es. italiana, Buckfast).
+Contro
+• Sensibile ai pesticidi, in particolare i neonicotinoidi.
+• Soggetta a diverse malattie e parassiti, alcuni gravi.
+• Richiede formazione tecnica specifica per l’allevamento.
+• Alcune razze sono aggressive (es. africane o ibridi poco controllati).
+• Il mantenimento può essere impegnativo in inverno o in climi ostili.
+• La sovrapopolazione di alveari in una zona può ridurre la biodiversità degli
+
+impollinatori selvatici.
+
+Nota
+Anche se Apis mellifera è l’unica specie di ape comunemente allevata in Europa, esistono
+migliaia di altre specie selvatiche di api (solitarie, senza pungiglione, ecc.) che hanno un
+ruolo fondamentale nell’ecosistema ma non producono miele.

@@ -1,0 +1,82 @@
+# Estratto da: INFO_RAZZE_granchi.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:42.810Z
+# Caratteri: 2673
+# ---
+
+DESCRZIONE RAZZE:
+
+1. Cambarellus patzcuarensis (Granchio nano messicano)
+
+• Descrizione: Piccolo granchio d’acqua dolce, misura circa 2–3 cm. Colori vivaci che
+vanno dal rosso all’arancione e blu. È uno dei più piccoli granchi d’acqua dolce allevati
+in acquario.
+
+• Habitat: Preferisce acquari piccoli con nascondigli (rocce, piante) e acqua pulita.
+Parametri ideali: pH 6.5-7.5, temperatura 18-24°C.
+
+• Pro:
+• Dimensioni molto ridotte, adatto ad acquari piccoli
+• Colori molto vivaci e decorativi
+• Temperamento generalmente pacifico
+• Facile da allevare per principianti
+
+• Contro:
+• Sensibile a inquinamento e variazioni dell’acqua
+• Non compatibile con pesci o invertebrati aggressivi
+• Può essere predato da specie più grandi
+
+2. Geosesarma spp. (Granchi vampiri)
+
+• Descrizione: Piccoli granchi semi-terrestri (3–5 cm) con colori vividi come rosso, viola,
+arancione. Sono molto popolari per terrari paludari grazie al loro aspetto accattivante e
+comportamento curioso.
+
+• Habitat: Richiedono un terrario paludario con zona acqua e zona terra umida.
+Temperatura ideale intorno a 22-26°C, umidità elevata.
+
+• Pro:
+• Aspetto molto colorato e interessante
+• Attivi e curiosi, buon soggetto per osservazione
+• Semi-terrestri, permettono allestimenti paludari
+
+• Contro:
+• Richiedono un ambiente complesso (terra + acqua)
+• Possono essere territoriali e aggressivi tra loro
+• Necessitano di attenzione a umidità e temperatura
+3. Sesarma mederi
+
+• Descrizione: Granchio semi-terrestre che vive in ambienti misti di acqua dolce e terra
+umida. Dimensioni medie, di solito 4–6 cm.
+
+• Habitat: Richiede terrari paludari ben allestiti con acqua e ampie zone di terra umida.
+Temperatura intorno a 22-26°C, con buona ventilazione.
+
+• Pro:
+• Interessante per chi vuole granchi semi-terrestri
+• Comportamento curioso e attivo
+• Adatto a terrari ben allestiti con zona terra/acqua
+
+• Contro:
+• Non adatto ad acquari solo acquatici
+• Può essere aggressivo e territoriale
+• Richiede spazio e attenzione all’allestimento
+
+4. Potamonautes spp.
+
+• Descrizione: Grandi granchi d’acqua dolce africani, possono raggiungere dimensioni
+superiori a 10 cm. Sono più robusti e territoriali rispetto agli altri.
+
+• Habitat: Necessitano di acquari grandi e spaziosi con nascondigli, acqua pulita e
+stabile. Parametri variabili a seconda della specie, ma in generale acqua dolce e pulita
+con temperatura intorno a 22-26°C.
+
+• Pro:
+• Aspetto imponente e interessante
+• Buona longevità
+• Interessa appassionati esperti di fauna esotica
+
+• Contro:
+• Richiedono spazi ampi e cure specifiche
+• Possono essere aggressivi e non compatibili con molte specie
+• Non indicati per principianti o acquari piccoli

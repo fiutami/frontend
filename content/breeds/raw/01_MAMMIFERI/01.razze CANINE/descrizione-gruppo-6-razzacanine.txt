@@ -1,0 +1,332 @@
+# Estratto da: DESCRIZIONE GRUPPO 6_razzacanine.pdf
+# Metodo: pdftotext
+# Data: 2026-01-19T13:35:40.020Z
+# Caratteri: 10708
+# ---
+
+GRUPPO 6
+
+1. American Foxhound
+Descrizione: Segugio statunitense snello, nato per seguire la volpe.
+Carattere: Energico, indipendente, determinato.
+Problemi comuni: Displasia, sordità, problemi oculari.
+Cure: Esercizio intenso, dieta controllata, controlli regolari.
+Pro: Resistente e fedele.
+Contro: Richiede molto spazio e attività, tende a fuggire.
+
+2. Anglo-Français de Petite Vénerie
+Descrizione: Segugio francese agile per piccola selvaggina.
+Carattere: Socievole, vocale, tenace.
+Problemi comuni: Tendenza a otiti.
+Cure: Pulizia orecchie, spazio per correre.
+Pro: Ottimo per la caccia.
+Contro: Non adatto a vita urbana.
+
+3. Ariegeois
+Descrizione: Segugio francese snello e resistente.
+Carattere: Dolce, collaborativo, robusto.
+Problemi comuni: Problemi auricolari.
+Cure: Attività giornaliera, igiene orecchie.
+Pro: Equilibrato e adattabile.
+Contro: Ha bisogno di spazio all’aperto.
+
+4. Basset Artesien Normand
+Descrizione: Basset basso, elegante, originale da caccia.
+Carattere: Tranquillo, affettuoso, testardo.
+Problemi comuni: Problemi alla schiena, otiti.
+Cure: Controllo peso, cure auricolari.
+Pro: Buono con i bambini.
+Contro: Poco adatto ai piani alti.
+
+5. Basset Bleu de Gascogne
+Descrizione: Basset caratteristico con mantello blu.
+Carattere: Allegro, vocale, resistente.
+Problemi comuni: Otiti, obesità.
+Cure: Esercizio quotidiano, dieta.
+Pro: Olfatto eccellente.
+Contro: Abbaia molto.
+
+6. Basset Fauve de Bretagne
+
+Descrizione: Piccolo terrier tipo basset, mantello duro.
+Carattere: Vivace, curioso, affettuoso.
+Problemi comuni: Problemi auricolari, articolari.
+Cure: Lunghe passeggiate, spazzolatura.
+Pro: Buon cane da famiglia.
+Contro: Tendenza a scavare e inseguire.
+
+7. Basset Hound
+
+Descrizione: Basset iconico da caccia, con orecchie lunghe e corpo robusto.
+Carattere: Dolce, calmo, difficile da addestrare.
+Problemi comuni: Problemi vertebrali, orecchi, obesità.
+Cure: Movimento regolare, dieta, pulizia.
+Pro: Ideale con i bambini.
+Contro: Richiede pazienza.
+
+8. Beagle
+
+Descrizione: Segugio compatto, molto socievole e noto.
+Carattere: Allegro, indipendente, curioso.
+Problemi comuni: Otiti, epilessia, obesità.
+Cure: Stimolazione quotidiana, controllo peso.
+Pro: Ottimo con le famiglie.
+Contro: Può scappare se stimolato da odori.
+
+9. Bloodhound (Chien de Saint-Hubert)
+
+Descrizione: Segugio da traccia per eccellenza, grande e rugoso.
+Carattere: Dolce, tenace, molto olfattivo.
+Problemi comuni: Displasia, infezioni oculari/auricolari, pieghe cutanee.
+Cure: Pulizia accurata, dietologo, esercizio moderato.
+Pro: Nasone incomparabile.
+Contro: Molto bavoso, non si adatta a zone residenziali.
+
+10. Bleu de Gascogne
+
+Descrizione: Segugio francese robusto, dal mantello blu-grigio.
+Carattere: Estroverso, vocale, da branco.
+Problemi comuni: Otiti, predisposizione cardiaca.
+Cure: Esercizio rigoroso.
+Pro: Eccellente nel lavoro su traccia.
+Contro: Rumoroso, non adatto ad appartamenti.
+
+11. Bruno Jura Hound
+
+Descrizione: Segugio svizzero del Giura, elegante e deciso.
+Carattere: Calmo, fondamentalmente obbediente.
+Problemi comuni: Otiti, uso per popolazioni ridotte.
+Cure: Passeggiate lunghe, attenzione a igiene.
+Pro: Adatto a famiglie tranquille.
+Contro: Poco diffuso, meno reperibile.
+
+12. Drever
+
+Descrizione: Basset svedese corto a zampe corte.
+Carattere: Dolce, coraggioso, equilibrato.
+Problemi comuni: Schiena, articolazioni.
+Cure: Controllo peso, fare moto giornaliero.
+Pro: Ottimo per la famiglia.
+Contro: Ha tendenza a scavare e testardaggine.
+
+13. English Foxhound
+
+Descrizione: Segugio britannico robusto e atletico.
+Carattere: Socievole, resistente, laborioso.
+Problemi comuni: Displasia, obesità.
+Cure: Attività giornaliera, dieta controllata.
+Pro: Eccellente in branco.
+Contro: Rumoroso e energico.
+14. Estonian Hound
+
+Descrizione: Segugio estone muscoloso, adatto alla selvaggina.
+Carattere: Leale, equilibrato, laborioso.
+Problemi comuni: Articolari.
+Cure: Passeggiate regolari, dieta sana.
+Pro: Radicato a caccia, buon carattere.
+Contro: Poco noto, poco reperibile.
+
+15. Grand Bleu de Gascogne
+
+Descrizione: Segugio grande dal manto blu intenso.
+Carattere: Imponente, vocale, tenace.
+Problemi comuni: Otiti, predisposizione articolare.
+Cure: Brain & body stimoli intensi.
+Pro: Grande cacciatore.
+Contro: Rumoroso, impegnativo.
+
+16. Hamiltonstövare
+
+Descrizione: Cane svedese da caccia, snello e agile.
+Carattere: Dolce, coraggioso, olfattivo.
+Problemi comuni: Displasia, otiti.
+Cure: Passeggiate e pulizia auricolare.
+Pro: Adatto alla famiglia attiva.
+Contro: Richiede ampia zona verde.
+
+17. Harrier
+
+Descrizione: Simile ad incrocio tra Beagle e segugio inglese.
+Carattere: Vivace, amichevole, coraggioso.
+Problemi comuni: Epilessia, obesità.
+Cure: Attività regolare e dieta.
+Pro: Socievole e resistente.
+Contro: Può abbaiare molto.
+
+18. Istrian Shorthaired Hound
+
+Descrizione: Segugio della penisola istriana dal pelo raso.
+Carattere: Determinato, dolce con padroni.
+Problemi comuni: Articolari.
+Cure: Lunghe passeggiate, dieta.
+Pro: Ottimo nelle zone boschive.
+Contro: Poco noto, difficile da trovare in allevamento.
+
+19. Istrian Coarse-haired Hound
+
+Descrizione: Variante a pelo duro del precedente.
+Carattere: Come lo shorthaired, ma più resistente.
+Problemi comuni: Articolari, otiti.
+Cure: Spazzolatura pelo, esercizio.
+Pro: Adatto a terreni impervi.
+Contro: Poco diffuso.
+
+20. Norwegian Elkhound
+
+Descrizione: Segugio nordico specialista nella caccia all’alce.
+Carattere: Coraggioso, leale, vivace.
+Problemi comuni: Displasia, obesità.
+Cure: Attività fisica costante, dieta attenta.
+Pro: Ottimo cacciatore e guardiano.
+Contro: Abbaia spesso, richiede molto spazio.
+
+21. Otterhound
+
+Descrizione: Segugio da fiume con mantello ruvido impermeabile.
+Carattere: Allegro, cocciuto, affettuoso.
+Problemi comuni: Otiti, displasia.
+Cure: Igiene vocazione fossa auricolare.
+Pro: Ideale per attività acquatiche.
+Contro: Cura del pelo intensa.
+
+22. Poitevin
+
+Descrizione: Segugio francese slanciato, adatto alla caccia veloce.
+Carattere: Energico, elegante, silenzioso.
+Problemi comuni: Displasia, otiti.
+Cure: Passeggiate lunghe, alimentazione.
+Pro: Ottimo per terreni aperti.
+Contro: Poco famoso, non comune.
+23. Porcelaine
+
+Descrizione: Segugio francese bianco-lucido e slanciato.
+Carattere: Coraggioso, attivo, leale.
+Problemi comuni: Articolari, predisposizione a otiti.
+Cure: Esercizio, controlli auricolari.
+Pro: Forte e serio.
+Contro: Poco affettuoso.
+
+24. Segugio Italiano a Pelo Forte
+
+Descrizione: Cane da caccia nazionale, pelo duro corto.
+Carattere: Tenace, resistente, docile.
+Problemi comuni: Articolari, otiti.
+Cure: Passeggiate quotidiane.
+Pro: Ottimo cacciare e in famiglia.
+Contro: Richiede spazio.
+
+25. Segugio Italiano a Pelo Raso
+
+Descrizione: Variante a pelo liscio, snella e atletica.
+Carattere: Sensibile, affettuoso, collaborativo.
+Problemi comuni: Displasia, predisposizione a otiti.
+Cure: Esercizio regolare.
+Pro: Adatto anche in famiglia.
+Contro: Richiede costanza.
+
+26. Segugio Maremmano
+
+Descrizione: Segugio rustico italiano del litorale.
+Carattere: Resistente, tenace, adatto alla caccia in zone selvagge.
+Problemi comuni: Articolari.
+Cure: Passeggiate in spazi aperti.
+Pro: Cane versatile e robusto.
+Contro: Poco compatibile con la vita urbana.
+
+27. Schillerstövare
+
+Descrizione: Segugio scandinavo tricolore, elegante e veloce.
+Carattere: Intelligente, energico, indipendente.
+Problemi comuni: Displasia.
+Cure: Movimento quotidiano.
+Pro: Ottimo per cacciatori attivi.
+Contro: Poco adatto in appartamento.
+
+28. Slovakian Rough-haired Pointer
+
+Descrizione: Cane da caccia slovacco a pelo duro.
+Carattere: Affettuoso, energico, volenteroso.
+Problemi comuni: Articolari, otiti.
+Cure: Esercizio e toelettatura del pelo.
+Pro: Ottimo in acqua.
+Contro: Poco diffuso.
+
+29. Styrian Coarse-haired Hound
+
+Descrizione: Segugio austriaco robusto, pelo duro.
+Carattere: Ostinato, resistente, stoico.
+Problemi comuni: Articolari.
+Cure: Passeggiate e cura del mantello.
+Pro: Adatto a terreni montani.
+Contro: Poco noto, difficile da trovare.
+
+30. Swiss Hound
+
+Descrizione: Segugio elvetico elegante con macchie.
+Carattere: Equilibrato, docile, vocale.
+Problemi comuni: Articolari, otiti.
+Cure: Attività regolare, pulizia auricolare.
+Pro: Adatto alla famiglia.
+Contro: Non per la vita in appartamento.
+
+31. Westphalian Dachsbracke
+
+Descrizione: Terrier segugio tedesco, medio-piccolo.
+Carattere: Ostinato, coraggioso, docile con i padroni.
+Problemi comuni: Schiena, obesità.
+Cure: Controllo peso ed esercizio.
+Pro: Mano compagna in andare.
+Contro: Testardo.
+32. West Highland White Terrier
+Descrizione: Terrier bianco compatto, pelo duro doppio.
+Carattere: Vivace, coraggioso, socievole.
+Problemi comuni: Allergie cutanee, lussazione rotulea.
+Cure: Toelettatura regolare.
+Pro: Ottimo cane da appartamento e famiglia.
+Contro: Richiede cura del pelo.
+
+33. Norwegian Lundehund (anche Gruppo 5)
+Descrizione: Terrier nordico con mobilità eccezionale (6 dita).
+Carattere: Agile, curioso, indipendente.
+Problemi comuni: Problemi gastrointestinali, displasia.
+Cure: Dieta attentamente bilanciata, esercizio e cure articolari.
+Pro: Razza unica e affascinante.
+Contro: Richiede gestione specifica.
+
+° SAREBBE NEL POSTO 12 invece
+
+Chien de Saint-Hubert (Bloodhound)
+• Descrizione:
+Cane di grande taglia, imponente, dalle lunghe orecchie e pelle abbondante con rughe
+caratteristiche. È il segugio per eccellenza, celebre per il fiuto straordinario e la
+capacità di seguire tracce vecchie anche di giorni.
+• Comportamento:
+Calmo, affettuoso, pacato in casa ma estremamente determinato e concentrato sul
+lavoro. Può essere testardo. È molto dolce con i bambini, anche se la sua mole
+richiede attenzione. Forte istinto da segugio: segue gli odori senza esitazione.
+• Problemi genetici/comuni:
+o Displasia dell’anca e del gomito
+o Ectropion ed entropion (problemi oculari)
+o Otiti ricorrenti (orecchie lunghe e cadenti)
+o Dermatiti nelle pieghe
+o Predisposizione al gonfiore gastrico (torsione dello stomaco)
+o Bavosità importante
+• Cure e attenzioni necessarie:
+
+o Pulizia costante di orecchie, occhi e pieghe della pelle
+o Controlli ortopedici regolari
+o Dieta ben bilanciata per evitare obesità
+o Attenzione durante l’attività fisica: non eccedere su cuccioli o terreni duri
+o Addestramento paziente e coerente, con rinforzo positivo
+o Necessita di spazio: inadatto alla vita in piccoli appartamenti
+• Pro:
+Olfatto imbattibile (utilizzato anche in ambito forense)
+Cane affettuoso, fedele e tranquillo
+Non aggressivo, adatto ai bambini
+• Contro:
+Richiede molte cure igieniche (orecchie, rughe, bava)
+Tende a fuggire se segue un odore
+Abbondante salivazione
+Necessita spazio e attività controllata
+
+Se vuoi, posso inserirlo anche in un file assieme a tutte le altre s
