@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PetService } from '../../core/services/pet.service';
 import { SpeciesInfoService } from '../../core/services/species-info.service';
 import { PhotoUploadService } from '../../core/services/photo-upload.service';
-import { DrawerService } from '../../shared/services/drawer.service';
+import { DrawerService } from '../../shared/components/drawer/drawer.service';
 import { ProfileIconComponent } from '../../shared/components/profile-icons';
 import { PhotoUploadModalComponent } from '../../shared/components/photo-upload-modal';
 import {
@@ -15,7 +15,7 @@ import {
   PetFriendProfile,
   PetMemory,
   BreedFacts,
-  PetResponse
+  PetSummaryResponse
 } from '../../core/models/pet.models';
 
 /** Promo card interface */
@@ -57,7 +57,7 @@ export class PetProfileComponent implements OnInit, OnDestroy {
   error = signal<string | null>(null);
 
   // User's pets for switching
-  userPets = signal<PetResponse[]>([]);
+  userPets = signal<PetSummaryResponse[]>([]);
 
   // Human age conversion
   humanAge = signal<{ humanYears: number; stage: string } | null>(null);
@@ -121,7 +121,7 @@ export class PetProfileComponent implements OnInit, OnDestroy {
         catchError(() => of({ items: [], totalCount: 0 }))
       )
       .subscribe(response => {
-        this.userPets.set(response.items || []);
+        this.userPets.set(response.pets || []);
       });
   }
 
@@ -310,7 +310,7 @@ export class PetProfileComponent implements OnInit, OnDestroy {
    * Open drawer menu
    */
   openDrawer(): void {
-    this.drawerService.open('profile-menu');
+    this.drawerService.open();
   }
 
   /**
