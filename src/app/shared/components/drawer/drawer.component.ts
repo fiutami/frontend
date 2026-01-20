@@ -16,6 +16,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { Subject, takeUntil, fromEvent, debounceTime, startWith } from 'rxjs';
 import { DrawerService } from './drawer.service';
 import { AuthService, User } from '../../../core/services/auth.service';
+import { PetService } from '../../../core/services/pet.service';
 
 export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' | 'foldable-unfolded';
 
@@ -60,6 +61,7 @@ export interface Language {
 export class DrawerComponent implements OnInit, OnDestroy {
   private drawerService = inject(DrawerService);
   private authService = inject(AuthService);
+  private petService = inject(PetService);
   private translateService = inject(TranslateService);
   private router = inject(Router);
   private cdr = inject(ChangeDetectorRef);
@@ -75,6 +77,26 @@ export class DrawerComponent implements OnInit, OnDestroy {
 
   // User avatar URL (from profile)
   userAvatarUrl: string | null = null;
+
+  // Pet avatar computed (selectedPet o fallback primo pet)
+  activePetPhotoUrl = computed(() => {
+    const selected = this.petService.selectedPet();
+    if (selected?.profilePhotoUrl) {
+      return selected.profilePhotoUrl;
+    }
+    // Fallback: primo pet della lista
+    const petsList = this.petService.pets();
+    return petsList?.pets?.[0]?.profilePhotoUrl ?? null;
+  });
+
+  activePetName = computed(() => {
+    const selected = this.petService.selectedPet();
+    if (selected?.name) {
+      return selected.name;
+    }
+    const petsList = this.petService.pets();
+    return petsList?.pets?.[0]?.name ?? 'Pet';
+  });
 
   // Available languages
   languages: Language[] = [
@@ -122,28 +144,29 @@ export class DrawerComponent implements OnInit, OnDestroy {
   });
 
   // Menu sections matching Figma mob_drawer_menu design
+  // Route allineate a HeroRouting (fonte di verità)
   menuSections: DrawerMenuSection[] = [
     {
-      // Primary section - Account & Activity
+      // Sezione: Account / Personale
       items: [
         { labelKey: 'drawer.account', route: '/home/account', icon: 'person' },
         { labelKey: 'drawer.activity', route: '/home/activity', icon: 'history' },
         { labelKey: 'drawer.notifications', route: '/home/notifications', icon: 'notifications' },
-        { labelKey: 'drawer.saved', route: '/home/saved', icon: 'bookmark' },
+        { labelKey: 'drawer.saved', route: '/home/favorites', icon: 'bookmark' }, // FIXED: era /home/saved
       ]
     },
     {
-      // Pets section
+      // Sezione: Pet / Social / Community
       items: [
         { labelKey: 'drawer.adopt', route: '/home/adopt', icon: 'pets' },
-        { labelKey: 'drawer.addPet', route: '/onboarding/register-pet', icon: 'add_circle' },
+        { labelKey: 'drawer.addPet', icon: 'add_circle', action: () => this.onAddPetClick() }, // ACTION con logica limite 2
         { labelKey: 'drawer.petFriends', route: '/home/friends', icon: 'group' },
         { labelKey: 'drawer.inviteFriends', route: '/home/invite', icon: 'share' },
-        { labelKey: 'drawer.lostPets', route: '/lost-pets', icon: 'search' },
+        { labelKey: 'drawer.lostPets', route: '/home/lost-pets', icon: 'search' }, // FIXED: era /lost-pets
       ]
     },
     {
-      // Settings section
+      // Sezione: Sistema / Legale
       items: [
         { labelKey: 'drawer.blockedUsers', route: '/home/blocked', icon: 'block' },
         { labelKey: 'drawer.terms', route: '/home/terms', icon: 'description' },
@@ -153,7 +176,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
       ]
     },
     {
-      // Logout section
+      // Logout
       items: [
         { labelKey: 'drawer.logout', icon: 'logout', isLogout: true },
       ]
@@ -196,6 +219,11 @@ export class DrawerComponent implements OnInit, OnDestroy {
           this.windowHeight.set(window.innerHeight);
         });
     }
+
+    // Carica pets se non ancora caricati (per avatar pet)
+    if (!this.petService.pets()) {
+      this.petService.loadPets().pipe(takeUntil(this.destroy$)).subscribe();
+    }
   }
 
   ngOnDestroy(): void {
@@ -214,17 +242,52 @@ export class DrawerComponent implements OnInit, OnDestroy {
     this.drawerService.close();
   }
 
+  closeAndGoHome(): void {
+    this.router.navigate(['/home/main'], { replaceUrl: true });
+    this.close();
+  }
+
   onBackdropClick(): void {
     this.close();
   }
 
   onMenuItemClick(item: DrawerMenuItem): void {
-    if (item.isLogout) {
-      this.logout();
-    } else if (item.route) {
+    // 1. Prima: action (se definita)
+    if (item.action) {
+      item.action();
+      return;
+    }
+
+    // 2. Poi: route
+    if (item.route) {
       this.router.navigate([item.route]);
       this.close();
+      return;
     }
+
+    // 3. Infine: logout
+    if (item.isLogout) {
+      this.logout();
+    }
+  }
+
+  /**
+   * Logica "Aggiungi Pets" con limite 2 pet gratis
+   * - Se < 2 pet → vai a form registrazione pet
+   * - Se >= 2 pet → vai a pagina abbonamenti (FIUTAMI Plus)
+   */
+  onAddPetClick(): void {
+    const count = this.petService.petCount();
+
+    if (count < 2) {
+      // Può aggiungere pet gratis
+      this.router.navigate(['/home/pet-register']);
+    } else {
+      // Limite raggiunto → abbonamento
+      this.router.navigate(['/home/subscriptions']);
+    }
+
+    this.close();
   }
 
   onSearchChange(event: Event): void {

@@ -23,6 +23,96 @@
   overflow: hidden;
   border-radius: 20px 0 0 20px;
 
+  // ===========================================
+  // HEADER FIGMA: freccia + logo + sottotitolo + avatar pet
+  // ===========================================
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md $spacing-lg;
+    padding-top: calc($spacing-md + env(safe-area-inset-top, 0));
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__back-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    color: $color-drawer-text;
+    cursor: pointer;
+    transition: $transition-fast;
+    flex-shrink: 0;
+
+    .material-icons {
+      font-size: 24px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(0.95);
+    }
+  }
+
+  &__branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+    flex: 1;
+  }
+
+  &__logo {
+    height: 28px;
+    width: auto;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+  }
+
+  &__pet-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__pet-placeholder {
+    font-size: 20px;
+  }
+
+  // ===========================================
+  // LEGACY STYLES (da rimuovere dopo cleanup)
+  // ===========================================
+
   // Close button (top right)
   &__close {
     position: absolute;

@@ -16,75 +16,53 @@
   [attr.data-viewport]="viewportSize()"
   data-testid="drawer-container"
 >
-  <!-- Close button (top right) -->
-  <button
-    class="drawer__close"
-    (click)="close()"
-    [attr.aria-label]="'common.close' | translate"
-    type="button"
-  >
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
-    </svg>
-  </button>
+  <!-- Header Figma: freccia + logo + sottotitolo + avatar pet -->
+  <header class="drawer__header">
+    <!-- Freccia indietro (chiude e torna a Home) -->
+    <button
+      class="drawer__back-btn"
+      (click)="closeAndGoHome()"
+      aria-label="Chiudi e torna alla Home"
+      type="button"
+    >
+      <span class="material-icons">arrow_back</span>
+    </button>
 
-  <!-- User Header Section -->
-  <header class="drawer__user-header">
-    @if (user$ | async; as user) {
-      <div class="drawer__user-avatar">
-        @if (userAvatarUrl) {
-          <img [src]="userAvatarUrl" [alt]="user.firstName" />
-        } @else {
-          <span class="drawer__user-initials">{{ getUserInitials(user) }}</span>
-        }
-      </div>
-      <div class="drawer__user-info">
-        <h2 class="drawer__user-name">{{ user.firstName }} {{ user.lastName }}</h2>
-        <p class="drawer__user-email">{{ user.email }}</p>
-      </div>
-    } @else {
-      <div class="drawer__user-avatar drawer__user-avatar--placeholder">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
-      </div>
-      <div class="drawer__user-info">
-        <h2 class="drawer__user-name">{{ 'drawer.guest' | translate }}</h2>
-      </div>
-    }
+    <!-- Logo + Sottotitolo centrati -->
+    <div class="drawer__branding">
+      <img src="assets/Logo/fiutami.svg" alt="FIUTAMI" class="drawer__logo" />
+      <p class="drawer__subtitle">Impostazioni e attività</p>
+    </div>
+
+    <!-- Avatar pet -->
+    <div class="drawer__pet-avatar">
+      @if (activePetPhotoUrl()) {
+        <img [src]="activePetPhotoUrl()" [alt]="activePetName()" />
+      } @else {
+        <span class="drawer__pet-placeholder">🐾</span>
+      }
+    </div>
   </header>
 
-  <!-- Language Selector (prominent position) -->
+  <!-- Language Selector -->
   <div class="drawer__language-section">
     <button
       class="drawer__language-button"
       (click)="toggleLanguageDropdown()"
       type="button"
       [attr.aria-expanded]="showLanguageDropdown"
-      [attr.aria-label]="'common.language' | translate"
+      aria-label="Cambia lingua"
     >
-      <span class="drawer__language-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-        </svg>
-      </span>
+      <span class="drawer__language-icon material-icons">language</span>
       <span class="drawer__language-current">
         <span class="drawer__language-flag">{{ currentLanguage.flag }}</span>
         <span class="drawer__language-label">{{ currentLanguage.label }}</span>
       </span>
-      <svg
-        class="drawer__language-chevron"
-        [class.drawer__language-chevron--open]="showLanguageDropdown"
-        width="12"
-        height="8"
-        viewBox="0 0 12 8"
-        fill="currentColor"
-      >
-        <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
+      <span class="material-icons drawer__language-chevron" [class.drawer__language-chevron--open]="showLanguageDropdown">
+        expand_more
+      </span>
     </button>
 
-    <!-- Language dropdown -->
     @if (showLanguageDropdown) {
       <div class="drawer__language-dropdown">
         @for (lang of languages; track lang.code) {
@@ -97,31 +75,12 @@
             <span class="drawer__language-flag">{{ lang.flag }}</span>
             <span>{{ lang.label }}</span>
             @if (lang.code === currentLang) {
-              <svg class="drawer__language-check" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-              </svg>
+              <span class="material-icons drawer__language-check">check</span>
             }
           </button>
         }
       </div>
     }
-  </div>
-
-  <div class="drawer__separator"></div>
-
-  <!-- Search bar -->
-  <div class="drawer__search">
-    <svg class="drawer__search-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-    </svg>
-    <input
-      type="text"
-      class="drawer__search-input"
-      [placeholder]="'common.search' | translate"
-      [value]="searchQuery"
-      (input)="onSearchChange($event)"
-      [attr.aria-label]="'common.search' | translate"
-    />
   </div>
 
   <!-- Menu sections -->
@@ -152,9 +111,4 @@
       }
     }
   </nav>
-
-  <!-- Footer -->
-  <footer class="drawer__footer">
-    <p class="drawer__version">v{{ appVersion }}</p>
-  </footer>
 </aside>
