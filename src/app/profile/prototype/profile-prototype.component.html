@@ -46,17 +46,17 @@
         </div>
       </section>
 
-      <!-- Gallery Section (LOCKED) -->
+      <!-- Gallery Section (LOCKED) - Uses Banda Pelosa CTA -->
       <section class="profile-prototype__section profile-prototype__section--locked">
-        <h2 class="profile-prototype__section-title">
-          <span class="profile-prototype__section-icon">🖼️</span>
-          Galleria
-        </h2>
+        <h2 class="profile-prototype__section-title">Galleria - Banda Pelosa</h2>
         <div class="profile-prototype__locked-overlay">
-          <div class="profile-prototype__locked-placeholder">
-            <div class="profile-prototype__placeholder-item"></div>
-            <div class="profile-prototype__placeholder-item"></div>
-            <div class="profile-prototype__placeholder-item"></div>
+          <div class="profile-prototype__cta-preview">
+            <app-profile-icon
+              icon="foto"
+              variant="cta"
+              ariaLabel="Banda Pelosa - Gallery bloccata"
+              [disabled]="true">
+            </app-profile-icon>
           </div>
           <div class="profile-prototype__locked-content">
             <span class="profile-prototype__lock-icon">🔒</span>
@@ -71,18 +71,17 @@
         </div>
       </section>
 
-      <!-- Friends Section (LOCKED) -->
+      <!-- Friends Section (LOCKED) - Uses Rullino Feroce CTA -->
       <section class="profile-prototype__section profile-prototype__section--locked">
-        <h2 class="profile-prototype__section-title">
-          <span class="profile-prototype__section-icon">🐾</span>
-          Amici
-        </h2>
+        <h2 class="profile-prototype__section-title">Amici - Rullino Feroce</h2>
         <div class="profile-prototype__locked-overlay">
-          <div class="profile-prototype__locked-placeholder">
-            <div class="profile-prototype__placeholder-avatar"></div>
-            <div class="profile-prototype__placeholder-avatar"></div>
-            <div class="profile-prototype__placeholder-avatar"></div>
-            <div class="profile-prototype__placeholder-avatar"></div>
+          <div class="profile-prototype__cta-preview">
+            <app-profile-icon
+              icon="friends"
+              variant="cta"
+              ariaLabel="Rullino Feroce - Amici bloccato"
+              [disabled]="true">
+            </app-profile-icon>
           </div>
           <div class="profile-prototype__locked-content">
             <span class="profile-prototype__lock-icon">🔒</span>
@@ -97,20 +96,21 @@
         </div>
       </section>
 
-      <!-- Memories Section (LOCKED) -->
+      <!-- Facts Section (LOCKED) - Uses Fatti Bestiali CTA -->
       <section class="profile-prototype__section profile-prototype__section--locked">
-        <h2 class="profile-prototype__section-title">
-          <span class="profile-prototype__section-icon">📸</span>
-          Ricordi
-        </h2>
+        <h2 class="profile-prototype__section-title">Info - Fatti Bestiali</h2>
         <div class="profile-prototype__locked-overlay">
-          <div class="profile-prototype__locked-placeholder">
-            <div class="profile-prototype__placeholder-memory"></div>
-            <div class="profile-prototype__placeholder-memory"></div>
+          <div class="profile-prototype__cta-preview">
+            <app-profile-icon
+              icon="doc"
+              variant="cta"
+              ariaLabel="Fatti Bestiali - Info bloccato"
+              [disabled]="true">
+            </app-profile-icon>
           </div>
           <div class="profile-prototype__locked-content">
             <span class="profile-prototype__lock-icon">🔒</span>
-            <p class="profile-prototype__lock-text">Registra il tuo pet per salvare ricordi</p>
+            <p class="profile-prototype__lock-text">Registra il tuo pet per accedere ai fatti</p>
             <button
               type="button"
               class="profile-prototype__unlock-btn"

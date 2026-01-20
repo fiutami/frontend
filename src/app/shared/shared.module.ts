@@ -27,6 +27,9 @@ import { DrawerComponent } from './components/drawer';
 import { SpeciesCardComponent } from './components/species-card';
 import { SpeciesSelectorComponent } from './components/species-selector';
 import { MascotPeekComponent } from './components/mascot-peek';
+import { ProfileIconComponent } from './components/profile-icons';
+import { CameraCaptureComponent } from './components/camera-capture';
+import { PhotoUploadModalComponent } from './components/photo-upload-modal';
 
 // Legacy components (declared in this module)
 const LEGACY_COMPONENTS = [
@@ -56,6 +59,9 @@ const STANDALONE_COMPONENTS = [
   SpeciesCardComponent,
   SpeciesSelectorComponent,
   MascotPeekComponent,
+  ProfileIconComponent,
+  CameraCaptureComponent,
+  PhotoUploadModalComponent,
 ];
 
 @NgModule({

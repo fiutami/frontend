@@ -1049,3 +1049,122 @@
 .btn-add {
   margin-top: $spacing-md;
 }
+
+// ============================================================
+// Upload Overlay & Progress
+// ============================================================
+
+.upload-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  backdrop-filter: blur(4px);
+}
+
+.upload-progress-card {
+  background: $color-white-100;
+  border-radius: $border-radius-xl;
+  padding: $spacing-xl;
+  text-align: center;
+  min-width: 280px;
+  box-shadow: $shadow-xl;
+}
+
+.upload-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba($color-ai-primary, 0.2);
+  border-top-color: $color-ai-primary;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto $spacing-md;
+}
+
+.upload-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md;
+}
+
+.upload-progress-bar {
+  height: 8px;
+  background: rgba($color-ai-primary, 0.2);
+  border-radius: $border-radius-full;
+  overflow: hidden;
+}
+
+.upload-progress-fill {
+  height: 100%;
+  background: $color-ai-primary;
+  border-radius: $border-radius-full;
+  transition: width 0.3s ease;
+}
+
+// ============================================================
+// Upload Error Toast
+// ============================================================
+
+.upload-error-toast {
+  position: fixed;
+  bottom: calc(#{$tab-bar-height} + 20px);
+  left: $spacing-md;
+  right: $spacing-md;
+  background: $color-error;
+  color: $color-white-100;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  z-index: 1100;
+  animation: slideUp 0.3s ease;
+
+  .error-icon {
+    width: 24px;
+    height: 24px;
+    background: $color-white-100;
+    color: $color-error;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  p {
+    flex: 1;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: $color-white-100;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

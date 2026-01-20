@@ -1,0 +1,93 @@
+<div class="camera-capture">
+  <!-- Loading state -->
+  @if (loading()) {
+    <div class="camera-capture__loading">
+      <div class="camera-capture__spinner"></div>
+      <p class="camera-capture__loading-text">Attivazione fotocamera...</p>
+    </div>
+  }
+
+  <!-- Error message -->
+  @if (error()) {
+    <div class="camera-capture__error">
+      <span class="camera-capture__error-icon">!</span>
+      <p class="camera-capture__error-text">{{ error() }}</p>
+      <button type="button" class="camera-capture__retry-btn" (click)="triggerFileInput()">
+        Seleziona dalla galleria
+      </button>
+    </div>
+  }
+
+  <!-- Camera view (when available) -->
+  @if (cameraAvailable() && !loading()) {
+    <div class="camera-capture__preview">
+      <video
+        #videoElement
+        class="camera-capture__video"
+        autoplay
+        playsinline
+        muted>
+      </video>
+
+      <div class="camera-capture__controls">
+        <button
+          type="button"
+          class="camera-capture__cancel-btn"
+          (click)="cancel()"
+          aria-label="Annulla">
+          <span class="camera-capture__cancel-icon">×</span>
+        </button>
+
+        <button
+          type="button"
+          class="camera-capture__capture-btn"
+          (click)="capturePhoto()"
+          aria-label="Scatta foto">
+          <span class="camera-capture__capture-icon"></span>
+        </button>
+
+        <button
+          type="button"
+          class="camera-capture__gallery-btn"
+          (click)="triggerFileInput()"
+          aria-label="Scegli dalla galleria">
+          <span class="camera-capture__gallery-icon">🖼️</span>
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- File input fallback (when camera not available) -->
+  @if (!cameraAvailable() && !loading()) {
+    <div class="camera-capture__fallback">
+      <div class="camera-capture__fallback-icon">📷</div>
+      <p class="camera-capture__fallback-title">Fotocamera non disponibile</p>
+      <p class="camera-capture__fallback-text">
+        Seleziona una foto dalla galleria o scattane una nuova
+      </p>
+
+      <button
+        type="button"
+        class="camera-capture__fallback-btn"
+        (click)="triggerFileInput()">
+        Seleziona foto
+      </button>
+
+      <button
+        type="button"
+        class="camera-capture__fallback-cancel"
+        (click)="cancel()">
+        Annulla
+      </button>
+    </div>
+  }
+
+  <!-- Hidden file input (used by both camera and fallback) -->
+  <input
+    #fileInput
+    type="file"
+    accept="image/jpeg,image/png,image/webp"
+    capture="environment"
+    class="camera-capture__file-input"
+    (change)="onFileSelected($event)" />
+</div>

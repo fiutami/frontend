@@ -5,6 +5,9 @@ import { Subject, takeUntil, forkJoin, of, catchError } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetService } from '../../core/services/pet.service';
 import { SpeciesInfoService } from '../../core/services/species-info.service';
+import { PhotoUploadService } from '../../core/services/photo-upload.service';
+import { ProfileIconComponent } from '../../shared/components/profile-icons';
+import { PhotoUploadModalComponent } from '../../shared/components/photo-upload-modal';
 import {
   PetProfile,
   PetPhoto,
@@ -18,13 +21,20 @@ type ProfileTab = 'gallery' | 'friends' | 'memories' | 'info';
 @Component({
   selector: 'app-pet-profile',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    TranslateModule,
+    ProfileIconComponent,
+    PhotoUploadModalComponent
+  ],
   templateUrl: './pet-profile.component.html',
   styleUrl: './pet-profile.component.scss'
 })
 export class PetProfileComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   private speciesInfoService = inject(SpeciesInfoService);
+  private photoUploadService = inject(PhotoUploadService);
 
   // State signals
   pet = signal<PetProfile | null>(null);
@@ -38,6 +48,13 @@ export class PetProfileComponent implements OnInit, OnDestroy {
 
   // Human age conversion
   humanAge = signal<{ humanYears: number; stage: string } | null>(null);
+
+  // Photo upload state
+  showUploadModal = signal(false);
+  uploadAspectRatio = signal(1);
+  isUploading = signal(false);
+  uploadProgress = signal(0);
+  uploadError = signal<string | null>(null);
 
   // Computed values
   hasPhotos = computed(() => this.photos().length > 0);
@@ -215,8 +232,66 @@ export class PetProfileComponent implements OnInit, OnDestroy {
   }
 
   onAddPhoto(): void {
-    // TODO: Implement photo upload
-    console.log('Add photo clicked');
+    this.uploadAspectRatio.set(4 / 3); // Landscape for gallery
+    this.showUploadModal.set(true);
+  }
+
+  /**
+   * Handle photo confirmed from upload modal
+   */
+  async onPhotoConfirmed(blob: Blob): Promise<void> {
+    this.showUploadModal.set(false);
+
+    if (!this.petId) {
+      this.uploadError.set('ID pet non trovato');
+      return;
+    }
+
+    this.isUploading.set(true);
+    this.uploadProgress.set(0);
+    this.uploadError.set(null);
+
+    try {
+      const file = new File([blob], `photo-${Date.now()}.jpg`, { type: 'image/jpeg' });
+
+      await this.photoUploadService.uploadGalleryPhoto(
+        this.petId,
+        file,
+        (progress) => this.uploadProgress.set(progress)
+      );
+
+      // Refresh gallery after successful upload
+      this.loadPhotos();
+    } catch (err) {
+      console.error('Upload failed:', err);
+      this.uploadError.set(err instanceof Error ? err.message : 'Errore durante il caricamento');
+    } finally {
+      this.isUploading.set(false);
+      this.uploadProgress.set(0);
+    }
+  }
+
+  /**
+   * Handle upload modal cancelled
+   */
+  onUploadCancelled(): void {
+    this.showUploadModal.set(false);
+  }
+
+  /**
+   * Reload photos from API
+   */
+  private loadPhotos(): void {
+    if (!this.petId) return;
+
+    this.petService.getPetGallery(this.petId)
+      .pipe(
+        takeUntil(this.destroy$),
+        catchError(() => of([] as PetPhoto[]))
+      )
+      .subscribe(photos => {
+        this.photos.set(photos);
+      });
   }
 
   onAddMemory(): void {

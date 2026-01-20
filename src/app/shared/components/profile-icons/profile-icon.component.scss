@@ -1,0 +1,138 @@
+/**
+ * ProfileIconComponent Styles
+ *
+ * Design tokens:
+ * - Primary blue: #4A74F0
+ * - Golden gradient: white → #FCEFD1 → #F8D78B → #F2B830
+ */
+
+// Variables
+$color-primary: #4A74F0;
+$color-white: #FFFFFF;
+$shadow-drop: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+// Base button reset
+.profile-icon {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+    border-radius: 50%;
+  }
+
+  &:active:not(.profile-icon--disabled) {
+    transform: scale(0.95);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// CIRCULAR ICONS (42x42 blue)
+.profile-icon--circular {
+  width: 42px;
+  height: 42px;
+  color: $color-primary;
+
+  .profile-icon__svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  &:hover:not(.profile-icon--disabled) {
+    color: darken($color-primary, 10%);
+  }
+
+  &:focus-visible {
+    border-radius: 50%;
+  }
+}
+
+// CTA BUTTONS (golden gradient with text)
+.profile-icon--cta {
+  width: auto;
+  height: auto;
+  max-width: 84px;
+
+  .profile-icon__cta-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow($shadow-drop);
+  }
+
+  &:hover:not(.profile-icon--disabled) {
+    transform: translateY(-2px);
+
+    .profile-icon__cta-img {
+      filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.3));
+    }
+  }
+
+  &:focus-visible {
+    border-radius: 22px;
+    outline-offset: 4px;
+  }
+}
+
+// INFO BOXES (data display)
+.profile-icon--info {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 77px;
+  cursor: default;
+
+  .profile-icon__info-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow($shadow-drop);
+  }
+
+  .profile-icon__info-label {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    text-align: center;
+    pointer-events: none;
+  }
+}
+
+// Responsive scaling
+@media (max-width: 360px) {
+  .profile-icon--circular {
+    width: 36px;
+    height: 36px;
+  }
+
+  .profile-icon--cta {
+    max-width: 70px;
+  }
+
+  .profile-icon--info {
+    max-width: 65px;
+
+    .profile-icon__info-label {
+      font-size: 10px;
+    }
+  }
+}

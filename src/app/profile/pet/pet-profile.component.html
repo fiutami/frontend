@@ -439,5 +439,43 @@
         </section>
       }
     </main>
+
+    <!-- Photo Upload Modal -->
+    @if (showUploadModal()) {
+      <app-photo-upload-modal
+        [aspectRatio]="uploadAspectRatio()"
+        [title]="'Aggiungi foto'"
+        (confirmed)="onPhotoConfirmed($event)"
+        (cancelled)="onUploadCancelled()">
+      </app-photo-upload-modal>
+    }
+
+    <!-- Upload Progress Overlay -->
+    @if (isUploading()) {
+      <div class="upload-overlay">
+        <div class="upload-progress-card">
+          <div class="upload-spinner"></div>
+          <p class="upload-text">
+            @if (uploadProgress() > 0) {
+              Caricamento {{ uploadProgress() }}%
+            } @else {
+              Caricamento in corso...
+            }
+          </p>
+          <div class="upload-progress-bar">
+            <div class="upload-progress-fill" [style.width.%]="uploadProgress()"></div>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Upload Error Toast -->
+    @if (uploadError()) {
+      <div class="upload-error-toast">
+        <span class="error-icon">!</span>
+        <p>{{ uploadError() }}</p>
+        <button type="button" (click)="uploadError.set(null)">×</button>
+      </div>
+    }
   }
 </div>

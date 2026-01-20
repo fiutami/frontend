@@ -1,0 +1,302 @@
+/**
+ * PhotoUploadModal Styles
+ */
+
+$color-primary: #4A74F0;
+$color-white: #FFFFFF;
+$color-dark: #1a1a1a;
+$color-gray: #6b7280;
+$color-light-gray: #f3f4f6;
+$color-error: #ef4444;
+
+.photo-upload-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+// Backdrop
+.photo-upload-modal__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+// Content
+.photo-upload-modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  background: $color-white;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+// Header
+.photo-upload-modal__header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid $color-light-gray;
+  gap: 12px;
+}
+
+.photo-upload-modal__back-btn,
+.photo-upload-modal__close-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: $color-light-gray;
+  color: $color-dark;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    background: darken($color-light-gray, 5%);
+  }
+}
+
+.photo-upload-modal__close-btn {
+  margin-left: auto;
+}
+
+.photo-upload-modal__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-dark;
+  margin: 0;
+  flex: 1;
+}
+
+// Body
+.photo-upload-modal__body {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 300px;
+}
+
+// Error
+.photo-upload-modal__error {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba($color-error, 0.1);
+  border-bottom: 1px solid rgba($color-error, 0.2);
+}
+
+.photo-upload-modal__error-icon {
+  width: 24px;
+  height: 24px;
+  background: $color-error;
+  color: $color-white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.photo-upload-modal__error-text {
+  color: $color-error;
+  font-size: 14px;
+  margin: 0;
+}
+
+// Source Selection
+.photo-upload-modal__source {
+  padding: 32px 20px;
+}
+
+.photo-upload-modal__source-text {
+  text-align: center;
+  color: $color-gray;
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+.photo-upload-modal__source-options {
+  display: flex;
+  gap: 16px;
+}
+
+.photo-upload-modal__source-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 16px;
+  border: 2px solid $color-light-gray;
+  border-radius: 16px;
+  background: $color-white;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: $color-primary;
+    background: rgba($color-primary, 0.05);
+  }
+}
+
+.photo-upload-modal__source-icon {
+  font-size: 40px;
+}
+
+.photo-upload-modal__source-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-dark;
+}
+
+.photo-upload-modal__source-desc {
+  font-size: 12px;
+  color: $color-gray;
+}
+
+// Camera
+.photo-upload-modal__camera {
+  height: 400px;
+}
+
+// Crop
+.photo-upload-modal__crop {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-dark;
+}
+
+.photo-upload-modal__crop-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: $color-white;
+}
+
+.photo-upload-modal__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: $color-white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.photo-upload-modal__cropper {
+  width: 100%;
+  height: 100%;
+
+  // Override cropper styles
+  ::ng-deep {
+    .ngx-ic-cropper {
+      outline: 2px solid $color-primary !important;
+    }
+
+    .ngx-ic-move {
+      cursor: move;
+    }
+  }
+}
+
+// Footer
+.photo-upload-modal__footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid $color-light-gray;
+}
+
+.photo-upload-modal__cancel-btn,
+.photo-upload-modal__confirm-btn {
+  flex: 1;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.photo-upload-modal__cancel-btn {
+  background: $color-light-gray;
+  color: $color-dark;
+
+  &:hover {
+    background: darken($color-light-gray, 5%);
+  }
+}
+
+.photo-upload-modal__confirm-btn {
+  background: $color-primary;
+  color: $color-white;
+
+  &:hover:not(:disabled) {
+    background: darken($color-primary, 10%);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Hidden file input
+.photo-upload-modal__file-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+// Animation
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsive
+@media (max-width: 480px) {
+  .photo-upload-modal {
+    padding: 0;
+  }
+
+  .photo-upload-modal__content {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0;
+  }
+
+  .photo-upload-modal__crop,
+  .photo-upload-modal__camera {
+    height: 50vh;
+  }
+}

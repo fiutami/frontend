@@ -1,0 +1,142 @@
+<div class="photo-upload-modal">
+  <!-- Backdrop -->
+  <div class="photo-upload-modal__backdrop" (click)="cancel()"></div>
+
+  <!-- Modal Content -->
+  <div class="photo-upload-modal__content">
+    <!-- Header -->
+    <header class="photo-upload-modal__header">
+      @if (step() !== 'source') {
+        <button
+          type="button"
+          class="photo-upload-modal__back-btn"
+          (click)="goBack()"
+          aria-label="Indietro">
+          <span class="photo-upload-modal__back-icon">&larr;</span>
+        </button>
+      }
+
+      <h2 class="photo-upload-modal__title">{{ title() }}</h2>
+
+      <button
+        type="button"
+        class="photo-upload-modal__close-btn"
+        (click)="cancel()"
+        aria-label="Chiudi">
+        <span class="photo-upload-modal__close-icon">&times;</span>
+      </button>
+    </header>
+
+    <!-- Body -->
+    <div class="photo-upload-modal__body">
+      <!-- Error message -->
+      @if (error()) {
+        <div class="photo-upload-modal__error">
+          <span class="photo-upload-modal__error-icon">!</span>
+          <p class="photo-upload-modal__error-text">{{ error() }}</p>
+        </div>
+      }
+
+      <!-- Step: Source Selection -->
+      @if (step() === 'source') {
+        <div class="photo-upload-modal__source">
+          <p class="photo-upload-modal__source-text">
+            Scegli come vuoi aggiungere la foto
+          </p>
+
+          <div class="photo-upload-modal__source-options">
+            <button
+              type="button"
+              class="photo-upload-modal__source-btn"
+              (click)="openCamera()">
+              <span class="photo-upload-modal__source-icon">📷</span>
+              <span class="photo-upload-modal__source-label">Fotocamera</span>
+              <span class="photo-upload-modal__source-desc">Scatta una nuova foto</span>
+            </button>
+
+            <button
+              type="button"
+              class="photo-upload-modal__source-btn"
+              (click)="openGallery()">
+              <span class="photo-upload-modal__source-icon">🖼️</span>
+              <span class="photo-upload-modal__source-label">Galleria</span>
+              <span class="photo-upload-modal__source-desc">Scegli dalla libreria</span>
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Step: Camera Capture -->
+      @if (step() === 'camera') {
+        <div class="photo-upload-modal__camera">
+          <app-camera-capture
+            (captured)="onCameraCapture($event)"
+            (cancelled)="onCameraCancelled()">
+          </app-camera-capture>
+        </div>
+      }
+
+      <!-- Step: Crop -->
+      @if (step() === 'crop') {
+        <div class="photo-upload-modal__crop">
+          @if (imageLoading()) {
+            <div class="photo-upload-modal__crop-loading">
+              <div class="photo-upload-modal__spinner"></div>
+              <p>Caricamento immagine...</p>
+            </div>
+          }
+
+          @if (selectedFile()) {
+            <image-cropper
+              class="photo-upload-modal__cropper"
+              [imageFile]="selectedFile()!"
+              [maintainAspectRatio]="true"
+              [aspectRatio]="aspectRatio()"
+              [resizeToWidth]="maxSize()"
+              [cropperStaticWidth]="0"
+              [cropperStaticHeight]="0"
+              [onlyScaleDown]="true"
+              format="jpeg"
+              [imageQuality]="85"
+              [autoCrop]="true"
+              [alignImage]="'center'"
+              [containWithinAspectRatio]="false"
+              backgroundColor="#1a1a1a"
+              (imageLoaded)="onImageLoaded($event)"
+              (loadImageFailed)="onLoadImageFailed()"
+              (imageCropped)="onImageCropped($event)">
+            </image-cropper>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Footer (only in crop step) -->
+    @if (step() === 'crop' && cropperReady()) {
+      <footer class="photo-upload-modal__footer">
+        <button
+          type="button"
+          class="photo-upload-modal__cancel-btn"
+          (click)="goBack()">
+          Annulla
+        </button>
+
+        <button
+          type="button"
+          class="photo-upload-modal__confirm-btn"
+          [disabled]="!croppedImage()"
+          (click)="confirm()">
+          Conferma
+        </button>
+      </footer>
+    }
+  </div>
+
+  <!-- Hidden file input -->
+  <input
+    #fileInput
+    type="file"
+    accept="image/jpeg,image/png,image/webp"
+    class="photo-upload-modal__file-input"
+    (change)="onFileSelected($event)" />
+</div>
