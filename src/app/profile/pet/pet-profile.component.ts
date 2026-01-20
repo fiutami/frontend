@@ -190,7 +190,36 @@ export class PetProfileComponent implements OnInit, OnDestroy {
             this.calculateHumanAge(data.profile);
           }
         } else {
-          this.error.set('Pet not found');
+          // DEV MOCK: Use mock data for testing UI
+          this.pet.set({
+            id: petId,
+            name: 'Luna',
+            species: 'Cane',
+            speciesId: 'dog',
+            breed: 'Golden Retriever',
+            breedId: 'golden-retriever',
+            sex: 'F' as const,
+            birthDate: '2021-06-15',
+            age: '3 anni',
+            weight: 28,
+            color: 'Dorato',
+            microchip: null,
+            profilePhotoUrl: 'assets/images/species/species-cane.png',
+            coverPhotoUrl: null,
+            notes: null,
+            isNeutered: true,
+            createdAt: '2021-06-15T10:00:00Z'
+          });
+          this.humanAge.set({ humanYears: 28, stage: 'adult' });
+          this.friends.set([
+            { id: '1', petId: '1', name: 'Rocky', species: 'Cane', breed: 'Labrador', profilePhotoUrl: 'assets/images/species/species-cane.png', isOnline: true, lastSeen: null, ownerName: 'Marco', location: 'Milano', friendsSince: '2023-01-01' },
+            { id: '2', petId: '2', name: 'Mia', species: 'Gatto', breed: 'Persiano', profilePhotoUrl: 'assets/images/species/species-gatto.png', isOnline: true, lastSeen: null, ownerName: 'Sara', location: 'Roma', friendsSince: '2023-02-01' },
+            { id: '3', petId: '3', name: 'Max', species: 'Cane', breed: 'Beagle', profilePhotoUrl: 'assets/images/species/species-cane.png', isOnline: false, lastSeen: '2024-01-15', ownerName: 'Luca', location: 'Napoli', friendsSince: '2023-03-01' }
+          ]);
+          this.userPets.set([
+            { id: petId, name: 'Luna', speciesName: 'Cane', profilePhotoUrl: 'assets/images/species/species-cane.png', calculatedAge: '3 anni' },
+            { id: '2', name: 'Whiskers', speciesName: 'Gatto', profilePhotoUrl: 'assets/images/species/species-gatto.png', calculatedAge: '2 anni' }
+          ]);
         }
         this.loading.set(false);
       },

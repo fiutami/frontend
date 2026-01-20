@@ -10,7 +10,7 @@ export type CircularIconType = 'calendar' | 'notifications' | 'messages' | 'book
 export type CtaIconType = 'foto' | 'friends' | 'doc' | 'breed';
 
 /** Info display boxes - pet data */
-export type InfoIconType = 'age' | 'pet_age' | 'weight' | 'sex';
+export type InfoIconType = 'age' | 'pet_age' | 'weight' | 'sex' | 'breed';
 
 /** All profile icon types */
 export type ProfileIconType = CircularIconType | CtaIconType | InfoIconType;

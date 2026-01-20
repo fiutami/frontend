@@ -215,6 +215,16 @@
             <span class="profile-icon__info-label">{{ label() }}</span>
           }
         }
+
+        @case ('breed') {
+          <img
+            class="profile-icon__info-img"
+            src="assets/icons/profile/cta/Btn_breed.svg"
+            [alt]="ariaLabel() || 'Razza'" />
+          @if (label()) {
+            <span class="profile-icon__info-label">{{ label() }}</span>
+          }
+        }
       }
     </div>
   }

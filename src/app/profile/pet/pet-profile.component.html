@@ -104,7 +104,7 @@
         </aside>
       </section>
 
-      <!-- Info Boxes Section (Blue SVG boxes) -->
+      <!-- Info Boxes Section (Blue SVG boxes) - 5 boxes per UX doc -->
       <section class="profile-info-boxes">
         <app-profile-icon
           icon="sex"
@@ -126,6 +126,11 @@
           variant="info"
           [label]="formatWeight(pet()!.weight)"
           ariaLabel="Peso" />
+        <app-profile-icon
+          icon="breed"
+          variant="info"
+          [label]="pet()!.breed"
+          ariaLabel="Razza" />
       </section>
 
       <!-- CTA Buttons Section (Golden Buttons) -->
