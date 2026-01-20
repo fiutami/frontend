@@ -1,0 +1,55 @@
+{
+  "id": "cavalier-king-charles-spaniel",
+  "name": "Cavalier King Charles Spaniel",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Elegante, di taglia piccola, mantello setoso e orecchie lunghe.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Elegante, di taglia piccola, mantello setoso e orecchie lunghe.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Informazioni in arrivo",
+    "behavior": "Informazioni in arrivo",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Controlli cardiaci/neurologici regolari, spazzolatura."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Porzione di salute delicata, costi veterinari."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ideale per famiglie e persone anziane.",
+  "contro": "Porzione di salute delicata, costi veterinari.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

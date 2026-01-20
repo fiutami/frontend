@@ -8,6 +8,18 @@ import {
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button/avatar-button.component';
+import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar/bottom-tab-bar.component';
+import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
+import { CalendarOverlayService, CalendarFilterIcon, CalendarActionButton } from '../services/calendar-overlay.service';
+import { CalendarFilterIconsComponent } from '../components/calendar-filter-icons.component';
+import { CalendarActionButtonsComponent } from '../components/calendar-action-buttons.component';
+import { CalendarSavedOverlayComponent } from '../overlays/calendar-saved-overlay.component';
+import { CalendarMonthOverlayComponent } from '../overlays/calendar-month-overlay.component';
+import { CalendarNotificationsOverlayComponent } from '../overlays/calendar-notifications-overlay.component';
+import { CalendarCreateEventOverlayComponent } from '../overlays/calendar-create-event-overlay.component';
+import { CalendarEventsOverlayComponent } from '../overlays/calendar-events-overlay.component';
+import { CalendarBirthdaysOverlayComponent } from '../overlays/calendar-birthdays-overlay.component';
 
 /**
  * Month data interface
@@ -21,36 +33,58 @@ interface MonthItem {
  * Italian day names (full)
  */
 const DAY_NAMES_FULL = [
-  'DOMENICA', 'LUNEDI', 'MARTEDI', 'MERCOLEDI',
-  'GIOVEDI', 'VENERDI', 'SABATO'
+  'Domenica', 'Lunedi', 'Martedi', 'Mercoledi',
+  'Giovedi', 'Venerdi', 'Sabato'
 ];
 
 /**
  * Italian month names
  */
-const MONTH_NAMES = [
-  'GENNAIO', 'FEBBRAIO', 'MARZO', 'APRILE', 'MAGGIO', 'GIUGNO',
-  'LUGLIO', 'AGOSTO', 'SETTEMBRE', 'OTTOBRE', 'NOVEMBRE', 'DICEMBRE'
+const MONTH_NAMES_LONG = [
+  'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+  'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'
 ];
 
 /**
  * CalendarMonthSelectorComponent
  *
- * First level calendar view showing a grid of 12 months.
- * Users can select a month to navigate to the detailed monthly view.
+ * Main calendar page with:
+ * - Header (back button, title, drawer icon)
+ * - Logo + current date
+ * - Filter icons (3) - open overlays
+ * - Action buttons (3) - open overlays
+ * - Month grid (12 months) - navigate to pages
+ * - All overlay components
  *
  * Based on Figma design: mob_calendar (12271-6457)
  */
 @Component({
   selector: 'app-calendar-month-selector',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    AvatarButtonComponent,
+    BottomTabBarComponent,
+    CalendarFilterIconsComponent,
+    CalendarActionButtonsComponent,
+    CalendarSavedOverlayComponent,
+    CalendarMonthOverlayComponent,
+    CalendarNotificationsOverlayComponent,
+    CalendarCreateEventOverlayComponent,
+    CalendarEventsOverlayComponent,
+    CalendarBirthdaysOverlayComponent,
+  ],
   templateUrl: './calendar-month-selector.component.html',
   styleUrls: ['./calendar-month-selector.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarMonthSelectorComponent {
   private readonly router = inject(Router);
+  protected readonly overlayService = inject(CalendarOverlayService);
+
+  /** Tab bar configuration */
+  protected readonly tabs = MAIN_TAB_BAR_CONFIG;
 
   /** Current date for display */
   protected currentDate = signal(new Date());
@@ -83,14 +117,14 @@ export class CalendarMonthSelectorComponent {
     return new Date().getMonth();
   });
 
-  /** Formatted current date display */
-  protected formattedDate = computed(() => {
+  /** Formatted current date: "Lunedi 19 Gennaio 2026" */
+  protected formattedFullDate = computed(() => {
     const date = this.currentDate();
     const dayName = DAY_NAMES_FULL[date.getDay()];
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate();
+    const month = MONTH_NAMES_LONG[date.getMonth()];
     const year = date.getFullYear();
-    return `${dayName} ${day}/${month}/${year}`;
+    return `${dayName} ${day} ${month} ${year}`;
   });
 
   /** Check if a month is the current month */
@@ -110,10 +144,9 @@ export class CalendarMonthSelectorComponent {
     this.selectedYear.update(y => y + 1);
   }
 
-  /** Select a month and navigate to monthly view */
+  /** Select a month and navigate to monthly view (ONLY navigation that opens a new page) */
   selectMonth(monthIndex: number): void {
-    // Navigate to calendar view with month/year params
-    this.router.navigate(['/home/calendar/month'], {
+    this.router.navigate(['/calendar/month'], {
       queryParams: {
         month: monthIndex,
         year: this.selectedYear()
@@ -126,10 +159,14 @@ export class CalendarMonthSelectorComponent {
     this.router.navigate(['/home/main']);
   }
 
-  /** Handle create event button */
-  onCreateEvent(): void {
-    // TODO: Open create event modal
-    console.log('Create event clicked');
+  /** Handle filter icon click - toggle overlay */
+  onFilterIconClick(icon: CalendarFilterIcon): void {
+    this.overlayService.toggleFilter(icon);
+  }
+
+  /** Handle action button click - toggle overlay */
+  onActionButtonClick(button: CalendarActionButton): void {
+    this.overlayService.toggleAction(button);
   }
 
   /** Track by function */

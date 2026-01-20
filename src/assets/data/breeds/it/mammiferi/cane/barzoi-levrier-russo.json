@@ -1,0 +1,55 @@
+{
+  "id": "barzoi-levrier-russo",
+  "name": "Barzoi (Levrier Russo)",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Levriero russo, corporatura snella e pelo setoso.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Levriero russo, corporatura snella e pelo setoso.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo setoso",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Informazioni in arrivo",
+    "behavior": "Informazioni in arrivo",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Toelettatura moderata, corsa regolare."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Scappa dietro movimenti rapidi, richiede spazi."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo compagno silenzioso.",
+  "contro": "Scappa dietro movimenti rapidi, richiede spazi.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

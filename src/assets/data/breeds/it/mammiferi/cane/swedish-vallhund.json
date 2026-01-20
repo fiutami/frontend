@@ -1,0 +1,55 @@
+{
+  "id": "swedish-vallhund",
+  "name": "Swedish Vallhund",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Piccolo, pelo corto-medio, simile a un Corgi.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Piccolo, pelo corto-medio, simile a un Corgi.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo corto-medio",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Energico, intelligente, coraggioso.",
+    "behavior": "Energico, intelligente, coraggioso.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cura pelo facile."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Energia elevata."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da pastore e compagnia.",
+  "contro": "Energia elevata.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

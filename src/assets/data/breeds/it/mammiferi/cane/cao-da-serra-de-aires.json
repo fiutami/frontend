@@ -1,0 +1,56 @@
+{
+  "id": "cao-da-serra-de-aires",
+  "name": "Cao da Serra de Aires",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cão da Serra de Aires è un cane da pastore portoghese, pelo duro e medio-lungo.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cão da Serra de Aires è un cane da pastore portoghese, pelo duro e medio-lungo.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo duro e medio-lungo",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Attivo, intelligente, protettivo.",
+    "behavior": "Attivo, intelligente, protettivo.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Spazzolatura e attività fisica regolare",
+    "grooming": "Spazzolatura e attività fisica regolare."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Generalmente robusto",
+      "ma possibile displasia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Può essere testardo."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da lavoro.",
+  "contro": "Può essere testardo.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

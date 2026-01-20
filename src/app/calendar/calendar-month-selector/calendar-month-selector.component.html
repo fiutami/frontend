@@ -1,49 +1,71 @@
-<div class="month-selector">
-  <!-- Header -->
-  <header class="month-selector__header">
+<div class="calendar-page">
+  <!-- ========================================== -->
+  <!-- HEADER -->
+  <!-- Left: Back button | Center: Title | Right: Drawer -->
+  <!-- ========================================== -->
+  <header class="calendar-page__header">
     <app-back-button
       variant="solid"
       (clicked)="onBack()">
     </app-back-button>
-    <h1 class="month-selector__title">Calendario</h1>
-    <div class="month-selector__header-spacer"></div>
+    <h1 class="calendar-page__title">Calendario</h1>
+    <app-avatar-button></app-avatar-button>
   </header>
 
-  <!-- Date Display -->
-  <div class="month-selector__date">
-    {{ formattedDate() }}
+  <!-- ========================================== -->
+  <!-- BRANDING: Logo + Date -->
+  <!-- ========================================== -->
+  <div class="calendar-page__branding">
+    <app-logo variant="color" size="md"></app-logo>
+    <p class="calendar-page__date">{{ formattedFullDate() }}</p>
   </div>
 
-  <!-- Question Text (Mascot prompt) -->
-  <div class="month-selector__prompt">
-    In che mese andiamo a mettere il naso?
-  </div>
+  <!-- ========================================== -->
+  <!-- FILTER ICONS (3 icons - open overlays) -->
+  <!-- ========================================== -->
+  <app-calendar-filter-icons
+    [activeIcon]="overlayService.activeFilter()"
+    [notificationCount]="overlayService.notificationCount()"
+    (iconClick)="onFilterIconClick($event)">
+  </app-calendar-filter-icons>
 
-  <!-- Year Navigation -->
-  <div class="month-selector__year-nav">
+  <!-- ========================================== -->
+  <!-- ACTION BUTTONS (3 buttons - open overlays) -->
+  <!-- ========================================== -->
+  <app-calendar-action-buttons
+    [activeButton]="overlayService.activeAction()"
+    (buttonClick)="onActionButtonClick($event)">
+  </app-calendar-action-buttons>
+
+  <!-- ========================================== -->
+  <!-- YEAR NAVIGATION -->
+  <!-- ========================================== -->
+  <div class="calendar-page__year-nav">
     <button
-      class="month-selector__year-btn"
+      class="calendar-page__year-btn"
       (click)="prevYear()"
       aria-label="Anno precedente">
-      <span class="month-selector__year-arrow">&lt;</span>
+      <span class="material-icons">chevron_left</span>
     </button>
-    <span class="month-selector__year">{{ selectedYear() }}</span>
+    <span class="calendar-page__year">{{ selectedYear() }}</span>
     <button
-      class="month-selector__year-btn"
+      class="calendar-page__year-btn"
       (click)="nextYear()"
       aria-label="Anno successivo">
-      <span class="month-selector__year-arrow">&gt;</span>
+      <span class="material-icons">chevron_right</span>
     </button>
   </div>
 
-  <!-- Month Grid -->
-  <div class="month-selector__grid">
+  <!-- ========================================== -->
+  <!-- MONTH GRID (opens NEW PAGES - exception) -->
+  <!-- ========================================== -->
+  <div class="calendar-page__grid">
     <!-- Left Column -->
-    <div class="month-selector__column">
+    <div class="calendar-page__column">
       @for (month of leftColumnMonths; track trackByMonth($index, month)) {
         <button
-          class="month-selector__month-btn"
-          [class.month-selector__month-btn--current]="isCurrentMonth(month.index)"
+          class="calendar-page__month-btn"
+          [class.calendar-page__month-btn--current]="isCurrentMonth(month.index)"
           (click)="selectMonth(month.index)">
           {{ month.name }}
         </button>
@@ -51,11 +73,11 @@
     </div>
 
     <!-- Right Column -->
-    <div class="month-selector__column">
+    <div class="calendar-page__column">
       @for (month of rightColumnMonths; track trackByMonth($index, month)) {
         <button
-          class="month-selector__month-btn"
-          [class.month-selector__month-btn--current]="isCurrentMonth(month.index)"
+          class="calendar-page__month-btn"
+          [class.calendar-page__month-btn--current]="isCurrentMonth(month.index)"
           (click)="selectMonth(month.index)">
           {{ month.name }}
         </button>
@@ -63,12 +85,32 @@
     </div>
   </div>
 
-  <!-- Action Buttons -->
-  <div class="month-selector__actions">
-    <button
-      class="month-selector__action-btn month-selector__action-btn--primary"
-      (click)="onCreateEvent()">
-      + Nuovo Evento
-    </button>
-  </div>
+  <!-- ========================================== -->
+  <!-- OVERLAYS (conditionally rendered) -->
+  <!-- ========================================== -->
+  @if (overlayService.isOpen()) {
+    @switch (overlayService.overlayType()) {
+      @case ('saved') {
+        <app-calendar-saved-overlay></app-calendar-saved-overlay>
+      }
+      @case ('month') {
+        <app-calendar-month-overlay></app-calendar-month-overlay>
+      }
+      @case ('notifications') {
+        <app-calendar-notifications-overlay></app-calendar-notifications-overlay>
+      }
+      @case ('create-event') {
+        <app-calendar-create-event-overlay></app-calendar-create-event-overlay>
+      }
+      @case ('events-list') {
+        <app-calendar-events-overlay></app-calendar-events-overlay>
+      }
+      @case ('birthdays') {
+        <app-calendar-birthdays-overlay></app-calendar-birthdays-overlay>
+      }
+    }
+  }
+
+  <!-- Bottom Tab Bar -->
+  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'calendar'"></app-bottom-tab-bar>
 </div>

@@ -1,0 +1,56 @@
+{
+  "id": "polish-tatra-sheepdog",
+  "name": "Polish Tatra Sheepdog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Grande, pelo lungo e folto, da montagna.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Grande, pelo lungo e folto, da montagna.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo lungo e folto",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Protettivo, calmo, leale.",
+    "behavior": "Protettivo, calmo, leale.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Cura del pelo e attività",
+    "grooming": "Cura del pelo e attività."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "problemi articolari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede spazio."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da guardia.",
+  "contro": "Richiede spazio.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "affenpinscher",
+  "name": "Affenpinscher",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Piccolo, muso scimmiesco, pelo duro.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Piccolo, muso scimmiesco, pelo duro.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo duro",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Vivace, coraggioso, affettuoso.",
+    "behavior": "Vivace, coraggioso, affettuoso.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Spazzolatura regolare."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Lussazione rotulea",
+      "problemi dentali"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Tendenza ad abbaiare."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Adatto in appartamento.",
+  "contro": "Tendenza ad abbaiare.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "newfoundland",
+  "name": "Newfoundland",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Molto grande, nuotatore eccellente.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Molto grande, nuotatore eccellente.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Dolce, calmo, affettuoso.",
+    "behavior": "Dolce, calmo, affettuoso.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cura pelo e attenzione al peso."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Cardiopatie",
+      "displasia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Bava, cura intensa."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo con i bambini.",
+  "contro": "Bava, cura intensa.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

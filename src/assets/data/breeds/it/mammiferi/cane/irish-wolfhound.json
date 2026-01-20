@@ -1,0 +1,55 @@
+{
+  "id": "irish-wolfhound",
+  "name": "Irish Wolfhound",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Il più imponente: taglia gigante, pelo ruvido.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Il più imponente: taglia gigante, pelo ruvido.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo ruvido",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Informazioni in arrivo",
+    "behavior": "Informazioni in arrivo",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Motor light, grande spazio, visite cardiologiche."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Vita brevissima, esigenza di ampi spazi."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Gigante buono, ottimo guardiano “soft”.",
+  "contro": "Vita brevissima, esigenza di ampi spazi.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

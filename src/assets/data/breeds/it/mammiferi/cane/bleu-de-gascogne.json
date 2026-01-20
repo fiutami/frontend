@@ -1,0 +1,55 @@
+{
+  "id": "bleu-de-gascogne",
+  "name": "Bleu de Gascogne",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Segugio francese robusto, dal mantello blu-grigio.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Segugio francese robusto, dal mantello blu-grigio.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Informazioni in arrivo",
+    "behavior": "Informazioni in arrivo",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Esercizio rigoroso",
+    "grooming": "Esercizio rigoroso."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Rumoroso, non adatto ad appartamenti."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Eccellente nel lavoro su traccia.",
+  "contro": "Rumoroso, non adatto ad appartamenti.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

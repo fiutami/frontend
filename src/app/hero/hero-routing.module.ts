@@ -24,7 +24,9 @@ import { PetGalleryComponent } from './pet-profile/gallery/pet-gallery.component
 import { PetMemoriesComponent } from './pet-profile/memories/pet-memories.component';
 import { PetFriendsComponent } from './pet-profile/friends/pet-friends.component';
 import { FattiBestialiComponent } from './pet-profile/fatti-bestiali/fatti-bestiali.component';
-import { CalendarComponent } from './calendar/calendar.component';
+// Old hero calendar (now replaced by month selector)
+// import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarMonthSelectorComponent } from '../calendar/calendar-month-selector/calendar-month-selector.component';
 import { MapComponent } from './map/map.component';
 import { ChatListComponent } from './chat/chat-list/chat-list.component';
 import { ChatScreenComponent } from './chat/chat-screen/chat-screen.component';
@@ -54,17 +56,21 @@ const routes: Routes = [
     redirectTo: 'main',
     pathMatch: 'full'
   },
+  // Tab Bar Routes - runGuardsAndResolvers: 'always' forces component re-init on same-route navigation
   {
     path: 'main',
-    component: HomeComponent
+    component: HomeComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'pet-profile',
-    component: PetProfileComponent
+    component: PetProfileComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'pet-profile/:id',
-    component: PetProfileComponent
+    component: PetProfileComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'pet-profile/:id/gallery',
@@ -84,11 +90,13 @@ const routes: Routes = [
   },
   {
     path: 'calendar',
-    component: CalendarComponent
+    component: CalendarMonthSelectorComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'map',
-    component: MapComponent
+    component: MapComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'chat',

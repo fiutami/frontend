@@ -1,0 +1,56 @@
+{
+  "id": "bedlington-terrier",
+  "name": "Bedlington Terrier",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Informazioni in arrivo",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Informazioni in arrivo",
+    "behavior": "Informazioni in arrivo",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Toelettatura professionale, controlli veterinari regolari per fegato."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Malattia epatica ereditaria (cirrosi)",
+      "problemi oculari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Cura del pelo complessa, sensibilità a problemi epatici."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da compagnia, molto adattabile.",
+  "contro": "Cura del pelo complessa, sensibilità a problemi epatici.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

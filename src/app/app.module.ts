@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -17,6 +17,7 @@ import { I18nModule } from './core/i18n/i18n.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HammerModule,
     HttpClientModule,
     AppRoutingModule,
     I18nModule,

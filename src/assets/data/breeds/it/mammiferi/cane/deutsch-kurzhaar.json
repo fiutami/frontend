@@ -1,0 +1,55 @@
+{
+  "id": "deutsch-kurzhaar",
+  "name": "Deutsch Kurzhaar",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Bracco corto tedesco, atletico, pelo corto impermeabile.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Bracco corto tedesco, atletico, pelo corto impermeabile.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo corto impermeabile",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Intelligente, versatile, instancabile.",
+    "behavior": "Intelligente, versatile, instancabile.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Energia alta, non adatto a proprietari inesperti."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da caccia e lavoro.",
+  "contro": "Energia alta, non adatto a proprietari inesperti.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

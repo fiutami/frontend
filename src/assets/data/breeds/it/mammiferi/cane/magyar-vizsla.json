@@ -1,0 +1,55 @@
+{
+  "id": "magyar-vizsla",
+  "name": "Magyar Vizsla",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Bracco ungherese, pelo corto e lucido, atletico.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Bracco ungherese, pelo corto e lucido, atletico.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo corto e lucido",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Leale, energico, molto attaccato alla famiglia.",
+    "behavior": "Leale, energico, molto attaccato alla famiglia.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede attività costante."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Cane da lavoro e companion eccezionale.",
+  "contro": "Richiede attività costante.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

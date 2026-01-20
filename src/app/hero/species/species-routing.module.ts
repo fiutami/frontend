@@ -5,7 +5,8 @@ import { SpeciesHomeComponent } from './species-home/species-home.component';
 const routes: Routes = [
   {
     path: '',
-    component: SpeciesHomeComponent
+    component: SpeciesHomeComponent,
+    runGuardsAndResolvers: 'always' // Force re-init on same-route navigation (tab bar)
   }
 ];
 

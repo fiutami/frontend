@@ -1,0 +1,203 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+.species-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  // Tagline
+  &__tagline {
+    font-family: $font-family-display;
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-text-inverse;
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+
+    span {
+      font-family: $font-family-body;
+      font-size: $typography-body-size;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    @include respond(md) {
+      font-size: 24px;
+
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+
+  // Search
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: $spacing-md;
+    color: $color-text-secondary;
+    pointer-events: none;
+  }
+
+  &__search-input {
+    width: 100%;
+    padding: $spacing-sm $spacing-md $spacing-sm 48px;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    border-radius: $border-radius-full;
+    outline: none;
+    transition: $transition-fast;
+
+    &::placeholder {
+      color: $color-text-secondary;
+    }
+
+    &:focus {
+      border-color: $color-primary-500;
+      box-shadow: 0 0 0 4px rgba($color-primary-500, 0.2);
+    }
+  }
+
+  // Loading state
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-2xl;
+    color: $color-text-inverse;
+    gap: $spacing-md;
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: $color-text-inverse;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Grid
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
+
+    @include respond(md) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-lg;
+    }
+
+    @include respond(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  // Card
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-lg $spacing-md;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: $border-radius-lg;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: $transition-fast;
+    min-height: 140px;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: translateY(-2px);
+    }
+
+    &--selected {
+      border: 2px solid var(--card-color, $color-primary-500);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15),
+                  0 0 0 4px rgba(var(--card-color, $color-primary-500), 0.2);
+    }
+
+    @include respond(md) {
+      padding: $spacing-xl $spacing-lg;
+      min-height: 160px;
+    }
+  }
+
+  &__card-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-color, $color-primary-500);
+    border-radius: 50%;
+    margin-bottom: $spacing-md;
+
+    .material-icons {
+      font-size: 28px;
+      color: $color-text-inverse;
+    }
+
+    @include respond(md) {
+      width: 64px;
+      height: 64px;
+
+      .material-icons {
+        font-size: 32px;
+      }
+    }
+  }
+
+  &__card-name {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-xs;
+
+    @include respond(md) {
+      font-size: 18px;
+    }
+  }
+
+  &__card-count {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: $color-text-secondary;
+  }
+
+  // No results
+  &__no-results {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-inverse;
+    text-align: center;
+    padding: $spacing-xl;
+    opacity: 0.8;
+  }
+}

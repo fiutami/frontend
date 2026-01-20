@@ -1,0 +1,56 @@
+{
+  "id": "east-european-shepherd",
+  "name": "East European Shepherd",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Simile al Pastore Tedesco, più robusto e resistente.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Simile al Pastore Tedesco, più robusto e resistente.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Coraggioso, protettivo, leale.",
+    "behavior": "Coraggioso, protettivo, leale.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare",
+    "grooming": "Attività regolare."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "problemi articolari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede gestione esperta."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da guardia.",
+  "contro": "Richiede gestione esperta.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "spanish-water-dog",
+  "name": "Spanish Water Dog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo riccio e lanoso, medio-piccolo.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo riccio e lanoso, medio-piccolo.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo riccio e lanoso",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Intelligente, energico, affettuoso.",
+    "behavior": "Intelligente, energico, affettuoso.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cura pelo impegnativa."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Cura pelo."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da lavoro e compagnia.",
+  "contro": "Cura pelo.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

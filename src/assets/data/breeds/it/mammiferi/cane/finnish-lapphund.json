@@ -1,0 +1,55 @@
+{
+  "id": "finnish-lapphund",
+  "name": "Finnish Lapphund",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane da pastore di taglia media, pelo folto e doppio.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane da pastore di taglia media, pelo folto e doppio.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo folto e doppio",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Dolce, intelligente, attivo, molto fedele.",
+    "behavior": "Dolce, intelligente, attivo, molto fedele.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede stimoli costanti."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo con bambini, cane da lavoro versatile.",
+  "contro": "Richiede stimoli costanti.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

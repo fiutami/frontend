@@ -1,0 +1,168 @@
+<div class="your-breed">
+  <!-- Loading -->
+  @if (isLoading()) {
+    <div class="your-breed__loading">
+      <span class="your-breed__spinner"></span>
+      <p>Caricamento...</p>
+    </div>
+  } @else if (error()) {
+    <!-- Error -->
+    <div class="your-breed__error">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      </svg>
+      <p>{{ error() }}</p>
+    </div>
+  } @else if (!hasPet()) {
+    <!-- No pet selected -->
+    <div class="your-breed__empty">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="4.5" cy="9.5" r="2.5"/>
+        <circle cx="9" cy="5.5" r="2.5"/>
+        <circle cx="15" cy="5.5" r="2.5"/>
+        <circle cx="19.5" cy="9.5" r="2.5"/>
+        <path d="M17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91-.46-.54-1.05-1.08-1.75-1.32-.11-.04-.22-.07-.33-.09-.25-.04-.52-.04-.78-.04s-.53 0-.79.05c-.11.02-.22.05-.33.09-.7.24-1.28.78-1.75 1.32-.87 1.02-1.6 1.89-2.48 2.91-1.31 1.31-2.92 2.76-2.62 4.79.29 1.02 1.02 2.03 2.33 2.32.73.15 3.06-.44 5.54-.44h.18c2.48 0 4.81.58 5.54.44 1.31-.29 2.04-1.31 2.33-2.32.31-2.04-1.3-3.49-2.61-4.8z"/>
+      </svg>
+      <h2>Nessun pet selezionato</h2>
+      <p>Seleziona un pet dal tuo profilo per vedere le informazioni sulla sua razza</p>
+    </div>
+  } @else if (!hasBreed()) {
+    <!-- No breed info -->
+    <div class="your-breed__no-breed">
+      <div class="your-breed__pet-info">
+        @if (pet()?.profilePhotoUrl) {
+          <img [src]="pet()!.profilePhotoUrl" [alt]="pet()!.name" class="your-breed__pet-photo">
+        } @else {
+          <div class="your-breed__pet-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="4.5" cy="9.5" r="2.5"/>
+              <circle cx="9" cy="5.5" r="2.5"/>
+              <circle cx="15" cy="5.5" r="2.5"/>
+              <circle cx="19.5" cy="9.5" r="2.5"/>
+              <path d="M17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91-.46-.54-1.05-1.08-1.75-1.32-.11-.04-.22-.07-.33-.09-.25-.04-.52-.04-.78-.04s-.53 0-.79.05c-.11.02-.22.05-.33.09-.7.24-1.28.78-1.75 1.32-.87 1.02-1.6 1.89-2.48 2.91-1.31 1.31-2.92 2.76-2.62 4.79.29 1.02 1.02 2.03 2.33 2.32.73.15 3.06-.44 5.54-.44h.18c2.48 0 4.81.58 5.54.44 1.31-.29 2.04-1.31 2.33-2.32.31-2.04-1.3-3.49-2.61-4.8z"/>
+            </svg>
+          </div>
+        }
+        <div class="your-breed__pet-details">
+          <h3>{{ pet()?.name }}</h3>
+          <p>{{ pet()?.speciesName }}</p>
+        </div>
+      </div>
+      <div class="your-breed__no-breed-message">
+        <h2>Razza non specificata</h2>
+        <p>Non abbiamo informazioni sulla razza di {{ pet()?.name }}. Puoi aggiungere la razza dal profilo del pet o utilizzare la funzione "Specie speciale" per identificarla.</p>
+      </div>
+    </div>
+  } @else {
+    <!-- Breed info -->
+    <div class="your-breed__content">
+      <!-- Pet card -->
+      <div class="your-breed__pet-card">
+        @if (pet()?.profilePhotoUrl) {
+          <img [src]="pet()!.profilePhotoUrl" [alt]="pet()!.name" class="your-breed__pet-photo">
+        } @else {
+          <div class="your-breed__pet-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="4.5" cy="9.5" r="2.5"/>
+              <circle cx="9" cy="5.5" r="2.5"/>
+              <circle cx="15" cy="5.5" r="2.5"/>
+              <circle cx="19.5" cy="9.5" r="2.5"/>
+              <path d="M17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91-.46-.54-1.05-1.08-1.75-1.32-.11-.04-.22-.07-.33-.09-.25-.04-.52-.04-.78-.04s-.53 0-.79.05c-.11.02-.22.05-.33.09-.7.24-1.28.78-1.75 1.32-.87 1.02-1.6 1.89-2.48 2.91-1.31 1.31-2.92 2.76-2.62 4.79.29 1.02 1.02 2.03 2.33 2.32.73.15 3.06-.44 5.54-.44h.18c2.48 0 4.81.58 5.54.44 1.31-.29 2.04-1.31 2.33-2.32.31-2.04-1.3-3.49-2.61-4.8z"/>
+            </svg>
+          </div>
+        }
+        <div class="your-breed__pet-details">
+          <h3>{{ pet()?.name }}</h3>
+          <p>{{ breedFacts()?.breedName }} - {{ breedFacts()?.species }}</p>
+        </div>
+      </div>
+
+      <!-- Breed details -->
+      @if (breedFacts()) {
+        <div class="your-breed__section">
+          <h2 class="your-breed__section-title">Informazioni generali</h2>
+          <div class="your-breed__info-grid">
+            @if (breedFacts()!.origin) {
+              <div class="your-breed__info-item">
+                <span class="your-breed__info-label">Origine</span>
+                <span class="your-breed__info-value">{{ breedFacts()!.origin }}</span>
+              </div>
+            }
+            @if (breedFacts()!.lifespan) {
+              <div class="your-breed__info-item">
+                <span class="your-breed__info-label">Aspettativa di vita</span>
+                <span class="your-breed__info-value">{{ breedFacts()!.lifespan }}</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Needs -->
+        <div class="your-breed__section">
+          <h2 class="your-breed__section-title">Necessità</h2>
+          <div class="your-breed__needs">
+            <div class="your-breed__need">
+              <span class="your-breed__need-label">Cura</span>
+              <span class="your-breed__need-value" [class]="getNeedLevelClass(breedFacts()!.careLevel)">
+                {{ getNeedLevelLabel(breedFacts()!.careLevel) }}
+              </span>
+            </div>
+            <div class="your-breed__need">
+              <span class="your-breed__need-label">Esercizio</span>
+              <span class="your-breed__need-value" [class]="getNeedLevelClass(breedFacts()!.exerciseNeeds)">
+                {{ getNeedLevelLabel(breedFacts()!.exerciseNeeds) }}
+              </span>
+            </div>
+            <div class="your-breed__need">
+              <span class="your-breed__need-label">Toelettatura</span>
+              <span class="your-breed__need-value" [class]="getNeedLevelClass(breedFacts()!.groomingNeeds)">
+                {{ getNeedLevelLabel(breedFacts()!.groomingNeeds) }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Temperament -->
+        @if (breedFacts()!.temperament.length > 0) {
+          <div class="your-breed__section">
+            <h2 class="your-breed__section-title">Temperamento</h2>
+            <div class="your-breed__tags">
+              @for (trait of breedFacts()!.temperament; track trait) {
+                <span class="your-breed__tag">{{ trait }}</span>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Characteristics -->
+        @if (breedFacts()!.characteristics.length > 0) {
+          <div class="your-breed__section">
+            <h2 class="your-breed__section-title">Caratteristiche</h2>
+            <ul class="your-breed__list">
+              @for (char of breedFacts()!.characteristics; track char) {
+                <li>{{ char }}</li>
+              }
+            </ul>
+          </div>
+        }
+
+        <!-- Fun facts -->
+        @if (breedFacts()!.funFacts.length > 0) {
+          <div class="your-breed__section your-breed__section--highlight">
+            <h2 class="your-breed__section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
+              </svg>
+              Lo sapevi?
+            </h2>
+            <ul class="your-breed__facts">
+              @for (fact of breedFacts()!.funFacts; track fact) {
+                <li>{{ fact }}</li>
+              }
+            </ul>
+          </div>
+        }
+      }
+    </div>
+  }
+</div>

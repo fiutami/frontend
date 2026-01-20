@@ -4,6 +4,24 @@
   display: flex;
   flex-direction: column;
 
+  &--loading {
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f0f0f0;
+    border-top-color: #f5a623;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
   &--not-found {
     justify-content: center;
     align-items: center;
@@ -11,6 +29,10 @@
     padding: 20px;
     text-align: center;
   }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
   &__header {
     position: relative;
@@ -63,9 +85,19 @@
 
   &__origin {
     &::before {
-      content: '"';
-      margin-right: 12px;
+      content: '•';
+      margin-right: 8px;
     }
+  }
+
+  &__description {
+    margin: 12px 0 0 0;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &__tabs {
@@ -251,5 +283,150 @@
     border-radius: 20px;
     font-size: 13px;
     font-weight: 600;
+  }
+
+  // Characteristics bars for Overview tab
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  // Pro/Contro cards
+  &__pros-cons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  // Quick info section
+  &__quick-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__item--warning {
+    background: #fff8e1;
+    border-left: 4px solid #f5a623;
+    padding: 12px;
+    border-radius: 0 8px 8px 0;
+
+    h3 {
+      color: #e65100;
+    }
+  }
+}
+
+// Characteristic bar component
+.characteristic {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &__label {
+    flex: 0 0 100px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+  }
+
+  &__bar {
+    flex: 1;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f5a623 0%, #ffca28 100%);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  &__value {
+    flex: 0 0 36px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    text-align: right;
+  }
+}
+
+// Pro/Contro card component
+.pros-cons-card {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #f9f9f9;
+
+  &--pro {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+  }
+
+  &--contro {
+    background: #fce4ec;
+    border-left: 4px solid #e53935;
+  }
+
+  &__icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px 0;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+// Quick info item component
+.quick-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 140px;
+
+  &__icon {
+    font-size: 20px;
+  }
+
+  &__label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  &__value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    margin-left: auto;
   }
 }

@@ -1,0 +1,57 @@
+{
+  "id": "golden-retriever",
+  "name": "Golden Retriever",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Taglia grande, pelo lungo e dorato, muscoloso e armonioso.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Taglia grande, pelo lungo e dorato, muscoloso e armonioso.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo lungo e dorato",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Affettuoso, intelligente, socievole con tutti.",
+    "behavior": "Affettuoso, intelligente, socievole con tutti.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "esercizio moderato",
+    "grooming": "Spazzolatura regolare, esercizio moderato."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia anca e gomito",
+      "problemi cardiaci",
+      "tumori"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Predisposto a problemi di salute."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da famiglia, versatile.",
+  "contro": "Predisposto a problemi di salute.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "canadian-eskimo-dog",
+  "name": "Canadian Eskimo Dog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane da slitta robusto, pelo doppio e resistente.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane da slitta robusto, pelo doppio e resistente.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo doppio e resistente",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Indipendente, forte, leale, adattato a climi freddi.",
+    "behavior": "Indipendente, forte, leale, adattato a climi freddi.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Poco adatto alla vita urbana."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da lavoro in ambienti estremi.",
+  "contro": "Poco adatto alla vita urbana.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

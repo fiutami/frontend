@@ -1,0 +1,55 @@
+{
+  "id": "flat-coated-retriever",
+  "name": "Flat-Coated Retriever",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo liscio e lucido, cane elegante e atletico.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo liscio e lucido, cane elegante e atletico.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo liscio e lucido",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Allegro, affettuoso, energico.",
+    "behavior": "Allegro, affettuoso, energico.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede molto esercizio."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo compagno di famiglia e sport.",
+  "contro": "Richiede molto esercizio.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

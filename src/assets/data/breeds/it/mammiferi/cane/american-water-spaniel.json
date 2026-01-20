@@ -1,0 +1,55 @@
+{
+  "id": "american-water-spaniel",
+  "name": "American Water Spaniel",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo riccio-medio, taglia media, specialista di acqua.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo riccio-medio, taglia media, specialista di acqua.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo riccio-medio",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Intelligente, riservato, agile.",
+    "behavior": "Intelligente, riservato, agile.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Poco diffuso."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Rugby in acqua, poco noto ma versatile.",
+  "contro": "Poco diffuso.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

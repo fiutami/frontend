@@ -26,6 +26,7 @@ import { AnswerSquareComponent } from './components/answer-square';
 import { DrawerComponent } from './components/drawer';
 import { SpeciesCardComponent } from './components/species-card';
 import { SpeciesSelectorComponent } from './components/species-selector';
+import { MascotPeekComponent } from './components/mascot-peek';
 
 // Legacy components (declared in this module)
 const LEGACY_COMPONENTS = [
@@ -54,6 +55,7 @@ const STANDALONE_COMPONENTS = [
   DrawerComponent,
   SpeciesCardComponent,
   SpeciesSelectorComponent,
+  MascotPeekComponent,
 ];
 
 @NgModule({

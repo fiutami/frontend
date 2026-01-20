@@ -14,7 +14,15 @@ export type Species =
   | 'Canarini'
   | 'Tartarughe'
   | 'Coniglio'
-  | 'Uccello';
+  | 'Uccello'
+  | 'Furetto'
+  | 'Criceto'
+  | 'Cavia'
+  | 'Gerbillo'
+  | 'Ratto'
+  | 'Anfibio';
+
+export type BreedCategory = 'mammiferi' | 'uccelli' | 'rettili' | 'pesci' | 'invertebrati';
 
 /**
  * Species configuration for the grid display
@@ -52,7 +60,19 @@ export interface Breed {
   description?: string;
 }
 
+/**
+ * Breed characteristics (1-5 scale)
+ */
+export interface BreedCharacteristics {
+  energyLevel: number;
+  trainability: number;
+  friendliness: number;
+  groomingNeeds: number;
+}
+
 export interface BreedDetail extends Breed {
+  category?: BreedCategory;
+  characteristics?: BreedCharacteristics;
   dna: {
     origin: string;
     history: string;
@@ -62,6 +82,7 @@ export interface BreedDetail extends Breed {
     weight: string;
     height: string;
     coat: string;
+    lifespan?: string;
   };
   temperament: {
     character: string;
@@ -76,14 +97,22 @@ export interface BreedDetail extends Breed {
   risks: {
     commonDiseases: string[];
     lifeExpectancy: string;
+    notes?: string;
   };
   pedigree: {
     standard: string;
     recognitions: string[];
   };
+  // Additional content fields
+  pro?: string;
+  contro?: string;
+  // Metadata
+  lang?: string;
+  status?: 'draft' | 'review' | 'published';
+  lastUpdated?: string;
 }
 
-export type BreedTabId = 'dna' | 'size' | 'temperament' | 'care' | 'risks' | 'pedigree';
+export type BreedTabId = 'overview' | 'dna' | 'size' | 'temperament' | 'care' | 'risks' | 'pedigree';
 
 export interface BreedTab {
   id: BreedTabId;
@@ -92,11 +121,11 @@ export interface BreedTab {
 }
 
 export const BREED_TABS: BreedTab[] = [
-  { id: 'dna', label: 'DNA', icon: '🧬' },
+  { id: 'overview', label: 'Info', icon: '📋' },
   { id: 'size', label: 'Taglia', icon: '📏' },
-  { id: 'temperament', label: 'Temperamento', icon: '💚' },
+  { id: 'temperament', label: 'Carattere', icon: '💚' },
   { id: 'care', label: 'Cura', icon: '🛁' },
-  { id: 'risks', label: 'Rischi', icon: '⚠️' },
+  { id: 'risks', label: 'Salute', icon: '⚠️' },
   { id: 'pedigree', label: 'Pedigree', icon: '📜' },
 ];
 

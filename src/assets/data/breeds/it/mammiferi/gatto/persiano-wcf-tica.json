@@ -1,0 +1,57 @@
+{
+  "id": "persiano-wcf-tica",
+  "name": "Persiano (WCF, TICA)",
+  "species": "Gatto",
+  "category": "mammiferi",
+  "image": "🐱",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo lungo, folto e setoso, testa rotonda, muso schiacciato (tipo brachicefalo).",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo lungo, folto e setoso, testa rotonda, muso schiacciato (tipo brachicefalo).",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo lungo",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Calmo, affettuoso, tranquillo, adatto a vita domestica.",
+    "behavior": "Calmo, affettuoso, tranquillo, adatto a vita domestica.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Spazzolatura quotidiana, pulizia occhi."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Problemi respiratori",
+      "oculari",
+      "renali (PKD)"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede cure e attenzioni costanti."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Gatto dolce e tranquillo.",
+  "contro": "Richiede cure e attenzioni costanti.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

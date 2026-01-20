@@ -1,0 +1,55 @@
+{
+  "id": "icelandic-sheepdog",
+  "name": "Icelandic Sheepdog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane da pastore di taglia media, pelo folto e morbido.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane da pastore di taglia media, pelo folto e morbido.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo folto e morbido",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Allegro, socievole, ottimo cane da famiglia e lavoro.",
+    "behavior": "Allegro, socievole, ottimo cane da famiglia e lavoro.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Può essere molto vocale."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Molto versatile, affettuoso.",
+  "contro": "Può essere molto vocale.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

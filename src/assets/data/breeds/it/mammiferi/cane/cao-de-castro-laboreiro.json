@@ -1,0 +1,56 @@
+{
+  "id": "cao-de-castro-laboreiro",
+  "name": "Cão de Castro Laboreiro",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane da guardia portoghese, taglia media-grande, pelo spesso e duro.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane da guardia portoghese, taglia media-grande, pelo spesso e duro.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo spesso e duro",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Protettivo, riservato, leale.",
+    "behavior": "Protettivo, riservato, leale.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Spazzolatura regolare e attività",
+    "grooming": "Spazzolatura regolare e attività."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "problemi articolari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede socializzazione precoce."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da guardia.",
+  "contro": "Richiede socializzazione precoce.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

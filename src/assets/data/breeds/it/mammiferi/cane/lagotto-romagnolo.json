@@ -1,0 +1,55 @@
+{
+  "id": "lagotto-romagnolo",
+  "name": "Lagotto Romagnolo",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane italiano da tartufo, pelo riccio lanoso.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane italiano da tartufo, pelo riccio lanoso.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo riccio lanoso",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Dolce, intelligente, olfatto fine.",
+    "behavior": "Dolce, intelligente, olfatto fine.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Mantello va curato regolarmente."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ideale per famiglie, lavori in tartufaia.",
+  "contro": "Mantello va curato regolarmente.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

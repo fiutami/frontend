@@ -1,438 +1,753 @@
 @import 'src/styles/tokens-figma';
 
-.map {
+// Map page wrapper
+.map-page {
+  position: relative;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: $color-background-secondary;
-  padding-bottom: $tab-bar-height;
+  overflow-x: hidden;
+  padding-bottom: 80px;
 
-  // ========================================
-  // HEADER
-  // ========================================
-
-  &__header {
-    display: flex;
-    align-items: center;
-    gap: $spacing-md;
-    padding: $spacing-md;
-    background: linear-gradient(180deg, #fde5a7 0%, #f7bc34 50%, #e98b0c 100%);
-    box-shadow: $shadow-md;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  &__background {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(125deg, #FFFFFF 0%, rgba(255, 255, 255, 0.67) 0%, #FCFED1 0%, #F8D78B 19%, #F2B830 82%);
+    z-index: -1;
   }
+}
 
-  &__back-btn {
-    width: 40px;
-    height: 40px;
+// Header
+.map-header {
+  padding: 32px 16px 16px;
+  position: relative;
+  z-index: 10;
+
+  &__top {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: $color-white-20;
-    border-radius: $border-radius-full;
-    color: $color-text-dark;
-    transition: $transition-fast;
-    flex-shrink: 0;
-
-    &:hover {
-      background: $color-white-40;
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
+    justify-content: space-between;
+    margin-bottom: 16px;
   }
 
   &__title {
-    font-size: $typography-h2-size;
-    font-weight: $typography-h1-weight;
-    color: $color-text-dark;
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-text-inverse;
+    text-transform: capitalize;
     margin: 0;
-    flex: 1;
   }
 
-  // ========================================
-  // MAP PLACEHOLDER
-  // ========================================
-
-  &__placeholder {
-    position: relative;
-    width: 100%;
-    height: $map-height;
-    background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-
-    // Grid pattern overlay
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-      background-size: 20px 20px;
-    }
-  }
-
-  &__placeholder-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $spacing-md;
-  }
-
-  &__placeholder-icon {
-    font-size: 64px;
-    color: $color-white-60;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  &__coming-soon {
+  &__branding {
     text-align: center;
-  }
-
-  &__coming-soon-badge {
-    display: inline-block;
-    padding: $spacing-xs $spacing-md;
-    background: $color-cta-primary;
-    color: $color-text-dark;
-    font-size: $typography-small-size;
-    font-weight: $typography-h2-weight;
-    border-radius: $border-radius-full;
-    box-shadow: $shadow-md;
-    margin-bottom: $spacing-sm;
-  }
-
-  &__coming-soon-text {
-    font-size: $typography-body-size;
-    color: $color-white-80;
-    margin: 0;
-  }
-
-  // ========================================
-  // FILTERS
-  // ========================================
-
-  &__filters {
-    display: flex;
-    gap: $spacing-sm;
-    padding: $spacing-md;
-    overflow-x: auto;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  &__filter {
-    display: flex;
-    align-items: center;
-    gap: $spacing-xs;
-    padding: $spacing-sm $spacing-md;
-    background: $color-background-primary;
-    border: 2px solid transparent;
-    border-radius: $border-radius-full;
-    color: $color-text-secondary;
-    font-size: $typography-body-size;
-    white-space: nowrap;
-    transition: $transition-fast;
-    flex-shrink: 0;
-
-    &:hover {
-      background: $color-white-80;
-      transform: translateY(-2px);
-      box-shadow: $shadow-sm;
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-
-    &--active {
-      background: $color-cta-primary;
-      border-color: $color-cta-primary;
-      color: $color-text-dark;
-      font-weight: $typography-h2-weight;
-    }
-  }
-
-  &__filter-icon {
-    font-size: 20px;
-  }
-
-  &__filter-label {
-    font-size: $typography-body-size;
-  }
-
-  // ========================================
-  // CONTENT & PLACES LIST
-  // ========================================
-
-  &__content {
-    flex: 1;
-    padding: 0 $spacing-md $spacing-md;
-    overflow-y: auto;
-  }
-
-  &__places {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  &__section-title {
-    font-size: $typography-button-size;
-    font-weight: $typography-h1-weight;
-    color: $color-text-primary;
-    margin: 0 0 $spacing-md;
-    display: flex;
-    align-items: center;
-    gap: $spacing-xs;
-  }
-
-  &__count {
-    font-size: $typography-body-size;
-    font-weight: $typography-body-weight;
-    color: $color-text-secondary;
-  }
-
-  &__places-list {
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    align-items: center;
+
+    // Logo responsive sizing - BREAKPOINTS: XS:320, SM:576, MD:768, LG:1024, XL:1200
+    ::ng-deep .logo {
+      height: 32px; // XS (320px+)
+
+      @media (min-width: 576px) {
+        height: 40px; // SM
+      }
+
+      @media (min-width: 768px) {
+        height: 48px; // MD (tablet)
+      }
+
+      @media (min-width: 1024px) {
+        height: 56px; // LG (desktop)
+      }
+
+      @media (min-width: 1200px) {
+        height: 64px; // XL
+      }
+    }
   }
 
-  // ========================================
-  // PLACE CARD
-  // ========================================
+  &__subtitle {
+    font-family: $font-family-body;
+    font-size: 12px; // XS
+    font-weight: 700;
+    color: $color-text-inverse;
+    text-align: center;
+    line-height: 1.22;
+    margin: 8px 0 0;
 
-  &__place-card {
-    display: flex;
-    align-items: center;
-    gap: $spacing-md;
-    padding: $spacing-md;
-    background: $color-background-primary;
-    border-radius: $border-radius-md;
-    box-shadow: $shadow-sm;
-    transition: $transition-fast;
+    @media (min-width: 576px) {
+      font-size: 14px; // SM
+      margin-top: 10px;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 16px; // MD
+      margin-top: 12px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 18px; // LG
+      margin-top: 14px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 20px; // XL
+      margin-top: 16px;
+    }
+  }
+}
+
+// Back button
+.back-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(228, 228, 228, 0.2);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: $transition-base;
+
+  &:hover {
+    background: rgba(228, 228, 228, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .material-icons {
+    font-size: 20px;
+    color: $color-text-inverse;
+  }
+}
+
+// Search container
+.search-container {
+  padding: 0 16px;
+  margin-bottom: 12px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: $color-background-primary;
+  border: 1px solid #D6D6D6;
+  border-radius: 40px;
+
+  .search-icon {
+    color: #878787;
+    font-size: 18px;
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: $font-family-body;
+    font-size: 12px;
+    color: $color-text-primary;
+    background: transparent;
+
+    &::placeholder {
+      color: #878787;
+    }
+  }
+
+  .filter-button {
+    background: transparent;
+    border: none;
+    padding: 0;
     cursor: pointer;
 
+    .material-icons {
+      font-size: 18px;
+      color: #878787;
+    }
+  }
+}
+
+// Action buttons
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: none;
+  font-family: $font-family-body;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.5%;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: $transition-base;
+
+  &--primary {
+    background: #F2B830;
+    color: $color-text-inverse;
+
     &:hover {
-      box-shadow: $shadow-md;
-      transform: translateY(-2px);
+      background: #DAA500;
     }
 
     &:active {
       transform: scale(0.98);
     }
+  }
+}
 
-    &:focus {
-      outline: 2px solid $color-cta-primary;
-      outline-offset: 2px;
+// Filter chips
+.filter-chips {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.filter-chip {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-family: $font-family-body;
+  font-size: 14px;
+  font-weight: 600;
+  color: #979EA6;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &--active {
+    color: $color-text-inverse;
+    background: var(--chip-color, $color-ai-primary);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.38);
+  }
+
+  &__text {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Location toggle
+.location-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+
+  &__label {
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-ai-primary;
+  }
+}
+
+.toggle-switch {
+  width: 31px;
+  height: 15px;
+  border-radius: 100px;
+  background: #ccc;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  transition: $transition-base;
+
+  &--active {
+    background: #F2B830;
+  }
+
+  &__slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: $color-text-inverse;
+    transition: $transition-base;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &--active &__slider {
+    left: calc(100% - 13px);
+  }
+}
+
+// Map container
+.map-container {
+  position: relative;
+  margin: 0 16px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
+  border: 1px solid $color-ai-primary;
+}
+
+.map {
+  width: 100%;
+  height: 220px;
+}
+
+// User location marker styles (Leaflet creates DOM outside Angular)
+::ng-deep {
+  .user-location-marker {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+
+  .user-marker-pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(74, 116, 240, 0.4);
+    animation: user-pulse 2s ease-out infinite;
+  }
+
+  .user-marker-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    border-radius: 50%;
+    background: $color-ai-primary;
+    border: 3px solid $color-text-inverse;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  @keyframes user-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
     }
   }
 
-  &__place-icon-wrapper {
-    width: 48px;
-    height: 48px;
+  // Custom marker pin
+  .custom-marker {
+    background: transparent;
+    border: none;
+  }
+
+  .marker-pin {
+    width: 36px;
+    height: 36px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: $border-radius-md;
-    flex-shrink: 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   }
 
-  &__place-icon {
-    font-size: 28px;
+  .marker-icon {
+    transform: rotate(45deg);
+    font-size: 16px;
+  }
+}
+
+// Location button
+.location-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $color-text-inverse;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: $transition-base;
+
+  .material-icons {
+    font-size: 20px;
+    color: #878787;
+  }
+
+  &--active .material-icons {
+    color: $color-ai-primary;
+  }
+}
+
+// Current location indicator
+.current-location {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: $color-text-inverse;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+
+  &__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .material-icons {
+      font-size: 18px;
+      color: $color-ai-primary;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    font-family: $font-family-body;
+    font-size: 12px;
+    color: #606060;
+  }
+
+  &__name {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-primary;
+  }
+
+  &__arrow {
+    font-size: 18px;
+    color: $color-text-primary;
+  }
+}
+
+// Section title
+.section-title {
+  padding: 16px 20px 8px;
+
+  h2 {
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0;
+    line-height: 1.22;
+  }
+}
+
+// Promo banner
+.promo-banner {
+  margin: 8px 16px 16px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #4A74F0 0%, #4FAF5A 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 17px 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/assets/images/pattern-promo.png') repeat;
+    opacity: 0.1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__text {
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    margin: 0 0 8px;
+    max-width: 346px;
+  }
+
+  &__button {
+    padding: 8px 16px;
+    border-radius: 40px;
+    background: $color-text-primary;
+    border: none;
+    font-family: 'SF Pro', sans-serif;
+    font-size: 12px;
+    font-weight: 590;
+    color: $color-text-inverse;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+      background: lighten($color-text-primary, 10%);
+    }
+  }
+
+  &__indicator {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px;
+    background: $color-text-inverse;
+    border-radius: 40px;
+
+    .dot {
+      width: 8px;
+      height: 4px;
+      border-radius: 4px;
+      background: rgba(16, 16, 16, 0.1);
+
+      &.active {
+        background: #4FAF5A;
+        width: 16px;
+      }
+    }
+  }
+}
+
+// POI Card (bottom sheet)
+.poi-card {
+  position: fixed;
+  bottom: 80px;
+  left: 16px;
+  right: 16px;
+  background: $color-text-inverse;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  animation: slideUp 0.3s ease;
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #F5F5F5;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .material-icons {
+      font-size: 16px;
+      color: #666;
+    }
+  }
+
+  &__header {
+    margin-bottom: 12px;
+  }
+
+  &__type-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: $color-text-inverse;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  &__name {
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin: 0 0 4px;
+  }
+
+  &__address {
+    font-family: $font-family-body;
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+
+  &__details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .star {
+      font-size: 16px;
+      color: #FFD700;
+    }
+
+    .rating-value {
+      font-weight: 600;
+      color: $color-text-primary;
+    }
+
+    .review-count {
+      font-size: 12px;
+      color: #666;
+    }
+  }
+
+  &__distance {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+    font-size: 14px;
+
+    .material-icons {
+      font-size: 16px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+.poi-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  font-family: $font-family-body;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-base;
+
+  .material-icons {
+    font-size: 20px;
+  }
+
+  &--directions {
+    background: $color-ai-primary;
     color: $color-text-inverse;
 
-    &--park {
-      background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%);
-      border-radius: $border-radius-md;
-      padding: 10px;
-    }
-
-    &--beach {
-      background: linear-gradient(135deg, #1e88e5 0%, #42a5f5 100%);
-      border-radius: $border-radius-md;
-      padding: 10px;
-    }
-
-    &--vet {
-      background: linear-gradient(135deg, #e53935 0%, #ef5350 100%);
-      border-radius: $border-radius-md;
-      padding: 10px;
-    }
-
-    &--shop {
-      background: linear-gradient(135deg, #fb8c00 0%, #ffa726 100%);
-      border-radius: $border-radius-md;
-      padding: 10px;
+    &:hover {
+      background: darken($color-ai-primary, 10%);
     }
   }
 
-  &__place-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-xs;
-    min-width: 0;
-  }
-
-  &__place-name {
-    font-size: $typography-body-size;
-    font-weight: $typography-h2-weight;
+  &--save {
+    background: #F5F5F5;
     color: $color-text-primary;
-    margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
 
-  &__place-meta {
-    display: flex;
-    align-items: center;
-    gap: $spacing-md;
-    font-size: $typography-small-size;
-    color: $color-text-secondary;
-  }
-
-  &__place-rating {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  &__star {
-    font-size: 14px;
-    color: $color-text-secondary;
-
-    &--filled {
-      color: $color-cta-primary;
+    &:hover {
+      background: #E5E5E5;
     }
   }
 
-  &__rating-value {
-    font-weight: $typography-h2-weight;
-    margin-left: 2px;
+  &--saved {
+    background: #FFF3CD;
+    color: #B8860B;
   }
+}
 
-  &__place-distance {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+// Leaflet override
+:host ::ng-deep {
+  .leaflet-control-zoom {
+    border: none !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  &__distance-icon {
-    font-size: 16px;
-    color: $color-text-secondary;
-  }
+    a {
+      width: 32px !important;
+      height: 32px !important;
+      line-height: 32px !important;
+      font-size: 18px !important;
+      color: $color-text-primary !important;
+      background: $color-text-inverse !important;
+      border: none !important;
 
-  &__place-arrow {
-    font-size: 24px;
-    color: $color-text-secondary;
-    flex-shrink: 0;
-  }
-
-  // ========================================
-  // EMPTY STATE
-  // ========================================
-
-  &__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: $spacing-2xl;
-    text-align: center;
-  }
-
-  &__empty-icon {
-    font-size: 64px;
-    color: $color-text-secondary;
-    opacity: 0.5;
-    margin-bottom: $spacing-md;
-  }
-
-  &__empty-text {
-    font-size: $typography-body-size;
-    color: $color-text-secondary;
-    margin: 0;
-  }
-
-  // ========================================
-  // ANIMATIONS
-  // ========================================
-
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 0.4;
-      transform: scale(1);
+      &:hover {
+        background: #F5F5F5 !important;
+      }
     }
-    50% {
-      opacity: 0.8;
-      transform: scale(1.05);
+
+    a:first-child {
+      border-radius: 8px 8px 0 0 !important;
+    }
+
+    a:last-child {
+      border-radius: 0 0 8px 8px !important;
     }
   }
 
-  // ========================================
-  // RESPONSIVE
-  // ========================================
-
-  // Tablet (768px+)
-  @media (min-width: 768px) {
-    &__header {
-      padding: $spacing-lg;
-    }
-
-    &__title {
-      font-size: 28px;
-    }
-
-    &__placeholder {
-      height: 240px;
-    }
-
-    &__filters {
-      padding: $spacing-lg;
-      gap: $spacing-md;
-    }
-
-    &__content {
-      padding: 0 $spacing-lg $spacing-lg;
-    }
-
-    &__places-list {
-      gap: $spacing-md;
-    }
-
-    &__place-card {
-      padding: $spacing-lg;
-    }
-  }
-
-  // Desktop (1024px+)
-  @media (min-width: 1024px) {
-    &__placeholder {
-      height: 320px;
-    }
-
-    &__placeholder-icon {
-      font-size: 80px;
-    }
-
-    &__coming-soon-badge {
-      font-size: $typography-body-size;
-    }
-
-    &__coming-soon-text {
-      font-size: $typography-button-size;
-    }
+  .leaflet-control-attribution {
+    display: none;
   }
 }

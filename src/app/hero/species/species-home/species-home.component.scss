@@ -1,7 +1,7 @@
 @import 'src/styles/tokens-figma';
 @import 'src/styles/mixins';
 
-.species-home {
+.species-page {
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
@@ -38,10 +38,6 @@
     }
   }
 
-  &__header-spacer {
-    width: 44px;
-  }
-
   &__back-btn {
     width: 44px;
     height: 44px;
@@ -71,6 +67,48 @@
     }
   }
 
+  // Branding
+  &__branding {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    padding: $spacing-sm 0 $spacing-md;
+
+    @include respond(md) {
+      padding: $spacing-md 0 $spacing-lg;
+    }
+
+    // Logo responsive - BREAKPOINTS: XS:320, SM:576, MD:768, LG:1024, XL:1200
+    ::ng-deep .logo {
+      height: 32px; // XS (320px+)
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+
+      @media (min-width: 576px) {
+        height: 40px; // SM
+      }
+
+      @media (min-width: 768px) {
+        height: 48px; // MD (tablet)
+      }
+
+      @media (min-width: 1024px) {
+        height: 56px; // LG (desktop)
+      }
+
+      @media (min-width: 1200px) {
+        height: 64px; // XL
+      }
+    }
+  }
+
+  // Section Navigator
+  app-section-navigator {
+    position: relative;
+    z-index: 20;
+    display: block;
+  }
+
   // Main content
   &__content {
     position: relative;
@@ -78,152 +116,24 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: $spacing-lg;
+    padding: $spacing-md $spacing-lg;
     padding-bottom: calc($tab-bar-height + $spacing-lg);
     overflow-y: auto;
+    overflow-x: hidden;
+
+    // Prevent text selection during swipe
+    user-select: none;
+    -webkit-user-select: none;
+
+    // Smooth scroll
+    -webkit-overflow-scrolling: touch;
 
     @include respond(md) {
-      padding: $spacing-xl;
+      padding: $spacing-lg $spacing-xl;
       padding-bottom: calc($tab-bar-height + $spacing-xl);
       max-width: 800px;
       margin: 0 auto;
       width: 100%;
     }
-  }
-
-  &__subtitle {
-    font-family: $font-family-body;
-    font-size: $typography-body-size;
-    color: $color-text-inverse;
-    text-align: center;
-    margin: 0 0 $spacing-xl;
-    opacity: 0.9;
-
-    @include respond(md) {
-      font-size: 18px;
-      margin-bottom: $spacing-2xl;
-    }
-  }
-
-  // Loading state
-  &__loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    color: $color-text-inverse;
-    gap: $spacing-md;
-  }
-
-  &__spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-top-color: $color-text-inverse;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  // Grid
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-md;
-
-    @include respond(md) {
-      grid-template-columns: repeat(3, 1fr);
-      gap: $spacing-lg;
-    }
-
-    @include respond(lg) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  // Card
-  &__card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: $spacing-lg $spacing-md;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border: none;
-    border-radius: $border-radius-lg;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: $transition-fast;
-    min-height: 140px;
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    &:active {
-      transform: translateY(-2px);
-    }
-
-    &--selected {
-      border: 2px solid var(--card-color, $color-primary-500);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15),
-                  0 0 0 4px rgba(var(--card-color, $color-primary-500), 0.2);
-    }
-
-    @include respond(md) {
-      padding: $spacing-xl $spacing-lg;
-      min-height: 160px;
-    }
-  }
-
-  &__card-icon {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--card-color, $color-primary-500);
-    border-radius: 50%;
-    margin-bottom: $spacing-md;
-
-    .material-icons {
-      font-size: 28px;
-      color: $color-text-inverse;
-    }
-
-    @include respond(md) {
-      width: 64px;
-      height: 64px;
-
-      .material-icons {
-        font-size: 32px;
-      }
-    }
-  }
-
-  &__card-name {
-    font-family: $font-family-body;
-    font-size: $typography-body-size;
-    font-weight: 600;
-    color: $color-text-primary;
-    margin: 0 0 $spacing-xs;
-
-    @include respond(md) {
-      font-size: 18px;
-    }
-  }
-
-  &__card-count {
-    font-family: $font-family-body;
-    font-size: $typography-small-size;
-    color: $color-text-secondary;
   }
 }

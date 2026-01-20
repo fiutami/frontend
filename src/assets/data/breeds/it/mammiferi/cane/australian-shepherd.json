@@ -1,0 +1,58 @@
+{
+  "id": "australian-shepherd",
+  "name": "Australian Shepherd",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo medio, versatile, molto intelligente.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo medio, versatile, molto intelligente.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo medio",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Socievole, fedele, energico, apprendimento rapido.",
+    "behavior": "Socievole, fedele, energico, apprendimento rapido.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività fisica e mentale intensa",
+    "grooming": "Attività fisica e mentale intensa."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "sordità",
+      "problemi oculari (CEA",
+      "PRA)"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede impegno costante."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo per sport e compagnia.",
+  "contro": "Richiede impegno costante.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

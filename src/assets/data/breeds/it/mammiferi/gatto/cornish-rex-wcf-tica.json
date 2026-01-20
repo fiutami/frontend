@@ -1,0 +1,56 @@
+{
+  "id": "cornish-rex-wcf-tica",
+  "name": "Cornish Rex (WCF, TICA)",
+  "species": "Gatto",
+  "category": "mammiferi",
+  "image": "🐱",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo corto, riccio e setoso, struttura snella.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo corto, riccio e setoso, struttura snella.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo corto",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Energico, molto giocoso e intelligente.",
+    "behavior": "Energico, molto giocoso e intelligente.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Protezione dal freddo, bagni occasionali."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Sensibilità al freddo",
+      "problemi cutanei"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Necessita di cure particolari per il pelo."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Gatto molto affettuoso e curioso.",
+  "contro": "Necessita di cure particolari per il pelo.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

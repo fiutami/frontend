@@ -1,0 +1,55 @@
+{
+  "id": "romanian-bucovina-shepherd-dog",
+  "name": "Romanian Bucovina Shepherd Dog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Grande, pelo lungo, cane da guardia.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Grande, pelo lungo, cane da guardia.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo lungo",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Protettivo, indipendente.",
+    "behavior": "Protettivo, indipendente.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Cura pelo e attività",
+    "grooming": "Cura pelo e attività."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede socializzazione."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo guardiano.",
+  "contro": "Richiede socializzazione.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

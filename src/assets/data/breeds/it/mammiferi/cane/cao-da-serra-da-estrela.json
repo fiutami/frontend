@@ -1,0 +1,56 @@
+{
+  "id": "cao-da-serra-da-estrela",
+  "name": "Cão da Serra da Estrela",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane da montagna portoghese, pelo denso e lungo.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane da montagna portoghese, pelo denso e lungo.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo denso e lungo",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Protettivo, calmo, leale.",
+    "behavior": "Protettivo, calmo, leale.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Cura del pelo e spazio per movimento",
+    "grooming": "Cura del pelo e spazio per movimento."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "problemi articolari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Può essere territoriale."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo guardiano.",
+  "contro": "Può essere territoriale.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

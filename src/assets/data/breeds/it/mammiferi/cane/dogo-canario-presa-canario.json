@@ -1,0 +1,56 @@
+{
+  "id": "dogo-canario-presa-canario",
+  "name": "Dogo Canario (Presa Canario)",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Massiccio, potente, muso squadrato.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Massiccio, potente, muso squadrato.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Dominante, sicuro, serio.",
+    "behavior": "Dominante, sicuro, serio.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività e controllo comportamentale",
+    "grooming": "Attività e controllo comportamentale."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "dermatiti"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede gestione esperta."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Guardiano efficace.",
+  "contro": "Richiede gestione esperta.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

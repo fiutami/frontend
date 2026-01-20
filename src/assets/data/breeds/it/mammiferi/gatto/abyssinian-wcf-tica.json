@@ -1,0 +1,56 @@
+{
+  "id": "abyssinian-wcf-tica",
+  "name": "Abyssinian (WCF, TICA)",
+  "species": "Gatto",
+  "category": "mammiferi",
+  "image": "🐱",
+  "popularity": 50,
+  "origin": "",
+  "description": "Razza antica con pelo corto, colore “ticked” che dà un effetto luminoso.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Razza antica con pelo corto, colore “ticked” che dà un effetto luminoso.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo corto",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Molto attivo, curioso, socievole e intelligente.",
+    "behavior": "Molto attivo, curioso, socievole e intelligente. Ama giocare e interagire con i",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Spazzolatura settimanale, controllo della dieta e visite regolari.",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Spazzolatura settimanale, controllo della dieta e visite regolari."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Predisposizione a malattie renali (PKD)",
+      "problemi dentali"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Molto energico, può essere distruttivo se annoiato."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Facile da addestrare, affettuoso, adattabile.",
+  "contro": "Molto energico, può essere distruttivo se annoiato.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

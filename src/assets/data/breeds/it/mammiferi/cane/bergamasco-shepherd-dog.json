@@ -1,0 +1,56 @@
+{
+  "id": "bergamasco-shepherd-dog",
+  "name": "Bergamasco Shepherd Dog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo lungo, formato da ciuffi distintivi, di taglia media.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo lungo, formato da ciuffi distintivi, di taglia media.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo lungo",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Calmo, intelligente, affettuoso.",
+    "behavior": "Calmo, intelligente, affettuoso.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Pelo che richiede particolare attenzione, spazzolatura per prevenire nodi."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Rari",
+      "ma può soffrire di displasia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Gestione del pelo impegnativa."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da compagnia e guardia.",
+  "contro": "Gestione del pelo impegnativa.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

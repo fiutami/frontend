@@ -1,0 +1,55 @@
+{
+  "id": "tonkinese-wcf-tica",
+  "name": "Tonkinese (WCF, TICA)",
+  "species": "Gatto",
+  "category": "mammiferi",
+  "image": "🐱",
+  "popularity": 50,
+  "origin": "",
+  "description": "Corpo medio, pelo corto, mantello colorpoint misto con tonalità più morbide.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Corpo medio, pelo corto, mantello colorpoint misto con tonalità più morbide.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo corto",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Socievole, affettuoso e molto attivo.",
+    "behavior": "Socievole, affettuoso e molto attivo.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Facile da mantenere."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Generalmente sana"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede stimoli e attenzione."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Gatto affettuoso e versatile.",
+  "contro": "Richiede stimoli e attenzione.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

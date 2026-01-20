@@ -1,0 +1,4002 @@
+[
+  {
+    "id": "descrizione-razze",
+    "name": "DESCRIZIONE razze:",
+    "image": "🐝",
+    "category": "invertebrati",
+    "species": "ape",
+    "path": "invertebrati/ape/descrizione-razze"
+  },
+  {
+    "id": "affenpinscher-gia-descritto",
+    "name": "Affenpinscher (già descritto)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/affenpinscher-gia-descritto"
+  },
+  {
+    "id": "affenpinscher",
+    "name": "Affenpinscher",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/affenpinscher"
+  },
+  {
+    "id": "afghan-hound",
+    "name": "Afghan Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/afghan-hound"
+  },
+  {
+    "id": "airedale-terrier",
+    "name": "Airedale Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/airedale-terrier"
+  },
+  {
+    "id": "alano-espanol",
+    "name": "Alano Español",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/alano-espanol"
+  },
+  {
+    "id": "alaskan-malamute",
+    "name": "Alaskan Malamute",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/alaskan-malamute"
+  },
+  {
+    "id": "american-cocker-spaniel",
+    "name": "American Cocker Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/american-cocker-spaniel"
+  },
+  {
+    "id": "american-eskimo-dog",
+    "name": "American Eskimo Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/american-eskimo-dog"
+  },
+  {
+    "id": "american-foxhound",
+    "name": "American Foxhound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/american-foxhound"
+  },
+  {
+    "id": "american-staffordshire-terrier",
+    "name": "American Staffordshire Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/american-staffordshire-terrier"
+  },
+  {
+    "id": "american-water-spaniel",
+    "name": "American Water Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/american-water-spaniel"
+  },
+  {
+    "id": "anatolian-shepherd-dog-kangal",
+    "name": "Anatolian Shepherd Dog (Kangal)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/anatolian-shepherd-dog-kangal"
+  },
+  {
+    "id": "anglo-francais-de-petite-venerie",
+    "name": "Anglo-Français de Petite Vénerie",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/anglo-francais-de-petite-venerie"
+  },
+  {
+    "id": "appenzeller-sennenhund",
+    "name": "Appenzeller Sennenhund",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/appenzeller-sennenhund"
+  },
+  {
+    "id": "ariegeois",
+    "name": "Ariegeois",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/ariegeois"
+  },
+  {
+    "id": "australian-cattle-dog",
+    "name": "Australian Cattle Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/australian-cattle-dog"
+  },
+  {
+    "id": "australian-kelpie",
+    "name": "Australian Kelpie",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/australian-kelpie"
+  },
+  {
+    "id": "australian-shepherd",
+    "name": "Australian Shepherd",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/australian-shepherd"
+  },
+  {
+    "id": "australian-terrier",
+    "name": "Australian Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/australian-terrier"
+  },
+  {
+    "id": "austrian-pinscher",
+    "name": "Austrian Pinscher",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/austrian-pinscher"
+  },
+  {
+    "id": "azawakh",
+    "name": "Azawakh",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/azawakh"
+  },
+  {
+    "id": "barbet",
+    "name": "Barbet",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/barbet"
+  },
+  {
+    "id": "barzoi-levrier-russo",
+    "name": "Barzoi (Levrier Russo)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/barzoi-levrier-russo"
+  },
+  {
+    "id": "basenji",
+    "name": "Basenji",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/basenji"
+  },
+  {
+    "id": "basset-artesien-normand",
+    "name": "Basset Artesien Normand",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/basset-artesien-normand"
+  },
+  {
+    "id": "basset-bleu-de-gascogne",
+    "name": "Basset Bleu de Gascogne",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/basset-bleu-de-gascogne"
+  },
+  {
+    "id": "basset-fauve-de-bretagne",
+    "name": "Basset Fauve de Bretagne",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/basset-fauve-de-bretagne"
+  },
+  {
+    "id": "basset-hound",
+    "name": "Basset Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/basset-hound"
+  },
+  {
+    "id": "beagle",
+    "name": "Beagle",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/beagle"
+  },
+  {
+    "id": "bearded-collie",
+    "name": "Bearded Collie",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bearded-collie"
+  },
+  {
+    "id": "beauceron",
+    "name": "Beauceron",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/beauceron"
+  },
+  {
+    "id": "bedlington-terrier",
+    "name": "Bedlington Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bedlington-terrier"
+  },
+  {
+    "id": "belgian-shepherd-dog-malinois-tervuren-groenendael-laekenois",
+    "name": "Belgian Shepherd Dog (Malinois, Tervuren, Groenendael, Laekenois)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/belgian-shepherd-dog-malinois-tervuren-groenendael-laekenois"
+  },
+  {
+    "id": "bergamasco-shepherd-dog",
+    "name": "Bergamasco Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bergamasco-shepherd-dog"
+  },
+  {
+    "id": "berger-blanc-suisse-pastore-svizzero-bianco",
+    "name": "Berger Blanc Suisse (Pastore Svizzero Bianco)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/berger-blanc-suisse-pastore-svizzero-bianco"
+  },
+  {
+    "id": "bernese-mountain-dog",
+    "name": "Bernese Mountain Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bernese-mountain-dog"
+  },
+  {
+    "id": "bichon-frise",
+    "name": "Bichon Frisé",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bichon-frise"
+  },
+  {
+    "id": "bleu-de-gascogne",
+    "name": "Bleu de Gascogne",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bleu-de-gascogne"
+  },
+  {
+    "id": "bloodhound-chien-de-saint-hubert",
+    "name": "Bloodhound (Chien de Saint-Hubert)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bloodhound-chien-de-saint-hubert"
+  },
+  {
+    "id": "bolognese",
+    "name": "Bolognese",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bolognese"
+  },
+  {
+    "id": "border-collie",
+    "name": "Border Collie",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/border-collie"
+  },
+  {
+    "id": "border-terrier",
+    "name": "Border Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/border-terrier"
+  },
+  {
+    "id": "bouvier-des-ardennes",
+    "name": "Bouvier des Ardennes",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bouvier-des-ardennes"
+  },
+  {
+    "id": "bouvier-des-flandres",
+    "name": "Bouvier des Flandres",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bouvier-des-flandres"
+  },
+  {
+    "id": "boykin-spaniel",
+    "name": "Boykin Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/boykin-spaniel"
+  },
+  {
+    "id": "bracco-italiano",
+    "name": "Bracco Italiano",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bracco-italiano"
+  },
+  {
+    "id": "braque-d-auvergne",
+    "name": "Braque d'Auvergne",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/braque-d-auvergne"
+  },
+  {
+    "id": "braque-du-bourbonnais",
+    "name": "Braque du Bourbonnais",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/braque-du-bourbonnais"
+  },
+  {
+    "id": "braque-francais-gascogne-pyrenees",
+    "name": "Braque Français (Gascogne, Pyrénées)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/braque-francais-gascogne-pyrenees"
+  },
+  {
+    "id": "braque-saint-germain",
+    "name": "Braque Saint-Germain",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/braque-saint-germain"
+  },
+  {
+    "id": "briard",
+    "name": "Briard",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/briard"
+  },
+  {
+    "id": "broholmer",
+    "name": "Broholmer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/broholmer"
+  },
+  {
+    "id": "bruno-jura-hound",
+    "name": "Bruno Jura Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bruno-jura-hound"
+  },
+  {
+    "id": "brussels-griffon",
+    "name": "Brussels Griffon",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/brussels-griffon"
+  },
+  {
+    "id": "bulldog",
+    "name": "Bulldog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bulldog"
+  },
+  {
+    "id": "bullmastiff",
+    "name": "Bullmastiff",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/bullmastiff"
+  },
+  {
+    "id": "canadian-eskimo-dog",
+    "name": "Canadian Eskimo Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/canadian-eskimo-dog"
+  },
+  {
+    "id": "cane-corso",
+    "name": "Cane Corso",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cane-corso"
+  },
+  {
+    "id": "cao-da-serra-da-estrela",
+    "name": "Cão da Serra da Estrela",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cao-da-serra-da-estrela"
+  },
+  {
+    "id": "cao-da-serra-de-aires",
+    "name": "Cao da Serra de Aires",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cao-da-serra-de-aires"
+  },
+  {
+    "id": "cao-de-castro-laboreiro",
+    "name": "Cão de Castro Laboreiro",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cao-de-castro-laboreiro"
+  },
+  {
+    "id": "catalan-sheepdog-gos-d-atura-catala",
+    "name": "Catalan Sheepdog (Gos d'Atura Català)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/catalan-sheepdog-gos-d-atura-catala"
+  },
+  {
+    "id": "caucasian-shepherd-dog",
+    "name": "Caucasian Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/caucasian-shepherd-dog"
+  },
+  {
+    "id": "cavalier-king-charles-spaniel",
+    "name": "Cavalier King Charles Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cavalier-king-charles-spaniel"
+  },
+  {
+    "id": "central-asian-shepherd-dog",
+    "name": "Central Asian Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/central-asian-shepherd-dog"
+  },
+  {
+    "id": "cesky-fousek",
+    "name": "Cesky Fousek",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cesky-fousek"
+  },
+  {
+    "id": "chesapeake-bay-retriever",
+    "name": "Chesapeake Bay Retriever",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/chesapeake-bay-retriever"
+  },
+  {
+    "id": "chihuahua",
+    "name": "Chihuahua",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/chihuahua"
+  },
+  {
+    "id": "chinese-crested",
+    "name": "Chinese Crested",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/chinese-crested"
+  },
+  {
+    "id": "chow-chow",
+    "name": "Chow Chow",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/chow-chow"
+  },
+  {
+    "id": "cirneco-dell-etna",
+    "name": "Cirneco dell’Etna",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cirneco-dell-etna"
+  },
+  {
+    "id": "clumber-spaniel",
+    "name": "Clumber Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/clumber-spaniel"
+  },
+  {
+    "id": "cocker-spaniel-americano",
+    "name": "Cocker Spaniel Americano",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cocker-spaniel-americano"
+  },
+  {
+    "id": "cocker-spaniel-inglese",
+    "name": "Cocker Spaniel Inglese",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/cocker-spaniel-inglese"
+  },
+  {
+    "id": "collie-rough",
+    "name": "Collie (Rough)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/collie-rough"
+  },
+  {
+    "id": "collie-smooth",
+    "name": "Collie (Smooth)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/collie-smooth"
+  },
+  {
+    "id": "croatian-sheepdog",
+    "name": "Croatian Sheepdog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/croatian-sheepdog"
+  },
+  {
+    "id": "curly-coated-retriever",
+    "name": "Curly-Coated Retriever",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/curly-coated-retriever"
+  },
+  {
+    "id": "dachshund-bassotto-tedesco",
+    "name": "Dachshund / Bassotto Tedesco",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/dachshund-bassotto-tedesco"
+  },
+  {
+    "id": "deerhound-scozzese",
+    "name": "Deerhound Scozzese",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/deerhound-scozzese"
+  },
+  {
+    "id": "descrizione-gruppo-1",
+    "name": "DESCRIZIONE GRUPPO 1",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/descrizione-gruppo-1"
+  },
+  {
+    "id": "deutsch-drahthaar",
+    "name": "Deutsch Drahthaar",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/deutsch-drahthaar"
+  },
+  {
+    "id": "deutsch-kurzhaar",
+    "name": "Deutsch Kurzhaar",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/deutsch-kurzhaar"
+  },
+  {
+    "id": "dobermann",
+    "name": "Dobermann",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/dobermann"
+  },
+  {
+    "id": "dogo-argentino",
+    "name": "Dogo Argentino",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/dogo-argentino"
+  },
+  {
+    "id": "dogo-canario-presa-canario",
+    "name": "Dogo Canario (Presa Canario)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/dogo-canario-presa-canario"
+  },
+  {
+    "id": "dogue-de-bordeaux",
+    "name": "Dogue de Bordeaux",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/dogue-de-bordeaux"
+  },
+  {
+    "id": "drentsche-patrijshond",
+    "name": "Drentsche Patrijshond",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/drentsche-patrijshond"
+  },
+  {
+    "id": "drever",
+    "name": "Drever",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/drever"
+  },
+  {
+    "id": "dutch-shepherd-dog",
+    "name": "Dutch Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/dutch-shepherd-dog"
+  },
+  {
+    "id": "east-european-shepherd",
+    "name": "East European Shepherd",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/east-european-shepherd"
+  },
+  {
+    "id": "english-foxhound",
+    "name": "English Foxhound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/english-foxhound"
+  },
+  {
+    "id": "english-pointer",
+    "name": "English Pointer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/english-pointer"
+  },
+  {
+    "id": "english-setter",
+    "name": "English Setter",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/english-setter"
+  },
+  {
+    "id": "english-toy-terrier",
+    "name": "English Toy Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/english-toy-terrier"
+  },
+  {
+    "id": "english-water-spaniel",
+    "name": "English Water Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/english-water-spaniel"
+  },
+  {
+    "id": "entlebucher-sennenhund",
+    "name": "Entlebucher Sennenhund",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/entlebucher-sennenhund"
+  },
+  {
+    "id": "epagneul-bleu-de-picardie",
+    "name": "Épagneul Bleu de Picardie",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/epagneul-bleu-de-picardie"
+  },
+  {
+    "id": "epagneul-picard",
+    "name": "Épagneul Picard",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/epagneul-picard"
+  },
+  {
+    "id": "epagneul-pont-audemer",
+    "name": "Épagneul Pont-Audemer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/epagneul-pont-audemer"
+  },
+  {
+    "id": "estonian-hound",
+    "name": "Estonian Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/estonian-hound"
+  },
+  {
+    "id": "eurasier",
+    "name": "Eurasier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/eurasier"
+  },
+  {
+    "id": "fila-brasileiro",
+    "name": "Fila Brasileiro",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/fila-brasileiro"
+  },
+  {
+    "id": "finnish-lapphund",
+    "name": "Finnish Lapphund",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/finnish-lapphund"
+  },
+  {
+    "id": "finnish-spitz",
+    "name": "Finnish Spitz",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/finnish-spitz"
+  },
+  {
+    "id": "flat-coated-retriever",
+    "name": "Flat-Coated Retriever",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/flat-coated-retriever"
+  },
+  {
+    "id": "french-spaniel",
+    "name": "French Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/french-spaniel"
+  },
+  {
+    "id": "german-pinscher",
+    "name": "German Pinscher",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/german-pinscher"
+  },
+  {
+    "id": "german-shepherd-dog-pastore-tedesco",
+    "name": "German Shepherd Dog (Pastore Tedesco)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/german-shepherd-dog-pastore-tedesco"
+  },
+  {
+    "id": "german-spaniel-deutsche-wachtelhund",
+    "name": "German Spaniel (Deutsche Wachtelhund)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/german-spaniel-deutsche-wachtelhund"
+  },
+  {
+    "id": "german-wirehaired-pointer",
+    "name": "German Wirehaired Pointer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/german-wirehaired-pointer"
+  },
+  {
+    "id": "golden-retriever",
+    "name": "Golden Retriever",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/golden-retriever"
+  },
+  {
+    "id": "grand-bleu-de-gascogne",
+    "name": "Grand Bleu de Gascogne",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/grand-bleu-de-gascogne"
+  },
+  {
+    "id": "great-dane-alano-tedesco",
+    "name": "Great Dane (Alano Tedesco)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/great-dane-alano-tedesco"
+  },
+  {
+    "id": "greater-swiss-mountain-dog",
+    "name": "Greater Swiss Mountain Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/greater-swiss-mountain-dog"
+  },
+  {
+    "id": "greenland-dog",
+    "name": "Greenland Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/greenland-dog"
+  },
+  {
+    "id": "greyhound",
+    "name": "Greyhound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/greyhound"
+  },
+  {
+    "id": "gruppo-10",
+    "name": "GRUPPO 10",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-10"
+  },
+  {
+    "id": "gruppo-2",
+    "name": "GRUPPO 2",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-2"
+  },
+  {
+    "id": "gruppo-3",
+    "name": "GRUPPO 3",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-3"
+  },
+  {
+    "id": "gruppo-4-bassotti-dachshund",
+    "name": "Gruppo 4 – Bassotti (Dachshund)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-4-bassotti-dachshund"
+  },
+  {
+    "id": "gruppo-5-spitz-e-razze-primitive",
+    "name": "Gruppo 5 – Spitz e Razze Primitive",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-5-spitz-e-razze-primitive"
+  },
+  {
+    "id": "gruppo-6",
+    "name": "GRUPPO 6",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-6"
+  },
+  {
+    "id": "gruppo-7",
+    "name": "GRUPPO 7",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-7"
+  },
+  {
+    "id": "gruppo-8",
+    "name": "GRUPPO 8",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-8"
+  },
+  {
+    "id": "gruppo-9",
+    "name": "GRUPPO 9",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/gruppo-9"
+  },
+  {
+    "id": "hamiltonstovare",
+    "name": "Hamiltonstövare",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/hamiltonstovare"
+  },
+  {
+    "id": "harrier",
+    "name": "Harrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/harrier"
+  },
+  {
+    "id": "havanese",
+    "name": "Havanese",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/havanese"
+  },
+  {
+    "id": "ibizan-hound",
+    "name": "Ibizan Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/ibizan-hound"
+  },
+  {
+    "id": "icelandic-sheepdog",
+    "name": "Icelandic Sheepdog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/icelandic-sheepdog"
+  },
+  {
+    "id": "irish-red-and-white-setter",
+    "name": "Irish Red and White Setter",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/irish-red-and-white-setter"
+  },
+  {
+    "id": "irish-setter",
+    "name": "Irish Setter",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/irish-setter"
+  },
+  {
+    "id": "irish-terrier",
+    "name": "Irish Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/irish-terrier"
+  },
+  {
+    "id": "irish-water-spaniel",
+    "name": "Irish Water Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/irish-water-spaniel"
+  },
+  {
+    "id": "irish-wolfhound",
+    "name": "Irish Wolfhound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/irish-wolfhound"
+  },
+  {
+    "id": "istrian-coarse-haired-hound",
+    "name": "Istrian Coarse-haired Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/istrian-coarse-haired-hound"
+  },
+  {
+    "id": "istrian-shorthaired-hound",
+    "name": "Istrian Shorthaired Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/istrian-shorthaired-hound"
+  },
+  {
+    "id": "italian-greyhound",
+    "name": "Italian Greyhound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/italian-greyhound"
+  },
+  {
+    "id": "italian-spinone",
+    "name": "Italian Spinone",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/italian-spinone"
+  },
+  {
+    "id": "japanese-akita-inu",
+    "name": "Japanese Akita Inu",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/japanese-akita-inu"
+  },
+  {
+    "id": "japanese-chin",
+    "name": "Japanese Chin",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/japanese-chin"
+  },
+  {
+    "id": "kai-ken",
+    "name": "Kai Ken",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/kai-ken"
+  },
+  {
+    "id": "keeshond",
+    "name": "Keeshond",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/keeshond"
+  },
+  {
+    "id": "kerry-blue-terrier",
+    "name": "Kerry Blue Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/kerry-blue-terrier"
+  },
+  {
+    "id": "kishu-ken",
+    "name": "Kishu Ken",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/kishu-ken"
+  },
+  {
+    "id": "komondor",
+    "name": "Komondor",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/komondor"
+  },
+  {
+    "id": "kuvasz",
+    "name": "Kuvasz",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/kuvasz"
+  },
+  {
+    "id": "labrador-retriever",
+    "name": "Labrador Retriever",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/labrador-retriever"
+  },
+  {
+    "id": "lagotto-romagnolo",
+    "name": "Lagotto Romagnolo",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/lagotto-romagnolo"
+  },
+  {
+    "id": "laika-vari-tipi-russi",
+    "name": "Laika (vari tipi russi)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/laika-vari-tipi-russi"
+  },
+  {
+    "id": "lakeland-terrier",
+    "name": "Lakeland Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/lakeland-terrier"
+  },
+  {
+    "id": "large-munsterlander",
+    "name": "Large Münsterländer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/large-munsterlander"
+  },
+  {
+    "id": "leonberger",
+    "name": "Leonberger",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/leonberger"
+  },
+  {
+    "id": "magyar-agar-ungherese",
+    "name": "Magyar Agar (Ungherese)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/magyar-agar-ungherese"
+  },
+  {
+    "id": "magyar-vizsla",
+    "name": "Magyar Vizsla",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/magyar-vizsla"
+  },
+  {
+    "id": "maltese",
+    "name": "Maltese",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/maltese"
+  },
+  {
+    "id": "manchester-terrier",
+    "name": "Manchester Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/manchester-terrier"
+  },
+  {
+    "id": "maremma-and-abruzzese-sheepdog",
+    "name": "Maremma and Abruzzese Sheepdog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/maremma-and-abruzzese-sheepdog"
+  },
+  {
+    "id": "mastiff",
+    "name": "Mastiff",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/mastiff"
+  },
+  {
+    "id": "mastino-napoletano",
+    "name": "Mastino Napoletano",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/mastino-napoletano"
+  },
+  {
+    "id": "miniature-american-shepherd",
+    "name": "Miniature American Shepherd",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/miniature-american-shepherd"
+  },
+  {
+    "id": "miniature-pinscher",
+    "name": "Miniature Pinscher",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/miniature-pinscher"
+  },
+  {
+    "id": "miniature-schnauzer",
+    "name": "Miniature Schnauzer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/miniature-schnauzer"
+  },
+  {
+    "id": "newfoundland",
+    "name": "Newfoundland",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/newfoundland"
+  },
+  {
+    "id": "norwegian-buhund",
+    "name": "Norwegian Buhund",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/norwegian-buhund"
+  },
+  {
+    "id": "norwegian-elkhound",
+    "name": "Norwegian Elkhound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/norwegian-elkhound"
+  },
+  {
+    "id": "norwegian-lundehund-anche-gruppo-5",
+    "name": "Norwegian Lundehund (anche Gruppo 5)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/norwegian-lundehund-anche-gruppo-5"
+  },
+  {
+    "id": "norwegian-lundehund",
+    "name": "Norwegian Lundehund",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/norwegian-lundehund"
+  },
+  {
+    "id": "nova-scotia-duck-tolling-retriever",
+    "name": "Nova Scotia Duck Tolling Retriever",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/nova-scotia-duck-tolling-retriever"
+  },
+  {
+    "id": "old-english-sheepdog",
+    "name": "Old English Sheepdog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/old-english-sheepdog"
+  },
+  {
+    "id": "otterhound",
+    "name": "Otterhound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/otterhound"
+  },
+  {
+    "id": "papillon",
+    "name": "Papillon",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/papillon"
+  },
+  {
+    "id": "parson-russell-terrier",
+    "name": "Parson Russell Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/parson-russell-terrier"
+  },
+  {
+    "id": "pekingese",
+    "name": "Pekingese",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pekingese"
+  },
+  {
+    "id": "perdiguero-de-burgos",
+    "name": "Perdiguero de Burgos",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/perdiguero-de-burgos"
+  },
+  {
+    "id": "perro-de-presa-canario",
+    "name": "Perro de Presa Canario",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/perro-de-presa-canario"
+  },
+  {
+    "id": "peruvian-inca-orchid",
+    "name": "Peruvian Inca Orchid",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/peruvian-inca-orchid"
+  },
+  {
+    "id": "petit-brabancon",
+    "name": "Petit Brabançon",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/petit-brabancon"
+  },
+  {
+    "id": "pharaoh-hound",
+    "name": "Pharaoh Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pharaoh-hound"
+  },
+  {
+    "id": "picardy-sheepdog-berger-picard",
+    "name": "Picardy Sheepdog (Berger Picard)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/picardy-sheepdog-berger-picard"
+  },
+  {
+    "id": "pointer",
+    "name": "Pointer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pointer"
+  },
+  {
+    "id": "poitevin",
+    "name": "Poitevin",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/poitevin"
+  },
+  {
+    "id": "polish-hunting-dog-ogar-polski",
+    "name": "Polish Hunting Dog (Ogar Polski)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/polish-hunting-dog-ogar-polski"
+  },
+  {
+    "id": "polish-lowland-sheepdog",
+    "name": "Polish Lowland Sheepdog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/polish-lowland-sheepdog"
+  },
+  {
+    "id": "polish-tatra-sheepdog",
+    "name": "Polish Tatra Sheepdog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/polish-tatra-sheepdog"
+  },
+  {
+    "id": "pomeranian",
+    "name": "Pomeranian",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pomeranian"
+  },
+  {
+    "id": "pomsky-incrocio-non-ufficiale",
+    "name": "Pomsky (incrocio non ufficiale)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pomsky-incrocio-non-ufficiale"
+  },
+  {
+    "id": "porcelaine",
+    "name": "Porcelaine",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/porcelaine"
+  },
+  {
+    "id": "portuguese-greyhound-galgo-portugues",
+    "name": "Portuguese Greyhound (Galgo Português)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/portuguese-greyhound-galgo-portugues"
+  },
+  {
+    "id": "portuguese-pointer",
+    "name": "Portuguese Pointer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/portuguese-pointer"
+  },
+  {
+    "id": "pug-carlino",
+    "name": "Pug (Carlino)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pug-carlino"
+  },
+  {
+    "id": "puli",
+    "name": "Puli",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/puli"
+  },
+  {
+    "id": "pumi",
+    "name": "Pumi",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pumi"
+  },
+  {
+    "id": "pyrenean-mastiff",
+    "name": "Pyrenean Mastiff",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pyrenean-mastiff"
+  },
+  {
+    "id": "pyrenean-shepherd-face-rase-e-museau-normal",
+    "name": "Pyrenean Shepherd (face rase e museau normal)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/pyrenean-shepherd-face-rase-e-museau-normal"
+  },
+  {
+    "id": "riesenschnauzer-giant-schnauzer",
+    "name": "Riesenschnauzer (Giant Schnauzer)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/riesenschnauzer-giant-schnauzer"
+  },
+  {
+    "id": "romanian-bucovina-shepherd-dog",
+    "name": "Romanian Bucovina Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/romanian-bucovina-shepherd-dog"
+  },
+  {
+    "id": "romanian-carpathian-shepherd-dog",
+    "name": "Romanian Carpathian Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/romanian-carpathian-shepherd-dog"
+  },
+  {
+    "id": "romanian-mioritic-shepherd-dog",
+    "name": "Romanian Mioritic Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/romanian-mioritic-shepherd-dog"
+  },
+  {
+    "id": "saint-bernard-pelo-lungo-e-corto",
+    "name": "Saint Bernard (pelo lungo e corto)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/saint-bernard-pelo-lungo-e-corto"
+  },
+  {
+    "id": "saluki",
+    "name": "Saluki",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/saluki"
+  },
+  {
+    "id": "samoyed",
+    "name": "Samoyed",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/samoyed"
+  },
+  {
+    "id": "schapendoes",
+    "name": "Schapendoes",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/schapendoes"
+  },
+  {
+    "id": "schillerstovare",
+    "name": "Schillerstövare",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/schillerstovare"
+  },
+  {
+    "id": "schnauzer-standard",
+    "name": "Schnauzer (Standard)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/schnauzer-standard"
+  },
+  {
+    "id": "scottish-deerhound",
+    "name": "Scottish Deerhound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/scottish-deerhound"
+  },
+  {
+    "id": "segugio-italiano-a-pelo-forte",
+    "name": "Segugio Italiano a Pelo Forte",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/segugio-italiano-a-pelo-forte"
+  },
+  {
+    "id": "segugio-italiano-a-pelo-raso",
+    "name": "Segugio Italiano a Pelo Raso",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/segugio-italiano-a-pelo-raso"
+  },
+  {
+    "id": "segugio-italiano-varie-razze-da-caccia",
+    "name": "Segugio Italiano (varie razze da caccia)",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/segugio-italiano-varie-razze-da-caccia"
+  },
+  {
+    "id": "segugio-maremmano",
+    "name": "Segugio Maremmano",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/segugio-maremmano"
+  },
+  {
+    "id": "shetland-sheepdog",
+    "name": "Shetland Sheepdog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/shetland-sheepdog"
+  },
+  {
+    "id": "shiba-inu",
+    "name": "Shiba Inu",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/shiba-inu"
+  },
+  {
+    "id": "shih-tzu",
+    "name": "Shih Tzu",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/shih-tzu"
+  },
+  {
+    "id": "shikoku",
+    "name": "Shikoku",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/shikoku"
+  },
+  {
+    "id": "siberian-husky",
+    "name": "Siberian Husky",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/siberian-husky"
+  },
+  {
+    "id": "silky-terrier",
+    "name": "Silky Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/silky-terrier"
+  },
+  {
+    "id": "sloughi",
+    "name": "Sloughi",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/sloughi"
+  },
+  {
+    "id": "slovak-cuvac",
+    "name": "Slovak Cuvac",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/slovak-cuvac"
+  },
+  {
+    "id": "slovakian-rough-haired-pointer",
+    "name": "Slovakian Rough-haired Pointer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/slovakian-rough-haired-pointer"
+  },
+  {
+    "id": "small-munsterlander",
+    "name": "Small Münsterländer",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/small-munsterlander"
+  },
+  {
+    "id": "south-russian-shepherd-dog",
+    "name": "South Russian Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/south-russian-shepherd-dog"
+  },
+  {
+    "id": "spanish-mastiff",
+    "name": "Spanish Mastiff",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/spanish-mastiff"
+  },
+  {
+    "id": "spanish-water-dog",
+    "name": "Spanish Water Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/spanish-water-dog"
+  },
+  {
+    "id": "spinone-italiano",
+    "name": "Spinone Italiano",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/spinone-italiano"
+  },
+  {
+    "id": "styrian-coarse-haired-hound",
+    "name": "Styrian Coarse-haired Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/styrian-coarse-haired-hound"
+  },
+  {
+    "id": "sussex-spaniel",
+    "name": "Sussex Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/sussex-spaniel"
+  },
+  {
+    "id": "swedish-lapphund",
+    "name": "Swedish Lapphund",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/swedish-lapphund"
+  },
+  {
+    "id": "swedish-vallhund",
+    "name": "Swedish Vallhund",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/swedish-vallhund"
+  },
+  {
+    "id": "swiss-hound",
+    "name": "Swiss Hound",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/swiss-hound"
+  },
+  {
+    "id": "tamaskan-dog",
+    "name": "Tamaskan Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/tamaskan-dog"
+  },
+  {
+    "id": "tibetan-mastiff",
+    "name": "Tibetan Mastiff",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/tibetan-mastiff"
+  },
+  {
+    "id": "tosa-inu",
+    "name": "Tosa Inu",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/tosa-inu"
+  },
+  {
+    "id": "toy-poodle",
+    "name": "Toy Poodle",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/toy-poodle"
+  },
+  {
+    "id": "utonagan",
+    "name": "Utonagan",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/utonagan"
+  },
+  {
+    "id": "weimaraner",
+    "name": "Weimaraner",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/weimaraner"
+  },
+  {
+    "id": "welsh-corgi-cardigan",
+    "name": "Welsh Corgi Cardigan",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/welsh-corgi-cardigan"
+  },
+  {
+    "id": "welsh-corgi-pembroke",
+    "name": "Welsh Corgi Pembroke",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/welsh-corgi-pembroke"
+  },
+  {
+    "id": "welsh-springer-spaniel",
+    "name": "Welsh Springer Spaniel",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/welsh-springer-spaniel"
+  },
+  {
+    "id": "welsh-terrier",
+    "name": "Welsh Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/welsh-terrier"
+  },
+  {
+    "id": "west-highland-white-terrier",
+    "name": "West Highland White Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/west-highland-white-terrier"
+  },
+  {
+    "id": "westphalian-dachsbracke",
+    "name": "Westphalian Dachsbracke",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/westphalian-dachsbracke"
+  },
+  {
+    "id": "whippet",
+    "name": "Whippet",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/whippet"
+  },
+  {
+    "id": "white-swiss-shepherd-dog",
+    "name": "White Swiss Shepherd Dog",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/white-swiss-shepherd-dog"
+  },
+  {
+    "id": "yorkshire-terrier",
+    "name": "Yorkshire Terrier",
+    "image": "🐕",
+    "category": "mammiferi",
+    "species": "cane",
+    "path": "mammiferi/cane/yorkshire-terrier"
+  },
+  {
+    "id": "alpaca",
+    "name": "Alpaca",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/alpaca"
+  },
+  {
+    "id": "angora-o-mohair-guinea-pig",
+    "name": "Angora (o Mohair Guinea Pig)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/angora-o-mohair-guinea-pig"
+  },
+  {
+    "id": "coronet",
+    "name": "Coronet",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/coronet"
+  },
+  {
+    "id": "descrizione-cavia",
+    "name": "DESCRIZIONE CAVIA",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/descrizione-cavia"
+  },
+  {
+    "id": "descrizione-porcellini-d-india",
+    "name": "DESCRIZIONE PORCELLINI D’INDIA",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/descrizione-porcellini-d-india"
+  },
+  {
+    "id": "lunkarya",
+    "name": "Lunkarya",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/lunkarya"
+  },
+  {
+    "id": "meerschweinchen-a-pelo-lungo-variante-europea-non-standardizzata",
+    "name": "Meerschweinchen a pelo lungo (variante europea non standardizzata)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/meerschweinchen-a-pelo-lungo-variante-europea-non-standardizzata"
+  },
+  {
+    "id": "merino",
+    "name": "Merino",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/merino"
+  },
+  {
+    "id": "peruviano-con-ciuffi-frange",
+    "name": "Peruviano con ciuffi/frange",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/peruviano-con-ciuffi-frange"
+  },
+  {
+    "id": "peruviano-peruvian",
+    "name": "Peruviano (Peruvian)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/peruviano-peruvian"
+  },
+  {
+    "id": "peruviano-satin",
+    "name": "Peruviano Satin",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/peruviano-satin"
+  },
+  {
+    "id": "sheba-mini-yak",
+    "name": "Sheba Mini Yak",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/sheba-mini-yak"
+  },
+  {
+    "id": "sheltie-o-silkie",
+    "name": "Sheltie (o Silkie)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/sheltie-o-silkie"
+  },
+  {
+    "id": "texel",
+    "name": "Texel",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "cavia",
+    "path": "mammiferi/cavia/texel"
+  },
+  {
+    "id": "descrizione-razze-conigli",
+    "name": "DESCRIZIONE RAZZE CONIGLI :",
+    "image": "🐰",
+    "category": "mammiferi",
+    "species": "coniglio",
+    "path": "mammiferi/coniglio/descrizione-razze-conigli"
+  },
+  {
+    "id": "descrizione-info-furetto",
+    "name": "DESCRIZIONE/ INFO FURETTO",
+    "image": "🦡",
+    "category": "mammiferi",
+    "species": "furetto",
+    "path": "mammiferi/furetto/descrizione-info-furetto"
+  },
+  {
+    "id": "furetto-razze",
+    "name": "FURETTO: “razze”",
+    "image": "🦡",
+    "category": "mammiferi",
+    "species": "furetto",
+    "path": "mammiferi/furetto/furetto-razze"
+  },
+  {
+    "id": "abissino-aby",
+    "name": "Abissino (ABY)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/abissino-aby"
+  },
+  {
+    "id": "abyssinian-wcf-tica",
+    "name": "Abyssinian (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/abyssinian-wcf-tica"
+  },
+  {
+    "id": "american-bobtail-wcf-tica",
+    "name": "American Bobtail (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/american-bobtail-wcf-tica"
+  },
+  {
+    "id": "american-curl-acs",
+    "name": "American Curl (ACS)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/american-curl-acs"
+  },
+  {
+    "id": "american-curl-wcf-tica",
+    "name": "American Curl (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/american-curl-wcf-tica"
+  },
+  {
+    "id": "american-shorthair-ash",
+    "name": "American Shorthair (ASH)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/american-shorthair-ash"
+  },
+  {
+    "id": "american-shorthair-wcf-tica",
+    "name": "American Shorthair (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/american-shorthair-wcf-tica"
+  },
+  {
+    "id": "anagrafe-nazionale-felina-italiana-anfi",
+    "name": "Anagrafe Nazionale Felina Italiana (ANFI)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/anagrafe-nazionale-felina-italiana-anfi"
+  },
+  {
+    "id": "angora-turco-tua",
+    "name": "Angora Turco (TUA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/angora-turco-tua"
+  },
+  {
+    "id": "balinese-bal",
+    "name": "Balinese (BAL)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/balinese-bal"
+  },
+  {
+    "id": "balinese-wcf-tica",
+    "name": "Balinese (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/balinese-wcf-tica"
+  },
+  {
+    "id": "bengal-wcf-tica",
+    "name": "Bengal (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/bengal-wcf-tica"
+  },
+  {
+    "id": "bengala-ben",
+    "name": "Bengala (BEN)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/bengala-ben"
+  },
+  {
+    "id": "birman-wcf-tica",
+    "name": "Birman (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/birman-wcf-tica"
+  },
+  {
+    "id": "birmana-sbi",
+    "name": "Birmana (SBI)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/birmana-sbi"
+  },
+  {
+    "id": "bobtail-giapponese-jbt",
+    "name": "Bobtail Giapponese (JBT)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/bobtail-giapponese-jbt"
+  },
+  {
+    "id": "bombay-wcf-tica",
+    "name": "Bombay (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/bombay-wcf-tica"
+  },
+  {
+    "id": "breve-descrizione-delle-razze-feline",
+    "name": "BREVE DESCRIZIONE DELLE RAZZE FELINE",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/breve-descrizione-delle-razze-feline"
+  },
+  {
+    "id": "british-longhair-blh",
+    "name": "British Longhair (BLH)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/british-longhair-blh"
+  },
+  {
+    "id": "british-shorthair-bsh",
+    "name": "British Shorthair (BSH)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/british-shorthair-bsh"
+  },
+  {
+    "id": "british-shorthair-wcf-tica",
+    "name": "British Shorthair (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/british-shorthair-wcf-tica"
+  },
+  {
+    "id": "burmese-bur",
+    "name": "Burmese (BUR)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/burmese-bur"
+  },
+  {
+    "id": "burmese-wcf-tica",
+    "name": "Burmese (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/burmese-wcf-tica"
+  },
+  {
+    "id": "burmilla-bml",
+    "name": "Burmilla (BML)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/burmilla-bml"
+  },
+  {
+    "id": "burmilla-wcf",
+    "name": "Burmilla (WCF)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/burmilla-wcf"
+  },
+  {
+    "id": "cat-fanciers-association-cfa",
+    "name": "Cat Fanciers’ Association (CFA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/cat-fanciers-association-cfa"
+  },
+  {
+    "id": "certosino-cha",
+    "name": "Certosino (CHA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/certosino-cha"
+  },
+  {
+    "id": "chausie-tica",
+    "name": "Chausie (TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/chausie-tica"
+  },
+  {
+    "id": "cornish-rex-crx",
+    "name": "Cornish Rex (CRX)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/cornish-rex-crx"
+  },
+  {
+    "id": "cornish-rex-wcf-tica",
+    "name": "Cornish Rex (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/cornish-rex-wcf-tica"
+  },
+  {
+    "id": "cymric-cym",
+    "name": "Cymric (Cym)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/cymric-cym"
+  },
+  {
+    "id": "descrizione-gatti-1",
+    "name": "DESCRIZIONE GATTI 1",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/descrizione-gatti-1"
+  },
+  {
+    "id": "devon-rex-drx",
+    "name": "Devon Rex (DRX)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/devon-rex-drx"
+  },
+  {
+    "id": "devon-rex-wcf-tica",
+    "name": "Devon Rex (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/devon-rex-wcf-tica"
+  },
+  {
+    "id": "don-sphynx-dsp",
+    "name": "Don Sphynx (DSP)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/don-sphynx-dsp"
+  },
+  {
+    "id": "egyptian-mau-wcf-tica",
+    "name": "Egyptian Mau (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/egyptian-mau-wcf-tica"
+  },
+  {
+    "id": "esotico-exo",
+    "name": "Esotico (EXO)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/esotico-exo"
+  },
+  {
+    "id": "exotic-shorthair-wcf-tica",
+    "name": "Exotic Shorthair (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/exotic-shorthair-wcf-tica"
+  },
+  {
+    "id": "federation-internationale-feline-fife",
+    "name": "Fédération Internationale Féline (FIFe)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/federation-internationale-feline-fife"
+  },
+  {
+    "id": "gatto-dell-isola-di-man-man",
+    "name": "Gatto dell'Isola di Man (MAN)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-dell-isola-di-man-man"
+  },
+  {
+    "id": "gatto-delle-foreste-norvegesi-nfo",
+    "name": "Gatto delle Foreste Norvegesi (NFO)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-delle-foreste-norvegesi-nfo"
+  },
+  {
+    "id": "gatto-korat-kor",
+    "name": "Gatto Korat (KOR)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-korat-kor"
+  },
+  {
+    "id": "gatto-siberiano-sib",
+    "name": "Gatto Siberiano (SIB)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-siberiano-sib"
+  },
+  {
+    "id": "gatto-singapura-sin",
+    "name": "Gatto Singapura (SIN)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-singapura-sin"
+  },
+  {
+    "id": "gatto-sokoke-sok",
+    "name": "Gatto Sokoke (SOK)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-sokoke-sok"
+  },
+  {
+    "id": "gatto-sphynx-sph",
+    "name": "Gatto Sphynx (SPH)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-sphynx-sph"
+  },
+  {
+    "id": "gatto-thai-tha",
+    "name": "Gatto Thai (THA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-thai-tha"
+  },
+  {
+    "id": "gatto-turco-van-tuv",
+    "name": "Gatto Turco Van (TUV)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/gatto-turco-van-tuv"
+  },
+  {
+    "id": "havana-brown-wcf-tica",
+    "name": "Havana Brown (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/havana-brown-wcf-tica"
+  },
+  {
+    "id": "himalayano-wcf-tica",
+    "name": "Himalayano (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/himalayano-wcf-tica"
+  },
+  {
+    "id": "japanese-bobtail-wcf-tica",
+    "name": "Japanese Bobtail (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/japanese-bobtail-wcf-tica"
+  },
+  {
+    "id": "korat-wcf-tica",
+    "name": "Korat (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/korat-wcf-tica"
+  },
+  {
+    "id": "laperm-lps-lpl",
+    "name": "LaPerm (LPS/LPL)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/laperm-lps-lpl"
+  },
+  {
+    "id": "laperm-wcf-tica",
+    "name": "LaPerm (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/laperm-wcf-tica"
+  },
+  {
+    "id": "maine-coon-mco",
+    "name": "Maine Coon (MCO)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/maine-coon-mco"
+  },
+  {
+    "id": "maine-coon-wcf-tica",
+    "name": "Maine Coon (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/maine-coon-wcf-tica"
+  },
+  {
+    "id": "manx-man",
+    "name": "Manx (MAN)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/manx-man"
+  },
+  {
+    "id": "manx-wcf-tica",
+    "name": "Manx (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/manx-wcf-tica"
+  },
+  {
+    "id": "mau-egiziano-mau",
+    "name": "Mau Egiziano (MAU)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/mau-egiziano-mau"
+  },
+  {
+    "id": "munchkin-mun",
+    "name": "Munchkin (MUN)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/munchkin-mun"
+  },
+  {
+    "id": "nebelung-wcf-tica",
+    "name": "Nebelung (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/nebelung-wcf-tica"
+  },
+  {
+    "id": "neva-masquerade-nem",
+    "name": "Neva Masquerade (NEM)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/neva-masquerade-nem"
+  },
+  {
+    "id": "norwegian-forest-cat-wcf-tica",
+    "name": "Norwegian Forest Cat (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/norwegian-forest-cat-wcf-tica"
+  },
+  {
+    "id": "ocicat-oci",
+    "name": "Ocicat (OCI)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/ocicat-oci"
+  },
+  {
+    "id": "ocicat-wcf-tica",
+    "name": "Ocicat (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/ocicat-wcf-tica"
+  },
+  {
+    "id": "oriental-shorthair-wcf-tica",
+    "name": "Oriental Shorthair (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/oriental-shorthair-wcf-tica"
+  },
+  {
+    "id": "oriental-wcf-tica",
+    "name": "Oriental (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/oriental-wcf-tica"
+  },
+  {
+    "id": "orientale-a-pelo-corto-osh",
+    "name": "Orientale a pelo corto (OSH)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/orientale-a-pelo-corto-osh"
+  },
+  {
+    "id": "orientale-a-pelo-lungo-olh",
+    "name": "Orientale a pelo lungo (OLH)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/orientale-a-pelo-lungo-olh"
+  },
+  {
+    "id": "persiano-per",
+    "name": "Persiano (PER)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/persiano-per"
+  },
+  {
+    "id": "persiano-wcf-tica",
+    "name": "Persiano (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/persiano-wcf-tica"
+  },
+  {
+    "id": "peterbald-peb",
+    "name": "Peterbald (PEB)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/peterbald-peb"
+  },
+  {
+    "id": "peterbald-wcf",
+    "name": "Peterbald (WCF)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/peterbald-wcf"
+  },
+  {
+    "id": "pixiebob-tica",
+    "name": "Pixiebob (TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/pixiebob-tica"
+  },
+  {
+    "id": "ragamuffin-wcf-tica",
+    "name": "Ragamuffin (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/ragamuffin-wcf-tica"
+  },
+  {
+    "id": "ragdoll-rag",
+    "name": "Ragdoll (RAG)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/ragdoll-rag"
+  },
+  {
+    "id": "ragdoll-wcf-tica",
+    "name": "Ragdoll (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/ragdoll-wcf-tica"
+  },
+  {
+    "id": "rex-russo-rus",
+    "name": "Rex Russo (RUS)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/rex-russo-rus"
+  },
+  {
+    "id": "rex-tedesco-grx",
+    "name": "Rex Tedesco (GRX)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/rex-tedesco-grx"
+  },
+  {
+    "id": "russian-blue-wcf-tica",
+    "name": "Russian Blue (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/russian-blue-wcf-tica"
+  },
+  {
+    "id": "sacro-di-birmania-sbi",
+    "name": "Sacro di Birmania (SBI)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/sacro-di-birmania-sbi"
+  },
+  {
+    "id": "scottish-fold-wcf-tica",
+    "name": "Scottish Fold (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/scottish-fold-wcf-tica"
+  },
+  {
+    "id": "selkirk-rex-a-pelo-corto-srs",
+    "name": "Selkirk Rex a pelo corto (SRS)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/selkirk-rex-a-pelo-corto-srs"
+  },
+  {
+    "id": "selkirk-rex-a-pelo-lungo-srl",
+    "name": "Selkirk Rex a pelo lungo (SRL)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/selkirk-rex-a-pelo-lungo-srl"
+  },
+  {
+    "id": "selkirk-rex-wcf-tica",
+    "name": "Selkirk Rex (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/selkirk-rex-wcf-tica"
+  },
+  {
+    "id": "siamese-sia",
+    "name": "Siamese (SIA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/siamese-sia"
+  },
+  {
+    "id": "siberian-wcf-tica",
+    "name": "Siberian (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/siberian-wcf-tica"
+  },
+  {
+    "id": "siberiano-sib",
+    "name": "Siberiano (SIB)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/siberiano-sib"
+  },
+  {
+    "id": "singapura-wcf-tica",
+    "name": "Singapura (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/singapura-wcf-tica"
+  },
+  {
+    "id": "singapura",
+    "name": "Singapura",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/singapura"
+  },
+  {
+    "id": "snowshoe-wcf-tica",
+    "name": "Snowshoe (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/snowshoe-wcf-tica"
+  },
+  {
+    "id": "somali-wcf-tica",
+    "name": "Somali (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/somali-wcf-tica"
+  },
+  {
+    "id": "sphynx-wcf-tica",
+    "name": "Sphynx (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/sphynx-wcf-tica"
+  },
+  {
+    "id": "the-international-cat-association-tica",
+    "name": "The International Cat Association (TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/the-international-cat-association-tica"
+  },
+  {
+    "id": "tonkinese-gia-citato-ripetuto-per-completezza",
+    "name": "Tonkinese (già citato, ripetuto per completezza)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/tonkinese-gia-citato-ripetuto-per-completezza"
+  },
+  {
+    "id": "tonkinese-wcf-tica",
+    "name": "Tonkinese (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/tonkinese-wcf-tica"
+  },
+  {
+    "id": "turkish-angora-wcf-tica",
+    "name": "Turkish Angora (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/turkish-angora-wcf-tica"
+  },
+  {
+    "id": "turkish-van-wcf-tica",
+    "name": "Turkish Van (WCF, TICA)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/turkish-van-wcf-tica"
+  },
+  {
+    "id": "ukrainian-levkoy-wcf",
+    "name": "Ukrainian Levkoy (WCF)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/ukrainian-levkoy-wcf"
+  },
+  {
+    "id": "world-cat-federation-wcf",
+    "name": "World Cat Federation (WCF)",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/world-cat-federation-wcf"
+  },
+  {
+    "id": "york-chocolate-non-ufficiale-fci-ma-riconosciuto-da-alcune-associazioni-come",
+    "name": "York Chocolate (non ufficiale FCI, ma riconosciuto da alcune associazioni come",
+    "image": "🐱",
+    "category": "mammiferi",
+    "species": "gatto",
+    "path": "mammiferi/gatto/york-chocolate-non-ufficiale-fci-ma-riconosciuto-da-alcune-associazioni-come"
+  },
+  {
+    "id": "descrizione-di-gerbillo",
+    "name": "DESCRIZIONE DI GERBILLO",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/descrizione-di-gerbillo"
+  },
+  {
+    "id": "gerbillo-a-coda-grassa-pachyuromys-duprasi",
+    "name": "Gerbillo a coda grassa (Pachyuromys duprasi)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/gerbillo-a-coda-grassa-pachyuromys-duprasi"
+  },
+  {
+    "id": "gerbillo-dell-india-tatera-indica",
+    "name": "Gerbillo dell’India (Tatera indica)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/gerbillo-dell-india-tatera-indica"
+  },
+  {
+    "id": "gerbillo-della-mongolia-meriones-unguiculatus",
+    "name": "Gerbillo della Mongolia (Meriones unguiculatus)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/gerbillo-della-mongolia-meriones-unguiculatus"
+  },
+  {
+    "id": "gerbillo-egiziano-gerbillus-gerbillus",
+    "name": "Gerbillo egiziano (Gerbillus gerbillus)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/gerbillo-egiziano-gerbillus-gerbillus"
+  },
+  {
+    "id": "gerbillo-grasso-della-coda-pachyuromys-duprasi",
+    "name": "Gerbillo grasso della coda (Pachyuromys duprasi)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/gerbillo-grasso-della-coda-pachyuromys-duprasi"
+  },
+  {
+    "id": "gerbillo-libico-meriones-libycus",
+    "name": "Gerbillo libico (Meriones libycus)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/gerbillo-libico-meriones-libycus"
+  },
+  {
+    "id": "gerbillo-persiano-meriones-persicus",
+    "name": "Gerbillo persiano (Meriones persicus)",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/gerbillo-persiano-meriones-persicus"
+  },
+  {
+    "id": "in-sintesi",
+    "name": "IN SINTESI",
+    "image": "🐹",
+    "category": "mammiferi",
+    "species": "gerbillo",
+    "path": "mammiferi/gerbillo/in-sintesi"
+  },
+  {
+    "id": "il-ratto-domestico-ha-razze-o-varieta",
+    "name": "� Il ratto domestico ha razze o varietà?",
+    "image": "🐀",
+    "category": "mammiferi",
+    "species": "ratto",
+    "path": "mammiferi/ratto/il-ratto-domestico-ha-razze-o-varieta"
+  },
+  {
+    "id": "acqua-e-parametri",
+    "name": "Acqua e parametri",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/acqua-e-parametri"
+  },
+  {
+    "id": "acquario-dimensioni-e-contenitore",
+    "name": "Acquario: dimensioni e contenitore",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/acquario-dimensioni-e-contenitore"
+  },
+  {
+    "id": "alimentazione",
+    "name": "Alimentazione",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/alimentazione"
+  },
+  {
+    "id": "arredi-e-piante",
+    "name": "Arredi e piante",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/arredi-e-piante"
+  },
+  {
+    "id": "betta-splendens-scheda-sintetica",
+    "name": "Betta splendens – Scheda sintetica",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/betta-splendens-scheda-sintetica"
+  },
+  {
+    "id": "colori-e-pattern",
+    "name": "Colori e pattern",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/colori-e-pattern"
+  },
+  {
+    "id": "colori-solidi",
+    "name": "COLORI SOLIDI",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/colori-solidi"
+  },
+  {
+    "id": "comportamento-e-osservazione",
+    "name": "Comportamento e osservazione",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/comportamento-e-osservazione"
+  },
+  {
+    "id": "delta-tail",
+    "name": "Delta Tail",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/delta-tail"
+  },
+  {
+    "id": "double-tail-dt",
+    "name": "Double Tail (DT)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/double-tail-dt"
+  },
+  {
+    "id": "double-tail-plakat-dtpk",
+    "name": "Double Tail Plakat (DTPK)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/double-tail-plakat-dtpk"
+  },
+  {
+    "id": "dumbo-elephant-ear",
+    "name": "Dumbo / Elephant Ear",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/dumbo-elephant-ear"
+  },
+  {
+    "id": "dumbo-plakat",
+    "name": "Dumbo Plakat",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/dumbo-plakat"
+  },
+  {
+    "id": "feathertail",
+    "name": "Feathertail",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/feathertail"
+  },
+  {
+    "id": "filtro",
+    "name": "Filtro",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/filtro"
+  },
+  {
+    "id": "forma-delle-pinne-pinna-lunga-e-pinna-corta-plakat",
+    "name": "Forma delle pinne (pinna lunga e pinna corta / Plakat)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/forma-delle-pinne-pinna-lunga-e-pinna-corta-plakat"
+  },
+  {
+    "id": "giant-plakat",
+    "name": "Giant Plakat",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/giant-plakat"
+  },
+  {
+    "id": "halfmoon-hm",
+    "name": "Halfmoon (HM)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/halfmoon-hm"
+  },
+  {
+    "id": "halfmoon-plakat-hmpk",
+    "name": "Halfmoon Plakat (HMPK)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/halfmoon-plakat-hmpk"
+  },
+  {
+    "id": "manutenzione",
+    "name": "Manutenzione",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/manutenzione"
+  },
+  {
+    "id": "over-halfmoon-ohm",
+    "name": "Over Halfmoon (OHM)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/over-halfmoon-ohm"
+  },
+  {
+    "id": "pattern-comuni",
+    "name": "PATTERN COMUNI",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/pattern-comuni"
+  },
+  {
+    "id": "perfetto-iniziero-a-descriverti-le-varieta-di-betta-splendens-domestici-in-base-a",
+    "name": "Perfetto! Inizierò a descriverti le varietà di Betta splendens domestici in base a:",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/perfetto-iniziero-a-descriverti-le-varieta-di-betta-splendens-domestici-in-base-a"
+  },
+  {
+    "id": "plakat-tradizionale",
+    "name": "Plakat Tradizionale",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/plakat-tradizionale"
+  },
+  {
+    "id": "posso-tenerlo-con-altri-pesci",
+    "name": "Posso tenerlo con altri pesci?",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/posso-tenerlo-con-altri-pesci"
+  },
+  {
+    "id": "riscaldatore",
+    "name": "Riscaldatore",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/riscaldatore"
+  },
+  {
+    "id": "rosetail",
+    "name": "Rosetail",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/rosetail"
+  },
+  {
+    "id": "super-delta",
+    "name": "Super Delta",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/super-delta"
+  },
+  {
+    "id": "veiltail-vt",
+    "name": "Veiltail (VT)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "betta",
+    "path": "pesci/betta/veiltail-vt"
+  },
+  {
+    "id": "albino-bianco-trasparente",
+    "name": "Albino (bianco trasparente)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/albino-bianco-trasparente"
+  },
+  {
+    "id": "arancione",
+    "name": "Arancione",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/arancione"
+  },
+  {
+    "id": "bianco-opaque",
+    "name": "Bianco (Opaque)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/bianco-opaque"
+  },
+  {
+    "id": "blu-royal-blue-steel-blue",
+    "name": "Blu (Royal Blue, Steel Blue)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/blu-royal-blue-steel-blue"
+  },
+  {
+    "id": "giallo",
+    "name": "Giallo",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/giallo"
+  },
+  {
+    "id": "guppy-varieta",
+    "name": "GUPPY VARIETA",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/guppy-varieta"
+  },
+  {
+    "id": "multicolor",
+    "name": "Multicolor",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/multicolor"
+  },
+  {
+    "id": "nero",
+    "name": "Nero",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/nero"
+  },
+  {
+    "id": "pinna-a-rosetta-rosetail-guppy",
+    "name": "Pinna a rosetta (Rosetail Guppy)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/pinna-a-rosetta-rosetail-guppy"
+  },
+  {
+    "id": "pinna-caudale-a-delta-delta-tail",
+    "name": "Pinna caudale a delta (Delta Tail)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/pinna-caudale-a-delta-delta-tail"
+  },
+  {
+    "id": "pinna-caudale-a-spada-swordtail-guppy",
+    "name": "Pinna caudale a spada (Swordtail Guppy)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/pinna-caudale-a-spada-swordtail-guppy"
+  },
+  {
+    "id": "pinna-caudale-a-ventaglio-fan-tail",
+    "name": "Pinna caudale a ventaglio (Fan Tail)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/pinna-caudale-a-ventaglio-fan-tail"
+  },
+  {
+    "id": "pinna-doppia-double-tail",
+    "name": "Pinna doppia (Double Tail)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/pinna-doppia-double-tail"
+  },
+  {
+    "id": "pinne-corte-common-guppy",
+    "name": "Pinne corte (Common Guppy)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/pinne-corte-common-guppy"
+  },
+  {
+    "id": "pinne-lunghe-fancy-guppy",
+    "name": "Pinne lunghe (Fancy Guppy)",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/pinne-lunghe-fancy-guppy"
+  },
+  {
+    "id": "rosso",
+    "name": "Rosso",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/rosso"
+  },
+  {
+    "id": "verde",
+    "name": "Verde",
+    "image": "🐠",
+    "category": "pesci",
+    "species": "guppy",
+    "path": "pesci/guppy/verde"
+  },
+  {
+    "id": "ambystoma-mexicanum-axolotl",
+    "name": "Ambystoma mexicanum – Axolotl",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/ambystoma-mexicanum-axolotl"
+  },
+  {
+    "id": "ambystoma-tigrinum-salamandra-tigre",
+    "name": "Ambystoma tigrinum – Salamandra tigre",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/ambystoma-tigrinum-salamandra-tigre"
+  },
+  {
+    "id": "cynops-pyrrhogaster-salamandra-giapponese-dal-ventre-rosso",
+    "name": "Cynops pyrrhogaster – Salamandra giapponese (dal ventre rosso)",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/cynops-pyrrhogaster-salamandra-giapponese-dal-ventre-rosso"
+  },
+  {
+    "id": "descrizione",
+    "name": "DESCRIZIONE:",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/descrizione"
+  },
+  {
+    "id": "ichthyosaura-alpestris-tritone-alpino",
+    "name": "Ichthyosaura alpestris – Tritone alpino",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/ichthyosaura-alpestris-tritone-alpino"
+  },
+  {
+    "id": "lissotriton-vulgaris-tritone-comune",
+    "name": "Lissotriton vulgaris – Tritone comune",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/lissotriton-vulgaris-tritone-comune"
+  },
+  {
+    "id": "notophthalmus-viridescens-tritone-dalla-coda-lunga-americano",
+    "name": "Notophthalmus viridescens – Tritone dalla coda lunga (americano)",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/notophthalmus-viridescens-tritone-dalla-coda-lunga-americano"
+  },
+  {
+    "id": "salamandra-salamandra-salamandra-comune",
+    "name": "Salamandra salamandra – Salamandra comune",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/salamandra-salamandra-salamandra-comune"
+  },
+  {
+    "id": "tritoni-specie-riconosciute-comuni-in",
+    "name": "Tritoni — specie riconosciute comuni in",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/tritoni-specie-riconosciute-comuni-in"
+  },
+  {
+    "id": "triturus-cristatus-tritone-crestato",
+    "name": "Triturus cristatus – Tritone crestato",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/triturus-cristatus-tritone-crestato"
+  },
+  {
+    "id": "triturus-marmoratus-tritone-marmorizzato",
+    "name": "Triturus marmoratus – Tritone marmorizzato",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/triturus-marmoratus-tritone-marmorizzato"
+  },
+  {
+    "id": "triturus-vittatus-salamandra-striata",
+    "name": "Triturus vittatus – Salamandra striata",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "anfibio",
+    "path": "rettili/anfibio/triturus-vittatus-salamandra-striata"
+  },
+  {
+    "id": "axolotl-ambystoma-mexicanum",
+    "name": "Axolotl (Ambystoma mexicanum)",
+    "image": "🦎",
+    "category": "rettili",
+    "species": "axolotl",
+    "path": "rettili/axolotl/axolotl-ambystoma-mexicanum"
+  },
+  {
+    "id": "ceratophrys-calcarata",
+    "name": "Ceratophrys calcarata",
+    "image": "🐸",
+    "category": "rettili",
+    "species": "rana",
+    "path": "rettili/rana/ceratophrys-calcarata"
+  },
+  {
+    "id": "ceratophrys-cornuta-rana-pacman-cornuta",
+    "name": "Ceratophrys cornuta (Rana Pacman cornuta)",
+    "image": "🐸",
+    "category": "rettili",
+    "species": "rana",
+    "path": "rettili/rana/ceratophrys-cornuta-rana-pacman-cornuta"
+  },
+  {
+    "id": "ceratophrys-cranwelli",
+    "name": "Ceratophrys cranwelli",
+    "image": "🐸",
+    "category": "rettili",
+    "species": "rana",
+    "path": "rettili/rana/ceratophrys-cranwelli"
+  },
+  {
+    "id": "ceratophrys-ornata-rana-pacman-ornata",
+    "name": "Ceratophrys ornata (Rana Pacman ornata)",
+    "image": "🐸",
+    "category": "rettili",
+    "species": "rana",
+    "path": "rettili/rana/ceratophrys-ornata-rana-pacman-ornata"
+  },
+  {
+    "id": "rana-pacman-genere-ceratophrys",
+    "name": "Rana Pacman (Genere Ceratophrys)",
+    "image": "🐸",
+    "category": "rettili",
+    "species": "rana",
+    "path": "rettili/rana/rana-pacman-genere-ceratophrys"
+  },
+  {
+    "id": "antaresia-childreni-children-s-python",
+    "name": "Antaresia childreni – Children’s Python",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/antaresia-childreni-children-s-python"
+  },
+  {
+    "id": "boa-constrictor-boa-imperator-boa-costrittore",
+    "name": "Boa constrictor / Boa imperator – Boa costrittore",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/boa-constrictor-boa-imperator-boa-costrittore"
+  },
+  {
+    "id": "descrizione-serpenti",
+    "name": "DESCRIZIONE SERPENTI",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/descrizione-serpenti"
+  },
+  {
+    "id": "gongylophis-colubrinus-kenyan-sand-boa",
+    "name": "Gongylophis colubrinus – Kenyan Sand Boa",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/gongylophis-colubrinus-kenyan-sand-boa"
+  },
+  {
+    "id": "lampropeltis-getula-l-californiae-king-snake",
+    "name": "Lampropeltis getula / L. californiae – King Snake /",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/lampropeltis-getula-l-californiae-king-snake"
+  },
+  {
+    "id": "lampropeltis-triangulum-milk-snake",
+    "name": "Lampropeltis triangulum – Milk Snake",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/lampropeltis-triangulum-milk-snake"
+  },
+  {
+    "id": "morelia-viridis-green-tree-python",
+    "name": "Morelia viridis – Green Tree Python",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/morelia-viridis-green-tree-python"
+  },
+  {
+    "id": "pantherophis-guttatus-corn-snake",
+    "name": "Pantherophis guttatus – Corn Snake",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/pantherophis-guttatus-corn-snake"
+  },
+  {
+    "id": "python-regius-ball-python",
+    "name": "Python regius – Ball Python",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/python-regius-ball-python"
+  },
+  {
+    "id": "thamnophis-sirtalis-garter-snake",
+    "name": "Thamnophis sirtalis – Garter Snake",
+    "image": "🐍",
+    "category": "rettili",
+    "species": "serpente",
+    "path": "rettili/serpente/thamnophis-sirtalis-garter-snake"
+  },
+  {
+    "id": "centrochelys-sulcata-tartaruga-sulcata-africana",
+    "name": "Centrochelys sulcata (Tartaruga sulcata africana)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/centrochelys-sulcata-tartaruga-sulcata-africana"
+  },
+  {
+    "id": "gopherus-agassizii-tartaruga-del-deserto",
+    "name": "Gopherus agassizii (Tartaruga del deserto)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/gopherus-agassizii-tartaruga-del-deserto"
+  },
+  {
+    "id": "gopherus-polyphemus-tartaruga-gopher-americana",
+    "name": "Gopherus polyphemus (Tartaruga gopher americana)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/gopherus-polyphemus-tartaruga-gopher-americana"
+  },
+  {
+    "id": "manouria-emys-tartaruga-gigante-asiatica",
+    "name": "Manouria emys (Tartaruga gigante asiatica)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/manouria-emys-tartaruga-gigante-asiatica"
+  },
+  {
+    "id": "pseudemys-concinna-tartaruga-dipinta-del-fiume",
+    "name": "Pseudemys concinna (Tartaruga dipinta del fiume)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/pseudemys-concinna-tartaruga-dipinta-del-fiume"
+  },
+  {
+    "id": "stigmochelys-pardalis-tartaruga-leopardo",
+    "name": "Stigmochelys pardalis (Tartaruga leopardo)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/stigmochelys-pardalis-tartaruga-leopardo"
+  },
+  {
+    "id": "tarta-terresti",
+    "name": "TARTA TERRESTI",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/tarta-terresti"
+  },
+  {
+    "id": "testudo-graeca-tartaruga-greca",
+    "name": "Testudo graeca (Tartaruga greca)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/testudo-graeca-tartaruga-greca"
+  },
+  {
+    "id": "testudo-hermanni-tartaruga-di-hermann",
+    "name": "Testudo hermanni (Tartaruga di Hermann)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/testudo-hermanni-tartaruga-di-hermann"
+  },
+  {
+    "id": "testudo-horsfieldii-tartaruga-russa-di-horsfield",
+    "name": "Testudo horsfieldii (Tartaruga russa / di Horsfield)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/testudo-horsfieldii-tartaruga-russa-di-horsfield"
+  },
+  {
+    "id": "testudo-kleinmanni-tartaruga-egiziana",
+    "name": "Testudo kleinmanni (Tartaruga egiziana)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/testudo-kleinmanni-tartaruga-egiziana"
+  },
+  {
+    "id": "testudo-marginata-tartaruga-marginata",
+    "name": "Testudo marginata (Tartaruga marginata)",
+    "image": "🐢",
+    "category": "rettili",
+    "species": "tartaruga",
+    "path": "rettili/tartaruga/testudo-marginata-tartaruga-marginata"
+  },
+  {
+    "id": "confronto-tra",
+    "name": "CONFRONTO TRA",
+    "image": "🐾",
+    "category": "uccelli",
+    "species": "02-uccelli",
+    "path": "uccelli/02-uccelli/confronto-tra"
+  },
+  {
+    "id": "canarino-razze",
+    "name": "CANARINO “razze”",
+    "image": "🐦",
+    "category": "uccelli",
+    "species": "canarino",
+    "path": "uccelli/canarino/canarino-razze"
+  },
+  {
+    "id": "caratteristiche-cocorita",
+    "name": "CARATTERISTICHE COCORITA",
+    "image": "🦜",
+    "category": "uccelli",
+    "species": "cocorita",
+    "path": "uccelli/cocorita/caratteristiche-cocorita"
+  },
+  {
+    "id": "alcune-linee-racing-pure-sono-troppo-nervose",
+    "name": "Alcune linee racing “pure” sono troppo “nervose”",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/alcune-linee-racing-pure-sono-troppo-nervose"
+  },
+  {
+    "id": "american-fantail-stati-uniti",
+    "name": "American Fantail (Stati Uniti)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/american-fantail-stati-uniti"
+  },
+  {
+    "id": "american-fantail-usa",
+    "name": "American Fantail – USA",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/american-fantail-usa"
+  },
+  {
+    "id": "cerca-animali-abituati-all-uomo-non-solo-da-esposizione",
+    "name": "Cerca animali abituati all’uomo, non solo da esposizione",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/cerca-animali-abituati-all-uomo-non-solo-da-esposizione"
+  },
+  {
+    "id": "english-trumpeter-inghilterra",
+    "name": "English Trumpeter (Inghilterra)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/english-trumpeter-inghilterra"
+  },
+  {
+    "id": "english-trumpeter",
+    "name": "English Trumpeter",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/english-trumpeter"
+  },
+  {
+    "id": "fantail-spagna-regno-unito",
+    "name": "Fantail (Spagna / Regno Unito)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/fantail-spagna-regno-unito"
+  },
+  {
+    "id": "fantail",
+    "name": "Fantail",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/fantail"
+  },
+  {
+    "id": "fatti-dare-un-animale-giovane-pulcino-o-svezzato-per-un-buon-imprinting",
+    "name": "Fatti dare un animale giovane (pulcino o svezzato) per un buon imprinting",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/fatti-dare-un-animale-giovane-pulcino-o-svezzato-per-un-buon-imprinting"
+  },
+  {
+    "id": "frillback-europa-centro-orientale",
+    "name": "Frillback – Europa centro-orientale",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/frillback-europa-centro-orientale"
+  },
+  {
+    "id": "frillback",
+    "name": "Frillback",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/frillback"
+  },
+  {
+    "id": "german-beauty-homer-germania",
+    "name": "German Beauty Homer – Germania",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/german-beauty-homer-germania"
+  },
+  {
+    "id": "hanno-esigenze-molto-particolari",
+    "name": "Hanno esigenze molto particolari",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/hanno-esigenze-molto-particolari"
+  },
+  {
+    "id": "indian-fantail-india",
+    "name": "Indian Fantail (India)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/indian-fantail-india"
+  },
+  {
+    "id": "jacobin-inghilterra",
+    "name": "Jacobin (Inghilterra)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/jacobin-inghilterra"
+  },
+  {
+    "id": "jacobin",
+    "name": "Jacobin",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/jacobin"
+  },
+  {
+    "id": "king-pigeon-stati-uniti",
+    "name": "King Pigeon (Stati Uniti)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/king-pigeon-stati-uniti"
+  },
+  {
+    "id": "king-pigeon",
+    "name": "King Pigeon",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/king-pigeon"
+  },
+  {
+    "id": "lahore-asia-ma-molto-allevato-in-europa",
+    "name": "Lahore (Asia ma molto allevato in Europa)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/lahore-asia-ma-molto-allevato-in-europa"
+  },
+  {
+    "id": "lahore-originariamente-persia-diffuso-in-europa",
+    "name": "Lahore – Originariamente Persia, diffuso in Europa",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/lahore-originariamente-persia-diffuso-in-europa"
+  },
+  {
+    "id": "lahore-pakistan-india-ma-anche-europa",
+    "name": "Lahore (Pakistan/India, ma anche Europa)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/lahore-pakistan-india-ma-anche-europa"
+  },
+  {
+    "id": "lahore-pakistan-india-molto-diffuso-anche-in-europa",
+    "name": "Lahore – Pakistan/India (molto diffuso anche in Europa)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/lahore-pakistan-india-molto-diffuso-anche-in-europa"
+  },
+  {
+    "id": "modena-italia",
+    "name": "Modena (Italia)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/modena-italia"
+  },
+  {
+    "id": "modena",
+    "name": "Modena",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/modena"
+  },
+  {
+    "id": "old-german-owl-germania",
+    "name": "Old German Owl (Germania)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/old-german-owl-germania"
+  },
+  {
+    "id": "old-german-owl",
+    "name": "Old German Owl",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/old-german-owl"
+  },
+  {
+    "id": "parti-da-un-allevatore-serio-meglio-se-iscritto-a-un-associazione",
+    "name": "Parti da un allevatore serio, meglio se iscritto a un’associazione",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/parti-da-un-allevatore-serio-meglio-se-iscritto-a-un-associazione"
+  },
+  {
+    "id": "piccione-viaggiatore-razze",
+    "name": "PICCIONE VIAGGIATORE – Razze",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/piccione-viaggiatore-razze"
+  },
+  {
+    "id": "piccioni-domestici-divisi-per",
+    "name": "PICCIONI DOMESTICI DIVISI PER",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/piccioni-domestici-divisi-per"
+  },
+  {
+    "id": "racing-homer",
+    "name": "Racing Homer",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/racing-homer"
+  },
+  {
+    "id": "razza-domestici-suddivisi-per-continente",
+    "name": "razza domestici, suddivisi per continente.",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/razza-domestici-suddivisi-per-continente"
+  },
+  {
+    "id": "razze-di-piccioni-adatte-alla",
+    "name": "Razze di piccioni adatte alla",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/razze-di-piccioni-adatte-alla"
+  },
+  {
+    "id": "show-king-stati-uniti",
+    "name": "Show King (Stati Uniti)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/show-king-stati-uniti"
+  },
+  {
+    "id": "show-king-usa",
+    "name": "Show King – USA",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/show-king-usa"
+  },
+  {
+    "id": "sono-razze-da-esposizione-ma-molto-delicate",
+    "name": "Sono razze da esposizione ma molto delicate",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/sono-razze-da-esposizione-ma-molto-delicate"
+  },
+  {
+    "id": "sono-razze-da-performance-gara-o-acrobazie",
+    "name": "Sono razze da performance (gara o acrobazie)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/sono-razze-da-performance-gara-o-acrobazie"
+  },
+  {
+    "id": "valuta-le-condizioni-di-allevamento-no-fiere-improvvisate-con-gabbie-sporche",
+    "name": "Valuta le condizioni di allevamento (no fiere improvvisate con gabbie sporche)",
+    "image": "🕊️",
+    "category": "uccelli",
+    "species": "piccione",
+    "path": "uccelli/piccione/valuta-le-condizioni-di-allevamento-no-fiere-improvvisate-con-gabbie-sporche"
+  }
+]

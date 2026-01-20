@@ -1,0 +1,56 @@
+{
+  "id": "schnauzer-standard",
+  "name": "Schnauzer (Standard)",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Taglia media, baffi e sopracciglia distintivi.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Taglia media, baffi e sopracciglia distintivi.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Vigile, vivace, fedele.",
+    "behavior": "Vigile, vivace, fedele.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Toelettatura regolare."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "problemi oculari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Può essere testardo."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Buon cane familiare.",
+  "contro": "Può essere testardo.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

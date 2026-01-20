@@ -3,90 +3,131 @@ import {
   ChangeDetectionStrategy,
   inject,
   signal,
-  OnInit,
   ViewChild,
+  HostListener,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
 import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar';
 import { MascotPeekComponent } from '../../../shared/components/mascot-peek';
 import { MascotBottomSheetComponent } from '../../../shared/components/mascot-bottom-sheet';
 import { AvatarButtonComponent } from '../../../shared/components/avatar-button';
 import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
 import { PageBackgroundComponent } from '../../../shared/components/page-background';
-
-export interface SpeciesCategory {
-  id: string;
-  name: string;
-  icon: string;
-  count: number;
-  color: string;
-}
+import { SectionNavigatorComponent, SectionItem } from '../../../shared/components/section-navigator';
+import { SpeciesGridComponent } from '../species-grid';
+import { SpeciesSpecialComponent } from '../species-special';
+import { YourBreedComponent } from '../your-breed';
+import { SharedModule } from '../../../shared/shared.module';
+import { TabItem } from '../../../shared/components/bottom-tab-bar/bottom-tab-bar.models';
 
 @Component({
   selector: 'app-species-home',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
+    SharedModule,
     BottomTabBarComponent,
     PageBackgroundComponent,
     MascotPeekComponent,
     MascotBottomSheetComponent,
     AvatarButtonComponent,
+    SectionNavigatorComponent,
+    SpeciesGridComponent,
+    SpeciesSpecialComponent,
+    YourBreedComponent,
   ],
   templateUrl: './species-home.component.html',
   styleUrls: ['./species-home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpeciesHomeComponent implements OnInit {
-  private readonly router = inject(Router);
+export class SpeciesHomeComponent {
+  private readonly location = inject(Location);
+
+  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // Mascot sheet state
   showMascotSheet = signal(false);
-  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
-  // State
-  readonly categories = signal<SpeciesCategory[]>([]);
-  readonly isLoading = signal(true);
-  readonly selectedCategory = signal<string | null>(null);
+  // Section navigation
+  readonly sections: SectionItem[] = [
+    { id: 'species', title: 'Specie' },
+    { id: 'special', title: 'Specie speciale' },
+    { id: 'your-breed', title: 'La tua razza' },
+  ];
+  readonly currentSectionIndex = signal(0);
 
-  // Bottom tab bar - configurazione centralizzata
+  // Swipe tracking
+  private touchStartX = 0;
+  private touchEndX = 0;
+  private readonly swipeThreshold = 50;
+
+  // Bottom tab bar
   tabs = MAIN_TAB_BAR_CONFIG;
 
-  ngOnInit(): void {
-    this.loadCategories();
-  }
-
-  private loadCategories(): void {
-    // Mock data - replace with API call
-    setTimeout(() => {
-      this.categories.set([
-        { id: 'dogs', name: 'Cani', icon: 'pets', count: 350, color: '#F5A623' },
-        { id: 'cats', name: 'Gatti', icon: 'pets', count: 280, color: '#4A90E2' },
-        { id: 'birds', name: 'Uccelli', icon: 'flutter_dash', count: 120, color: '#7ED321' },
-        { id: 'rodents', name: 'Roditori', icon: 'pest_control_rodent', count: 85, color: '#9B59B6' },
-        { id: 'reptiles', name: 'Rettili', icon: 'pest_control', count: 45, color: '#E74C3C' },
-        { id: 'fish', name: 'Pesci', icon: 'water', count: 200, color: '#3498DB' },
-        { id: 'horses', name: 'Cavalli', icon: 'sports_mma', count: 30, color: '#8B4513' },
-        { id: 'exotic', name: 'Esotici', icon: 'eco', count: 60, color: '#1ABC9C' },
-      ]);
-      this.isLoading.set(false);
-    }, 500);
-  }
-
-  selectCategory(category: SpeciesCategory): void {
-    this.selectedCategory.set(category.id);
-    // Navigate to category detail or show breeds
-    // For now, just set the selected category
-  }
-
+  // Navigation
   goBack(): void {
-    this.router.navigate(['/home/main']);
+    this.location.back();
   }
 
-  trackByCategory(index: number, category: SpeciesCategory): string {
-    return category.id;
+  // Section navigation
+  onSectionChange(index: number): void {
+    this.currentSectionIndex.set(index);
+  }
+
+  nextSection(): void {
+    const current = this.currentSectionIndex();
+    if (current < this.sections.length - 1) {
+      this.currentSectionIndex.set(current + 1);
+    }
+  }
+
+  prevSection(): void {
+    const current = this.currentSectionIndex();
+    if (current > 0) {
+      this.currentSectionIndex.set(current - 1);
+    }
+  }
+
+  // Tab bar handler - reset to index 0 when clicking species tab
+  onTabClicked(tab: TabItem): void {
+    if (tab.id === 'species') {
+      this.currentSectionIndex.set(0);
+    }
+  }
+
+  // Swipe gesture handlers
+  onTouchStart(event: TouchEvent): void {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  onTouchEnd(event: TouchEvent): void {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleSwipeGesture();
+  }
+
+  private handleSwipeGesture(): void {
+    const swipeDistance = this.touchEndX - this.touchStartX;
+
+    if (Math.abs(swipeDistance) > this.swipeThreshold) {
+      if (swipeDistance < 0) {
+        // Swipe left - next section
+        this.nextSection();
+      } else {
+        // Swipe right - previous section
+        this.prevSection();
+      }
+    }
+  }
+
+  // HammerJS swipe handlers (if enabled)
+  @HostListener('swipeleft')
+  onSwipeLeft(): void {
+    this.nextSection();
+  }
+
+  @HostListener('swiperight')
+  onSwipeRight(): void {
+    this.prevSection();
   }
 
   // Mascot methods

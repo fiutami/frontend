@@ -1,0 +1,55 @@
+{
+  "id": "italian-spinone",
+  "name": "Italian Spinone",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane da caccia italiano a pelo ruvido e folto.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane da caccia italiano a pelo ruvido e folto.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo ruvido e folto",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Calmo, paziente, instancabile cacciatore.",
+    "behavior": "Calmo, paziente, instancabile cacciatore.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Poco diffuso, necessita stimoli specifici."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Molto affettuoso, adatto a famiglie.",
+  "contro": "Poco diffuso, necessita stimoli specifici.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

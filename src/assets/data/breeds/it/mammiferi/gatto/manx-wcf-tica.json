@@ -1,0 +1,55 @@
+{
+  "id": "manx-wcf-tica",
+  "name": "Manx (WCF, TICA)",
+  "species": "Gatto",
+  "category": "mammiferi",
+  "image": "🐱",
+  "popularity": 50,
+  "origin": "",
+  "description": "Gatto senza coda o con coda molto corta, pelo corto o lungo.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Gatto senza coda o con coda molto corta, pelo corto o lungo.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo corto o lungo",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Affettuoso, intelligente, ma può essere riservato.",
+    "behavior": "Affettuoso, intelligente, ma può essere riservato.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Spazzolatura regolare per pelo lungo."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Problemi spinali legati alla mutazione della coda"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Possibili problemi alla colonna vertebrale."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Gatto affettuoso e unico per aspetto.",
+  "contro": "Possibili problemi alla colonna vertebrale.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

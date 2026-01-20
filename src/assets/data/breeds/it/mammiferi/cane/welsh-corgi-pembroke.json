@@ -1,0 +1,56 @@
+{
+  "id": "welsh-corgi-pembroke",
+  "name": "Welsh Corgi Pembroke",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Taglia piccola, corpo lungo, pelo corto.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Taglia piccola, corpo lungo, pelo corto.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo corto",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Vivace, affettuoso, intelligente.",
+    "behavior": "Vivace, affettuoso, intelligente.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cura pelo semplice."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "problemi alla schiena"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Problemi articolari."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Cane familiare e attivo.",
+  "contro": "Problemi articolari.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

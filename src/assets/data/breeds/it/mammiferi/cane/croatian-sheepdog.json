@@ -1,0 +1,55 @@
+{
+  "id": "croatian-sheepdog",
+  "name": "Croatian Sheepdog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Taglia media, pelo nero e riccio, cane da lavoro.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Taglia media, pelo nero e riccio, cane da lavoro.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo nero e riccio",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Energico, intelligente, fedele.",
+    "behavior": "Energico, intelligente, fedele.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare",
+    "grooming": "Attività regolare, spazzolatura."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede stimoli."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Cane da lavoro affidabile.",
+  "contro": "Richiede stimoli.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

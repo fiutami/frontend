@@ -1,0 +1,56 @@
+{
+  "id": "bullmastiff",
+  "name": "Bullmastiff",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Grande, muscoloso, muso corto.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Grande, muscoloso, muso corto.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Protettivo, silenzioso, calmo.",
+    "behavior": "Protettivo, silenzioso, calmo.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Attenzione all’alimentazione e attività moderata.",
+    "exercise": "Attenzione all’alimentazione e attività moderata",
+    "grooming": "Attenzione all’alimentazione e attività moderata."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "torsione gastrica"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Non adatto a chi non ha esperienza."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo guardiano.",
+  "contro": "Non adatto a chi non ha esperienza.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

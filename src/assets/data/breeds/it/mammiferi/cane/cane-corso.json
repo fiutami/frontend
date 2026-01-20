@@ -1,0 +1,56 @@
+{
+  "id": "cane-corso",
+  "name": "Cane Corso",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Italiano, muscoloso, potente.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Italiano, muscoloso, potente.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Protettivo, intelligente, dominante.",
+    "behavior": "Protettivo, intelligente, dominante.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Esercizio e socializzazione",
+    "grooming": "Esercizio e socializzazione."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "entropion"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede polso e socializzazione precoce."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Eccellente cane da guardia.",
+  "contro": "Richiede polso e socializzazione precoce.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

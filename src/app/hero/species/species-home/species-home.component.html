@@ -1,4 +1,4 @@
-<div class="species-home">
+<div class="species-page">
   <!-- Background -->
   <app-page-background
     imageName="auth-bg"
@@ -6,9 +6,9 @@
   </app-page-background>
 
   <!-- Header -->
-  <header class="species-home__header">
+  <header class="species-page__header">
     <button
-      class="species-home__back-btn"
+      class="species-page__back-btn"
       (click)="goBack()"
       aria-label="Torna indietro"
     >
@@ -16,38 +16,38 @@
         <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
       </svg>
     </button>
-    <h1 class="species-home__title">Specie</h1>
+    <h1 class="species-page__title">Specie</h1>
     <app-avatar-button size="medium"></app-avatar-button>
   </header>
 
-  <!-- Main content -->
-  <main class="species-home__content">
-    <p class="species-home__subtitle">
-      Esplora tutte le specie di animali domestici
-    </p>
+  <!-- Logo Branding -->
+  <div class="species-page__branding">
+    <app-logo variant="color" size="md"></app-logo>
+  </div>
 
-    @if (isLoading()) {
-      <div class="species-home__loading">
-        <span class="species-home__spinner"></span>
-        <p>Caricamento...</p>
-      </div>
-    } @else {
-      <div class="species-home__grid">
-        @for (category of categories(); track trackByCategory($index, category)) {
-          <button
-            class="species-home__card"
-            [class.species-home__card--selected]="selectedCategory() === category.id"
-            [style.--card-color]="category.color"
-            (click)="selectCategory(category)"
-          >
-            <div class="species-home__card-icon">
-              <span class="material-icons">{{ category.icon }}</span>
-            </div>
-            <h3 class="species-home__card-name">{{ category.name }}</h3>
-            <span class="species-home__card-count">{{ category.count }} razze</span>
-          </button>
-        }
-      </div>
+  <!-- Section Navigator -->
+  <app-section-navigator
+    [sections]="sections"
+    [currentIndex]="currentSectionIndex()"
+    (indexChange)="onSectionChange($event)">
+  </app-section-navigator>
+
+  <!-- Main content (swipeable) -->
+  <main
+    class="species-page__content"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    @switch (currentSectionIndex()) {
+      @case (0) {
+        <app-species-grid></app-species-grid>
+      }
+      @case (1) {
+        <app-species-special></app-species-special>
+      }
+      @case (2) {
+        <app-your-breed></app-your-breed>
+      }
     }
   </main>
 
@@ -67,5 +67,9 @@
   </app-mascot-bottom-sheet>
 
   <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'species'"></app-bottom-tab-bar>
+  <app-bottom-tab-bar
+    [tabs]="tabs"
+    [activeTabId]="'species'"
+    (tabChange)="onTabClicked($event)">
+  </app-bottom-tab-bar>
 </div>

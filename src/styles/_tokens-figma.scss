@@ -164,7 +164,7 @@ $color-user-bubble-bg: #FFFFFF;          // User message bubble background
 $color-tab-bar-bg: #4A74F0;              // Blue tab bar background
 $color-tab-bar-active: #F5A623;          // Active tab indicator (orange ring)
 $color-tab-bar-inactive: rgba(255, 255, 255, 0.7); // Inactive tab icons
-$tab-bar-height: 70px;                   // Tab bar height
+$tab-bar-height: clamp(64px, 18vw, 80px); // Responsive tab bar height (larger for bigger icons)
 
 // ========================================
 // BADGES

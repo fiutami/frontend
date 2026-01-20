@@ -1,0 +1,57 @@
+{
+  "id": "bearded-collie",
+  "name": "Bearded Collie",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo lungo, folto, agile.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo lungo, folto, agile.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo lungo",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Giocherellone, energico, socievole.",
+    "behavior": "Giocherellone, energico, socievole.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Spazzolature frequenti."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "ipotiroidismo",
+      "problemi oculari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Pelo impegnativo."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Amichevole, molto attivo.",
+  "contro": "Pelo impegnativo.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

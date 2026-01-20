@@ -1,0 +1,55 @@
+{
+  "id": "american-eskimo-dog",
+  "name": "American Eskimo Dog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane medio-piccolo, bianco, pelo folto e soffice.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane medio-piccolo, bianco, pelo folto e soffice.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo folto e soffice",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Intelligente, vigile, affettuoso, ottimo cane da compagnia.",
+    "behavior": "Intelligente, vigile, affettuoso, ottimo cane da compagnia.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Tendenza a abbaiare, richiede attenzioni."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Facile da addestrare, buon cane familiare.",
+  "contro": "Tendenza a abbaiare, richiede attenzioni.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

@@ -2,12 +2,12 @@
 @import 'src/styles/mixins';
 
 // ===========================================
-// CALENDAR MONTH SELECTOR COMPONENT
-// First level calendar - month picker grid
+// CALENDAR PAGE COMPONENT
+// Main calendar view with overlays
 // Based on Figma: mob_calendar (12271-6457)
 // ===========================================
 
-.month-selector {
+.calendar-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -17,6 +17,7 @@
 
   // ===========================================
   // HEADER
+  // Left: Back | Center: Title | Right: Drawer
   // ===========================================
 
   &__header {
@@ -31,38 +32,66 @@
     margin: 0;
     font-family: $font-family-body;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     color: $color-text-inverse;
-    text-transform: capitalize;
-  }
-
-  &__header-spacer {
-    width: 34px; // Same as back button for centering
   }
 
   // ===========================================
-  // DATE DISPLAY
+  // BRANDING: Logo + Date
   // ===========================================
+
+  &__branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $spacing-sm $spacing-md;
+    gap: $spacing-xs;
+
+    // Logo responsive - BREAKPOINTS: XS:320, SM:576, MD:768, LG:1024, XL:1200
+    ::ng-deep .logo {
+      height: 32px; // XS (320px+)
+
+      @media (min-width: 576px) {
+        height: 40px; // SM
+      }
+
+      @media (min-width: 768px) {
+        height: 48px; // MD (tablet)
+      }
+
+      @media (min-width: 1024px) {
+        height: 56px; // LG (desktop)
+      }
+
+      @media (min-width: 1200px) {
+        height: 64px; // XL
+      }
+    }
+  }
 
   &__date {
-    padding: $spacing-xs $spacing-md;
-    font-family: 'Irish Grover', cursive, $font-family-body;
-    font-size: 14px;
+    margin: 0;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 12px; // XS
+    font-weight: 500;
     color: $color-text-inverse;
     text-align: center;
-  }
 
-  // ===========================================
-  // PROMPT TEXT (Mascot question)
-  // ===========================================
+    @media (min-width: 576px) {
+      font-size: 14px; // SM
+    }
 
-  &__prompt {
-    padding: $spacing-md;
-    font-family: 'Moul', serif;
-    font-size: 16px;
-    color: $color-cta-primary;
-    text-align: center;
-    line-height: 1.4;
+    @media (min-width: 768px) {
+      font-size: 16px; // MD
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 18px; // LG
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 20px; // XL
+    }
   }
 
   // ===========================================
@@ -74,8 +103,7 @@
     align-items: center;
     justify-content: center;
     gap: $spacing-lg;
-    padding: $spacing-sm $spacing-md;
-    margin-bottom: $spacing-md;
+    padding: $spacing-md;
   }
 
   &__year-btn {
@@ -89,6 +117,11 @@
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 150ms ease;
+    color: $color-text-inverse;
+
+    .material-icons {
+      font-size: 24px;
+    }
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.2);
@@ -97,12 +130,6 @@
     &:active {
       background-color: rgba(255, 255, 255, 0.15);
     }
-  }
-
-  &__year-arrow {
-    font-size: 18px;
-    font-weight: 700;
-    color: $color-text-inverse;
   }
 
   &__year {
@@ -116,50 +143,55 @@
 
   // ===========================================
   // MONTH GRID
+  // Figma: Banner_mouth (12271-6501)
+  // Container: 344x443px, 2 columns
   // ===========================================
 
   &__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: $spacing-md;
+    grid-template-columns: 144px 144px;
+    gap: 22px 56px;
     padding: 0 $spacing-md;
+    justify-content: center;
     flex: 1;
+    align-content: start;
   }
 
   &__column {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: 22px;
   }
 
   &__month-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 144px;
     height: 52px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid transparent;
-    border-radius: $border-radius-md;
+    background-color: $color-ai-primary;
+    border: 1px solid $color-text-inverse;
+    border-radius: 22px;
     cursor: pointer;
-    font-family: 'Moul', serif;
+    font-family: 'Montserrat', $font-family-body;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 700;
     color: $color-text-inverse;
     text-transform: uppercase;
     transition: all 150ms ease;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: lighten(#4A74F0, 5%);
       transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     &:active {
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: darken(#4A74F0, 5%);
       transform: translateY(0);
     }
 
-    // Current month highlight
+    // Current month highlight - yellow background
     &--current {
       background-color: $color-cta-primary;
       color: $color-text-dark;
@@ -172,43 +204,6 @@
   }
 
   // ===========================================
-  // ACTION BUTTONS
-  // ===========================================
-
-  &__actions {
-    display: flex;
-    justify-content: center;
-    padding: $spacing-lg $spacing-md;
-    margin-top: auto;
-  }
-
-  &__action-btn {
-    padding: $spacing-sm $spacing-lg;
-    border: none;
-    border-radius: 100px;
-    font-family: $font-family-body;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 150ms ease;
-
-    &--primary {
-      background-color: $color-cta-primary;
-      color: $color-text-dark;
-      box-shadow: $shadow-md;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: $shadow-lg;
-      }
-
-      &:active {
-        transform: translateY(0);
-      }
-    }
-  }
-
-  // ===========================================
   // RESPONSIVE
   // ===========================================
 
@@ -216,12 +211,6 @@
     &__grid {
       max-width: 400px;
       margin: 0 auto;
-    }
-
-    &__actions {
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
     }
   }
 }

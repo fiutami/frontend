@@ -1,0 +1,326 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+.your-breed {
+  display: flex;
+  flex-direction: column;
+
+  // Loading
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-2xl;
+    color: $color-text-inverse;
+    gap: $spacing-md;
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: $color-primary-500;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Error
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-2xl;
+    color: $color-text-inverse;
+    text-align: center;
+
+    svg {
+      opacity: 0.7;
+    }
+
+    p {
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+
+  // Empty state
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-2xl;
+    color: $color-text-inverse;
+    text-align: center;
+
+    svg {
+      opacity: 0.6;
+    }
+
+    h2 {
+      font-family: $font-family-body;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      font-family: $font-family-body;
+      font-size: $typography-body-size;
+      margin: 0;
+      opacity: 0.8;
+      max-width: 280px;
+    }
+  }
+
+  // No breed
+  &__no-breed {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__no-breed-message {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+    text-align: center;
+
+    h2 {
+      font-family: $font-family-body;
+      font-size: 18px;
+      font-weight: 600;
+      color: $color-text-inverse;
+      margin: 0 0 $spacing-sm;
+    }
+
+    p {
+      font-family: $font-family-body;
+      font-size: $typography-body-size;
+      color: $color-text-inverse;
+      margin: 0;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+  }
+
+  // Pet info/card
+  &__pet-info,
+  &__pet-card {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: $border-radius-lg;
+    padding: $spacing-md;
+  }
+
+  &__pet-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__pet-placeholder {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-tab-bar-bg;
+    border-radius: 50%;
+    color: $color-text-inverse;
+  }
+
+  &__pet-details {
+    h3 {
+      font-family: $font-family-body;
+      font-size: 18px;
+      font-weight: 600;
+      color: $color-text-primary;
+      margin: 0 0 $spacing-xs;
+    }
+
+    p {
+      font-family: $font-family-body;
+      font-size: $typography-small-size;
+      color: $color-text-secondary;
+      margin: 0;
+    }
+  }
+
+  // Content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  // Section
+  &__section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+
+    &--highlight {
+      background: linear-gradient(135deg, rgba($color-primary-500, 0.15) 0%, rgba($color-primary-500, 0.05) 100%);
+      border: 1px solid rgba($color-primary-500, 0.3);
+    }
+  }
+
+  &__section-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-family: $font-family-body;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-md;
+
+    svg {
+      color: $color-primary-500;
+    }
+  }
+
+  // Info grid
+  &__info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
+  }
+
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__info-label {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: $color-text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__info-value {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 500;
+    color: $color-text-primary;
+  }
+
+  // Needs
+  &__needs {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__need {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__need-label {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+  }
+
+  &__need-value {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    font-weight: 600;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-full;
+
+    &--low {
+      color: $color-success;
+      background: rgba($color-success, 0.15);
+    }
+
+    &--medium {
+      color: $color-warning;
+      background: rgba($color-warning, 0.15);
+    }
+
+    &--high {
+      color: $color-error;
+      background: rgba($color-error, 0.15);
+    }
+  }
+
+  // Tags
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  &__tag {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    font-weight: 500;
+    color: $color-tab-bar-bg;
+    background: rgba($color-tab-bar-bg, 0.1);
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-full;
+  }
+
+  // List
+  &__list {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    margin: 0;
+    padding-left: $spacing-lg;
+    line-height: 1.6;
+
+    li {
+      margin-bottom: $spacing-xs;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Facts
+  &__facts {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    margin: 0;
+    padding-left: $spacing-lg;
+    line-height: 1.6;
+
+    li {
+      margin-bottom: $spacing-sm;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

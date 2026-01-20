@@ -1,0 +1,56 @@
+{
+  "id": "maremma-and-abruzzese-sheepdog",
+  "name": "Maremma and Abruzzese Sheepdog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Cane da guardia italiano, grande e bianco.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Cane da guardia italiano, grande e bianco.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Calmo, protettivo, indipendente.",
+    "behavior": "Calmo, protettivo, indipendente.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "esercizio",
+    "grooming": "Spazzolatura regolare, esercizio."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "problemi articolari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Indipendente, necessita socializzazione."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo guardiano del bestiame.",
+  "contro": "Indipendente, necessita socializzazione.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

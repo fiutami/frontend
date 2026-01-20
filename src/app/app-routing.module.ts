@@ -132,7 +132,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     enableTracing: false, // Set to true for debugging
     scrollPositionRestoration: 'enabled',
-    anchorScrolling: 'enabled'
+    anchorScrolling: 'enabled',
+    onSameUrlNavigation: 'reload' // Force reload when navigating to same URL (tab bar behavior)
   })],
   exports: [RouterModule]
 })

@@ -1,0 +1,120 @@
+<div class="species-special">
+  <!-- Header -->
+  <div class="species-special__header">
+    <h2 class="species-special__title">Identifica il tuo animale</h2>
+    <p class="species-special__subtitle">
+      Carica una foto e scopri che specie o razza potrebbe essere
+    </p>
+  </div>
+
+  <!-- Upload area -->
+  @if (!selectedImage()) {
+    <div
+      class="species-special__upload"
+      (click)="triggerFileInput()"
+      (dragover)="onDragOver($event)"
+      (drop)="onDrop($event)"
+      role="button"
+      tabindex="0"
+      (keydown.enter)="triggerFileInput()"
+      (keydown.space)="triggerFileInput()"
+    >
+      <div class="species-special__upload-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z"/>
+        </svg>
+      </div>
+      <p class="species-special__upload-text">
+        Tocca per caricare una foto<br>
+        <span>oppure trascina qui</span>
+      </p>
+      <p class="species-special__upload-hint">
+        JPG, PNG o WebP (max 10MB)
+      </p>
+    </div>
+  } @else {
+    <!-- Preview -->
+    <div class="species-special__preview">
+      <img
+        [src]="selectedImage()"
+        alt="Immagine caricata"
+        class="species-special__preview-image"
+      >
+      <button
+        class="species-special__preview-clear"
+        (click)="clearImage()"
+        aria-label="Rimuovi immagine"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Analyze button -->
+    @if (!result() && !isAnalyzing()) {
+      <button
+        class="species-special__analyze-btn"
+        (click)="analyzeImage()"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+        Analizza immagine
+      </button>
+    }
+
+    <!-- Loading -->
+    @if (isAnalyzing()) {
+      <div class="species-special__analyzing">
+        <span class="species-special__spinner"></span>
+        <p>Analisi in corso...</p>
+      </div>
+    }
+
+    <!-- Result -->
+    @if (result()) {
+      <div class="species-special__result">
+        <div class="species-special__result-header">
+          <span class="species-special__result-badge">
+            {{ result()!.confidence }}% sicuro
+          </span>
+        </div>
+        <h3 class="species-special__result-species">
+          {{ result()!.species }}
+          @if (result()!.breed) {
+            <span> - {{ result()!.breed }}</span>
+          }
+        </h3>
+        <p class="species-special__result-description">
+          {{ result()!.description }}
+        </p>
+        <button
+          class="species-special__result-action"
+          (click)="clearImage()"
+        >
+          Prova con un'altra foto
+        </button>
+      </div>
+    }
+  }
+
+  <!-- Error -->
+  @if (error()) {
+    <div class="species-special__error">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      </svg>
+      <span>{{ error() }}</span>
+    </div>
+  }
+
+  <!-- Hidden file input -->
+  <input
+    #fileInput
+    type="file"
+    accept="image/*"
+    class="species-special__file-input"
+    (change)="onFileSelected($event)"
+  >
+</div>

@@ -1,0 +1,57 @@
+{
+  "id": "american-staffordshire-terrier",
+  "name": "American Staffordshire Terrier",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Informazioni in arrivo",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Informazioni in arrivo",
+    "behavior": "Informazioni in arrivo",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Esercizio regolare",
+    "grooming": "Esercizio regolare, addestramento costante, attenzione alla socializzazione."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia dell’anca",
+      "problemi cutanei",
+      "patologie cardiache"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Può mostrare aggressività se non educato, necessità di un padrone esperto."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da compagnia, coraggioso e protettivo.",
+  "contro": "Può mostrare aggressività se non educato, necessità di un padrone esperto.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

@@ -9,10 +9,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { DrawerService } from '../../../shared/components/drawer';
-import {
-  BottomTabBarComponent,
-  TabItem,
-} from '../../../shared/components/bottom-tab-bar';
+import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar';
+import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
 import { ChatService } from '../../../chat/services/chat.service';
 import { Conversation } from '../../../chat/models/chat.models';
 
@@ -32,19 +30,8 @@ export class ChatListComponent implements OnInit {
   conversations = signal<Conversation[]>([]);
   hasConversations = computed(() => this.conversations().length > 0);
 
-  // Bottom tab bar configuration
-  tabs: TabItem[] = [
-    { id: 'home', icon: 'home', route: '/home/main', label: 'Home' },
-    {
-      id: 'calendar',
-      icon: 'calendar_today',
-      route: '/calendar',
-      label: 'Calendario',
-    },
-    { id: 'location', icon: 'place', route: '/map', label: 'Mappa' },
-    { id: 'pet', icon: 'pets', route: '/home/pet-profile', label: 'Pet' },
-    { id: 'profile', icon: 'person', route: '/user/profile', label: 'Profilo' },
-  ];
+  // Bottom tab bar - configurazione centralizzata
+  tabs = MAIN_TAB_BAR_CONFIG;
 
   ngOnInit(): void {
     this.loadConversations();

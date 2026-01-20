@@ -1,91 +1,199 @@
-<div class="map">
+<div class="map-page">
+  <!-- Background gradient -->
+  <div class="map-page__background"></div>
+
   <!-- Header -->
-  <div class="map__header">
-    <button class="map__back-btn" routerLink="/home/main" aria-label="Torna alla home">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1 class="map__title">Luoghi Pet-Friendly</h1>
-    <app-avatar-button size="medium" class="map__avatar-btn"></app-avatar-button>
-  </div>
+  <header class="map-header">
+    <div class="map-header__top">
+      <button class="back-button" (click)="goBack()" aria-label="Torna indietro">
+        <span class="material-icons">arrow_back</span>
+      </button>
+      <h1 class="map-header__title">Mappa</h1>
+      <app-avatar-button size="medium"></app-avatar-button>
+    </div>
 
-  <!-- Map Placeholder -->
-  <div class="map__placeholder">
-    <div class="map__placeholder-content">
-      <span class="material-icons map__placeholder-icon">place</span>
-      <div class="map__coming-soon">
-        <span class="map__coming-soon-badge">Coming Soon</span>
-        <p class="map__coming-soon-text">Integrazione Google Maps in arrivo</p>
-      </div>
+    <!-- Branding - Logo e testo introduttivo -->
+    <div class="map-header__branding">
+      <app-logo variant="color" size="md"></app-logo>
+      <p class="map-header__subtitle">
+        Attività, eventi e amici<br>
+        Trova ciò che serve al tuo pet, proprio dove sei
+      </p>
+    </div>
+  </header>
+
+  <!-- Search bar -->
+  <div class="search-container">
+    <div class="search-box">
+      <span class="material-icons search-icon">search</span>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Cosa stai cercando"
+        [value]="searchQuery()"
+        (input)="onSearch($event)"
+      >
+      <button class="filter-button" aria-label="Filtri">
+        <span class="material-icons">tune</span>
+      </button>
     </div>
   </div>
 
-  <!-- Filters -->
-  <div class="map__filters">
+  <!-- Action buttons (UX spec: Attività, Eventi, Localizzati dagli amici) -->
+  <div class="action-buttons">
+    <button class="action-btn action-btn--primary">
+      Attività
+    </button>
+    <button class="action-btn action-btn--primary">
+      Eventi
+    </button>
+    <button class="action-btn action-btn--primary">
+      Localizzati dagli amici
+    </button>
+  </div>
+
+  <!-- Filter chips -->
+  <div class="filter-chips">
+    @for (filter of filters(); track filter.type) {
+      <button
+        class="filter-chip"
+        [class.filter-chip--active]="filter.active"
+        [style.--chip-color]="filter.color"
+        (click)="toggleFilter(filter)"
+      >
+        <span class="filter-chip__text">{{ filter.label }}</span>
+      </button>
+    }
+  </div>
+
+  <!-- Location toggle -->
+  <div class="location-toggle">
+    <span class="location-toggle__label">Attiva location</span>
     <button
-      *ngFor="let filter of filters"
-      class="map__filter"
-      [class.map__filter--active]="activeFilter === filter.id"
-      (click)="setFilter(filter.id)"
-      [attr.aria-label]="'Filtra per ' + filter.label"
-      [attr.aria-pressed]="activeFilter === filter.id">
-      <span class="material-icons map__filter-icon">{{ filter.icon }}</span>
-      <span class="map__filter-label">{{ filter.label }}</span>
+      class="toggle-switch"
+      [class.toggle-switch--active]="isLocationEnabled()"
+      (click)="centerOnUser()"
+      role="switch"
+      [attr.aria-checked]="isLocationEnabled()"
+    >
+      <span class="toggle-switch__slider"></span>
     </button>
   </div>
 
-  <!-- Places List -->
-  <div class="map__content">
-    <div class="map__places">
-      <h2 class="map__section-title">
-        Luoghi nelle vicinanze
-        <span class="map__count">({{ filteredPlaces.length }})</span>
-      </h2>
+  <!-- Map container -->
+  <div class="map-container">
+    <div id="map" class="map"></div>
 
-      <div class="map__places-list">
-        <div
-          *ngFor="let place of filteredPlaces"
-          class="map__place-card"
-          (click)="goToPlace(place)"
-          tabindex="0"
-          role="button"
-          [attr.aria-label]="place.name + ', ' + place.distance">
-          <div class="map__place-icon-wrapper">
-            <span class="material-icons map__place-icon" [class]="'map__place-icon--' + place.type">
-              {{ place.icon }}
-            </span>
-          </div>
+    <!-- Location button -->
+    <button
+      class="location-button"
+      [class.location-button--active]="isLocationEnabled()"
+      (click)="centerOnUser()"
+      aria-label="La mia posizione"
+    >
+      <span class="material-icons">my_location</span>
+    </button>
 
-          <div class="map__place-info">
-            <h3 class="map__place-name">{{ place.name }}</h3>
-            <div class="map__place-meta">
-              <div class="map__place-rating">
-                <span
-                  *ngFor="let star of getStarArray(place.rating)"
-                  class="material-icons map__star"
-                  [class.map__star--filled]="star.full">
-                  {{ star.full ? 'star' : 'star_border' }}
-                </span>
-                <span class="map__rating-value">{{ place.rating }}</span>
-              </div>
-              <span class="map__place-distance">
-                <span class="material-icons map__distance-icon">directions_walk</span>
-                {{ place.distance }}
-              </span>
-            </div>
-          </div>
-
-          <span class="material-icons map__place-arrow">chevron_right</span>
-        </div>
+    <!-- Current location indicator -->
+    <div class="current-location">
+      <div class="current-location__icon">
+        <span class="material-icons">place</span>
       </div>
-
-      <!-- Empty state -->
-      <div *ngIf="filteredPlaces.length === 0" class="map__empty">
-        <span class="material-icons map__empty-icon">search_off</span>
-        <p class="map__empty-text">Nessun luogo trovato per questo filtro</p>
+      <div class="current-location__info">
+        <span class="current-location__label">Posizione attuale</span>
+        <span class="current-location__name">{{ currentLocationName() }}</span>
       </div>
+      <span class="material-icons current-location__arrow">arrow_drop_down</span>
     </div>
   </div>
 
-  <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'location'"></app-bottom-tab-bar>
+  <!-- Section title: Scopri fiutami speciali -->
+  <div class="section-title">
+    <h2>Scopri fiutami speciali vicino a te</h2>
+  </div>
+
+  <!-- Promo banner FIUTAMI Plus -->
+  <div class="promo-banner" (click)="goToPremium()">
+    <div class="promo-banner__content">
+      <p class="promo-banner__text">Fiuta a pieno, con il Plus</p>
+      <button class="promo-banner__button">Scopri</button>
+    </div>
+    <div class="promo-banner__indicator">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- POI Card (bottom sheet overlay - NO navigazione) -->
+  @if (selectedPOI(); as poi) {
+    <div class="poi-card" (click)="$event.stopPropagation()">
+      <button class="poi-card__close" (click)="closePOICard()">
+        <span class="material-icons">close</span>
+      </button>
+
+      <div class="poi-card__header">
+        <div class="poi-card__type-badge" [style.background-color]="markerColors[poi.type]">
+          {{ poi.type | titlecase }}
+        </div>
+        <h3 class="poi-card__name">{{ poi.name }}</h3>
+        <p class="poi-card__address">{{ poi.address }}</p>
+      </div>
+
+      <div class="poi-card__details">
+        @if (poi.rating) {
+          <div class="poi-card__rating">
+            <span class="material-icons star">star</span>
+            <span class="rating-value">{{ formatRating(poi.rating) }}</span>
+            @if (poi.reviewCount) {
+              <span class="review-count">({{ poi.reviewCount }})</span>
+            }
+          </div>
+        }
+        @if (poi.distance) {
+          <div class="poi-card__distance">
+            <span class="material-icons">place</span>
+            <span>{{ formatDistance(poi.distance) }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="poi-card__actions">
+        <button class="poi-action-btn poi-action-btn--directions" (click)="openDirections(poi)">
+          <span class="material-icons">directions</span>
+          <span>Indicazioni</span>
+        </button>
+        <button
+          class="poi-action-btn poi-action-btn--save"
+          [class.poi-action-btn--saved]="poi.isFavorite"
+          (click)="toggleFavorite(poi)"
+        >
+          <span class="material-icons">{{ poi.isFavorite ? 'bookmark' : 'bookmark_border' }}</span>
+          <span>{{ poi.isFavorite ? 'Salvato' : 'Salva' }}</span>
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Mascot Peek -->
+  <app-mascot-peek
+    #mascotPeek
+    [hidden]="showMascotSheet()"
+    (mascotTapped)="onMascotClick()">
+  </app-mascot-peek>
+
+  <!-- Mascot Bottom Sheet -->
+  <app-mascot-bottom-sheet
+    [isOpen]="showMascotSheet()"
+    [hideMascot]="true"
+    [aiMessage]="'Ciao! Come posso aiutarti a trovare luoghi pet-friendly?'"
+    (closed)="closeMascotSheet()">
+  </app-mascot-bottom-sheet>
+
+  <!-- Bottom tab bar -->
+  <app-bottom-tab-bar
+    [tabs]="tabs"
+    [showLabels]="false"
+    [safeArea]="true"
+  />
 </div>

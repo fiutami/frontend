@@ -1,0 +1,55 @@
+{
+  "id": "birman-wcf-tica",
+  "name": "Birman (WCF, TICA)",
+  "species": "Gatto",
+  "category": "mammiferi",
+  "image": "🐱",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo semi-lungo, con “guanti” bianchi sulle zampe, colori caldi.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo semi-lungo, con “guanti” bianchi sulle zampe, colori caldi.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo semi-lungo",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Dolce, socievole, ama la compagnia.",
+    "behavior": "Dolce, socievole, ama la compagnia.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Spazzolatura regolare per evitare nodi."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Problemi renali e cardiaci"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede cura del pelo."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Gatto affettuoso, ottimo per famiglie.",
+  "contro": "Richiede cura del pelo.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

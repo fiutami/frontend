@@ -1,0 +1,56 @@
+{
+  "id": "miniature-american-shepherd",
+  "name": "Miniature American Shepherd",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Versione piccola dell’Australian Shepherd.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Versione piccola dell’Australian Shepherd.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Vivace, intelligente, affettuoso.",
+    "behavior": "Vivace, intelligente, affettuoso.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare e stimoli",
+    "grooming": "Attività regolare e stimoli."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "problemi oculari"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Molta energia da gestire."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Adatto a spazi più piccoli.",
+  "contro": "Molta energia da gestire.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "white-swiss-shepherd-dog",
+  "name": "White Swiss Shepherd Dog",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Simile al Pastore Tedesco, pelo bianco.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Simile al Pastore Tedesco, pelo bianco.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo bianco",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Dolce, intelligente, fedele.",
+    "behavior": "Dolce, intelligente, fedele.",
+    "sociability": "Da definire"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Cura e attività regolare",
+    "grooming": "Cura e attività regolare."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Displasia",
+      "epilessia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Richiede stimoli e spazio."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da compagnia e lavoro.",
+  "contro": "Richiede stimoli e spazio.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

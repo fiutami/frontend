@@ -159,7 +159,8 @@ export class BottomTabBarComponent {
 
   /**
    * Handle tab click
-   * If already on the same tab section, resets navigation to root of that section
+   * Always navigates to the tab route, forcing a page reload/re-init
+   * (onSameUrlNavigation: 'reload' in router config handles same-route navigation)
    */
   onTabClick(tab: TabItem, event: Event): void {
     if (tab.disabled) {
@@ -170,19 +171,8 @@ export class BottomTabBarComponent {
     this.tabChange.emit(tab);
 
     if (this.useRouter && tab.route) {
-      // Check if already on the root of this tab section
-      const isOnTabRoot = this.router.isActive(tab.route, {
-        paths: 'exact',
-        queryParams: 'ignored',
-        fragment: 'ignored',
-        matrixParams: 'ignored',
-      });
-
-      // If already at root, use replaceUrl to avoid adding to history
-      // If on a child page of this section (isActive but not isOnTabRoot), navigate to root
-      this.router.navigate([tab.route], {
-        replaceUrl: isOnTabRoot,
-      });
+      // Always navigate - router's onSameUrlNavigation: 'reload' handles the reload
+      this.router.navigate([tab.route]);
     }
   }
 

@@ -1,0 +1,266 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+.species-special {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  // Header
+  &__header {
+    text-align: center;
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: 22px;
+    font-weight: 600;
+    color: $color-text-inverse;
+    margin: 0 0 $spacing-xs;
+
+    @include respond(md) {
+      font-size: 26px;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-inverse;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  // Upload area
+  &__upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-2xl $spacing-lg;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    border-radius: $border-radius-lg;
+    cursor: pointer;
+    transition: $transition-fast;
+    min-height: 200px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary-500;
+      outline-offset: 2px;
+    }
+  }
+
+  &__upload-icon {
+    color: $color-text-inverse;
+    margin-bottom: $spacing-md;
+    opacity: 0.9;
+  }
+
+  &__upload-text {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 500;
+    color: $color-text-inverse;
+    text-align: center;
+    margin: 0 0 $spacing-sm;
+
+    span {
+      font-weight: 400;
+      opacity: 0.8;
+    }
+  }
+
+  &__upload-hint {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: $color-text-inverse;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  // Preview
+  &__preview {
+    position: relative;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+  }
+
+  &__preview-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__preview-clear {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 50%;
+    color: $color-text-inverse;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  // Analyze button
+  &__analyze-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    color: $color-text-primary;
+    background: $color-primary-500;
+    border: none;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      background: darken($color-primary-500, 10%);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Analyzing state
+  &__analyzing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    color: $color-text-inverse;
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: $color-primary-500;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Result
+  &__result {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+  }
+
+  &__result-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__result-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: $spacing-xs $spacing-sm;
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    font-weight: 600;
+    color: $color-text-inverse;
+    background: $color-success;
+    border-radius: $border-radius-full;
+  }
+
+  &__result-species {
+    font-family: $font-family-body;
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-sm;
+
+    span {
+      font-weight: 500;
+      color: $color-text-secondary;
+    }
+  }
+
+  &__result-description {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-secondary;
+    line-height: 1.5;
+    margin: 0 0 $spacing-lg;
+  }
+
+  &__result-action {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 500;
+    color: $color-tab-bar-bg;
+    background: transparent;
+    border: 2px solid $color-tab-bar-bg;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba($color-tab-bar-bg, 0.1);
+    }
+  }
+
+  // Error
+  &__error {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-md;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-error;
+    background: rgba($color-error, 0.1);
+    border-radius: $border-radius-md;
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  // Hidden file input
+  &__file-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

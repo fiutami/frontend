@@ -1,0 +1,55 @@
+{
+  "id": "catalan-sheepdog-gos-d-atura-catala",
+  "name": "Catalan Sheepdog (Gos d'Atura Català)",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Pelo ruvido, taglia media, cane da pastore spagnolo.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Pelo ruvido, taglia media, cane da pastore spagnolo.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Pelo ruvido",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Intelligente, energico, protettivo.",
+    "behavior": "Intelligente, energico, protettivo.",
+    "sociability": "Richiede socializzazione precoce"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Spazzolatura e attività fisica",
+    "grooming": "Spazzolatura e attività fisica."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Raramente segnalati"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Può essere nervoso se poco stimolato."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo lavoratore.",
+  "contro": "Può essere nervoso se poco stimolato.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

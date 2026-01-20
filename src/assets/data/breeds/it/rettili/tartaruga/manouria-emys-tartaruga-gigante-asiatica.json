@@ -1,0 +1,55 @@
+{
+  "id": "manouria-emys-tartaruga-gigante-asiatica",
+  "name": "Manouria emys (Tartaruga gigante asiatica)",
+  "species": "Tartarughe",
+  "category": "rettili",
+  "image": "🐢",
+  "popularity": 50,
+  "origin": "",
+  "description": "Grandi dimensioni (fino a 35 kg), guscio scuro, umida e tropicale.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Grandi dimensioni (fino a 35 kg), guscio scuro, umida e tropicale.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "Da definire",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Socievole, ma ha bisogno di umidità costante.",
+    "behavior": "Socievole, ma ha bisogno di umidità costante.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cure standard per la specie"
+  },
+  "risks": {
+    "commonDiseases": [
+      "Informazioni in arrivo"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Necessita clima tropicale costante."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Interessante, poco comune.",
+  "contro": "Necessita clima tropicale costante.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}

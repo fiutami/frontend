@@ -1,0 +1,56 @@
+{
+  "id": "welsh-corgi-cardigan",
+  "name": "Welsh Corgi Cardigan",
+  "species": "Cane",
+  "category": "mammiferi",
+  "image": "🐕",
+  "popularity": 50,
+  "origin": "",
+  "description": "Taglia piccola, corpo lungo, pelo corto.",
+  "characteristics": {
+    "energyLevel": 3,
+    "trainability": 3,
+    "friendliness": 3,
+    "groomingNeeds": 3
+  },
+  "dna": {
+    "origin": "Da definire",
+    "history": "Taglia piccola, corpo lungo, pelo corto.",
+    "genetics": "Da definire"
+  },
+  "size": {
+    "weight": "Da definire",
+    "height": "Da definire",
+    "coat": "pelo corto",
+    "lifespan": ""
+  },
+  "temperament": {
+    "character": "Leale, intelligente, affettuoso.",
+    "behavior": "Leale, intelligente, affettuoso.",
+    "sociability": "Ottimo con famiglie e altri animali"
+  },
+  "care": {
+    "feeding": "Dieta bilanciata consigliata",
+    "exercise": "Attività regolare necessaria",
+    "grooming": "Cura pelo semplice."
+  },
+  "risks": {
+    "commonDiseases": [
+      "Problemi alla schiena",
+      "displasia"
+    ],
+    "lifeExpectancy": "Da definire",
+    "notes": "Problemi spinali."
+  },
+  "pedigree": {
+    "standard": "Da definire",
+    "recognitions": [
+      "Da definire"
+    ]
+  },
+  "pro": "Ottimo cane da compagnia.",
+  "contro": "Problemi spinali.",
+  "lang": "it",
+  "status": "draft",
+  "lastUpdated": "2026-01-19"
+}
