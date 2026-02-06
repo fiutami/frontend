@@ -28,8 +28,11 @@
 
 // ==========================================
 // SEARCH
+// z-index alto per stare sopra il contenuto scrollabile
 // ==========================================
 .search-container {
+  position: relative;
+  z-index: 10;
   padding: 0 var(--sp-4);
   margin-bottom: var(--sp-3);
 }
@@ -77,8 +80,11 @@
 
 // ==========================================
 // ACTION BUTTONS
+// z-index alto per stare sopra il contenuto scrollabile
 // ==========================================
 .action-buttons {
+  position: relative;
+  z-index: 10;
   display: flex;
   gap: var(--sp-2);
   padding: 0 var(--sp-4);
@@ -114,8 +120,11 @@
 
 // ==========================================
 // FILTER CHIPS
+// z-index alto per stare sopra il contenuto scrollabile
 // ==========================================
 .filter-chips {
+  position: relative;
+  z-index: 10;
   display: flex;
   gap: var(--sp-2);
   padding: 0 var(--sp-4);
@@ -152,8 +161,11 @@
 
 // ==========================================
 // LOCATION TOGGLE
+// z-index alto per stare sopra il contenuto scrollabile
 // ==========================================
 .location-toggle {
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: var(--sp-3);
@@ -201,9 +213,11 @@
 
 // ==========================================
 // MAP CONTAINER
+// z-index più basso per passare SOTTO gli elementi sticky
 // ==========================================
 .map-container {
   position: relative;
+  z-index: 1;
   margin: 0 var(--sp-4);
   border-radius: 22px;
   overflow: hidden;
@@ -372,6 +386,8 @@
 // SECTION TITLE
 // ==========================================
 .section-title {
+  position: relative;
+  z-index: 1;
   padding: var(--sp-4) var(--sp-5) var(--sp-2);
 
   h2 {
@@ -388,6 +404,8 @@
 // PROMO BANNER
 // ==========================================
 .promo-banner {
+  position: relative;
+  z-index: 1;
   margin: var(--sp-2) var(--sp-4) var(--sp-4);
   border-radius: 10px;
   background: linear-gradient(180deg, #4A74F0 0%, #4FAF5A 100%);

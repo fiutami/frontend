@@ -5,10 +5,20 @@
  * FIGMA: Header fisso, non scrolla
  */
 
+// Host level - previeni scroll del body
+:host {
+  display: block;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  overscroll-behavior: none; // Previene bounce su iOS
+}
+
 .tab-page-shell {
   display: flex;
   flex-direction: column;
-  height: 100dvh; // Altezza fissa per permettere scroll interno
+  height: 100%;
   position: relative;
   z-index: 1;
   overflow: hidden; // Impedisce scroll del container
@@ -163,11 +173,14 @@
 
 // ==========================================
 // STICKY YELLOW AREA - Icone e chips (non scrolla)
+// Stile sticky per rimanere fisso durante scroll del contenuto
 // ==========================================
 
 .shell-sticky-yellow {
   position: relative;
   z-index: 9;
+  flex-shrink: 0; // Non si comprime mai
+  background: transparent; // Lo sfondo viene dal page-background
 }
 
 // ==========================================
