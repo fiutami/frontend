@@ -17,12 +17,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import * as L from 'leaflet';
 import { POI, POIFilter, POIType } from '../../core/models/poi.models';
 import { POIService } from '../../map/services/poi.service';
-import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar/bottom-tab-bar.component';
-import { AvatarButtonComponent } from '../../shared/components/avatar-button';
-import { MascotPeekComponent } from '../../shared/components/mascot-peek';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
 import { SharedModule } from '../../shared/shared.module';
-import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 
 // Fix Leaflet default marker icons
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -40,9 +37,7 @@ L.Icon.Default.mergeOptions({
     FormsModule,
     TranslateModule,
     SharedModule,
-    BottomTabBarComponent,
-    AvatarButtonComponent,
-    MascotPeekComponent,
+    TabPageShellDefaultComponent,
     MascotBottomSheetComponent
   ],
   templateUrl: './map.component.html',
@@ -62,16 +57,15 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   // Mascot sheet state
   showMascotSheet = signal(false);
-  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // Signals
-  readonly userLocation = signal<[number, number]>([41.9028, 12.4964]); // Roma default
+  readonly userLocation = signal<[number, number]>([45.6983, 9.6773]); // Bergamo default
   readonly pois = signal<POI[]>([]);
   readonly selectedPOI = signal<POI | null>(null);
   readonly filters = signal<POIFilter[]>(this.poiService.getDefaultFilters());
   readonly searchQuery = signal<string>('');
   readonly isLocationEnabled = signal<boolean>(false);
-  readonly currentLocationName = signal<string>('Roma');
+  readonly currentLocationName = signal<string>('Bergamo');
 
   readonly activeFilters = computed(() =>
     this.filters().filter(f => f.active).map(f => f.type)
@@ -86,8 +80,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     );
   });
 
-  // Tab bar configuration - use centralized config
-  readonly tabs = MAIN_TAB_BAR_CONFIG;
 
   // Colors for POI markers (public for template access)
   readonly markerColors: Record<POIType, string> = {
@@ -351,6 +343,5 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
-    this.mascotPeek?.returnToPeek();
   }
 }

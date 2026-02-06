@@ -1,120 +1,53 @@
+/**
+ * BreedsHomeComponent - SCSS
+ *
+ * Usa TabPageShellDefault per layout.
+ * Solo stili specifici del catalogo specie qui.
+ */
+
 @use 'src/styles/tokens' as *;
 
-.breeds-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-  // Figma: #4A74F1 (rgba 0.29, 0.45, 0.94) with curved shape
-  background: #4A74F1;
-  padding-bottom: 80px; // Space for tab bar
+// ==========================================
+// SUBTITLE (dentro blu, sotto logo)
+// ==========================================
+.breeds-subtitle {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  line-height: 1.22;
+  margin: 0;
+  padding: 0 var(--sp-4);
+
+  @media (min-width: 480px) { font-size: 13px; }
+  @media (min-width: 640px) { font-size: 14px; }
+  @media (min-width: 768px) { font-size: 15px; }
+  @media (min-width: 1024px) { font-size: 16px; }
 }
 
-// Header
-.breeds-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 16px; // Standardized with other tab pages
-
-  &__left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  &__back {
-    width: 34px;
-    height: 34px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(228, 228, 228, 0.2);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    &:active {
-      background: rgba(255, 255, 255, 0.4);
-      transform: scale(0.95);
-    }
-
-    .material-icons {
-      font-size: 20px;
-    }
-  }
-
-  &__title {
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
-    margin: 0;
-    text-transform: capitalize;
-  }
-}
-
-// Branding: Logo FIUTAMI + Subtitle
-.breeds-branding {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 72px; // Container 72px come standard
-  padding: 8px 16px;
-  gap: 8px;
-
-  // Logo fisso 52px come standard
-  ::ng-deep .logo,
-  app-logo ::ng-deep img,
-  app-logo ::ng-deep svg {
-    height: 52px;
-    width: auto;
-  }
-
-  &__subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: white;
-    text-align: center;
-    line-height: 1.22;
-    margin: 0;
-  }
-}
-
-// Main content
-.breeds-content {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-// Loading
+// ==========================================
+// LOADING
+// ==========================================
 .breeds-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  color: white;
+  color: var(--white);
 
   &__spinner {
     width: 48px;
     height: 48px;
     border: 4px solid rgba(255, 255, 255, 0.2);
-    border-top-color: white;
+    border-top-color: var(--white);
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
 
   p {
-    margin-top: 16px;
+    margin-top: var(--sp-4);
     font-size: 16px;
   }
 }
@@ -125,16 +58,18 @@
   }
 }
 
-// Species section
+// ==========================================
+// SPECIES SECTION
+// ==========================================
 .species-section {
-  margin-bottom: 24px;
+  margin-bottom: var(--sp-6);
 }
 
 .species-carousel {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--sp-3);
 
   &__nav {
     position: absolute;
@@ -144,7 +79,7 @@
     border: none;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
-    color: #1a5f7a;
+    color: var(--blue-1);
     display: none; // Hidden on mobile
     align-items: center;
     justify-content: center;
@@ -153,7 +88,7 @@
     transition: all 0.2s ease;
 
     &:hover:not(:disabled) {
-      background: white;
+      background: var(--white);
       transform: scale(1.1);
     }
 
@@ -178,8 +113,8 @@
   &__indicators {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    margin-top: 16px;
+    gap: var(--sp-2);
+    margin-top: var(--sp-4);
   }
 
   &__dot {
@@ -193,7 +128,7 @@
     padding: 0;
 
     &--active {
-      background: white;
+      background: var(--white);
       transform: scale(1.2);
     }
 
@@ -203,11 +138,13 @@
   }
 }
 
-// Species grid
+// ==========================================
+// SPECIES GRID
+// ==========================================
 .species-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: var(--sp-4);
   width: 100%;
   transition: transform 0.3s ease;
 
@@ -225,17 +162,20 @@
   }
 }
 
-// Species card - Figma design: asymmetric corners (22px top-left, 0 top-right, 22px bottom corners)
+// ==========================================
+// SPECIES CARD
+// Figma: asymmetric corners (22px top-left, 0 top-right, 22px bottom)
+// ==========================================
 .species-card {
   position: relative;
   aspect-ratio: 0.94; // ~112w x 120h from Figma
   border: none;
-  border-radius: 22px 0 22px 22px; // Asymmetric: top-left, top-right(sharp), bottom-right, bottom-left
+  border-radius: 22px 0 22px 22px; // Asymmetric
   overflow: hidden;
   cursor: pointer;
   background: #000;
   transition: all 0.3s ease;
-  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3); // Figma drop shadow
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
 
   &:hover {
     transform: translateY(-4px);
@@ -247,8 +187,7 @@
   }
 
   &--selected {
-    ring: 3px solid #f5a623;
-    box-shadow: 0 0 0 3px #f5a623;
+    box-shadow: 0 0 0 3px var(--yellow-cta);
   }
 
   &__image {
@@ -259,14 +198,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.9; // Figma: 90% opacity on image
+      opacity: 0.9;
     }
   }
 
   &__overlay {
     position: absolute;
     inset: 0;
-    // Figma: gradient from top transparent to bottom dark for text readability
     background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
   }
 
@@ -275,51 +213,45 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 12px;
+    padding: var(--sp-3);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    color: white;
-  }
-
-  &__icon {
-    font-size: 24px;
-    opacity: 0.9;
+    color: var(--white);
   }
 
   &__name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px; // Figma: 20px (16px for long names like PAPPAGALLI)
-    font-weight: 700; // Figma: Bold
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0;
     text-align: center;
-    line-height: 1.22; // Figma: 24.38px / 20px
+    line-height: 1.22;
 
-    // Smaller font for long names
     &--small {
       font-size: 16px;
-      line-height: 1.22;
     }
   }
 }
 
-// AI Finder CTA
+// ==========================================
+// AI FINDER CTA
+// ==========================================
 .finder-cta {
-  margin-top: 24px;
+  margin-top: var(--sp-6);
 
   &__button {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 16px 24px;
+    gap: var(--sp-3);
+    padding: var(--sp-4) var(--sp-6);
     border: 2px dashed rgba(255, 255, 255, 0.5);
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.1);
-    color: white;
+    color: var(--white);
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -340,7 +272,9 @@
   }
 }
 
-// Empty state
+// ==========================================
+// EMPTY STATE
+// ==========================================
 .breeds-empty {
   display: flex;
   flex-direction: column;
@@ -352,85 +286,11 @@
 
   &__icon {
     font-size: 64px;
-    margin-bottom: 16px;
+    margin-bottom: var(--sp-4);
     opacity: 0.5;
   }
 
   p {
     font-size: 16px;
-  }
-}
-
-// Mascot bubble
-.mascot-bubble {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  z-index: 50;
-
-  &__image {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-  }
-
-  &__text {
-    background: white;
-    padding: 8px 12px;
-    border-radius: 12px 12px 0 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    max-width: 150px;
-
-    p {
-      margin: 0;
-      font-size: 12px;
-      color: #1a5f7a;
-      font-weight: 500;
-    }
-  }
-}
-
-// Tab bar
-.tab-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-around;
-  background: white;
-  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: 8px 12px;
-    color: #666;
-    text-decoration: none;
-    font-size: 10px;
-    transition: color 0.2s ease;
-
-    .material-icons {
-      font-size: 24px;
-    }
-
-    &:hover {
-      color: #1a5f7a;
-    }
-
-    &--active {
-      color: #f5a623;
-
-      .material-icons {
-        color: #f5a623;
-      }
-    }
   }
 }

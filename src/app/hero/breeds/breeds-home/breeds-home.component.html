@@ -1,136 +1,97 @@
-<div class="breeds-page">
-  <!-- Header -->
-  <header class="breeds-header">
-    <div class="breeds-header__left">
-      <button class="breeds-header__back" (click)="goBack()" aria-label="Torna indietro">
-        <span class="material-icons">arrow_back</span>
-      </button>
-      <h1 class="breeds-header__title">Specie</h1>
-    </div>
-    <app-avatar-button size="medium" class="breeds-header__avatar"></app-avatar-button>
-  </header>
+<!-- Usa TabPageShellDefault: Avatar, Logo, MascotPeek, TabBar sono automatici -->
+<app-tab-page-shell-default
+  title="Specie"
+  activeTabId="breeds"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-  <!-- Branding: Logo FIUTAMI + Subtitle -->
-  <div class="breeds-branding">
-    <app-logo variant="color" size="lg"></app-logo>
-    <p class="breeds-branding__subtitle">Fiuta e scopri. Ogni specie racconta qualcosa.</p>
-  </div>
+  <!-- Extra sotto il logo (dentro blu): Subtitle -->
+  <p shellBrandingExtra class="breeds-subtitle">
+    Fiuta e scopri. Ogni specie racconta qualcosa.
+  </p>
 
   <!-- Main Content -->
-  <main class="breeds-content">
-    <!-- Loading state -->
-    @if (isLoading()) {
-      <div class="breeds-loading">
-        <div class="breeds-loading__spinner"></div>
-        <p>Caricamento specie...</p>
-      </div>
-    }
+  <!-- Loading state -->
+  @if (isLoading()) {
+    <div class="breeds-loading">
+      <div class="breeds-loading__spinner"></div>
+      <p>Caricamento specie...</p>
+    </div>
+  }
 
-    <!-- Species Grid / Carousel -->
-    @if (!isLoading() && speciesList().length > 0) {
-      <section class="species-section">
-        <div class="species-carousel">
-          <!-- Carousel controls (visible on larger screens) -->
-          <button
-            class="species-carousel__nav species-carousel__nav--prev"
-            (click)="prevSlide()"
-            [disabled]="isAnimating()"
-            aria-label="Specie precedenti">
-            <span class="material-icons">chevron_left</span>
-          </button>
+  <!-- Species Grid / Carousel -->
+  @if (!isLoading() && speciesList().length > 0) {
+    <section class="species-section">
+      <div class="species-carousel">
+        <!-- Carousel controls (visible on larger screens) -->
+        <button
+          class="species-carousel__nav species-carousel__nav--prev"
+          (click)="prevSlide()"
+          [disabled]="isAnimating()"
+          aria-label="Specie precedenti">
+          <span class="material-icons">chevron_left</span>
+        </button>
 
-          <!-- Species cards grid -->
-          <div class="species-grid" [class.species-grid--animating]="isAnimating()">
-            @for (species of speciesList(); track trackBySpecies($index, species)) {
-              <button
-                class="species-card"
-                [class.species-card--selected]="selectedSpecies()?.id === species.id"
-                (click)="selectSpecies(species)"
-                [attr.aria-label]="'Seleziona ' + species.name">
-                <div class="species-card__image">
-                  <img
-                    [src]="species.imageUrl"
-                    [alt]="species.name"
-                    loading="lazy"
-                    (error)="$any($event.target).src='/assets/placeholder-species.svg'">
-                  <div class="species-card__overlay"></div>
-                </div>
-                <div class="species-card__content">
-                  <span class="species-card__name" [class.species-card__name--small]="species.name.length > 8">{{ species.name }}</span>
-                </div>
-              </button>
-            }
-          </div>
-
-          <button
-            class="species-carousel__nav species-carousel__nav--next"
-            (click)="nextSlide()"
-            [disabled]="isAnimating()"
-            aria-label="Specie successive">
-            <span class="material-icons">chevron_right</span>
-          </button>
-        </div>
-
-        <!-- Carousel indicators -->
-        <div class="species-carousel__indicators">
-          @for (species of speciesList(); track species.id; let i = $index) {
+        <!-- Species cards grid -->
+        <div class="species-grid" [class.species-grid--animating]="isAnimating()">
+          @for (species of speciesList(); track trackBySpecies($index, species)) {
             <button
-              class="species-carousel__dot"
-              [class.species-carousel__dot--active]="i === carouselIndex()"
-              (click)="carouselIndex.set(i)"
-              [attr.aria-label]="'Vai a ' + species.name">
+              class="species-card"
+              [class.species-card--selected]="selectedSpecies()?.id === species.id"
+              (click)="selectSpecies(species)"
+              [attr.aria-label]="'Seleziona ' + species.name">
+              <div class="species-card__image">
+                <img
+                  [src]="species.imageUrl"
+                  [alt]="species.name"
+                  loading="lazy"
+                  (error)="$any($event.target).src='/assets/placeholder-species.svg'">
+                <div class="species-card__overlay"></div>
+              </div>
+              <div class="species-card__content">
+                <span class="species-card__name" [class.species-card__name--small]="species.name.length > 8">{{ species.name }}</span>
+              </div>
             </button>
           }
         </div>
-      </section>
 
-      <!-- AI Finder CTA -->
-      <section class="finder-cta">
-        <button class="finder-cta__button" (click)="goToFinder()">
-          <span class="material-icons">photo_camera</span>
-          <span>Scopri la razza con una foto</span>
+        <button
+          class="species-carousel__nav species-carousel__nav--next"
+          (click)="nextSlide()"
+          [disabled]="isAnimating()"
+          aria-label="Specie successive">
+          <span class="material-icons">chevron_right</span>
         </button>
-      </section>
-    }
-
-    <!-- Empty state -->
-    @if (!isLoading() && speciesList().length === 0) {
-      <div class="breeds-empty">
-        <span class="material-icons breeds-empty__icon">pets</span>
-        <p>Nessuna specie disponibile</p>
       </div>
-    }
-  </main>
 
-  <!-- Mascot Fiuto -->
-  <div class="mascot-bubble">
-    <img src="/assets/mascot/fiuto-bubble.svg" alt="Fiuto mascotte" class="mascot-bubble__image">
-    <div class="mascot-bubble__text">
-      <p>Il Fiuta ti istruisce!</p>
+      <!-- Carousel indicators -->
+      <div class="species-carousel__indicators">
+        @for (species of speciesList(); track species.id; let i = $index) {
+          <button
+            class="species-carousel__dot"
+            [class.species-carousel__dot--active]="i === carouselIndex()"
+            (click)="carouselIndex.set(i)"
+            [attr.aria-label]="'Vai a ' + species.name">
+          </button>
+        }
+      </div>
+    </section>
+
+    <!-- AI Finder CTA -->
+    <section class="finder-cta">
+      <button class="finder-cta__button" (click)="goToFinder()">
+        <span class="material-icons">photo_camera</span>
+        <span>Scopri la razza con una foto</span>
+      </button>
+    </section>
+  }
+
+  <!-- Empty state -->
+  @if (!isLoading() && speciesList().length === 0) {
+    <div class="breeds-empty">
+      <span class="material-icons breeds-empty__icon">pets</span>
+      <p>Nessuna specie disponibile</p>
     </div>
-  </div>
+  }
 
-  <!-- Bottom Tab Bar -->
-  <nav class="tab-bar">
-    <a routerLink="/home/main" class="tab-bar__item">
-      <span class="material-icons">home</span>
-      <span>Home</span>
-    </a>
-    <a routerLink="/home/calendar" class="tab-bar__item">
-      <span class="material-icons">calendar_today</span>
-      <span>Calendario</span>
-    </a>
-    <a routerLink="/home/map" class="tab-bar__item">
-      <span class="material-icons">place</span>
-      <span>Mappa</span>
-    </a>
-    <a routerLink="/home/pet-profile" class="tab-bar__item">
-      <span class="material-icons">pets</span>
-      <span>Pet</span>
-    </a>
-    <a routerLink="/home/breeds" class="tab-bar__item tab-bar__item--active">
-      <span class="material-icons">public</span>
-      <span>Specie</span>
-    </a>
-  </nav>
-</div>
+</app-tab-page-shell-default>

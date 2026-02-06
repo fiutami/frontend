@@ -1,87 +1,70 @@
-<div class="map-page">
-  <!-- Background gradient -->
-  <div class="map-page__background"></div>
+<!-- Usa TabPageShellDefault: Avatar, Logo, MascotPeek, TabBar sono automatici -->
+<app-tab-page-shell-default
+  title="Mappa"
+  activeTabId="map"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-  <!-- Header -->
-  <header class="map-header">
-    <div class="map-header__top">
-      <div class="map-header__left">
-        <button class="back-button" (click)="goBack()" aria-label="Torna indietro">
-          <span class="material-icons">arrow_back</span>
+  <!-- Extra sotto il logo (dentro blu): Subtitle -->
+  <p shellBrandingExtra class="map-subtitle">
+    Attività, eventi e amici<br>
+    Trova ciò che serve al tuo pet, proprio dove sei
+  </p>
+
+  <!-- Sticky Content (su giallo): Search + Actions + Filters -->
+  <ng-container shellStickyContent>
+    <!-- Search bar -->
+    <div class="search-container">
+      <div class="search-box">
+        <span class="material-icons search-icon">search</span>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Cosa stai cercando"
+          [value]="searchQuery()"
+          (input)="onSearch($event)"
+        >
+        <button class="filter-button" aria-label="Filtri">
+          <span class="material-icons">tune</span>
         </button>
-        <h1 class="map-header__title">Mappa</h1>
       </div>
-      <app-avatar-button size="medium" mode="pet"></app-avatar-button>
     </div>
 
-    <!-- Branding - Logo e testo introduttivo -->
-    <div class="map-header__branding">
-      <app-logo variant="color" size="md"></app-logo>
-      <p class="map-header__subtitle">
-        Attività, eventi e amici<br>
-        Trova ciò che serve al tuo pet, proprio dove sei
-      </p>
+    <!-- Action buttons -->
+    <div class="action-buttons">
+      <button class="action-btn action-btn--primary">Attività</button>
+      <button class="action-btn action-btn--primary">Eventi</button>
+      <button class="action-btn action-btn--primary">Localizzati dagli amici</button>
     </div>
-  </header>
 
-  <!-- Search bar -->
-  <div class="search-container">
-    <div class="search-box">
-      <span class="material-icons search-icon">search</span>
-      <input
-        type="text"
-        class="search-input"
-        placeholder="Cosa stai cercando"
-        [value]="searchQuery()"
-        (input)="onSearch($event)"
-      >
-      <button class="filter-button" aria-label="Filtri">
-        <span class="material-icons">tune</span>
-      </button>
+    <!-- Filter chips -->
+    <div class="filter-chips">
+      @for (filter of filters(); track filter.type) {
+        <button
+          class="filter-chip"
+          [class.filter-chip--active]="filter.active"
+          [style.--chip-color]="filter.color"
+          (click)="toggleFilter(filter)">
+          <span class="filter-chip__text">{{ filter.label }}</span>
+        </button>
+      }
     </div>
-  </div>
 
-  <!-- Action buttons (UX spec: Attività, Eventi, Localizzati dagli amici) -->
-  <div class="action-buttons">
-    <button class="action-btn action-btn--primary">
-      Attività
-    </button>
-    <button class="action-btn action-btn--primary">
-      Eventi
-    </button>
-    <button class="action-btn action-btn--primary">
-      Localizzati dagli amici
-    </button>
-  </div>
-
-  <!-- Filter chips -->
-  <div class="filter-chips">
-    @for (filter of filters(); track filter.type) {
+    <!-- Location toggle -->
+    <div class="location-toggle">
+      <span class="location-toggle__label">Attiva location</span>
       <button
-        class="filter-chip"
-        [class.filter-chip--active]="filter.active"
-        [style.--chip-color]="filter.color"
-        (click)="toggleFilter(filter)"
-      >
-        <span class="filter-chip__text">{{ filter.label }}</span>
+        class="toggle-switch"
+        [class.toggle-switch--active]="isLocationEnabled()"
+        (click)="centerOnUser()"
+        role="switch"
+        [attr.aria-checked]="isLocationEnabled()">
+        <span class="toggle-switch__slider"></span>
       </button>
-    }
-  </div>
+    </div>
+  </ng-container>
 
-  <!-- Location toggle -->
-  <div class="location-toggle">
-    <span class="location-toggle__label">Attiva location</span>
-    <button
-      class="toggle-switch"
-      [class.toggle-switch--active]="isLocationEnabled()"
-      (click)="centerOnUser()"
-      role="switch"
-      [attr.aria-checked]="isLocationEnabled()"
-    >
-      <span class="toggle-switch__slider"></span>
-    </button>
-  </div>
-
+  <!-- Main Content: Map + Section + Promo -->
   <!-- Map container -->
   <div class="map-container">
     <div id="map" class="map"></div>
@@ -91,8 +74,7 @@
       class="location-button"
       [class.location-button--active]="isLocationEnabled()"
       (click)="centerOnUser()"
-      aria-label="La mia posizione"
-    >
+      aria-label="La mia posizione">
       <span class="material-icons">my_location</span>
     </button>
 
@@ -127,7 +109,7 @@
     </div>
   </div>
 
-  <!-- POI Card (bottom sheet overlay - NO navigazione) -->
+  <!-- POI Card (bottom sheet overlay) -->
   @if (selectedPOI(); as poi) {
     <div class="poi-card" (click)="$event.stopPropagation()">
       <button class="poi-card__close" (click)="closePOICard()">
@@ -168,8 +150,7 @@
         <button
           class="poi-action-btn poi-action-btn--save"
           [class.poi-action-btn--saved]="poi.isFavorite"
-          (click)="toggleFavorite(poi)"
-        >
+          (click)="toggleFavorite(poi)">
           <span class="material-icons">{{ poi.isFavorite ? 'bookmark' : 'bookmark_border' }}</span>
           <span>{{ poi.isFavorite ? 'Salvato' : 'Salva' }}</span>
         </button>
@@ -177,14 +158,7 @@
     </div>
   }
 
-  <!-- Mascot Peek -->
-  <app-mascot-peek
-    #mascotPeek
-    [hidden]="showMascotSheet()"
-    (mascotTapped)="onMascotClick()">
-  </app-mascot-peek>
-
-  <!-- Mascot Bottom Sheet -->
+  <!-- Mascot Bottom Sheet (mantenuto per AI chat) -->
   <app-mascot-bottom-sheet
     [isOpen]="showMascotSheet()"
     [hideMascot]="true"
@@ -192,10 +166,4 @@
     (closed)="closeMascotSheet()">
   </app-mascot-bottom-sheet>
 
-  <!-- Bottom tab bar -->
-  <app-bottom-tab-bar
-    [tabs]="tabs"
-    [showLabels]="false"
-    [safeArea]="true"
-  />
-</div>
+</app-tab-page-shell-default>

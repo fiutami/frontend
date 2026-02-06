@@ -1,137 +1,45 @@
+/**
+ * MapComponent - SCSS
+ *
+ * Usa TabPageShellDefault per layout.
+ * Solo stili specifici della mappa qui.
+ */
+
 @import 'src/styles/tokens-figma';
 
-// Map page wrapper
-.map-page {
-  position: relative;
-  min-height: 100vh;
-  overflow-x: hidden;
-  padding-bottom: 80px;
+// ==========================================
+// SUBTITLE (dentro blu, sotto logo)
+// ==========================================
+.map-subtitle {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  line-height: 1.22;
+  margin: 0;
+  padding: 0 var(--sp-4);
 
-  &__background {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(125deg, #FFFFFF 0%, rgba(255, 255, 255, 0.67) 0%, #FCFED1 0%, #F8D78B 19%, #F2B830 82%);
-    z-index: -1;
-  }
+  @media (min-width: 480px) { font-size: 13px; }
+  @media (min-width: 640px) { font-size: 14px; }
+  @media (min-width: 768px) { font-size: 15px; }
+  @media (min-width: 1024px) { font-size: 16px; }
 }
 
-// Header
-.map-header {
-  padding: 32px 16px 16px;
-  position: relative;
-  z-index: 10;
-
-  &__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-  }
-
-  &__left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  &__title {
-    font-family: $font-family-body;
-    font-size: 16px;
-    font-weight: 500;
-    color: $color-text-inverse;
-    text-transform: capitalize;
-    margin: 0;
-  }
-
-  &__branding {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 72px; // Container 72px come standard
-    padding: 8px 16px;
-    gap: 8px;
-
-    // Logo fisso 52px come standard
-    ::ng-deep .logo,
-    app-logo ::ng-deep img,
-    app-logo ::ng-deep svg {
-      height: 52px;
-      width: auto;
-    }
-  }
-
-  &__subtitle {
-    font-family: $font-family-body;
-    font-size: 12px; // XS
-    font-weight: 700;
-    color: $color-text-inverse;
-    text-align: center;
-    line-height: 1.22;
-    margin: 8px 0 0;
-
-    @media (min-width: 576px) {
-      font-size: 14px; // SM
-      margin-top: 10px;
-    }
-
-    @media (min-width: 768px) {
-      font-size: 16px; // MD
-      margin-top: 12px;
-    }
-
-    @media (min-width: 1024px) {
-      font-size: 18px; // LG
-      margin-top: 14px;
-    }
-
-    @media (min-width: 1200px) {
-      font-size: 20px; // XL
-      margin-top: 16px;
-    }
-  }
-}
-
-// Back button
-.back-button {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(228, 228, 228, 0.2);
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: $transition-base;
-
-  &:hover {
-    background: rgba(228, 228, 228, 0.3);
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-
-  .material-icons {
-    font-size: 20px;
-    color: $color-text-inverse;
-  }
-}
-
-// Search container
+// ==========================================
+// SEARCH
+// ==========================================
 .search-container {
-  padding: 0 16px;
-  margin-bottom: 12px;
+  padding: 0 var(--sp-4);
+  margin-bottom: var(--sp-3);
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  background: $color-background-primary;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--white);
   border: 1px solid #D6D6D6;
   border-radius: 40px;
 
@@ -144,9 +52,9 @@
     flex: 1;
     border: none;
     outline: none;
-    font-family: $font-family-body;
+    font-family: var(--font-body);
     font-size: 12px;
-    color: $color-text-primary;
+    color: var(--text);
     background: transparent;
 
     &::placeholder {
@@ -167,12 +75,14 @@
   }
 }
 
-// Action buttons
+// ==========================================
+// ACTION BUTTONS
+// ==========================================
 .action-buttons {
   display: flex;
-  gap: 8px;
-  padding: 0 16px;
-  margin-bottom: 16px;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-4);
+  margin-bottom: var(--sp-4);
   flex-wrap: wrap;
 }
 
@@ -180,17 +90,17 @@
   padding: 4px 12px;
   border-radius: 100px;
   border: none;
-  font-family: $font-family-body;
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.5%;
   cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: $transition-base;
+  transition: all 150ms ease;
 
   &--primary {
-    background: #F2B830;
-    color: $color-text-inverse;
+    background: var(--yellow-cta);
+    color: var(--white);
 
     &:hover {
       background: #DAA500;
@@ -202,15 +112,17 @@
   }
 }
 
-// Filter chips
+// ==========================================
+// FILTER CHIPS
+// ==========================================
 .filter-chips {
   display: flex;
-  gap: 8px;
-  padding: 0 16px;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-4);
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 16px;
+  margin-bottom: var(--sp-4);
 
   &::-webkit-scrollbar {
     display: none;
@@ -219,45 +131,39 @@
 
 .filter-chip {
   flex-shrink: 0;
-  padding: 8px 16px;
+  padding: var(--sp-2) var(--sp-4);
   border-radius: 8px;
   border: none;
-  font-family: $font-family-body;
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
   color: #979EA6;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: $transition-base;
-  position: relative;
-  overflow: hidden;
+  transition: all 150ms ease;
 
   &--active {
-    color: $color-text-inverse;
-    background: var(--chip-color, $color-ai-primary);
+    color: var(--white);
+    background: var(--chip-color, var(--blue-1));
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.38);
-  }
-
-  &__text {
-    position: relative;
-    z-index: 1;
   }
 }
 
-// Location toggle
+// ==========================================
+// LOCATION TOGGLE
+// ==========================================
 .location-toggle {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  margin-bottom: 16px;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
 
   &__label {
-    font-family: $font-family-body;
+    font-family: var(--font-body);
     font-size: 18px;
     font-weight: 700;
-    color: $color-ai-primary;
+    color: var(--blue-1);
   }
 }
 
@@ -270,10 +176,10 @@
   position: relative;
   cursor: pointer;
   padding: 0;
-  transition: $transition-base;
+  transition: all 150ms ease;
 
   &--active {
-    background: #F2B830;
+    background: var(--yellow-cta);
   }
 
   &__slider {
@@ -283,8 +189,8 @@
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background: $color-text-inverse;
-    transition: $transition-base;
+    background: var(--white);
+    transition: all 150ms ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
 
@@ -293,14 +199,16 @@
   }
 }
 
-// Map container
+// ==========================================
+// MAP CONTAINER
+// ==========================================
 .map-container {
   position: relative;
-  margin: 0 16px;
+  margin: 0 var(--sp-4);
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
-  border: 1px solid $color-ai-primary;
+  border: 1px solid var(--blue-1);
 }
 
 .map {
@@ -335,8 +243,8 @@
     height: 14px;
     margin: -7px 0 0 -7px;
     border-radius: 50%;
-    background: $color-ai-primary;
-    border: 3px solid $color-text-inverse;
+    background: var(--blue-1);
+    border: 3px solid var(--white);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   }
 
@@ -374,7 +282,9 @@
   }
 }
 
-// Location button
+// ==========================================
+// LOCATION BUTTON
+// ==========================================
 .location-button {
   position: absolute;
   top: 12px;
@@ -382,7 +292,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: $color-text-inverse;
+  background: var(--white);
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -390,7 +300,7 @@
   justify-content: center;
   cursor: pointer;
   z-index: 1000;
-  transition: $transition-base;
+  transition: all 150ms ease;
 
   .material-icons {
     font-size: 20px;
@@ -398,20 +308,22 @@
   }
 
   &--active .material-icons {
-    color: $color-ai-primary;
+    color: var(--blue-1);
   }
 }
 
-// Current location indicator
+// ==========================================
+// CURRENT LOCATION INDICATOR
+// ==========================================
 .current-location {
   position: absolute;
   bottom: 12px;
   left: 12px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
-  background: $color-text-inverse;
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+  background: var(--white);
   border-radius: 8px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   z-index: 1000;
@@ -427,7 +339,7 @@
 
     .material-icons {
       font-size: 18px;
-      color: $color-ai-primary;
+      color: var(--blue-1);
     }
   }
 
@@ -438,41 +350,45 @@
   }
 
   &__label {
-    font-family: $font-family-body;
+    font-family: var(--font-body);
     font-size: 12px;
     color: #606060;
   }
 
   &__name {
-    font-family: $font-family-body;
+    font-family: var(--font-body);
     font-size: 14px;
     font-weight: 600;
-    color: $color-text-primary;
+    color: var(--text);
   }
 
   &__arrow {
     font-size: 18px;
-    color: $color-text-primary;
+    color: var(--text);
   }
 }
 
-// Section title
+// ==========================================
+// SECTION TITLE
+// ==========================================
 .section-title {
-  padding: 16px 20px 8px;
+  padding: var(--sp-4) var(--sp-5) var(--sp-2);
 
   h2 {
-    font-family: $font-family-body;
+    font-family: var(--font-body);
     font-size: 14px;
     font-weight: 700;
-    color: $color-text-inverse;
+    color: var(--white);
     margin: 0;
     line-height: 1.22;
   }
 }
 
-// Promo banner
+// ==========================================
+// PROMO BANNER
+// ==========================================
 .promo-banner {
-  margin: 8px 16px 16px;
+  margin: var(--sp-2) var(--sp-4) var(--sp-4);
   border-radius: 10px;
   background: linear-gradient(180deg, #4A74F0 0%, #4FAF5A 100%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -480,7 +396,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  transition: $transition-base;
+  transition: all 150ms ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -501,28 +417,28 @@
   }
 
   &__text {
-    font-family: $font-family-body;
+    font-family: var(--font-body);
     font-size: 16px;
     font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0 0 8px;
+    color: var(--white);
+    margin: 0 0 var(--sp-2);
     max-width: 346px;
   }
 
   &__button {
-    padding: 8px 16px;
+    padding: var(--sp-2) var(--sp-4);
     border-radius: 40px;
-    background: $color-text-primary;
+    background: var(--text);
     border: none;
     font-family: 'SF Pro', sans-serif;
     font-size: 12px;
     font-weight: 590;
-    color: $color-text-inverse;
+    color: var(--white);
     cursor: pointer;
-    transition: $transition-base;
+    transition: all 150ms ease;
 
     &:hover {
-      background: lighten($color-text-primary, 10%);
+      opacity: 0.9;
     }
   }
 
@@ -532,8 +448,8 @@
     bottom: 12px;
     display: flex;
     gap: 4px;
-    padding: 8px 12px;
-    background: $color-text-inverse;
+    padding: var(--sp-2) var(--sp-3);
+    background: var(--white);
     border-radius: 40px;
 
     .dot {
@@ -550,15 +466,17 @@
   }
 }
 
-// POI Card (bottom sheet)
+// ==========================================
+// POI CARD (Bottom Sheet)
+// ==========================================
 .poi-card {
   position: fixed;
   bottom: 80px;
-  left: 16px;
-  right: 16px;
-  background: $color-text-inverse;
+  left: var(--sp-4);
+  right: var(--sp-4);
+  background: var(--white);
   border-radius: 16px;
-  padding: 16px;
+  padding: var(--sp-4);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
   z-index: 1001;
   animation: slideUp 0.3s ease;
@@ -595,7 +513,7 @@
   }
 
   &__header {
-    margin-bottom: 12px;
+    margin-bottom: var(--sp-3);
   }
 
   &__type-badge {
@@ -604,21 +522,21 @@
     border-radius: 4px;
     font-size: 10px;
     font-weight: 600;
-    color: $color-text-inverse;
+    color: var(--white);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: var(--sp-2);
   }
 
   &__name {
-    font-family: $font-family-body;
+    font-family: var(--font-body);
     font-size: 18px;
     font-weight: 700;
-    color: $color-text-primary;
+    color: var(--text);
     margin: 0 0 4px;
   }
 
   &__address {
-    font-family: $font-family-body;
+    font-family: var(--font-body);
     font-size: 14px;
     color: #666;
     margin: 0;
@@ -627,8 +545,8 @@
   &__details {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-4);
   }
 
   &__rating {
@@ -643,7 +561,7 @@
 
     .rating-value {
       font-weight: 600;
-      color: $color-text-primary;
+      color: var(--text);
     }
 
     .review-count {
@@ -666,7 +584,7 @@
 
   &__actions {
     display: flex;
-    gap: 12px;
+    gap: var(--sp-3);
   }
 }
 
@@ -675,32 +593,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 16px;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
   border-radius: 8px;
   border: none;
-  font-family: $font-family-body;
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: $transition-base;
+  transition: all 150ms ease;
 
   .material-icons {
     font-size: 20px;
   }
 
   &--directions {
-    background: $color-ai-primary;
-    color: $color-text-inverse;
+    background: var(--blue-1);
+    color: var(--white);
 
     &:hover {
-      background: darken($color-ai-primary, 10%);
+      opacity: 0.9;
     }
   }
 
   &--save {
     background: #F5F5F5;
-    color: $color-text-primary;
+    color: var(--text);
 
     &:hover {
       background: #E5E5E5;
@@ -713,7 +631,9 @@
   }
 }
 
-// Leaflet override
+// ==========================================
+// LEAFLET OVERRIDES
+// ==========================================
 :host ::ng-deep {
   .leaflet-control-zoom {
     border: none !important;
@@ -724,8 +644,8 @@
       height: 32px !important;
       line-height: 32px !important;
       font-size: 18px !important;
-      color: $color-text-primary !important;
-      background: $color-text-inverse !important;
+      color: var(--text) !important;
+      background: var(--white) !important;
       border: none !important;
 
       &:hover {

@@ -1,20 +1,21 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { BreedsService } from '../breeds.service';
 import { Species } from '../models/breed.model';
-import { AvatarButtonComponent } from '../../../shared/components/avatar-button';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-breeds-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, AvatarButtonComponent, SharedModule],
+  imports: [CommonModule, TabPageShellDefaultComponent, SharedModule],
   templateUrl: './breeds-home.component.html',
   styleUrls: ['./breeds-home.component.scss']
 })
 export class BreedsHomeComponent implements OnInit {
   private readonly router = inject(Router);
+  private readonly location = inject(Location);
   private readonly breedsService = inject(BreedsService);
 
   // State
@@ -43,7 +44,7 @@ export class BreedsHomeComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/home/main']);
+    this.location.back();
   }
 
   // Carousel navigation
