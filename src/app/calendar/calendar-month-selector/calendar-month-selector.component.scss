@@ -1,126 +1,56 @@
-@import 'src/styles/tokens-figma';
-@import 'src/styles/mixins';
+/**
+ * CalendarMonthSelector - SCSS
+ *
+ * Usa TabPageShellDefault per layout.
+ * Solo stili specifici del calendar qui.
+ *
+ * FIGMA: mob_calendar_month_selector
+ */
 
-// ===========================================
-// CALENDAR PAGE COMPONENT
-// Main calendar view with overlays
-// Based on Figma: mob_calendar (12271-6457)
-// ===========================================
+// ==========================================
+// DESCRIPTIVE TEXT
+// FIGMA: Montserrat 14px w600 #71757a
+// ==========================================
+.calendar-description {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: #71757a;
+  text-align: center;
 
-.calendar-page {
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
+}
+
+// ==========================================
+// YEAR NAVIGATION
+// ==========================================
+.calendar-year-nav {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  min-height: 100dvh;
-  background-color: $color-ai-primary;
-  padding-bottom: calc(#{$tab-bar-height} + env(safe-area-inset-bottom, 0));
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-6);
+  padding: var(--sp-4);
 
-  // ===========================================
-  // HEADER
-  // Left: Back | Center: Title | Right: Drawer
-  // ===========================================
-
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-md;
-    padding-top: $spacing-lg;
-  }
-
-  &__title {
-    margin: 0;
-    font-family: $font-family-body;
-    font-size: 18px;
-    font-weight: 600;
-    color: $color-text-inverse;
-  }
-
-  // ===========================================
-  // BRANDING: Logo + Date
-  // ===========================================
-
-  &__branding {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: $spacing-sm $spacing-md;
-    gap: $spacing-xs;
-
-    // Logo responsive - BREAKPOINTS: XS:320, SM:576, MD:768, LG:1024, XL:1200
-    ::ng-deep .logo {
-      height: 32px; // XS (320px+)
-
-      @media (min-width: 576px) {
-        height: 40px; // SM
-      }
-
-      @media (min-width: 768px) {
-        height: 48px; // MD (tablet)
-      }
-
-      @media (min-width: 1024px) {
-        height: 56px; // LG (desktop)
-      }
-
-      @media (min-width: 1200px) {
-        height: 64px; // XL
-      }
-    }
-  }
-
-  &__date {
-    margin: 0;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 12px; // XS
-    font-weight: 500;
-    color: $color-text-inverse;
-    text-align: center;
-
-    @media (min-width: 576px) {
-      font-size: 14px; // SM
-    }
-
-    @media (min-width: 768px) {
-      font-size: 16px; // MD
-    }
-
-    @media (min-width: 1024px) {
-      font-size: 18px; // LG
-    }
-
-    @media (min-width: 1200px) {
-      font-size: 20px; // XL
-    }
-  }
-
-  // ===========================================
-  // YEAR NAVIGATION
-  // ===========================================
-
-  &__year-nav {
+  &__btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: $spacing-lg;
-    padding: $spacing-md;
-  }
-
-  &__year-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+    // FIGMA: 34x34
+    width: 34px;
+    height: 34px;
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-icon);
     cursor: pointer;
     transition: background-color 150ms ease;
-    color: $color-text-inverse;
+    color: var(--white);
 
     .material-icons {
-      font-size: 24px;
+      font-size: 20px;
     }
 
     &:hover {
@@ -130,32 +60,34 @@
     &:active {
       background-color: rgba(255, 255, 255, 0.15);
     }
+
+    &:focus-visible {
+      outline: 2px solid var(--yellow-cta);
+      outline-offset: 2px;
+    }
   }
 
   &__year {
-    font-family: 'Moul', serif;
+    // FIGMA: Solo Montserrat
+    font-family: var(--font-body);
     font-size: 24px;
-    font-weight: 400;
-    color: $color-cta-primary;
+    font-weight: 700;
+    color: var(--white);
     min-width: 80px;
     text-align: center;
   }
+}
 
-  // ===========================================
-  // MONTH GRID
-  // Figma: Banner_mouth (12271-6501)
-  // Container: 344x443px, 2 columns
-  // ===========================================
-
-  &__grid {
-    display: grid;
-    grid-template-columns: 144px 144px;
-    gap: 22px 56px;
-    padding: 0 $spacing-md;
-    justify-content: center;
-    flex: 1;
-    align-content: start;
-  }
+// ==========================================
+// MONTH GRID (2 columns x 6 rows)
+// FIGMA: row-gap: 22px, column-gap: 44px
+// ==========================================
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 144px);
+  gap: 22px 44px;
+  padding: 0 var(--sp-4);
+  justify-content: center;
 
   &__column {
     display: flex;
@@ -163,54 +95,55 @@
     gap: 22px;
   }
 
-  &__month-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 144px;
-    height: 52px;
-    background-color: $color-ai-primary;
-    border: 1px solid $color-text-inverse;
-    border-radius: 22px;
-    cursor: pointer;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 14px;
-    font-weight: 700;
-    color: $color-text-inverse;
-    text-transform: uppercase;
-    transition: all 150ms ease;
+  @media (min-width: 768px) {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+}
 
-    &:hover {
-      background-color: lighten(#4A74F0, 5%);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+// ==========================================
+// MONTH BUTTONS (Pill style)
+// ==========================================
+.calendar-month-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  background-color: var(--blue-1);
+  border: 1px solid var(--white);
+  border-radius: 22px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  transition: all 150ms ease;
 
-    &:active {
-      background-color: darken(#4A74F0, 5%);
-      transform: translateY(0);
-    }
-
-    // Current month highlight - yellow background
-    &--current {
-      background-color: $color-cta-primary;
-      color: $color-text-dark;
-      border-color: $color-cta-primary;
-
-      &:hover {
-        background-color: darken(#F2B830, 5%);
-      }
-    }
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
-  // ===========================================
-  // RESPONSIVE
-  // ===========================================
+  &:active {
+    transform: translateY(0);
+  }
 
-  @include respond(md) {
-    &__grid {
-      max-width: 400px;
-      margin: 0 auto;
+  &:focus-visible {
+    outline: 2px solid var(--yellow-cta);
+    outline-offset: 2px;
+  }
+
+  // Current month - yellow highlight
+  &--current {
+    background-color: var(--yellow-cta);
+    color: var(--text);
+    border-color: var(--yellow-cta);
+    font-weight: 800;
+
+    &:focus-visible {
+      outline-color: var(--white);
     }
   }
 }

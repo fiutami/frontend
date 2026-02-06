@@ -1,11 +1,85 @@
-@import 'src/styles/tokens-figma';
-@import 'src/styles/mixins';
+/**
+ * PageBackground - UNICA fonte sfondi pagina
+ *
+ * REGOLA: Solo CSS vars da tokens, niente hex diretti!
+ * Tutte le pagine tab menu DEVONO usare questo componente.
+ */
 
-.page-background {
+.page-bg {
   position: fixed;
   inset: 0;
-  z-index: 0;
-  background-color: $color-cta-primary;
+  z-index: -1;
+
+  // ==========================================
+  // GRADIENT VARIANTS (Tab Menu Pages)
+  // ==========================================
+
+  &--tab-menu {
+    // Yellow gradient from map page (125deg)
+    background: linear-gradient(
+      125deg,
+      #FFFFFF 0%,
+      rgba(255, 255, 255, 0.67) 0%,
+      #FCFED1 0%,
+      #F8D78B 19%,
+      #F2B830 82%
+    );
+  }
+
+  // Blue asymmetric shape for tab-menu
+  // Usa altezza fissa responsive invece di % (evita variazioni viewport height)
+  &__blue-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // Base: Mobile
+    height: 190px;
+
+    // Blue fill - Figma: #4A74F0
+    background-color: var(--blue-1, #4A74F0);
+
+    // Asymmetric border radius - FIGMA + X FLIP
+    // TL=0, TR=228 (big), BR=15, BL=103
+    border-radius: 0 228px 15px 103px;
+
+    // Drop shadow from Figma
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
+
+    // Breakpoints: altezza cresce con viewport width
+    @media (min-width: 480px) { height: 195px; }
+    @media (min-width: 640px) { height: 200px; }
+    @media (min-width: 768px) { height: 210px; }
+    @media (min-width: 1024px) { height: 220px; }
+    @media (min-width: 1280px) { height: 235px; }
+  }
+
+  &--blue-solid {
+    // Breeds page, etc.
+    background: var(--blue-1);
+  }
+
+  &--yellow-solid {
+    // Profile pages
+    background: linear-gradient(
+      180deg,
+      var(--yellow-1) 0%,
+      var(--yellow-2) 100%
+    );
+  }
+
+  &--profile-pet {
+    // Pet profile - variante custom se necessario
+    background: var(--yellow-1);
+  }
+
+  // ==========================================
+  // IMAGE VARIANT (Auth, Home)
+  // ==========================================
+
+  &--image {
+    background-color: var(--yellow-cta);
+  }
 
   &__image {
     position: absolute;
@@ -19,11 +93,11 @@
 
   &--contain &__image {
     object-fit: contain;
-
-    @include respond(lg) {
-      object-fit: contain;
-    }
   }
+
+  // ==========================================
+  // OVERLAY (Solo per image variant)
+  // ==========================================
 
   &__overlay {
     position: absolute;

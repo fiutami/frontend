@@ -114,6 +114,12 @@ const routes: Routes = [
     loadChildren: () => import('./styleguide/styleguide.module').then(m => m.StyleguideModule)
   },
 
+  // TEST: TabPageShellDefault - TEMPORANEO
+  {
+    path: 'test/shell-default',
+    loadComponent: () => import('./shared/pages/test-shell-default/test-shell-default.component').then(m => m.TestShellDefaultComponent)
+  },
+
   // Future: Dashboard route (lazy loaded)
   // {
   //   path: 'dashboard',

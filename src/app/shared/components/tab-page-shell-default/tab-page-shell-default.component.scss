@@ -1,0 +1,111 @@
+/**
+ * TabPageShellDefault - SCSS
+ *
+ * Stili per il wrapper standard delle pagine tab menu.
+ * Logo e branding con breakpoint granulari.
+ *
+ * BREAKPOINTS:
+ * - 360px: Mobile base (iPhone SE)
+ * - 480px: Mobile large
+ * - 560px: Phablet small
+ * - 640px: Phablet large
+ * - 768px: Tablet
+ * - 1024px: Desktop small
+ * - 1280px: Desktop
+ */
+
+// ==========================================
+// BRANDING SECTION (dentro shell-blue-header)
+// Logo centrato assoluto, data in basso
+// ==========================================
+.shell-default-branding {
+  // Posizione assoluta per centrare nel parent (shell-blue-header)
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--sp-4);
+  // Non blocca click sul header sopra
+  pointer-events: none;
+
+  &__logo {
+    display: block;
+    pointer-events: auto;
+  }
+}
+
+// Data posizionata in basso assoluto
+:host ::ng-deep [shellBrandingExtra] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: auto;
+}
+
+// ==========================================
+// LOGO RESPONSIVE - ::ng-deep per penetrare encapsulation
+// Stili separati per evitare problemi compilazione
+// ==========================================
+:host ::ng-deep .shell-default-branding__logo {
+  // Targetta sia img diretto che .logo class
+  img,
+  .logo {
+    // Base: Mobile (360px) - iPhone SE
+    height: 48px !important;
+    width: auto !important;
+  }
+
+  @media (min-width: 480px) {
+    img, .logo { height: 54px !important; }
+  }
+
+  @media (min-width: 560px) {
+    img, .logo { height: 58px !important; }
+  }
+
+  @media (min-width: 640px) {
+    img, .logo { height: 62px !important; }
+  }
+
+  @media (min-width: 768px) {
+    img, .logo { height: 68px !important; }
+  }
+
+  @media (min-width: 1024px) {
+    img, .logo { height: 72px !important; }
+  }
+
+  @media (min-width: 1280px) {
+    img, .logo { height: 80px !important; }
+  }
+}
+
+// ==========================================
+// STICKY SECTION (fuori blu, su giallo)
+// ==========================================
+.shell-default-sticky {
+  // Base padding top (mobile)
+  padding-top: 8px;
+
+  @media (min-width: 480px) {
+    padding-top: 10px;
+  }
+
+  @media (min-width: 640px) {
+    padding-top: 12px;
+  }
+
+  @media (min-width: 768px) {
+    padding-top: 14px;
+  }
+
+  @media (min-width: 1024px) {
+    padding-top: 16px;
+  }
+}

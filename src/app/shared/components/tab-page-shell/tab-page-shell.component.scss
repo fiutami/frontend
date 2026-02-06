@@ -1,0 +1,183 @@
+/**
+ * TabPageShellComponent - Telaio standard tab pages
+ *
+ * REGOLA: Solo CSS vars da tokens!
+ * FIGMA: Header fisso, non scrolla
+ */
+
+.tab-page-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh; // Altezza fissa per permettere scroll interno
+  position: relative;
+  z-index: 1;
+  overflow: hidden; // Impedisce scroll del container
+}
+
+// ==========================================
+// BLUE HEADER - Header + Branding (no scroll, dentro blu)
+// Altezza = blue-shape (25.1%, min 180px, max 220px)
+// Flexbox per spingere branding al bottom della blue-shape
+// ==========================================
+
+.shell-blue-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  // Spinge header in alto e branding in basso
+  justify-content: space-between;
+  // Altezza fissa responsive (sync con blue-shape)
+  height: 190px;
+  padding-top: env(safe-area-inset-top, 0px);
+
+  // Breakpoints: sync esatto con blue-shape
+  @media (min-width: 480px) { height: 195px; }
+  @media (min-width: 640px) { height: 200px; }
+  @media (min-width: 768px) { height: 210px; }
+  @media (min-width: 1024px) { height: 220px; }
+  @media (min-width: 1280px) { height: 235px; }
+}
+
+// ==========================================
+// HEADER
+// ==========================================
+
+.shell-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // padding-top ridotto + margin-top negativo per alzare solo header
+  padding: var(--sp-2) var(--sp-4) var(--sp-3);
+  margin-top: -8px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    // Sposta avatar più nell'angolo (dentro l'area blu)
+    margin-right: -8px;
+  }
+
+  &__back {
+    // Figma: circular white button with arrow
+    // Base: Mobile (360px)
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // 480px: Mobile large
+    @media (min-width: 480px) {
+      width: 36px;
+      height: 36px;
+    }
+
+    // 640px: Phablet
+    @media (min-width: 640px) {
+      width: 38px;
+      height: 38px;
+    }
+
+    // 768px: Tablet
+    @media (min-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
+
+    // 1024px: Desktop
+    @media (min-width: 1024px) {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-body);
+    // Base: Mobile (360px)
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+    line-height: 34px;
+    height: 34px;
+
+    // 480px: Mobile large
+    @media (min-width: 480px) {
+      font-size: 17px;
+      line-height: 36px;
+      height: 36px;
+    }
+
+    // 640px: Phablet
+    @media (min-width: 640px) {
+      font-size: 18px;
+      line-height: 38px;
+      height: 38px;
+    }
+
+    // 768px: Tablet
+    @media (min-width: 768px) {
+      font-size: 19px;
+      line-height: 40px;
+      height: 40px;
+    }
+
+    // 1024px: Desktop
+    @media (min-width: 1024px) {
+      font-size: 20px;
+      line-height: 44px;
+      height: 44px;
+    }
+  }
+}
+
+// ==========================================
+// STICKY YELLOW AREA - Icone e chips (non scrolla)
+// ==========================================
+
+.shell-sticky-yellow {
+  position: relative;
+  z-index: 9;
+}
+
+// ==========================================
+// MAIN CONTENT - Solo questo scrolla
+// ==========================================
+
+.shell-content {
+  flex: 1;
+  min-height: 0; // Permette shrink per flex
+  padding: 0 var(--sp-4);
+  padding-bottom: var(--content-padding-bottom);
+  overflow-y: auto;
+}

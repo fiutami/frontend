@@ -1,83 +1,60 @@
-<div class="calendar-page">
-  <!-- ========================================== -->
-  <!-- HEADER -->
-  <!-- Left: Back button | Center: Title | Right: Drawer -->
-  <!-- ========================================== -->
-  <header class="calendar-page__header">
-    <app-back-button
-      variant="solid"
-      (clicked)="onBack()">
-    </app-back-button>
-    <h1 class="calendar-page__title">Calendario</h1>
-    <app-avatar-button mode="pet"></app-avatar-button>
-  </header>
+<!-- Usa TabPageShellDefault: Avatar, Logo, MascotPeek, TabBar sono automatici -->
+<app-tab-page-shell-default
+  title="Calendario"
+  activeTabId="calendar"
+  [showBack]="true"
+  (backClicked)="onBack()">
 
-  <!-- ========================================== -->
-  <!-- BRANDING: Logo + Date -->
-  <!-- ========================================== -->
-  <div class="calendar-page__branding">
-    <app-logo variant="color" size="md"></app-logo>
-    <p class="calendar-page__date">{{ formattedFullDate() }}</p>
-  </div>
+  <!-- Extra sotto il logo (dentro blu): Data odierna -->
+  <app-calendar-date-display shellBrandingExtra [date]="currentDate()" />
 
-  <!-- ========================================== -->
-  <!-- FILTER ICONS (3 icons - open overlays) -->
-  <!-- ========================================== -->
-  <app-calendar-filter-icons
-    [activeIcon]="overlayService.activeFilter()"
-    [notificationCount]="overlayService.notificationCount()"
-    (iconClick)="onFilterIconClick($event)">
-  </app-calendar-filter-icons>
+  <!-- Sticky Content (su giallo): Quick Actions + Chips + Testo -->
+  <ng-container shellStickyContent>
+    <!-- Quick Actions Row (3 icons: notifications, calendar, bookmark) -->
+    <app-quick-actions-row
+      class="quick-actions--on-yellow"
+      [items]="quickActionItems"
+      [activeId]="overlayService.activeFilter()"
+      (selected)="onFilterIconClick($event)" />
 
-  <!-- ========================================== -->
-  <!-- ACTION BUTTONS (3 buttons - open overlays) -->
-  <!-- ========================================== -->
-  <app-calendar-action-buttons
-    [activeButton]="overlayService.activeAction()"
-    (buttonClick)="onActionButtonClick($event)">
-  </app-calendar-action-buttons>
+    <!-- Action Chips Row (3 pills) -->
+    <app-action-chips-row
+      [chips]="actionChips"
+      (chipClicked)="onActionButtonClick($event)" />
 
-  <!-- ========================================== -->
-  <!-- YEAR NAVIGATION -->
-  <!-- ========================================== -->
-  <div class="calendar-page__year-nav">
-    <button
-      class="calendar-page__year-btn"
-      (click)="prevYear()"
-      aria-label="Anno precedente">
+    <!-- Descriptive Text -->
+    <p class="calendar-description">In che mese andiamo a mettere il naso?</p>
+  </ng-container>
+
+  <!-- Main Content: Year Nav + Month Grid -->
+  <!-- Year Navigation -->
+  <div class="calendar-year-nav">
+    <button class="calendar-year-nav__btn" (click)="prevYear()" aria-label="Anno precedente">
       <span class="material-icons">chevron_left</span>
     </button>
-    <span class="calendar-page__year">{{ selectedYear() }}</span>
-    <button
-      class="calendar-page__year-btn"
-      (click)="nextYear()"
-      aria-label="Anno successivo">
+    <span class="calendar-year-nav__year">{{ selectedYear() }}</span>
+    <button class="calendar-year-nav__btn" (click)="nextYear()" aria-label="Anno successivo">
       <span class="material-icons">chevron_right</span>
     </button>
   </div>
 
-  <!-- ========================================== -->
-  <!-- MONTH GRID (opens NEW PAGES - exception) -->
-  <!-- ========================================== -->
-  <div class="calendar-page__grid">
-    <!-- Left Column -->
-    <div class="calendar-page__column">
-      @for (month of leftColumnMonths; track trackByMonth($index, month)) {
+  <!-- Month Grid -->
+  <div class="calendar-grid">
+    <div class="calendar-grid__column">
+      @for (month of leftColumnMonths; track month.index) {
         <button
-          class="calendar-page__month-btn"
-          [class.calendar-page__month-btn--current]="isCurrentMonth(month.index)"
+          class="calendar-month-btn"
+          [class.calendar-month-btn--current]="isCurrentMonth(month.index)"
           (click)="selectMonth(month.index)">
           {{ month.name }}
         </button>
       }
     </div>
-
-    <!-- Right Column -->
-    <div class="calendar-page__column">
-      @for (month of rightColumnMonths; track trackByMonth($index, month)) {
+    <div class="calendar-grid__column">
+      @for (month of rightColumnMonths; track month.index) {
         <button
-          class="calendar-page__month-btn"
-          [class.calendar-page__month-btn--current]="isCurrentMonth(month.index)"
+          class="calendar-month-btn"
+          [class.calendar-month-btn--current]="isCurrentMonth(month.index)"
           (click)="selectMonth(month.index)">
           {{ month.name }}
         </button>
@@ -85,32 +62,16 @@
     </div>
   </div>
 
-  <!-- ========================================== -->
-  <!-- OVERLAYS (conditionally rendered) -->
-  <!-- ========================================== -->
+  <!-- Overlays -->
   @if (overlayService.isOpen()) {
     @switch (overlayService.overlayType()) {
-      @case ('saved') {
-        <app-calendar-saved-overlay></app-calendar-saved-overlay>
-      }
-      @case ('month') {
-        <app-calendar-month-overlay></app-calendar-month-overlay>
-      }
-      @case ('notifications') {
-        <app-calendar-notifications-overlay></app-calendar-notifications-overlay>
-      }
-      @case ('create-event') {
-        <app-calendar-create-event-overlay></app-calendar-create-event-overlay>
-      }
-      @case ('events-list') {
-        <app-calendar-events-overlay></app-calendar-events-overlay>
-      }
-      @case ('birthdays') {
-        <app-calendar-birthdays-overlay></app-calendar-birthdays-overlay>
-      }
+      @case ('saved') { <app-calendar-saved-overlay /> }
+      @case ('month') { <app-calendar-month-overlay /> }
+      @case ('notifications') { <app-calendar-notifications-overlay /> }
+      @case ('create-event') { <app-calendar-create-event-overlay /> }
+      @case ('events-list') { <app-calendar-events-overlay /> }
+      @case ('birthdays') { <app-calendar-birthdays-overlay /> }
     }
   }
 
-  <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'calendar'"></app-bottom-tab-bar>
-</div>
+</app-tab-page-shell-default>

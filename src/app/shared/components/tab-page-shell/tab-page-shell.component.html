@@ -1,0 +1,44 @@
+<!-- Background gestito centralmente -->
+<app-page-background [variant]="backgroundVariant" />
+
+<div class="tab-page-shell">
+  <!-- BLUE HEADER: Header + Branding (non scrolla, dentro blu) -->
+  <div class="shell-blue-header">
+    <!-- Header -->
+    <header class="shell-header">
+      <div class="shell-header__left">
+        @if (showBack) {
+          <button
+            class="shell-header__back"
+            (click)="onBackClick()"
+            type="button"
+            aria-label="Torna indietro">
+            <img src="assets/icons/btn-back-arrow.svg" alt="" />
+          </button>
+        }
+        @if (title) {
+          <h1 class="shell-header__title">{{ title }}</h1>
+        }
+      </div>
+      <div class="shell-header__right">
+        <ng-content select="[shellHeaderRight]" />
+      </div>
+    </header>
+
+    <!-- Branding Slot (Logo + Date/Subtitle) -->
+    <ng-content select="[shellBranding]" />
+  </div>
+
+  <!-- STICKY AREA: Fuori dal blu, sullo sfondo giallo (non scrolla) -->
+  <div class="shell-sticky-yellow">
+    <ng-content select="[shellStickyYellow]" />
+  </div>
+
+  <!-- Main Content -->
+  <main class="shell-content">
+    <ng-content />
+  </main>
+
+  <!-- Footer Slot (Tab Bar, Mascot, etc.) -->
+  <ng-content select="[shellFooter]" />
+</div>

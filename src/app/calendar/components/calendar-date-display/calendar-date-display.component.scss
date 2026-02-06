@@ -1,0 +1,101 @@
+/**
+ * CalendarDateDisplay - SCSS
+ *
+ * FIGMA: Barra orizzontale bianca con data
+ * Layout: DOMENICA | 03/09 | 2025
+ *
+ * BREAKPOINTS:
+ * - 360px: Mobile base (iPhone SE)
+ * - 480px: Mobile large
+ * - 560px: Phablet small
+ * - 640px: Phablet large
+ * - 768px: Tablet
+ * - 1024px: Desktop small
+ * - 1280px: Desktop
+ */
+
+.date-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // Base: Mobile (360px)
+  gap: var(--sp-2);
+  // padding-bottom: 0 per allineare al bordo inferiore shell-blue-header
+  padding: 0 var(--sp-4);
+
+  &__day-name {
+    font-family: var(--font-body);
+    // Base: 12px
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__date {
+    font-family: var(--font-body);
+    // Base: 24px
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  &__year {
+    font-family: var(--font-body);
+    // Base: 12px
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--white);
+    opacity: 0.8;
+  }
+
+  // 480px: Mobile large
+  @media (min-width: 480px) {
+    gap: var(--sp-2);
+
+    &__day-name { font-size: 13px; }
+    &__date { font-size: 26px; }
+    &__year { font-size: 13px; }
+  }
+
+  // 560px: Phablet small
+  @media (min-width: 560px) {
+    gap: var(--sp-3);
+
+    &__day-name { font-size: 13px; }
+    &__date { font-size: 28px; }
+    &__year { font-size: 14px; }
+  }
+
+  // 640px: Phablet large
+  @media (min-width: 640px) {
+    &__day-name { font-size: 14px; }
+    &__date { font-size: 30px; }
+    &__year { font-size: 14px; }
+  }
+
+  // 768px: Tablet
+  @media (min-width: 768px) {
+    &__day-name { font-size: 14px; letter-spacing: 0.8px; }
+    &__date { font-size: 32px; }
+    &__year { font-size: 15px; }
+  }
+
+  // 1024px: Desktop small
+  @media (min-width: 1024px) {
+    gap: var(--sp-4);
+
+    &__day-name { font-size: 15px; }
+    &__date { font-size: 36px; }
+    &__year { font-size: 16px; }
+  }
+
+  // 1280px: Desktop
+  @media (min-width: 1280px) {
+    &__day-name { font-size: 16px; letter-spacing: 1px; }
+    &__date { font-size: 40px; }
+    &__year { font-size: 18px; }
+  }
+}
