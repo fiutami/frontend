@@ -1,62 +1,93 @@
-@import 'src/styles/tokens-figma';
+/**
+ * SectionNavigatorComponent - SCSS
+ *
+ * Navigatore sezioni con frecce SVG e font Montserrat.
+ * Nessuno sfondo - trasparente.
+ */
 
 .section-navigator {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-md;
-  padding: $spacing-sm $spacing-md;
-  position: relative;
-  z-index: 20;
+  gap: 16px;
+  padding: 8px 16px;
 
+  // ==========================================
+  // TITLE - Montserrat 24px 600
+  // ==========================================
   &__title {
-    font-family: $font-family-display;
-    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    color: $color-text-inverse;
-    min-width: 140px;
+    font-size: 24px;
+    line-height: 1.22;
     text-align: center;
+    color: #ffffff;
+    min-width: 140px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+    @media (min-width: 480px) {
+      font-size: 26px;
+      min-width: 160px;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 28px;
+      min-width: 180px;
+    }
   }
 
+  // ==========================================
+  // BUTTONS - Trasparenti, solo frecce
+  // ==========================================
   &__btn {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: $border-radius-full;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    color: #fff;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
     cursor: pointer;
-    transition: all $transition-base;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, opacity 0.2s ease;
 
     &:hover:not(:disabled) {
-      background-color: rgba(255, 255, 255, 0.35);
-      transform: scale(1.05);
-      border-color: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
     }
 
     &:active:not(:disabled) {
-      transform: scale(0.95);
+      transform: scale(0.9);
     }
 
     &:focus-visible {
-      outline: 2px solid $color-primary-500;
+      outline: 2px solid #ffffff;
       outline-offset: 2px;
     }
 
-    &--disabled {
+    &--disabled,
+    &:disabled {
       opacity: 0.3;
       cursor: not-allowed;
     }
+  }
 
-    svg {
+  // ==========================================
+  // ARROW ICONS - SVG images
+  // ==========================================
+  &__arrow-icon {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1); // Make white
+
+    @media (min-width: 480px) {
       width: 24px;
       height: 24px;
+    }
+
+    @media (min-width: 768px) {
+      width: 26px;
+      height: 26px;
     }
   }
 }

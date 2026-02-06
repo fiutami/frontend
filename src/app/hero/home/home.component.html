@@ -1,28 +1,9 @@
-<div class="home">
-  <!-- Background Image with Overlay -->
-  <app-page-background
-    imageName="auth-bg"
-    overlayOpacity="light">
-  </app-page-background>
-
-  <!-- Header -->
-  <header class="home__header">
-    <!-- Spacer per bilanciare il layout -->
-    <div class="home__header-spacer"></div>
-
-    <div class="home__header-actions">
-      <!-- Menu avatar (apre drawer con profilo e impostazioni) -->
-      <app-avatar-button size="large" mode="pet" class="home__avatar-btn"></app-avatar-button>
-    </div>
-  </header>
-
-  <!-- Logo FIUTAMI -->
-  <div class="home__branding">
-    <app-logo variant="color" size="lg"></app-logo>
-  </div>
+<app-tab-page-shell-fiuto
+  activeTabId="home"
+  [showBack]="false">
 
   <!-- Main content -->
-  <main class="home__content">
+  <div class="home__content">
     <!-- Greeting Section -->
     <section class="home__greeting">
       <h1 class="home__greeting-title">
@@ -47,16 +28,9 @@
 
       <app-notification-bell [count]="unreadNotifications()"></app-notification-bell>
     </div>
-  </main>
+  </div>
 
-  <!-- Fiuto Mascot Peek (draggable from right edge) -->
-  <app-mascot-peek
-    #mascotPeek
-    [hidden]="showMascotSheet()"
-    (mascotTapped)="onMascotClick()">
-  </app-mascot-peek>
-
-  <!-- Mascot Bottom Sheet (AI Mode) -->
+  <!-- Mascot Bottom Sheet (AI Mode) - fuori dalla shell perché custom -->
   <app-mascot-bottom-sheet
     [isOpen]="showMascotSheet()"
     [hideMascot]="true"
@@ -68,6 +42,4 @@
     (chatMessage)="onChatMessage($event)">
   </app-mascot-bottom-sheet>
 
-  <!-- Bottom Tab Bar (Blue) - hidden in AI Mode -->
-  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'home'" [hidden]="isAiModeActive()"></app-bottom-tab-bar>
-</div>
+</app-tab-page-shell-fiuto>

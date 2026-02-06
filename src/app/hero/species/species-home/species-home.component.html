@@ -1,43 +1,21 @@
-<div class="species-page">
-  <!-- Background -->
-  <app-page-background
-    imageName="auth-bg"
-    overlayOpacity="medium">
-  </app-page-background>
+<!-- Usa TabPageShellDefault: Avatar, Logo, MascotPeek, TabBar sono automatici -->
+<app-tab-page-shell-default
+  title="Specie"
+  activeTabId="species"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-  <!-- Header -->
-  <header class="species-page__header">
-    <button
-      class="species-page__back-btn"
-      (click)="goBack()"
-      aria-label="Torna indietro"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-      </svg>
-    </button>
-    <h1 class="species-page__title">Specie</h1>
-    <app-avatar-button size="medium" mode="pet"></app-avatar-button>
-  </header>
-
-  <!-- Logo Branding -->
-  <div class="species-page__branding">
-    <app-logo variant="color" size="md"></app-logo>
-  </div>
-
-  <!-- Section Navigator -->
-  <app-section-navigator
+  <!-- Section Navigator (dentro blu, sotto logo) -->
+  <app-section-navigator shellBrandingExtra
     [sections]="sections"
     [currentIndex]="currentSectionIndex()"
     (indexChange)="onSectionChange($event)">
   </app-section-navigator>
 
   <!-- Main content (swipeable) -->
-  <main
-    class="species-page__content"
+  <div class="species-content"
     (touchstart)="onTouchStart($event)"
-    (touchend)="onTouchEnd($event)"
-  >
+    (touchend)="onTouchEnd($event)">
     @switch (currentSectionIndex()) {
       @case (0) {
         <app-species-grid></app-species-grid>
@@ -49,27 +27,6 @@
         <app-your-breed></app-your-breed>
       }
     }
-  </main>
+  </div>
 
-  <!-- Mascot Peek -->
-  <app-mascot-peek
-    #mascotPeek
-    [hidden]="showMascotSheet()"
-    (mascotTapped)="onMascotClick()">
-  </app-mascot-peek>
-
-  <!-- Mascot Bottom Sheet -->
-  <app-mascot-bottom-sheet
-    [isOpen]="showMascotSheet()"
-    [hideMascot]="true"
-    [aiMessage]="'Ciao! Come posso aiutarti?'"
-    (closed)="closeMascotSheet()">
-  </app-mascot-bottom-sheet>
-
-  <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar
-    [tabs]="tabs"
-    [activeTabId]="'species'"
-    (tabChange)="onTabClicked($event)">
-  </app-bottom-tab-bar>
-</div>
+</app-tab-page-shell-default>

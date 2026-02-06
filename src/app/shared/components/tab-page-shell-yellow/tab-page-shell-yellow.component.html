@@ -1,0 +1,31 @@
+<app-tab-page-shell
+  [title]="title"
+  backgroundVariant="yellow-solid"
+  [showBack]="showBack"
+  (backClicked)="onBack()">
+
+  <!-- Header Right: Avatar -->
+  <app-avatar-button shellHeaderRight [mode]="avatarMode" />
+
+  <!-- Branding: Logo (senza blue-shape, fluttua su giallo) -->
+  <div shellBranding class="shell-yellow-branding">
+    <app-logo variant="color" class="shell-yellow-branding__logo" />
+    <!-- Slot per contenuto extra -->
+    <ng-content select="[shellBrandingExtra]" />
+  </div>
+
+  <!-- Sticky Content (su giallo) -->
+  <div shellStickyYellow class="shell-yellow-sticky">
+    <ng-content select="[shellStickyContent]" />
+  </div>
+
+  <!-- Main Content (default slot) -->
+  <ng-content />
+
+  <!-- Footer: Mascot + Tab Bar -->
+  <ng-container shellFooter>
+    <app-mascot-peek />
+    <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="activeTabId" />
+  </ng-container>
+
+</app-tab-page-shell>

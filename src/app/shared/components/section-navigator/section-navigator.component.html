@@ -4,11 +4,11 @@
     [class.section-navigator__btn--disabled]="!canGoPrev()"
     [disabled]="!canGoPrev()"
     (click)="prev()"
-    aria-label="Sezione precedente"
-  >
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-    </svg>
+    aria-label="Sezione precedente">
+    <img
+      src="assets/images/species/arrow-left.svg"
+      alt=""
+      class="section-navigator__arrow-icon">
   </button>
 
   <span class="section-navigator__title">{{ currentSection().title }}</span>
@@ -18,10 +18,10 @@
     [class.section-navigator__btn--disabled]="!canGoNext()"
     [disabled]="!canGoNext()"
     (click)="next()"
-    aria-label="Sezione successiva"
-  >
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
-    </svg>
+    aria-label="Sezione successiva">
+    <img
+      src="assets/images/species/arrow-right.svg"
+      alt=""
+      class="section-navigator__arrow-icon">
   </button>
 </nav>

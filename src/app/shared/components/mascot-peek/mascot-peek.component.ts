@@ -167,6 +167,12 @@ export class MascotPeekComponent implements OnDestroy {
   onMascotTap(event: MouseEvent | TouchEvent): void {
     // Only trigger tap if not dragging significantly (< 10px movement)
     if (this.dragDistance < 10 && !this.atSheetPosition()) {
+      // If expanded, collapse back to peek position
+      if (this.isExpanded()) {
+        this.collapse();
+        return;
+      }
+
       // Start fly animation
       this.animatingToSheet.set(true);
 

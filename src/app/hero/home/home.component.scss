@@ -2,166 +2,77 @@
 @import 'src/styles/mixins';
 
 // ===========================================
-// HOME DASHBOARD - Mobile-First Responsive Design
-// Clean home with search bar and mascot
+// HOME DASHBOARD - Migrated to TabPageShellFiuto
 // ===========================================
 
-.home {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+// Main content area
+.home__content {
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: auto;
+  align-items: center;
+  padding: $spacing-md;
+  padding-bottom: $spacing-xl;
 
-  // Header positioning
-  &__header {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $spacing-md;
-
-    @include safe-area-padding($spacing-md, $spacing-md, 0, $spacing-md);
-
-    @include respond(md) {
-      padding: $spacing-lg $spacing-xl;
-    }
+  @include respond(md) {
+    padding: $spacing-lg $spacing-xl;
   }
 
-  // Spacer per bilanciare header con avatar a destra
-  &__header-spacer {
-    width: 48px; // Match avatar button large size
+  @include respond(lg) {
+    max-width: 600px;
+    margin: 0 auto;
   }
+}
 
-  &__header-actions {
-    display: flex;
-    gap: $spacing-sm;
+// ===========================================
+// GREETING SECTION
+// ===========================================
+
+.home__greeting {
+  width: 100%;
+  text-align: center;
+  margin-bottom: $spacing-lg;
+}
+
+.home__greeting-title {
+  font-family: $font-family-body;
+  font-size: 24px;
+  font-weight: 700;
+  color: $color-text-inverse;
+  margin: 0 0 $spacing-xs 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  @include respond(md) {
+    font-size: 28px;
   }
+}
 
-  // Logo FIUTAMI branding
-  &__branding {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: $spacing-sm $spacing-md;
-    z-index: 10;
-    position: relative;
+.home__greeting-subtitle {
+  font-family: $font-family-body;
+  font-size: 16px;
+  font-weight: 400;
+  color: $color-text-inverse;
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
 
-    app-logo ::ng-deep img,
-    app-logo ::ng-deep svg {
-      height: 52px;
-      width: auto;
-    }
+// ===========================================
+// SEARCH ROW (Search + Notification Bell)
+// ===========================================
+
+.home__search-row {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  @include respond(md) {
+    max-width: 500px;
   }
+}
 
-  // Main content area
-  &__content {
-    position: relative;
-    z-index: 10;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: $spacing-md;
-    padding-bottom: calc($tab-bar-height + $spacing-xl + 100px); // Extra space for mascot
-
-    @include respond(md) {
-      padding: $spacing-lg $spacing-xl;
-      padding-bottom: calc($tab-bar-height + $spacing-2xl + 100px);
-    }
-
-    @include respond(lg) {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-  }
-
-  // ===========================================
-  // GREETING SECTION
-  // ===========================================
-
-  &__greeting {
-    width: 100%;
-    text-align: center;
-    margin-bottom: $spacing-lg;
-  }
-
-  &__greeting-title {
-    font-family: $font-family-body;
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0 0 $spacing-xs 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-    @include respond(md) {
-      font-size: 28px;
-    }
-  }
-
-  &__greeting-subtitle {
-    font-family: $font-family-body;
-    font-size: 16px;
-    font-weight: 400;
-    color: $color-text-inverse;
-    margin: 0;
-    opacity: 0.9;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  }
-
-  // ===========================================
-  // SEARCH ROW (Search + Notification Bell)
-  // ===========================================
-
-  &__search-row {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-
-    @include respond(md) {
-      max-width: 500px;
-    }
-  }
-
-  &__search {
-    flex: 1;
-    min-width: 0;
-  }
-
-  // ===========================================
-  // FIUTO MASCOT
-  // ===========================================
-
-  &__mascot {
-    position: fixed;
-    bottom: calc($tab-bar-height + $spacing-md);
-    right: $spacing-md;
-    z-index: 100;
-    cursor: pointer;
-    transition: $transition-fast;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    @include respond(md) {
-      bottom: calc($tab-bar-height + $spacing-lg);
-      right: $spacing-lg;
-    }
-  }
-
-  &__mascot-img {
-    width: 80px;
-    height: auto;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-
-    @include respond(md) {
-      width: 100px;
-    }
-  }
+.home__search {
+  flex: 1;
+  min-width: 0;
 }

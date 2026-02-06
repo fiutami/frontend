@@ -1,139 +1,29 @@
-@import 'src/styles/tokens-figma';
-@import 'src/styles/mixins';
+/**
+ * SpeciesHomeComponent - SCSS
+ *
+ * Usa TabPageShellDefault per layout.
+ * Solo stili specifici del contenuto qui.
+ */
 
-.species-page {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+@use 'src/styles/tokens' as *;
 
-  // Header
-  &__header {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $spacing-md;
+// ==========================================
+// SECTION NAVIGATOR POSITIONING
+// (dentro shellBrandingExtra, z-index gestito da shell)
+// ==========================================
+app-section-navigator {
+  display: block;
+  margin-top: var(--sp-2);
+}
 
-    @include safe-area-padding($spacing-md, $spacing-md, 0, $spacing-md);
+// ==========================================
+// MAIN CONTENT (swipeable area)
+// ==========================================
+.species-content {
+  // Prevent text selection during swipe
+  user-select: none;
+  -webkit-user-select: none;
 
-    @include respond(md) {
-      padding: $spacing-lg $spacing-xl;
-    }
-  }
-
-  &__title {
-    font-family: $font-family-display;
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-    @include respond(md) {
-      font-size: 28px;
-    }
-  }
-
-  &__back-btn {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    border: none;
-    border-radius: 50%;
-    color: $color-text-inverse;
-    cursor: pointer;
-    transition: $transition-fast;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.35);
-    }
-
-    &:active {
-      background: rgba(255, 255, 255, 0.45);
-      transform: scale(0.95);
-    }
-  }
-
-  // Branding
-  &__branding {
-    position: relative;
-    z-index: 20;
-    display: flex;
-    justify-content: center;
-    padding: $spacing-sm 0 $spacing-md;
-
-    @include respond(md) {
-      padding: $spacing-md 0 $spacing-lg;
-    }
-
-    // Logo responsive - BREAKPOINTS: XS:320, SM:576, MD:768, LG:1024, XL:1200
-    ::ng-deep .logo {
-      height: 32px; // XS (320px+)
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-
-      @media (min-width: 576px) {
-        height: 40px; // SM
-      }
-
-      @media (min-width: 768px) {
-        height: 48px; // MD (tablet)
-      }
-
-      @media (min-width: 1024px) {
-        height: 56px; // LG (desktop)
-      }
-
-      @media (min-width: 1200px) {
-        height: 64px; // XL
-      }
-    }
-  }
-
-  // Section Navigator
-  app-section-navigator {
-    position: relative;
-    z-index: 20;
-    display: block;
-  }
-
-  // Main content
-  &__content {
-    position: relative;
-    z-index: 10;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: $spacing-md $spacing-lg;
-    padding-bottom: calc($tab-bar-height + $spacing-lg);
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    // Prevent text selection during swipe
-    user-select: none;
-    -webkit-user-select: none;
-
-    // Smooth scroll
-    -webkit-overflow-scrolling: touch;
-
-    @include respond(md) {
-      padding: $spacing-lg $spacing-xl;
-      padding-bottom: calc($tab-bar-height + $spacing-xl);
-      max-width: 800px;
-      margin: 0 auto;
-      width: 100%;
-    }
-  }
+  // Smooth scroll
+  -webkit-overflow-scrolling: touch;
 }

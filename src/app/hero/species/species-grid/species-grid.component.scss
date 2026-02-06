@@ -6,29 +6,34 @@
   flex-direction: column;
   gap: $spacing-lg;
 
-  // Tagline
+  // Tagline - Montserrat 14px 700 blu (da /breeds)
   &__tagline {
-    font-family: $font-family-display;
-    font-size: 20px;
-    font-weight: 600;
-    color: $color-text-inverse;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.22;
+    color: #4a74f0;
     text-align: center;
     margin: 0;
-    line-height: 1.4;
 
     span {
-      font-family: $font-family-body;
-      font-size: $typography-body-size;
-      font-weight: 400;
-      opacity: 0.9;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.22;
+      color: #4a74f0;
+      display: block;
+      margin-top: 4px;
     }
 
-    @include respond(md) {
-      font-size: 24px;
+    @media (min-width: 480px) {
+      font-size: 15px;
+      span { font-size: 15px; }
+    }
 
-      span {
-        font-size: 18px;
-      }
+    @media (min-width: 768px) {
+      font-size: 16px;
+      span { font-size: 16px; }
     }
   }
 
@@ -95,100 +100,116 @@
     }
   }
 
-  // Grid
+  // Grid - 3 colonne come /breeds
   &__cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-md;
+    grid-template-columns: repeat(3, 112.68px);
+    gap: 8px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 8px 0;
 
-    @include respond(md) {
-      grid-template-columns: repeat(3, 1fr);
-      gap: $spacing-lg;
+    @media (max-width: 370px) {
+      grid-template-columns: repeat(3, 100px);
     }
 
-    @include respond(lg) {
-      grid-template-columns: repeat(4, 1fr);
+    @media (min-width: 480px) {
+      grid-template-columns: repeat(3, 120px);
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 130px);
+      gap: 16px;
     }
   }
 
-  // Card
+  // Card - stile da /breeds (species-card)
   &__card {
+    position: relative;
+    width: 112.68px;
+    height: 120px;
+    border-radius: 22px 0 22px 22px; // Asimmetrico
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.3);
+    cursor: pointer;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: $spacing-lg $spacing-md;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
     border: none;
-    border-radius: $border-radius-lg;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: $transition-fast;
-    min-height: 140px;
+    padding: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
 
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    // Dark overlay per leggibilità testo
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+      border-radius: inherit;
+    }
+
+    &:hover,
+    &:focus {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.35);
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 3px solid #4a74f0;
+      outline-offset: 2px;
     }
 
     &:active {
-      transform: translateY(-2px);
+      transform: translateY(0) scale(0.98);
     }
 
     &--selected {
-      border: 2px solid var(--card-color, $color-primary-500);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15),
-                  0 0 0 4px rgba(var(--card-color, $color-primary-500), 0.2);
+      box-shadow: 0 0 0 3px #4a74f0;
     }
 
-    @include respond(md) {
-      padding: $spacing-xl $spacing-lg;
-      min-height: 160px;
-    }
-  }
-
-  &__card-icon {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--card-color, $color-primary-500);
-    border-radius: 50%;
-    margin-bottom: $spacing-md;
-
-    .material-icons {
-      font-size: 28px;
-      color: $color-text-inverse;
+    @media (max-width: 370px) {
+      width: 100px;
+      height: 107px;
     }
 
-    @include respond(md) {
-      width: 64px;
-      height: 64px;
+    @media (min-width: 480px) {
+      width: 120px;
+      height: 128px;
+    }
 
-      .material-icons {
-        font-size: 32px;
-      }
+    @media (min-width: 768px) {
+      width: 130px;
+      height: 139px;
     }
   }
 
-  &__card-name {
-    font-family: $font-family-body;
-    font-size: $typography-body-size;
-    font-weight: 600;
-    color: $color-text-primary;
-    margin: 0 0 $spacing-xs;
-
-    @include respond(md) {
-      font-size: 18px;
-    }
+  // Label - Montserrat 700, 20px, bianco
+  &__card-label {
+    position: relative;
+    z-index: 1;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.22;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 0 8px;
+    text-transform: uppercase;
   }
 
-  &__card-count {
-    font-family: $font-family-body;
-    font-size: $typography-small-size;
-    color: $color-text-secondary;
+  // Per label lunghe
+  &__card--small-label &__card-label {
+    font-size: 16px;
   }
 
   // No results

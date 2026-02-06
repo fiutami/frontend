@@ -32,14 +32,11 @@
         <button
           class="species-grid__card"
           [class.species-grid__card--selected]="selectedCategory() === category.id"
-          [style.--card-color]="category.color"
+          [class.species-grid__card--small-label]="category.name.length > 7"
+          [style.background-image]="'url(' + category.image + ')'"
           (click)="selectCategory(category)"
-        >
-          <div class="species-grid__card-icon">
-            <span class="material-icons">{{ category.icon }}</span>
-          </div>
-          <h3 class="species-grid__card-name">{{ category.name }}</h3>
-          <span class="species-grid__card-count">{{ category.count }} razze</span>
+          [attr.aria-label]="'Esplora ' + category.name">
+          <span class="species-grid__card-label">{{ category.name }}</span>
         </button>
       }
     </div>

@@ -6,18 +6,13 @@ import {
   OnInit,
   signal,
   computed,
-  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { DrawerService } from '../../shared/components/drawer';
-import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar';
-import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 import { SearchBoxComponent } from '../../shared/components/search-box';
-import { PageBackgroundComponent } from '../../shared/components/page-background';
-import { AvatarButtonComponent } from '../../shared/components/avatar-button';
 import { SharedModule } from '../../shared/shared.module';
 
 import { AuthService } from '../../core/services/auth.service';
@@ -27,7 +22,7 @@ import { DashboardService, Suggestion } from './dashboard.service';
 
 import { NotificationBellComponent } from '../../shared/components/notification-bell/notification-bell.component';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet/mascot-bottom-sheet.component';
-import { MascotPeekComponent } from '../../shared/components/mascot-peek';
+import { TabPageShellFiutoComponent } from '../../shared/components/tab-page-shell-fiuto/tab-page-shell-fiuto.component';
 
 @Component({
   selector: 'app-home',
@@ -36,13 +31,10 @@ import { MascotPeekComponent } from '../../shared/components/mascot-peek';
     CommonModule,
     RouterModule,
     SharedModule,
-    BottomTabBarComponent,
+    TabPageShellFiutoComponent,
     SearchBoxComponent,
-    PageBackgroundComponent,
-    AvatarButtonComponent,
     NotificationBellComponent,
     MascotBottomSheetComponent,
-    MascotPeekComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -92,12 +84,7 @@ export class HomeComponent implements OnInit {
   mascotSuggestions = signal<Suggestion[]>([]);
   isAiModeActive = signal(false);
 
-  // Bottom tab bar - configurazione centralizzata
-  tabs = MAIN_TAB_BAR_CONFIG;
-
-  // ViewChild for mascot-peek to call returnToPeek()
-  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
-
+  
   ngOnInit(): void {
     this.loadDashboardData();
     this.loadUnreadNotificationsCount();
@@ -176,7 +163,7 @@ export class HomeComponent implements OnInit {
 
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
-    this.mascotPeek?.returnToPeek();
+    // TODO: Call returnToPeek() on shell's mascot-peek when sheet closes
   }
 
   onMascotSuggestionClick(suggestion: { actionUrl?: string }): void {

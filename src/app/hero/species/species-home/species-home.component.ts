@@ -3,22 +3,15 @@ import {
   ChangeDetectionStrategy,
   inject,
   signal,
-  ViewChild,
   HostListener,
 } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar';
-import { MascotPeekComponent } from '../../../shared/components/mascot-peek';
-import { MascotBottomSheetComponent } from '../../../shared/components/mascot-bottom-sheet';
-import { AvatarButtonComponent } from '../../../shared/components/avatar-button';
-import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
-import { PageBackgroundComponent } from '../../../shared/components/page-background';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 import { SectionNavigatorComponent, SectionItem } from '../../../shared/components/section-navigator';
 import { SpeciesGridComponent } from '../species-grid';
 import { SpeciesSpecialComponent } from '../species-special';
 import { YourBreedComponent } from '../your-breed';
 import { SharedModule } from '../../../shared/shared.module';
-import { TabItem } from '../../../shared/components/bottom-tab-bar/bottom-tab-bar.models';
 
 @Component({
   selector: 'app-species-home',
@@ -26,11 +19,7 @@ import { TabItem } from '../../../shared/components/bottom-tab-bar/bottom-tab-ba
   imports: [
     CommonModule,
     SharedModule,
-    BottomTabBarComponent,
-    PageBackgroundComponent,
-    MascotPeekComponent,
-    MascotBottomSheetComponent,
-    AvatarButtonComponent,
+    TabPageShellDefaultComponent,
     SectionNavigatorComponent,
     SpeciesGridComponent,
     SpeciesSpecialComponent,
@@ -42,11 +31,6 @@ import { TabItem } from '../../../shared/components/bottom-tab-bar/bottom-tab-ba
 })
 export class SpeciesHomeComponent {
   private readonly location = inject(Location);
-
-  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
-
-  // Mascot sheet state
-  showMascotSheet = signal(false);
 
   // Section navigation
   readonly sections: SectionItem[] = [
@@ -60,9 +44,6 @@ export class SpeciesHomeComponent {
   private touchStartX = 0;
   private touchEndX = 0;
   private readonly swipeThreshold = 50;
-
-  // Bottom tab bar
-  tabs = MAIN_TAB_BAR_CONFIG;
 
   // Navigation
   goBack(): void {
@@ -85,13 +66,6 @@ export class SpeciesHomeComponent {
     const current = this.currentSectionIndex();
     if (current > 0) {
       this.currentSectionIndex.set(current - 1);
-    }
-  }
-
-  // Tab bar handler - reset to index 0 when clicking species tab
-  onTabClicked(tab: TabItem): void {
-    if (tab.id === 'species') {
-      this.currentSectionIndex.set(0);
     }
   }
 
@@ -128,15 +102,5 @@ export class SpeciesHomeComponent {
   @HostListener('swiperight')
   onSwipeRight(): void {
     this.prevSection();
-  }
-
-  // Mascot methods
-  onMascotClick(): void {
-    this.showMascotSheet.set(true);
-  }
-
-  closeMascotSheet(): void {
-    this.showMascotSheet.set(false);
-    this.mascotPeek?.returnToPeek();
   }
 }

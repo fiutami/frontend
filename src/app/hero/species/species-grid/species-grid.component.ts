@@ -11,9 +11,8 @@ import { CommonModule } from '@angular/common';
 export interface SpeciesCategory {
   id: string;
   name: string;
-  icon: string;
+  image: string;
   count: number;
-  color: string;
 }
 
 @Component({
@@ -39,14 +38,18 @@ export class SpeciesGridComponent implements OnInit {
   private loadCategories(): void {
     setTimeout(() => {
       this.categories.set([
-        { id: 'dogs', name: 'Cani', icon: 'pets', count: 350, color: '#F5A623' },
-        { id: 'cats', name: 'Gatti', icon: 'pets', count: 280, color: '#4A90E2' },
-        { id: 'birds', name: 'Uccelli', icon: 'flutter_dash', count: 120, color: '#7ED321' },
-        { id: 'rodents', name: 'Roditori', icon: 'pest_control_rodent', count: 85, color: '#9B59B6' },
-        { id: 'reptiles', name: 'Rettili', icon: 'pest_control', count: 45, color: '#E74C3C' },
-        { id: 'fish', name: 'Pesci', icon: 'water', count: 200, color: '#3498DB' },
-        { id: 'horses', name: 'Cavalli', icon: 'sports_mma', count: 30, color: '#8B4513' },
-        { id: 'exotic', name: 'Esotici', icon: 'eco', count: 60, color: '#1ABC9C' },
+        // Row 1
+        { id: 'dogs', name: 'Cane', image: 'assets/images/species/species-cane.png', count: 350 },
+        { id: 'horses', name: 'Cavallo', image: 'assets/images/species/species-cavallo.png', count: 30 },
+        { id: 'fish', name: 'Pesci', image: 'assets/images/species/species-pesci.png', count: 200 },
+        // Row 2
+        { id: 'cats', name: 'Gatto', image: 'assets/images/species/species-gatto.png', count: 280 },
+        { id: 'frogs', name: 'Rana', image: 'assets/images/species/species-rana.png', count: 25 },
+        { id: 'birds', name: 'Pappagalli', image: 'assets/images/species/species-pappagalli.png', count: 120 },
+        // Row 3
+        { id: 'bees', name: 'Api', image: 'assets/images/species/species-api.png', count: 15 },
+        { id: 'reptiles', name: 'Serpenti', image: 'assets/images/species/species-serpenti.png', count: 45 },
+        { id: 'turtles', name: 'Tartarughe', image: 'assets/images/species/species-tartarughe.png', count: 60 },
       ]);
       this.isLoading.set(false);
     }, 500);

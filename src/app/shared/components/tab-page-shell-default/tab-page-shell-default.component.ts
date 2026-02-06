@@ -67,7 +67,7 @@ export class TabPageShellDefaultComponent {
   @Input() avatarMode: 'pet' | 'user' = 'pet';
 
   /** Variante background (default: tab-menu) */
-  @Input() backgroundVariant: 'tab-menu' | 'blue-solid' | 'yellow-solid' | 'profile-pet' = 'tab-menu';
+  @Input() backgroundVariant: 'tab-menu' | 'blue-solid' | 'yellow-solid' | 'profile-pet' | 'image' = 'tab-menu';
 
   /** Emesso quando si clicca back */
   @Output() backClicked = new EventEmitter<void>();

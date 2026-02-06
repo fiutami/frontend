@@ -49,7 +49,13 @@ export class TabPageShellComponent {
   @Input() showBack = true;
 
   /** Variante background */
-  @Input() backgroundVariant: 'tab-menu' | 'blue-solid' | 'yellow-solid' | 'profile-pet' = 'tab-menu';
+  @Input() backgroundVariant: 'tab-menu' | 'blue-solid' | 'yellow-solid' | 'profile-pet' | 'image' = 'tab-menu';
+
+  /** Nome immagine (solo per variant='image') */
+  @Input() imageName = 'auth-bg';
+
+  /** Opacità overlay (solo per variant='image') */
+  @Input() overlayOpacity: 'none' | 'light' | 'medium' | 'dark' = 'light';
 
   /** Emesso quando si clicca back */
   @Output() backClicked = new EventEmitter<void>();

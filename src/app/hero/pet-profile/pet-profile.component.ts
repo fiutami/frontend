@@ -5,20 +5,16 @@ import {
   OnInit,
   signal,
   ChangeDetectorRef,
-  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
-import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar';
-import { AvatarButtonComponent } from '../../shared/components/avatar-button';
-import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 import {
   PetInfoCardComponent,
   PetInfoItem,
 } from '../../shared/components/pet-info-card';
 import { SpeechBubbleComponent } from '../../shared/components/speech-bubble';
-import { MascotPeekComponent } from '../../shared/components/mascot-peek';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
+import { TabPageShellBlueComponent } from '../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 import { PetService } from '../../core/services/pet.service';
 import { PetResponse } from '../../core/models/pet.models';
 
@@ -46,11 +42,9 @@ export interface FriendPet {
   imports: [
     CommonModule,
     RouterModule,
-    BottomTabBarComponent,
-    AvatarButtonComponent,
+    TabPageShellBlueComponent,
     PetInfoCardComponent,
     SpeechBubbleComponent,
-    MascotPeekComponent,
     MascotBottomSheetComponent,
   ],
   templateUrl: './pet-profile.component.html',
@@ -65,7 +59,6 @@ export class PetProfileComponent implements OnInit {
 
   // Mascot sheet state
   showMascotSheet = signal(false);
-  @ViewChild('mascotPeek') mascotPeek!: MascotPeekComponent;
 
   // Loading and error state
   isLoading = signal(false);
@@ -86,9 +79,7 @@ export class PetProfileComponent implements OnInit {
   // Info card data for PetInfoCardComponent
   petInfoItems: PetInfoItem[] = [];
 
-  // Bottom tab bar - configurazione centralizzata
-  tabs = MAIN_TAB_BAR_CONFIG;
-
+  
   // Online friends
   onlineFriends: FriendPet[] = [
     { id: '1', name: 'Luna', avatarUrl: 'assets/images/default-pet-avatar.png', online: true },
@@ -259,12 +250,8 @@ export class PetProfileComponent implements OnInit {
   }
 
   // Mascot methods
-  onMascotClick(): void {
-    this.showMascotSheet.set(true);
-  }
-
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
-    this.mascotPeek?.returnToPeek();
+    // TODO: Call returnToPeek() on shell's mascot-peek when sheet closes
   }
 }
