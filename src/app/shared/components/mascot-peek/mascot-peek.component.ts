@@ -167,24 +167,17 @@ export class MascotPeekComponent implements OnDestroy {
   onMascotTap(event: MouseEvent | TouchEvent): void {
     // Only trigger tap if not dragging significantly (< 10px movement)
     if (this.dragDistance < 10 && !this.atSheetPosition()) {
-      // If expanded, collapse back to peek position
+      // If expanded (bubble visible), collapse back to peek position
       if (this.isExpanded()) {
         this.collapse();
         return;
       }
 
-      // Start fly animation
-      this.animatingToSheet.set(true);
-
-      // Hide bubble immediately
-      this.isExpanded.set(false);
-
-      // After animation, stay at sheet position
-      setTimeout(() => {
-        this.animatingToSheet.set(false);
-        this.atSheetPosition.set(true);
-        this.mascotTapped.emit();
-      }, 600);
+      // If NOT expanded, expand to show bubble (first click)
+      this.targetOffset = this.MAX_DRAG;
+      this.isExpanded.set(true);
+      this.velocity = 0;
+      this.animateSpring();
     }
   }
 
