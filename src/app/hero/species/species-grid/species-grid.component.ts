@@ -5,6 +5,8 @@ import {
   OnInit,
   Output,
   EventEmitter,
+  Input,
+  computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -27,7 +29,9 @@ export class SpeciesGridComponent implements OnInit {
   readonly categories = signal<SpeciesCategory[]>([]);
   readonly isLoading = signal(true);
   readonly selectedCategory = signal<string | null>(null);
-  readonly searchQuery = signal('');
+
+  /** Search query passed from parent */
+  @Input() searchQuery = '';
 
   @Output() categorySelected = new EventEmitter<SpeciesCategory>();
 
@@ -60,13 +64,8 @@ export class SpeciesGridComponent implements OnInit {
     this.categorySelected.emit(category);
   }
 
-  onSearchInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.searchQuery.set(input.value);
-  }
-
   get filteredCategories(): SpeciesCategory[] {
-    const query = this.searchQuery().toLowerCase();
+    const query = (this.searchQuery || '').toLowerCase();
     if (!query) {
       return this.categories();
     }

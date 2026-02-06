@@ -17,6 +17,84 @@ app-section-navigator {
 }
 
 // ==========================================
+// STICKY SECTION (tagline + search, non scrolla)
+// ==========================================
+.species-sticky {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: 0 var(--sp-4);
+
+  // Tagline - Montserrat 14px 700 blu
+  &__tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.22;
+    color: #4a74f0;
+    text-align: center;
+    margin: 0;
+
+    span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.22;
+      color: #4a74f0;
+      display: block;
+      margin-top: 4px;
+    }
+
+    @media (min-width: 480px) {
+      font-size: 15px;
+      span { font-size: 15px; }
+    }
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+      span { font-size: 16px; }
+    }
+  }
+
+  // Search bar
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: var(--sp-3);
+    color: var(--text-secondary, #666);
+    pointer-events: none;
+  }
+
+  &__search-input {
+    width: 100%;
+    padding: var(--sp-2) var(--sp-3) var(--sp-2) 48px;
+    font-family: var(--font-body, sans-serif);
+    font-size: 14px;
+    color: var(--text-primary, #333);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder {
+      color: var(--text-secondary, #999);
+    }
+
+    &:focus {
+      border-color: #4a74f0;
+      box-shadow: 0 0 0 4px rgba(74, 116, 240, 0.2);
+    }
+  }
+}
+
+// ==========================================
 // MAIN CONTENT (swipeable area)
 // ==========================================
 .species-content {

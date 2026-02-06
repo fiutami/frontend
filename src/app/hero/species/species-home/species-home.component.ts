@@ -40,6 +40,9 @@ export class SpeciesHomeComponent {
   ];
   readonly currentSectionIndex = signal(0);
 
+  // Search
+  readonly searchQuery = signal('');
+
   // Swipe tracking
   private touchStartX = 0;
   private touchEndX = 0;
@@ -48,6 +51,12 @@ export class SpeciesHomeComponent {
   // Navigation
   goBack(): void {
     this.location.back();
+  }
+
+  // Search
+  onSearchInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchQuery.set(input.value);
   }
 
   // Section navigation
