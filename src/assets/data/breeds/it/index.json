@@ -1,31 +1,20 @@
 {
-  "generated": "2026-01-20T15:31:09.410Z",
+  "generated": "2026-01-27T17:07:17.959Z",
   "lang": "it",
   "stats": {
     "categories": 5,
     "species": 19,
-    "breeds": 500
+    "breeds": 293
   },
   "categories": {
     "invertebrati": {
       "species": {
-        "ape": [
-          {
-            "id": "descrizione-razze",
-            "name": "DESCRIZIONE razze:",
-            "image": "🐝"
-          }
-        ]
+        "ape": []
       }
     },
     "mammiferi": {
       "species": {
         "cane": [
-          {
-            "id": "affenpinscher-gia-descritto",
-            "name": "Affenpinscher (già descritto)",
-            "image": "🐕"
-          },
           {
             "id": "affenpinscher",
             "name": "Affenpinscher",
@@ -37,23 +26,13 @@
             "image": "🐕"
           },
           {
-            "id": "airedale-terrier",
-            "name": "Airedale Terrier",
-            "image": "🐕"
-          },
-          {
             "id": "alano-espanol",
-            "name": "Alano Español",
+            "name": "Alano Espanol",
             "image": "🐕"
           },
           {
             "id": "alaskan-malamute",
             "name": "Alaskan Malamute",
-            "image": "🐕"
-          },
-          {
-            "id": "american-cocker-spaniel",
-            "name": "American Cocker Spaniel",
             "image": "🐕"
           },
           {
@@ -67,23 +46,18 @@
             "image": "🐕"
           },
           {
-            "id": "american-staffordshire-terrier",
-            "name": "American Staffordshire Terrier",
-            "image": "🐕"
-          },
-          {
             "id": "american-water-spaniel",
             "name": "American Water Spaniel",
             "image": "🐕"
           },
           {
             "id": "anatolian-shepherd-dog-kangal",
-            "name": "Anatolian Shepherd Dog (Kangal)",
+            "name": "Anatolian Shepherd Dog Kangal",
             "image": "🐕"
           },
           {
             "id": "anglo-francais-de-petite-venerie",
-            "name": "Anglo-Français de Petite Vénerie",
+            "name": "Anglo Francais De Petite Venerie",
             "image": "🐕"
           },
           {
@@ -112,11 +86,6 @@
             "image": "🐕"
           },
           {
-            "id": "australian-terrier",
-            "name": "Australian Terrier",
-            "image": "🐕"
-          },
-          {
             "id": "austrian-pinscher",
             "name": "Austrian Pinscher",
             "image": "🐕"
@@ -133,7 +102,7 @@
           },
           {
             "id": "barzoi-levrier-russo",
-            "name": "Barzoi (Levrier Russo)",
+            "name": "Barzoi Levrier Russo",
             "image": "🐕"
           },
           {
@@ -148,12 +117,12 @@
           },
           {
             "id": "basset-bleu-de-gascogne",
-            "name": "Basset Bleu de Gascogne",
+            "name": "Basset Bleu De Gascogne",
             "image": "🐕"
           },
           {
             "id": "basset-fauve-de-bretagne",
-            "name": "Basset Fauve de Bretagne",
+            "name": "Basset Fauve De Bretagne",
             "image": "🐕"
           },
           {
@@ -177,13 +146,8 @@
             "image": "🐕"
           },
           {
-            "id": "bedlington-terrier",
-            "name": "Bedlington Terrier",
-            "image": "🐕"
-          },
-          {
             "id": "belgian-shepherd-dog-malinois-tervuren-groenendael-laekenois",
-            "name": "Belgian Shepherd Dog (Malinois, Tervuren, Groenendael, Laekenois)",
+            "name": "Belgian Shepherd Dog Malinois Tervuren Groenendael Laekenois",
             "image": "🐕"
           },
           {
@@ -193,7 +157,7 @@
           },
           {
             "id": "berger-blanc-suisse-pastore-svizzero-bianco",
-            "name": "Berger Blanc Suisse (Pastore Svizzero Bianco)",
+            "name": "Berger Blanc Suisse Pastore Svizzero Bianco",
             "image": "🐕"
           },
           {
@@ -203,17 +167,17 @@
           },
           {
             "id": "bichon-frise",
-            "name": "Bichon Frisé",
+            "name": "Bichon Frise",
             "image": "🐕"
           },
           {
             "id": "bleu-de-gascogne",
-            "name": "Bleu de Gascogne",
+            "name": "Bleu De Gascogne",
             "image": "🐕"
           },
           {
             "id": "bloodhound-chien-de-saint-hubert",
-            "name": "Bloodhound (Chien de Saint-Hubert)",
+            "name": "Bloodhound Chien De Saint Hubert",
             "image": "🐕"
           },
           {
@@ -227,18 +191,13 @@
             "image": "🐕"
           },
           {
-            "id": "border-terrier",
-            "name": "Border Terrier",
-            "image": "🐕"
-          },
-          {
             "id": "bouvier-des-ardennes",
-            "name": "Bouvier des Ardennes",
+            "name": "Bouvier Des Ardennes",
             "image": "🐕"
           },
           {
             "id": "bouvier-des-flandres",
-            "name": "Bouvier des Flandres",
+            "name": "Bouvier Des Flandres",
             "image": "🐕"
           },
           {
@@ -253,22 +212,22 @@
           },
           {
             "id": "braque-d-auvergne",
-            "name": "Braque d'Auvergne",
+            "name": "Braque D Auvergne",
             "image": "🐕"
           },
           {
             "id": "braque-du-bourbonnais",
-            "name": "Braque du Bourbonnais",
+            "name": "Braque Du Bourbonnais",
             "image": "🐕"
           },
           {
             "id": "braque-francais-gascogne-pyrenees",
-            "name": "Braque Français (Gascogne, Pyrénées)",
+            "name": "Braque Francais Gascogne Pyrenees",
             "image": "🐕"
           },
           {
             "id": "braque-saint-germain",
-            "name": "Braque Saint-Germain",
+            "name": "Braque Saint Germain",
             "image": "🐕"
           },
           {
@@ -313,22 +272,22 @@
           },
           {
             "id": "cao-da-serra-da-estrela",
-            "name": "Cão da Serra da Estrela",
+            "name": "Cao Da Serra Da Estrela",
             "image": "🐕"
           },
           {
             "id": "cao-da-serra-de-aires",
-            "name": "Cao da Serra de Aires",
+            "name": "Cao Da Serra De Aires",
             "image": "🐕"
           },
           {
             "id": "cao-de-castro-laboreiro",
-            "name": "Cão de Castro Laboreiro",
+            "name": "Cao De Castro Laboreiro",
             "image": "🐕"
           },
           {
             "id": "catalan-sheepdog-gos-d-atura-catala",
-            "name": "Catalan Sheepdog (Gos d'Atura Català)",
+            "name": "Catalan Sheepdog Gos D Atura Catala",
             "image": "🐕"
           },
           {
@@ -373,7 +332,7 @@
           },
           {
             "id": "cirneco-dell-etna",
-            "name": "Cirneco dell’Etna",
+            "name": "Cirneco Dell Etna",
             "image": "🐕"
           },
           {
@@ -393,12 +352,12 @@
           },
           {
             "id": "collie-rough",
-            "name": "Collie (Rough)",
+            "name": "Collie Rough",
             "image": "🐕"
           },
           {
             "id": "collie-smooth",
-            "name": "Collie (Smooth)",
+            "name": "Collie Smooth",
             "image": "🐕"
           },
           {
@@ -408,22 +367,12 @@
           },
           {
             "id": "curly-coated-retriever",
-            "name": "Curly-Coated Retriever",
-            "image": "🐕"
-          },
-          {
-            "id": "dachshund-bassotto-tedesco",
-            "name": "Dachshund / Bassotto Tedesco",
+            "name": "Curly Coated Retriever",
             "image": "🐕"
           },
           {
             "id": "deerhound-scozzese",
             "name": "Deerhound Scozzese",
-            "image": "🐕"
-          },
-          {
-            "id": "descrizione-gruppo-1",
-            "name": "DESCRIZIONE GRUPPO 1",
             "image": "🐕"
           },
           {
@@ -448,12 +397,12 @@
           },
           {
             "id": "dogo-canario-presa-canario",
-            "name": "Dogo Canario (Presa Canario)",
+            "name": "Dogo Canario Presa Canario",
             "image": "🐕"
           },
           {
             "id": "dogue-de-bordeaux",
-            "name": "Dogue de Bordeaux",
+            "name": "Dogue De Bordeaux",
             "image": "🐕"
           },
           {
@@ -508,17 +457,17 @@
           },
           {
             "id": "epagneul-bleu-de-picardie",
-            "name": "Épagneul Bleu de Picardie",
+            "name": "Epagneul Bleu De Picardie",
             "image": "🐕"
           },
           {
             "id": "epagneul-picard",
-            "name": "Épagneul Picard",
+            "name": "Epagneul Picard",
             "image": "🐕"
           },
           {
             "id": "epagneul-pont-audemer",
-            "name": "Épagneul Pont-Audemer",
+            "name": "Epagneul Pont Audemer",
             "image": "🐕"
           },
           {
@@ -548,7 +497,7 @@
           },
           {
             "id": "flat-coated-retriever",
-            "name": "Flat-Coated Retriever",
+            "name": "Flat Coated Retriever",
             "image": "🐕"
           },
           {
@@ -563,12 +512,12 @@
           },
           {
             "id": "german-shepherd-dog-pastore-tedesco",
-            "name": "German Shepherd Dog (Pastore Tedesco)",
+            "name": "German Shepherd Dog Pastore Tedesco",
             "image": "🐕"
           },
           {
             "id": "german-spaniel-deutsche-wachtelhund",
-            "name": "German Spaniel (Deutsche Wachtelhund)",
+            "name": "German Spaniel Deutsche Wachtelhund",
             "image": "🐕"
           },
           {
@@ -583,12 +532,12 @@
           },
           {
             "id": "grand-bleu-de-gascogne",
-            "name": "Grand Bleu de Gascogne",
+            "name": "Grand Bleu De Gascogne",
             "image": "🐕"
           },
           {
             "id": "great-dane-alano-tedesco",
-            "name": "Great Dane (Alano Tedesco)",
+            "name": "Great Dane Alano Tedesco",
             "image": "🐕"
           },
           {
@@ -607,53 +556,8 @@
             "image": "🐕"
           },
           {
-            "id": "gruppo-10",
-            "name": "GRUPPO 10",
-            "image": "🐕"
-          },
-          {
-            "id": "gruppo-2",
-            "name": "GRUPPO 2",
-            "image": "🐕"
-          },
-          {
-            "id": "gruppo-3",
-            "name": "GRUPPO 3",
-            "image": "🐕"
-          },
-          {
-            "id": "gruppo-4-bassotti-dachshund",
-            "name": "Gruppo 4 – Bassotti (Dachshund)",
-            "image": "🐕"
-          },
-          {
-            "id": "gruppo-5-spitz-e-razze-primitive",
-            "name": "Gruppo 5 – Spitz e Razze Primitive",
-            "image": "🐕"
-          },
-          {
-            "id": "gruppo-6",
-            "name": "GRUPPO 6",
-            "image": "🐕"
-          },
-          {
-            "id": "gruppo-7",
-            "name": "GRUPPO 7",
-            "image": "🐕"
-          },
-          {
-            "id": "gruppo-8",
-            "name": "GRUPPO 8",
-            "image": "🐕"
-          },
-          {
-            "id": "gruppo-9",
-            "name": "GRUPPO 9",
-            "image": "🐕"
-          },
-          {
             "id": "hamiltonstovare",
-            "name": "Hamiltonstövare",
+            "name": "Hamiltonstovare",
             "image": "🐕"
           },
           {
@@ -678,17 +582,12 @@
           },
           {
             "id": "irish-red-and-white-setter",
-            "name": "Irish Red and White Setter",
+            "name": "Irish Red And White Setter",
             "image": "🐕"
           },
           {
             "id": "irish-setter",
             "name": "Irish Setter",
-            "image": "🐕"
-          },
-          {
-            "id": "irish-terrier",
-            "name": "Irish Terrier",
             "image": "🐕"
           },
           {
@@ -703,17 +602,12 @@
           },
           {
             "id": "istrian-coarse-haired-hound",
-            "name": "Istrian Coarse-haired Hound",
+            "name": "Istrian Coarse Haired Hound",
             "image": "🐕"
           },
           {
             "id": "istrian-shorthaired-hound",
             "name": "Istrian Shorthaired Hound",
-            "image": "🐕"
-          },
-          {
-            "id": "italian-greyhound",
-            "name": "Italian Greyhound",
             "image": "🐕"
           },
           {
@@ -739,11 +633,6 @@
           {
             "id": "keeshond",
             "name": "Keeshond",
-            "image": "🐕"
-          },
-          {
-            "id": "kerry-blue-terrier",
-            "name": "Kerry Blue Terrier",
             "image": "🐕"
           },
           {
@@ -773,17 +662,12 @@
           },
           {
             "id": "laika-vari-tipi-russi",
-            "name": "Laika (vari tipi russi)",
-            "image": "🐕"
-          },
-          {
-            "id": "lakeland-terrier",
-            "name": "Lakeland Terrier",
+            "name": "Laika Vari Tipi Russi",
             "image": "🐕"
           },
           {
             "id": "large-munsterlander",
-            "name": "Large Münsterländer",
+            "name": "Large Munsterlander",
             "image": "🐕"
           },
           {
@@ -793,7 +677,7 @@
           },
           {
             "id": "magyar-agar-ungherese",
-            "name": "Magyar Agar (Ungherese)",
+            "name": "Magyar Agar Ungherese",
             "image": "🐕"
           },
           {
@@ -807,13 +691,8 @@
             "image": "🐕"
           },
           {
-            "id": "manchester-terrier",
-            "name": "Manchester Terrier",
-            "image": "🐕"
-          },
-          {
             "id": "maremma-and-abruzzese-sheepdog",
-            "name": "Maremma and Abruzzese Sheepdog",
+            "name": "Maremma And Abruzzese Sheepdog",
             "image": "🐕"
           },
           {
@@ -858,7 +737,7 @@
           },
           {
             "id": "norwegian-lundehund-anche-gruppo-5",
-            "name": "Norwegian Lundehund (anche Gruppo 5)",
+            "name": "Norwegian Lundehund Anche Gruppo 5",
             "image": "🐕"
           },
           {
@@ -887,23 +766,18 @@
             "image": "🐕"
           },
           {
-            "id": "parson-russell-terrier",
-            "name": "Parson Russell Terrier",
-            "image": "🐕"
-          },
-          {
             "id": "pekingese",
             "name": "Pekingese",
             "image": "🐕"
           },
           {
             "id": "perdiguero-de-burgos",
-            "name": "Perdiguero de Burgos",
+            "name": "Perdiguero De Burgos",
             "image": "🐕"
           },
           {
             "id": "perro-de-presa-canario",
-            "name": "Perro de Presa Canario",
+            "name": "Perro De Presa Canario",
             "image": "🐕"
           },
           {
@@ -913,7 +787,7 @@
           },
           {
             "id": "petit-brabancon",
-            "name": "Petit Brabançon",
+            "name": "Petit Brabancon",
             "image": "🐕"
           },
           {
@@ -923,7 +797,7 @@
           },
           {
             "id": "picardy-sheepdog-berger-picard",
-            "name": "Picardy Sheepdog (Berger Picard)",
+            "name": "Picardy Sheepdog Berger Picard",
             "image": "🐕"
           },
           {
@@ -938,7 +812,7 @@
           },
           {
             "id": "polish-hunting-dog-ogar-polski",
-            "name": "Polish Hunting Dog (Ogar Polski)",
+            "name": "Polish Hunting Dog Ogar Polski",
             "image": "🐕"
           },
           {
@@ -958,7 +832,7 @@
           },
           {
             "id": "pomsky-incrocio-non-ufficiale",
-            "name": "Pomsky (incrocio non ufficiale)",
+            "name": "Pomsky Incrocio Non Ufficiale",
             "image": "🐕"
           },
           {
@@ -968,7 +842,7 @@
           },
           {
             "id": "portuguese-greyhound-galgo-portugues",
-            "name": "Portuguese Greyhound (Galgo Português)",
+            "name": "Portuguese Greyhound Galgo Portugues",
             "image": "🐕"
           },
           {
@@ -978,7 +852,7 @@
           },
           {
             "id": "pug-carlino",
-            "name": "Pug (Carlino)",
+            "name": "Pug Carlino",
             "image": "🐕"
           },
           {
@@ -998,12 +872,12 @@
           },
           {
             "id": "pyrenean-shepherd-face-rase-e-museau-normal",
-            "name": "Pyrenean Shepherd (face rase e museau normal)",
+            "name": "Pyrenean Shepherd Face Rase E Museau Normal",
             "image": "🐕"
           },
           {
             "id": "riesenschnauzer-giant-schnauzer",
-            "name": "Riesenschnauzer (Giant Schnauzer)",
+            "name": "Riesenschnauzer Giant Schnauzer",
             "image": "🐕"
           },
           {
@@ -1023,7 +897,7 @@
           },
           {
             "id": "saint-bernard-pelo-lungo-e-corto",
-            "name": "Saint Bernard (pelo lungo e corto)",
+            "name": "Saint Bernard Pelo Lungo E Corto",
             "image": "🐕"
           },
           {
@@ -1043,32 +917,27 @@
           },
           {
             "id": "schillerstovare",
-            "name": "Schillerstövare",
+            "name": "Schillerstovare",
             "image": "🐕"
           },
           {
             "id": "schnauzer-standard",
-            "name": "Schnauzer (Standard)",
-            "image": "🐕"
-          },
-          {
-            "id": "scottish-deerhound",
-            "name": "Scottish Deerhound",
+            "name": "Schnauzer Standard",
             "image": "🐕"
           },
           {
             "id": "segugio-italiano-a-pelo-forte",
-            "name": "Segugio Italiano a Pelo Forte",
+            "name": "Segugio Italiano A Pelo Forte",
             "image": "🐕"
           },
           {
             "id": "segugio-italiano-a-pelo-raso",
-            "name": "Segugio Italiano a Pelo Raso",
+            "name": "Segugio Italiano A Pelo Raso",
             "image": "🐕"
           },
           {
             "id": "segugio-italiano-varie-razze-da-caccia",
-            "name": "Segugio Italiano (varie razze da caccia)",
+            "name": "Segugio Italiano Varie Razze Da Caccia",
             "image": "🐕"
           },
           {
@@ -1118,12 +987,12 @@
           },
           {
             "id": "slovakian-rough-haired-pointer",
-            "name": "Slovakian Rough-haired Pointer",
+            "name": "Slovakian Rough Haired Pointer",
             "image": "🐕"
           },
           {
             "id": "small-munsterlander",
-            "name": "Small Münsterländer",
+            "name": "Small Munsterlander",
             "image": "🐕"
           },
           {
@@ -1142,13 +1011,8 @@
             "image": "🐕"
           },
           {
-            "id": "spinone-italiano",
-            "name": "Spinone Italiano",
-            "image": "🐕"
-          },
-          {
             "id": "styrian-coarse-haired-hound",
-            "name": "Styrian Coarse-haired Hound",
+            "name": "Styrian Coarse Haired Hound",
             "image": "🐕"
           },
           {
@@ -1217,11 +1081,6 @@
             "image": "🐕"
           },
           {
-            "id": "welsh-terrier",
-            "name": "Welsh Terrier",
-            "image": "🐕"
-          },
-          {
             "id": "west-highland-white-terrier",
             "name": "West Highland White Terrier",
             "image": "🐕"
@@ -1247,813 +1106,252 @@
             "image": "🐕"
           }
         ],
-        "cavia": [
-          {
-            "id": "alpaca",
-            "name": "Alpaca",
-            "image": "🐹"
-          },
-          {
-            "id": "angora-o-mohair-guinea-pig",
-            "name": "Angora (o Mohair Guinea Pig)",
-            "image": "🐹"
-          },
-          {
-            "id": "coronet",
-            "name": "Coronet",
-            "image": "🐹"
-          },
-          {
-            "id": "descrizione-cavia",
-            "name": "DESCRIZIONE CAVIA",
-            "image": "🐹"
-          },
-          {
-            "id": "descrizione-porcellini-d-india",
-            "name": "DESCRIZIONE PORCELLINI D’INDIA",
-            "image": "🐹"
-          },
-          {
-            "id": "lunkarya",
-            "name": "Lunkarya",
-            "image": "🐹"
-          },
-          {
-            "id": "meerschweinchen-a-pelo-lungo-variante-europea-non-standardizzata",
-            "name": "Meerschweinchen a pelo lungo (variante europea non standardizzata)",
-            "image": "🐹"
-          },
-          {
-            "id": "merino",
-            "name": "Merino",
-            "image": "🐹"
-          },
-          {
-            "id": "peruviano-con-ciuffi-frange",
-            "name": "Peruviano con ciuffi/frange",
-            "image": "🐹"
-          },
-          {
-            "id": "peruviano-peruvian",
-            "name": "Peruviano (Peruvian)",
-            "image": "🐹"
-          },
-          {
-            "id": "peruviano-satin",
-            "name": "Peruviano Satin",
-            "image": "🐹"
-          },
-          {
-            "id": "sheba-mini-yak",
-            "name": "Sheba Mini Yak",
-            "image": "🐹"
-          },
-          {
-            "id": "sheltie-o-silkie",
-            "name": "Sheltie (o Silkie)",
-            "image": "🐹"
-          },
-          {
-            "id": "texel",
-            "name": "Texel",
-            "image": "🐹"
-          }
-        ],
-        "coniglio": [
-          {
-            "id": "descrizione-razze-conigli",
-            "name": "DESCRIZIONE RAZZE CONIGLI :",
-            "image": "🐰"
-          }
-        ],
-        "furetto": [
-          {
-            "id": "descrizione-info-furetto",
-            "name": "DESCRIZIONE/ INFO FURETTO",
-            "image": "🦡"
-          },
-          {
-            "id": "furetto-razze",
-            "name": "FURETTO: “razze”",
-            "image": "🦡"
-          }
-        ],
+        "cavia": [],
+        "coniglio": [],
+        "furetto": [],
         "gatto": [
           {
-            "id": "abissino-aby",
-            "name": "Abissino (ABY)",
-            "image": "🐱"
-          },
-          {
             "id": "abyssinian-wcf-tica",
-            "name": "Abyssinian (WCF, TICA)",
+            "name": "Abyssinian Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "american-bobtail-wcf-tica",
-            "name": "American Bobtail (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "american-curl-acs",
-            "name": "American Curl (ACS)",
+            "name": "American Bobtail Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "american-curl-wcf-tica",
-            "name": "American Curl (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "american-shorthair-ash",
-            "name": "American Shorthair (ASH)",
+            "name": "American Curl Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "american-shorthair-wcf-tica",
-            "name": "American Shorthair (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "anagrafe-nazionale-felina-italiana-anfi",
-            "name": "Anagrafe Nazionale Felina Italiana (ANFI)",
-            "image": "🐱"
-          },
-          {
-            "id": "angora-turco-tua",
-            "name": "Angora Turco (TUA)",
-            "image": "🐱"
-          },
-          {
-            "id": "balinese-bal",
-            "name": "Balinese (BAL)",
+            "name": "American Shorthair Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "balinese-wcf-tica",
-            "name": "Balinese (WCF, TICA)",
+            "name": "Balinese Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "bengal-wcf-tica",
-            "name": "Bengal (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "bengala-ben",
-            "name": "Bengala (BEN)",
+            "name": "Bengal Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "birman-wcf-tica",
-            "name": "Birman (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "birmana-sbi",
-            "name": "Birmana (SBI)",
-            "image": "🐱"
-          },
-          {
-            "id": "bobtail-giapponese-jbt",
-            "name": "Bobtail Giapponese (JBT)",
+            "name": "Birman Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "bombay-wcf-tica",
-            "name": "Bombay (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "breve-descrizione-delle-razze-feline",
-            "name": "BREVE DESCRIZIONE DELLE RAZZE FELINE",
-            "image": "🐱"
-          },
-          {
-            "id": "british-longhair-blh",
-            "name": "British Longhair (BLH)",
-            "image": "🐱"
-          },
-          {
-            "id": "british-shorthair-bsh",
-            "name": "British Shorthair (BSH)",
+            "name": "Bombay Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "british-shorthair-wcf-tica",
-            "name": "British Shorthair (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "burmese-bur",
-            "name": "Burmese (BUR)",
+            "name": "British Shorthair Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "burmese-wcf-tica",
-            "name": "Burmese (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "burmilla-bml",
-            "name": "Burmilla (BML)",
+            "name": "Burmese Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "burmilla-wcf",
-            "name": "Burmilla (WCF)",
-            "image": "🐱"
-          },
-          {
-            "id": "cat-fanciers-association-cfa",
-            "name": "Cat Fanciers’ Association (CFA)",
-            "image": "🐱"
-          },
-          {
-            "id": "certosino-cha",
-            "name": "Certosino (CHA)",
+            "name": "Burmilla Wcf",
             "image": "🐱"
           },
           {
             "id": "chausie-tica",
-            "name": "Chausie (TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "cornish-rex-crx",
-            "name": "Cornish Rex (CRX)",
+            "name": "Chausie Tica",
             "image": "🐱"
           },
           {
             "id": "cornish-rex-wcf-tica",
-            "name": "Cornish Rex (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "cymric-cym",
-            "name": "Cymric (Cym)",
-            "image": "🐱"
-          },
-          {
-            "id": "descrizione-gatti-1",
-            "name": "DESCRIZIONE GATTI 1",
-            "image": "🐱"
-          },
-          {
-            "id": "devon-rex-drx",
-            "name": "Devon Rex (DRX)",
+            "name": "Cornish Rex Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "devon-rex-wcf-tica",
-            "name": "Devon Rex (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "don-sphynx-dsp",
-            "name": "Don Sphynx (DSP)",
+            "name": "Devon Rex Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "egyptian-mau-wcf-tica",
-            "name": "Egyptian Mau (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "esotico-exo",
-            "name": "Esotico (EXO)",
+            "name": "Egyptian Mau Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "exotic-shorthair-wcf-tica",
-            "name": "Exotic Shorthair (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "federation-internationale-feline-fife",
-            "name": "Fédération Internationale Féline (FIFe)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-dell-isola-di-man-man",
-            "name": "Gatto dell'Isola di Man (MAN)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-delle-foreste-norvegesi-nfo",
-            "name": "Gatto delle Foreste Norvegesi (NFO)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-korat-kor",
-            "name": "Gatto Korat (KOR)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-siberiano-sib",
-            "name": "Gatto Siberiano (SIB)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-singapura-sin",
-            "name": "Gatto Singapura (SIN)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-sokoke-sok",
-            "name": "Gatto Sokoke (SOK)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-sphynx-sph",
-            "name": "Gatto Sphynx (SPH)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-thai-tha",
-            "name": "Gatto Thai (THA)",
-            "image": "🐱"
-          },
-          {
-            "id": "gatto-turco-van-tuv",
-            "name": "Gatto Turco Van (TUV)",
+            "name": "Exotic Shorthair Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "havana-brown-wcf-tica",
-            "name": "Havana Brown (WCF, TICA)",
+            "name": "Havana Brown Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "himalayano-wcf-tica",
-            "name": "Himalayano (WCF, TICA)",
+            "name": "Himalayano Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "japanese-bobtail-wcf-tica",
-            "name": "Japanese Bobtail (WCF, TICA)",
+            "name": "Japanese Bobtail Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "korat-wcf-tica",
-            "name": "Korat (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "laperm-lps-lpl",
-            "name": "LaPerm (LPS/LPL)",
+            "name": "Korat Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "laperm-wcf-tica",
-            "name": "LaPerm (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "maine-coon-mco",
-            "name": "Maine Coon (MCO)",
+            "name": "Laperm Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "maine-coon-wcf-tica",
-            "name": "Maine Coon (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "manx-man",
-            "name": "Manx (MAN)",
+            "name": "Maine Coon Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "manx-wcf-tica",
-            "name": "Manx (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "mau-egiziano-mau",
-            "name": "Mau Egiziano (MAU)",
-            "image": "🐱"
-          },
-          {
-            "id": "munchkin-mun",
-            "name": "Munchkin (MUN)",
+            "name": "Manx Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "nebelung-wcf-tica",
-            "name": "Nebelung (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "neva-masquerade-nem",
-            "name": "Neva Masquerade (NEM)",
+            "name": "Nebelung Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "norwegian-forest-cat-wcf-tica",
-            "name": "Norwegian Forest Cat (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "ocicat-oci",
-            "name": "Ocicat (OCI)",
+            "name": "Norwegian Forest Cat Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "ocicat-wcf-tica",
-            "name": "Ocicat (WCF, TICA)",
+            "name": "Ocicat Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "oriental-shorthair-wcf-tica",
-            "name": "Oriental Shorthair (WCF, TICA)",
+            "name": "Oriental Shorthair Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "oriental-wcf-tica",
-            "name": "Oriental (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "orientale-a-pelo-corto-osh",
-            "name": "Orientale a pelo corto (OSH)",
-            "image": "🐱"
-          },
-          {
-            "id": "orientale-a-pelo-lungo-olh",
-            "name": "Orientale a pelo lungo (OLH)",
-            "image": "🐱"
-          },
-          {
-            "id": "persiano-per",
-            "name": "Persiano (PER)",
+            "name": "Oriental Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "persiano-wcf-tica",
-            "name": "Persiano (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "peterbald-peb",
-            "name": "Peterbald (PEB)",
+            "name": "Persiano Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "peterbald-wcf",
-            "name": "Peterbald (WCF)",
+            "name": "Peterbald Wcf",
             "image": "🐱"
           },
           {
             "id": "pixiebob-tica",
-            "name": "Pixiebob (TICA)",
+            "name": "Pixiebob Tica",
             "image": "🐱"
           },
           {
             "id": "ragamuffin-wcf-tica",
-            "name": "Ragamuffin (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "ragdoll-rag",
-            "name": "Ragdoll (RAG)",
+            "name": "Ragamuffin Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "ragdoll-wcf-tica",
-            "name": "Ragdoll (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "rex-russo-rus",
-            "name": "Rex Russo (RUS)",
-            "image": "🐱"
-          },
-          {
-            "id": "rex-tedesco-grx",
-            "name": "Rex Tedesco (GRX)",
+            "name": "Ragdoll Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "russian-blue-wcf-tica",
-            "name": "Russian Blue (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "sacro-di-birmania-sbi",
-            "name": "Sacro di Birmania (SBI)",
+            "name": "Russian Blue Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "scottish-fold-wcf-tica",
-            "name": "Scottish Fold (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "selkirk-rex-a-pelo-corto-srs",
-            "name": "Selkirk Rex a pelo corto (SRS)",
-            "image": "🐱"
-          },
-          {
-            "id": "selkirk-rex-a-pelo-lungo-srl",
-            "name": "Selkirk Rex a pelo lungo (SRL)",
+            "name": "Scottish Fold Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "selkirk-rex-wcf-tica",
-            "name": "Selkirk Rex (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "siamese-sia",
-            "name": "Siamese (SIA)",
+            "name": "Selkirk Rex Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "siberian-wcf-tica",
-            "name": "Siberian (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "siberiano-sib",
-            "name": "Siberiano (SIB)",
+            "name": "Siberian Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "singapura-wcf-tica",
-            "name": "Singapura (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "singapura",
-            "name": "Singapura",
+            "name": "Singapura Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "snowshoe-wcf-tica",
-            "name": "Snowshoe (WCF, TICA)",
+            "name": "Snowshoe Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "somali-wcf-tica",
-            "name": "Somali (WCF, TICA)",
+            "name": "Somali Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "sphynx-wcf-tica",
-            "name": "Sphynx (WCF, TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "the-international-cat-association-tica",
-            "name": "The International Cat Association (TICA)",
-            "image": "🐱"
-          },
-          {
-            "id": "tonkinese-gia-citato-ripetuto-per-completezza",
-            "name": "Tonkinese (già citato, ripetuto per completezza)",
+            "name": "Sphynx Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "tonkinese-wcf-tica",
-            "name": "Tonkinese (WCF, TICA)",
+            "name": "Tonkinese Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "turkish-angora-wcf-tica",
-            "name": "Turkish Angora (WCF, TICA)",
+            "name": "Turkish Angora Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "turkish-van-wcf-tica",
-            "name": "Turkish Van (WCF, TICA)",
+            "name": "Turkish Van Wcf Tica",
             "image": "🐱"
           },
           {
             "id": "ukrainian-levkoy-wcf",
-            "name": "Ukrainian Levkoy (WCF)",
-            "image": "🐱"
-          },
-          {
-            "id": "world-cat-federation-wcf",
-            "name": "World Cat Federation (WCF)",
+            "name": "Ukrainian Levkoy Wcf",
             "image": "🐱"
           },
           {
             "id": "york-chocolate-non-ufficiale-fci-ma-riconosciuto-da-alcune-associazioni-come",
-            "name": "York Chocolate (non ufficiale FCI, ma riconosciuto da alcune associazioni come",
+            "name": "York Chocolate Non Ufficiale Fci Ma Riconosciuto Da Alcune Associazioni Come",
             "image": "🐱"
           }
         ],
-        "gerbillo": [
-          {
-            "id": "descrizione-di-gerbillo",
-            "name": "DESCRIZIONE DI GERBILLO",
-            "image": "🐹"
-          },
-          {
-            "id": "gerbillo-a-coda-grassa-pachyuromys-duprasi",
-            "name": "Gerbillo a coda grassa (Pachyuromys duprasi)",
-            "image": "🐹"
-          },
-          {
-            "id": "gerbillo-dell-india-tatera-indica",
-            "name": "Gerbillo dell’India (Tatera indica)",
-            "image": "🐹"
-          },
-          {
-            "id": "gerbillo-della-mongolia-meriones-unguiculatus",
-            "name": "Gerbillo della Mongolia (Meriones unguiculatus)",
-            "image": "🐹"
-          },
-          {
-            "id": "gerbillo-egiziano-gerbillus-gerbillus",
-            "name": "Gerbillo egiziano (Gerbillus gerbillus)",
-            "image": "🐹"
-          },
-          {
-            "id": "gerbillo-grasso-della-coda-pachyuromys-duprasi",
-            "name": "Gerbillo grasso della coda (Pachyuromys duprasi)",
-            "image": "🐹"
-          },
-          {
-            "id": "gerbillo-libico-meriones-libycus",
-            "name": "Gerbillo libico (Meriones libycus)",
-            "image": "🐹"
-          },
-          {
-            "id": "gerbillo-persiano-meriones-persicus",
-            "name": "Gerbillo persiano (Meriones persicus)",
-            "image": "🐹"
-          },
-          {
-            "id": "in-sintesi",
-            "name": "IN SINTESI",
-            "image": "🐹"
-          }
-        ],
-        "ratto": [
-          {
-            "id": "il-ratto-domestico-ha-razze-o-varieta",
-            "name": "� Il ratto domestico ha razze o varietà?",
-            "image": "🐀"
-          }
-        ]
+        "gerbillo": [],
+        "ratto": []
       }
     },
     "pesci": {
       "species": {
-        "betta": [
-          {
-            "id": "acqua-e-parametri",
-            "name": "Acqua e parametri",
-            "image": "🐠"
-          },
-          {
-            "id": "acquario-dimensioni-e-contenitore",
-            "name": "Acquario: dimensioni e contenitore",
-            "image": "🐠"
-          },
-          {
-            "id": "alimentazione",
-            "name": "Alimentazione",
-            "image": "🐠"
-          },
-          {
-            "id": "arredi-e-piante",
-            "name": "Arredi e piante",
-            "image": "🐠"
-          },
-          {
-            "id": "betta-splendens-scheda-sintetica",
-            "name": "Betta splendens – Scheda sintetica",
-            "image": "🐠"
-          },
-          {
-            "id": "colori-e-pattern",
-            "name": "Colori e pattern",
-            "image": "🐠"
-          },
-          {
-            "id": "colori-solidi",
-            "name": "COLORI SOLIDI",
-            "image": "🐠"
-          },
-          {
-            "id": "comportamento-e-osservazione",
-            "name": "Comportamento e osservazione",
-            "image": "🐠"
-          },
-          {
-            "id": "delta-tail",
-            "name": "Delta Tail",
-            "image": "🐠"
-          },
-          {
-            "id": "double-tail-dt",
-            "name": "Double Tail (DT)",
-            "image": "🐠"
-          },
-          {
-            "id": "double-tail-plakat-dtpk",
-            "name": "Double Tail Plakat (DTPK)",
-            "image": "🐠"
-          },
-          {
-            "id": "dumbo-elephant-ear",
-            "name": "Dumbo / Elephant Ear",
-            "image": "🐠"
-          },
-          {
-            "id": "dumbo-plakat",
-            "name": "Dumbo Plakat",
-            "image": "🐠"
-          },
-          {
-            "id": "feathertail",
-            "name": "Feathertail",
-            "image": "🐠"
-          },
-          {
-            "id": "filtro",
-            "name": "Filtro",
-            "image": "🐠"
-          },
-          {
-            "id": "forma-delle-pinne-pinna-lunga-e-pinna-corta-plakat",
-            "name": "Forma delle pinne (pinna lunga e pinna corta / Plakat)",
-            "image": "🐠"
-          },
-          {
-            "id": "giant-plakat",
-            "name": "Giant Plakat",
-            "image": "🐠"
-          },
-          {
-            "id": "halfmoon-hm",
-            "name": "Halfmoon (HM)",
-            "image": "🐠"
-          },
-          {
-            "id": "halfmoon-plakat-hmpk",
-            "name": "Halfmoon Plakat (HMPK)",
-            "image": "🐠"
-          },
-          {
-            "id": "manutenzione",
-            "name": "Manutenzione",
-            "image": "🐠"
-          },
-          {
-            "id": "over-halfmoon-ohm",
-            "name": "Over Halfmoon (OHM)",
-            "image": "🐠"
-          },
-          {
-            "id": "pattern-comuni",
-            "name": "PATTERN COMUNI",
-            "image": "🐠"
-          },
-          {
-            "id": "perfetto-iniziero-a-descriverti-le-varieta-di-betta-splendens-domestici-in-base-a",
-            "name": "Perfetto! Inizierò a descriverti le varietà di Betta splendens domestici in base a:",
-            "image": "🐠"
-          },
-          {
-            "id": "plakat-tradizionale",
-            "name": "Plakat Tradizionale",
-            "image": "🐠"
-          },
-          {
-            "id": "posso-tenerlo-con-altri-pesci",
-            "name": "Posso tenerlo con altri pesci?",
-            "image": "🐠"
-          },
-          {
-            "id": "riscaldatore",
-            "name": "Riscaldatore",
-            "image": "🐠"
-          },
-          {
-            "id": "rosetail",
-            "name": "Rosetail",
-            "image": "🐠"
-          },
-          {
-            "id": "super-delta",
-            "name": "Super Delta",
-            "image": "🐠"
-          },
-          {
-            "id": "veiltail-vt",
-            "name": "Veiltail (VT)",
-            "image": "🐠"
-          }
-        ],
+        "betta": [],
         "guppy": [
           {
             "id": "albino-bianco-trasparente",
-            "name": "Albino (bianco trasparente)",
+            "name": "Albino Bianco Trasparente",
             "image": "🐠"
           },
           {
@@ -2063,22 +1361,17 @@
           },
           {
             "id": "bianco-opaque",
-            "name": "Bianco (Opaque)",
+            "name": "Bianco Opaque",
             "image": "🐠"
           },
           {
             "id": "blu-royal-blue-steel-blue",
-            "name": "Blu (Royal Blue, Steel Blue)",
+            "name": "Blu Royal Blue Steel Blue",
             "image": "🐠"
           },
           {
             "id": "giallo",
             "name": "Giallo",
-            "image": "🐠"
-          },
-          {
-            "id": "guppy-varieta",
-            "name": "GUPPY VARIETA",
             "image": "🐠"
           },
           {
@@ -2089,41 +1382,6 @@
           {
             "id": "nero",
             "name": "Nero",
-            "image": "🐠"
-          },
-          {
-            "id": "pinna-a-rosetta-rosetail-guppy",
-            "name": "Pinna a rosetta (Rosetail Guppy)",
-            "image": "🐠"
-          },
-          {
-            "id": "pinna-caudale-a-delta-delta-tail",
-            "name": "Pinna caudale a delta (Delta Tail)",
-            "image": "🐠"
-          },
-          {
-            "id": "pinna-caudale-a-spada-swordtail-guppy",
-            "name": "Pinna caudale a spada (Swordtail Guppy)",
-            "image": "🐠"
-          },
-          {
-            "id": "pinna-caudale-a-ventaglio-fan-tail",
-            "name": "Pinna caudale a ventaglio (Fan Tail)",
-            "image": "🐠"
-          },
-          {
-            "id": "pinna-doppia-double-tail",
-            "name": "Pinna doppia (Double Tail)",
-            "image": "🐠"
-          },
-          {
-            "id": "pinne-corte-common-guppy",
-            "name": "Pinne corte (Common Guppy)",
-            "image": "🐠"
-          },
-          {
-            "id": "pinne-lunghe-fancy-guppy",
-            "name": "Pinne lunghe (Fancy Guppy)",
             "image": "🐠"
           },
           {
@@ -2141,213 +1399,110 @@
     },
     "rettili": {
       "species": {
-        "anfibio": [
-          {
-            "id": "ambystoma-mexicanum-axolotl",
-            "name": "Ambystoma mexicanum – Axolotl",
-            "image": "🦎"
-          },
-          {
-            "id": "ambystoma-tigrinum-salamandra-tigre",
-            "name": "Ambystoma tigrinum – Salamandra tigre",
-            "image": "🦎"
-          },
-          {
-            "id": "cynops-pyrrhogaster-salamandra-giapponese-dal-ventre-rosso",
-            "name": "Cynops pyrrhogaster – Salamandra giapponese (dal ventre rosso)",
-            "image": "🦎"
-          },
-          {
-            "id": "descrizione",
-            "name": "DESCRIZIONE:",
-            "image": "🦎"
-          },
-          {
-            "id": "ichthyosaura-alpestris-tritone-alpino",
-            "name": "Ichthyosaura alpestris – Tritone alpino",
-            "image": "🦎"
-          },
-          {
-            "id": "lissotriton-vulgaris-tritone-comune",
-            "name": "Lissotriton vulgaris – Tritone comune",
-            "image": "🦎"
-          },
-          {
-            "id": "notophthalmus-viridescens-tritone-dalla-coda-lunga-americano",
-            "name": "Notophthalmus viridescens – Tritone dalla coda lunga (americano)",
-            "image": "🦎"
-          },
-          {
-            "id": "salamandra-salamandra-salamandra-comune",
-            "name": "Salamandra salamandra – Salamandra comune",
-            "image": "🦎"
-          },
-          {
-            "id": "tritoni-specie-riconosciute-comuni-in",
-            "name": "Tritoni — specie riconosciute comuni in",
-            "image": "🦎"
-          },
-          {
-            "id": "triturus-cristatus-tritone-crestato",
-            "name": "Triturus cristatus – Tritone crestato",
-            "image": "🦎"
-          },
-          {
-            "id": "triturus-marmoratus-tritone-marmorizzato",
-            "name": "Triturus marmoratus – Tritone marmorizzato",
-            "image": "🦎"
-          },
-          {
-            "id": "triturus-vittatus-salamandra-striata",
-            "name": "Triturus vittatus – Salamandra striata",
-            "image": "🦎"
-          }
-        ],
-        "axolotl": [
-          {
-            "id": "axolotl-ambystoma-mexicanum",
-            "name": "Axolotl (Ambystoma mexicanum)",
-            "image": "🦎"
-          }
-        ],
-        "rana": [
-          {
-            "id": "ceratophrys-calcarata",
-            "name": "Ceratophrys calcarata",
-            "image": "🐸"
-          },
-          {
-            "id": "ceratophrys-cornuta-rana-pacman-cornuta",
-            "name": "Ceratophrys cornuta (Rana Pacman cornuta)",
-            "image": "🐸"
-          },
-          {
-            "id": "ceratophrys-cranwelli",
-            "name": "Ceratophrys cranwelli",
-            "image": "🐸"
-          },
-          {
-            "id": "ceratophrys-ornata-rana-pacman-ornata",
-            "name": "Ceratophrys ornata (Rana Pacman ornata)",
-            "image": "🐸"
-          },
-          {
-            "id": "rana-pacman-genere-ceratophrys",
-            "name": "Rana Pacman (Genere Ceratophrys)",
-            "image": "🐸"
-          }
-        ],
+        "anfibio": [],
+        "axolotl": [],
+        "rana": [],
         "serpente": [
           {
             "id": "antaresia-childreni-children-s-python",
-            "name": "Antaresia childreni – Children’s Python",
+            "name": "Antaresia Childreni Children S Python",
             "image": "🐍"
           },
           {
             "id": "boa-constrictor-boa-imperator-boa-costrittore",
-            "name": "Boa constrictor / Boa imperator – Boa costrittore",
-            "image": "🐍"
-          },
-          {
-            "id": "descrizione-serpenti",
-            "name": "DESCRIZIONE SERPENTI",
+            "name": "Boa Constrictor Boa Imperator Boa Costrittore",
             "image": "🐍"
           },
           {
             "id": "gongylophis-colubrinus-kenyan-sand-boa",
-            "name": "Gongylophis colubrinus – Kenyan Sand Boa",
+            "name": "Gongylophis Colubrinus Kenyan Sand Boa",
             "image": "🐍"
           },
           {
             "id": "lampropeltis-getula-l-californiae-king-snake",
-            "name": "Lampropeltis getula / L. californiae – King Snake /",
+            "name": "Lampropeltis Getula L Californiae King Snake",
             "image": "🐍"
           },
           {
             "id": "lampropeltis-triangulum-milk-snake",
-            "name": "Lampropeltis triangulum – Milk Snake",
+            "name": "Lampropeltis Triangulum Milk Snake",
             "image": "🐍"
           },
           {
             "id": "morelia-viridis-green-tree-python",
-            "name": "Morelia viridis – Green Tree Python",
+            "name": "Morelia Viridis Green Tree Python",
             "image": "🐍"
           },
           {
             "id": "pantherophis-guttatus-corn-snake",
-            "name": "Pantherophis guttatus – Corn Snake",
+            "name": "Pantherophis Guttatus Corn Snake",
             "image": "🐍"
           },
           {
             "id": "python-regius-ball-python",
-            "name": "Python regius – Ball Python",
+            "name": "Python Regius Ball Python",
             "image": "🐍"
           },
           {
             "id": "thamnophis-sirtalis-garter-snake",
-            "name": "Thamnophis sirtalis – Garter Snake",
+            "name": "Thamnophis Sirtalis Garter Snake",
             "image": "🐍"
           }
         ],
         "tartaruga": [
           {
             "id": "centrochelys-sulcata-tartaruga-sulcata-africana",
-            "name": "Centrochelys sulcata (Tartaruga sulcata africana)",
+            "name": "Centrochelys Sulcata Tartaruga Sulcata Africana",
             "image": "🐢"
           },
           {
             "id": "gopherus-agassizii-tartaruga-del-deserto",
-            "name": "Gopherus agassizii (Tartaruga del deserto)",
+            "name": "Gopherus Agassizii Tartaruga Del Deserto",
             "image": "🐢"
           },
           {
             "id": "gopherus-polyphemus-tartaruga-gopher-americana",
-            "name": "Gopherus polyphemus (Tartaruga gopher americana)",
+            "name": "Gopherus Polyphemus Tartaruga Gopher Americana",
             "image": "🐢"
           },
           {
             "id": "manouria-emys-tartaruga-gigante-asiatica",
-            "name": "Manouria emys (Tartaruga gigante asiatica)",
+            "name": "Manouria Emys Tartaruga Gigante Asiatica",
             "image": "🐢"
           },
           {
             "id": "pseudemys-concinna-tartaruga-dipinta-del-fiume",
-            "name": "Pseudemys concinna (Tartaruga dipinta del fiume)",
+            "name": "Pseudemys Concinna Tartaruga Dipinta Del Fiume",
             "image": "🐢"
           },
           {
             "id": "stigmochelys-pardalis-tartaruga-leopardo",
-            "name": "Stigmochelys pardalis (Tartaruga leopardo)",
-            "image": "🐢"
-          },
-          {
-            "id": "tarta-terresti",
-            "name": "TARTA TERRESTI",
+            "name": "Stigmochelys Pardalis Tartaruga Leopardo",
             "image": "🐢"
           },
           {
             "id": "testudo-graeca-tartaruga-greca",
-            "name": "Testudo graeca (Tartaruga greca)",
+            "name": "Testudo Graeca Tartaruga Greca",
             "image": "🐢"
           },
           {
             "id": "testudo-hermanni-tartaruga-di-hermann",
-            "name": "Testudo hermanni (Tartaruga di Hermann)",
+            "name": "Testudo Hermanni Tartaruga Di Hermann",
             "image": "🐢"
           },
           {
             "id": "testudo-horsfieldii-tartaruga-russa-di-horsfield",
-            "name": "Testudo horsfieldii (Tartaruga russa / di Horsfield)",
+            "name": "Testudo Horsfieldii Tartaruga Russa Di Horsfield",
             "image": "🐢"
           },
           {
             "id": "testudo-kleinmanni-tartaruga-egiziana",
-            "name": "Testudo kleinmanni (Tartaruga egiziana)",
+            "name": "Testudo Kleinmanni Tartaruga Egiziana",
             "image": "🐢"
           },
           {
             "id": "testudo-marginata-tartaruga-marginata",
-            "name": "Testudo marginata (Tartaruga marginata)",
+            "name": "Testudo Marginata Tartaruga Marginata",
             "image": "🐢"
           }
         ]
@@ -2355,214 +1510,10 @@
     },
     "uccelli": {
       "species": {
-        "02-uccelli": [
-          {
-            "id": "confronto-tra",
-            "name": "CONFRONTO TRA",
-            "image": "🐾"
-          }
-        ],
-        "canarino": [
-          {
-            "id": "canarino-razze",
-            "name": "CANARINO “razze”",
-            "image": "🐦"
-          }
-        ],
-        "cocorita": [
-          {
-            "id": "caratteristiche-cocorita",
-            "name": "CARATTERISTICHE COCORITA",
-            "image": "🦜"
-          }
-        ],
-        "piccione": [
-          {
-            "id": "alcune-linee-racing-pure-sono-troppo-nervose",
-            "name": "Alcune linee racing “pure” sono troppo “nervose”",
-            "image": "🕊️"
-          },
-          {
-            "id": "american-fantail-stati-uniti",
-            "name": "American Fantail (Stati Uniti)",
-            "image": "🕊️"
-          },
-          {
-            "id": "american-fantail-usa",
-            "name": "American Fantail – USA",
-            "image": "🕊️"
-          },
-          {
-            "id": "cerca-animali-abituati-all-uomo-non-solo-da-esposizione",
-            "name": "Cerca animali abituati all’uomo, non solo da esposizione",
-            "image": "🕊️"
-          },
-          {
-            "id": "english-trumpeter-inghilterra",
-            "name": "English Trumpeter (Inghilterra)",
-            "image": "🕊️"
-          },
-          {
-            "id": "english-trumpeter",
-            "name": "English Trumpeter",
-            "image": "🕊️"
-          },
-          {
-            "id": "fantail-spagna-regno-unito",
-            "name": "Fantail (Spagna / Regno Unito)",
-            "image": "🕊️"
-          },
-          {
-            "id": "fantail",
-            "name": "Fantail",
-            "image": "🕊️"
-          },
-          {
-            "id": "fatti-dare-un-animale-giovane-pulcino-o-svezzato-per-un-buon-imprinting",
-            "name": "Fatti dare un animale giovane (pulcino o svezzato) per un buon imprinting",
-            "image": "🕊️"
-          },
-          {
-            "id": "frillback-europa-centro-orientale",
-            "name": "Frillback – Europa centro-orientale",
-            "image": "🕊️"
-          },
-          {
-            "id": "frillback",
-            "name": "Frillback",
-            "image": "🕊️"
-          },
-          {
-            "id": "german-beauty-homer-germania",
-            "name": "German Beauty Homer – Germania",
-            "image": "🕊️"
-          },
-          {
-            "id": "hanno-esigenze-molto-particolari",
-            "name": "Hanno esigenze molto particolari",
-            "image": "🕊️"
-          },
-          {
-            "id": "indian-fantail-india",
-            "name": "Indian Fantail (India)",
-            "image": "🕊️"
-          },
-          {
-            "id": "jacobin-inghilterra",
-            "name": "Jacobin (Inghilterra)",
-            "image": "🕊️"
-          },
-          {
-            "id": "jacobin",
-            "name": "Jacobin",
-            "image": "🕊️"
-          },
-          {
-            "id": "king-pigeon-stati-uniti",
-            "name": "King Pigeon (Stati Uniti)",
-            "image": "🕊️"
-          },
-          {
-            "id": "king-pigeon",
-            "name": "King Pigeon",
-            "image": "🕊️"
-          },
-          {
-            "id": "lahore-asia-ma-molto-allevato-in-europa",
-            "name": "Lahore (Asia ma molto allevato in Europa)",
-            "image": "🕊️"
-          },
-          {
-            "id": "lahore-originariamente-persia-diffuso-in-europa",
-            "name": "Lahore – Originariamente Persia, diffuso in Europa",
-            "image": "🕊️"
-          },
-          {
-            "id": "lahore-pakistan-india-ma-anche-europa",
-            "name": "Lahore (Pakistan/India, ma anche Europa)",
-            "image": "🕊️"
-          },
-          {
-            "id": "lahore-pakistan-india-molto-diffuso-anche-in-europa",
-            "name": "Lahore – Pakistan/India (molto diffuso anche in Europa)",
-            "image": "🕊️"
-          },
-          {
-            "id": "modena-italia",
-            "name": "Modena (Italia)",
-            "image": "🕊️"
-          },
-          {
-            "id": "modena",
-            "name": "Modena",
-            "image": "🕊️"
-          },
-          {
-            "id": "old-german-owl-germania",
-            "name": "Old German Owl (Germania)",
-            "image": "🕊️"
-          },
-          {
-            "id": "old-german-owl",
-            "name": "Old German Owl",
-            "image": "🕊️"
-          },
-          {
-            "id": "parti-da-un-allevatore-serio-meglio-se-iscritto-a-un-associazione",
-            "name": "Parti da un allevatore serio, meglio se iscritto a un’associazione",
-            "image": "🕊️"
-          },
-          {
-            "id": "piccione-viaggiatore-razze",
-            "name": "PICCIONE VIAGGIATORE – Razze",
-            "image": "🕊️"
-          },
-          {
-            "id": "piccioni-domestici-divisi-per",
-            "name": "PICCIONI DOMESTICI DIVISI PER",
-            "image": "🕊️"
-          },
-          {
-            "id": "racing-homer",
-            "name": "Racing Homer",
-            "image": "🕊️"
-          },
-          {
-            "id": "razza-domestici-suddivisi-per-continente",
-            "name": "razza domestici, suddivisi per continente.",
-            "image": "🕊️"
-          },
-          {
-            "id": "razze-di-piccioni-adatte-alla",
-            "name": "Razze di piccioni adatte alla",
-            "image": "🕊️"
-          },
-          {
-            "id": "show-king-stati-uniti",
-            "name": "Show King (Stati Uniti)",
-            "image": "🕊️"
-          },
-          {
-            "id": "show-king-usa",
-            "name": "Show King – USA",
-            "image": "🕊️"
-          },
-          {
-            "id": "sono-razze-da-esposizione-ma-molto-delicate",
-            "name": "Sono razze da esposizione ma molto delicate",
-            "image": "🕊️"
-          },
-          {
-            "id": "sono-razze-da-performance-gara-o-acrobazie",
-            "name": "Sono razze da performance (gara o acrobazie)",
-            "image": "🕊️"
-          },
-          {
-            "id": "valuta-le-condizioni-di-allevamento-no-fiere-improvvisate-con-gabbie-sporche",
-            "name": "Valuta le condizioni di allevamento (no fiere improvvisate con gabbie sporche)",
-            "image": "🕊️"
-          }
-        ]
+        "02-uccelli": [],
+        "canarino": [],
+        "cocorita": [],
+        "piccione": []
       }
     }
   }

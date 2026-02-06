@@ -1,6 +1,6 @@
 {
   "id": "perro-de-presa-canario",
-  "name": "Perro de Presa Canario",
+  "name": "Perro De Presa Canario",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Può essere dominante, necessita padrone esperto.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

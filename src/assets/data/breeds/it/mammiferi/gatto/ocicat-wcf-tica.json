@@ -1,6 +1,6 @@
 {
   "id": "ocicat-wcf-tica",
-  "name": "Ocicat (WCF, TICA)",
+  "name": "Ocicat Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Necessita stimoli mentali.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

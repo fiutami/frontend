@@ -1,6 +1,6 @@
 {
   "id": "balinese-wcf-tica",
-  "name": "Balinese (WCF, TICA)",
+  "name": "Balinese Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Richiede attenzione costante.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

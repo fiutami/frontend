@@ -1,17 +1,20 @@
 <div class="breeds-page">
   <!-- Header -->
   <header class="breeds-header">
-    <button class="breeds-header__back" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
-
-    <div class="breeds-header__content">
+    <div class="breeds-header__left">
+      <button class="breeds-header__back" (click)="goBack()" aria-label="Torna indietro">
+        <span class="material-icons">arrow_back</span>
+      </button>
       <h1 class="breeds-header__title">Specie</h1>
-      <p class="breeds-header__subtitle">Fiuta e scopri. Ogni specie racconta qualcosa.</p>
     </div>
-
     <app-avatar-button size="medium" class="breeds-header__avatar"></app-avatar-button>
   </header>
+
+  <!-- Branding: Logo FIUTAMI + Subtitle -->
+  <div class="breeds-branding">
+    <app-logo variant="color" size="lg"></app-logo>
+    <p class="breeds-branding__subtitle">Fiuta e scopri. Ogni specie racconta qualcosa.</p>
+  </div>
 
   <!-- Main Content -->
   <main class="breeds-content">

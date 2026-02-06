@@ -2,8 +2,8 @@
   "$schema": "https://json-schema.org/draft-07/schema#",
   "version": "1.0",
   "figma": {
-    "fileId": "25uQUXz6gwFQKx4Wjp0dcc",
-    "fileUrl": "https://www.figma.com/design/25uQUXz6gwFQKx4Wjp0dcc/LOGIN-STATIC",
+    "fileId": "FxJsfOV7R7qoXBM2xTyXRE",
+    "fileUrl": "https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--originale-",
     "accessToken": "env:FIGMA_PERSONAL_ACCESS_TOKEN",
     "apiVersion": "v1"
   },

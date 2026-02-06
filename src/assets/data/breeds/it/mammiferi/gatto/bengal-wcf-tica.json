@@ -1,6 +1,6 @@
 {
   "id": "bengal-wcf-tica",
-  "name": "Bengal (WCF, TICA)",
+  "name": "Bengal Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Non adatto a chi vuole un gatto tranquillo.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

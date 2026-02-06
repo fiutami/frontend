@@ -1,6 +1,6 @@
 {
   "id": "abyssinian-wcf-tica",
-  "name": "Abyssinian (WCF, TICA)",
+  "name": "Abyssinian Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Molto energico, può essere distruttivo se annoiato.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

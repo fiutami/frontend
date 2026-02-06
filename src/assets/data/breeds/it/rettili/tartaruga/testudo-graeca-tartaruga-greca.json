@@ -1,6 +1,6 @@
 {
   "id": "testudo-graeca-tartaruga-greca",
-  "name": "Testudo graeca (Tartaruga greca)",
+  "name": "Testudo Graeca Tartaruga Greca",
   "species": "Tartarughe",
   "category": "rettili",
   "image": "🐢",
@@ -51,5 +51,5 @@
   "contro": "Più delicata, meno adatta a climi umidi.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

@@ -1,6 +1,6 @@
 {
   "id": "epagneul-picard",
-  "name": "Épagneul Picard",
+  "name": "Epagneul Picard",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Poco conosciuto, reperibilità limitata.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

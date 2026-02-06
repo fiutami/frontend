@@ -1,6 +1,6 @@
 {
   "id": "maine-coon-wcf-tica",
-  "name": "Maine Coon (WCF, TICA)",
+  "name": "Maine Coon Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Richiede cura costante del pelo.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

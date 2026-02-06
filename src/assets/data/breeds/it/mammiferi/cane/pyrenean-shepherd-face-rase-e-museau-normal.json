@@ -1,6 +1,6 @@
 {
   "id": "pyrenean-shepherd-face-rase-e-museau-normal",
-  "name": "Pyrenean Shepherd (face rase e museau normal)",
+  "name": "Pyrenean Shepherd Face Rase E Museau Normal",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Energico.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

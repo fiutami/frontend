@@ -1,6 +1,6 @@
 {
   "id": "albino-bianco-trasparente",
-  "name": "Albino (bianco trasparente)",
+  "name": "Albino Bianco Trasparente",
   "species": "Guppy",
   "category": "pesci",
   "image": "🐠",
@@ -51,5 +51,5 @@
   "contro": "Più sensibile alla luce intensa e a malattie.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

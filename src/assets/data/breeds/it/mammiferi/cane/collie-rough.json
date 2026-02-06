@@ -1,6 +1,6 @@
 {
   "id": "collie-rough",
-  "name": "Collie (Rough)",
+  "name": "Collie Rough",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -53,5 +53,5 @@
   "contro": "Pelo impegnativo.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

@@ -1,6 +1,6 @@
 {
   "id": "exotic-shorthair-wcf-tica",
-  "name": "Exotic Shorthair (WCF, TICA)",
+  "name": "Exotic Shorthair Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Predisposizione a malattie ereditarie.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

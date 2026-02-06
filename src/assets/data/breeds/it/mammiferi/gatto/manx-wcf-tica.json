@@ -1,6 +1,6 @@
 {
   "id": "manx-wcf-tica",
-  "name": "Manx (WCF, TICA)",
+  "name": "Manx Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Possibili problemi alla colonna vertebrale.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

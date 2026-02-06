@@ -1,6 +1,6 @@
 {
   "id": "polish-hunting-dog-ogar-polski",
-  "name": "Polish Hunting Dog (Ogar Polski)",
+  "name": "Polish Hunting Dog Ogar Polski",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Poco comune.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

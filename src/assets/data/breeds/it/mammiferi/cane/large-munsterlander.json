@@ -1,6 +1,6 @@
 {
   "id": "large-munsterlander",
-  "name": "Large Münsterländer",
+  "name": "Large Munsterlander",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Poco diffuso.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

@@ -1,6 +1,6 @@
 {
   "id": "dogue-de-bordeaux",
-  "name": "Dogue de Bordeaux",
+  "name": "Dogue De Bordeaux",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -52,5 +52,5 @@
   "contro": "Vita breve, salute delicata.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

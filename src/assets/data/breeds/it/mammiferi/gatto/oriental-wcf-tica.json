@@ -1,6 +1,6 @@
 {
   "id": "oriental-wcf-tica",
-  "name": "Oriental (WCF, TICA)",
+  "name": "Oriental Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Richiede molta attenzione e compagnia.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

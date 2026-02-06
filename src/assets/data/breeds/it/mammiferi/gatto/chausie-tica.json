@@ -1,6 +1,6 @@
 {
   "id": "chausie-tica",
-  "name": "Chausie (TICA)",
+  "name": "Chausie Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Non adatto a chi cerca un gatto tranquillo.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

@@ -7,11 +7,60 @@
   --container-w: 1200px;
   --container-pad: clamp(16px, 4vw, 32px);
 
-  /* spacing (mini set) */
+  /* ========================================
+     SPACING SYSTEM (Standardizzato)
+     ======================================== */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;   /* Standard padding laterale tab pages */
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* Legacy spacing (backward compatibility) */
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
   --space-6: 24px;
+
+  /* ========================================
+     COLORS - Primary Palette
+     ======================================== */
+  --blue-1: #4A74F0;        /* Tab bar, AI accent, primary blue */
+  --yellow-1: #F5D791;      /* Gradient top (warm) */
+  --yellow-2: #E8C66A;      /* Gradient middle */
+  --yellow-cta: #F2B830;    /* CTA buttons, active states */
+  --red-danger: #FF4444;    /* Danger/error states */
+  --white: #FFFFFF;
+  --shadow-color: rgba(0, 0, 0, 0.18);
+
+  /* ========================================
+     BORDER RADIUS
+     ======================================== */
+  --radius-pill: 999px;     /* Pill buttons, chips */
+  --radius-card: 24px;      /* Cards, panels */
+  --radius-icon: 50%;       /* Round icons */
+  --radius-button: 8px;     /* Standard buttons */
+
+  /* ========================================
+     SHADOWS
+     ======================================== */
+  --shadow-btn: 0 6px 18px var(--shadow-color);
+  --shadow-header: 0 4px 12px var(--shadow-color);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  /* ========================================
+     TYPOGRAPHY
+     ======================================== */
+  --font-title: 'Moul', serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  /* ========================================
+     LAYOUT - Tab Pages
+     ======================================== */
+  --tab-bar-height: 64px;
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --content-padding-bottom: calc(var(--tab-bar-height) + var(--safe-area-bottom) + var(--sp-4));
 
   /* type scale minima */
   --fs-h1: clamp(28px, 4vw, 56px);

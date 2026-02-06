@@ -1,6 +1,6 @@
 {
   "id": "ukrainian-levkoy-wcf",
-  "name": "Ukrainian Levkoy (WCF)",
+  "name": "Ukrainian Levkoy Wcf",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Razza ancora in via di sviluppo.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

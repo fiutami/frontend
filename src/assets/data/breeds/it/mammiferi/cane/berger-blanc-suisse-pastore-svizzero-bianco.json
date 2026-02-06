@@ -1,6 +1,6 @@
 {
   "id": "berger-blanc-suisse-pastore-svizzero-bianco",
-  "name": "Berger Blanc Suisse (Pastore Svizzero Bianco)",
+  "name": "Berger Blanc Suisse Pastore Svizzero Bianco",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -52,5 +52,5 @@
   "contro": "Può soffrire di ansia da separazione.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

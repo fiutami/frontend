@@ -41,6 +41,22 @@
     gap: $spacing-sm;
   }
 
+  // Logo FIUTAMI branding
+  &__branding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-sm $spacing-md;
+    z-index: 10;
+    position: relative;
+
+    app-logo ::ng-deep img,
+    app-logo ::ng-deep svg {
+      height: 52px;
+      width: auto;
+    }
+  }
+
   // Main content area
   &__content {
     position: relative;

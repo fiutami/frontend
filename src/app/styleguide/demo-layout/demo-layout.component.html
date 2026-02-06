@@ -1,0 +1,73 @@
+<!-- Demo Layout - Testing tab-menu background -->
+<!-- Figma: node 12840-5567 -->
+
+<div class="demo-container">
+  <!-- Left: Mobile Preview (390x844) -->
+  <div class="demo-preview">
+    <div class="demo-phone">
+      <!-- Background with yellow gradient -->
+      <div class="demo-background">
+        <!-- Blue asymmetric shape -->
+        <div class="demo-blue-shape"></div>
+
+        <!-- Sample content to show it works -->
+        <div class="demo-content">
+          <h1>Tab Menu Background</h1>
+          <p>Figma node: 12840-5567</p>
+
+          <div class="demo-info-card">
+            <h3>Gradient (CSS)</h3>
+            <code>linear-gradient(135deg, ...)</code>
+          </div>
+
+          <div class="demo-info-card">
+            <h3>Blue Shape (CSS)</h3>
+            <code>border-radius: 103px 0 228px 15px</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Specs Panel -->
+  <div class="demo-specs">
+    <h2>Figma Specs</h2>
+
+    <section>
+      <h3>Frame</h3>
+      <ul>
+        <li>Width: {{ figmaSpecs.frame.width }}px</li>
+        <li>Height: {{ figmaSpecs.frame.height }}px</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Blue Shape</h3>
+      <ul>
+        <li>Size: {{ figmaSpecs.blueShape.width }}x{{ figmaSpecs.blueShape.height }}px</li>
+        <li>Top-left: {{ figmaSpecs.blueShape.corners[0] }}px</li>
+        <li>Top-right: {{ figmaSpecs.blueShape.corners[1] }}px</li>
+        <li>Bottom-right: {{ figmaSpecs.blueShape.corners[2] }}px</li>
+        <li>Bottom-left: {{ figmaSpecs.blueShape.corners[3] }}px</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Gradient Stops</h3>
+      <ul>
+        @for (stop of figmaSpecs.gradient.stops; track stop.pos) {
+          <li>
+            <span class="color-swatch" [style.background]="stop.color"></span>
+            {{ stop.pos * 100 | number:'1.0-0' }}% - {{ stop.color }}
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section>
+      <h3>Responsive Test</h3>
+      <p>Resize the browser to test responsive behavior.</p>
+      <p>The blue shape should scale proportionally.</p>
+    </section>
+  </div>
+</div>

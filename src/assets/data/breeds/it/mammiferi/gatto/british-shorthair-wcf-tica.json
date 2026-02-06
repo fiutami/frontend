@@ -1,6 +1,6 @@
 {
   "id": "british-shorthair-wcf-tica",
-  "name": "British Shorthair (WCF, TICA)",
+  "name": "British Shorthair Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Può essere sedentario e ingrassare.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

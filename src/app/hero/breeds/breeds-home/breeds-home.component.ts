@@ -4,11 +4,12 @@ import { Router, RouterLink } from '@angular/router';
 import { BreedsService } from '../breeds.service';
 import { Species } from '../models/breed.model';
 import { AvatarButtonComponent } from '../../../shared/components/avatar-button';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-breeds-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, AvatarButtonComponent],
+  imports: [CommonModule, RouterLink, AvatarButtonComponent, SharedModule],
   templateUrl: './breeds-home.component.html',
   styleUrls: ['./breeds-home.component.scss']
 })

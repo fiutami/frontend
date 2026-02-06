@@ -1,6 +1,6 @@
 {
   "id": "himalayano-wcf-tica",
-  "name": "Himalayano (WCF, TICA)",
+  "name": "Himalayano Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Richiede molta cura del pelo.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

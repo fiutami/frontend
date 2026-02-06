@@ -1,6 +1,6 @@
 {
   "id": "basset-bleu-de-gascogne",
-  "name": "Basset Bleu de Gascogne",
+  "name": "Basset Bleu De Gascogne",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Abbaia molto.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

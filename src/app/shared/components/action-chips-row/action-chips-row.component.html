@@ -1,0 +1,10 @@
+<div class="action-chips-row">
+  @for (chip of chips; track trackById($index, chip)) {
+    <app-ui-pill-button
+      [variant]="chip.variant"
+      size="sm"
+      (click)="onChipClick(chip.id)">
+      {{ chip.label }}
+    </app-ui-pill-button>
+  }
+</div>

@@ -1,6 +1,6 @@
 {
   "id": "testudo-hermanni-tartaruga-di-hermann",
-  "name": "Testudo hermanni (Tartaruga di Hermann)",
+  "name": "Testudo Hermanni Tartaruga Di Hermann",
   "species": "Tartarughe",
   "category": "rettili",
   "image": "🐢",
@@ -51,5 +51,5 @@
   "contro": "Letargo obbligatorio, documentazione CITES necessaria.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

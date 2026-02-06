@@ -1,6 +1,6 @@
 {
   "id": "american-curl-wcf-tica",
-  "name": "American Curl (WCF, TICA)",
+  "name": "American Curl Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Orecchie delicate, richiede attenzione.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

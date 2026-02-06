@@ -1,6 +1,6 @@
 {
   "id": "nebelung-wcf-tica",
-  "name": "Nebelung (WCF, TICA)",
+  "name": "Nebelung Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Può essere timido con estranei.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

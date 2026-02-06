@@ -14,22 +14,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  padding: 16px 16px; // Standardized with other tab pages
 
-  &__back,
-  &__menu {
-    width: 44px;
-    height: 44px;
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__back {
+    width: 34px;
+    height: 34px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(228, 228, 228, 0.2);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transition: background 0.2s ease;
 
     &:hover {
@@ -42,26 +46,45 @@
     }
 
     .material-icons {
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 
-  &__content {
-    text-align: center;
-    flex: 1;
-  }
-
   &__title {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 500;
     color: white;
     margin: 0;
+    text-transform: capitalize;
+  }
+}
+
+// Branding: Logo FIUTAMI + Subtitle
+.breeds-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 72px; // Container 72px come standard
+  padding: 8px 16px;
+  gap: 8px;
+
+  // Logo fisso 52px come standard
+  ::ng-deep .logo,
+  app-logo ::ng-deep img,
+  app-logo ::ng-deep svg {
+    height: 52px;
+    width: auto;
   }
 
   &__subtitle {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 4px 0 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    line-height: 1.22;
+    margin: 0;
   }
 }
 

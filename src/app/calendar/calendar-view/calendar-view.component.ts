@@ -9,6 +9,9 @@ import {
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
+import { AvatarButtonComponent } from '../../shared/components/avatar-button';
+import { CalendarOverlayService } from '../services/calendar-overlay.service';
 
 /**
  * Calendar event types
@@ -76,7 +79,7 @@ const EVENT_COLORS: Record<CalendarEventType, string> = {
 @Component({
   selector: 'app-calendar-view',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, AvatarButtonComponent],
   templateUrl: './calendar-view.component.html',
   styleUrls: ['./calendar-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -84,6 +87,18 @@ const EVENT_COLORS: Record<CalendarEventType, string> = {
 export class CalendarViewComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private readonly overlayService = inject(CalendarOverlayService);
+
+  /** Tab bar configuration */
+  protected readonly tabs = MAIN_TAB_BAR_CONFIG;
+
+  /** Notification count from overlay service */
+  protected readonly notificationCount = this.overlayService.notificationCount;
+
+  /** Check if notifications overlay is open */
+  protected readonly isNotificationsOpen = computed(() =>
+    this.overlayService.activeFilter() === 'notifications'
+  );
 
   /** Day names for header */
   protected readonly dayNames = DAY_NAMES;
@@ -216,11 +231,17 @@ export class CalendarViewComponent implements OnInit {
   }
 
   /**
-   * Create new event (placeholder)
+   * Open create event overlay (same behavior as mob_calendar)
    */
   onCreateEvent(): void {
-    // TODO: Open create event modal
-    console.log('Create event clicked');
+    this.overlayService.openCreateEvent();
+  }
+
+  /**
+   * Toggle notifications overlay (same behavior as mob_calendar)
+   */
+  onNotificationsClick(): void {
+    this.overlayService.toggleFilter('notifications');
   }
 
   /**
@@ -340,4 +361,5 @@ export class CalendarViewComponent implements OnInit {
     const dayNames = ['DOMENICA', 'LUNEDI', 'MARTEDI', 'MERCOLEDI', 'GIOVEDI', 'VENERDI', 'SABATO'];
     return dayNames[date.getDay()];
   }
+
 }

@@ -1,6 +1,6 @@
 {
   "id": "segugio-italiano-a-pelo-forte",
-  "name": "Segugio Italiano a Pelo Forte",
+  "name": "Segugio Italiano A Pelo Forte",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Richiede spazio.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

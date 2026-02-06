@@ -20,8 +20,7 @@ import { CalendarActionButton } from '../services/calendar-overlay.service';
         class="action-buttons__btn"
         [class.action-buttons__btn--active]="activeButton === 'create'"
         (click)="onButtonClick('create')">
-        <span class="material-icons">add</span>
-        <span class="action-buttons__label">Crea evento</span>
+        Crea evento
       </button>
 
       <!-- Eventi -->
@@ -30,8 +29,7 @@ import { CalendarActionButton } from '../services/calendar-overlay.service';
         class="action-buttons__btn"
         [class.action-buttons__btn--active]="activeButton === 'events'"
         (click)="onButtonClick('events')">
-        <span class="material-icons">event</span>
-        <span class="action-buttons__label">Eventi</span>
+        Eventi
       </button>
 
       <!-- Compleanni in vista -->
@@ -40,8 +38,7 @@ import { CalendarActionButton } from '../services/calendar-overlay.service';
         class="action-buttons__btn"
         [class.action-buttons__btn--active]="activeButton === 'birthdays'"
         (click)="onButtonClick('birthdays')">
-        <span class="material-icons">cake</span>
-        <span class="action-buttons__label">Compleanni in vista</span>
+        Compleanni in vista
       </button>
     </div>
   `,
@@ -50,30 +47,35 @@ import { CalendarActionButton } from '../services/calendar-overlay.service';
 
     .action-buttons {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      padding: 16px 20px;
+      flex-direction: row;
+      gap: 10px;
+      padding: 12px 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .action-buttons__btn {
       display: flex;
       align-items: center;
-      gap: 12px;
-      width: 100%;
-      padding: 14px 20px;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 12px 18px;
       border-radius: 50px;
       border: none;
       background: $color-cta-primary;
       color: $color-text-dark;
       font-family: 'Montserrat', sans-serif;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-
-      .material-icons {
-        font-size: 22px;
-      }
+      white-space: nowrap;
 
       &:hover {
         transform: scale(1.02);
@@ -92,11 +94,6 @@ import { CalendarActionButton } from '../services/calendar-overlay.service';
           background: darken($color-ai-primary, 5%);
         }
       }
-    }
-
-    .action-buttons__label {
-      flex: 1;
-      text-align: left;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,

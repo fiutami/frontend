@@ -1,0 +1,27 @@
+/**
+ * ActionChipsRow - SCSS
+ *
+ * RESPONSIVE:
+ * - Mobile: scroll orizzontale
+ * - Tablet+: wrap centrato
+ */
+
+.action-chips-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: var(--sp-3) var(--sp-4);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Tablet+: wrap e centra
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
+  }
+}

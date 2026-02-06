@@ -1,6 +1,6 @@
 {
   "id": "somali-wcf-tica",
-  "name": "Somali (WCF, TICA)",
+  "name": "Somali Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Richiede stimoli mentali e ﬁsici.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

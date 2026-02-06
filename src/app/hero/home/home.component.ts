@@ -18,6 +18,7 @@ import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 import { SearchBoxComponent } from '../../shared/components/search-box';
 import { PageBackgroundComponent } from '../../shared/components/page-background';
 import { AvatarButtonComponent } from '../../shared/components/avatar-button';
+import { SharedModule } from '../../shared/shared.module';
 
 import { AuthService } from '../../core/services/auth.service';
 import { NotificationsService } from '../../core/services/notifications.service';
@@ -34,6 +35,7 @@ import { MascotPeekComponent } from '../../shared/components/mascot-peek';
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     BottomTabBarComponent,
     SearchBoxComponent,
     PageBackgroundComponent,

@@ -1,6 +1,6 @@
 {
   "id": "cornish-rex-wcf-tica",
-  "name": "Cornish Rex (WCF, TICA)",
+  "name": "Cornish Rex Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Necessita di cure particolari per il pelo.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

@@ -1,6 +1,6 @@
 {
   "id": "pug-carlino",
-  "name": "Pug (Carlino)",
+  "name": "Pug Carlino",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Molto manutentivo a livello sanitario.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

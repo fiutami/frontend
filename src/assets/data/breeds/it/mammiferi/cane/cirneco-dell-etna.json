@@ -1,6 +1,6 @@
 {
   "id": "cirneco-dell-etna",
-  "name": "Cirneco dell’Etna",
+  "name": "Cirneco Dell Etna",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Poco adatto a vita urbana e domestica.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

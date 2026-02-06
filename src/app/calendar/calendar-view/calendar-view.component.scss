@@ -26,6 +26,12 @@
     padding-top: $spacing-lg;
   }
 
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
   &__title {
     margin: 0;
     font-family: $font-family-body;
@@ -35,8 +41,26 @@
     text-transform: capitalize;
   }
 
-  &__header-spacer {
-    width: 34px; // Same as back button for centering
+  // ===========================================
+  // BRANDING (Logo)
+  // ===========================================
+
+  &__branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 72px; // Container for logo
+    padding: $spacing-xs $spacing-md;
+
+    // Logo size: 52px as per user feedback
+    app-logo {
+      ::ng-deep img,
+      ::ng-deep svg {
+        height: 52px;
+        width: auto;
+      }
+    }
   }
 
   // ===========================================
@@ -74,7 +98,7 @@
   }
 
   &__month-name {
-    font-family: 'Moul', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 400;
     color: $color-cta-primary;
@@ -89,7 +113,7 @@
 
   &__selected-date {
     padding: $spacing-xs $spacing-md;
-    font-family: 'Irish Grover', cursive, $font-family-body;
+    font-family: 'Montserrat', $font-family-body;
     font-size: 14px;
     color: $color-text-inverse;
     text-align: center;
@@ -170,7 +194,7 @@
   }
 
   &__day-number {
-    font-family: 'Inria Sans', $font-family-body;
+    font-family: 'Montserrat', $font-family-body;
     font-size: 16px;
     font-weight: 700;
     color: $color-text-inverse;
@@ -190,6 +214,91 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
+  }
+
+  // ===========================================
+  // ACTION ROW (Crea evento + Campanella)
+  // ===========================================
+
+  &__action-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-md;
+    padding: $spacing-md;
+  }
+
+  &__create-event-btn {
+    padding: $spacing-sm $spacing-lg;
+    background-color: $color-cta-primary;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-dark;
+    cursor: pointer;
+    box-shadow: $shadow-md;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: $shadow-lg;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__notification-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 150ms ease;
+
+    .material-icons {
+      font-size: 24px;
+      color: $color-text-inverse;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &--active {
+      background-color: $color-cta-primary;
+      border-color: $color-cta-primary;
+
+      .material-icons {
+        color: $color-text-dark;
+      }
+    }
+  }
+
+  &__notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    background-color: #FF4444;
+    border-radius: 9px;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   // ===========================================
@@ -357,6 +466,111 @@
     font-size: 16px;
     color: $color-text-secondary;
     flex-shrink: 0;
+  }
+
+  // ===========================================
+  // PROMO SECTION - FIUTAMI Plus
+  // ===========================================
+
+  &__promo-section {
+    padding: $spacing-md;
+    background-color: $color-background-primary;
+    border-radius: $border-radius-page $border-radius-page 0 0;
+  }
+
+  &__promo-carousel {
+    margin-bottom: $spacing-md;
+  }
+
+  &__promo-card {
+    background: linear-gradient(135deg, $color-cta-primary 0%, darken($color-cta-primary, 10%) 100%);
+    border-radius: $border-radius-md;
+    padding: $spacing-lg;
+    text-align: center;
+  }
+
+  &__promo-title {
+    margin: 0 0 $spacing-xs;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: $color-text-dark;
+  }
+
+  &__promo-text {
+    margin: 0;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 14px;
+    color: $color-text-dark;
+    opacity: 0.9;
+  }
+
+  &__track-emotion {
+    position: relative;
+    background-color: $color-ai-primary;
+    border-radius: $border-radius-md;
+    padding: $spacing-md;
+    margin-bottom: $spacing-md;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  &__track-emotion-title {
+    margin: 0 0 $spacing-xs;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: $color-text-inverse;
+  }
+
+  &__track-emotion-subtitle {
+    margin: 0 0 $spacing-sm;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__track-emotion-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: contain;
+  }
+
+  &__track-emotion-badge {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    background-color: $color-cta-primary;
+    color: $color-text-dark;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+  }
+
+  &__promo-btn {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    background-color: $color-cta-primary;
+    color: $color-text-dark;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: darken($color-cta-primary, 8%);
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
   }
 
   // ===========================================

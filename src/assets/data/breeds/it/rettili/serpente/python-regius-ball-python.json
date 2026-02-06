@@ -1,6 +1,6 @@
 {
   "id": "python-regius-ball-python",
-  "name": "Python regius – Ball Python",
+  "name": "Python Regius Ball Python",
   "species": "Serpenti",
   "category": "rettili",
   "image": "🐍",
@@ -39,7 +39,7 @@
       "Informazioni in arrivo"
     ],
     "lifeExpectancy": "Da definire",
-    "notes": "_Da completare_"
+    "notes": ""
   },
   "pedigree": {
     "standard": "Da definire",
@@ -48,8 +48,8 @@
     ]
   },
   "pro": "",
-  "contro": "_Da completare_",
+  "contro": "",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

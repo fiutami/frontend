@@ -1,0 +1,17 @@
+<div class="quick-actions">
+  @for (item of items; track trackById($index, item)) {
+    <button
+      class="quick-action"
+      [class.quick-action--active]="activeId === item.id"
+      (click)="onItemClick(item.id)"
+      [attr.aria-label]="item.ariaLabel || item.id"
+      type="button">
+      <span class="material-icons quick-action__icon">{{ item.icon }}</span>
+      @if (item.badge && item.badge > 0) {
+        <span class="quick-action__badge">
+          {{ item.badge > 99 ? '99+' : item.badge }}
+        </span>
+      }
+    </button>
+  }
+</div>

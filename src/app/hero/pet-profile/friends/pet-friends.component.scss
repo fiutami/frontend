@@ -14,6 +14,12 @@
     background: rgba(0, 0, 0, 0.1);
   }
 
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
   &__back,
   &__add {
     width: 44px;

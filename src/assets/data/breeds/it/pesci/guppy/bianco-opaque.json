@@ -1,6 +1,6 @@
 {
   "id": "bianco-opaque",
-  "name": "Bianco (Opaque)",
+  "name": "Bianco Opaque",
   "species": "Guppy",
   "category": "pesci",
   "image": "🐠",
@@ -51,5 +51,5 @@
   "contro": "Colore delicato che può perdere brillantezza con stress o malattie.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

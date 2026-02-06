@@ -1,6 +1,6 @@
 {
   "id": "schnauzer-standard",
-  "name": "Schnauzer (Standard)",
+  "name": "Schnauzer Standard",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -52,5 +52,5 @@
   "contro": "Può essere testardo.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

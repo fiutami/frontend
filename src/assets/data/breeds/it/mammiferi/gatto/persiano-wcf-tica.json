@@ -1,6 +1,6 @@
 {
   "id": "persiano-wcf-tica",
-  "name": "Persiano (WCF, TICA)",
+  "name": "Persiano Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -53,5 +53,5 @@
   "contro": "Richiede cure e attenzioni costanti.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

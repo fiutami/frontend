@@ -1,6 +1,6 @@
 {
   "id": "laika-vari-tipi-russi",
-  "name": "Laika (vari tipi russi)",
+  "name": "Laika Vari Tipi Russi",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Poco adatti alla vita da appartamento.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

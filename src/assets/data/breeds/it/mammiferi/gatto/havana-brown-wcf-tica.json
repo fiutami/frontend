@@ -1,6 +1,6 @@
 {
   "id": "havana-brown-wcf-tica",
-  "name": "Havana Brown (WCF, TICA)",
+  "name": "Havana Brown Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Può soffrire di ansia da separazione.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

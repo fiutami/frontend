@@ -1,6 +1,6 @@
 {
   "id": "irish-red-and-white-setter",
-  "name": "Irish Red and White Setter",
+  "name": "Irish Red And White Setter",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Richiede cura del mantello.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

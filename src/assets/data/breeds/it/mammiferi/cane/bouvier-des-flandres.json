@@ -1,6 +1,6 @@
 {
   "id": "bouvier-des-flandres",
-  "name": "Bouvier des Flandres",
+  "name": "Bouvier Des Flandres",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -53,5 +53,5 @@
   "contro": "Richiede impegno e spazio.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

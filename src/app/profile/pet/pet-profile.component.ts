@@ -9,6 +9,8 @@ import { PhotoUploadService } from '../../core/services/photo-upload.service';
 import { DrawerService } from '../../shared/components/drawer/drawer.service';
 import { ProfileIconComponent } from '../../shared/components/profile-icons';
 import { PhotoUploadModalComponent } from '../../shared/components/photo-upload-modal';
+import { BottomTabBarComponent } from '../../shared/components/bottom-tab-bar';
+import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
 import {
   PetProfile,
   PetPhoto,
@@ -34,7 +36,8 @@ interface PromoCard {
     RouterModule,
     TranslateModule,
     ProfileIconComponent,
-    PhotoUploadModalComponent
+    PhotoUploadModalComponent,
+    BottomTabBarComponent
   ],
   templateUrl: './pet-profile.component.html',
   styleUrl: './pet-profile.component.scss'
@@ -87,6 +90,9 @@ export class PetProfileComponent implements OnInit, OnDestroy {
   );
 
   petId: string | null = null;
+
+  // Tab bar configuration
+  tabs = MAIN_TAB_BAR_CONFIG;
 
   constructor(
     private route: ActivatedRoute,

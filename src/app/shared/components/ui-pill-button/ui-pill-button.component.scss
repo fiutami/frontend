@@ -1,0 +1,92 @@
+/**
+ * UiPillButton - SCSS
+ *
+ * REGOLA: Solo CSS vars da tokens!
+ */
+
+.ui-pill {
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--shadow-btn);
+  white-space: nowrap;
+
+  // ==========================================
+  // SIZE VARIANTS
+  // ==========================================
+
+  &--sm {
+    // FIGMA: height 25px, padding 12/4
+    padding: 4px 12px;
+    font-size: 13px;
+  }
+
+  &--md {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  // ==========================================
+  // COLOR VARIANTS
+  // ==========================================
+
+  &--primary {
+    background: var(--blue-1);
+    color: var(--white);
+    border: none;
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 8px 24px rgba(74, 116, 240, 0.4);
+    }
+  }
+
+  &--yellow {
+    // FIGMA: Action chips gialli con testo bianco
+    background: var(--yellow-cta);
+    color: var(--white);
+    border: none;
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 8px 24px rgba(242, 184, 48, 0.4);
+    }
+  }
+
+  &--outline-yellow {
+    background: transparent;
+    color: var(--yellow-cta);
+    border: 2px solid var(--yellow-cta);
+
+    &:hover:not(:disabled) {
+      background: rgba(242, 184, 48, 0.1);
+    }
+  }
+
+  &--outline-danger {
+    background: transparent;
+    color: var(--red-danger);
+    border: 2px solid var(--red-danger);
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 68, 68, 0.1);
+    }
+  }
+
+  // ==========================================
+  // STATES
+  // ==========================================
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

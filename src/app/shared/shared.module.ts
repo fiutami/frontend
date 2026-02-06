@@ -8,8 +8,10 @@ import { FormInputComponent } from './components/form-input/form-input.component
 import { CardComponent } from './components/card/card.component';
 import { IconButtonComponent } from './components/icon-button/icon-button.component';
 import { BackButtonComponent } from './components/back-button/back-button.component';
-import { LogoComponent } from './components/logo/logo.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
+
+// LogoComponent - now standalone
+import { LogoComponent } from './components/logo/logo.component';
 
 // New Standalone Components
 import { SpeechBubbleComponent } from './components/speech-bubble';
@@ -38,7 +40,6 @@ const LEGACY_COMPONENTS = [
   CardComponent,
   IconButtonComponent,
   BackButtonComponent,
-  LogoComponent,
   MenuItemComponent,
 ];
 
@@ -62,6 +63,7 @@ const STANDALONE_COMPONENTS = [
   ProfileIconComponent,
   CameraCaptureComponent,
   PhotoUploadModalComponent,
+  LogoComponent,
 ];
 
 @NgModule({

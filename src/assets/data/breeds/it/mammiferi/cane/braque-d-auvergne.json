@@ -1,6 +1,6 @@
 {
   "id": "braque-d-auvergne",
-  "name": "Braque d'Auvergne",
+  "name": "Braque D Auvergne",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Raro e impegnativo nella gestione.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

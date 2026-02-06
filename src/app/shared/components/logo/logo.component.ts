@@ -3,12 +3,15 @@ import {
   Input,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 export type LogoVariant = 'color' | 'white' | 'dark';
 export type LogoSize = 'sm' | 'md' | 'lg' | 'xl';
 
 @Component({
   selector: 'app-logo',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

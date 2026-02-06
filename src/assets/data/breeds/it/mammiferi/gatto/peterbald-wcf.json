@@ -1,6 +1,6 @@
 {
   "id": "peterbald-wcf",
-  "name": "Peterbald (WCF)",
+  "name": "Peterbald Wcf",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Richiede attenzione per la pelle.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

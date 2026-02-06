@@ -1,6 +1,6 @@
 {
   "id": "picardy-sheepdog-berger-picard",
-  "name": "Picardy Sheepdog (Berger Picard)",
+  "name": "Picardy Sheepdog Berger Picard",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Richiede esercizio.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

@@ -1,6 +1,6 @@
 {
   "id": "scottish-fold-wcf-tica",
-  "name": "Scottish Fold (WCF, TICA)",
+  "name": "Scottish Fold Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -51,5 +51,5 @@
   "contro": "Predisposizione a problemi articolari.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

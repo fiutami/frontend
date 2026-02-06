@@ -1,6 +1,6 @@
 {
   "id": "cao-da-serra-da-estrela",
-  "name": "Cão da Serra da Estrela",
+  "name": "Cao Da Serra Da Estrela",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -52,5 +52,5 @@
   "contro": "Può essere territoriale.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

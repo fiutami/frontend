@@ -1,6 +1,6 @@
 {
   "id": "segugio-italiano-a-pelo-raso",
-  "name": "Segugio Italiano a Pelo Raso",
+  "name": "Segugio Italiano A Pelo Raso",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -51,5 +51,5 @@
   "contro": "Richiede costanza.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

@@ -1,6 +1,6 @@
 {
   "id": "great-dane-alano-tedesco",
-  "name": "Great Dane (Alano Tedesco)",
+  "name": "Great Dane Alano Tedesco",
   "species": "Cane",
   "category": "mammiferi",
   "image": "🐕",
@@ -53,5 +53,5 @@
   "contro": "Vita breve.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }

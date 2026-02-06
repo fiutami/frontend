@@ -1,6 +1,6 @@
 {
   "id": "american-bobtail-wcf-tica",
-  "name": "American Bobtail (WCF, TICA)",
+  "name": "American Bobtail Wcf Tica",
   "species": "Gatto",
   "category": "mammiferi",
   "image": "🐱",
@@ -52,5 +52,5 @@
   "contro": "Richiede stimoli mentali.",
   "lang": "it",
   "status": "draft",
-  "lastUpdated": "2026-01-19"
+  "lastUpdated": "2026-01-27"
 }
