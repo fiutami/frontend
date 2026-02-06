@@ -5,10 +5,38 @@
   [showBack]="true"
   (backClicked)="goBack()">
 
-  <!-- Extra sotto il logo (dentro blu): Subtitle -->
-  <p shellBrandingExtra class="breeds-subtitle">
-    Fiuta e scopri. Ogni specie racconta qualcosa.
-  </p>
+  <!-- Frecce navigazione ai lati del titolo (dentro blu) -->
+  <div shellBrandingExtra class="breeds-title-nav">
+    <button class="breeds-title-nav__btn breeds-title-nav__btn--prev" aria-label="Sezione precedente">
+      <span class="material-icons">chevron_left</span>
+    </button>
+    <button class="breeds-title-nav__btn breeds-title-nav__btn--next" aria-label="Sezione successiva">
+      <span class="material-icons">chevron_right</span>
+    </button>
+  </div>
+
+  <!-- Sticky Content (su giallo): Frase + Search -->
+  <ng-container shellStickyContent>
+    <!-- Intro text -->
+    <div class="breeds-intro">
+      <h2 class="breeds-intro__title">Fiuta e scopri</h2>
+      <p class="breeds-intro__subtitle">Ogni specie racconta qualcosa.</p>
+    </div>
+
+    <!-- Search box -->
+    <div class="breeds-search">
+      <span class="material-icons breeds-search__icon">search</span>
+      <input
+        type="text"
+        class="breeds-search__input"
+        placeholder="Cosa stai cercando"
+        [value]="searchQuery()"
+        (input)="onSearch($event)">
+      <button class="breeds-search__filter" aria-label="Filtri">
+        <span class="material-icons">tune</span>
+      </button>
+    </div>
+  </ng-container>
 
   <!-- Main Content -->
   <!-- Loading state -->

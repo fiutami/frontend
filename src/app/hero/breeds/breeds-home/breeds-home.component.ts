@@ -27,6 +27,9 @@ export class BreedsHomeComponent implements OnInit {
   readonly carouselIndex = signal(0);
   readonly isAnimating = signal(false);
 
+  // Search state
+  readonly searchQuery = signal('');
+
   ngOnInit(): void {
     this.breedsService.loadSpecies().subscribe();
   }
@@ -83,5 +86,11 @@ export class BreedsHomeComponent implements OnInit {
 
   trackBySpecies(index: number, species: Species): string {
     return species.id;
+  }
+
+  onSearch(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery.set(target.value);
+    // TODO: Implement search filtering
   }
 }
