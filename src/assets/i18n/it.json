@@ -774,5 +774,318 @@
     },
     "logout": "Esci",
     "comingSoon": "Contenuto in arrivo..."
+  },
+  "questionnaire": {
+    "title": "Trova il tuo animale ideale",
+    "progress": "Progresso",
+    "back": "Indietro",
+    "errors": {
+      "init_failed": "Errore durante l'inizializzazione. Riprova.",
+      "selection_failed": "Errore nella selezione. Riprova."
+    },
+    "q00": {
+      "text": "Cosa ti porta qui oggi?",
+      "hint": "Seleziona l'opzione che meglio descrive la tua situazione",
+      "options": {
+        "find_ideal": "Trovare l'animale ideale",
+        "find_ideal_desc": "Ti guiderò nella scelta dell'animale perfetto per te",
+        "register_pet": "Registrare il mio pet",
+        "register_pet_desc": "Ho già un animale e voglio registrarlo",
+        "curiosity": "Solo curiosità",
+        "curiosity_desc": "Voglio esplorare senza impegno"
+      }
+    },
+    "q01": {
+      "text": "In quale paese vivi?",
+      "hint": "Questo ci aiuta a mostrarti animali disponibili nella tua zona",
+      "options": {
+        "italy": "Italia",
+        "brazil": "Brasile",
+        "other": "Altro paese"
+      }
+    },
+    "q02": {
+      "text": "In quale zona vivi?",
+      "options": {
+        "north": "Nord",
+        "center": "Centro",
+        "south": "Sud"
+      }
+    },
+    "q03": {
+      "text": "Dove vivi?",
+      "hint": "Il tipo di abitazione influenza quali animali sono adatti a te",
+      "options": {
+        "apartment_small": "Appartamento piccolo",
+        "apartment_small_desc": "Monolocale o bilocale",
+        "apartment_large": "Appartamento grande",
+        "apartment_large_desc": "Trilocale o più",
+        "house_garden": "Casa con giardino",
+        "house_garden_desc": "Villetta o casa indipendente",
+        "rural": "Zona rurale",
+        "rural_desc": "Campagna o fattoria"
+      }
+    },
+    "q04": {
+      "text": "Hai accesso a spazi esterni?",
+      "options": {
+        "none": "Nessuno",
+        "balcony": "Balcone",
+        "shared_garden": "Giardino condominiale"
+      }
+    },
+    "q05": {
+      "text": "Ci sono restrizioni sul rumore nel tuo edificio?",
+      "hint": "Regolamenti condominiali che limitano i rumori",
+      "options": {
+        "yes": "Sì, ci sono regole strette",
+        "no": "No, nessuna restrizione",
+        "unsure": "Non sono sicuro"
+      }
+    },
+    "q06": {
+      "text": "Con chi vivi?",
+      "options": {
+        "single": "Vivo solo/a",
+        "couple": "Con partner",
+        "family_kids": "Famiglia con bambini",
+        "seniors": "Anziani"
+      }
+    },
+    "q07": {
+      "text": "Tutti i membri della famiglia sono d'accordo sull'adozione?",
+      "options": {
+        "yes": "Sì, tutti d'accordo",
+        "discussing": "Ne stiamo discutendo",
+        "no": "Non ancora"
+      }
+    },
+    "q08": {
+      "text": "Che età hanno i bambini?",
+      "options": {
+        "babies": "Neonati",
+        "babies_desc": "0-2 anni",
+        "toddlers": "Piccoli",
+        "toddlers_desc": "3-5 anni",
+        "children": "Bambini",
+        "children_desc": "6-12 anni",
+        "teens": "Adolescenti",
+        "teens_desc": "13+ anni"
+      }
+    },
+    "q09": {
+      "text": "Quanto tempo puoi dedicare ogni giorno al tuo animale?",
+      "hint": "Considera passeggiate, gioco, cura e attenzioni",
+      "options": {
+        "minimal": "Poco tempo",
+        "minimal_desc": "Meno di 1 ora al giorno",
+        "moderate": "Tempo moderato",
+        "moderate_desc": "1-2 ore al giorno",
+        "plenty": "Molto tempo",
+        "plenty_desc": "3+ ore al giorno",
+        "flexible": "Lavoro da casa",
+        "flexible_desc": "Sono quasi sempre a casa"
+      }
+    },
+    "q10": {
+      "text": "Quante ore al giorno sei fuori casa?",
+      "options": {
+        "few": "Poche ore",
+        "few_desc": "Meno di 4 ore",
+        "standard": "Orario standard",
+        "standard_desc": "8 ore lavorative",
+        "long": "Molte ore",
+        "long_desc": "Più di 10 ore",
+        "variable": "Variabile",
+        "variable_desc": "Viaggi frequenti"
+      }
+    },
+    "q11": {
+      "text": "Qual è il tuo livello di attività fisica?",
+      "hint": "Quanto sei attivo nella vita quotidiana",
+      "options": {
+        "sedentary": "Sedentario",
+        "moderate": "Moderato",
+        "active": "Attivo",
+        "athletic": "Sportivo"
+      }
+    },
+    "q12": {
+      "text": "Hai esperienza con animali domestici?",
+      "options": {
+        "none": "Nessuna esperienza",
+        "none_desc": "Prima volta",
+        "some": "Qualche esperienza",
+        "some_desc": "Ho avuto animali in passato",
+        "experienced": "Esperto",
+        "experienced_desc": "Ho sempre avuto animali",
+        "professional": "Professionista",
+        "professional_desc": "Lavoro con animali"
+      }
+    },
+    "q13": {
+      "text": "Hai già altri animali in casa?",
+      "options": {
+        "no": "No, nessuno",
+        "dog": "Sì, un cane",
+        "cat": "Sì, un gatto",
+        "other": "Sì, altro animale"
+      }
+    },
+    "q14": {
+      "text": "Qual è il tuo budget mensile per un animale?",
+      "hint": "Considera cibo, veterinario, accessori",
+      "options": {
+        "low": "Budget limitato",
+        "low_desc": "Fino a 50€/mese",
+        "medium": "Budget medio",
+        "medium_desc": "50-150€/mese",
+        "high": "Budget alto",
+        "high_desc": "150-300€/mese",
+        "unlimited": "Nessun limite",
+        "unlimited_desc": "Non è un problema"
+      }
+    },
+    "q15": {
+      "text": "Hai un fondo per emergenze veterinarie?",
+      "hint": "Spese impreviste possono essere significative",
+      "options": {
+        "yes": "Sì, sono preparato",
+        "partial": "Ho qualcosa da parte",
+        "no": "No, non ancora"
+      }
+    },
+    "q16": {
+      "text": "Saresti disposto ad assicurare il tuo animale?",
+      "options": {
+        "yes": "Sì, sicuramente",
+        "maybe": "Forse",
+        "no": "No"
+      }
+    },
+    "q17": {
+      "text": "Hai allergie agli animali?",
+      "options": {
+        "none": "No, nessuna allergia",
+        "mild": "Lievi",
+        "moderate": "Moderate",
+        "severe": "Gravi"
+      }
+    },
+    "q18": {
+      "text": "Hai limitazioni fisiche da considerare?",
+      "hint": "Questo ci aiuta a suggerire animali adatti",
+      "options": {
+        "no_limitations": "Nessuna limitazione",
+        "some_limitations": "Alcune limitazioni",
+        "mobility_issues": "Problemi di mobilità"
+      }
+    },
+    "q19": {
+      "text": "Quanto sei disposto a dedicare alla toelettatura?",
+      "options": {
+        "minimal": "Minima",
+        "minimal_desc": "Solo l'essenziale",
+        "weekly": "Settimanale",
+        "weekly_desc": "Una volta a settimana",
+        "daily": "Quotidiana",
+        "daily_desc": "Ogni giorno",
+        "professional": "Professionale",
+        "professional_desc": "Toelettatore regolare"
+      }
+    },
+    "q20": {
+      "text": "Sei disposto ad addestrare il tuo animale?",
+      "options": {
+        "yes": "Sì, con entusiasmo",
+        "basic": "Solo le basi",
+        "no": "Preferisco animali già addestrati"
+      }
+    },
+    "q21": {
+      "text": "Preferisci adottare o comprare?",
+      "options": {
+        "shelter": "Adottare da rifugio",
+        "shelter_desc": "Dare una seconda possibilità",
+        "breeder": "Allevatore certificato",
+        "breeder_desc": "Razza specifica",
+        "no_preference": "Nessuna preferenza",
+        "no_preference_desc": "Entrambe le opzioni"
+      }
+    },
+    "q22": {
+      "text": "Hai verificato le normative locali sugli animali?",
+      "hint": "Alcune razze o specie possono avere restrizioni",
+      "options": {
+        "ready": "Sì, sono informato",
+        "researching": "Sto cercando informazioni",
+        "not_started": "Non ancora"
+      }
+    },
+    "q23": {
+      "text": "Il tuo proprietario permette animali?",
+      "options": {
+        "yes": "Sì, è permesso",
+        "need_to_ask": "Devo ancora chiedere",
+        "owner": "Sono proprietario"
+      }
+    },
+    "q24": {
+      "text": "Hai qualcuno che può prendersi cura dell'animale in tua assenza?",
+      "options": {
+        "yes": "Sì, ho persone di fiducia",
+        "working_on_it": "Ci sto lavorando",
+        "no": "Non ancora"
+      }
+    },
+    "q25": {
+      "text": "Come gestiresti le vacanze?",
+      "options": {
+        "take_along": "Lo porto con me",
+        "pet_sitter": "Pet sitter",
+        "boarding": "Pensione",
+        "family": "Famiglia/amici"
+      }
+    },
+    "q26": {
+      "text": "Sei pronto per un impegno di molti anni?",
+      "hint": "Un cane vive 10-15 anni, un gatto anche 20+",
+      "options": {
+        "yes": "Sì, sono pronto",
+        "thinking": "Ci sto riflettendo"
+      }
+    },
+    "q27": {
+      "text": "Quale tipo di animale ti interessa?",
+      "hint": "Possiamo approfondire le opzioni più adatte a te",
+      "options": {
+        "dog": "Cane",
+        "dog_desc": "Fedele compagno",
+        "cat": "Gatto",
+        "cat_desc": "Indipendente e affettuoso",
+        "small_mammal": "Piccolo mammifero",
+        "small_mammal_desc": "Coniglio, criceto, cavia...",
+        "bird": "Uccello",
+        "bird_desc": "Pappagallo, canarino...",
+        "fish": "Pesce",
+        "fish_desc": "Acquario rilassante",
+        "unsure": "Non sono sicuro",
+        "unsure_desc": "Aiutami a decidere"
+      }
+    },
+    "modules": {
+      "companion": {
+        "title": "Compagno ideale",
+        "description": "Domande per trovare il compagno perfetto"
+      }
+    },
+    "result": {
+      "title": "Il tuo match ideale",
+      "subtitle": "Basato sulle tue risposte",
+      "topMatches": "I migliori match per te",
+      "viewDetails": "Vedi dettagli",
+      "startOver": "Ricomincia",
+      "saveResults": "Salva risultati"
+    }
   }
 }
