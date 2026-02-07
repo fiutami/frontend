@@ -5,7 +5,13 @@
   @if (isLoading()) {
     <div class="loading-container">
       <div class="spinner"></div>
-      <p>{{ 'questionnaire.result.loading' | translate }}</p>
+      <p>{{ matchingState().message || ('questionnaire.result.loading' | translate) }}</p>
+      @if (embeddingState().status === 'loading') {
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="embeddingState().progress"></div>
+        </div>
+        <p class="progress-text">{{ embeddingState().message }}</p>
+      }
     </div>
   }
 
@@ -37,6 +43,105 @@
         </span>
       </div>
 
+      <!-- Breed Recommendations -->
+      @if (hasResults()) {
+        <section class="recommendations">
+          <h2>{{ 'questionnaire.result.recommendations' | translate }}</h2>
+
+          @for (result of topRecommendations(); track trackByBreedId($index, result)) {
+            <div class="breed-card" [class.expanded]="expandedBreedId() === result.breed.id">
+
+              <!-- Card Header -->
+              <div class="breed-header" (click)="toggleExplanation(result)">
+                <div class="breed-info">
+                  @if (result.breed.imageUrl) {
+                    <img [src]="result.breed.imageUrl" [alt]="result.breed.name" class="breed-image">
+                  } @else {
+                    <div class="breed-placeholder">
+                      @switch (result.breed.species) {
+                        @case ('dog') { 🐕 }
+                        @case ('cat') { 🐈 }
+                        @default { 🐾 }
+                      }
+                    </div>
+                  }
+                  <div class="breed-text">
+                    <h3>{{ result.breed.name }}</h3>
+                    <p class="breed-description">{{ result.breed.description | slice:0:80 }}...</p>
+                  </div>
+                </div>
+                <div class="breed-score" [class]="getScoreClass(result.score)">
+                  <span class="score-value">{{ result.score }}%</span>
+                  <span class="score-label">match</span>
+                </div>
+              </div>
+
+              <!-- Match Reasons -->
+              @if (result.matchReasons.length > 0) {
+                <div class="match-reasons">
+                  @for (reason of result.matchReasons.slice(0, 3); track reason.reason) {
+                    <span class="reason-chip" [class]="reason.impact">
+                      @if (reason.impact === 'positive') { ✓ }
+                      @else if (reason.impact === 'warning') { ⚠ }
+                      {{ reason.reason }}
+                    </span>
+                  }
+                </div>
+              }
+
+              <!-- Expanded Content -->
+              @if (expandedBreedId() === result.breed.id) {
+                <div class="breed-expanded">
+                  <!-- AI Explanation -->
+                  @if (isLoadingExplanation()) {
+                    <div class="explanation-loading">
+                      <span class="mini-spinner"></span>
+                      Caricando spiegazione...
+                    </div>
+                  } @else if (breedExplanation()) {
+                    <div class="explanation">
+                      <span class="explanation-icon">🐕</span>
+                      <p>{{ breedExplanation() }}</p>
+                    </div>
+                  }
+
+                  <!-- Tradeoffs -->
+                  @if (result.tradeoffs.length > 0) {
+                    <div class="tradeoffs">
+                      <h4>Da considerare:</h4>
+                      @for (tradeoff of result.tradeoffs; track tradeoff.aspect) {
+                        <div class="tradeoff-item" [class]="tradeoff.severity">
+                          <span class="tradeoff-icon">
+                            @if (tradeoff.severity === 'high') { ⚠️ }
+                            @else if (tradeoff.severity === 'medium') { ℹ️ }
+                            @else { 💡 }
+                          </span>
+                          <span>{{ tradeoff.description }}</span>
+                        </div>
+                      }
+                    </div>
+                  }
+
+                  <!-- Actions -->
+                  <div class="breed-actions">
+                    <button class="btn-view" (click)="viewBreedDetails(result.breed.id)">
+                      Scopri di più
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </section>
+      } @else {
+        <!-- No Results -->
+        <section class="no-results">
+          <div class="no-results-icon">🔍</div>
+          <h3>Nessuna razza trovata</h3>
+          <p>Non abbiamo trovato razze che corrispondono ai tuoi criteri. Prova a modificare alcune risposte.</p>
+        </section>
+      }
+
       <!-- Profile Summary -->
       <section class="profile-summary">
         <h2>{{ 'questionnaire.result.your_profile' | translate }}</h2>
@@ -48,13 +153,6 @@
             </div>
           }
         </div>
-      </section>
-
-      <!-- Placeholder for Recommendations -->
-      <section class="recommendations-placeholder">
-        <div class="placeholder-icon">🔮</div>
-        <h3>{{ 'questionnaire.result.coming_soon' | translate }}</h3>
-        <p>{{ 'questionnaire.result.matching_soon' | translate }}</p>
       </section>
 
       <!-- Actions -->
@@ -71,6 +169,12 @@
       </div>
 
     </div>
+
+    <!-- Fiuto Chat -->
+    <app-fiuto-chat
+      [userProfile]="profile() ?? {}"
+      [phase]="'results'"
+    ></app-fiuto-chat>
   }
 
 </div>

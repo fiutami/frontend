@@ -1,0 +1,146 @@
+<!-- Fiuto Chat - AI Assistant Bubble -->
+
+<!-- Floating Button -->
+<button
+  class="fiuto-bubble"
+  [class.has-unread]="hasUnread()"
+  [class.is-open]="isOpen()"
+  (click)="toggleChat()"
+  [attr.aria-expanded]="isOpen()"
+  aria-label="Apri chat con Fiuto"
+>
+  @if (!isOpen()) {
+    <span class="bubble-icon">🐕</span>
+    @if (hasUnread()) {
+      <span class="unread-badge"></span>
+    }
+  } @else {
+    <span class="bubble-icon close">✕</span>
+  }
+</button>
+
+<!-- Chat Panel -->
+@if (isOpen()) {
+  <div class="fiuto-panel" role="dialog" aria-label="Chat con Fiuto">
+
+    <!-- Header -->
+    <header class="panel-header">
+      <div class="header-info">
+        <span class="fiuto-avatar">🐕</span>
+        <div class="header-text">
+          <h3>Fiuto</h3>
+          <span class="status">
+            @if (isTyping()) {
+              Sta scrivendo...
+            } @else {
+              Il tuo assistente
+            }
+          </span>
+        </div>
+      </div>
+      <button class="btn-close" (click)="closeChat()" aria-label="Chiudi chat">
+        ✕
+      </button>
+    </header>
+
+    <!-- Messages -->
+    <div class="messages-container" #messagesContainer>
+      @if (!hasMessages()) {
+        <!-- Empty state with quick suggestions -->
+        <div class="empty-state">
+          <div class="welcome-text">
+            <span class="welcome-icon">🐾</span>
+            <p>{{ 'fiuto.welcome' | translate }}</p>
+          </div>
+
+          <div class="quick-suggestions">
+            <p class="suggestions-label">Domande frequenti:</p>
+            @for (suggestion of quickSuggestions(); track suggestion.text) {
+              <button
+                class="suggestion-chip"
+                (click)="sendQuickMessage(suggestion)"
+                [disabled]="isTyping()"
+              >
+                <span class="chip-icon">{{ suggestion.icon }}</span>
+                {{ suggestion.text }}
+              </button>
+            }
+          </div>
+        </div>
+      } @else {
+        <!-- Message list -->
+        @for (message of visibleMessages(); track trackByMessageId($index, message)) {
+          <div
+            class="message"
+            [class.user]="message.role === 'user'"
+            [class.assistant]="message.role === 'assistant'"
+            [class.streaming]="message.isStreaming"
+          >
+            @if (message.role === 'assistant') {
+              <span class="message-avatar">🐕</span>
+            }
+            <div class="message-content">
+              <p>{{ message.content }}</p>
+              @if (message.isStreaming && !message.content) {
+                <span class="typing-indicator">
+                  <span></span><span></span><span></span>
+                </span>
+              }
+            </div>
+          </div>
+        }
+      }
+
+      <!-- Error message -->
+      @if (error()) {
+        <div class="error-message">
+          <span>⚠️</span>
+          {{ error() }}
+        </div>
+      }
+    </div>
+
+    <!-- Quick suggestions (when has messages) -->
+    @if (hasMessages() && !isTyping()) {
+      <div class="inline-suggestions">
+        @for (suggestion of quickSuggestions().slice(0, 2); track suggestion.text) {
+          <button
+            class="mini-chip"
+            (click)="sendQuickMessage(suggestion)"
+          >
+            {{ suggestion.icon }} {{ suggestion.text }}
+          </button>
+        }
+      </div>
+    }
+
+    <!-- Input -->
+    <footer class="panel-footer">
+      <div class="input-wrapper">
+        <textarea
+          class="chat-input"
+          [value]="inputText()"
+          (input)="inputText.set($any($event.target).value)"
+          (keydown)="onKeyDown($event)"
+          placeholder="Scrivi un messaggio..."
+          rows="1"
+          [disabled]="isTyping()"
+          aria-label="Messaggio per Fiuto"
+        ></textarea>
+        <button
+          class="btn-send"
+          (click)="sendMessage()"
+          [disabled]="!inputText().trim() || isTyping()"
+          aria-label="Invia messaggio"
+        >
+          @if (isTyping()) {
+            <span class="spinner"></span>
+          } @else {
+            ➤
+          }
+        </button>
+      </div>
+    </footer>
+
+  </div>
+}

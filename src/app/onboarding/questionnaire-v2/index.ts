@@ -15,6 +15,9 @@ export * from './models/flow.models';
 export * from './engine/expression-parser.service';
 export * from './engine/profile-manager.service';
 export * from './engine/flow-engine.service';
+export * from './engine/embedding.service';
+export * from './engine/matching-engine.service';
+export * from './engine/fiuto-ai.service';
 
 // Data
 export * from './data/questionnaire-data';
