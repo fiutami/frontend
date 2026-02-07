@@ -207,6 +207,165 @@
       }
     }
   },
+  "questionnaire": {
+    "result": {
+      "title": "Your ideal match!",
+      "subtitle": "Based on your answers",
+      "loading": "Calculating the best matches...",
+      "recommendations": "Recommended breeds for you",
+      "your_profile": "Your profile",
+      "housing": "Housing",
+      "time": "Available time",
+      "experience": "Experience",
+      "budget": "Budget",
+      "coming_soon": "Coming soon",
+      "matching_soon": "We're refining the matching algorithm to offer you even more accurate suggestions",
+      "explore_catalog": "Explore catalog",
+      "start_over": "Restart questionnaire",
+      "go_home": "Go to home",
+      "topMatches": "Top matches for you",
+      "viewDetails": "View details",
+      "startOver": "Start over",
+      "saveResults": "Save results"
+    },
+    "species": {
+      "dog": "Dog",
+      "cat": "Cat",
+      "small_mammal": "Small mammal",
+      "bird": "Bird",
+      "fish": "Fish",
+      "reptile": "Reptile",
+      "unknown": "Not specified"
+    },
+    "values": {
+      "minimal": "Minimal",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "flexible": "Flexible",
+      "unlimited": "Unlimited",
+      "none": "None",
+      "some": "Some experience",
+      "experienced": "Experienced",
+      "professional": "Professional",
+      "apartment_small": "Small apartment",
+      "apartment_large": "Large apartment",
+      "house_no_garden": "House without garden",
+      "house_with_garden": "House with garden",
+      "rural": "Rural area",
+      "farm": "Farm",
+      "balcony": "Balcony",
+      "shared_garden": "Shared garden",
+      "private_garden": "Private garden",
+      "large_property": "Large property",
+      "single": "Single",
+      "couple": "Couple",
+      "family_young_kids": "Family with young children",
+      "family_teens": "Family with teenagers",
+      "seniors": "Seniors",
+      "multi_generation": "Multi-generation",
+      "weekly": "Weekly",
+      "daily": "Daily",
+      "sedentary": "Sedentary",
+      "moderate": "Moderate",
+      "active": "Active",
+      "very_active": "Very active",
+      "athletic": "Athletic",
+      "cold": "Cold",
+      "temperate": "Temperate",
+      "warm": "Warm",
+      "hot": "Hot",
+      "variable": "Variable",
+      "mild": "Mild",
+      "severe": "Severe",
+      "shelter": "Shelter",
+      "breeder": "Breeder",
+      "rescue": "Rescue",
+      "no_preference": "No preference",
+      "not_ready": "Not ready",
+      "researching": "Researching",
+      "ready": "Ready",
+      "already_compliant": "Already compliant",
+      "take_along": "Take along",
+      "pet_sitter": "Pet sitter",
+      "boarding": "Boarding",
+      "family": "Family",
+      "friends": "Friends",
+      "not_planned": "Not planned",
+      "find_ideal": "Find ideal pet",
+      "register_pet": "Register my pet",
+      "curiosity": "Just curious",
+      "gift": "Gift",
+      "therapy": "Therapy"
+    },
+    "companion": {
+      "c01": {
+        "text": "How much time can you dedicate to walks?",
+        "options": {
+          "short": "Short walks",
+          "short_desc": "15-30 minutes daily",
+          "medium": "Medium walks",
+          "medium_desc": "30-60 minutes daily",
+          "long": "Long walks",
+          "long_desc": "1-2 hours daily",
+          "very_long": "Very long",
+          "very_long_desc": "2+ hours daily"
+        }
+      },
+      "c02": {
+        "text": "Do you prefer a more independent or affectionate pet?",
+        "options": {
+          "independent": "Independent",
+          "independent_desc": "Does well alone",
+          "balanced": "Balanced",
+          "balanced_desc": "A bit of both",
+          "affectionate": "Affectionate",
+          "affectionate_desc": "Loves cuddles",
+          "velcro": "Very affectionate",
+          "velcro_desc": "Always by my side"
+        }
+      },
+      "c03": {
+        "text": "What's your noise tolerance level?",
+        "options": {
+          "silent": "Silent",
+          "silent_desc": "I prefer quiet pets",
+          "occasional": "Occasional",
+          "occasional_desc": "Some noise is fine",
+          "moderate": "Moderate",
+          "moderate_desc": "Noise doesn't bother me",
+          "high": "High",
+          "high_desc": "No problem with noise"
+        }
+      },
+      "c04": {
+        "text": "Do you prefer a small, medium, or large pet?",
+        "options": {
+          "tiny": "Tiny",
+          "tiny_desc": "Less than 5 kg",
+          "small": "Small",
+          "small_desc": "5-10 kg",
+          "medium": "Medium",
+          "medium_desc": "10-25 kg",
+          "large": "Large",
+          "large_desc": "25-40 kg",
+          "giant": "Giant",
+          "giant_desc": "More than 40 kg"
+        }
+      },
+      "c05": {
+        "text": "How important is ease of training to you?",
+        "options": {
+          "not_important": "Not important",
+          "not_important_desc": "I'll adapt",
+          "somewhat": "Somewhat",
+          "somewhat_desc": "Prefer easy",
+          "very": "Very important",
+          "very_desc": "Must be easy"
+        }
+      }
+    }
+  },
   "languages": {
     "it": "Italian",
     "en": "English",
@@ -774,5 +933,21 @@
     },
     "logout": "Logout",
     "comingSoon": "Content coming soon..."
+  },
+  "fiuto": {
+    "welcome": "Hi! I'm Fiuto, your assistant. If you have questions during the questionnaire, just ask!",
+    "typing": "Typing...",
+    "error": "Oops! Something went wrong. Try again.",
+    "placeholder": "Write a message...",
+    "suggestions": {
+      "help_question": "I don't understand this question",
+      "difference": "What's the difference between options?",
+      "why_asking": "Why are you asking this?",
+      "why_breed": "Why this breed?",
+      "cons": "What are the cons?",
+      "alternatives": "Similar alternatives?",
+      "how_works": "How does the quiz work?",
+      "recommend": "What pet do you recommend?"
+    }
   }
 }

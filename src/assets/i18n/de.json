@@ -144,6 +144,181 @@
       "tryAgain": "Quiz wiederholen"
     }
   },
+  "questionnaire": {
+    "result": {
+      "title": "Dein ideales Match!",
+      "subtitle": "Basierend auf deinen Antworten",
+      "loading": "Berechne die besten Übereinstimmungen...",
+      "recommendations": "Empfohlene Rassen für dich",
+      "your_profile": "Dein Profil",
+      "housing": "Wohnsituation",
+      "time": "Verfügbare Zeit",
+      "experience": "Erfahrung",
+      "budget": "Budget",
+      "coming_soon": "Demnächst verfügbar",
+      "matching_soon": "Wir verbessern den Matching-Algorithmus, um dir noch genauere Vorschläge zu machen",
+      "explore_catalog": "Katalog erkunden",
+      "start_over": "Fragebogen neu starten",
+      "go_home": "Zur Startseite",
+      "topMatches": "Top-Matches für dich",
+      "viewDetails": "Details ansehen",
+      "startOver": "Neu starten",
+      "saveResults": "Ergebnisse speichern"
+    },
+    "species": {
+      "dog": "Hund",
+      "cat": "Katze",
+      "small_mammal": "Kleines Säugetier",
+      "bird": "Vogel",
+      "fish": "Fisch",
+      "reptile": "Reptil",
+      "unknown": "Nicht angegeben"
+    },
+    "values": {
+      "minimal": "Minimal",
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch",
+      "flexible": "Flexibel",
+      "unlimited": "Unbegrenzt",
+      "none": "Keine",
+      "some": "Etwas Erfahrung",
+      "experienced": "Erfahren",
+      "professional": "Professionell",
+      "apartment_small": "Kleine Wohnung",
+      "apartment_large": "Große Wohnung",
+      "house_no_garden": "Haus ohne Garten",
+      "house_with_garden": "Haus mit Garten",
+      "rural": "Ländlich",
+      "farm": "Bauernhof",
+      "balcony": "Balkon",
+      "shared_garden": "Gemeinschaftsgarten",
+      "private_garden": "Eigener Garten",
+      "large_property": "Großes Grundstück",
+      "single": "Alleinstehend",
+      "couple": "Paar",
+      "family_young_kids": "Familie mit kleinen Kindern",
+      "family_teens": "Familie mit Teenagern",
+      "seniors": "Senioren",
+      "multi_generation": "Mehrgenerationen",
+      "weekly": "Wöchentlich",
+      "daily": "Täglich",
+      "sedentary": "Sesshaft",
+      "moderate": "Moderat",
+      "active": "Aktiv",
+      "very_active": "Sehr aktiv",
+      "athletic": "Sportlich",
+      "cold": "Kalt",
+      "temperate": "Gemäßigt",
+      "warm": "Warm",
+      "hot": "Sehr warm",
+      "variable": "Wechselhaft",
+      "mild": "Leicht",
+      "severe": "Schwer",
+      "shelter": "Tierheim",
+      "breeder": "Züchter",
+      "rescue": "Rettung",
+      "no_preference": "Keine Präferenz",
+      "not_ready": "Noch nicht bereit",
+      "researching": "In Recherche",
+      "ready": "Bereit",
+      "already_compliant": "Bereits konform",
+      "take_along": "Nehme es mit",
+      "pet_sitter": "Tiersitter",
+      "boarding": "Tierpension",
+      "family": "Familie",
+      "friends": "Freunde",
+      "not_planned": "Nicht geplant",
+      "find_ideal": "Ideales Tier finden",
+      "register_pet": "Mein Tier registrieren",
+      "curiosity": "Nur Neugier",
+      "gift": "Geschenk",
+      "therapy": "Therapie"
+    },
+    "companion": {
+      "c01": {
+        "text": "Wie viel Zeit kannst du für Spaziergänge aufwenden?",
+        "options": {
+          "short": "Kurze Spaziergänge",
+          "short_desc": "15-30 Minuten täglich",
+          "medium": "Mittlere Spaziergänge",
+          "medium_desc": "30-60 Minuten täglich",
+          "long": "Lange Spaziergänge",
+          "long_desc": "1-2 Stunden täglich",
+          "very_long": "Sehr viel Zeit",
+          "very_long_desc": "2+ Stunden täglich"
+        }
+      },
+      "c02": {
+        "text": "Bevorzugst du ein unabhängigeres oder anhänglicheres Tier?",
+        "options": {
+          "independent": "Unabhängig",
+          "independent_desc": "Kommt gut alleine klar",
+          "balanced": "Ausgewogen",
+          "balanced_desc": "Eine Mischung",
+          "affectionate": "Anhänglich",
+          "affectionate_desc": "Liebt Kuscheln",
+          "velcro": "Sehr anhänglich",
+          "velcro_desc": "Immer bei mir"
+        }
+      },
+      "c03": {
+        "text": "Wie hoch ist deine Lärmtoleranz?",
+        "options": {
+          "silent": "Leise",
+          "silent_desc": "Bevorzuge ruhige Tiere",
+          "occasional": "Gelegentlich",
+          "occasional_desc": "Etwas Lärm ist ok",
+          "moderate": "Moderat",
+          "moderate_desc": "Lärm stört mich nicht",
+          "high": "Hoch",
+          "high_desc": "Kein Problem mit Lärm"
+        }
+      },
+      "c04": {
+        "text": "Bevorzugst du ein kleines, mittleres oder großes Tier?",
+        "options": {
+          "tiny": "Winzig",
+          "tiny_desc": "Unter 5 kg",
+          "small": "Klein",
+          "small_desc": "5-10 kg",
+          "medium": "Mittel",
+          "medium_desc": "10-25 kg",
+          "large": "Groß",
+          "large_desc": "25-40 kg",
+          "giant": "Riesig",
+          "giant_desc": "Über 40 kg"
+        }
+      },
+      "c05": {
+        "text": "Wie wichtig ist dir die Trainierbarkeit?",
+        "options": {
+          "not_important": "Nicht wichtig",
+          "not_important_desc": "Ich passe mich an",
+          "somewhat": "Einigermaßen",
+          "somewhat_desc": "Lieber einfach",
+          "very": "Sehr wichtig",
+          "very_desc": "Muss einfach sein"
+        }
+      }
+    }
+  },
+  "fiuto": {
+    "welcome": "Hallo! Ich bin Fiuto, dein Assistent. Wenn du während des Fragebogens Fragen hast, frag einfach!",
+    "typing": "Schreibt...",
+    "error": "Ups! Etwas ist schiefgelaufen. Versuch es nochmal.",
+    "placeholder": "Schreibe eine Nachricht...",
+    "suggestions": {
+      "help_question": "Ich verstehe diese Frage nicht",
+      "difference": "Was ist der Unterschied zwischen den Optionen?",
+      "why_asking": "Warum fragst du das?",
+      "why_breed": "Warum diese Rasse?",
+      "cons": "Was sind die Nachteile?",
+      "alternatives": "Ähnliche Alternativen?",
+      "how_works": "Wie funktioniert das Quiz?",
+      "recommend": "Welches Tier empfiehlst du?"
+    }
+  },
   "quiz": {
     "phase": "Phase",
     "phase1": {

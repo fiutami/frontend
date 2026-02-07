@@ -207,6 +207,181 @@
       }
     }
   },
+  "questionnaire": {
+    "result": {
+      "title": "Ton match idéal !",
+      "subtitle": "Basé sur tes réponses",
+      "loading": "Calcul des meilleures correspondances...",
+      "recommendations": "Races recommandées pour toi",
+      "your_profile": "Ton profil",
+      "housing": "Logement",
+      "time": "Temps disponible",
+      "experience": "Expérience",
+      "budget": "Budget",
+      "coming_soon": "Bientôt disponible",
+      "matching_soon": "Nous améliorons l'algorithme de matching pour t'offrir des suggestions encore plus précises",
+      "explore_catalog": "Explorer le catalogue",
+      "start_over": "Recommencer le questionnaire",
+      "go_home": "Retour à l'accueil",
+      "topMatches": "Meilleurs matchs pour toi",
+      "viewDetails": "Voir les détails",
+      "startOver": "Recommencer",
+      "saveResults": "Sauvegarder les résultats"
+    },
+    "species": {
+      "dog": "Chien",
+      "cat": "Chat",
+      "small_mammal": "Petit mammifère",
+      "bird": "Oiseau",
+      "fish": "Poisson",
+      "reptile": "Reptile",
+      "unknown": "Non spécifié"
+    },
+    "values": {
+      "minimal": "Minimal",
+      "low": "Faible",
+      "medium": "Moyen",
+      "high": "Élevé",
+      "flexible": "Flexible",
+      "unlimited": "Illimité",
+      "none": "Aucune",
+      "some": "Un peu d'expérience",
+      "experienced": "Expérimenté",
+      "professional": "Professionnel",
+      "apartment_small": "Petit appartement",
+      "apartment_large": "Grand appartement",
+      "house_no_garden": "Maison sans jardin",
+      "house_with_garden": "Maison avec jardin",
+      "rural": "Zone rurale",
+      "farm": "Ferme",
+      "balcony": "Balcon",
+      "shared_garden": "Jardin partagé",
+      "private_garden": "Jardin privé",
+      "large_property": "Grande propriété",
+      "single": "Célibataire",
+      "couple": "Couple",
+      "family_young_kids": "Famille avec jeunes enfants",
+      "family_teens": "Famille avec adolescents",
+      "seniors": "Seniors",
+      "multi_generation": "Multi-génération",
+      "weekly": "Hebdomadaire",
+      "daily": "Quotidien",
+      "sedentary": "Sédentaire",
+      "moderate": "Modéré",
+      "active": "Actif",
+      "very_active": "Très actif",
+      "athletic": "Athlétique",
+      "cold": "Froid",
+      "temperate": "Tempéré",
+      "warm": "Chaud",
+      "hot": "Très chaud",
+      "variable": "Variable",
+      "mild": "Léger",
+      "severe": "Grave",
+      "shelter": "Refuge",
+      "breeder": "Éleveur",
+      "rescue": "Sauvetage",
+      "no_preference": "Pas de préférence",
+      "not_ready": "Pas prêt",
+      "researching": "En recherche",
+      "ready": "Prêt",
+      "already_compliant": "Déjà conforme",
+      "take_along": "Je l'emmène",
+      "pet_sitter": "Pet sitter",
+      "boarding": "Pension",
+      "family": "Famille",
+      "friends": "Amis",
+      "not_planned": "Pas planifié",
+      "find_ideal": "Trouver l'animal idéal",
+      "register_pet": "Enregistrer mon animal",
+      "curiosity": "Simple curiosité",
+      "gift": "Cadeau",
+      "therapy": "Thérapie"
+    },
+    "companion": {
+      "c01": {
+        "text": "Combien de temps peux-tu consacrer aux promenades ?",
+        "options": {
+          "short": "Courtes promenades",
+          "short_desc": "15-30 minutes par jour",
+          "medium": "Promenades moyennes",
+          "medium_desc": "30-60 minutes par jour",
+          "long": "Longues promenades",
+          "long_desc": "1-2 heures par jour",
+          "very_long": "Beaucoup de temps",
+          "very_long_desc": "2+ heures par jour"
+        }
+      },
+      "c02": {
+        "text": "Préfères-tu un animal plus indépendant ou affectueux ?",
+        "options": {
+          "independent": "Indépendant",
+          "independent_desc": "Se débrouille seul",
+          "balanced": "Équilibré",
+          "balanced_desc": "Un peu des deux",
+          "affectionate": "Affectueux",
+          "affectionate_desc": "Aime les câlins",
+          "velcro": "Très affectueux",
+          "velcro_desc": "Toujours à mes côtés"
+        }
+      },
+      "c03": {
+        "text": "Quel est ton niveau de tolérance au bruit ?",
+        "options": {
+          "silent": "Silencieux",
+          "silent_desc": "Je préfère les animaux calmes",
+          "occasional": "Occasionnel",
+          "occasional_desc": "Un peu de bruit, ça va",
+          "moderate": "Modéré",
+          "moderate_desc": "Le bruit ne me dérange pas",
+          "high": "Élevé",
+          "high_desc": "Pas de problème avec le bruit"
+        }
+      },
+      "c04": {
+        "text": "Préfères-tu un animal petit, moyen ou grand ?",
+        "options": {
+          "tiny": "Très petit",
+          "tiny_desc": "Moins de 5 kg",
+          "small": "Petit",
+          "small_desc": "5-10 kg",
+          "medium": "Moyen",
+          "medium_desc": "10-25 kg",
+          "large": "Grand",
+          "large_desc": "25-40 kg",
+          "giant": "Géant",
+          "giant_desc": "Plus de 40 kg"
+        }
+      },
+      "c05": {
+        "text": "Quelle importance accordes-tu à la facilité de dressage ?",
+        "options": {
+          "not_important": "Pas important",
+          "not_important_desc": "Je m'adapte",
+          "somewhat": "Un peu",
+          "somewhat_desc": "Je préfère facile",
+          "very": "Très important",
+          "very_desc": "Doit être facile"
+        }
+      }
+    }
+  },
+  "fiuto": {
+    "welcome": "Salut ! Je suis Fiuto, ton assistant. Si tu as des questions pendant le questionnaire, n'hésite pas à demander !",
+    "typing": "En train d'écrire...",
+    "error": "Oups ! Quelque chose s'est mal passé. Réessaie.",
+    "placeholder": "Écris un message...",
+    "suggestions": {
+      "help_question": "Je ne comprends pas cette question",
+      "difference": "Quelle est la différence entre les options ?",
+      "why_asking": "Pourquoi tu me demandes ça ?",
+      "why_breed": "Pourquoi cette race ?",
+      "cons": "Quels sont les inconvénients ?",
+      "alternatives": "Alternatives similaires ?",
+      "how_works": "Comment fonctionne le quiz ?",
+      "recommend": "Quel animal me recommandes-tu ?"
+    }
+  },
   "languages": {
     "it": "Italien",
     "en": "Anglais",

@@ -779,5 +779,180 @@
     },
     "logout": "Sair",
     "comingSoon": "Conteúdo em breve..."
+  },
+  "questionnaire": {
+    "result": {
+      "title": "Seu match ideal!",
+      "subtitle": "Baseado nas suas respostas",
+      "loading": "Calculando as melhores correspondências...",
+      "recommendations": "Raças recomendadas para você",
+      "your_profile": "Seu perfil",
+      "housing": "Moradia",
+      "time": "Tempo disponível",
+      "experience": "Experiência",
+      "budget": "Orçamento",
+      "coming_soon": "Em breve",
+      "matching_soon": "Estamos aprimorando o algoritmo de matching para oferecer sugestões ainda mais precisas",
+      "explore_catalog": "Explorar catálogo",
+      "start_over": "Recomeçar questionário",
+      "go_home": "Ir para início",
+      "topMatches": "Melhores matches para você",
+      "viewDetails": "Ver detalhes",
+      "startOver": "Recomeçar",
+      "saveResults": "Salvar resultados"
+    },
+    "species": {
+      "dog": "Cachorro",
+      "cat": "Gato",
+      "small_mammal": "Pequeno mamífero",
+      "bird": "Pássaro",
+      "fish": "Peixe",
+      "reptile": "Réptil",
+      "unknown": "Não especificado"
+    },
+    "values": {
+      "minimal": "Mínimo",
+      "low": "Baixo",
+      "medium": "Médio",
+      "high": "Alto",
+      "flexible": "Flexível",
+      "unlimited": "Ilimitado",
+      "none": "Nenhuma",
+      "some": "Alguma experiência",
+      "experienced": "Experiente",
+      "professional": "Profissional",
+      "apartment_small": "Apartamento pequeno",
+      "apartment_large": "Apartamento grande",
+      "house_no_garden": "Casa sem jardim",
+      "house_with_garden": "Casa com jardim",
+      "rural": "Área rural",
+      "farm": "Fazenda",
+      "balcony": "Varanda",
+      "shared_garden": "Jardim compartilhado",
+      "private_garden": "Jardim privado",
+      "large_property": "Grande propriedade",
+      "single": "Solteiro(a)",
+      "couple": "Casal",
+      "family_young_kids": "Família com crianças pequenas",
+      "family_teens": "Família com adolescentes",
+      "seniors": "Idosos",
+      "multi_generation": "Multi-geracional",
+      "weekly": "Semanal",
+      "daily": "Diária",
+      "sedentary": "Sedentário",
+      "moderate": "Moderado",
+      "active": "Ativo",
+      "very_active": "Muito ativo",
+      "athletic": "Atlético",
+      "cold": "Frio",
+      "temperate": "Temperado",
+      "warm": "Quente",
+      "hot": "Muito quente",
+      "variable": "Variável",
+      "mild": "Leve",
+      "severe": "Grave",
+      "shelter": "Abrigo",
+      "breeder": "Criador",
+      "rescue": "Resgate",
+      "no_preference": "Sem preferência",
+      "not_ready": "Não pronto",
+      "researching": "Pesquisando",
+      "ready": "Pronto",
+      "already_compliant": "Já em conformidade",
+      "take_along": "Levo junto",
+      "pet_sitter": "Pet sitter",
+      "boarding": "Hotel para pets",
+      "family": "Família",
+      "friends": "Amigos",
+      "not_planned": "Não planejado",
+      "find_ideal": "Encontrar pet ideal",
+      "register_pet": "Registrar meu pet",
+      "curiosity": "Só curiosidade",
+      "gift": "Presente",
+      "therapy": "Terapia"
+    },
+    "companion": {
+      "c01": {
+        "text": "Quanto tempo você pode dedicar a passeios?",
+        "options": {
+          "short": "Passeios curtos",
+          "short_desc": "15-30 minutos por dia",
+          "medium": "Passeios médios",
+          "medium_desc": "30-60 minutos por dia",
+          "long": "Passeios longos",
+          "long_desc": "1-2 horas por dia",
+          "very_long": "Muito tempo",
+          "very_long_desc": "2+ horas por dia"
+        }
+      },
+      "c02": {
+        "text": "Você prefere um pet mais independente ou carinhoso?",
+        "options": {
+          "independent": "Independente",
+          "independent_desc": "Fica bem sozinho",
+          "balanced": "Equilibrado",
+          "balanced_desc": "Um pouco de cada",
+          "affectionate": "Carinhoso",
+          "affectionate_desc": "Adora carinho",
+          "velcro": "Muito carinhoso",
+          "velcro_desc": "Sempre perto de mim"
+        }
+      },
+      "c03": {
+        "text": "Qual é seu nível de tolerância a barulho?",
+        "options": {
+          "silent": "Silencioso",
+          "silent_desc": "Prefiro pets quietos",
+          "occasional": "Ocasional",
+          "occasional_desc": "Algum barulho está bem",
+          "moderate": "Moderado",
+          "moderate_desc": "Barulho não me incomoda",
+          "high": "Alto",
+          "high_desc": "Sem problema com barulho"
+        }
+      },
+      "c04": {
+        "text": "Você prefere um pet pequeno, médio ou grande?",
+        "options": {
+          "tiny": "Minúsculo",
+          "tiny_desc": "Menos de 5 kg",
+          "small": "Pequeno",
+          "small_desc": "5-10 kg",
+          "medium": "Médio",
+          "medium_desc": "10-25 kg",
+          "large": "Grande",
+          "large_desc": "25-40 kg",
+          "giant": "Gigante",
+          "giant_desc": "Mais de 40 kg"
+        }
+      },
+      "c05": {
+        "text": "Quão importante é a facilidade de treinamento para você?",
+        "options": {
+          "not_important": "Não é importante",
+          "not_important_desc": "Eu me adapto",
+          "somewhat": "Um pouco",
+          "somewhat_desc": "Prefiro fácil",
+          "very": "Muito importante",
+          "very_desc": "Precisa ser fácil"
+        }
+      }
+    }
+  },
+  "fiuto": {
+    "welcome": "Oi! Sou o Fiuto, seu assistente. Se tiver dúvidas durante o questionário, é só perguntar!",
+    "typing": "Digitando...",
+    "error": "Ops! Algo deu errado. Tente de novo.",
+    "placeholder": "Escreva uma mensagem...",
+    "suggestions": {
+      "help_question": "Não entendi essa pergunta",
+      "difference": "Qual a diferença entre as opções?",
+      "why_asking": "Por que você está perguntando isso?",
+      "why_breed": "Por que essa raça?",
+      "cons": "Quais são os contras?",
+      "alternatives": "Alternativas similares?",
+      "how_works": "Como funciona o quiz?",
+      "recommend": "Que pet você recomenda?"
+    }
   }
 }
