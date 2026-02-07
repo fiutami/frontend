@@ -201,7 +201,6 @@ describe('PetService', () => {
       sex: 'male',
       birthDate: null,
       estimatedAgeMonths: null,
-      origin: null,
       color: 'Marrone',
       weight: null,
       specialMarks: null,
