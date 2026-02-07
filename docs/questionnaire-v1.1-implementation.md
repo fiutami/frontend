@@ -193,24 +193,51 @@ Se l'endpoint richiedesse autenticazione, perderemmo tutti gli analytics della f
 
 ---
 
-## Step 2: Flow Engine (DA FARE)
+## Step 2: Flow Engine ✅ COMPLETATO
 
-### Files da creare in `src/app/onboarding/questionnaire-v2/`
+### Files in `src/app/onboarding/questionnaire-v2/`
 
-1. `models/question.models.ts` - Question, QuestionOption, SetAction
-2. `models/profile.models.ts` - UserPreferenceProfile con 14 profili
-3. `models/flow.models.ts` - FlowState con history
-4. `engine/flow-engine.service.ts` - Navigazione, back, skip logic
-5. `engine/expression-parser.service.ts` - Parser sicuro per showIf
-6. `engine/profile-manager.service.ts` - Gestione profilo utente
+#### Models
+| File | Descrizione |
+|------|-------------|
+| `models/question.models.ts` | Question, QuestionOption, SetAction con op tipizzata |
+| `models/profile.models.ts` | UserPreferenceProfile con 14 profili globali |
+| `models/flow.models.ts` | FlowState con Record<>, history, helper functions |
 
-### Micro fix critici
+#### Engine Services
+| File | Descrizione |
+|------|-------------|
+| `engine/flow-engine.service.ts` | Navigazione forward/back, showIf + nextOnSkip |
+| `engine/expression-parser.service.ts` | Parser sicuro (NO eval), whitelist operators |
+| `engine/profile-manager.service.ts` | SetAction operations, localStorage, backend sync |
+
+#### UI Components
+| File | Descrizione |
+|------|-------------|
+| `components/questionnaire-shell/` | Orchestrator principale |
+| `components/question-renderer/` | Render domanda con opzioni |
+| `components/progress-bar/` | Indicatore progresso |
+| `components/option-card/` | Singola opzione selezionabile |
+
+#### Data
+| File | Descrizione |
+|------|-------------|
+| `data/core-questions.ts` | Q00-Q27 con i18n keys |
+| `data/companion-module.ts` | Modulo COMPANION |
+| `data/species-modules.ts` | Moduli specie-specifici |
+| `data/leaves.ts` | Nodi terminali |
+| `data/questionnaire-data.ts` | Aggregatore dati |
+
+### Micro fix implementati ✅
 
 1. `Math.abs(hashCode) % 100` per evitare negativi ✅
 2. `typeof window !== 'undefined'` per SSR safety ✅
-3. `Record<>` per serializzazione, NON `Map`
-4. `delete obj[key]` NON `.delete()`
-5. Sempre includere variant, questionnaireVersion, experimentVersion
+3. `Record<>` per serializzazione, NON `Map` ✅
+4. `deleteAnswer()` con spread pattern, NON `.delete()` ✅
+5. Variant/version in tutti gli eventi ✅
+
+### Test
+- `engine/flow-engine.service.spec.ts` - Navigation, showIf, back nav
 
 ---
 
