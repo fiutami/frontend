@@ -179,7 +179,7 @@ export class PetDetailsComponent implements OnInit {
       name: this.petName,
       sex: this.sex!,
       birthDate: this.birthDate || null,
-      origin: this.origin || null,
+      breedId: null,
       color: this.color || null,
       weight: this.weight ? parseFloat(this.weight) : null,
       specialMarks: this.specialMarks || null,
