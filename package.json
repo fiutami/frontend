@@ -35,7 +35,8 @@
     "content:full-pipeline": "npm run content:extract-pdf && npm run content:batch-convert",
     "content:build-json": "node scripts/build-breeds-json.js",
     "prebuild": "npm run content:build-json",
-    "prebuild:prod": "npm run content:build-json"
+    "prebuild:prod": "npm run content:build-json",
+    "validate:flow": "npx ts-node --project tools/tsconfig.json tools/flow-graph-validator.ts"
   },
   "dependencies": {
     "@abacritt/angularx-social-login": "^2.2.0",
@@ -81,6 +82,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "pdf-parse": "^2.4.5",
     "sharp": "^0.34.5",
+    "ts-node": "^10.9.2",
     "typescript": "~5.4.0",
     "typescript-eslint": "^8.48.0"
   }
