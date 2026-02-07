@@ -1,0 +1,236 @@
+// Questionnaire Result Page Styles
+
+.result-page {
+  min-height: 100vh;
+  background: var(--background-primary, #f8f9fa);
+}
+
+// Loading
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1rem;
+
+  .spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--border-light, #e0e0e0);
+    border-top-color: var(--primary, #6366f1);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  p {
+    color: var(--text-secondary, #6b7280);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Content
+.result-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+// Header
+.result-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 0.6s ease-out;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary, #1f2937);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .subtitle {
+    color: var(--text-secondary, #6b7280);
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+// Species Badge
+.species-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+
+  .species-icon {
+    font-size: 2.5rem;
+  }
+
+  .species-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary, #1f2937);
+    text-transform: capitalize;
+  }
+}
+
+// Profile Summary
+.profile-summary {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary, #6b7280);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 1rem 0;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .item-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary, #6b7280);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .item-value {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary, #1f2937);
+      text-transform: capitalize;
+    }
+  }
+}
+
+// Recommendations Placeholder
+.recommendations-placeholder {
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary, #6366f1);
+    margin: 0 0 0.5rem 0;
+  }
+
+  p {
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+}
+
+// Actions
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--primary, #6366f1);
+    color: white;
+    border: none;
+
+    &:hover {
+      background: var(--primary-dark, #4f46e5);
+    }
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--text-primary, #1f2937);
+    border: 2px solid var(--border-light, #e5e7eb);
+
+    &:hover {
+      border-color: var(--primary, #6366f1);
+      color: var(--primary, #6366f1);
+    }
+  }
+
+  .btn-text {
+    background: transparent;
+    color: var(--text-secondary, #6b7280);
+    border: none;
+
+    &:hover {
+      color: var(--text-primary, #1f2937);
+    }
+  }
+}
+
+// Mobile adjustments
+@media (max-width: 480px) {
+  .result-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .result-header {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .success-icon {
+      font-size: 3rem;
+    }
+  }
+
+  .profile-summary {
+    .summary-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<!-- Questionnaire Shell - Main Container -->
+<div class="questionnaire-shell">
+
+  <!-- Loading State -->
+  @if (isInitializing()) {
+    <div class="loading-container">
+      <div class="spinner"></div>
+      <p>{{ 'questionnaire.loading' | translate }}</p>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (error()) {
+    <div class="error-container">
+      <div class="error-icon">⚠️</div>
+      <p>{{ error() | translate }}</p>
+      <button class="btn-retry" (click)="dismissError()">
+        {{ 'common.retry' | translate }}
+      </button>
+    </div>
+  }
+
+  <!-- Main Content -->
+  @if (!isInitializing() && !error()) {
+
+    <!-- Header with Progress -->
+    <header class="questionnaire-header">
+      <!-- Back Button -->
+      <button
+        class="btn-back"
+        (click)="onBack()"
+        [attr.aria-label]="'common.back' | translate"
+      >
+        <span class="icon">←</span>
+      </button>
+
+      <!-- Progress Bar -->
+      <app-progress-bar
+        [progress]="progress()"
+        [moduleTitle]="moduleTitle()"
+      />
+
+      <!-- Question Counter -->
+      <div class="question-counter">
+        {{ progress() }}%
+      </div>
+    </header>
+
+    <!-- Question Content -->
+    @if (currentQuestion(); as question) {
+      <main class="questionnaire-content">
+        <app-question-renderer
+          [question]="question"
+          [questionText]="questionText()"
+          [hintText]="hintText()"
+          (optionSelected)="onOptionSelected($event)"
+        />
+      </main>
+    }
+
+    <!-- Completion State -->
+    @if (isComplete()) {
+      <div class="completion-container">
+        <div class="completion-icon">🎉</div>
+        <h2>{{ 'questionnaire.completed.title' | translate }}</h2>
+        <p>{{ 'questionnaire.completed.message' | translate }}</p>
+        <div class="spinner"></div>
+      </div>
+    }
+
+  }
+
+</div>

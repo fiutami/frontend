@@ -1,0 +1,26 @@
+<!-- Option Card Content -->
+
+<!-- Icon (if present) -->
+@if (icon()) {
+  <span class="option-icon" [class.emoji]="isEmoji()">
+    @if (isEmoji()) {
+      {{ icon() }}
+    } @else {
+      <span class="material-icon">{{ icon() }}</span>
+    }
+  </span>
+}
+
+<!-- Text Content -->
+<div class="option-content">
+  <span class="option-label">{{ label() }}</span>
+
+  @if (description()) {
+    <span class="option-description">{{ description() }}</span>
+  }
+</div>
+
+<!-- Selection Indicator -->
+<span class="option-indicator">
+  <span class="indicator-inner"></span>
+</span>

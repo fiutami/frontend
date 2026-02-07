@@ -1,0 +1,28 @@
+<!-- Question Renderer -->
+<div class="question-renderer">
+
+  <!-- Question Text -->
+  <div class="question-header">
+    <h2 class="question-text">{{ questionText() }}</h2>
+
+    @if (hintText()) {
+      <p class="question-hint">{{ hintText() }}</p>
+    }
+  </div>
+
+  <!-- Options Container -->
+  <div [class]="containerClass()">
+
+    @for (option of question().options; track trackByOptionId($index, option)) {
+      <app-option-card
+        [option]="option"
+        [label]="getOptionLabel(option)"
+        [description]="getOptionDescription(option)"
+        [visualization]="visualization()"
+        (selected)="onOptionClick(option)"
+      />
+    }
+
+  </div>
+
+</div>

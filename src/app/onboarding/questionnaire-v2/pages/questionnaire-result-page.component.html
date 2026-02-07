@@ -1,0 +1,76 @@
+<!-- Questionnaire Result Page -->
+<div class="result-page">
+
+  <!-- Loading State -->
+  @if (isLoading()) {
+    <div class="loading-container">
+      <div class="spinner"></div>
+      <p>{{ 'questionnaire.result.loading' | translate }}</p>
+    </div>
+  }
+
+  <!-- Results -->
+  @if (!isLoading() && profile()) {
+    <div class="result-content">
+
+      <!-- Header -->
+      <header class="result-header">
+        <div class="success-icon">🎉</div>
+        <h1>{{ 'questionnaire.result.title' | translate }}</h1>
+        <p class="subtitle">{{ 'questionnaire.result.subtitle' | translate }}</p>
+      </header>
+
+      <!-- Species Badge -->
+      <div class="species-badge">
+        <span class="species-icon">
+          @switch (selectedSpecies()) {
+            @case ('dog') { 🐕 }
+            @case ('cat') { 🐈 }
+            @case ('small_mammal') { 🐹 }
+            @case ('bird') { 🦜 }
+            @case ('fish') { 🐠 }
+            @default { 🐾 }
+          }
+        </span>
+        <span class="species-name">
+          {{ 'questionnaire.species.' + selectedSpecies() | translate }}
+        </span>
+      </div>
+
+      <!-- Profile Summary -->
+      <section class="profile-summary">
+        <h2>{{ 'questionnaire.result.your_profile' | translate }}</h2>
+        <div class="summary-grid">
+          @for (item of profileSummary(); track item.key) {
+            <div class="summary-item">
+              <span class="item-label">{{ item.key | translate }}</span>
+              <span class="item-value">{{ 'questionnaire.values.' + item.value | translate }}</span>
+            </div>
+          }
+        </div>
+      </section>
+
+      <!-- Placeholder for Recommendations -->
+      <section class="recommendations-placeholder">
+        <div class="placeholder-icon">🔮</div>
+        <h3>{{ 'questionnaire.result.coming_soon' | translate }}</h3>
+        <p>{{ 'questionnaire.result.matching_soon' | translate }}</p>
+      </section>
+
+      <!-- Actions -->
+      <div class="result-actions">
+        <button class="btn-primary" (click)="exploreCatalog()">
+          {{ 'questionnaire.result.explore_catalog' | translate }}
+        </button>
+        <button class="btn-secondary" (click)="startOver()">
+          {{ 'questionnaire.result.start_over' | translate }}
+        </button>
+        <button class="btn-text" (click)="goHome()">
+          {{ 'questionnaire.result.go_home' | translate }}
+        </button>
+      </div>
+
+    </div>
+  }
+
+</div>

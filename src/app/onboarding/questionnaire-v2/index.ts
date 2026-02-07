@@ -22,3 +22,9 @@ export { CORE_QUESTIONS, CORE_QUESTIONS_MAP } from './data/core-questions';
 export { COMPANION_QUESTIONS, COMPANION_MODULE } from './data/companion-module';
 export { SPECIES_MODULES, SPECIES_QUESTIONS } from './data/species-modules';
 export { LEAVES, LEAVES_MAP } from './data/leaves';
+
+// Components
+export * from './components';
+
+// Pages
+export * from './pages';

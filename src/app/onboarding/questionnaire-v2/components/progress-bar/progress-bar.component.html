@@ -1,0 +1,22 @@
+<!-- Progress Bar -->
+<div
+  class="progress-container"
+  role="progressbar"
+  [attr.aria-valuenow]="clampedProgress()"
+  [attr.aria-valuemin]="0"
+  [attr.aria-valuemax]="100"
+  [attr.aria-label]="ariaLabel()"
+>
+  <!-- Module Title (if present) -->
+  @if (moduleTitle()) {
+    <span class="module-title">{{ moduleTitle() }}</span>
+  }
+
+  <!-- Progress Track -->
+  <div class="progress-track">
+    <div
+      class="progress-fill"
+      [style.transform]="progressTransform()"
+    ></div>
+  </div>
+</div>
