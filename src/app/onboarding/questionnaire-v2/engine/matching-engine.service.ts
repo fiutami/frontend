@@ -358,8 +358,10 @@ export class MatchingEngineService {
       const exp = profile.LifestyleProfile.experience;
       const trainability = attrs.trainability ?? 'medium';
 
+      // Beginners benefit from high trainability
       if ((exp === 'none' || exp === 'some') && trainability === 'high') score += 10;
       if (exp === 'none' && trainability === 'low') score -= 10;
+      // Experienced owners can handle difficult breeds
       if ((exp === 'experienced' || exp === 'professional') && trainability === 'low') score += 5;
     }
 
@@ -367,9 +369,10 @@ export class MatchingEngineService {
     if (profile.EnvironmentProfile?.housingType) {
       const housing = profile.EnvironmentProfile.housingType;
       const isApartment = housing === 'apartment_small' || housing === 'apartment_large';
+      const hasGarden = housing === 'house_with_garden' || housing === 'rural' || housing === 'farm';
 
       if (isApartment && attrs.apartmentFriendly) score += 10;
-      if (housing === 'house_with_garden' && attrs.size === 'large') score += 5;
+      if (hasGarden && attrs.size === 'large') score += 5;
       if ((housing === 'farm' || housing === 'rural') && (attrs.size === 'large' || attrs.size === 'giant')) score += 5;
     }
 
@@ -393,12 +396,13 @@ export class MatchingEngineService {
       if (willingness === 'minimal' && needs === 'high') score -= 10;
     }
 
-    // Family bonuses
+    // Family bonuses - derive hasChildren from familyComposition
     const family = profile.RelationshipProfile?.familyComposition;
     const hasChildren = family === 'family_young_kids' || family === 'family_teens';
     if (hasChildren && attrs.goodWithChildren) {
       score += 10;
     }
+    // hasOtherPets is in LifestyleProfile
     if (profile.LifestyleProfile?.hasOtherPets && attrs.goodWithOtherPets) {
       score += 5;
     }
@@ -414,6 +418,7 @@ export class MatchingEngineService {
     const reasons: MatchReason[] = [];
     const attrs = breed.attributes;
 
+    // Housing check
     const housing = profile.EnvironmentProfile?.housingType;
     const isApartment = housing === 'apartment_small' || housing === 'apartment_large';
 
@@ -425,6 +430,7 @@ export class MatchingEngineService {
       });
     }
 
+    // Family check - derive hasChildren from familyComposition
     const family = profile.RelationshipProfile?.familyComposition;
     const hasChildren = family === 'family_young_kids' || family === 'family_teens';
 
@@ -436,6 +442,7 @@ export class MatchingEngineService {
       });
     }
 
+    // Experience check - use correct enum values
     const experience = profile.LifestyleProfile?.experience;
     if (attrs.trainability === 'high' && (experience === 'none' || experience === 'some')) {
       reasons.push({
@@ -445,6 +452,7 @@ export class MatchingEngineService {
       });
     }
 
+    // Time check
     const dailyTime = profile.LifestyleProfile?.dailyTime;
     if (attrs.exerciseNeeds === 'low' && (dailyTime === 'low' || dailyTime === 'minimal')) {
       reasons.push({
@@ -480,6 +488,7 @@ export class MatchingEngineService {
       });
     }
 
+    // Housing check - use correct apartment detection
     const housing = profile.EnvironmentProfile?.housingType;
     const isApartment = housing === 'apartment_small' || housing === 'apartment_large';
 
@@ -499,6 +508,7 @@ export class MatchingEngineService {
       });
     }
 
+    // Budget check - use correct enum value 'medium'
     if (attrs.monthlyExpense === 'high' && profile.FinanceProfile?.monthlyBudget === 'medium') {
       tradeoffs.push({
         aspect: 'Costi',
