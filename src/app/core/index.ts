@@ -19,6 +19,11 @@ export * from './config';
 
 // Models
 export * from './models/pet.models';
+export * from './models/analytics.models';
 
 // Interceptors
 export * from './interceptors/jwt.interceptor';
+
+// Analytics & Experiments
+export * from './services/experiment.service';
+export * from './services/analytics.service';
