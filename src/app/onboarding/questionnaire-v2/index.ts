@@ -15,3 +15,10 @@ export * from './models/flow.models';
 export * from './engine/expression-parser.service';
 export * from './engine/profile-manager.service';
 export * from './engine/flow-engine.service';
+
+// Data
+export * from './data/questionnaire-data';
+export { CORE_QUESTIONS, CORE_QUESTIONS_MAP } from './data/core-questions';
+export { COMPANION_QUESTIONS, COMPANION_MODULE } from './data/companion-module';
+export { SPECIES_MODULES, SPECIES_QUESTIONS } from './data/species-modules';
+export { LEAVES, LEAVES_MAP } from './data/leaves';

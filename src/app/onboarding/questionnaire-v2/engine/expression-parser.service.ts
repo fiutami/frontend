@@ -265,7 +265,7 @@ export class ExpressionParserService {
     }
 
     // Traverse path safely
-    let current: unknown = (profile as Record<string, unknown>)[rootKey];
+    let current: unknown = (profile as unknown as Record<string, unknown>)[rootKey];
     for (const segment of rest) {
       if (current == null || typeof current !== 'object') {
         return undefined;

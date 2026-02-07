@@ -227,7 +227,7 @@ export class ProfileManagerService {
     const updated = JSON.parse(JSON.stringify(profile)) as UserPreferenceProfile;
 
     // Navigate to target and apply operation
-    let current: Record<string, unknown> = updated as Record<string, unknown>;
+    let current: Record<string, unknown> = updated as unknown as Record<string, unknown>;
     for (let i = 0; i < rest.length - 1; i++) {
       const key = rest[i];
       if (current[key] == null || typeof current[key] !== 'object') {
