@@ -10,7 +10,7 @@ export interface PetCreateRequest {
   sex: string;
   birthDate?: string | null;
   estimatedAgeMonths?: number | null;
-  origin?: string | null;
+  breedId?: string | null;
   color?: string | null;
   weight?: number | null;
   specialMarks?: string | null;

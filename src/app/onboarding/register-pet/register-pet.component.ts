@@ -270,7 +270,7 @@ export class RegisterPetComponent implements OnInit {
       name: formValue.nome,
       sex: formValue.sesso,
       birthDate: formValue.dataNascita || null,
-      origin: formValue.razza || null,
+      breedId: formValue.razza || null,
       color: formValue.colore || null,
       weight: formValue.peso ? parseFloat(formValue.peso) : null,
       specialMarks: formValue.segniParticolari || null,

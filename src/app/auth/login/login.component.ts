@@ -40,7 +40,7 @@ export class LoginComponent {
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -67,7 +67,7 @@ export class LoginComponent {
       return 'Password obbligatoria';
     }
     if (this.password?.errors?.['minlength']) {
-      return 'Password minimo 6 caratteri';
+      return 'Password minimo 8 caratteri';
     }
     return '';
   }

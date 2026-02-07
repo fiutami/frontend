@@ -547,7 +547,19 @@
     "friends": "Amigos próximos",
     "loading": "Carregando mapa...",
     "locationError": "Não foi possível obter localização",
-    "enableLocation": "Ativar localização"
+    "enableLocation": "Ativar localização",
+    "poi": {
+      "verified": "Verificado",
+      "reviews": "avaliações",
+      "noReviews": "Sem avaliações",
+      "directions": "Direções",
+      "call": "Ligar",
+      "website": "Site",
+      "save": "Salvar",
+      "saved": "Salvo",
+      "openNow": "Aberto agora",
+      "closed": "Fechado"
+    }
   },
   "home": {
     "greeting": "Oi",
@@ -569,7 +581,8 @@
       "title": "Nenhum pet registrado",
       "subtitle": "Registre seu primeiro amigo de quatro patas",
       "cta": "Adicionar pet"
-    }
+    },
+    "fiutoSays": "Fiuto diz..."
   },
   "calendar": {
     "title": "Calendário",
@@ -579,8 +592,19 @@
     "week": "Semana",
     "day": "Dia",
     "addEvent": "Adicionar evento",
+    "editEvent": "Editar evento",
+    "deleteEvent": "Excluir evento",
+    "eventTitle": "Título do evento",
+    "eventDate": "Data",
+    "eventTime": "Hora",
+    "eventLocation": "Local",
+    "eventDescription": "Descrição",
     "noEvents": "Nenhum evento",
     "noEventsToday": "Nenhum evento para hoje",
+    "upcomingEvents": "Próximos eventos",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "confirmDelete": "Tem certeza que deseja excluir este evento?",
     "types": {
       "vet": "Veterinário",
       "grooming": "Banho e tosa",
@@ -593,11 +617,48 @@
   },
   "profile": {
     "title": "Perfil",
+    "edit": "Editar perfil",
     "tabs": {
       "info": "Info",
       "gallery": "Galeria",
       "friends": "Amigos",
       "memories": "Memórias"
+    },
+    "info": {
+      "name": "Nome",
+      "species": "Espécie",
+      "breed": "Raça",
+      "age": "Idade",
+      "weight": "Peso",
+      "color": "Cor",
+      "birthday": "Data de nascimento",
+      "gender": "Sexo",
+      "male": "Macho",
+      "female": "Fêmea"
+    },
+    "gallery": {
+      "title": "Galeria",
+      "addPhoto": "Adicionar foto",
+      "empty": {
+        "title": "Nenhuma foto",
+        "subtitle": "Adicione as primeiras fotos do seu pet"
+      }
+    },
+    "friends": {
+      "title": "Amigos",
+      "count": "{{count}} amigos",
+      "empty": {
+        "title": "Nenhum amigo ainda",
+        "subtitle": "Encontre outros pets e faça novas amizades"
+      }
+    },
+    "memories": {
+      "title": "Memórias",
+      "addMemory": "Adicionar memória",
+      "empty": {
+        "title": "Nenhuma memória",
+        "subtitle": "Salve os momentos especiais"
+      }
     },
     "stats": {
       "age": "Idade",
