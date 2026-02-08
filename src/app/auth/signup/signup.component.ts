@@ -78,7 +78,7 @@ export class SignupComponent {
       return 'Codice invito obbligatorio';
     }
     if (this.inviteCode?.errors?.['invalidInviteCode']) {
-      return 'Il codice invito deve essere ILOVEFIUTAMI';
+      return 'Codice invito non valido';
     }
     return '';
   }

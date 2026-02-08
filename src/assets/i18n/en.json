@@ -38,7 +38,7 @@
     "loginTitle": "Login",
     "signupTitle": "Sign Up",
     "emailPlaceholder": "Enter your email",
-    "inviteCodePlaceholder": "Enter the ILOVEFIUTAMI code",
+    "inviteCodePlaceholder": "E.g. fiut-xxxxxx",
     "passwordPlaceholder": "Enter your password",
     "confirmPasswordPlaceholder": "Confirm your password",
     "forgotPasswordTitle": "Forgot Password",

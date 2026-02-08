@@ -1,0 +1,375 @@
+$primary: #6366f1;
+$primary-dark: #4f46e5;
+$fiutami-yellow: #f5c518;
+
+// ==========================================
+// DEMO PAGE
+// ==========================================
+.demo {
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+
+  &__bg {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(165deg, $fiutami-yellow 0%, #f0b800 40%, #e8a600 100%);
+    z-index: 0;
+  }
+
+  &__header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 80px 20px 40px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 900;
+    font-style: italic;
+    color: $primary;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__subtitle {
+    margin: 8px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba($primary, 0.7);
+  }
+}
+
+// ==========================================
+// CHAT PANEL
+// ==========================================
+.chat {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+
+  // Header
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: $primary;
+    color: #fff;
+    flex-shrink: 0;
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__header-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header-name {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__header-status {
+    font-size: 12px;
+    opacity: 0.8;
+  }
+
+  &__close {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:active { background: rgba(255, 255, 255, 0.25); }
+  }
+
+  // Messages
+  &__messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__msg {
+    display: flex;
+    gap: 8px;
+    max-width: 85%;
+    animation: msgFade 0.3s ease;
+
+    &--user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    &--assistant {
+      align-self: flex-start;
+    }
+  }
+
+  &__msg-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__msg-bubble {
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-wrap;
+
+    .chat__msg--user & {
+      background: $primary;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat__msg--assistant & {
+      background: #fff;
+      color: #1f2937;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    // Markdown-like bold
+    :host ::ng-deep strong {
+      font-weight: 600;
+    }
+  }
+
+  // Typing dots
+  &__typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 14px 18px;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9ca3af;
+    animation: dotBounce 1.4s ease-in-out infinite;
+
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.4s; }
+  }
+
+  // Suggestions
+  &__suggestions {
+    padding: 8px 16px 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  &__suggestion {
+    padding: 8px 14px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:active {
+      background: $primary;
+      color: #fff;
+      border-color: $primary;
+    }
+  }
+
+  // Input
+  &__input {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 12px 16px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+    flex-shrink: 0;
+  }
+
+  &__textarea {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 22px;
+    font-size: 15px;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    max-height: 100px;
+    line-height: 1.4;
+
+    &:focus { border-color: $primary; }
+    &:disabled { opacity: 0.5; }
+  }
+
+  &__send {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $primary;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s;
+
+    &:active { background: $primary-dark; }
+    &:disabled { opacity: 0.4; cursor: default; }
+  }
+}
+
+// ==========================================
+// MASCOT FLOATING BUTTON
+// ==========================================
+.mascot {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &__btn {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    animation: breathe 3s ease-in-out infinite;
+    transition: transform 0.2s;
+
+    &:active { transform: scale(0.92); }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 22px;
+    height: 22px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  &__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: $primary;
+    background: #fff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: labelBounce 2s ease-in-out infinite;
+  }
+}
+
+// ==========================================
+// ANIMATIONS
+// ==========================================
+@keyframes breathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes labelBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes dotBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+
+@keyframes msgFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

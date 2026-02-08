@@ -38,7 +38,7 @@
     "loginTitle": "Entrar",
     "signupTitle": "Cadastrar",
     "emailPlaceholder": "Digite seu email",
-    "inviteCodePlaceholder": "Digite o código ILOVEFIUTAMI",
+    "inviteCodePlaceholder": "Ex. fiut-xxxxxx",
     "passwordPlaceholder": "Digite sua senha",
     "confirmPasswordPlaceholder": "Confirme sua senha",
     "forgotPasswordTitle": "Esqueceu a senha",

@@ -140,6 +140,10 @@ const routes: Routes = [
     loadComponent: () => import('./shared/pages/test-bg-removal/test-bg-removal.component').then(m => m.TestBgRemovalComponent)
   },
   {
+    path: 'test/mascot-chat',
+    loadComponent: () => import('./shared/pages/test-mascot-chat/test-mascot-chat.component').then(m => m.TestMascotChatComponent)
+  },
+  {
     path: 'test/pet-profile',
     loadComponent: () => import('./profile/pet/pet-profile.component').then(m => m.PetProfileComponent),
     canActivate: [AuthGuard]

@@ -1,0 +1,107 @@
+<!-- Demo: Fiuto AI Mascot Chat -->
+<div class="demo" [class.demo--chat-open]="isChatOpen()">
+
+  <!-- Background -->
+  <div class="demo__bg"></div>
+
+  <!-- Header -->
+  <header class="demo__header">
+    <h1 class="demo__title">Fiuto AI</h1>
+    <p class="demo__subtitle">Il tuo assistente pet</p>
+  </header>
+
+  <!-- Chat Panel -->
+  @if (isChatOpen()) {
+    <div class="chat">
+      <!-- Chat Header -->
+      <div class="chat__header">
+        <div class="chat__avatar">
+          <img src="assets/images/mascot-icon.webp" alt="Fiuto" />
+        </div>
+        <div class="chat__header-info">
+          <span class="chat__header-name">Fiuto</span>
+          @if (isTyping()) {
+            <span class="chat__header-status">sta scrivendo...</span>
+          } @else {
+            <span class="chat__header-status">online</span>
+          }
+        </div>
+        <button class="chat__close" (click)="closeChat()">✕</button>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat__messages" #messagesContainer>
+        @for (msg of messages(); track msg.id) {
+          <div class="chat__msg" [class.chat__msg--user]="msg.role === 'user'" [class.chat__msg--assistant]="msg.role === 'assistant'">
+            @if (msg.role === 'assistant') {
+              <div class="chat__msg-avatar">
+                <img src="assets/images/mascot-icon.webp" alt="Fiuto" />
+              </div>
+            }
+            <div class="chat__msg-bubble" [innerHTML]="formatMessage(msg.content)"></div>
+          </div>
+        }
+
+        <!-- Typing indicator -->
+        @if (isTyping()) {
+          <div class="chat__msg chat__msg--assistant">
+            <div class="chat__msg-avatar">
+              <img src="assets/images/mascot-icon.webp" alt="Fiuto" />
+            </div>
+            <div class="chat__msg-bubble chat__typing">
+              <span class="chat__dot"></span>
+              <span class="chat__dot"></span>
+              <span class="chat__dot"></span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Quick suggestions (only when few messages) -->
+      @if (messages().length <= 1) {
+        <div class="chat__suggestions">
+          @for (s of suggestions; track s.text) {
+            <button class="chat__suggestion" (click)="sendQuick(s)">
+              <span>{{ s.icon }}</span> {{ s.text }}
+            </button>
+          }
+        </div>
+      }
+
+      <!-- Input -->
+      <div class="chat__input">
+        <textarea
+          class="chat__textarea"
+          [ngModel]="inputText()"
+          (ngModelChange)="inputText.set($event)"
+          (keydown)="onKeyDown($event)"
+          placeholder="Scrivi a Fiuto..."
+          rows="1"
+          [disabled]="isTyping()"
+        ></textarea>
+        <button
+          class="chat__send"
+          (click)="sendMessage()"
+          [disabled]="!inputText().trim() || isTyping()">
+          ➤
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Mascot Floating Button -->
+  @if (!isChatOpen()) {
+    <div class="mascot" [class.mascot--expanded]="mascotExpanded()">
+      <button class="mascot__btn" (click)="openChat()">
+        <img
+          src="assets/images/mascot-icon.webp"
+          alt="Fiuto"
+          class="mascot__img" />
+        @if (hasUnread()) {
+          <span class="mascot__badge">1</span>
+        }
+      </button>
+      <div class="mascot__label">Chiedimi!</div>
+    </div>
+  }
+</div>
