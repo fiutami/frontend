@@ -36,7 +36,6 @@ import {
 
 import { Question, QuestionOption } from '../../models/question.models';
 import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
-import { QuestionRendererComponent } from '../question-renderer/question-renderer.component';
 
 interface StepDot {
   active: boolean;
@@ -49,8 +48,7 @@ interface StepDot {
   imports: [
     CommonModule,
     TranslateModule,
-    ProgressBarComponent,
-    QuestionRendererComponent
+    ProgressBarComponent
   ],
   templateUrl: './questionnaire-shell.component.html',
   styleUrls: ['./questionnaire-shell.component.scss'],
