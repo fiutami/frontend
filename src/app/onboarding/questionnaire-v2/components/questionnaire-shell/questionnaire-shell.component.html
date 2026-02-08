@@ -1,73 +1,123 @@
-<!-- Questionnaire Shell - Main Container -->
-<div class="questionnaire-shell">
+<!-- Questionnaire Shell - Quiz Style (3 questions per step) -->
+<div class="quiz">
 
   <!-- Loading State -->
   @if (isInitializing()) {
-    <div class="loading-container">
-      <div class="spinner"></div>
-      <p>{{ 'questionnaire.loading' | translate }}</p>
+    <div class="quiz__loading">
+      <div class="quiz__spinner"></div>
+      <p>{{ 'common.loading' | translate }}</p>
     </div>
-  }
+  } @else {
 
-  <!-- Error State -->
-  @if (error()) {
-    <div class="error-container">
-      <div class="error-icon">⚠️</div>
-      <p>{{ error() | translate }}</p>
-      <button class="btn-retry" (click)="dismissError()">
-        {{ 'common.retry' | translate }}
-      </button>
-    </div>
-  }
-
-  <!-- Main Content -->
-  @if (!isInitializing() && !error()) {
-
-    <!-- Header with Progress -->
-    <header class="questionnaire-header">
-      <!-- Back Button -->
+    <!-- Header -->
+    <header class="quiz__header">
       <button
-        class="btn-back"
+        class="quiz__back-btn"
         (click)="onBack()"
         [attr.aria-label]="'common.back' | translate"
       >
         <span class="icon">←</span>
       </button>
 
-      <!-- Progress Bar -->
-      <app-progress-bar
-        [progress]="progress()"
-        [moduleTitle]="moduleTitle()"
-      />
-
-      <!-- Question Counter -->
-      <div class="question-counter">
-        {{ progress() }}%
+      <!-- Progress indicator -->
+      <div class="quiz__progress-text">
+        {{ 'quiz.phase' | translate }} {{ currentStep() }}/{{ totalSteps() }}
       </div>
     </header>
 
-    <!-- Question Content -->
+    <!-- Progress bar -->
+    <div class="quiz__progress-bar">
+      <div
+        class="quiz__progress-fill"
+        [style.width.%]="progress()">
+      </div>
+    </div>
+
+    <!-- Main content -->
     @if (currentQuestion(); as question) {
-      <main class="questionnaire-content">
-        <app-question-renderer
-          [question]="question"
-          [questionText]="questionText()"
-          [hintText]="hintText()"
-          (optionSelected)="onOptionSelected($event)"
-        />
+      <main class="quiz__content">
+        <!-- Phase title / Module -->
+        @if (moduleTitle()) {
+          <div class="quiz__phase-title">
+            {{ moduleTitle() }}
+          </div>
+        }
+
+        <!-- Single Question (compact layout) -->
+        <div class="quiz__question-container">
+          <h1 class="quiz__question">
+            {{ questionText() }}
+          </h1>
+
+          @if (hintText()) {
+            <p class="quiz__hint">{{ hintText() }}</p>
+          }
+
+          <!-- Answer options -->
+          <div class="quiz__options" [class.quiz__options--grid]="isGridLayout()">
+            @for (option of question.options; track option.id) {
+              <button
+                type="button"
+                class="quiz__option"
+                [class.quiz__option--card]="question.visualization === 'cards'"
+                (click)="onOptionSelected(option)"
+              >
+                @if (option.icon) {
+                  <span class="quiz__option-icon">{{ option.icon }}</span>
+                }
+                <span class="quiz__option-label">{{ getOptionLabel(option) }}</span>
+                @if (getOptionDescription(option)) {
+                  <span class="quiz__option-desc">{{ getOptionDescription(option) }}</span>
+                }
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- Dots indicator -->
+        <div class="quiz__dots">
+          @for (dot of stepDots(); track $index) {
+            <span
+              class="quiz__dot"
+              [class.quiz__dot--active]="dot.active"
+              [class.quiz__dot--completed]="dot.completed">
+            </span>
+          }
+        </div>
       </main>
     }
 
     <!-- Completion State -->
     @if (isComplete()) {
-      <div class="completion-container">
-        <div class="completion-icon">🎉</div>
-        <h2>{{ 'questionnaire.completed.title' | translate }}</h2>
-        <p>{{ 'questionnaire.completed.message' | translate }}</p>
-        <div class="spinner"></div>
+      <main class="quiz__content quiz__content--center">
+        <div class="quiz__completion">
+          <div class="quiz__completion-icon">🎉</div>
+          <h2>{{ 'questionnaire.completed.title' | translate }}</h2>
+          <p>{{ 'questionnaire.completed.message' | translate }}</p>
+          <div class="quiz__spinner"></div>
+        </div>
+      </main>
+    }
+
+    <!-- Error State -->
+    @if (error()) {
+      <div class="quiz__error">
+        <div class="quiz__error-icon">⚠️</div>
+        <p>{{ error() | translate }}</p>
+        <button class="quiz__btn" (click)="dismissError()">
+          {{ 'common.retry' | translate }}
+        </button>
       </div>
     }
 
-  }
+    <!-- Footer -->
+    <footer class="quiz__footer">
+      <img
+        src="assets/images/logo-fiutami.png"
+        alt="FiutaMi"
+        class="quiz__footer-logo"
+        (error)="onLogoError($event)" />
+    </footer>
 
+  }
 </div>

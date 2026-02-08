@@ -14,7 +14,7 @@ import {
 } from '../../shared/components/pet-info-card';
 import { SpeechBubbleComponent } from '../../shared/components/speech-bubble';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
-import { TabPageShellBlueComponent } from '../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+import { TabPageShellPetProfileComponent } from '../../shared/components/tab-page-shell-pet-profile';
 import { PetService } from '../../core/services/pet.service';
 import { PetResponse } from '../../core/models/pet.models';
 
@@ -42,7 +42,7 @@ export interface FriendPet {
   imports: [
     CommonModule,
     RouterModule,
-    TabPageShellBlueComponent,
+    TabPageShellPetProfileComponent,
     PetInfoCardComponent,
     SpeechBubbleComponent,
     MascotBottomSheetComponent,

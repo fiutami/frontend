@@ -19,5 +19,7 @@ export const environment = {
     facebook: {
       appId: 'YOUR_FACEBOOK_APP_ID'
     }
-  }
+  },
+  // Clipdrop API (background removal) - set via CI/CD or locally
+  clipdropApiKey: '${CLIPDROP_API_KEY}'
 };

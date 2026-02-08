@@ -1,9 +1,36 @@
-<app-tab-page-shell-blue
+<app-tab-page-shell-pet-profile
   activeTabId="pet-profile"
   [showBack]="true"
   (backClicked)="goBack()">
 
-  <!-- Scrollable content -->
+  <!-- Pet Photo Slot: vai dentro il cerchio bianco -->
+  <ng-container shellPetPhoto>
+    @if (!isLoading() && !errorMessage() && pet.id) {
+      <img
+        [src]="pet.photoUrl"
+        [alt]="pet.name"
+        class="pet-profile__photo"
+      />
+    }
+  </ng-container>
+
+  <!-- Sticky Content Slot: nome e descrizione -->
+  <ng-container shellStickyContent>
+    @if (!isLoading() && !errorMessage() && pet.id) {
+      <div class="pet-profile__header-info">
+        <h1 class="pet-profile__name">{{ pet.name }}</h1>
+        <p class="pet-profile__description">{{ pet.description }}</p>
+        <!-- Speech bubble -->
+        <div class="pet-profile__bubble">
+          <app-speech-bubble tailPosition="left" variant="ai">
+            Andiamo a Fiutare il mondo?
+          </app-speech-bubble>
+        </div>
+      </div>
+    }
+  </ng-container>
+
+  <!-- Main Content: scrollabile dentro la card blu -->
   <div class="pet-profile__content">
     <!-- Loading state -->
     @if (isLoading()) {
@@ -23,122 +50,102 @@
       </div>
     }
 
-    <!-- Hero section -->
     @if (!isLoading() && !errorMessage() && pet.id) {
-    <section class="pet-profile__hero">
-      <div class="pet-profile__photo-wrapper">
-        <img
-          [src]="pet.photoUrl"
-          [alt]="pet.name"
-          class="pet-profile__photo"
-        />
-        <!-- Fiuto speech bubble -->
-        <div class="pet-profile__bubble">
-          <app-speech-bubble tailPosition="left" variant="ai">
-            Andiamo a Fiutare il mondo?
-          </app-speech-bubble>
-        </div>
-      </div>
+      <!-- Pet info card -->
+      <section class="pet-profile__info">
+        <app-pet-info-card [items]="petInfoItems"></app-pet-info-card>
+      </section>
 
-      <h1 class="pet-profile__name">{{ pet.name }}</h1>
-      <p class="pet-profile__description">{{ pet.description }}</p>
-    </section>
-
-    <!-- Pet info card -->
-    <section class="pet-profile__info">
-      <app-pet-info-card [items]="petInfoItems"></app-pet-info-card>
-    </section>
-
-    <!-- Yellow CTA buttons -->
-    <section class="pet-profile__actions">
-      <button class="pet-profile__yellow-btn" (click)="onBandaPelosaClick()">
-        Banda Pelosa
-      </button>
-      <button class="pet-profile__yellow-btn" (click)="onFattiBestialiClick()">
-        Fatti Bestiali
-      </button>
-      <button class="pet-profile__yellow-btn" (click)="onRullinoFeroceClick()">
-        Rullino Feroce
-      </button>
-      <button class="pet-profile__yellow-btn pet-profile__yellow-btn--outline" (click)="onAppCompletaClick()">
-        Prova la App Completa
-      </button>
-    </section>
-
-    <!-- Mini map -->
-    <section class="pet-profile__map">
-      <div class="pet-profile__map-container">
-        <div class="pet-profile__map-placeholder">
-          <span>Mappa</span>
-        </div>
-        <button class="pet-profile__fiuta-btn" (click)="onFiutaClick()">
-          FIUTA
+      <!-- Yellow CTA buttons -->
+      <section class="pet-profile__actions">
+        <button class="pet-profile__yellow-btn" (click)="onBandaPelosaClick()">
+          Banda Pelosa
         </button>
-      </div>
-    </section>
+        <button class="pet-profile__yellow-btn" (click)="onFattiBestialiClick()">
+          Fatti Bestiali
+        </button>
+        <button class="pet-profile__yellow-btn" (click)="onRullinoFeroceClick()">
+          Rullino Feroce
+        </button>
+        <button class="pet-profile__yellow-btn pet-profile__yellow-btn--outline" (click)="onAppCompletaClick()">
+          Prova la App Completa
+        </button>
+      </section>
 
-    <!-- Promo slider -->
-    <section class="pet-profile__promo">
-      <div class="pet-profile__promo-slides">
-        @for (slide of promoSlides; track slide.id; let i = $index) {
-          <div
-            class="pet-profile__promo-slide"
-            [class.pet-profile__promo-slide--active]="i === currentSlide"
-          >
-            <h3>{{ slide.title }}</h3>
-            <p>{{ slide.description }}</p>
+      <!-- Mini map -->
+      <section class="pet-profile__map">
+        <div class="pet-profile__map-container">
+          <div class="pet-profile__map-placeholder">
+            <span>Mappa</span>
           </div>
-        }
-      </div>
-      <div class="pet-profile__promo-dots">
-        @for (slide of promoSlides; track slide.id; let i = $index) {
-          <button
-            class="pet-profile__promo-dot"
-            [class.pet-profile__promo-dot--active]="i === currentSlide"
-            (click)="goToSlide(i)"
-            [attr.aria-label]="'Vai a slide ' + (i + 1)"
-          ></button>
-        }
-      </div>
-    </section>
-
-    <!-- Online friends -->
-    <section class="pet-profile__friends">
-      <h3 class="pet-profile__friends-title">Amici Online</h3>
-      <div class="pet-profile__friends-scroll">
-        @for (friend of onlineFriends; track friend.id) {
-          <button
-            class="pet-profile__friend-card"
-            (click)="onFriendClick(friend)"
-          >
-            <img
-              [src]="friend.avatarUrl"
-              [alt]="friend.name"
-              class="pet-profile__friend-avatar"
-            />
-            <span class="pet-profile__friend-name">{{ friend.name }}</span>
-            @if (friend.online) {
-              <span class="pet-profile__friend-online"></span>
-            }
+          <button class="pet-profile__fiuta-btn" (click)="onFiutaClick()">
+            FIUTA
           </button>
-        }
-      </div>
-    </section>
+        </div>
+      </section>
 
-    <!-- Add pet button -->
-    <button
-      class="pet-profile__add-pet"
-      (click)="onAddPetClick()"
-      aria-label="Aggiungi nuovo pet"
-    >
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-      </svg>
-    </button>
-    } <!-- End of @if pet.id -->
+      <!-- Promo slider -->
+      <section class="pet-profile__promo">
+        <div class="pet-profile__promo-slides">
+          @for (slide of promoSlides; track slide.id; let i = $index) {
+            <div
+              class="pet-profile__promo-slide"
+              [class.pet-profile__promo-slide--active]="i === currentSlide"
+            >
+              <h3>{{ slide.title }}</h3>
+              <p>{{ slide.description }}</p>
+            </div>
+          }
+        </div>
+        <div class="pet-profile__promo-dots">
+          @for (slide of promoSlides; track slide.id; let i = $index) {
+            <button
+              class="pet-profile__promo-dot"
+              [class.pet-profile__promo-dot--active]="i === currentSlide"
+              (click)="goToSlide(i)"
+              [attr.aria-label]="'Vai a slide ' + (i + 1)"
+            ></button>
+          }
+        </div>
+      </section>
+
+      <!-- Online friends -->
+      <section class="pet-profile__friends">
+        <h3 class="pet-profile__friends-title">Amici Online</h3>
+        <div class="pet-profile__friends-scroll">
+          @for (friend of onlineFriends; track friend.id) {
+            <button
+              class="pet-profile__friend-card"
+              (click)="onFriendClick(friend)"
+            >
+              <img
+                [src]="friend.avatarUrl"
+                [alt]="friend.name"
+                class="pet-profile__friend-avatar"
+              />
+              <span class="pet-profile__friend-name">{{ friend.name }}</span>
+              @if (friend.online) {
+                <span class="pet-profile__friend-online"></span>
+              }
+            </button>
+          }
+        </div>
+      </section>
+
+      <!-- Add pet button -->
+      <button
+        class="pet-profile__add-pet"
+        (click)="onAddPetClick()"
+        aria-label="Aggiungi nuovo pet"
+      >
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </svg>
+      </button>
+    }
   </div>
 
-  <!-- Mascot Bottom Sheet (custom, fuori dalla shell) -->
+  <!-- Mascot Bottom Sheet -->
   <app-mascot-bottom-sheet
     [isOpen]="showMascotSheet()"
     [hideMascot]="true"
@@ -146,4 +153,4 @@
     (closed)="closeMascotSheet()">
   </app-mascot-bottom-sheet>
 
-</app-tab-page-shell-blue>
+</app-tab-page-shell-pet-profile>

@@ -17,5 +17,6 @@ export const environment = {
     facebook: {
       appId: 'YOUR_FACEBOOK_APP_ID'
     }
-  }
+  },
+  clipdropApiKey: '${CLIPDROP_API_KEY}'
 };

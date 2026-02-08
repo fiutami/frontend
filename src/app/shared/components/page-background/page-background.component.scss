@@ -60,25 +60,43 @@
   }
 
   &--yellow-solid {
-    // Profile pages
+    // Profile pages - stesso gradiente di tab-menu ma SENZA blue-shape
     background: linear-gradient(
-      180deg,
-      var(--yellow-1) 0%,
-      var(--yellow-2) 100%
+      125deg,
+      #FFFFFF 0%,
+      rgba(255, 255, 255, 0.67) 0%,
+      #FCFED1 0%,
+      #F8D78B 19%,
+      #F2B830 82%
     );
   }
 
   &--profile-pet {
-    // Pet profile - variante custom se necessario
-    background: var(--yellow-1);
+    // Pet profile - stesso gradiente 125deg per coerenza
+    background: linear-gradient(
+      125deg,
+      #FFFFFF 0%,
+      rgba(255, 255, 255, 0.67) 0%,
+      #FCFED1 0%,
+      #F8D78B 19%,
+      #F2B830 82%
+    );
   }
 
   // ==========================================
-  // IMAGE VARIANT (Auth, Home)
+  // IMAGE VARIANT (Auth, Home, Fiuto)
+  // Gradiente 125deg sotto l'immagine (per trasparenze)
   // ==========================================
 
   &--image {
-    background-color: var(--yellow-cta);
+    background: linear-gradient(
+      125deg,
+      #FFFFFF 0%,
+      rgba(255, 255, 255, 0.67) 0%,
+      #FCFED1 0%,
+      #F8D78B 19%,
+      #F2B830 82%
+    );
   }
 
   &__image {

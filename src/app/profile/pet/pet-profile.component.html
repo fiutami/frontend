@@ -5,11 +5,54 @@
   (backClicked)="goBack()">
 
   <!-- Foto nel cerchio bianco -->
-  <div shellPetPhoto></div>
+  <div shellPetPhoto class="pet-photo">
+    @if (isLoading()) {
+      <div class="pet-photo__placeholder">
+        <span class="pet-photo__spinner"></span>
+      </div>
+    } @else if (photoUrl()) {
+      <img
+        [src]="photoUrl()"
+        [alt]="petName()"
+        class="pet-photo__img" />
+    } @else {
+      <div class="pet-photo__placeholder">
+        <span>{{ petName().charAt(0) || '?' }}</span>
+      </div>
+    }
+  </div>
 
-  <!-- Sticky content -->
-  <ng-container shellStickyContent></ng-container>
+  <!-- Sticky content: nome + razza -->
+  <ng-container shellStickyContent>
+    @if (pet(); as p) {
+      <div class="pet-header">
+        <h1 class="pet-header__name">{{ p.name }}</h1>
+        <p class="pet-header__breed">{{ petSubtitle() }}</p>
+      </div>
+    } @else if (error()) {
+      <div class="pet-header">
+        <p class="pet-header__breed">{{ error()! | translate }}</p>
+      </div>
+    }
+  </ng-container>
 
   <!-- Main content (dentro la card blu) -->
+  <div class="pet-content">
+    @if (isLoading()) {
+      <div class="pet-content__loading">
+        <div class="pet-content__spinner"></div>
+      </div>
+    } @else if (error()) {
+      <div class="pet-content__error">
+        <p>{{ error()! | translate }}</p>
+        <button class="pet-content__retry" (click)="goBack()">
+          {{ 'common.back' | translate }}
+        </button>
+      </div>
+    }
+    <!-- Step 2: info buttons row -->
+    <!-- Step 3: feature buttons row -->
+    <!-- Step 4: map button -->
+  </div>
 
 </app-tab-page-shell-pet-profile>
