@@ -208,6 +208,124 @@
     }
   },
   "questionnaire": {
+    "modules": {
+      "dog": "Perro",
+      "cat": "Gato",
+      "small_mammal": "Pequeño mamífero",
+      "bird": "Ave"
+    },
+    "c01": {
+      "text": "¿Qué tamaño prefieres?",
+      "hint": "El tamaño influye en el espacio necesario y en los costes de mantenimiento",
+      "options": {
+        "small": "Pequeño",
+        "small_desc": "5-10 kg",
+        "medium": "Mediano",
+        "medium_desc": "10-25 kg",
+        "large": "Grande",
+        "large_desc": "25-40 kg",
+        "no_preference": "Sin preferencia"
+      }
+    },
+    "c02": {
+      "text": "¿Qué nivel de energía prefieres?",
+      "hint": "El nivel de energía debe ser compatible con tu estilo de vida",
+      "options": {
+        "low": "Tranquilo",
+        "medium": "Moderado",
+        "high": "Enérgico",
+        "no_preference": "Sin preferencia"
+      }
+    },
+    "c03": {
+      "text": "¿Cuál es tu tolerancia al ruido?",
+      "hint": "Ten en cuenta a tus vecinos y el entorno en el que vives",
+      "options": {
+        "silent": "Silencioso",
+        "low": "Poco ruido",
+        "medium": "Moderado",
+        "high": "Alto"
+      }
+    },
+    "c04": {
+      "text": "¿Cuánto contacto físico quieres?",
+      "hint": "Algunas mascotas necesitan más manipulación y contacto que otras",
+      "options": {
+        "minimal": "Mínimo",
+        "regular": "Regular",
+        "frequent": "Frecuente"
+      }
+    },
+    "c05": {
+      "text": "¿Por cuánto tiempo estás dispuesto a comprometerte?",
+      "hint": "La esperanza de vida varía mucho según la especie y la raza",
+      "options": {
+        "short": "Corto plazo",
+        "short_desc": "2-5 años",
+        "medium": "Medio plazo",
+        "medium_desc": "5-10 años",
+        "long": "Largo plazo",
+        "long_desc": "10+ años",
+        "no_preference": "Sin preferencia"
+      }
+    },
+    "c05_route": {
+      "text": "Selección de especie",
+      "options": {
+        "dog": "Perro",
+        "cat": "Gato",
+        "small_mammal": "Pequeño mamífero",
+        "bird": "Ave",
+        "unsure": "No estoy seguro"
+      }
+    },
+    "d01": {
+      "text": "¿Qué tipo de pelo prefieres?",
+      "hint": "El tipo de pelo afecta al aseo necesario y a las posibles alergias",
+      "options": {
+        "short": "Pelo corto",
+        "medium": "Pelo medio",
+        "long": "Pelo largo",
+        "no_preference": "Sin preferencia"
+      }
+    },
+    "d02": {
+      "text": "¿Cuál es el propósito principal del perro?",
+      "options": {
+        "companion": "Compañía",
+        "active": "Actividades deportivas",
+        "guard": "Guardia",
+        "family": "Familia con niños"
+      }
+    },
+    "k01": {
+      "text": "¿El gato vivirá dentro o tendrá acceso al exterior?",
+      "options": {
+        "indoor_only": "Solo interior",
+        "outdoor_access": "Con acceso al exterior",
+        "no_preference": "Sin preferencia"
+      }
+    },
+    "s01": {
+      "text": "¿Qué tipo de pequeño mamífero te interesa?",
+      "options": {
+        "rabbit": "Conejo",
+        "hamster": "Hámster",
+        "guinea_pig": "Cobaya",
+        "unsure": "No estoy seguro"
+      }
+    },
+    "b01": {
+      "text": "¿Qué tamaño de ave prefieres?",
+      "options": {
+        "small": "Pequeña",
+        "small_desc": "canario",
+        "medium": "Mediana",
+        "medium_desc": "periquito",
+        "large": "Grande",
+        "large_desc": "loro gris"
+      }
+    },
     "result": {
       "title": "¡Tu match ideal!",
       "subtitle": "Basado en tus respuestas",

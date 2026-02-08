@@ -1077,6 +1077,140 @@
       "companion": {
         "title": "Compagno ideale",
         "description": "Domande per trovare il compagno perfetto"
+      },
+      "dog": {
+        "title": "Cane"
+      },
+      "cat": {
+        "title": "Gatto"
+      },
+      "small_mammal": {
+        "title": "Piccolo mammifero"
+      },
+      "bird": {
+        "title": "Uccello"
+      }
+    },
+    "c01": {
+      "text": "Che taglia preferisci?",
+      "hint": "La taglia influenza spazio necessario, costi e gestione quotidiana",
+      "options": {
+        "small": "Piccolo",
+        "small_desc": "5-10 kg, ideale per appartamenti",
+        "medium": "Medio",
+        "medium_desc": "10-25 kg, versatile",
+        "large": "Grande",
+        "large_desc": "25-40 kg, servono spazi ampi",
+        "no_preference": "Nessuna preferenza"
+      }
+    },
+    "c02": {
+      "text": "Che livello di energia preferisci?",
+      "hint": "L'energia dell'animale dovrebbe combaciare con il tuo stile di vita",
+      "options": {
+        "low": "Tranquillo",
+        "low_desc": "Rilassato, ama il divano",
+        "medium": "Moderato",
+        "medium_desc": "Equilibrato tra gioco e relax",
+        "high": "Energico",
+        "high_desc": "Sempre in movimento, ama correre",
+        "no_preference": "Nessuna preferenza"
+      }
+    },
+    "c03": {
+      "text": "Qual è la tua tolleranza al rumore?",
+      "hint": "Considera i vicini e il regolamento condominiale",
+      "options": {
+        "silent": "Silenzioso",
+        "silent_desc": "Preferisco animali molto silenziosi",
+        "low": "Poco rumore",
+        "low_desc": "Qualche verso ogni tanto va bene",
+        "medium": "Moderato",
+        "medium_desc": "Non mi disturbano i rumori normali",
+        "high": "Alto",
+        "high_desc": "Nessun problema con abbai o miagolii"
+      }
+    },
+    "c04": {
+      "text": "Quanto vuoi interagire fisicamente con il tuo animale?",
+      "hint": "Alcuni animali amano essere presi in braccio, altri preferiscono lo spazio",
+      "options": {
+        "minimal": "Minimo",
+        "minimal_desc": "Preferisco osservare, poco contatto",
+        "regular": "Regolare",
+        "regular_desc": "Coccole quotidiane ma rispetto gli spazi",
+        "frequent": "Frequente",
+        "frequent_desc": "Sempre insieme, contatto costante"
+      }
+    },
+    "c05": {
+      "text": "Per quanto tempo sei disposto a impegnarti?",
+      "hint": "I cani vivono 10-15 anni, i gatti anche 20+, i criceti 2-3 anni",
+      "options": {
+        "short": "Breve periodo",
+        "short_desc": "2-5 anni",
+        "medium": "Medio periodo",
+        "medium_desc": "5-10 anni",
+        "long": "Lungo periodo",
+        "long_desc": "10+ anni",
+        "no_preference": "Nessuna preferenza"
+      }
+    },
+    "c05_route": {
+      "text": "Instradamento specie",
+      "options": {
+        "dog": "Cane",
+        "cat": "Gatto",
+        "small_mammal": "Piccolo mammifero",
+        "bird": "Uccello",
+        "unsure": "Non sono sicuro"
+      }
+    },
+    "d01": {
+      "text": "Che tipo di pelo preferisci?",
+      "hint": "Il tipo di pelo influenza la toelettatura e le allergie",
+      "options": {
+        "short": "Pelo corto",
+        "medium": "Pelo medio",
+        "long": "Pelo lungo",
+        "no_preference": "Nessuna preferenza"
+      }
+    },
+    "d02": {
+      "text": "Qual è lo scopo principale del cane?",
+      "options": {
+        "companion": "Compagnia",
+        "active": "Attività sportive",
+        "guard": "Guardia",
+        "family": "Famiglia con bambini"
+      }
+    },
+    "k01": {
+      "text": "Il gatto vivrà in casa o avrà accesso all'esterno?",
+      "options": {
+        "indoor_only": "Solo in casa",
+        "outdoor_access": "Con accesso all'esterno",
+        "no_preference": "Nessuna preferenza"
+      }
+    },
+    "s01": {
+      "text": "Che tipo di piccolo mammifero ti interessa?",
+      "options": {
+        "rabbit": "Coniglio",
+        "hamster": "Criceto",
+        "guinea_pig": "Cavia",
+        "unsure": "Non sono sicuro"
+      }
+    },
+    "b01": {
+      "text": "Che taglia di uccello preferisci?",
+      "options": {
+        "small": "Piccolo",
+        "small_desc": "Canarino, diamante...",
+        "medium": "Medio",
+        "medium_desc": "Parrocchetto, inseparabile...",
+        "large": "Grande",
+        "large_desc": "Pappagallo cenerino, cacatua..."
       }
     },
     "result": {

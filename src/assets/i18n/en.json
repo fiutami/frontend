@@ -298,6 +298,146 @@
       "gift": "Gift",
       "therapy": "Therapy"
     },
+    "modules": {
+      "companion": {
+        "title": "Ideal companion",
+        "description": "Questions to find the perfect companion"
+      },
+      "dog": {
+        "title": "Dog"
+      },
+      "cat": {
+        "title": "Cat"
+      },
+      "small_mammal": {
+        "title": "Small mammal"
+      },
+      "bird": {
+        "title": "Bird"
+      }
+    },
+    "c01": {
+      "text": "What size do you prefer?",
+      "hint": "Size affects space requirements, costs and daily management",
+      "options": {
+        "small": "Small",
+        "small_desc": "5-10 kg, ideal for apartments",
+        "medium": "Medium",
+        "medium_desc": "10-25 kg, versatile",
+        "large": "Large",
+        "large_desc": "25-40 kg, requires ample space",
+        "no_preference": "No preference"
+      }
+    },
+    "c02": {
+      "text": "What energy level do you prefer?",
+      "hint": "Your pet's energy should match your lifestyle",
+      "options": {
+        "low": "Calm",
+        "low_desc": "Relaxed, loves the couch",
+        "medium": "Moderate",
+        "medium_desc": "Balanced between play and rest",
+        "high": "Energetic",
+        "high_desc": "Always on the move, loves running",
+        "no_preference": "No preference"
+      }
+    },
+    "c03": {
+      "text": "What is your noise tolerance?",
+      "hint": "Consider your neighbors and building rules",
+      "options": {
+        "silent": "Silent",
+        "silent_desc": "I prefer very quiet animals",
+        "low": "Low noise",
+        "low_desc": "Some sounds here and there are fine",
+        "medium": "Moderate",
+        "medium_desc": "Normal noise doesn't bother me",
+        "high": "High",
+        "high_desc": "No problem with barking or meowing"
+      }
+    },
+    "c04": {
+      "text": "How much do you want to physically interact with your pet?",
+      "hint": "Some animals love being held, others prefer their space",
+      "options": {
+        "minimal": "Minimal",
+        "minimal_desc": "I prefer to observe, little contact",
+        "regular": "Regular",
+        "regular_desc": "Daily cuddles but respecting boundaries",
+        "frequent": "Frequent",
+        "frequent_desc": "Always together, constant contact"
+      }
+    },
+    "c05": {
+      "text": "How long are you willing to commit?",
+      "hint": "Dogs live 10-15 years, cats up to 20+, hamsters 2-3 years",
+      "options": {
+        "short": "Short term",
+        "short_desc": "2-5 years",
+        "medium": "Medium term",
+        "medium_desc": "5-10 years",
+        "long": "Long term",
+        "long_desc": "10+ years",
+        "no_preference": "No preference"
+      }
+    },
+    "c05_route": {
+      "text": "Species routing",
+      "options": {
+        "dog": "Dog",
+        "cat": "Cat",
+        "small_mammal": "Small mammal",
+        "bird": "Bird",
+        "unsure": "Not sure"
+      }
+    },
+    "d01": {
+      "text": "What coat type do you prefer?",
+      "hint": "Coat type affects grooming needs and allergies",
+      "options": {
+        "short": "Short coat",
+        "medium": "Medium coat",
+        "long": "Long coat",
+        "no_preference": "No preference"
+      }
+    },
+    "d02": {
+      "text": "What is the main purpose for the dog?",
+      "options": {
+        "companion": "Companionship",
+        "active": "Sports and activities",
+        "guard": "Guarding",
+        "family": "Family with children"
+      }
+    },
+    "k01": {
+      "text": "Will the cat live indoors or have outdoor access?",
+      "options": {
+        "indoor_only": "Indoor only",
+        "outdoor_access": "With outdoor access",
+        "no_preference": "No preference"
+      }
+    },
+    "s01": {
+      "text": "What type of small mammal are you interested in?",
+      "options": {
+        "rabbit": "Rabbit",
+        "hamster": "Hamster",
+        "guinea_pig": "Guinea pig",
+        "unsure": "Not sure"
+      }
+    },
+    "b01": {
+      "text": "What size bird do you prefer?",
+      "options": {
+        "small": "Small",
+        "small_desc": "Canary, finch...",
+        "medium": "Medium",
+        "medium_desc": "Parakeet, lovebird...",
+        "large": "Large",
+        "large_desc": "African grey, cockatoo..."
+      }
+    },
     "companion": {
       "c01": {
         "text": "How much time can you dedicate to walks?",

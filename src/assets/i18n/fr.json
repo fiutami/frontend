@@ -208,6 +208,144 @@
     }
   },
   "questionnaire": {
+    "modules": {
+      "companion": {
+        "title": "Compagnon idéal",
+        "description": "Questions pour trouver le compagnon parfait"
+      },
+      "dog": {
+        "title": "Chien"
+      },
+      "cat": {
+        "title": "Chat"
+      },
+      "small_mammal": {
+        "title": "Petit mammifère"
+      },
+      "bird": {
+        "title": "Oiseau"
+      }
+    },
+    "c01": {
+      "text": "Quelle taille préférez-vous ?",
+      "hint": "La taille influence l'espace nécessaire, les coûts et la gestion quotidienne",
+      "options": {
+        "small": "Petit",
+        "small_desc": "5-10 kg, idéal pour les appartements",
+        "medium": "Moyen",
+        "medium_desc": "10-25 kg, polyvalent",
+        "large": "Grand",
+        "large_desc": "25-40 kg, nécessite de grands espaces",
+        "no_preference": "Pas de préférence"
+      }
+    },
+    "c02": {
+      "text": "Quel niveau d'énergie préférez-vous ?",
+      "options": {
+        "low": "Calme",
+        "low_desc": "Détendu, aime le canapé",
+        "medium": "Modéré",
+        "medium_desc": "Équilibre entre jeu et repos",
+        "high": "Énergique",
+        "high_desc": "Toujours en mouvement, aime courir",
+        "no_preference": "Pas de préférence"
+      }
+    },
+    "c03": {
+      "text": "Quelle est votre tolérance au bruit ?",
+      "options": {
+        "silent": "Silencieux",
+        "silent_desc": "Je préfère les animaux très silencieux",
+        "low": "Peu de bruit",
+        "low_desc": "Quelques sons de temps en temps, ça va",
+        "medium": "Modéré",
+        "medium_desc": "Les bruits normaux ne me dérangent pas",
+        "high": "Élevé",
+        "high_desc": "Aucun problème avec les aboiements ou miaulements"
+      }
+    },
+    "c04": {
+      "text": "Combien de contact physique souhaitez-vous ?",
+      "hint": "Certains animaux aiment être pris dans les bras, d'autres préfèrent leur espace",
+      "options": {
+        "minimal": "Minimal",
+        "minimal_desc": "Je préfère observer, peu de contact",
+        "regular": "Régulier",
+        "regular_desc": "Câlins quotidiens mais respect des espaces",
+        "frequent": "Fréquent",
+        "frequent_desc": "Toujours ensemble, contact constant"
+      }
+    },
+    "c05": {
+      "text": "Pour combien de temps êtes-vous prêt à vous engager ?",
+      "hint": "Les chiens vivent 10-15 ans, les chats même 20+, les hamsters 2-3 ans",
+      "options": {
+        "short": "Court terme",
+        "short_desc": "2-5 ans",
+        "medium": "Moyen terme",
+        "medium_desc": "5-10 ans",
+        "long": "Long terme",
+        "long_desc": "10+ ans",
+        "no_preference": "Pas de préférence"
+      }
+    },
+    "c05_route": {
+      "text": "Choix de l'espèce",
+      "options": {
+        "dog": "Chien",
+        "cat": "Chat",
+        "small_mammal": "Petit mammifère",
+        "bird": "Oiseau",
+        "unsure": "Je ne suis pas sûr"
+      }
+    },
+    "d01": {
+      "text": "Quel type de poil préférez-vous ?",
+      "hint": "Le type de poil influence le toilettage et les allergies",
+      "options": {
+        "short": "Poil court",
+        "medium": "Poil mi-long",
+        "long": "Poil long",
+        "no_preference": "Pas de préférence"
+      }
+    },
+    "d02": {
+      "text": "Quel est l'objectif principal du chien ?",
+      "options": {
+        "companion": "Compagnie",
+        "active": "Activités sportives",
+        "guard": "Garde",
+        "family": "Famille avec enfants"
+      }
+    },
+    "k01": {
+      "text": "Le chat vivra-t-il à l'intérieur ou aura-t-il accès à l'extérieur ?",
+      "options": {
+        "indoor_only": "Intérieur uniquement",
+        "outdoor_access": "Avec accès extérieur",
+        "no_preference": "Pas de préférence"
+      }
+    },
+    "s01": {
+      "text": "Quel type de petit mammifère vous intéresse ?",
+      "options": {
+        "rabbit": "Lapin",
+        "hamster": "Hamster",
+        "guinea_pig": "Cochon d'Inde",
+        "unsure": "Je ne sais pas"
+      }
+    },
+    "b01": {
+      "text": "Quelle taille d'oiseau ?",
+      "options": {
+        "small": "Petit",
+        "small_desc": "Canari, diamant...",
+        "medium": "Moyen",
+        "medium_desc": "Perruche, inséparable...",
+        "large": "Grand",
+        "large_desc": "Perroquet gris, cacatoès..."
+      }
+    },
     "result": {
       "title": "Ton match idéal !",
       "subtitle": "Basé sur tes réponses",

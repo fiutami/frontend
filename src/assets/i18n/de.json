@@ -145,6 +145,146 @@
     }
   },
   "questionnaire": {
+    "modules": {
+      "companion": {
+        "title": "Idealer Begleiter",
+        "description": "Fragen, um den perfekten Begleiter zu finden"
+      },
+      "dog": {
+        "title": "Hund"
+      },
+      "cat": {
+        "title": "Katze"
+      },
+      "small_mammal": {
+        "title": "Kleines Säugetier"
+      },
+      "bird": {
+        "title": "Vogel"
+      }
+    },
+    "c01": {
+      "text": "Welche Größe bevorzugst du?",
+      "hint": "Die Größe beeinflusst den Platzbedarf, die Kosten und die tägliche Pflege",
+      "options": {
+        "small": "Klein",
+        "small_desc": "5-10 kg, ideal für Wohnungen",
+        "medium": "Mittel",
+        "medium_desc": "10-25 kg, vielseitig",
+        "large": "Groß",
+        "large_desc": "25-40 kg, braucht viel Platz",
+        "no_preference": "Keine Präferenz"
+      }
+    },
+    "c02": {
+      "text": "Welches Energielevel bevorzugst du?",
+      "hint": "Die Energie des Tieres sollte zu deinem Lebensstil passen",
+      "options": {
+        "low": "Ruhig",
+        "low_desc": "Entspannt, liebt das Sofa",
+        "medium": "Ausgeglichen",
+        "medium_desc": "Balance zwischen Spielen und Entspannen",
+        "high": "Energisch",
+        "high_desc": "Immer in Bewegung, liebt es zu laufen",
+        "no_preference": "Keine Präferenz"
+      }
+    },
+    "c03": {
+      "text": "Wie ist deine Lärmtoleranz?",
+      "hint": "Denke an die Nachbarn und die Hausordnung",
+      "options": {
+        "silent": "Leise",
+        "silent_desc": "Bevorzuge sehr ruhige Tiere",
+        "low": "Wenig Lärm",
+        "low_desc": "Gelegentliche Laute sind in Ordnung",
+        "medium": "Mäßig",
+        "medium_desc": "Normale Geräusche stören mich nicht",
+        "high": "Hoch",
+        "high_desc": "Kein Problem mit Bellen oder Miauen"
+      }
+    },
+    "c04": {
+      "text": "Wie viel körperlichen Kontakt möchtest du?",
+      "hint": "Manche Tiere lassen sich gerne auf den Arm nehmen, andere brauchen ihren Freiraum",
+      "options": {
+        "minimal": "Minimal",
+        "minimal_desc": "Lieber beobachten, wenig Kontakt",
+        "regular": "Regelmäßig",
+        "regular_desc": "Tägliche Streicheleinheiten, aber Freiraum respektieren",
+        "frequent": "Häufig",
+        "frequent_desc": "Immer zusammen, ständiger Kontakt"
+      }
+    },
+    "c05": {
+      "text": "Für wie lange möchtest du dich verpflichten?",
+      "hint": "Hunde leben 10-15 Jahre, Katzen bis zu 20+, Hamster 2-3 Jahre",
+      "options": {
+        "short": "Kurz",
+        "short_desc": "2-5 Jahre",
+        "medium": "Mittel",
+        "medium_desc": "5-10 Jahre",
+        "long": "Lang",
+        "long_desc": "10+ Jahre",
+        "no_preference": "Keine Präferenz"
+      }
+    },
+    "c05_route": {
+      "text": "Artenwahl",
+      "options": {
+        "dog": "Hund",
+        "cat": "Katze",
+        "small_mammal": "Kleines Säugetier",
+        "bird": "Vogel",
+        "unsure": "Unsicher"
+      }
+    },
+    "d01": {
+      "text": "Welche Fellart bevorzugst du?",
+      "hint": "Die Fellart beeinflusst die Pflege und Allergien",
+      "options": {
+        "short": "Kurzhaar",
+        "medium": "Mittelhaar",
+        "long": "Langhaar",
+        "no_preference": "Keine Präferenz"
+      }
+    },
+    "d02": {
+      "text": "Was ist der Hauptzweck des Hundes?",
+      "options": {
+        "companion": "Gesellschaft",
+        "active": "Sport",
+        "guard": "Wachhund",
+        "family": "Familienhund"
+      }
+    },
+    "k01": {
+      "text": "Wird die Katze drinnen oder draußen leben?",
+      "options": {
+        "indoor_only": "Nur drinnen",
+        "outdoor_access": "Mit Freigang",
+        "no_preference": "Keine Präferenz"
+      }
+    },
+    "s01": {
+      "text": "Welches Kleintier interessiert dich?",
+      "options": {
+        "rabbit": "Kaninchen",
+        "hamster": "Hamster",
+        "guinea_pig": "Meerschweinchen",
+        "unsure": "Unsicher"
+      }
+    },
+    "b01": {
+      "text": "Welche Vogelgröße?",
+      "options": {
+        "small": "Klein",
+        "small_desc": "Kanarienvogel, Zebrafinken...",
+        "medium": "Mittel",
+        "medium_desc": "Wellensittich, Agaporniden...",
+        "large": "Groß",
+        "large_desc": "Graupapagei, Kakadu..."
+      }
+    },
     "result": {
       "title": "Dein ideales Match!",
       "subtitle": "Basierend auf deinen Antworten",

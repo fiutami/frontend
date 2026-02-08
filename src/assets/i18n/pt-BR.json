@@ -781,6 +781,146 @@
     "comingSoon": "Conteúdo em breve..."
   },
   "questionnaire": {
+    "modules": {
+      "companion": {
+        "title": "Companheiro ideal",
+        "description": "Perguntas para encontrar o companheiro perfeito"
+      },
+      "dog": {
+        "title": "Cachorro"
+      },
+      "cat": {
+        "title": "Gato"
+      },
+      "small_mammal": {
+        "title": "Pequeno mamífero"
+      },
+      "bird": {
+        "title": "Ave"
+      }
+    },
+    "c01": {
+      "text": "Qual tamanho você prefere?",
+      "hint": "O tamanho influencia o espaço necessário, os custos e o manejo diário",
+      "options": {
+        "small": "Pequeno",
+        "small_desc": "5-10 kg, ideal para apartamentos",
+        "medium": "Médio",
+        "medium_desc": "10-25 kg, versátil",
+        "large": "Grande",
+        "large_desc": "25-40 kg, precisa de espaços amplos",
+        "no_preference": "Sem preferência"
+      }
+    },
+    "c02": {
+      "text": "Qual nível de energia você prefere?",
+      "hint": "A energia do animal deve combinar com o seu estilo de vida",
+      "options": {
+        "low": "Tranquilo",
+        "low_desc": "Relaxado, ama o sofá",
+        "medium": "Moderado",
+        "medium_desc": "Equilibrado entre brincadeira e descanso",
+        "high": "Energético",
+        "high_desc": "Sempre em movimento, adora correr",
+        "no_preference": "Sem preferência"
+      }
+    },
+    "c03": {
+      "text": "Qual sua tolerância a barulho?",
+      "hint": "Considere os vizinhos e as regras do condomínio",
+      "options": {
+        "silent": "Silencioso",
+        "silent_desc": "Prefiro animais bem silenciosos",
+        "low": "Pouco barulho",
+        "low_desc": "Alguns sons de vez em quando são aceitáveis",
+        "medium": "Moderado",
+        "medium_desc": "Barulhos normais não me incomodam",
+        "high": "Alto",
+        "high_desc": "Sem problema com latidos ou miados"
+      }
+    },
+    "c04": {
+      "text": "Quanto contato físico você quer?",
+      "hint": "Alguns animais adoram colo, outros preferem espaço",
+      "options": {
+        "minimal": "Mínimo",
+        "minimal_desc": "Prefiro observar, pouco contato",
+        "regular": "Regular",
+        "regular_desc": "Carinho diário, mas respeito os espaços",
+        "frequent": "Frequente",
+        "frequent_desc": "Sempre juntos, contato constante"
+      }
+    },
+    "c05": {
+      "text": "Por quanto tempo você está disposto a se comprometer?",
+      "hint": "Cães vivem 10-15 anos, gatos até 20+, hamsters 2-3 anos",
+      "options": {
+        "short": "Curto prazo",
+        "short_desc": "2-5 anos",
+        "medium": "Médio prazo",
+        "medium_desc": "5-10 anos",
+        "long": "Longo prazo",
+        "long_desc": "10+ anos",
+        "no_preference": "Sem preferência"
+      }
+    },
+    "c05_route": {
+      "text": "Seleção de espécie",
+      "options": {
+        "dog": "Cachorro",
+        "cat": "Gato",
+        "small_mammal": "Pequeno mamífero",
+        "bird": "Ave",
+        "unsure": "Não tenho certeza"
+      }
+    },
+    "d01": {
+      "text": "Qual tipo de pelo você prefere?",
+      "hint": "O tipo de pelo influencia a tosa e as alergias",
+      "options": {
+        "short": "Pelo curto",
+        "medium": "Pelo médio",
+        "long": "Pelo longo",
+        "no_preference": "Sem preferência"
+      }
+    },
+    "d02": {
+      "text": "Qual o objetivo principal do cachorro?",
+      "options": {
+        "companion": "Companhia",
+        "active": "Atividades esportivas",
+        "guard": "Guarda",
+        "family": "Família com crianças"
+      }
+    },
+    "k01": {
+      "text": "O gato viverá dentro de casa ou terá acesso ao exterior?",
+      "options": {
+        "indoor_only": "Somente interior",
+        "outdoor_access": "Com acesso ao exterior",
+        "no_preference": "Sem preferência"
+      }
+    },
+    "s01": {
+      "text": "Qual tipo de pequeno mamífero te interessa?",
+      "options": {
+        "rabbit": "Coelho",
+        "hamster": "Hamster",
+        "guinea_pig": "Porquinho-da-índia",
+        "unsure": "Não tenho certeza"
+      }
+    },
+    "b01": {
+      "text": "Qual tamanho de ave você prefere?",
+      "options": {
+        "small": "Pequena",
+        "small_desc": "Canário, diamante...",
+        "medium": "Média",
+        "medium_desc": "Periquito, agapornis...",
+        "large": "Grande",
+        "large_desc": "Papagaio cinza, cacatua..."
+      }
+    },
     "result": {
       "title": "Seu match ideal!",
       "subtitle": "Baseado nas suas respostas",
