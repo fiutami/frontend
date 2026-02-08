@@ -1,3 +1,5 @@
+@import 'src/styles/tokens-figma';
+
 // Pet Profile - Step 1: Foto + Nome
 
 // ==========================================
@@ -106,6 +108,65 @@
     border-radius: 20px;
     font-size: 14px;
     cursor: pointer;
+  }
+}
+
+// ==========================================
+// INFO ROW (PetInfoCard)
+// ==========================================
+.pet-info-row {
+  margin-bottom: var(--sp-3);
+}
+
+// ==========================================
+// CTA BUTTONS ROW
+// ==========================================
+.pet-cta-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+
+// ==========================================
+// MAP SECTION
+// ==========================================
+.pet-map {
+  &__container {
+    position: relative;
+    border-radius: $map-border-radius;
+    overflow: hidden;
+  }
+
+  &__placeholder {
+    height: $map-height;
+    background: #E5E5E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-secondary;
+    font-size: $typography-body-size;
+  }
+
+  &__fiuta-btn {
+    position: absolute;
+    bottom: var(--sp-3);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--sp-2) var(--sp-5);
+    background: $color-yellow-btn;
+    color: $color-yellow-btn-text;
+    font-size: $typography-body-size;
+    font-weight: 700;
+    border-radius: $border-radius-full;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: $transition-fast;
+
+    &:hover {
+      background: $color-yellow-btn-hover;
+      transform: translateX(-50%) scale(1.05);
+    }
   }
 }
 

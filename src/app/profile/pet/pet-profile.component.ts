@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { TabPageShellPetProfileComponent } from '../../shared/components/tab-page-shell-pet-profile';
+import { PetInfoCardComponent, PetInfoItem } from '../../shared/components/pet-info-card';
+import { ProfileIconComponent } from '../../shared/components/profile-icons';
 import { environment } from '../../../environments/environment';
 import { PetService } from '../../core/services/pet.service';
 import { PetResponse } from '../../core/models/pet.models';
@@ -15,6 +17,8 @@ import { PetResponse } from '../../core/models/pet.models';
     CommonModule,
     TranslateModule,
     TabPageShellPetProfileComponent,
+    PetInfoCardComponent,
+    ProfileIconComponent,
   ],
   templateUrl: './pet-profile.component.html',
   styleUrl: './pet-profile.component.scss',
@@ -47,6 +51,18 @@ export class PetProfileComponent implements OnInit {
 
   /** Profile photo URL */
   photoUrl = computed(() => this.pet()?.profilePhotoUrl ?? null);
+
+  /** Pet info items for PetInfoCardComponent */
+  petInfoItems = computed<PetInfoItem[]>(() => {
+    const p = this.pet();
+    if (!p) return [];
+    return [
+      { label: 'Sesso', value: p.sex === 'male' ? 'M' : p.sex === 'female' ? 'F' : '?' },
+      { label: 'Età', value: p.calculatedAge },
+      { label: 'Peso', value: p.weight ? `${p.weight} kg` : 'N/D' },
+      { label: 'Specie', value: p.speciesName },
+    ];
+  });
 
   ngOnInit(): void {
     const petId = this.route.snapshot.paramMap.get('id');
@@ -82,6 +98,25 @@ export class PetProfileComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/home']);
+  }
+
+  onGalleryClick(): void {
+    const id = this.pet()?.id;
+    if (id) this.router.navigate(['/home/pet-profile', id, 'gallery']);
+  }
+
+  onFriendsClick(): void {
+    const id = this.pet()?.id;
+    if (id) this.router.navigate(['/home/pet-profile', id, 'friends']);
+  }
+
+  onFactsClick(): void {
+    const id = this.pet()?.id;
+    if (id) this.router.navigate(['/home/pet-profile', id, 'fatti-bestiali']);
+  }
+
+  onFiutaClick(): void {
+    this.router.navigate(['/home/map']);
   }
 }
 

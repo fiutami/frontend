@@ -50,9 +50,43 @@
         </button>
       </div>
     }
-    <!-- Step 2: info buttons row -->
-    <!-- Step 3: feature buttons row -->
-    <!-- Step 4: map button -->
+    @if (!isLoading() && !error() && pet()) {
+      <!-- Step 2: info row -->
+      <section class="pet-info-row">
+        <app-pet-info-card [items]="petInfoItems()" layout="horizontal" variant="solid" />
+      </section>
+
+      <!-- Step 3: feature CTA buttons -->
+      <section class="pet-cta-row">
+        <app-profile-icon
+          icon="foto"
+          variant="cta"
+          ariaLabel="Banda Pelosa"
+          (onClick)="onGalleryClick()" />
+        <app-profile-icon
+          icon="friends"
+          variant="cta"
+          ariaLabel="Rullino Feroce"
+          (onClick)="onFriendsClick()" />
+        <app-profile-icon
+          icon="doc"
+          variant="cta"
+          ariaLabel="Fatti Bestiali"
+          (onClick)="onFactsClick()" />
+      </section>
+
+      <!-- Step 4: map button -->
+      <section class="pet-map">
+        <div class="pet-map__container">
+          <div class="pet-map__placeholder">
+            <span>Mappa</span>
+          </div>
+          <button class="pet-map__fiuta-btn" (click)="onFiutaClick()">
+            FIUTA
+          </button>
+        </div>
+      </section>
+    }
   </div>
 
 </app-tab-page-shell-pet-profile>
