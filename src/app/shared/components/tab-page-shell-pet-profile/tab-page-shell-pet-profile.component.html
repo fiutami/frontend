@@ -1,0 +1,37 @@
+<!-- Clone Yellow + Due Forme (Cerchio Bianco + Card Blu) -->
+<app-tab-page-shell
+  [title]="title"
+  backgroundVariant="yellow-solid"
+  [showBack]="showBack"
+  (backClicked)="onBack()">
+
+  <!-- Header Right: Avatar (clonato da Yellow) -->
+  <app-avatar-button shellHeaderRight [mode]="avatarMode" />
+
+  <!-- Branding: Logo (clonato da Yellow) -->
+  <div shellBranding class="shell-pet-branding">
+    <app-logo variant="color" class="shell-pet-branding__logo" />
+  </div>
+
+  <!-- Sticky Content su giallo (clonato da Yellow) -->
+  <div shellStickyYellow class="shell-pet-sticky">
+    <ng-content select="[shellStickyContent]" />
+  </div>
+
+  <!-- FORMA 1: Cerchio bianco (foto pet) -->
+  <div class="shell-pet-circle">
+    <ng-content select="[shellPetPhoto]" />
+  </div>
+
+  <!-- FORMA 2: Card blu / parallelepipedo + Main Content -->
+  <div class="shell-pet-card">
+    <ng-content />
+  </div>
+
+  <!-- Footer: Mascot + Tab Bar (clonato da Yellow) -->
+  <ng-container shellFooter>
+    <app-mascot-peek />
+    <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="activeTabId" />
+  </ng-container>
+
+</app-tab-page-shell>
