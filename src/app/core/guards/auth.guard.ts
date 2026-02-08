@@ -61,7 +61,14 @@ export class AuthGuard implements CanActivate {
       hasCompletedOnboarding: true
     };
 
-    const mockToken = 'dev-bypass-token-' + Date.now();
+    // Build a valid JWT so isAuthenticated() won't clear it
+    const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
+    const payload = btoa(JSON.stringify({
+      sub: 'dev-user-001',
+      email: 'dev@fiutami.local',
+      exp: Math.floor(Date.now() / 1000) + 86400 // 24h from now
+    }));
+    const mockToken = `${header}.${payload}.dev-signature`;
 
     // Only inject if not already present
     if (!localStorage.getItem('fiutami_access_token')) {
