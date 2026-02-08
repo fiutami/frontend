@@ -521,58 +521,10 @@ export class MatchingEngineService {
   }
 
   /**
-   * Local fallback breed data.
+   * Local fallback breed data (40+ breeds for offline matching).
    */
   private getLocalBreeds(): BreedCandidate[] {
-    // Minimal local data for offline/error scenarios
-    return [
-      {
-        id: 'dog-labrador',
-        name: 'Labrador Retriever',
-        species: 'dog',
-        description: 'Cane amichevole, energico, ottimo con bambini. Facile da addestrare, adatto a famiglie attive.',
-        attributes: {
-          size: 'large',
-          energyLevel: 'high',
-          groomingNeeds: 'medium',
-          trainability: 'high',
-          goodWithChildren: true,
-          goodWithOtherPets: true,
-          apartmentFriendly: false,
-          exerciseNeeds: 'high'
-        }
-      },
-      {
-        id: 'dog-cavalier',
-        name: 'Cavalier King Charles Spaniel',
-        species: 'dog',
-        description: 'Cane affettuoso, tranquillo, perfetto per appartamento. Ama le coccole.',
-        attributes: {
-          size: 'small',
-          energyLevel: 'medium',
-          groomingNeeds: 'medium',
-          trainability: 'medium',
-          goodWithChildren: true,
-          goodWithOtherPets: true,
-          apartmentFriendly: true,
-          exerciseNeeds: 'low'
-        }
-      },
-      {
-        id: 'cat-europeo',
-        name: 'Gatto Europeo',
-        species: 'cat',
-        description: 'Gatto indipendente, robusto, adatto a qualsiasi ambiente.',
-        attributes: {
-          size: 'medium',
-          energyLevel: 'medium',
-          groomingNeeds: 'low',
-          goodWithChildren: true,
-          goodWithOtherPets: true,
-          apartmentFriendly: true
-        }
-      }
-    ];
+    return LOCAL_BREED_CATALOG;
   }
 
   private updateState(status: MatchingState['status'], progress: number, message: string): void {
@@ -595,3 +547,526 @@ export class MatchingEngineService {
     this.embeddingService.unload();
   }
 }
+
+// ============================================================================
+// Local Breed Catalog (42 breeds for offline/fallback matching)
+// ============================================================================
+
+const LOCAL_BREED_CATALOG: BreedCandidate[] = [
+
+  // ── DOGS (22 breeds) ──────────────────────────────────────────────────
+
+  {
+    id: 'dog-labrador',
+    name: 'Labrador Retriever',
+    species: 'dog',
+    description: 'Cane amichevole, energico, ottimo con bambini. Facile da addestrare, ideale per famiglie attive con spazi ampi.',
+    imageUrl: 'assets/images/breeds/dog-labrador.webp',
+    attributes: {
+      size: 'large', energyLevel: 'high', groomingNeeds: 'medium', trainability: 'high',
+      shedding: 'high', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-golden-retriever',
+    name: 'Golden Retriever',
+    species: 'dog',
+    description: 'Dolce, paziente e intelligente. Perfetto per famiglie. Richiede esercizio quotidiano e adora nuotare.',
+    imageUrl: 'assets/images/breeds/dog-golden.webp',
+    attributes: {
+      size: 'large', energyLevel: 'high', groomingNeeds: 'high', trainability: 'high',
+      shedding: 'high', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-pastore-tedesco',
+    name: 'Pastore Tedesco',
+    species: 'dog',
+    description: 'Intelligente, leale e protettivo. Eccellente cane da lavoro e da guardia. Richiede addestramento coerente.',
+    imageUrl: 'assets/images/breeds/dog-pastore-tedesco.webp',
+    attributes: {
+      size: 'large', energyLevel: 'high', groomingNeeds: 'medium', trainability: 'high',
+      shedding: 'high', barkingLevel: 'high', goodWithChildren: true, goodWithOtherPets: false,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-bulldog-francese',
+    name: 'Bulldog Francese',
+    species: 'dog',
+    description: 'Compatto, giocoso e affettuoso. Perfetto per appartamento. Basso fabbisogno di esercizio, adora stare sul divano.',
+    imageUrl: 'assets/images/breeds/dog-bulldog-francese.webp',
+    attributes: {
+      size: 'small', energyLevel: 'low', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'high'
+    }
+  },
+  {
+    id: 'dog-cavalier',
+    name: 'Cavalier King Charles Spaniel',
+    species: 'dog',
+    description: 'Affettuoso, tranquillo, perfetto compagno da appartamento. Ama le coccole e si adatta facilmente.',
+    imageUrl: 'assets/images/breeds/dog-cavalier.webp',
+    attributes: {
+      size: 'small', energyLevel: 'medium', groomingNeeds: 'medium', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-border-collie',
+    name: 'Border Collie',
+    species: 'dog',
+    description: 'Il cane più intelligente del mondo. Instancabile, richiede stimolazione mentale e fisica costante. Non adatto a sedentari.',
+    imageUrl: 'assets/images/breeds/dog-border-collie.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'very_high', groomingNeeds: 'medium', trainability: 'high',
+      shedding: 'high', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'dog-beagle',
+    name: 'Beagle',
+    species: 'dog',
+    description: 'Allegro, curioso e socievole. Ottimo con i bambini. Tende a seguire gli odori e abbaiare.',
+    imageUrl: 'assets/images/breeds/dog-beagle.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'high', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'high', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'dog-barboncino',
+    name: 'Barboncino (Poodle)',
+    species: 'dog',
+    description: 'Elegante, ipoallergenico e molto intelligente. Disponibile in varie taglie. Ottimo per chi ha allergie.',
+    imageUrl: 'assets/images/breeds/dog-barboncino.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'medium', groomingNeeds: 'high', trainability: 'high',
+      shedding: 'low', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-chihuahua',
+    name: 'Chihuahua',
+    species: 'dog',
+    description: 'Il cane più piccolo del mondo. Coraggioso, vivace e devoto al padrone. Perfetto per spazi ridotti.',
+    imageUrl: 'assets/images/breeds/dog-chihuahua.webp',
+    attributes: {
+      size: 'tiny', energyLevel: 'medium', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'high', goodWithChildren: false, goodWithOtherPets: false,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'dog-jack-russell',
+    name: 'Jack Russell Terrier',
+    species: 'dog',
+    description: 'Piccolo ma pieno di energia. Intelligente, atletico e determinato. Ha bisogno di molto esercizio.',
+    imageUrl: 'assets/images/breeds/dog-jack-russell.webp',
+    attributes: {
+      size: 'small', energyLevel: 'very_high', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'high', goodWithChildren: true, goodWithOtherPets: false,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'dog-shiba-inu',
+    name: 'Shiba Inu',
+    species: 'dog',
+    description: 'Indipendente, pulito e riservato. Simile a una volpe. Adatto a proprietari esperti.',
+    imageUrl: 'assets/images/breeds/dog-shiba-inu.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'medium', groomingNeeds: 'medium', trainability: 'low',
+      shedding: 'high', barkingLevel: 'medium', goodWithChildren: false, goodWithOtherPets: false,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'dog-cocker-spaniel',
+    name: 'Cocker Spaniel Inglese',
+    species: 'dog',
+    description: 'Allegro, affettuoso e sempre in movimento. Ottimo cane da famiglia con pelo setoso.',
+    imageUrl: 'assets/images/breeds/dog-cocker.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'high', groomingNeeds: 'high', trainability: 'high',
+      shedding: 'medium', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-bassotto',
+    name: 'Bassotto (Dachshund)',
+    species: 'dog',
+    description: 'Coraggioso e testardo con zampe corte. Buon cane da appartamento, leale e divertente.',
+    imageUrl: 'assets/images/breeds/dog-bassotto.webp',
+    attributes: {
+      size: 'small', energyLevel: 'medium', groomingNeeds: 'low', trainability: 'low',
+      shedding: 'low', barkingLevel: 'high', goodWithChildren: false, goodWithOtherPets: false,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'dog-yorkshire',
+    name: 'Yorkshire Terrier',
+    species: 'dog',
+    description: 'Piccolo, elegante e pieno di personalità. Ipoallergenico. Perfetto compagno da borsetta e da divano.',
+    imageUrl: 'assets/images/breeds/dog-yorkshire.webp',
+    attributes: {
+      size: 'tiny', energyLevel: 'medium', groomingNeeds: 'high', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'high', goodWithChildren: false, goodWithOtherPets: false,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-husky',
+    name: 'Siberian Husky',
+    species: 'dog',
+    description: 'Maestoso e indipendente. Nato per correre. Richiede tantissimo esercizio e spazi aperti.',
+    imageUrl: 'assets/images/breeds/dog-husky.webp',
+    attributes: {
+      size: 'large', energyLevel: 'very_high', groomingNeeds: 'high', trainability: 'low',
+      shedding: 'high', barkingLevel: 'high', goodWithChildren: true, goodWithOtherPets: false,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-maltese',
+    name: 'Maltese',
+    species: 'dog',
+    description: 'Dolce, giocoso e ipoallergenico. Pelo lungo e setoso. Ideale per anziani e vita in appartamento.',
+    imageUrl: 'assets/images/breeds/dog-maltese.webp',
+    attributes: {
+      size: 'tiny', energyLevel: 'low', groomingNeeds: 'high', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-boxer',
+    name: 'Boxer',
+    species: 'dog',
+    description: 'Giocherellone, energico e protettivo. Ottimo con i bambini, leale alla famiglia.',
+    imageUrl: 'assets/images/breeds/dog-boxer.webp',
+    attributes: {
+      size: 'large', energyLevel: 'high', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-carlino',
+    name: 'Carlino (Pug)',
+    species: 'dog',
+    description: 'Buffo, affettuoso e pigro. Adora il divano e le coccole. Perfetto per chi ha poco tempo.',
+    imageUrl: 'assets/images/breeds/dog-carlino.webp',
+    attributes: {
+      size: 'small', energyLevel: 'low', groomingNeeds: 'low', trainability: 'low',
+      shedding: 'high', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-setter-irlandese',
+    name: 'Setter Irlandese',
+    species: 'dog',
+    description: 'Elegante, atletico e socievole. Pelo rosso mogano. Ottimo per proprietari attivi con giardino.',
+    imageUrl: 'assets/images/breeds/dog-setter.webp',
+    attributes: {
+      size: 'large', energyLevel: 'very_high', groomingNeeds: 'high', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'dog-corso',
+    name: 'Cane Corso',
+    species: 'dog',
+    description: 'Potente guardiano italiano. Leale e protettivo. Solo per proprietari esperti con spazio.',
+    imageUrl: 'assets/images/breeds/dog-corso.webp',
+    attributes: {
+      size: 'giant', energyLevel: 'medium', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: false, goodWithOtherPets: false,
+      apartmentFriendly: false, exerciseNeeds: 'medium', monthlyExpense: 'high'
+    }
+  },
+  {
+    id: 'dog-whippet',
+    name: 'Whippet',
+    species: 'dog',
+    description: 'Veloce ma sorprendentemente calmo in casa. Elegante, silenzioso, perfetto per appartamento.',
+    imageUrl: 'assets/images/breeds/dog-whippet.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'medium', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'dog-schnauzer-nano',
+    name: 'Schnauzer Nano',
+    species: 'dog',
+    description: 'Vivace, coraggioso e ipoallergenico. Ottimo cane da guardia in formato compatto.',
+    imageUrl: 'assets/images/breeds/dog-schnauzer.webp',
+    attributes: {
+      size: 'small', energyLevel: 'high', groomingNeeds: 'high', trainability: 'high',
+      shedding: 'low', barkingLevel: 'high', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'medium'
+    }
+  },
+
+  // ── CATS (10 breeds) ──────────────────────────────────────────────────
+
+  {
+    id: 'cat-europeo',
+    name: 'Gatto Europeo',
+    species: 'cat',
+    description: 'Indipendente, robusto e adattabile. Il gatto per eccellenza, equilibrato e facile da gestire.',
+    imageUrl: 'assets/images/breeds/cat-europeo.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'medium', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'cat-persiano',
+    name: 'Persiano',
+    species: 'cat',
+    description: 'Elegante e tranquillo. Pelo lungo che richiede cura quotidiana. Ama la vita sedentaria.',
+    imageUrl: 'assets/images/breeds/cat-persiano.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'low', groomingNeeds: 'high', trainability: 'low',
+      shedding: 'high', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'cat-maine-coon',
+    name: 'Maine Coon',
+    species: 'cat',
+    description: 'Il gigante gentile. Socievole, giocherellone e intelligente. Ama l\'acqua e la compagnia.',
+    imageUrl: 'assets/images/breeds/cat-maine-coon.webp',
+    attributes: {
+      size: 'large', energyLevel: 'medium', groomingNeeds: 'high', trainability: 'high',
+      shedding: 'high', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'cat-siamese',
+    name: 'Siamese',
+    species: 'cat',
+    description: 'Vocale, affettuoso e molto sociale. Crea un legame forte con il proprietario. Molto intelligente.',
+    imageUrl: 'assets/images/breeds/cat-siamese.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'high', groomingNeeds: 'low', trainability: 'high',
+      shedding: 'low', barkingLevel: 'high', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'cat-british-shorthair',
+    name: 'British Shorthair',
+    species: 'cat',
+    description: 'Tranquillo, indipendente e robusto. Il classico gatto da compagnia, poco esigente.',
+    imageUrl: 'assets/images/breeds/cat-british.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'low', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'cat-ragdoll',
+    name: 'Ragdoll',
+    species: 'cat',
+    description: 'Docile e rilassato, si lascia coccolare come un peluche. Pelo semi-lungo, molto affettuoso.',
+    imageUrl: 'assets/images/breeds/cat-ragdoll.webp',
+    attributes: {
+      size: 'large', energyLevel: 'low', groomingNeeds: 'medium', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'cat-bengala',
+    name: 'Bengala',
+    species: 'cat',
+    description: 'Selvaggio nell\'aspetto, domestico nel cuore. Energico, atletico e giocherellone. Ama arrampicarsi.',
+    imageUrl: 'assets/images/breeds/cat-bengala.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'very_high', groomingNeeds: 'low', trainability: 'high',
+      shedding: 'low', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: false,
+      apartmentFriendly: false, exerciseNeeds: 'high', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'cat-sphynx',
+    name: 'Sphynx',
+    species: 'cat',
+    description: 'Senza pelo, ipoallergenico e molto affettuoso. Cerca sempre il calore umano. Estroverso.',
+    imageUrl: 'assets/images/breeds/cat-sphynx.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'high', groomingNeeds: 'medium', trainability: 'high',
+      shedding: 'low', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'cat-scottish-fold',
+    name: 'Scottish Fold',
+    species: 'cat',
+    description: 'Orecchie piegate caratteristiche. Dolce, calmo e adattabile. Perfetto per appartamento tranquillo.',
+    imageUrl: 'assets/images/breeds/cat-scottish.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'low', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'cat-certosino',
+    name: 'Certosino',
+    species: 'cat',
+    description: 'Silenzioso, dolce e indipendente. Pelo grigio-blu. Ottimo per chi lavora fuori casa.',
+    imageUrl: 'assets/images/breeds/cat-certosino.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'low', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+
+  // ── SMALL MAMMALS (5 breeds) ──────────────────────────────────────────
+
+  {
+    id: 'small-coniglio-nano',
+    name: 'Coniglio Nano',
+    species: 'small_mammal',
+    description: 'Dolce, silenzioso e socievole. Vive 8-12 anni. Può essere addestrato alla lettiera.',
+    imageUrl: 'assets/images/breeds/small-coniglio.webp',
+    attributes: {
+      size: 'small', energyLevel: 'medium', groomingNeeds: 'medium', trainability: 'medium',
+      shedding: 'medium', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'small-criceto-dorato',
+    name: 'Criceto Dorato',
+    species: 'small_mammal',
+    description: 'Piccolo, notturno e indipendente. Facile da gestire. Vive 2-3 anni. Ideale come primo animale.',
+    imageUrl: 'assets/images/breeds/small-criceto.webp',
+    attributes: {
+      size: 'tiny', energyLevel: 'medium', groomingNeeds: 'low', trainability: 'low',
+      shedding: 'low', barkingLevel: 'low', goodWithChildren: true, goodWithOtherPets: false,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'small-cavia',
+    name: 'Cavia Peruviana',
+    species: 'small_mammal',
+    description: 'Socievole e vocale. Ama la compagnia, meglio in coppia. Vive 5-7 anni. Facile da curare.',
+    imageUrl: 'assets/images/breeds/small-cavia.webp',
+    attributes: {
+      size: 'small', energyLevel: 'low', groomingNeeds: 'low', trainability: 'low',
+      shedding: 'low', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'small-furetto',
+    name: 'Furetto',
+    species: 'small_mammal',
+    description: 'Giocherellone, curioso e molto sociale. Richiede ore di gioco fuori dalla gabbia. Vive 6-10 anni.',
+    imageUrl: 'assets/images/breeds/small-furetto.webp',
+    attributes: {
+      size: 'small', energyLevel: 'high', groomingNeeds: 'medium', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'low', goodWithChildren: false, goodWithOtherPets: false,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'medium'
+    }
+  },
+  {
+    id: 'small-cincilla',
+    name: 'Cincillà',
+    species: 'small_mammal',
+    description: 'Pelo morbidissimo, notturno e delicato. Vive 10-15 anni. Sensibile al calore. Silenzioso.',
+    imageUrl: 'assets/images/breeds/small-cincilla.webp',
+    attributes: {
+      size: 'small', energyLevel: 'medium', groomingNeeds: 'medium', trainability: 'low',
+      shedding: 'high', barkingLevel: 'low', goodWithChildren: false, goodWithOtherPets: false,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+
+  // ── BIRDS (5 breeds) ──────────────────────────────────────────────────
+
+  {
+    id: 'bird-canarino',
+    name: 'Canarino',
+    species: 'bird',
+    description: 'Canto melodioso, facile da curare. Ideale per principianti. Non richiede interazione costante.',
+    imageUrl: 'assets/images/breeds/bird-canarino.webp',
+    attributes: {
+      size: 'tiny', energyLevel: 'low', groomingNeeds: 'low', trainability: 'low',
+      shedding: 'low', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'bird-pappagallino',
+    name: 'Pappagallino Ondulato',
+    species: 'bird',
+    description: 'Piccolo, colorato e socievole. Può imparare a parlare. Perfetto per chi vuole interazione.',
+    imageUrl: 'assets/images/breeds/bird-pappagallino.webp',
+    attributes: {
+      size: 'tiny', energyLevel: 'medium', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'bird-inseparabile',
+    name: 'Inseparabile (Agapornis)',
+    species: 'bird',
+    description: 'Affettuoso e legato al padrone. Meglio in coppia. Colorato e vivace, richiede attenzione quotidiana.',
+    imageUrl: 'assets/images/breeds/bird-inseparabile.webp',
+    attributes: {
+      size: 'small', energyLevel: 'high', groomingNeeds: 'low', trainability: 'medium',
+      shedding: 'low', barkingLevel: 'high', goodWithChildren: true, goodWithOtherPets: false,
+      apartmentFriendly: true, exerciseNeeds: 'medium', monthlyExpense: 'low'
+    }
+  },
+  {
+    id: 'bird-cenerino',
+    name: 'Pappagallo Cenerino',
+    species: 'bird',
+    description: 'Il più intelligente dei pappagalli. Parla fluentemente, empatico. Impegno di 40-60 anni.',
+    imageUrl: 'assets/images/breeds/bird-cenerino.webp',
+    attributes: {
+      size: 'medium', energyLevel: 'medium', groomingNeeds: 'medium', trainability: 'high',
+      shedding: 'medium', barkingLevel: 'high', goodWithChildren: false, goodWithOtherPets: false,
+      apartmentFriendly: false, exerciseNeeds: 'medium', monthlyExpense: 'high'
+    }
+  },
+  {
+    id: 'bird-calopsita',
+    name: 'Calopsitta',
+    species: 'bird',
+    description: 'Dolce, fischietta melodie e ama le coccole sulla testa. Taglia media, vive 15-25 anni.',
+    imageUrl: 'assets/images/breeds/bird-calopsita.webp',
+    attributes: {
+      size: 'small', energyLevel: 'medium', groomingNeeds: 'low', trainability: 'high',
+      shedding: 'medium', barkingLevel: 'medium', goodWithChildren: true, goodWithOtherPets: true,
+      apartmentFriendly: true, exerciseNeeds: 'low', monthlyExpense: 'low'
+    }
+  }
+];
