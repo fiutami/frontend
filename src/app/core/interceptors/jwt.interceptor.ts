@@ -9,6 +9,7 @@ import {
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, filter, take, switchMap, finalize } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -31,6 +32,10 @@ export class JwtInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
+        // In dev bypass mode, never trigger token refresh/logout on API errors
+        if ((environment as any).devBypassAuth && !environment.production) {
+          return throwError(() => error);
+        }
         if (error.status === 401 && !this.isAuthEndpoint(request.url)) {
           return this.handle401Error(request, next);
         }

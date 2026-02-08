@@ -114,10 +114,35 @@ const routes: Routes = [
     loadChildren: () => import('./styleguide/styleguide.module').then(m => m.StyleguideModule)
   },
 
-  // TEST: TabPageShellDefault - TEMPORANEO
+  // TEST: Shell Pages - TEMPORANEO
   {
     path: 'test/shell-default',
     loadComponent: () => import('./shared/pages/test-shell-default/test-shell-default.component').then(m => m.TestShellDefaultComponent)
+  },
+  {
+    path: 'test/shell-yellow',
+    loadComponent: () => import('./shared/pages/test-shell-yellow/test-shell-yellow.component').then(m => m.TestShellYellowComponent)
+  },
+  {
+    path: 'test/shell-blue',
+    loadComponent: () => import('./shared/pages/test-shell-blue/test-shell-blue.component').then(m => m.TestShellBlueComponent)
+  },
+  {
+    path: 'test/shell-fiuto',
+    loadComponent: () => import('./shared/pages/test-shell-fiuto/test-shell-fiuto.component').then(m => m.TestShellFiutoComponent)
+  },
+  {
+    path: 'test/shell-pet-profile',
+    loadComponent: () => import('./shared/pages/test-shell-pet-profile/test-shell-pet-profile.component').then(m => m.TestShellPetProfileComponent)
+  },
+  {
+    path: 'test/bg-removal',
+    loadComponent: () => import('./shared/pages/test-bg-removal/test-bg-removal.component').then(m => m.TestBgRemovalComponent)
+  },
+  {
+    path: 'test/pet-profile',
+    loadComponent: () => import('./profile/pet/pet-profile.component').then(m => m.PetProfileComponent),
+    canActivate: [AuthGuard]
   },
 
   // Future: Dashboard route (lazy loaded)
