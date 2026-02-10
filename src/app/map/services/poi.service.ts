@@ -191,11 +191,26 @@ export class POIService {
   }
 
   // Map API response to frontend POI model
+  // Map backend POI types to frontend types
+  private readonly TYPE_MAP: Record<string, POIType> = {
+    'veterinary': 'vet',
+    'pet_store': 'shop',
+    'grooming': 'groomer',
+    'shelter': 'shop',
+    'park': 'park',
+    'vet': 'vet',
+    'shop': 'shop',
+    'groomer': 'groomer',
+    'restaurant': 'restaurant',
+    'hotel': 'hotel',
+    'beach': 'beach'
+  };
+
   private mapApiPoi(apiPoi: any): POI {
     return {
       id: apiPoi.id?.toString() || '',
       name: apiPoi.name || '',
-      type: apiPoi.type as POIType,
+      type: this.TYPE_MAP[apiPoi.type] || apiPoi.type as POIType,
       lat: apiPoi.latitude ?? apiPoi.lat ?? 0,
       lng: apiPoi.longitude ?? apiPoi.lng ?? 0,
       address: apiPoi.address || '',
