@@ -178,6 +178,7 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "mkdir -p \"${DEPLOY_PATH}\" && cd \"${DEPLOY_PATH}\" && \
             echo '${GHCR_TOKEN}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin && \
+            curl -sSL https://raw.githubusercontent.com/fiutami/infra/main/docker/${COMPOSE_FILE} -o ${COMPOSE_FILE} && \
             if [ -f .last_sha_${{ env.SERVICE }} ]; then cp .last_sha_${{ env.SERVICE }} .last_sha_${{ env.SERVICE }}.prev; fi && \
             echo '${IMAGE_TAG}' > .last_sha_${{ env.SERVICE }} && \
             export IMAGE_TAG=${IMAGE_TAG} && \
