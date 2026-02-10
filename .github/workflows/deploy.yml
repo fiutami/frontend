@@ -176,7 +176,7 @@ jobs:
         run: |
           echo "::notice::Deploying ${{ env.SERVICE }} to ${{ needs.setup.outputs.environment }}"
 
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cd \"${DEPLOY_PATH}\" && \
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "mkdir -p \"${DEPLOY_PATH}\" && cd \"${DEPLOY_PATH}\" && \
             echo '${GHCR_TOKEN}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin && \
             if [ -f .last_sha_${{ env.SERVICE }} ]; then cp .last_sha_${{ env.SERVICE }} .last_sha_${{ env.SERVICE }}.prev; fi && \
             echo '${IMAGE_TAG}' > .last_sha_${{ env.SERVICE }} && \
