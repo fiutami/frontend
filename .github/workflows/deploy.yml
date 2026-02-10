@@ -1,17 +1,32 @@
 name: Deploy Frontend
 
-# MVP: CD on main only (stage branch uses ci.yml for build/test)
-# Workflow: stage (CI) -> merge to main -> auto-deploy
+# =============================================================================
+# Multi-Environment CD Pipeline
+# - develop/stage → staging (91.99.229.111) - auto
+# - main → production (49.12.85.92) - requires approval
+# =============================================================================
 
 on:
   push:
     branches:
-      - main  # Auto-deploy on main only
-  workflow_dispatch:  # Manual trigger for emergencies
+      - main      # Production (requires approval)
+      - develop   # Staging (auto-deploy)
+      - stage     # Staging (auto-deploy)
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: fiutami/frontend
+  SERVICE: frontend
 
 jobs:
   # ===========================================
@@ -20,39 +35,46 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      environment: ${{ steps.set-env.outputs.environment }}
-      image_tag: ${{ steps.set-env.outputs.image_tag }}
-      angular_config: ${{ steps.set-env.outputs.angular_config }}
+      environment: ${{ steps.env.outputs.environment }}
+      image_tag: ${{ steps.env.outputs.image_tag }}
+      sha_tag: ${{ steps.env.outputs.sha_tag }}
+      angular_config: ${{ steps.env.outputs.angular_config }}
+      compose_file: ${{ steps.env.outputs.compose_file }}
+      health_path: ${{ steps.env.outputs.health_path }}
+      health_port: ${{ steps.env.outputs.health_port }}
     steps:
       - name: Determine environment
-        id: set-env
+        id: env
         run: |
-          # MVP: main e stage deployano entrambi su stage (stesso ambiente)
+          SHA_TAG="sha-${{ github.sha }}"
+          echo "sha_tag=$SHA_TAG" >> $GITHUB_OUTPUT
+
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            ENV="${{ github.event.inputs.environment }}"
+            ENV="${{ inputs.environment }}"
           elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            ENV="stage"  # MVP: main deploya su stage
-          elif [[ "${{ github.ref }}" == "refs/heads/stage" ]]; then
-            ENV="stage"
+            ENV="production"
           else
-            echo "Unknown branch, defaulting to stage"
-            ENV="stage"
+            ENV="staging"
           fi
 
-          # MVP: sempre stage config
-          IMAGE_TAG="stage"
-          ANGULAR_CONFIG="stage"
-
-          if [[ "$ENV" == "prod" ]]; then
-            IMAGE_TAG="latest"
-            ANGULAR_CONFIG="production"
+          if [[ "$ENV" == "production" ]]; then
+            echo "environment=production" >> $GITHUB_OUTPUT
+            echo "image_tag=prod" >> $GITHUB_OUTPUT
+            echo "angular_config=production" >> $GITHUB_OUTPUT
+            echo "compose_file=docker-compose.prod.yml" >> $GITHUB_OUTPUT
+            echo "health_port=8080" >> $GITHUB_OUTPUT
+          else
+            echo "environment=staging" >> $GITHUB_OUTPUT
+            echo "image_tag=stage" >> $GITHUB_OUTPUT
+            echo "angular_config=stage" >> $GITHUB_OUTPUT
+            echo "compose_file=docker-compose.stage.yml" >> $GITHUB_OUTPUT
+            echo "health_port=8082" >> $GITHUB_OUTPUT
           fi
 
-          echo "environment=$ENV" >> $GITHUB_OUTPUT
-          echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
-          echo "angular_config=$ANGULAR_CONFIG" >> $GITHUB_OUTPUT
+          # Frontend: check root path (no /health endpoint on static nginx)
+          echo "health_path=/" >> $GITHUB_OUTPUT
 
-          echo "::notice::Deploying to $ENV environment with tag $IMAGE_TAG"
+          echo "::notice::Environment: $ENV | Image: $SHA_TAG"
 
   # ===========================================
   # Build Frontend
@@ -85,12 +107,10 @@ jobs:
           if [ -n "$GOOGLE_CLIENT_ID" ]; then
             sed -i "s|YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com|${GOOGLE_CLIENT_ID}|g" src/environments/environment.prod.ts
             sed -i "s|YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com|${GOOGLE_CLIENT_ID}|g" src/environments/environment.stage.ts 2>/dev/null || true
-            sed -i "s|YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com|${GOOGLE_CLIENT_ID}|g" src/environments/environment.dev.ts 2>/dev/null || true
           fi
           if [ -n "$FACEBOOK_APP_ID" ]; then
             sed -i "s|YOUR_FACEBOOK_APP_ID|${FACEBOOK_APP_ID}|g" src/environments/environment.prod.ts
             sed -i "s|YOUR_FACEBOOK_APP_ID|${FACEBOOK_APP_ID}|g" src/environments/environment.stage.ts 2>/dev/null || true
-            sed -i "s|YOUR_FACEBOOK_APP_ID|${FACEBOOK_APP_ID}|g" src/environments/environment.dev.ts 2>/dev/null || true
           fi
           npm run build -- --configuration=${{ needs.setup.outputs.angular_config }}
 
@@ -111,8 +131,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.setup.outputs.sha_tag }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.setup.outputs.image_tag }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -122,43 +142,155 @@ jobs:
   deploy:
     needs: [setup, build]
     runs-on: ubuntu-latest
+    environment: ${{ needs.setup.outputs.environment }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Pre-deploy Info
+        run: |
+          echo "=========================================="
+          echo "DEPLOYMENT INFO"
+          echo "=========================================="
+          echo "Environment:    ${{ needs.setup.outputs.environment }}"
+          echo "Image Tag:      ${{ needs.setup.outputs.sha_tag }}"
+          echo "Compose File:   ${{ needs.setup.outputs.compose_file }}"
+          echo "Health Port:    ${{ needs.setup.outputs.health_port }}"
+          echo "Service:        ${{ env.SERVICE }}"
+          echo "Commit:         ${{ github.sha }}"
+          echo "=========================================="
 
-      # MVP: auto-deploy sempre (stage = prod)
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H "${{ secrets.SSH_HOST_STAGE }}" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
 
       - name: Deploy to Server
         env:
-          SSH_HOST: ${{ secrets.SSH_HOST_STAGE }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          COMPOSE_PROJECT: ${{ secrets.COMPOSE_PROJECT }}
+          COMPOSE_FILE: ${{ needs.setup.outputs.compose_file }}
+          IMAGE_TAG: ${{ needs.setup.outputs.sha_tag }}
           GHCR_TOKEN: ${{ secrets.GHCR_PAT }}
         run: |
-          echo "::notice::Deploying STAGE frontend to ${SSH_HOST}"
+          echo "::notice::Deploying ${{ env.SERVICE }} to ${{ needs.setup.outputs.environment }}"
 
-          # Login to GHCR on remote server
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "echo ${GHCR_TOKEN} | docker login ghcr.io -u ${{ github.actor }} --password-stdin"
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} << ENDSSH
+            cd ${DEPLOY_PATH}
 
-          # Pull and restart frontend container only
-          # Network: fiutami_fiutami-stage (created by docker-compose)
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "docker pull ghcr.io/${{ env.IMAGE_NAME }}:stage && docker stop fiutami-frontend-stage 2>/dev/null || true && docker rm fiutami-frontend-stage 2>/dev/null || true && docker run -d --name fiutami-frontend-stage --network fiutami_fiutami-stage --network proxy-net -p 8082:80 --restart unless-stopped ghcr.io/${{ env.IMAGE_NAME }}:stage"
+            # Login to GHCR
+            echo "${GHCR_TOKEN}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-          echo "::notice::STAGE frontend deployed successfully!"
+            # Save current SHA for rollback
+            if [ -f .last_sha_${{ env.SERVICE }} ]; then
+              cp .last_sha_${{ env.SERVICE }} .last_sha_${{ env.SERVICE }}.prev
+            fi
+            echo "${IMAGE_TAG}" > .last_sha_${{ env.SERVICE }}
 
+            # Deploy ONLY this service
+            export IMAGE_TAG=${IMAGE_TAG}
+            docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} pull ${{ env.SERVICE }}
+            docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}
+
+            # Cleanup old images (keep recent for rollback)
+            docker image prune -f --filter "dangling=true" --filter "until=168h"
+          ENDSSH
+
+          echo "::notice::${{ env.SERVICE }} deployed successfully!"
+
+  # ===========================================
+  # Health Check with Rollback
+  # ===========================================
+  health-check:
+    needs: [setup, deploy]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.setup.outputs.environment }}
+    steps:
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Health Check with Retry
+        id: health
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          HEALTH_PORT: ${{ needs.setup.outputs.health_port }}
+          HEALTH_PATH: ${{ needs.setup.outputs.health_path }}
+        run: |
+          echo "Checking health at localhost:${HEALTH_PORT}${HEALTH_PATH}..."
+
+          for i in {1..15}; do
+            HEALTH=$(ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} \
+              "curl -sf http://localhost:${HEALTH_PORT}${HEALTH_PATH} 2>/dev/null | head -c 100 || echo 'ERROR'")
+
+            if [[ "$HEALTH" != "ERROR" && -n "$HEALTH" ]]; then
+              echo "Frontend healthy! (attempt $i)"
+              exit 0
+            fi
+            echo "Attempt $i/15 - waiting..."
+            sleep 10
+          done
+
+          echo "Health check failed after 15 attempts!"
+          exit 1
+
+      - name: Rollback on Failure
+        if: failure()
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          COMPOSE_PROJECT: ${{ secrets.COMPOSE_PROJECT }}
+          COMPOSE_FILE: ${{ needs.setup.outputs.compose_file }}
+          GHCR_TOKEN: ${{ secrets.GHCR_PAT }}
+        run: |
+          echo "Rolling back ${{ env.SERVICE }}..."
+
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} << ENDSSH
+            cd ${DEPLOY_PATH}
+
+            # Login to GHCR
+            echo "${GHCR_TOKEN}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            # Get previous SHA
+            if [ -f .last_sha_${{ env.SERVICE }}.prev ]; then
+              PREV_SHA=\$(cat .last_sha_${{ env.SERVICE }}.prev)
+              echo "Rolling back to \$PREV_SHA"
+              export IMAGE_TAG=\$PREV_SHA
+              docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} pull ${{ env.SERVICE }}
+              docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}
+            else
+              echo "No previous SHA found, using env tag"
+              export IMAGE_TAG=${{ needs.setup.outputs.image_tag }}
+              docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} pull ${{ env.SERVICE }}
+              docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}
+            fi
+          ENDSSH
+
+  # ===========================================
+  # Deployment Summary
+  # ===========================================
+  summary:
+    needs: [setup, build, deploy, health-check]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
       - name: Deployment Summary
         run: |
-          ENV="${{ needs.setup.outputs.environment }}"
-          echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## Frontend Deployment Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Environment | **$ENV** |" >> $GITHUB_STEP_SUMMARY
-          echo "| Image Tag | \`${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Environment | **${{ needs.setup.outputs.environment }}** |" >> $GITHUB_STEP_SUMMARY
+          echo "| Image Tag | \`${{ needs.setup.outputs.sha_tag }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Env Tag | \`${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Compose | \`${{ needs.setup.outputs.compose_file }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| Image | \`ghcr.io/${{ env.IMAGE_NAME }}:${{ needs.setup.outputs.image_tag }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Deploy | ${{ needs.deploy.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Health | ${{ needs.health-check.result }} |" >> $GITHUB_STEP_SUMMARY
