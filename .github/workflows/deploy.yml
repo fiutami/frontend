@@ -176,13 +176,13 @@ jobs:
         run: |
           echo "::notice::Deploying ${{ env.SERVICE }} to ${{ needs.setup.outputs.environment }}"
 
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cd ${DEPLOY_PATH} && \
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cd \"${DEPLOY_PATH}\" && \
             echo '${GHCR_TOKEN}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin && \
             if [ -f .last_sha_${{ env.SERVICE }} ]; then cp .last_sha_${{ env.SERVICE }} .last_sha_${{ env.SERVICE }}.prev; fi && \
             echo '${IMAGE_TAG}' > .last_sha_${{ env.SERVICE }} && \
             export IMAGE_TAG=${IMAGE_TAG} && \
-            docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
-            docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }} && \
+            docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
+            docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }} && \
             docker image prune -f --filter 'dangling=true' --filter 'until=168h'"
 
           echo "::notice::${{ env.SERVICE }} deployed successfully!"
@@ -239,19 +239,19 @@ jobs:
         run: |
           echo "Rolling back ${{ env.SERVICE }}..."
 
-          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cd ${DEPLOY_PATH} && \
+          ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cd \"${DEPLOY_PATH}\" && \
             echo '${GHCR_TOKEN}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin && \
             if [ -f .last_sha_${{ env.SERVICE }}.prev ]; then \
               PREV_SHA=\$(cat .last_sha_${{ env.SERVICE }}.prev) && \
               echo \"Rolling back to \$PREV_SHA\" && \
               export IMAGE_TAG=\$PREV_SHA && \
-              docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
-              docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}; \
+              docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
+              docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}; \
             else \
               echo 'No previous SHA found, using env tag' && \
               export IMAGE_TAG=${{ needs.setup.outputs.image_tag }} && \
-              docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
-              docker compose -p ${COMPOSE_PROJECT} -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}; \
+              docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
+              docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}; \
             fi"
 
   # ===========================================
