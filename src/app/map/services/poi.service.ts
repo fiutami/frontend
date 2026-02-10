@@ -190,6 +190,26 @@ export class POIService {
     ];
   }
 
+  // Map API response to frontend POI model
+  private mapApiPoi(apiPoi: any): POI {
+    return {
+      id: apiPoi.id?.toString() || '',
+      name: apiPoi.name || '',
+      type: apiPoi.type as POIType,
+      lat: apiPoi.latitude ?? apiPoi.lat ?? 0,
+      lng: apiPoi.longitude ?? apiPoi.lng ?? 0,
+      address: apiPoi.address || '',
+      rating: apiPoi.rating,
+      reviewCount: apiPoi.reviewCount,
+      distance: apiPoi.distanceKm,
+      phone: apiPoi.phone,
+      website: apiPoi.website,
+      openingHours: apiPoi.openingHours,
+      imageUrl: apiPoi.imageUrl,
+      isFavorite: apiPoi.isFavorite ?? false
+    };
+  }
+
   getPOIs(activeFilters: POIType[], lat?: number, lng?: number): Observable<POI[]> {
     this.loadingSignal.set(true);
 
@@ -199,8 +219,9 @@ export class POIService {
     if (lng !== undefined) params.lng = lng.toString();
     if (activeFilters.length > 0) params.types = activeFilters.join(',');
 
-    return this.http.get<POI[]>(this.apiUrl, { params }).pipe(
-      tap(pois => {
+    return this.http.get<{ pois: any[], totalCount: number }>(this.apiUrl, { params }).pipe(
+      map(response => (response.pois || []).map(p => this.mapApiPoi(p))),
+      tap(() => {
         this.loadingSignal.set(false);
       }),
       catchError(err => {
@@ -214,7 +235,8 @@ export class POIService {
 
   getPOIById(id: string): Observable<POI | undefined> {
     this.loadingSignal.set(true);
-    return this.http.get<POI>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
+      map(apiPoi => this.mapApiPoi(apiPoi)),
       tap(() => {
         this.loadingSignal.set(false);
       }),
