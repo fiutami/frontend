@@ -7,7 +7,7 @@
 // ===========================================
 
 .bottom-tab-bar {
-  display: flex;
+  display: flex !important; // Assicura visibilità
   align-items: center;
   justify-content: space-evenly; // Distribuzione uniforme
   position: fixed;
@@ -17,10 +17,15 @@
   z-index: 1000;
   height: $tab-bar-height;
   border-radius: 36px;
+  visibility: visible !important; // Assicura visibilità
+  opacity: 1 !important; // Assicura visibilità
 
   // Bordo bianco sottile + shadow
   border: 1px solid white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  // Default background (viene sovrascritto dai variants ma assicura visibilità)
+  background-color: $color-tab-bar-bg;
 
   // Allow selection circles to extend beyond bar (overflow visible)
   overflow: visible;
@@ -333,24 +338,27 @@
 
   // ===========================================
   // RESPONSIVE - Foldable & Tablet Support
+  // Tab bar deve rimanere dentro il container shell (max 480-560px)
   // ===========================================
 
   // Foldable devices (768px+)
   @media (min-width: 768px) {
-    // Centrato con max-width
-    max-width: 420px;
+    // Centrato dentro il container shell (480px)
+    // Usa calc per mantenere margini laterali di 30px
+    max-width: calc(480px - 60px); // 420px
+    width: calc(100% - 60px);
     left: 50%;
     right: auto;
     transform: translateX(-50%);
     border-radius: 36px;
     bottom: 24px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); // Ombra più pronunciata
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 
     &--floating {
       left: 50%;
       right: auto;
       transform: translateX(-50%);
-      max-width: 400px;
+      max-width: calc(480px - 80px);
       border-radius: 36px;
     }
 
@@ -359,15 +367,15 @@
     }
   }
 
-  // Tablets (1024px+)
+  // Tablets (1024px+) - container shell è 520px
   @media (min-width: 1024px) {
-    max-width: 460px;
+    max-width: calc(520px - 60px); // 460px
     bottom: 28px;
   }
 
-  // Desktop (1280px+)
+  // Desktop (1280px+) - container shell è 560px
   @media (min-width: 1280px) {
-    max-width: 500px;
+    max-width: calc(560px - 60px); // 500px
     bottom: 32px;
   }
 }

@@ -10,7 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
-import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
+import { TabPageShellBlueComponent } from '../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet/mascot-bottom-sheet.component';
 import { CalendarOverlayService } from '../services/calendar-overlay.service';
 
@@ -110,7 +110,7 @@ const EVENT_COLORS: Record<CalendarEventType, string> = {
 @Component({
   selector: 'app-calendar-view',
   standalone: true,
-  imports: [CommonModule, SharedModule, TabPageShellDefaultComponent, MascotBottomSheetComponent],
+  imports: [CommonModule, SharedModule, TabPageShellBlueComponent, MascotBottomSheetComponent],
   templateUrl: './calendar-view.component.html',
   styleUrls: ['./calendar-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

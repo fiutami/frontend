@@ -7,6 +7,7 @@
 
 // ==========================================
 // BRANDING SECTION (logo su blu)
+// Layout: Logo in alto, Extra content in basso
 // ==========================================
 .shell-blue-branding {
   position: absolute;
@@ -17,57 +18,67 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  // Logo posizionato nel primo terzo, non al centro
+  justify-content: flex-start;
   padding: 0 var(--sp-4);
+  // Padding top per posizionare logo sotto l'header
+  padding-top: 50px;
   pointer-events: none;
+
+  @media (min-width: 480px) { padding-top: 52px; }
+  @media (min-width: 640px) { padding-top: 54px; }
+  @media (min-width: 768px) { padding-top: 56px; }
+  @media (min-width: 1024px) { padding-top: 60px; }
 
   &__logo {
     display: block;
     pointer-events: auto;
+    // Margine inferiore per separare dal contenuto extra
+    margin-bottom: auto;
   }
 }
 
-// Extra content posizionato in basso
+// Extra content posizionato in basso con spazio dal logo
 :host ::ng-deep [shellBrandingExtra] {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  width: 100%;
+  padding-bottom: var(--sp-2);
   pointer-events: auto;
 }
 
 // ==========================================
-// LOGO RESPONSIVE - PIÙ PICCOLO per variante blu
+// LOGO RESPONSIVE - Stesse dimensioni di shell-default
 // ==========================================
 :host ::ng-deep .shell-blue-branding__logo {
   img,
   .logo {
-    height: 36px !important;
+    // Base: Mobile (360px) - uguale a shell-default
+    height: 48px !important;
     width: auto !important;
   }
 
   @media (min-width: 480px) {
-    img, .logo { height: 40px !important; }
+    img, .logo { height: 54px !important; }
   }
 
   @media (min-width: 560px) {
-    img, .logo { height: 44px !important; }
+    img, .logo { height: 58px !important; }
   }
 
   @media (min-width: 640px) {
-    img, .logo { height: 48px !important; }
+    img, .logo { height: 62px !important; }
   }
 
   @media (min-width: 768px) {
-    img, .logo { height: 52px !important; }
+    img, .logo { height: 68px !important; }
   }
 
   @media (min-width: 1024px) {
-    img, .logo { height: 56px !important; }
+    img, .logo { height: 72px !important; }
   }
 
   @media (min-width: 1280px) {
-    img, .logo { height: 60px !important; }
+    img, .logo { height: 80px !important; }
   }
 }
 
