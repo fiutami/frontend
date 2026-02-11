@@ -37,19 +37,6 @@
       <button class="action-btn action-btn--primary">Localizzati dagli amici</button>
     </div>
 
-    <!-- Filter chips -->
-    <div class="filter-chips">
-      @for (filter of filters(); track filter.type) {
-        <button
-          class="filter-chip"
-          [class.filter-chip--active]="filter.active"
-          [style.--chip-color]="filter.color"
-          (click)="toggleFilter(filter)">
-          <span class="filter-chip__text">{{ filter.label }}</span>
-        </button>
-      }
-    </div>
-
     <!-- Location toggle -->
     <div class="location-toggle">
       <span class="location-toggle__label">Attiva location</span>
@@ -94,6 +81,19 @@
   <!-- Section title: Scopri fiutami speciali -->
   <div class="section-title">
     <h2>Scopri fiutami speciali vicino a te</h2>
+  </div>
+
+  <!-- Filter chips (scrollabili con la mappa) -->
+  <div class="filter-chips filter-chips--scrollable">
+    @for (filter of filters(); track filter.type) {
+      <button
+        class="filter-chip"
+        [class.filter-chip--active]="filter.active"
+        [style.--chip-color]="filter.color"
+        (click)="toggleFilter(filter)">
+        <span class="filter-chip__text">{{ filter.label }}</span>
+      </button>
+    }
   </div>
 
   <!-- Promo banner FIUTAMI Plus -->

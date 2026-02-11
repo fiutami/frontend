@@ -120,7 +120,7 @@
 
 // ==========================================
 // FILTER CHIPS
-// z-index alto per stare sopra il contenuto scrollabile
+// Variante scrollabile per main content
 // ==========================================
 .filter-chips {
   position: relative;
@@ -135,6 +135,13 @@
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  // Variante scrollabile (nel main content, sotto "Scopri fiutami speciali")
+  &--scrollable {
+    z-index: 1;
+    margin-top: var(--sp-2);
+    padding-bottom: var(--sp-2);
   }
 }
 
