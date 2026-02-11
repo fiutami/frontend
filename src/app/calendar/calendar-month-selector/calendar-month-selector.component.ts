@@ -7,8 +7,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-// Shell Default (include automaticamente: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
+// Shell Blue (sfondo blu, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 // Shared standalone components
 import { QuickActionsRowComponent, QuickActionItem } from '../../shared/components/quick-actions-row/quick-actions-row.component';
@@ -47,8 +47,8 @@ interface MonthItem {
   standalone: true,
   imports: [
     CommonModule,
-    // Layout - TabPageShellDefault gestisce Avatar, Logo, Mascot, TabBar
-    TabPageShellDefaultComponent,
+    // Layout - TabPageShellBlue gestisce Avatar, Logo, Mascot, TabBar (sfondo blu)
+    TabPageShellBlueComponent,
     // Shared UI (solo quelli non automatici)
     QuickActionsRowComponent,
     ActionChipsRowComponent,

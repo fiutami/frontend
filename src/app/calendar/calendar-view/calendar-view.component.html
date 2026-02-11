@@ -1,134 +1,168 @@
-<div class="calendar">
-  <!-- Header: Back + Title grouped on left, Avatar on right -->
-  <header class="calendar__header">
-    <div class="calendar__header-left">
-      <app-back-button
-        variant="solid"
-        (clicked)="onBack()">
-      </app-back-button>
-      <h1 class="calendar__title">Calendario</h1>
-    </div>
-    <app-avatar-button mode="pet"></app-avatar-button>
-  </header>
+<app-tab-page-shell-default
+  activeTabId="calendar"
+  [showBack]="true"
+  (backClicked)="onBack()">
 
-  <!-- Logo FIUTAMI -->
-  <div class="calendar__branding">
-    <app-logo variant="color" size="md"></app-logo>
-  </div>
-
-  <!-- Month Navigation -->
-  <div class="calendar__month-nav">
-    <button
-      class="calendar__nav-btn"
-      (click)="prevMonth()"
-      aria-label="Mese precedente">
-      <span class="calendar__nav-arrow">&lt;</span>
-    </button>
-    <span class="calendar__month-name">{{ currentMonthName() }}</span>
-    <button
-      class="calendar__nav-btn"
-      (click)="nextMonth()"
-      aria-label="Mese successivo">
-      <span class="calendar__nav-arrow">&gt;</span>
-    </button>
-  </div>
-
-  <!-- Selected Date Display -->
-  <div class="calendar__selected-date">
-    {{ formattedSelectedDate() }}
-  </div>
-
-  <!-- Calendar Grid -->
-  <div class="calendar__grid-container">
-    <!-- Day Names Header -->
-    <div class="calendar__day-names">
-      @for (day of dayNames; track day) {
-        <div class="calendar__day-name">{{ day }}</div>
-      }
+  <!-- Branding Extra: Info Block (data oggi + eventi) -->
+  <div shellBrandingExtra class="calendar__info-block">
+    <!-- Colonna Sinistra: Data di oggi -->
+    <div class="calendar__today-column">
+      <span class="calendar__today-day-name">{{ todayDayName() }}</span>
+      <span class="calendar__today-day-number">{{ todayDayNumber() }}</span>
+      <span class="calendar__today-month-year">{{ todayMonthYear() }}</span>
     </div>
 
-    <!-- Days Grid -->
-    <div class="calendar__days-grid">
-      @for (day of calendarDays(); track trackByDay($index, day)) {
-        <button
-          class="calendar__day"
-          [class.calendar__day--other-month]="!day.isCurrentMonth"
-          [class.calendar__day--today]="day.isToday"
-          [class.calendar__day--selected]="day.isSelected"
-          [class.calendar__day--has-events]="day.events.length > 0"
-          (click)="selectDay(day)">
-          <span class="calendar__day-number">{{ day.dayOfMonth }}</span>
-          @if (day.events.length > 0) {
-            <div class="calendar__day-dots">
-              @for (event of day.events.slice(0, 3); track event.id) {
-                <span
-                  class="calendar__day-dot"
-                  [style.background-color]="eventColors[event.type]">
-                </span>
-              }
-            </div>
-          }
-        </button>
-      }
+    <!-- Colonna Centrale: Divider -->
+    <div class="calendar__divider"></div>
+
+    <!-- Colonna Destra: Eventi + Crea evento -->
+    <div class="calendar__events-column">
+      <button
+        class="calendar__events-status-text"
+        (click)="openEventsOverlay()">
+        {{ eventsStatusText() }}
+      </button>
+      <button
+        class="calendar__create-btn"
+        (click)="openCreateEventOverlay()">
+        Crea evento
+      </button>
     </div>
   </div>
 
-  <!-- Action Row: Crea evento + Campanella notifiche -->
-  <div class="calendar__action-row">
-    <button
-      class="calendar__create-event-btn"
-      (click)="onCreateEvent()">
-      Crea evento
-    </button>
-    <button
-      class="calendar__notification-btn"
-      [class.calendar__notification-btn--active]="isNotificationsOpen()"
-      (click)="onNotificationsClick()"
-      aria-label="Notifiche">
-      <span class="material-icons">notifications</span>
-      @if (notificationCount() > 0) {
-        <span class="calendar__notification-badge">{{ notificationCount() }}</span>
-      }
-    </button>
-  </div>
-
-  <!-- Events Section - Only visible if there are events -->
-  @if (selectedDayEvents().length > 0) {
-    <div class="calendar__events-section">
-      <div class="calendar__events-header">
-        <h2 class="calendar__events-title">Eventi del giorno</h2>
+  <!-- Main Content -->
+  <div class="calendar__content">
+    <!-- Titolo Mese + Navigazione -->
+    <div class="calendar__month-header">
+      <div class="calendar__month-title-row">
+        <h2 class="calendar__month-title">{{ currentMonthName() }}</h2>
+        <span class="calendar__month-year">{{ currentYear() }}</span>
       </div>
-      <div class="calendar__events-list">
-        @for (event of selectedDayEvents(); track trackByEvent($index, event)) {
+      <div class="calendar__nav-arrows">
+        <button
+          class="calendar__nav-btn"
+          (click)="prevMonth()"
+          aria-label="Mese precedente">
+          <span class="calendar__nav-arrow">&lt;</span>
+        </button>
+        <button
+          class="calendar__nav-btn"
+          (click)="nextMonth()"
+          aria-label="Mese successivo">
+          <span class="calendar__nav-arrow">&gt;</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="calendar__grid-container">
+      <!-- Day Names Header -->
+      <div class="calendar__day-names">
+        @for (day of dayNames; track day) {
+          <div class="calendar__day-name">{{ day }}</div>
+        }
+      </div>
+
+      <!-- Days Grid -->
+      <div class="calendar__days-grid">
+        @for (day of calendarDays(); track trackByDay($index, day)) {
           <button
-            class="calendar__event-card"
-            (click)="onEventClick(event)">
-            <div
-              class="calendar__event-icon"
-              [style.background-color]="eventColors[event.type]">
-              {{ getEventIcon(event.type) }}
-            </div>
-            <div class="calendar__event-info">
-              <span class="calendar__event-title">{{ event.title }}</span>
-              <span class="calendar__event-meta">
-                @if (event.time) {
-                  <span class="calendar__event-time">{{ event.time }}</span>
+            class="calendar__day"
+            [class.calendar__day--other-month]="!day.isCurrentMonth"
+            [class.calendar__day--today]="day.isToday"
+            [class.calendar__day--selected]="day.isSelected"
+            [class.calendar__day--has-events]="day.events.length > 0"
+            (click)="selectDay(day)">
+            <span class="calendar__day-number">{{ day.dayOfMonth }}</span>
+            @if (day.events.length > 0) {
+              <div class="calendar__day-dots">
+                @for (event of day.events.slice(0, 3); track event.id) {
+                  <span
+                    class="calendar__day-dot"
+                    [style.background-color]="eventColors[event.type]">
+                  </span>
                 }
-                @if (event.petName) {
-                  <span class="calendar__event-pet">{{ event.petName }}</span>
-                }
-              </span>
-            </div>
-            <span class="calendar__event-arrow">&gt;</span>
+              </div>
+            }
           </button>
         }
       </div>
     </div>
-  }
 
-  <!-- Mascotte FIUTO -->
-  <app-mascot-peek></app-mascot-peek>
+    <!-- Eventi del Giorno -->
+    @if (selectedDayEvents().length > 0) {
+      <div class="calendar__events-section">
+        <div class="calendar__events-header">
+          <h3 class="calendar__events-title">Eventi del giorno</h3>
+        </div>
+        <div class="calendar__events-list">
+          @for (event of selectedDayEvents(); track trackByEvent($index, event)) {
+            <button
+              class="calendar__event-card"
+              (click)="onEventClick(event)">
+              <div
+                class="calendar__event-icon"
+                [style.background-color]="eventColors[event.type]">
+                {{ getEventIcon(event.type) }}
+              </div>
+              <div class="calendar__event-info">
+                <span class="calendar__event-title">{{ event.title }}</span>
+                <span class="calendar__event-meta">
+                  @if (event.time) {
+                    <span class="calendar__event-time">{{ event.time }}</span>
+                  }
+                  @if (event.petName) {
+                    <span class="calendar__event-pet">{{ event.petName }}</span>
+                  }
+                </span>
+              </div>
+              <span class="calendar__event-arrow">&gt;</span>
+            </button>
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="calendar__no-events">
+        <p class="calendar__no-events-text">In questo mese non ci sono eventi</p>
+      </div>
+    }
 
-  <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="'calendar'"></app-bottom-tab-bar>
-</div>
+    <!-- Promo Carousel -->
+    <div class="calendar__promo-carousel">
+      <div class="calendar__promo-track" [style.transform]="'translateX(' + (-currentPromoSlide() * 100) + '%)'">
+        @for (promo of promoSlides; track promo.id; let i = $index) {
+          <div class="calendar__promo-slide">
+            <div class="calendar__promo-card" [class]="'calendar__promo-card--' + promo.type">
+              @if (promo.badge) {
+                <span class="calendar__promo-badge">{{ promo.badge }}</span>
+              }
+              <h4 class="calendar__promo-title">{{ promo.title }}</h4>
+              <p class="calendar__promo-text">{{ promo.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="calendar__promo-dots">
+        @for (promo of promoSlides; track promo.id; let i = $index) {
+          <button
+            class="calendar__promo-dot"
+            [class.calendar__promo-dot--active]="currentPromoSlide() === i"
+            (click)="setPromoSlide(i)">
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Spacer per tab bar -->
+    <div class="calendar__tab-bar-spacer"></div>
+  </div>
+
+  <!-- Mascot Bottom Sheet (custom, fuori dalla shell) -->
+  <app-mascot-bottom-sheet
+    [isOpen]="showMascotSheet()"
+    [hideMascot]="true"
+    [aiMessage]="'Ciao! Posso aiutarti con il calendario?'"
+    (closed)="closeMascotSheet()">
+  </app-mascot-bottom-sheet>
+
+</app-tab-page-shell-default>

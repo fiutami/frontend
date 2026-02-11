@@ -22,7 +22,7 @@ import { DashboardService, Suggestion } from './dashboard.service';
 
 import { NotificationBellComponent } from '../../shared/components/notification-bell/notification-bell.component';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet/mascot-bottom-sheet.component';
-import { TabPageShellFiutoComponent } from '../../shared/components/tab-page-shell-fiuto/tab-page-shell-fiuto.component';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +31,7 @@ import { TabPageShellFiutoComponent } from '../../shared/components/tab-page-she
     CommonModule,
     RouterModule,
     SharedModule,
-    TabPageShellFiutoComponent,
+    TabPageShellDefaultComponent,
     SearchBoxComponent,
     NotificationBellComponent,
     MascotBottomSheetComponent,

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { GuestGuard } from './core/guards/guest.guard';
+import { DevGuard } from './core/guards/dev.guard';
 
 const routes: Routes = [
   // Auth routes - accessible only to guests (includes /, /login, /signup)
@@ -96,57 +97,67 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
-  // Test route - Hero with video instead of image (no auth required for testing)
+  // Test route - Hero with video instead of image (dev only)
   {
     path: 'test-video',
-    loadChildren: () => import('./hero-video/hero-video.module').then(m => m.HeroVideoModule)
+    loadChildren: () => import('./hero-video/hero-video.module').then(m => m.HeroVideoModule),
+    canActivate: [DevGuard]
   },
 
-  // Test route - Hero component for visual regression testing (no auth required)
+  // Test route - Hero component for visual regression testing (dev only)
   {
     path: 'test-hero',
-    loadChildren: () => import('./hero/hero-test.module').then(m => m.HeroTestModule)
+    loadChildren: () => import('./hero/hero-test.module').then(m => m.HeroTestModule),
+    canActivate: [DevGuard]
   },
 
-  // Styleguide - Component showcase (public, hidden route)
+  // Styleguide - Component showcase (dev only)
   {
     path: 'styleguide',
-    loadChildren: () => import('./styleguide/styleguide.module').then(m => m.StyleguideModule)
+    loadChildren: () => import('./styleguide/styleguide.module').then(m => m.StyleguideModule),
+    canActivate: [DevGuard]
   },
 
-  // TEST: Shell Pages - TEMPORANEO
+  // TEST: Shell Pages - DEV ONLY (protected with DevGuard)
   {
     path: 'test/shell-default',
-    loadComponent: () => import('./shared/pages/test-shell-default/test-shell-default.component').then(m => m.TestShellDefaultComponent)
+    loadComponent: () => import('./shared/pages/test-shell-default/test-shell-default.component').then(m => m.TestShellDefaultComponent),
+    canActivate: [DevGuard]
   },
   {
     path: 'test/shell-yellow',
-    loadComponent: () => import('./shared/pages/test-shell-yellow/test-shell-yellow.component').then(m => m.TestShellYellowComponent)
+    loadComponent: () => import('./shared/pages/test-shell-yellow/test-shell-yellow.component').then(m => m.TestShellYellowComponent),
+    canActivate: [DevGuard]
   },
   {
     path: 'test/shell-blue',
-    loadComponent: () => import('./shared/pages/test-shell-blue/test-shell-blue.component').then(m => m.TestShellBlueComponent)
+    loadComponent: () => import('./shared/pages/test-shell-blue/test-shell-blue.component').then(m => m.TestShellBlueComponent),
+    canActivate: [DevGuard]
   },
   {
     path: 'test/shell-fiuto',
-    loadComponent: () => import('./shared/pages/test-shell-fiuto/test-shell-fiuto.component').then(m => m.TestShellFiutoComponent)
+    loadComponent: () => import('./shared/pages/test-shell-fiuto/test-shell-fiuto.component').then(m => m.TestShellFiutoComponent),
+    canActivate: [DevGuard]
   },
   {
     path: 'test/shell-pet-profile',
-    loadComponent: () => import('./shared/pages/test-shell-pet-profile/test-shell-pet-profile.component').then(m => m.TestShellPetProfileComponent)
+    loadComponent: () => import('./shared/pages/test-shell-pet-profile/test-shell-pet-profile.component').then(m => m.TestShellPetProfileComponent),
+    canActivate: [DevGuard]
   },
   {
     path: 'test/bg-removal',
-    loadComponent: () => import('./shared/pages/test-bg-removal/test-bg-removal.component').then(m => m.TestBgRemovalComponent)
+    loadComponent: () => import('./shared/pages/test-bg-removal/test-bg-removal.component').then(m => m.TestBgRemovalComponent),
+    canActivate: [DevGuard]
   },
   {
     path: 'test/mascot-chat',
-    loadComponent: () => import('./shared/pages/test-mascot-chat/test-mascot-chat.component').then(m => m.TestMascotChatComponent)
+    loadComponent: () => import('./shared/pages/test-mascot-chat/test-mascot-chat.component').then(m => m.TestMascotChatComponent),
+    canActivate: [DevGuard]
   },
   {
     path: 'test/pet-profile',
     loadComponent: () => import('./profile/pet/pet-profile.component').then(m => m.PetProfileComponent),
-    canActivate: [AuthGuard]
+    canActivate: [DevGuard, AuthGuard]
   },
 
   // Future: Dashboard route (lazy loaded)

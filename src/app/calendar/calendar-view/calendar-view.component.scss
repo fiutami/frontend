@@ -3,16 +3,144 @@
 
 // ===========================================
 // CALENDAR VIEW COMPONENT
-// Monthly calendar with events
-// Based on Figma: mob_calendar_month_jan (12271-5501)
+// Monthly calendar with UX corrections
+// Based on: FIUTAMI Correzione UX Calendario mese
 // ===========================================
+
+// ===========================================
+// MAIN CONTENT WRAPPER (inside shell)
+// Lo scroll è gestito dal shell (.shell-content)
+// ===========================================
+.calendar__content {
+  // Il contenuto scorre dentro .shell-content del shell
+  // Non servono proprietà di scroll qui
+}
+
+// ===========================================
+// INFO BLOCK (in shellBrandingExtra)
+// Questi stili sono fuori da .calendar perché
+// il blocco è nel slot shellBrandingExtra del shell
+// ===========================================
+.calendar__info-block {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: $spacing-md;
+  padding: $spacing-sm $spacing-md $spacing-md;
+  align-items: center;
+  width: 100%;
+}
+
+// Colonna Sinistra: Data di oggi
+.calendar__today-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.calendar__today-day-name {
+  font-family: 'Montserrat', $font-family-body;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.calendar__today-day-number {
+  font-family: 'Montserrat', $font-family-body;
+  font-size: 48px;
+  font-weight: 700;
+  color: $color-text-inverse;
+  line-height: 1;
+}
+
+.calendar__today-month-year {
+  font-family: 'Montserrat', $font-family-body;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+// Colonna Centrale: Divider
+.calendar__divider {
+  width: 1px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+// Colonna Destra: Eventi + Crea evento
+.calendar__events-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-sm;
+}
+
+.calendar__events-status-text {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: 'Montserrat', $font-family-body;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-text-inverse;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 150ms ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+// Bottone Crea evento - BIANCO (non giallo!)
+.calendar__create-btn {
+  padding: $spacing-xs $spacing-md;
+  background-color: white;
+  border: none;
+  border-radius: 100px;
+  font-family: 'Montserrat', $font-family-body;
+  font-size: 13px;
+  font-weight: 600;
+  color: $color-text-primary;
+  cursor: pointer;
+  box-shadow: $shadow-sm;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
 
 .calendar {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   background-color: $color-ai-primary;
+
+  // ===========================================
+  // SEZIONE FISSA (Non scrolla)
+  // Header + Logo + Info Block
+  // ===========================================
+
+  &__fixed-section {
+    flex-shrink: 0;
+    background-color: $color-ai-primary;
+  }
 
   // ===========================================
   // HEADER
@@ -50,29 +178,176 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 72px; // Container for logo
+    height: 60px;
     padding: $spacing-xs $spacing-md;
 
-    // Logo size: 52px as per user feedback
     app-logo {
       ::ng-deep img,
       ::ng-deep svg {
-        height: 52px;
+        height: 48px;
         width: auto;
       }
     }
   }
 
   // ===========================================
-  // MONTH NAVIGATION
+  // INFO BLOCK (3 Colonne)
+  // Data oggi | Divider | Eventi + Crea evento
   // ===========================================
 
-  &__month-nav {
+  &__info-block {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: $spacing-md;
+    padding: $spacing-sm $spacing-md $spacing-md;
+    align-items: center;
+  }
+
+  // Colonna Sinistra: Data di oggi
+  &__today-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  &__today-day-name {
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__today-day-number {
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 48px;
+    font-weight: 700;
+    color: $color-text-inverse;
+    line-height: 1;
+  }
+
+  &__today-month-year {
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  // Colonna Centrale: Divider
+  &__divider {
+    width: 1px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  // Colonna Destra: Eventi + Crea evento
+  &__events-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-sm;
+  }
+
+  &__events-status-text {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-text-inverse;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    text-align: left;
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+
+  // Bottone Crea evento - BIANCO (non giallo!)
+  &__create-btn {
+    padding: $spacing-xs $spacing-md;
+    background-color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-text-primary;
+    cursor: pointer;
+    box-shadow: $shadow-sm;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // ===========================================
+  // SEZIONE SCROLLABILE
+  // Titolo mese + Griglia + Eventi + Promo
+  // ===========================================
+
+  &__scrollable-section {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: $color-ai-primary;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // ===========================================
+  // MONTH HEADER (Titolo + Navigazione)
+  // ===========================================
+
+  &__month-header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: $spacing-lg;
+    justify-content: space-between;
     padding: $spacing-sm $spacing-md;
+  }
+
+  &__month-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing-sm;
+  }
+
+  // Nome mese - Font MOUL
+  &__month-title {
+    margin: 0;
+    font-family: 'Moul', cursive, $font-family-body;
+    font-size: 24px;
+    font-weight: 400;
+    color: $color-cta-primary;
+    text-transform: uppercase;
+  }
+
+  // Anno - Font Montserrat
+  &__month-year {
+    font-family: 'Montserrat', $font-family-body;
+    font-size: 18px;
+    font-weight: 400;
+    color: $color-cta-primary;
+  }
+
+  &__nav-arrows {
+    display: flex;
+    gap: $spacing-xs;
   }
 
   &__nav-btn {
@@ -95,28 +370,6 @@
     font-size: 20px;
     font-weight: 700;
     color: $color-text-inverse;
-  }
-
-  &__month-name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: $color-cta-primary;
-    text-transform: uppercase;
-    min-width: 120px;
-    text-align: center;
-  }
-
-  // ===========================================
-  // SELECTED DATE DISPLAY
-  // ===========================================
-
-  &__selected-date {
-    padding: $spacing-xs $spacing-md;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 14px;
-    color: $color-text-inverse;
-    text-align: center;
   }
 
   // ===========================================
@@ -217,102 +470,14 @@
   }
 
   // ===========================================
-  // ACTION ROW (Crea evento + Campanella)
-  // ===========================================
-
-  &__action-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: $spacing-md;
-    padding: $spacing-md;
-  }
-
-  &__create-event-btn {
-    padding: $spacing-sm $spacing-lg;
-    background-color: $color-cta-primary;
-    border: none;
-    border-radius: 100px;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 14px;
-    font-weight: 600;
-    color: $color-text-dark;
-    cursor: pointer;
-    box-shadow: $shadow-md;
-    transition: transform 150ms ease, box-shadow 150ms ease;
-
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: $shadow-lg;
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-  }
-
-  &__notification-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 44px;
-    height: 44px;
-    background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 150ms ease;
-
-    .material-icons {
-      font-size: 24px;
-      color: $color-text-inverse;
-    }
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    &--active {
-      background-color: $color-cta-primary;
-      border-color: $color-cta-primary;
-
-      .material-icons {
-        color: $color-text-dark;
-      }
-    }
-  }
-
-  &__notification-badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 4px;
-    background-color: #FF4444;
-    border-radius: 9px;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 11px;
-    font-weight: 700;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  // ===========================================
   // EVENTS SECTION
   // ===========================================
 
   &__events-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
     padding: $spacing-md;
     background-color: $color-background-primary;
     border-radius: $border-radius-page $border-radius-page 0 0;
-    margin-top: auto;
+    margin-top: $spacing-sm;
   }
 
   &__events-header {
@@ -329,59 +494,6 @@
     font-weight: 600;
     color: $color-text-primary;
   }
-
-  &__create-btn {
-    padding: $spacing-xs $spacing-sm;
-    background-color: $color-cta-primary;
-    border: none;
-    border-radius: 100px;
-    font-family: $font-family-body;
-    font-size: 13px;
-    font-weight: 600;
-    color: $color-text-dark;
-    cursor: pointer;
-    box-shadow: $shadow-md;
-    transition: transform 150ms ease, box-shadow 150ms ease;
-
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: $shadow-lg;
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-  }
-
-  // ===========================================
-  // NO EVENTS STATE
-  // ===========================================
-
-  &__no-events {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: $spacing-xl;
-    gap: $spacing-sm;
-  }
-
-  &__no-events-icon {
-    font-size: 48px;
-    opacity: 0.5;
-  }
-
-  &__no-events-text {
-    margin: 0;
-    font-family: $font-family-body;
-    font-size: 14px;
-    color: $color-text-secondary;
-    text-align: center;
-  }
-
-  // ===========================================
-  // EVENTS LIST
-  // ===========================================
 
   &__events-list {
     display: flex;
@@ -469,78 +581,72 @@
   }
 
   // ===========================================
-  // PROMO SECTION - FIUTAMI Plus
+  // NO EVENTS STATE
   // ===========================================
 
-  &__promo-section {
-    padding: $spacing-md;
-    background-color: $color-background-primary;
-    border-radius: $border-radius-page $border-radius-page 0 0;
+  &__no-events {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-lg $spacing-md;
+    margin-top: $spacing-sm;
   }
+
+  &__no-events-text {
+    margin: 0;
+    font-family: $font-family-body;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+  }
+
+  // ===========================================
+  // PROMO CAROUSEL
+  // ===========================================
 
   &__promo-carousel {
-    margin-bottom: $spacing-md;
-  }
-
-  &__promo-card {
-    background: linear-gradient(135deg, $color-cta-primary 0%, darken($color-cta-primary, 10%) 100%);
-    border-radius: $border-radius-md;
-    padding: $spacing-lg;
-    text-align: center;
-  }
-
-  &__promo-title {
-    margin: 0 0 $spacing-xs;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    color: $color-text-dark;
-  }
-
-  &__promo-text {
-    margin: 0;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 14px;
-    color: $color-text-dark;
-    opacity: 0.9;
-  }
-
-  &__track-emotion {
-    position: relative;
-    background-color: $color-ai-primary;
-    border-radius: $border-radius-md;
     padding: $spacing-md;
-    margin-bottom: $spacing-md;
-    text-align: center;
+    padding-top: $spacing-sm;
     overflow: hidden;
   }
 
-  &__track-emotion-title {
-    margin: 0 0 $spacing-xs;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    color: $color-text-inverse;
+  &__promo-track {
+    display: flex;
+    transition: transform 400ms ease-out;
   }
 
-  &__track-emotion-subtitle {
-    margin: 0 0 $spacing-sm;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
+  &__promo-slide {
+    flex: 0 0 100%;
+    padding: 0 $spacing-xs;
   }
 
-  &__track-emotion-img {
-    max-width: 100%;
-    height: auto;
-    max-height: 120px;
-    object-fit: contain;
+  &__promo-card {
+    position: relative;
+    border-radius: $border-radius-md;
+    padding: $spacing-lg;
+    text-align: center;
+    min-height: 100px;
+
+    &--tracker {
+      background: linear-gradient(135deg, #4A74F0 0%, #2E4CB8 100%);
+    }
+
+    &--match {
+      background: linear-gradient(135deg, #FF6B6B 0%, #D94444 100%);
+    }
+
+    &--premium {
+      background: linear-gradient(135deg, $color-cta-primary 0%, darken($color-cta-primary, 15%) 100%);
+    }
   }
 
-  &__track-emotion-badge {
+  &__promo-badge {
     position: absolute;
     top: $spacing-sm;
     right: $spacing-sm;
-    background-color: $color-cta-primary;
-    color: $color-text-dark;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
     font-family: 'Montserrat', $font-family-body;
     font-size: 10px;
     font-weight: 600;
@@ -549,28 +655,54 @@
     text-transform: uppercase;
   }
 
-  &__promo-btn {
-    display: block;
-    width: 100%;
-    padding: 14px 24px;
-    background-color: $color-cta-primary;
-    color: $color-text-dark;
+  &__promo-title {
+    margin: 0 0 $spacing-xs;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+  }
+
+  &__promo-text {
+    margin: 0;
     font-family: 'Montserrat', $font-family-body;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__promo-dots {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+  }
+
+  &__promo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
     border: none;
-    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: all 0.2s ease;
+    padding: 0;
+    transition: background-color 150ms ease, transform 150ms ease;
 
-    &:hover {
-      background-color: darken($color-cta-primary, 8%);
-      transform: scale(1.02);
+    &--active {
+      background-color: $color-cta-primary;
+      transform: scale(1.2);
     }
 
-    &:active {
-      transform: scale(0.98);
+    &:hover:not(&--active) {
+      background-color: rgba(255, 255, 255, 0.5);
     }
+  }
+
+  // ===========================================
+  // TAB BAR SPACER
+  // ===========================================
+
+  &__tab-bar-spacer {
+    height: 80px; // Space for fixed tab bar
   }
 
   // ===========================================
@@ -586,6 +718,12 @@
 
     &__events-section {
       max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__promo-carousel {
+      max-width: 400px;
       margin-left: auto;
       margin-right: auto;
     }

@@ -22,7 +22,7 @@ import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
  * TabPageShellFiutoComponent
  *
  * Variante con sfondo immagine Fiuto.
- * SENZA logo - per pagine come /home/main.
+ * SENZA logo - per pagine che non necessitano del logo.
  *
  * SLOTS DISPONIBILI:
  * - [shellBrandingExtra]: Contenuto custom nell'area header

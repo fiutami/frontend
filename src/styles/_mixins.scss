@@ -31,6 +31,20 @@ $breakpoints: (
   }
 }
 
+/* Foldable device support (768px - 1024px) */
+@mixin foldable {
+  @media (min-width: 768px) and (max-width: 1023.98px) {
+    @content;
+  }
+}
+
+/* Tablet and up (768px+) */
+@mixin tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
 /* Orientation helper */
 @mixin orientation($value) {
   @media (orientation: #{$value}) {
@@ -50,6 +64,37 @@ $breakpoints: (
   width: min(100%, var(--container-w));
   margin-inline: auto;
   padding-inline: var(--container-pad);
+}
+
+/* App container for mobile-like experience on larger screens
+ * Use this for full-page shells that should be centered on tablet/desktop
+ * Parameters:
+ *   $mobile-max: max-width for foldable (default: 480px)
+ *   $tablet-max: max-width for tablet (default: 520px)
+ *   $desktop-max: max-width for desktop (default: 560px)
+ */
+@mixin app-container($mobile-max: 480px, $tablet-max: 520px, $desktop-max: 560px) {
+  // Mobile: full width
+  width: 100%;
+  max-width: 100%;
+
+  // Foldable/Tablet (768px+): centered with max-width
+  @media (min-width: 768px) {
+    max-width: $mobile-max;
+    margin-inline: auto;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+  }
+
+  // Tablet (1024px+)
+  @media (min-width: 1024px) {
+    max-width: $tablet-max;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+  }
+
+  // Desktop (1280px+)
+  @media (min-width: 1280px) {
+    max-width: $desktop-max;
+  }
 }
 
 /* Safe area (iOS notch) */

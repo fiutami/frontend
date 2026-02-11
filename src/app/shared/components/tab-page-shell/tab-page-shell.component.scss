@@ -3,7 +3,40 @@
  *
  * REGOLA: Solo CSS vars da tokens!
  * FIGMA: Header fisso, non scrolla
+ *
+ * RESPONSIVE: Centered mobile-like container for tablets/foldables/desktop
+ * - < 768px: Full width mobile layout
+ * - 768px - 1024px: Foldable/tablet centered (max-width: 480px)
+ * - > 1024px: Desktop centered (max-width: 520px)
  */
+
+// ===========================================
+// CSS CUSTOM PROPERTIES FOR RESPONSIVE CONTAINER
+// ===========================================
+:root {
+  // App container max-width for larger screens
+  --app-container-max-width: 100%;
+  --app-container-bg: transparent;
+  --app-container-shadow: none;
+
+  // Foldable devices (768px - 1024px)
+  @media (min-width: 768px) {
+    --app-container-max-width: 480px;
+    --app-container-bg: var(--white, #fff);
+    --app-container-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+  }
+
+  // Tablets (1024px+)
+  @media (min-width: 1024px) {
+    --app-container-max-width: 520px;
+    --app-container-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+  }
+
+  // Desktop (1280px+)
+  @media (min-width: 1280px) {
+    --app-container-max-width: 560px;
+  }
+}
 
 // Host level - previeni scroll del body
 :host {
@@ -13,6 +46,14 @@
   position: fixed;
   inset: 0;
   overscroll-behavior: none; // Previene bounce su iOS
+
+  // Centered container background for larger screens
+  @media (min-width: 768px) {
+    background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+  }
 }
 
 .tab-page-shell {
@@ -22,6 +63,30 @@
   position: relative;
   z-index: 1;
   overflow: hidden; // Impedisce scroll del container
+
+  // ===========================================
+  // RESPONSIVE CENTERED CONTAINER
+  // Mobile-like app experience on larger screens
+  // ===========================================
+  @media (min-width: 768px) {
+    max-width: var(--app-container-max-width);
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: var(--app-container-shadow);
+    border-radius: 0; // No rounded corners on the shell itself
+    position: relative;
+
+    // Subtle border to define the app area
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-left: 1px solid rgba(0, 0, 0, 0.05);
+      border-right: 1px solid rgba(0, 0, 0, 0.05);
+      pointer-events: none;
+      z-index: 100;
+    }
+  }
 }
 
 // ==========================================

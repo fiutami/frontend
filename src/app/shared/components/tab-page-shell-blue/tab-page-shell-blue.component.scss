@@ -37,37 +37,37 @@
 }
 
 // ==========================================
-// LOGO RESPONSIVE
+// LOGO RESPONSIVE - PIÙ PICCOLO per variante blu
 // ==========================================
 :host ::ng-deep .shell-blue-branding__logo {
   img,
   .logo {
-    height: 48px !important;
+    height: 36px !important;
     width: auto !important;
   }
 
   @media (min-width: 480px) {
-    img, .logo { height: 54px !important; }
+    img, .logo { height: 40px !important; }
   }
 
   @media (min-width: 560px) {
-    img, .logo { height: 58px !important; }
+    img, .logo { height: 44px !important; }
   }
 
   @media (min-width: 640px) {
-    img, .logo { height: 62px !important; }
+    img, .logo { height: 48px !important; }
   }
 
   @media (min-width: 768px) {
-    img, .logo { height: 68px !important; }
+    img, .logo { height: 52px !important; }
   }
 
   @media (min-width: 1024px) {
-    img, .logo { height: 72px !important; }
+    img, .logo { height: 56px !important; }
   }
 
   @media (min-width: 1280px) {
-    img, .logo { height: 80px !important; }
+    img, .logo { height: 60px !important; }
   }
 }
 

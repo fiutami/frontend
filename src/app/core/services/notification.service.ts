@@ -183,4 +183,29 @@ export class NotificationService {
   clearError(): void {
     this.errorSignal.set(null);
   }
+
+  // ============================================================
+  // Utility Methods (migrated from notifications.service.ts)
+  // ============================================================
+
+  /**
+   * Format a date as relative time string (e.g., "5 min fa", "2 ore fa")
+   */
+  formatRelativeTime(date: Date): string {
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffMins = Math.floor(diffMs / (1000 * 60));
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffMins < 1) return 'Adesso';
+    if (diffMins < 60) return `${diffMins} min fa`;
+    if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? 'ora' : 'ore'} fa`;
+    if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? 'giorno' : 'giorni'} fa`;
+
+    return date.toLocaleDateString('it-IT', {
+      day: 'numeric',
+      month: 'short'
+    });
+  }
 }

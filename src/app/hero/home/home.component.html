@@ -1,6 +1,9 @@
-<app-tab-page-shell-fiuto
+<app-tab-page-shell-default
   activeTabId="home"
-  [showBack]="false">
+  [showBack]="false"
+  backgroundVariant="image"
+  imageName="auth-bg"
+  overlayOpacity="light">
 
   <!-- Main content -->
   <div class="home__content">
@@ -42,4 +45,4 @@
     (chatMessage)="onChatMessage($event)">
   </app-mascot-bottom-sheet>
 
-</app-tab-page-shell-fiuto>
+</app-tab-page-shell-default>

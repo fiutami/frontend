@@ -5,12 +5,13 @@ import {
   computed,
   inject,
   OnInit,
+  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
-import { MAIN_TAB_BAR_CONFIG } from '../../core/config/tab-bar.config';
-import { AvatarButtonComponent } from '../../shared/components/avatar-button';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
+import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet/mascot-bottom-sheet.component';
 import { CalendarOverlayService } from '../services/calendar-overlay.service';
 
 /**
@@ -44,6 +45,17 @@ export interface CalendarDay {
 }
 
 /**
+ * Promo slide interface
+ */
+export interface PromoSlide {
+  id: string;
+  type: 'tracker' | 'match' | 'premium';
+  title: string;
+  description: string;
+  badge?: string;
+}
+
+/**
  * Month names in Italian
  */
 const MONTH_NAMES = [
@@ -52,9 +64,22 @@ const MONTH_NAMES = [
 ];
 
 /**
+ * Month names in Italian (lowercase for display)
+ */
+const MONTH_NAMES_LOWER = [
+  'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+  'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'
+];
+
+/**
  * Day names in Italian (short)
  */
 const DAY_NAMES = ['Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa', 'Do'];
+
+/**
+ * Day names in Italian (full)
+ */
+const DAY_NAMES_FULL = ['DOMENICA', 'LUNEDI', 'MARTEDI', 'MERCOLEDI', 'GIOVEDI', 'VENERDI', 'SABATO'];
 
 /**
  * Event type colors
@@ -74,31 +99,26 @@ const EVENT_COLORS: Record<CalendarEventType, string> = {
  * Main calendar view for the app. Displays a monthly calendar grid
  * with events and allows navigation between months.
  *
- * Based on Figma designs: mob_calendar (12271-6457) and mob_calendar_month_jan (12271-5501)
+ * UX Corrections applied:
+ * - Fixed section (header + logo + info block) that doesn't scroll
+ * - Scrollable section (month title + grid + events + promo carousel)
+ * - "Crea evento" button is WHITE (not yellow)
+ * - Events status text is clickable → opens events overlay
+ * - Removed notification bell icon
+ * - Added promo carousel at bottom
  */
 @Component({
   selector: 'app-calendar-view',
   standalone: true,
-  imports: [CommonModule, SharedModule, AvatarButtonComponent],
+  imports: [CommonModule, SharedModule, TabPageShellDefaultComponent, MascotBottomSheetComponent],
   templateUrl: './calendar-view.component.html',
   styleUrls: ['./calendar-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CalendarViewComponent implements OnInit {
+export class CalendarViewComponent implements OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly overlayService = inject(CalendarOverlayService);
-
-  /** Tab bar configuration */
-  protected readonly tabs = MAIN_TAB_BAR_CONFIG;
-
-  /** Notification count from overlay service */
-  protected readonly notificationCount = this.overlayService.notificationCount;
-
-  /** Check if notifications overlay is open */
-  protected readonly isNotificationsOpen = computed(() =>
-    this.overlayService.activeFilter() === 'notifications'
-  );
 
   /** Day names for header */
   protected readonly dayNames = DAY_NAMES;
@@ -111,6 +131,42 @@ export class CalendarViewComponent implements OnInit {
 
   /** Selected date */
   protected selectedDate = signal(new Date());
+
+  /** Today's date (fixed reference) */
+  protected readonly today = signal(new Date());
+
+  /** Promo carousel current slide */
+  protected currentPromoSlide = signal(0);
+
+  /** Mascot bottom sheet visibility */
+  protected showMascotSheet = signal(false);
+
+  /** Promo carousel auto-advance interval */
+  private promoInterval: ReturnType<typeof setInterval> | null = null;
+
+  /** Promo slides data */
+  protected readonly promoSlides: PromoSlide[] = [
+    {
+      id: 'tracker',
+      type: 'tracker',
+      title: 'FIUTAMI Tracker',
+      description: 'Monitora il tuo animale in tempo reale',
+      badge: 'Coming Soon',
+    },
+    {
+      id: 'match',
+      type: 'match',
+      title: 'FIUTAMI Match',
+      description: 'Trova il compagno perfetto per il tuo pet',
+      badge: 'Presto',
+    },
+    {
+      id: 'premium',
+      type: 'premium',
+      title: 'Diventa Premium',
+      description: 'Sblocca tutte le funzionalità esclusive',
+    },
+  ];
 
   /** Mock events for MVP */
   protected readonly mockEvents = signal<CalendarEvent[]>([
@@ -147,7 +203,58 @@ export class CalendarViewComponent implements OnInit {
     },
   ]);
 
-  /** Current month name */
+  // ===========================================
+  // TODAY INFO (Blocco Info Sinistra)
+  // ===========================================
+
+  /** Today's day name (es. "DOMENICA") */
+  protected todayDayName = computed(() => {
+    return DAY_NAMES_FULL[this.today().getDay()];
+  });
+
+  /** Today's day number (es. "03") */
+  protected todayDayNumber = computed(() => {
+    return this.today().getDate().toString().padStart(2, '0');
+  });
+
+  /** Today's month and year (es. "Febbraio 2026") */
+  protected todayMonthYear = computed(() => {
+    const month = MONTH_NAMES_LOWER[this.today().getMonth()];
+    const year = this.today().getFullYear();
+    return `${month} ${year}`;
+  });
+
+  // ===========================================
+  // EVENTS STATUS (Blocco Info Destra)
+  // ===========================================
+
+  /** Count of events in current displayed month */
+  protected monthEventsCount = computed(() => {
+    const current = this.currentDate();
+    const month = current.getMonth();
+    const year = current.getFullYear();
+    return this.mockEvents().filter(event => {
+      return event.date.getMonth() === month && event.date.getFullYear() === year;
+    }).length;
+  });
+
+  /** Events status text for display */
+  protected eventsStatusText = computed(() => {
+    const count = this.monthEventsCount();
+    if (count === 0) {
+      return 'Nessun evento questo mese';
+    } else if (count === 1) {
+      return 'Hai 1 evento questo mese';
+    } else {
+      return `Hai ${count} eventi questo mese`;
+    }
+  });
+
+  // ===========================================
+  // MONTH NAVIGATION
+  // ===========================================
+
+  /** Current month name (font Moul) */
   protected currentMonthName = computed(() => {
     return MONTH_NAMES[this.currentDate().getMonth()];
   });
@@ -170,19 +277,10 @@ export class CalendarViewComponent implements OnInit {
     );
   });
 
-  /** Formatted selected date */
-  protected formattedSelectedDate = computed(() => {
-    const date = this.selectedDate();
-    const dayName = this.getDayName(date);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = MONTH_NAMES[date.getMonth()];
-    const year = date.getFullYear();
-    return `${dayName} ${day} ${month} ${year}`;
-  });
+  // ===========================================
+  // LIFECYCLE
+  // ===========================================
 
-  /**
-   * Initialize component with query params if present
-   */
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const month = params['month'];
@@ -198,63 +296,100 @@ export class CalendarViewComponent implements OnInit {
         }
       }
     });
+
+    // Start promo carousel auto-advance
+    this.startPromoAutoAdvance();
   }
 
-  /**
-   * Navigate to previous month
-   */
+  ngOnDestroy(): void {
+    this.stopPromoAutoAdvance();
+  }
+
+  // ===========================================
+  // NAVIGATION METHODS
+  // ===========================================
+
   prevMonth(): void {
     const current = this.currentDate();
     this.currentDate.set(new Date(current.getFullYear(), current.getMonth() - 1, 1));
   }
 
-  /**
-   * Navigate to next month
-   */
   nextMonth(): void {
     const current = this.currentDate();
     this.currentDate.set(new Date(current.getFullYear(), current.getMonth() + 1, 1));
   }
 
-  /**
-   * Select a day
-   */
   selectDay(day: CalendarDay): void {
     this.selectedDate.set(day.date);
   }
 
-  /**
-   * Navigate back to month selector
-   */
   onBack(): void {
     this.router.navigate(['/home/calendar']);
   }
 
-  /**
-   * Open create event overlay (same behavior as mob_calendar)
-   */
-  onCreateEvent(): void {
+  // ===========================================
+  // OVERLAY METHODS
+  // ===========================================
+
+  /** Open events overlay (triggered by clicking events status text) */
+  openEventsOverlay(): void {
+    this.overlayService.openEvents();
+  }
+
+  /** Open create event overlay */
+  openCreateEventOverlay(): void {
     this.overlayService.openCreateEvent();
   }
 
-  /**
-   * Toggle notifications overlay (same behavior as mob_calendar)
-   */
-  onNotificationsClick(): void {
-    this.overlayService.toggleFilter('notifications');
-  }
-
-  /**
-   * View event details (placeholder)
-   */
+  /** View event details (placeholder) */
   onEventClick(event: CalendarEvent): void {
-    // TODO: Navigate to event detail
     console.log('Event clicked:', event);
   }
 
-  /**
-   * Get event icon based on type
-   */
+  // ===========================================
+  // MASCOT METHODS
+  // ===========================================
+
+  /** Handle mascot peek click - open bottom sheet */
+  onMascotClick(): void {
+    this.showMascotSheet.set(true);
+  }
+
+  /** Close mascot bottom sheet */
+  closeMascotSheet(): void {
+    this.showMascotSheet.set(false);
+  }
+
+  // ===========================================
+  // PROMO CAROUSEL METHODS
+  // ===========================================
+
+  setPromoSlide(index: number): void {
+    this.currentPromoSlide.set(index);
+    // Reset auto-advance timer
+    this.stopPromoAutoAdvance();
+    this.startPromoAutoAdvance();
+  }
+
+  private startPromoAutoAdvance(): void {
+    this.promoInterval = setInterval(() => {
+      const current = this.currentPromoSlide();
+      const next = (current + 1) % this.promoSlides.length;
+      this.currentPromoSlide.set(next);
+    }, 5000); // 5 seconds
+  }
+
+  private stopPromoAutoAdvance(): void {
+    if (this.promoInterval) {
+      clearInterval(this.promoInterval);
+      this.promoInterval = null;
+    }
+  }
+
+  // ===========================================
+  // HELPER METHODS
+  // ===========================================
+
   getEventIcon(type: CalendarEventType): string {
     const icons: Record<CalendarEventType, string> = {
       vet: '🏥',
@@ -267,23 +402,14 @@ export class CalendarViewComponent implements OnInit {
     return icons[type] || '📌';
   }
 
-  /**
-   * Track by function for calendar days
-   */
   trackByDay(index: number, day: CalendarDay): string {
     return day.date.toISOString();
   }
 
-  /**
-   * Track by function for events
-   */
   trackByEvent(index: number, event: CalendarEvent): string {
     return event.id;
   }
 
-  /**
-   * Generate calendar days for current month view
-   */
   private generateCalendarDays(): CalendarDay[] {
     const days: CalendarDay[] = [];
     const current = this.currentDate();
@@ -292,29 +418,23 @@ export class CalendarViewComponent implements OnInit {
     const today = new Date();
     const selected = this.selectedDate();
 
-    // First day of the month
     const firstDay = new Date(year, month, 1);
-    // Last day of the month
     const lastDay = new Date(year, month + 1, 0);
 
-    // Day of week for first day (0 = Sunday, convert to Monday = 0)
     let startDayOfWeek = firstDay.getDay() - 1;
     if (startDayOfWeek < 0) startDayOfWeek = 6;
 
-    // Add days from previous month
     const prevMonthLastDay = new Date(year, month, 0).getDate();
     for (let i = startDayOfWeek - 1; i >= 0; i--) {
       const date = new Date(year, month - 1, prevMonthLastDay - i);
       days.push(this.createCalendarDay(date, false, today, selected));
     }
 
-    // Add days of current month
     for (let day = 1; day <= lastDay.getDate(); day++) {
       const date = new Date(year, month, day);
       days.push(this.createCalendarDay(date, true, today, selected));
     }
 
-    // Add days from next month to complete 42 days (6 weeks)
     const remainingDays = 42 - days.length;
     for (let day = 1; day <= remainingDays; day++) {
       const date = new Date(year, month + 1, day);
@@ -324,9 +444,6 @@ export class CalendarViewComponent implements OnInit {
     return days;
   }
 
-  /**
-   * Create a CalendarDay object
-   */
   private createCalendarDay(
     date: Date,
     isCurrentMonth: boolean,
@@ -343,9 +460,6 @@ export class CalendarViewComponent implements OnInit {
     };
   }
 
-  /**
-   * Check if two dates are the same day
-   */
   private isSameDay(date1: Date, date2: Date): boolean {
     return (
       date1.getDate() === date2.getDate() &&
@@ -353,13 +467,4 @@ export class CalendarViewComponent implements OnInit {
       date1.getFullYear() === date2.getFullYear()
     );
   }
-
-  /**
-   * Get Italian day name
-   */
-  private getDayName(date: Date): string {
-    const dayNames = ['DOMENICA', 'LUNEDI', 'MARTEDI', 'MERCOLEDI', 'GIOVEDI', 'VENERDI', 'SABATO'];
-    return dayNames[date.getDay()];
-  }
-
 }

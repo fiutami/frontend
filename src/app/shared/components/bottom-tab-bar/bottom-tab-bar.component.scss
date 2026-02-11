@@ -9,17 +9,20 @@
 .bottom-tab-bar {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly; // Distribuzione uniforme
   position: fixed;
   bottom: 16px;
-  left: 0;
-  right: 0;
+  left: 16px;
+  right: 16px;
   z-index: 1000;
   height: $tab-bar-height;
   border-radius: 36px;
 
+  // Bordo bianco sottile + shadow
+  border: 1px solid white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   // Allow selection circles to extend beyond bar (overflow visible)
-  // but clip horizontal scroll on very small screens
   overflow: visible;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; // Firefox
@@ -28,11 +31,11 @@
     display: none; // Chrome/Safari
   }
 
-  // Very small screens (< 360px) - enable scroll mode
+  // Very small screens (< 360px)
   @media (max-width: 359px) {
-    justify-content: flex-start;
-    gap: 4px;
-    padding: 0 8px;
+    left: 8px;
+    right: 8px;
+    justify-content: space-evenly;
   }
 
   // ===========================================
@@ -41,7 +44,8 @@
 
   &--solid {
     background-color: $color-tab-bar-bg;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    // Shadow y4 uniforme
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     .bottom-tab-bar__tab {
       color: rgba(255, 255, 255, 0.7);
@@ -193,17 +197,16 @@
     align-items: center;
     justify-content: center;
     flex: 1;
-    flex-shrink: 0; // Prevent tabs from shrinking on scroll
-    min-width: clamp(56px, 14vw, 80px); // Responsive minimum touch target (larger for icons)
+    max-width: 80px; // Limite max per distribuzione uniforme
     height: 100%;
-    padding: 0; // No padding - let flexbox center content
+    padding: 0;
     background: none;
     border: none;
     cursor: pointer;
     position: relative;
     transition: all 0.2s ease;
     -webkit-tap-highlight-color: transparent;
-    overflow: visible; // Allow yellow selection circle to extend beyond tab bounds
+    overflow: visible;
     box-sizing: border-box;
 
     &:focus-visible {
@@ -233,49 +236,54 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    width: 100%;
+    height: 100%;
     transition: transform 0.2s ease;
-    z-index: 1; // Ensure icon container is above tab bar background
+    z-index: 1;
 
     // Selection circle (yellow ring) for active state
-    // Figma: 60x60px ellipse with 8px stroke #F5B132
     &::before {
       content: '';
       position: absolute;
-      width: 60px;
-      height: 60px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      border: 6px solid $color-tab-bar-active;
+      border: 5px solid $color-tab-bar-active;
       opacity: 0;
-      transform: scale(0.8);
       transition: opacity 0.2s ease, transform 0.2s ease;
       pointer-events: none;
-      z-index: 0; // Circle behind the icon image
+      z-index: 0;
     }
   }
 
   // Show selection circle when tab is active
   &__tab--active &__icon::before {
     opacity: 1;
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 
   &__icon-img {
-    // Icon size inside the selection circle
-    // Figma icons: ~22-26px, we scale proportionally
-    width: clamp(22px, 6vw, 28px);
-    height: clamp(22px, 6vw, 28px);
+    // Icon size - abbassate per allineamento con cerchio
+    width: 28px;
+    height: 28px;
     object-fit: contain;
-    position: relative;
-    z-index: 1; // Icon above the selection circle
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%); // Abbassate (-45% invece di -50%)
+    z-index: 1;
 
     .bottom-tab-bar--sm & {
-      width: clamp(18px, 5vw, 22px);
-      height: clamp(18px, 5vw, 22px);
+      width: 24px;
+      height: 24px;
     }
 
     .bottom-tab-bar--lg & {
-      width: clamp(26px, 7vw, 32px);
-      height: clamp(26px, 7vw, 32px);
+      width: 32px;
+      height: 32px;
     }
   }
 
@@ -324,23 +332,43 @@
   }
 
   // ===========================================
-  // RESPONSIVE
+  // RESPONSIVE - Foldable & Tablet Support
   // ===========================================
 
-  @include respond(md) {
-    // On tablets/desktop, can be wider
-    max-width: 600px;
+  // Foldable devices (768px+)
+  @media (min-width: 768px) {
+    // Centrato con max-width
+    max-width: 420px;
     left: 50%;
+    right: auto;
     transform: translateX(-50%);
-    border-radius: $border-radius-lg $border-radius-lg 0 0;
+    border-radius: 36px;
+    bottom: 24px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); // Ombra più pronunciata
 
     &--floating {
       left: 50%;
       right: auto;
       transform: translateX(-50%);
-      width: calc(100% - #{$spacing-xl * 2});
-      max-width: 500px;
+      max-width: 400px;
+      border-radius: 36px;
     }
+
+    .bottom-tab-bar__tab {
+      max-width: 72px;
+    }
+  }
+
+  // Tablets (1024px+)
+  @media (min-width: 1024px) {
+    max-width: 460px;
+    bottom: 28px;
+  }
+
+  // Desktop (1280px+)
+  @media (min-width: 1280px) {
+    max-width: 500px;
+    bottom: 32px;
   }
 }
 

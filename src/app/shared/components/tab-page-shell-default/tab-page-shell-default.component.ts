@@ -69,6 +69,12 @@ export class TabPageShellDefaultComponent {
   /** Variante background (default: tab-menu) */
   @Input() backgroundVariant: 'tab-menu' | 'blue-solid' | 'yellow-solid' | 'profile-pet' | 'image' = 'tab-menu';
 
+  /** Nome immagine sfondo (quando backgroundVariant='image') */
+  @Input() imageName = 'auth-bg';
+
+  /** Opacità overlay (quando backgroundVariant='image') */
+  @Input() overlayOpacity: 'none' | 'light' | 'medium' | 'dark' = 'light';
+
   /** Emesso quando si clicca back */
   @Output() backClicked = new EventEmitter<void>();
 
