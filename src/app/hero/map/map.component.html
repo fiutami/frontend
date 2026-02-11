@@ -78,20 +78,44 @@
     </div>
   </div>
 
-  <!-- Section title: Scopri fiutami speciali -->
+  <!-- Section title: Partner in evidenza -->
   <div class="section-title">
-    <h2>Scopri fiutami speciali vicino a te</h2>
+    <h2>Partner in evidenza</h2>
   </div>
 
-  <!-- Filter chips (scrollabili con la mappa) -->
-  <div class="filter-chips filter-chips--scrollable">
-    @for (filter of filters(); track filter.type) {
-      <button
-        class="filter-chip"
-        [class.filter-chip--active]="filter.active"
-        [style.--chip-color]="filter.color"
-        (click)="toggleFilter(filter)">
-        <span class="filter-chip__text">{{ filter.label }}</span>
+  <!-- Partner showcase cards (vetrina dinamica) -->
+  <div class="partner-showcase">
+    @for (partner of partnerShowcase(); track partner.id) {
+      <button class="partner-card" [style.--partner-color]="partnerColors[partner.type]">
+        <!-- Logo/Icon -->
+        <div class="partner-card__icon">
+          <span>{{ partnerIcons[partner.type] }}</span>
+        </div>
+
+        <!-- Info -->
+        <div class="partner-card__info">
+          <span class="partner-card__name">{{ partner.name }}</span>
+          <span class="partner-card__location">{{ partner.location }}</span>
+        </div>
+
+        <!-- Badge tier -->
+        <div class="partner-card__badge" [class]="'partner-card__badge--' + partner.tier">
+          @if (partner.tier === 'premium') {
+            ⭐ PREMIUM
+          } @else if (partner.tier === 'base') {
+            SPONSOR
+          } @else {
+            FREE
+          }
+        </div>
+
+        <!-- Rating (se presente) -->
+        @if (partner.rating) {
+          <div class="partner-card__rating">
+            <span class="material-icons">star</span>
+            <span>{{ partner.rating }}</span>
+          </div>
+        }
       </button>
     }
   </div>

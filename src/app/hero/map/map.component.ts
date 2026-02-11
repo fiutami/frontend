@@ -16,6 +16,20 @@ import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import * as L from 'leaflet';
 import { POI, POIFilter, POIType } from '../../core/models/poi.models';
+
+/**
+ * Partner showcase interface
+ * Per vetrina dinamica con inserzionisti free/paid
+ */
+export interface PartnerShowcase {
+  id: string;
+  name: string;
+  type: 'shop' | 'vet' | 'groomer' | 'shelter' | 'clinic' | 'hotel';
+  location: string;
+  logo?: string;
+  tier: 'free' | 'base' | 'premium';
+  rating?: number;
+}
 import { POIService } from '../../map/services/poi.service';
 import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
@@ -90,6 +104,69 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     restaurant: '#A78BFA',
     hotel: '#60A5FA',
     beach: '#60A5FA'
+  };
+
+  // Partner showcase mock data (future: from backend API)
+  readonly partnerShowcase = signal<PartnerShowcase[]>([
+    {
+      id: '1',
+      name: 'Pet Paradise',
+      type: 'shop',
+      location: 'Milano',
+      tier: 'premium',
+      rating: 4.8
+    },
+    {
+      id: '2',
+      name: 'Clinica Zampe Felici',
+      type: 'clinic',
+      location: 'Bergamo',
+      tier: 'premium',
+      rating: 4.9
+    },
+    {
+      id: '3',
+      name: 'Amici a 4 Zampe',
+      type: 'shelter',
+      location: 'Brescia',
+      tier: 'free'
+    },
+    {
+      id: '4',
+      name: 'Toelettatura Bella',
+      type: 'groomer',
+      location: 'Como',
+      tier: 'base',
+      rating: 4.5
+    },
+    {
+      id: '5',
+      name: 'Hotel Pets & Relax',
+      type: 'hotel',
+      location: 'Lecco',
+      tier: 'base',
+      rating: 4.3
+    }
+  ]);
+
+  // Partner type icons
+  readonly partnerIcons: Record<string, string> = {
+    shop: '🏪',
+    vet: '🏥',
+    groomer: '✂️',
+    shelter: '🐕',
+    clinic: '💊',
+    hotel: '🏨'
+  };
+
+  // Partner type colors
+  readonly partnerColors: Record<string, string> = {
+    shop: '#F4AE1A',
+    vet: '#FF6B6B',
+    groomer: '#4ECDC4',
+    shelter: '#95E1A3',
+    clinic: '#A78BFA',
+    hotel: '#60A5FA'
   };
 
   ngAfterViewInit(): void {

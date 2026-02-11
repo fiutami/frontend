@@ -119,15 +119,15 @@
 }
 
 // ==========================================
-// FILTER CHIPS
-// Variante scrollabile per main content
+// PARTNER SHOWCASE (Vetrina dinamica)
+// Card scrollabili con inserzionisti free/paid
 // ==========================================
-.filter-chips {
+.partner-showcase {
   position: relative;
-  z-index: 10;
+  z-index: 1;
   display: flex;
-  gap: var(--sp-2);
-  padding: 0 var(--sp-4);
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -136,33 +136,120 @@
   &::-webkit-scrollbar {
     display: none;
   }
-
-  // Variante scrollabile (nel main content, sotto "Scopri fiutami speciali")
-  &--scrollable {
-    z-index: 1;
-    margin-top: var(--sp-2);
-    padding-bottom: var(--sp-2);
-  }
 }
 
-.filter-chip {
+.partner-card {
   flex-shrink: 0;
-  padding: var(--sp-2) var(--sp-4);
-  border-radius: 8px;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
-  color: #979EA6;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 120px;
+  padding: var(--sp-3);
+  border-radius: 12px;
+  border: 2px solid var(--partner-color, var(--blue-1));
+  background: var(--white);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  transition: all 150ms ease;
+  transition: all 200ms ease;
+  position: relative;
+  overflow: visible;
 
-  &--active {
-    color: var(--white);
-    background: var(--chip-color, var(--blue-1));
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.38);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  // Icon container
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--partner-color, var(--blue-1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  // Info section
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__name {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__location {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    color: #666;
+  }
+
+  // Tier badge
+  &__badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &--premium {
+      background: linear-gradient(135deg, #F4AE1A 0%, #FFD700 100%);
+      color: var(--white);
+      box-shadow: 0px 2px 6px rgba(244, 174, 26, 0.4);
+    }
+
+    &--base {
+      background: var(--blue-1);
+      color: var(--white);
+    }
+
+    &--free {
+      background: #95E1A3;
+      color: #1A5D2A;
+    }
+  }
+
+  // Rating
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+
+    .material-icons {
+      font-size: 14px;
+      color: #FFD700;
+    }
   }
 }
 
