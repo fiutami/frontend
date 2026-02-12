@@ -33,6 +33,8 @@ export const ANIMATION_DELAY = {
   TOAST: 3000,      // Toast notification display time
   PROGRESS: 100,    // Progress bar update
   TYPEWRITER_CHAR_MS: 30, // Typewriter effect: ms per character
+  TTS_FADE_IN: 200,       // TTS audio fade in
+  TTS_FADE_OUT: 150,      // TTS audio fade out
 } as const;
 
 // Mock API delays (for development - should be 0 in production)

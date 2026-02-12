@@ -1,0 +1,22 @@
+@if (!isHidden) {
+  <button
+    type="button"
+    class="voice-btn"
+    [class.voice-btn--sm]="size === 'sm'"
+    [class.voice-btn--md]="size === 'md'"
+    [class.voice-btn--lg]="size === 'lg'"
+    [class.voice-btn--listening]="stt.isListening()"
+    [class.voice-btn--error]="stt.error()"
+    [attr.aria-pressed]="stt.isListening()"
+    [attr.aria-label]="stt.isListening() ? 'Ferma registrazione' : 'Registra con voce'"
+    (click)="onTap()"
+    (pointerdown)="mode === 'hold-to-record' ? onPointerDown() : null"
+    (pointerup)="mode === 'hold-to-record' ? onPointerUp() : null">
+    <span class="material-icons voice-btn__icon">
+      {{ stt.isListening() ? 'mic' : 'mic_none' }}
+    </span>
+    @if (stt.isListening()) {
+      <span class="voice-btn__pulse" aria-hidden="true"></span>
+    }
+  </button>
+}

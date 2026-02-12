@@ -20,8 +20,20 @@
         <span class="material-icons">close</span>
       </button>
 
+      <div class="mascot-sheet__header-center">
+        @if (enableVoice) {
+          <app-audio-playback-indicator variant="mini" />
+        }
+      </div>
+
+      <div class="mascot-sheet__header-right">
+        @if (enableVoice) {
+          <app-tts-toggle />
+        }
+      </div>
+
       <div class="mascot-sheet__mascot-area">
-        @if (aiMessage) {
+        @if (aiMessage && !hasChatThread) {
           <app-speech-bubble variant="ai" tailPosition="right" [animated]="true" [maxWidth]="'220px'">
             <span class="mascot-sheet__bubble-text">{{ displayedText() }}</span>
             @if (isTyping()) {
@@ -44,38 +56,74 @@
     </div>
 
     <div class="mascot-sheet__content">
-      @if (suggestions.length === 0) {
-        <div class="mascot-sheet__empty">
-          <span class="material-icons mascot-sheet__empty-icon">lightbulb</span>
-          <p>Nessun suggerimento al momento</p>
-        </div>
-      } @else {
-        <div class="mascot-sheet__list">
-          @for (s of suggestions; track s.id) {
-            <button
-              type="button"
-              class="mascot-sheet__item"
-              [class.mascot-sheet__item--clickable]="s.actionUrl"
-              (click)="onSuggestionClick(s)">
-              <span class="material-icons mascot-sheet__item-icon">{{ s.icon }}</span>
-              <div class="mascot-sheet__item-text">
-                <div class="mascot-sheet__item-title">{{ s.title }}</div>
-                @if (s.description) {
-                  <div class="mascot-sheet__item-desc">{{ s.description }}</div>
+      <!-- Chat thread mode -->
+      @if (hasChatThread) {
+        <div class="mascot-sheet__chat-thread">
+          @for (msg of messages; track msg.id) {
+            @if (msg.role !== 'system') {
+              <div class="mascot-sheet__msg" [class.mascot-sheet__msg--user]="msg.role === 'user'" [class.mascot-sheet__msg--assistant]="msg.role === 'assistant'">
+                <div class="mascot-sheet__msg-bubble">
+                  @if (msg.isStreaming) {
+                    <span class="mascot-sheet__msg-typing">
+                      <span class="mascot-sheet__typing-dot"></span>
+                      <span class="mascot-sheet__typing-dot"></span>
+                      <span class="mascot-sheet__typing-dot"></span>
+                    </span>
+                  } @else {
+                    <span>{{ msg.content }}</span>
+                    @if (msg.role === 'assistant' && enableVoice) {
+                      <app-message-play-button [text]="msg.content" />
+                    }
+                  }
+                </div>
+                @if (msg.isVoiceInput) {
+                  <span class="material-icons mascot-sheet__msg-voice-icon">mic</span>
                 }
               </div>
-              @if (s.actionUrl) {
-                <span class="material-icons mascot-sheet__item-arrow">chevron_right</span>
-              }
-            </button>
+            }
           }
         </div>
+      } @else {
+        <!-- Suggestions mode (original) -->
+        @if (suggestions.length === 0) {
+          <div class="mascot-sheet__empty">
+            <span class="material-icons mascot-sheet__empty-icon">lightbulb</span>
+            <p>Nessun suggerimento al momento</p>
+          </div>
+        } @else {
+          <div class="mascot-sheet__list">
+            @for (s of suggestions; track s.id) {
+              <button
+                type="button"
+                class="mascot-sheet__item"
+                [class.mascot-sheet__item--clickable]="s.actionUrl"
+                (click)="onSuggestionClick(s)">
+                <span class="material-icons mascot-sheet__item-icon">{{ s.icon }}</span>
+                <div class="mascot-sheet__item-text">
+                  <div class="mascot-sheet__item-title">{{ s.title }}</div>
+                  @if (s.description) {
+                    <div class="mascot-sheet__item-desc">{{ s.description }}</div>
+                  }
+                </div>
+                @if (s.actionUrl) {
+                  <span class="material-icons mascot-sheet__item-arrow">chevron_right</span>
+                }
+              </button>
+            }
+          </div>
+        }
       }
     </div>
 
     <!-- Chat input -->
     <div class="mascot-sheet__chat">
       <form class="mascot-sheet__chat-form" (submit)="onChatSubmit($event)">
+        @if (enableVoice) {
+          <app-voice-input-button
+            size="md"
+            (transcriptReady)="onVoiceTranscript($event)"
+            (interimTranscript)="onInterimTranscript($event)" />
+        }
         <input
           type="text"
           class="mascot-sheet__chat-input"

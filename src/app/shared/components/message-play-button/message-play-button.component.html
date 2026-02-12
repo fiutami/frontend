@@ -1,0 +1,17 @@
+<button
+  type="button"
+  class="play-btn"
+  [class.play-btn--playing]="isThisPlaying()"
+  [class.play-btn--loading]="isThisLoading()"
+  [attr.aria-label]="isThisPlaying() ? 'Ferma audio' : 'Ascolta messaggio'"
+  (click)="toggle()">
+  <span class="material-icons play-btn__icon">
+    @if (isThisLoading()) {
+      hourglass_empty
+    } @else if (isThisPlaying()) {
+      stop
+    } @else {
+      volume_up
+    }
+  </span>
+</button>

@@ -177,9 +177,4 @@ $fiutami-blue: #4a74f0;
   }
 }
 
-// ==========================================
-// TAB BAR - Bordo bianco (solo pet-profile)
-// ==========================================
-:host ::ng-deep .bottom-tab-bar {
-  border-top: 2px solid #FFFFFF;
-}
+// TAB BAR - Usa stile standard (1px border uniforme)

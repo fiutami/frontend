@@ -13,7 +13,7 @@ import { CommonModule, Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import * as L from 'leaflet';
 import { POI, POIFilter, POIType } from '../../core/models/poi.models';
 
@@ -64,6 +64,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   private readonly location = inject(Location);
   private readonly router = inject(Router);
   private readonly http = inject(HttpClient);
+  private readonly translate = inject(TranslateService);
 
   private map!: L.Map;
   private markersLayer = L.layerGroup();
@@ -71,6 +72,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   // Mascot sheet state
   showMascotSheet = signal(false);
+  mascotMessage = signal('');
 
   // Signals
   readonly userLocation = signal<[number, number]>([45.6983, 9.6773]); // Bergamo default
@@ -80,6 +82,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   readonly searchQuery = signal<string>('');
   readonly isLocationEnabled = signal<boolean>(false);
   readonly currentLocationName = signal<string>('Bergamo');
+  readonly isMapExpanded = signal<boolean>(false);
 
   readonly activeFilters = computed(() =>
     this.filters().filter(f => f.active).map(f => f.type)
@@ -415,10 +418,25 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   // Mascot methods
   onMascotClick(): void {
+    this.mascotMessage.set(this.translate.instant('map.mascotMessage'));
     this.showMascotSheet.set(true);
   }
 
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
+  }
+
+  // Map expand overlay methods
+  toggleMapExpand(): void {
+    this.isMapExpanded.update(v => !v);
+    // Leaflet invalidateSize dopo animazione
+    setTimeout(() => this.map?.invalidateSize(), 350);
+    this.cdr.markForCheck();
+  }
+
+  closeMapOverlay(): void {
+    this.isMapExpanded.set(false);
+    setTimeout(() => this.map?.invalidateSize(), 350);
+    this.cdr.markForCheck();
   }
 }

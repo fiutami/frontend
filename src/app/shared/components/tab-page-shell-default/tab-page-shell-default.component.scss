@@ -16,7 +16,7 @@
 
 // ==========================================
 // BRANDING SECTION (dentro shell-blue-header)
-// Logo centrato assoluto, data in basso
+// Logo + Extra centrati verticalmente insieme
 // ==========================================
 .shell-default-branding {
   // Posizione assoluta per centrare nel parent (shell-blue-header)
@@ -29,6 +29,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--sp-3); // Spazio tra logo e subtitle
   padding: 0 var(--sp-4);
   // Non blocca click sul header sopra
   pointer-events: none;
@@ -39,12 +40,9 @@
   }
 }
 
-// Data posizionata in basso assoluto
+// Extra (subtitle) centrato con il logo (non più in basso assoluto)
 :host ::ng-deep [shellBrandingExtra] {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  text-align: center;
   pointer-events: auto;
 }
 

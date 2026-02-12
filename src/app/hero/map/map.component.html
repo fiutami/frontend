@@ -6,10 +6,10 @@
   (backClicked)="goBack()">
 
   <!-- Extra sotto il logo (dentro blu): Subtitle -->
-  <p shellBrandingExtra class="map-subtitle">
-    Attività, eventi e amici<br>
-    Trova ciò che serve al tuo pet, proprio dove sei
-  </p>
+  <div shellBrandingExtra class="map-subtitle">
+    <span class="map-subtitle__line1">{{ 'map.subtitle' | translate }}</span>
+    <span class="map-subtitle__line2">{{ 'map.description' | translate }}</span>
+  </div>
 
   <!-- Sticky Content (su giallo): Search + Actions + Filters -->
   <ng-container shellStickyContent>
@@ -20,48 +20,44 @@
         <input
           type="text"
           class="search-input"
-          placeholder="Cosa stai cercando"
+          [placeholder]="'map.searchPlaceholder' | translate"
           [value]="searchQuery()"
           (input)="onSearch($event)"
         >
-        <button class="filter-button" aria-label="Filtri">
+        <button class="filter-button" [attr.aria-label]="'map.filters' | translate">
           <span class="material-icons">tune</span>
         </button>
       </div>
     </div>
 
-    <!-- Action buttons -->
-    <div class="action-buttons">
-      <button class="action-btn action-btn--primary">Attività</button>
-      <button class="action-btn action-btn--primary">Eventi</button>
-      <button class="action-btn action-btn--primary">Localizzati dagli amici</button>
-    </div>
-
-    <!-- Location toggle -->
-    <div class="location-toggle">
-      <span class="location-toggle__label">Attiva location</span>
-      <button
-        class="toggle-switch"
-        [class.toggle-switch--active]="isLocationEnabled()"
-        (click)="centerOnUser()"
-        role="switch"
-        [attr.aria-checked]="isLocationEnabled()">
-        <span class="toggle-switch__slider"></span>
-      </button>
-    </div>
   </ng-container>
+
+  <!-- Backdrop overlay quando mappa espansa -->
+  @if (isMapExpanded()) {
+    <div class="map-overlay-backdrop" (click)="closeMapOverlay()"></div>
+  }
 
   <!-- Main Content: Map + Section + Promo -->
   <!-- Map container -->
-  <div class="map-container">
+  <div class="map-container" [class.map-container--expanded]="isMapExpanded()">
     <div id="map" class="map"></div>
+
+    <!-- Expand/Fullscreen button -->
+    <button
+      class="map-expand-btn"
+      (click)="toggleMapExpand()"
+      [attr.aria-label]="isMapExpanded() ? ('map.closeMap' | translate) : ('map.expandMap' | translate)">
+      <span class="material-icons">
+        {{ isMapExpanded() ? 'close' : 'fullscreen' }}
+      </span>
+    </button>
 
     <!-- Location button -->
     <button
       class="location-button"
       [class.location-button--active]="isLocationEnabled()"
       (click)="centerOnUser()"
-      aria-label="La mia posizione">
+      [attr.aria-label]="'map.myLocation' | translate">
       <span class="material-icons">my_location</span>
     </button>
 
@@ -71,7 +67,7 @@
         <span class="material-icons">place</span>
       </div>
       <div class="current-location__info">
-        <span class="current-location__label">Posizione attuale</span>
+        <span class="current-location__label">{{ 'map.currentLocation' | translate }}</span>
         <span class="current-location__name">{{ currentLocationName() }}</span>
       </div>
       <span class="material-icons current-location__arrow">arrow_drop_down</span>
@@ -80,7 +76,7 @@
 
   <!-- Section title: Partner in evidenza -->
   <div class="section-title">
-    <h2>Partner in evidenza</h2>
+    <h2>{{ 'map.partnerShowcase.title' | translate }}</h2>
   </div>
 
   <!-- Partner showcase cards (vetrina dinamica) -->
@@ -101,11 +97,11 @@
         <!-- Badge tier -->
         <div class="partner-card__badge" [class]="'partner-card__badge--' + partner.tier">
           @if (partner.tier === 'premium') {
-            ⭐ PREMIUM
+            ⭐ {{ 'map.partnerShowcase.premium' | translate }}
           } @else if (partner.tier === 'base') {
-            SPONSOR
+            {{ 'map.partnerShowcase.sponsor' | translate }}
           } @else {
-            FREE
+            {{ 'map.partnerShowcase.free' | translate }}
           }
         </div>
 
@@ -123,8 +119,8 @@
   <!-- Promo banner FIUTAMI Plus -->
   <div class="promo-banner" (click)="goToPremium()">
     <div class="promo-banner__content">
-      <p class="promo-banner__text">Fiuta a pieno, con il Plus</p>
-      <button class="promo-banner__button">Scopri</button>
+      <p class="promo-banner__text">{{ 'map.promo.text' | translate }}</p>
+      <button class="promo-banner__button">{{ 'map.promo.button' | translate }}</button>
     </div>
     <div class="promo-banner__indicator">
       <span class="dot active"></span>
@@ -169,14 +165,14 @@
       <div class="poi-card__actions">
         <button class="poi-action-btn poi-action-btn--directions" (click)="openDirections(poi)">
           <span class="material-icons">directions</span>
-          <span>Indicazioni</span>
+          <span>{{ 'map.poi.directions' | translate }}</span>
         </button>
         <button
           class="poi-action-btn poi-action-btn--save"
           [class.poi-action-btn--saved]="poi.isFavorite"
           (click)="toggleFavorite(poi)">
           <span class="material-icons">{{ poi.isFavorite ? 'bookmark' : 'bookmark_border' }}</span>
-          <span>{{ poi.isFavorite ? 'Salvato' : 'Salva' }}</span>
+          <span>{{ poi.isFavorite ? ('map.poi.saved' | translate) : ('map.poi.save' | translate) }}</span>
         </button>
       </div>
     </div>
@@ -186,7 +182,7 @@
   <app-mascot-bottom-sheet
     [isOpen]="showMascotSheet()"
     [hideMascot]="true"
-    [aiMessage]="'Ciao! Come posso aiutarti a trovare luoghi pet-friendly?'"
+    [aiMessage]="mascotMessage()"
     (closed)="closeMascotSheet()">
   </app-mascot-bottom-sheet>
 

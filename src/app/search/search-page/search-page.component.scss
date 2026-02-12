@@ -114,6 +114,46 @@ $badge-events: #e91e63;
   }
 }
 
+// AI mode toggle
+.ai-mode-toggle {
+  padding: 8px 0 4px;
+}
+
+.ai-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: $bg-white;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &__icon {
+    font-size: 16px;
+  }
+
+  &--active {
+    background: $bg-white;
+    border-color: $bg-white;
+    color: $primary-blue;
+  }
+
+  &:hover:not(&--active) {
+    background: rgba(255, 255, 255, 0.35);
+  }
+}
+
+// AI Summary
+.ai-summary {
+  margin-bottom: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
 // Category filters
 .category-filters {
   display: flex;

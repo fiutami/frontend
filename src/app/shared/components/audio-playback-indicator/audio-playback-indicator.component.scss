@@ -1,0 +1,75 @@
+@import 'src/styles/tokens-figma';
+
+.audio-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  &--floating {
+    position: fixed;
+    bottom: 80px;
+    right: 16px;
+    z-index: 200;
+    background: white;
+    border-radius: 20px;
+    padding: 6px 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &--mini {
+    gap: 3px;
+  }
+}
+
+.audio-indicator__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+
+  &--paused .audio-indicator__bar {
+    animation-play-state: paused;
+  }
+}
+
+.audio-indicator__bar {
+  width: 3px;
+  background: $color-primary-500;
+  border-radius: 1px;
+  animation: sound-wave 0.6s ease-in-out infinite alternate;
+
+  &:nth-child(1) { height: 6px; animation-delay: 0s; }
+  &:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+  &:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+  &:nth-child(4) { height: 14px; animation-delay: 0.45s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    height: 10px !important;
+  }
+
+  .audio-indicator--mini & {
+    width: 2px;
+  }
+}
+
+.audio-indicator__btn {
+  border: 0;
+  background: none;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+
+  &:hover { background: rgba(0, 0, 0, 0.06); }
+
+  .material-icons { font-size: 18px; color: $color-text-secondary; }
+}
+
+@keyframes sound-wave {
+  from { height: 4px; }
+  to { height: 16px; }
+}

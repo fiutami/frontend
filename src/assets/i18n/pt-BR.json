@@ -2,6 +2,21 @@
   "mascot": {
     "speechBubble": "Posso te ajudar?"
   },
+  "voice": {
+    "record": "Gravar com voz",
+    "stopRecording": "Parar gravação",
+    "listening": "Ouvindo...",
+    "micPermission": "Permissão de microfone necessária",
+    "micDenied": "Permissão de microfone negada",
+    "notSupported": "Reconhecimento de voz não suportado",
+    "play": "Ouvir mensagem",
+    "stop": "Parar áudio",
+    "pause": "Pausar",
+    "resume": "Retomar",
+    "autoPlayOn": "Reprodução automática ativada",
+    "autoPlayOff": "Reprodução automática desativada",
+    "noSpeech": "Nenhuma fala detectada"
+  },
   "common": {
     "language": "Idioma",
     "back": "Voltar",
@@ -548,6 +563,19 @@
     "loading": "Carregando mapa...",
     "locationError": "Não foi possível obter localização",
     "enableLocation": "Ativar localização",
+    "currentLocation": "Localização atual",
+    "myLocation": "Minha localização",
+    "partnerShowcase": {
+      "title": "Parceiros em destaque",
+      "premium": "PREMIUM",
+      "sponsor": "PATROCINADOR",
+      "free": "GRÁTIS"
+    },
+    "promo": {
+      "text": "Fareja ao máximo, com Plus",
+      "button": "Descobrir"
+    },
+    "mascotMessage": "Oi! Como posso ajudar a encontrar lugares pet-friendly?",
     "poi": {
       "verified": "Verificado",
       "reviews": "avaliações",
@@ -559,7 +587,9 @@
       "saved": "Salvo",
       "openNow": "Aberto agora",
       "closed": "Fechado"
-    }
+    },
+    "expandMap": "Expandir mapa",
+    "closeMap": "Fechar mapa"
   },
   "home": {
     "greeting": "Oi",
@@ -1081,8 +1111,13 @@
   },
   "fiuto": {
     "welcome": "Oi! Sou o Fiuto, seu assistente. Se tiver dúvidas durante o questionário, é só perguntar!",
+    "greeting": "Oi! Como posso te ajudar?",
+    "thinking": "Pensando...",
     "typing": "Digitando...",
     "error": "Ops! Algo deu errado. Tente de novo.",
+    "aiMode": "Modo IA",
+    "searchWithFiuto": "Buscar com Fiuto",
+    "concierge": "Concierge",
     "placeholder": "Escreva uma mensagem...",
     "suggestions": {
       "help_question": "Não entendi essa pergunta",

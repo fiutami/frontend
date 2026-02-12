@@ -167,8 +167,9 @@ export class MascotPeekComponent implements OnDestroy {
   onMascotTap(event: MouseEvent | TouchEvent): void {
     // Only trigger tap if not dragging significantly (< 10px movement)
     if (this.dragDistance < 10 && !this.atSheetPosition()) {
-      // If expanded (bubble visible), collapse back to peek position
+      // If expanded (bubble visible), emit mascotTapped and collapse
       if (this.isExpanded()) {
+        this.mascotTapped.emit();
         this.collapse();
         return;
       }

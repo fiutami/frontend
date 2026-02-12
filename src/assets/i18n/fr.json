@@ -2,6 +2,21 @@
   "mascot": {
     "speechBubble": "Puis-je t'aider ?"
   },
+  "voice": {
+    "record": "Enregistrer avec la voix",
+    "stopRecording": "Arrêter l'enregistrement",
+    "listening": "En écoute...",
+    "micPermission": "Permission du microphone requise",
+    "micDenied": "Permission du microphone refusée",
+    "notSupported": "Reconnaissance vocale non supportée",
+    "play": "Écouter le message",
+    "stop": "Arrêter l'audio",
+    "pause": "Pause",
+    "resume": "Reprendre",
+    "autoPlayOn": "Lecture automatique activée",
+    "autoPlayOff": "Lecture automatique désactivée",
+    "noSpeech": "Aucune voix détectée"
+  },
   "common": {
     "language": "Langue",
     "back": "Retour",
@@ -506,8 +521,13 @@
   },
   "fiuto": {
     "welcome": "Salut ! Je suis Fiuto, ton assistant. Si tu as des questions pendant le questionnaire, n'hésite pas à demander !",
+    "greeting": "Bonjour ! Comment puis-je t'aider ?",
+    "thinking": "Je réfléchis...",
     "typing": "En train d'écrire...",
     "error": "Oups ! Quelque chose s'est mal passé. Réessaie.",
+    "aiMode": "Mode IA",
+    "searchWithFiuto": "Chercher avec Fiuto",
+    "concierge": "Concierge",
     "placeholder": "Écris un message...",
     "suggestions": {
       "help_question": "Je ne comprends pas cette question",
@@ -860,7 +880,34 @@
     "friends": "Amis proches",
     "loading": "Chargement de la carte...",
     "locationError": "Impossible d'obtenir la position",
-    "enableLocation": "Activer la localisation"
+    "enableLocation": "Activer la localisation",
+    "currentLocation": "Position actuelle",
+    "myLocation": "Ma position",
+    "partnerShowcase": {
+      "title": "Partenaires en vedette",
+      "premium": "PREMIUM",
+      "sponsor": "SPONSOR",
+      "free": "GRATUIT"
+    },
+    "promo": {
+      "text": "Renifle à fond, avec Plus",
+      "button": "Découvrir"
+    },
+    "mascotMessage": "Salut ! Comment puis-je t'aider à trouver des lieux pet-friendly ?",
+    "poi": {
+      "verified": "Vérifié",
+      "reviews": "avis",
+      "noReviews": "Aucun avis",
+      "directions": "Itinéraire",
+      "call": "Appeler",
+      "website": "Site web",
+      "save": "Enregistrer",
+      "saved": "Enregistré",
+      "openNow": "Ouvert maintenant",
+      "closed": "Fermé"
+    },
+    "expandMap": "Agrandir la carte",
+    "closeMap": "Fermer la carte"
   },
   "home": {
     "greeting": "Salut",

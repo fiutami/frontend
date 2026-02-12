@@ -21,7 +21,21 @@
             <span class="material-icons">close</span>
           </button>
         }
+        <app-voice-input-button
+          size="sm"
+          (transcriptReady)="onVoiceTranscript($event)" />
       </div>
+    </div>
+
+    <!-- AI mode toggle -->
+    <div class="ai-mode-toggle">
+      <button
+        class="ai-chip"
+        [class.ai-chip--active]="aiMode()"
+        (click)="toggleAiMode()">
+        <span class="material-icons ai-chip__icon">auto_awesome</span>
+        <span>Cerca con Fiuto</span>
+      </button>
     </div>
 
     <!-- Category filters -->
@@ -86,6 +100,16 @@
         }
       </div>
     } @else if (!loading()) {
+      <!-- AI Summary -->
+      @if (aiSummary()) {
+        <div class="ai-summary">
+          <app-ai-message-bubble
+            [message]="aiSummary()"
+            [showMascot]="true"
+            mascotPosition="left" />
+        </div>
+      }
+
       <!-- Results -->
       @if (results().length > 0) {
         <div class="results-section">

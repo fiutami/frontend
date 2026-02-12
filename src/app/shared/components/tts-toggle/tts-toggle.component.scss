@@ -1,0 +1,26 @@
+@import 'src/styles/tokens-figma';
+
+.tts-toggle {
+  border: 0;
+  background: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+
+  &:hover { background: rgba(0, 0, 0, 0.08); }
+
+  &--active {
+    background: rgba($color-primary-500, 0.1);
+    .tts-toggle__icon { color: $color-primary-500; }
+  }
+}
+
+.tts-toggle__icon {
+  font-size: 18px;
+  color: $color-text-secondary;
+}

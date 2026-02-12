@@ -1,0 +1,60 @@
+@import 'src/styles/tokens-figma';
+
+.voice-btn {
+  position: relative;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.15s ease;
+
+  &--sm { width: 32px; height: 32px; }
+  &--md { width: 40px; height: 40px; }
+  &--lg { width: 48px; height: 48px; }
+
+  &:hover { background: rgba(0, 0, 0, 0.08); }
+  &:active { transform: scale(0.95); }
+
+  &--listening {
+    background: #ef4444;
+    color: white;
+
+    .voice-btn__icon { color: white; }
+  }
+
+  &--error {
+    background: rgba(239, 68, 68, 0.1);
+    .voice-btn__icon { color: #ef4444; }
+  }
+}
+
+.voice-btn__icon {
+  font-size: 20px;
+  color: $color-text-secondary;
+  z-index: 1;
+
+  .voice-btn--sm & { font-size: 18px; }
+  .voice-btn--lg & { font-size: 24px; }
+}
+
+.voice-btn__pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #ef4444;
+  animation: pulse-recording 1.5s infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-recording {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}

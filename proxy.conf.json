@@ -1,4 +1,10 @@
 {
+  "/api/tts": {
+    "target": "http://localhost:5100",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
   "/api": {
     "target": "http://localhost:5062",
     "secure": false,

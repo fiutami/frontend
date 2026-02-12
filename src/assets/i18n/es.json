@@ -2,6 +2,21 @@
   "mascot": {
     "speechBubble": "¿Puedo ayudarte?"
   },
+  "voice": {
+    "record": "Grabar con voz",
+    "stopRecording": "Parar grabación",
+    "listening": "Escuchando...",
+    "micPermission": "Permiso de micrófono necesario",
+    "micDenied": "Permiso de micrófono denegado",
+    "notSupported": "Reconocimiento de voz no soportado",
+    "play": "Escuchar mensaje",
+    "stop": "Parar audio",
+    "pause": "Pausa",
+    "resume": "Reanudar",
+    "autoPlayOn": "Reproducción automática activada",
+    "autoPlayOff": "Reproducción automática desactivada",
+    "noSpeech": "No se detectó voz"
+  },
   "common": {
     "language": "Idioma",
     "back": "Volver",
@@ -486,8 +501,13 @@
   },
   "fiuto": {
     "welcome": "¡Hola! Soy Fiuto, tu asistente. Si tienes dudas durante el cuestionario, ¡pregúntame!",
+    "greeting": "¡Hola! ¿Cómo puedo ayudarte?",
+    "thinking": "Pensando...",
     "typing": "Escribiendo...",
     "error": "¡Ups! Algo salió mal. Inténtalo de nuevo.",
+    "aiMode": "Modo IA",
+    "searchWithFiuto": "Buscar con Fiuto",
+    "concierge": "Concierge",
     "placeholder": "Escribe un mensaje...",
     "suggestions": {
       "help_question": "No entiendo esta pregunta",
@@ -840,7 +860,34 @@
     "friends": "Amigos cercanos",
     "loading": "Cargando mapa...",
     "locationError": "No se pudo obtener la ubicación",
-    "enableLocation": "Activar ubicación"
+    "enableLocation": "Activar ubicación",
+    "currentLocation": "Ubicación actual",
+    "myLocation": "Mi ubicación",
+    "partnerShowcase": {
+      "title": "Partners destacados",
+      "premium": "PREMIUM",
+      "sponsor": "SPONSOR",
+      "free": "GRATIS"
+    },
+    "promo": {
+      "text": "Olfatea al máximo, con Plus",
+      "button": "Descubrir"
+    },
+    "mascotMessage": "¡Hola! ¿Cómo puedo ayudarte a encontrar lugares pet-friendly?",
+    "poi": {
+      "verified": "Verificado",
+      "reviews": "reseñas",
+      "noReviews": "Sin reseñas",
+      "directions": "Indicaciones",
+      "call": "Llamar",
+      "website": "Sitio web",
+      "save": "Guardar",
+      "saved": "Guardado",
+      "openNow": "Abierto ahora",
+      "closed": "Cerrado"
+    },
+    "expandMap": "Ampliar mapa",
+    "closeMap": "Cerrar mapa"
   },
   "home": {
     "greeting": "Hola",

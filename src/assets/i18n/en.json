@@ -2,6 +2,21 @@
   "mascot": {
     "speechBubble": "Can I help you?"
   },
+  "voice": {
+    "record": "Record with voice",
+    "stopRecording": "Stop recording",
+    "listening": "Listening...",
+    "micPermission": "Microphone permission required",
+    "micDenied": "Microphone permission denied",
+    "notSupported": "Voice recognition not supported",
+    "play": "Play message",
+    "stop": "Stop audio",
+    "pause": "Pause",
+    "resume": "Resume",
+    "autoPlayOn": "Auto-play enabled",
+    "autoPlayOff": "Auto-play disabled",
+    "noSpeech": "No speech detected"
+  },
   "common": {
     "language": "Language",
     "back": "Back",
@@ -878,6 +893,19 @@
     "loading": "Loading map...",
     "locationError": "Unable to get location",
     "enableLocation": "Enable location services",
+    "currentLocation": "Current location",
+    "myLocation": "My location",
+    "partnerShowcase": {
+      "title": "Featured partners",
+      "premium": "PREMIUM",
+      "sponsor": "SPONSOR",
+      "free": "FREE"
+    },
+    "promo": {
+      "text": "Sniff to the fullest, with Plus",
+      "button": "Discover"
+    },
+    "mascotMessage": "Hi! How can I help you find pet-friendly places?",
     "poi": {
       "verified": "Verified",
       "reviews": "reviews",
@@ -889,7 +917,9 @@
       "saved": "Saved",
       "openNow": "Open now",
       "closed": "Closed"
-    }
+    },
+    "expandMap": "Expand map",
+    "closeMap": "Close map"
   },
   "home": {
     "greeting": "Hi",
@@ -1076,8 +1106,13 @@
   },
   "fiuto": {
     "welcome": "Hi! I'm Fiuto, your assistant. If you have questions during the questionnaire, just ask!",
+    "greeting": "Hi! How can I help you?",
+    "thinking": "Thinking...",
     "typing": "Typing...",
     "error": "Oops! Something went wrong. Try again.",
+    "aiMode": "AI Mode",
+    "searchWithFiuto": "Search with Fiuto",
+    "concierge": "Concierge",
     "placeholder": "Write a message...",
     "suggestions": {
       "help_question": "I don't understand this question",

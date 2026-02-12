@@ -2,6 +2,21 @@
   "mascot": {
     "speechBubble": "Kann ich dir helfen?"
   },
+  "voice": {
+    "record": "Sprachaufnahme",
+    "stopRecording": "Aufnahme stoppen",
+    "listening": "Höre zu...",
+    "micPermission": "Mikrofonberechtigung erforderlich",
+    "micDenied": "Mikrofonberechtigung verweigert",
+    "notSupported": "Spracherkennung nicht unterstützt",
+    "play": "Nachricht anhören",
+    "stop": "Audio stoppen",
+    "pause": "Pause",
+    "resume": "Fortsetzen",
+    "autoPlayOn": "Auto-Wiedergabe aktiviert",
+    "autoPlayOff": "Auto-Wiedergabe deaktiviert",
+    "noSpeech": "Keine Sprache erkannt"
+  },
   "common": {
     "language": "Sprache",
     "back": "Zurück",
@@ -445,8 +460,13 @@
   },
   "fiuto": {
     "welcome": "Hallo! Ich bin Fiuto, dein Assistent. Wenn du während des Fragebogens Fragen hast, frag einfach!",
+    "greeting": "Hallo! Wie kann ich dir helfen?",
+    "thinking": "Denke nach...",
     "typing": "Schreibt...",
     "error": "Ups! Etwas ist schiefgelaufen. Versuch es nochmal.",
+    "aiMode": "KI-Modus",
+    "searchWithFiuto": "Mit Fiuto suchen",
+    "concierge": "Concierge",
     "placeholder": "Schreibe eine Nachricht...",
     "suggestions": {
       "help_question": "Ich verstehe diese Frage nicht",
@@ -862,7 +882,34 @@
     "friends": "Freunde in der Nähe",
     "loading": "Karte wird geladen...",
     "locationError": "Standort konnte nicht ermittelt werden",
-    "enableLocation": "Standortdienste aktivieren"
+    "enableLocation": "Standortdienste aktivieren",
+    "currentLocation": "Aktueller Standort",
+    "myLocation": "Mein Standort",
+    "partnerShowcase": {
+      "title": "Ausgewählte Partner",
+      "premium": "PREMIUM",
+      "sponsor": "SPONSOR",
+      "free": "GRATIS"
+    },
+    "promo": {
+      "text": "Schnüffle richtig, mit Plus",
+      "button": "Entdecken"
+    },
+    "mascotMessage": "Hallo! Wie kann ich dir helfen, haustierfreundliche Orte zu finden?",
+    "poi": {
+      "verified": "Verifiziert",
+      "reviews": "Bewertungen",
+      "noReviews": "Keine Bewertungen",
+      "directions": "Route",
+      "call": "Anrufen",
+      "website": "Webseite",
+      "save": "Speichern",
+      "saved": "Gespeichert",
+      "openNow": "Jetzt geöffnet",
+      "closed": "Geschlossen"
+    },
+    "expandMap": "Karte erweitern",
+    "closeMap": "Karte schließen"
   },
   "home": {
     "greeting": "Hallo",

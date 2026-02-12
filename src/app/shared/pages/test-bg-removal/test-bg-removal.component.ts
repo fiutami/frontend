@@ -635,22 +635,8 @@ export class TestBgRemovalComponent {
     this.cdr.markForCheck();
 
     try {
-      const { removeBackground } = await import('@imgly/background-removal');
-      const start = performance.now();
-      const blob = await removeBackground(file, {
-        device: 'cpu',
-        model: this.imglyModel,
-      });
-      const elapsed = performance.now() - start;
-
-      this.imgly = {
-        blob,
-        url: URL.createObjectURL(blob),
-        timeMs: elapsed,
-        sizeKb: blob.size / 1024,
-        status: 'done',
-        error: null,
-      };
+      // @imgly/background-removal not installed - skip this processor
+      throw new Error('@imgly/background-removal non installato. Esegui: npm install @imgly/background-removal');
     } catch (err: unknown) {
       this.imgly = {
         ...this.emptyResult(),

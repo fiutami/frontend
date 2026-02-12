@@ -1,0 +1,35 @@
+@import 'src/styles/tokens-figma';
+
+.play-btn {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+
+  &:hover { background: rgba(0, 0, 0, 0.06); }
+
+  &--playing {
+    .play-btn__icon { color: $color-primary-500; }
+  }
+
+  &--loading {
+    .play-btn__icon {
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+.play-btn__icon {
+  font-size: 18px;
+  color: $color-text-secondary;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

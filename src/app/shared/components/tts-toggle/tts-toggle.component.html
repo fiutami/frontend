@@ -1,0 +1,11 @@
+<button
+  type="button"
+  class="tts-toggle"
+  [class.tts-toggle--active]="tts.autoPlay()"
+  [attr.aria-pressed]="tts.autoPlay()"
+  [attr.aria-label]="tts.autoPlay() ? 'Disattiva audio automatico' : 'Attiva audio automatico'"
+  (click)="toggle()">
+  <span class="material-icons tts-toggle__icon">
+    {{ tts.autoPlay() ? 'volume_up' : 'volume_off' }}
+  </span>
+</button>

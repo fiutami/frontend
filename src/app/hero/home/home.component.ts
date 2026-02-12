@@ -17,6 +17,8 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { AuthService } from '../../core/services/auth.service';
 import { NotificationsService } from '../../core/services/notifications.service';
+import { FiutoAiGlobalService } from '../../core/services/fiuto-ai-global.service';
+import { FiutoChatMessage } from '../../core/models/fiuto-ai.models';
 
 import { DashboardService, Suggestion } from './dashboard.service';
 
@@ -47,6 +49,7 @@ export class HomeComponent implements OnInit {
   private authService = inject(AuthService);
   private dashboardService = inject(DashboardService);
   private notificationsService = inject(NotificationsService);
+  private fiutoAi = inject(FiutoAiGlobalService);
 
   // User data
   userName = signal('');
@@ -83,6 +86,8 @@ export class HomeComponent implements OnInit {
   showMascotSheet = signal(false);
   mascotSuggestions = signal<Suggestion[]>([]);
   isAiModeActive = signal(false);
+  mascotMessages = signal<FiutoChatMessage[]>([]);
+  mascotAiMessage = signal('');
 
   
   ngOnInit(): void {
@@ -177,9 +182,13 @@ export class HomeComponent implements OnInit {
     this.isAiModeActive.set(active);
   }
 
-  onChatMessage(message: string): void {
-    console.log('Chat message to Fiuto:', message);
-    // TODO: Implement AI chat logic - send to backend and get response
+  async onChatMessage(message: string): Promise<void> {
+    const response = await this.fiutoAi.sendMessage(message, {
+      route: 'home',
+      mode: 'concierge',
+    });
+    this.mascotMessages.set(this.fiutoAi.getHistory());
+    this.mascotAiMessage.set(response);
   }
 
   private getInitials(name: string): string {

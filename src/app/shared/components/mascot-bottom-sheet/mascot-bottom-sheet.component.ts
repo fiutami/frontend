@@ -16,7 +16,12 @@ import { interval, Subscription } from 'rxjs';
 import { takeWhile, tap, finalize } from 'rxjs/operators';
 
 import { SpeechBubbleComponent } from '../speech-bubble/speech-bubble.component';
+import { VoiceInputButtonComponent } from '../voice-input-button/voice-input-button.component';
+import { MessagePlayButtonComponent } from '../message-play-button/message-play-button.component';
+import { AudioPlaybackIndicatorComponent } from '../audio-playback-indicator/audio-playback-indicator.component';
+import { TtsToggleComponent } from '../tts-toggle/tts-toggle.component';
 import { ANIMATION_DELAY } from '../../../core/config/constants/timing.constants';
+import { FiutoChatMessage } from '../../../core/models/fiuto-ai.models';
 
 // Re-export for consumers
 export interface MascotSuggestion {
@@ -32,7 +37,15 @@ export interface MascotSuggestion {
 @Component({
   selector: 'app-mascot-bottom-sheet',
   standalone: true,
-  imports: [CommonModule, FormsModule, SpeechBubbleComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SpeechBubbleComponent,
+    VoiceInputButtonComponent,
+    MessagePlayButtonComponent,
+    AudioPlaybackIndicatorComponent,
+    TtsToggleComponent,
+  ],
   templateUrl: './mascot-bottom-sheet.component.html',
   styleUrls: ['./mascot-bottom-sheet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,7 +54,9 @@ export class MascotBottomSheetComponent implements OnChanges, OnDestroy {
   @Input() isOpen = false;
   @Input() suggestions: MascotSuggestion[] = [];
   @Input() aiMessage = '';
-  @Input() hideMascot = false; // Hide mascot when using external mascot-peek
+  @Input() hideMascot = false;
+  @Input() enableVoice = false;
+  @Input() messages: FiutoChatMessage[] = [];
 
   @Output() closed = new EventEmitter<void>();
   @Output() suggestionAction = new EventEmitter<MascotSuggestion>();
@@ -58,6 +73,11 @@ export class MascotBottomSheetComponent implements OnChanges, OnDestroy {
 
   // Chat input
   chatInput = '';
+
+  // Chat thread mode
+  get hasChatThread(): boolean {
+    return this.messages.length > 0;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     const isOpenChange = changes['isOpen'];
@@ -103,6 +123,14 @@ export class MascotBottomSheetComponent implements OnChanges, OnDestroy {
       this.chatMessage.emit(message);
       this.chatInput = '';
     }
+  }
+
+  onVoiceTranscript(text: string): void {
+    this.chatMessage.emit(text);
+  }
+
+  onInterimTranscript(text: string): void {
+    this.chatInput = text;
   }
 
   onBackdropClick(): void {

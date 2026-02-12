@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpeechBubbleComponent } from '../speech-bubble/speech-bubble.component';
+import { MessagePlayButtonComponent } from '../message-play-button/message-play-button.component';
 
 /**
  * AiMessageBubbleComponent - AI Message with Mascot
@@ -20,7 +21,7 @@ import { SpeechBubbleComponent } from '../speech-bubble/speech-bubble.component'
 @Component({
   selector: 'app-ai-message-bubble',
   standalone: true,
-  imports: [CommonModule, SpeechBubbleComponent],
+  imports: [CommonModule, SpeechBubbleComponent, MessagePlayButtonComponent],
   templateUrl: './ai-message-bubble.component.html',
   styleUrls: ['./ai-message-bubble.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,0 +1,29 @@
+@if (tts.isPlaying() || tts.isPaused()) {
+  <div class="audio-indicator" [class]="'audio-indicator--' + variant">
+    <!-- Sound bars -->
+    <div class="audio-indicator__bars" [class.audio-indicator__bars--paused]="tts.isPaused()">
+      <span class="audio-indicator__bar"></span>
+      <span class="audio-indicator__bar"></span>
+      <span class="audio-indicator__bar"></span>
+      <span class="audio-indicator__bar"></span>
+    </div>
+
+    @if (variant !== 'mini') {
+      <!-- Controls -->
+      <button
+        type="button"
+        class="audio-indicator__btn"
+        [attr.aria-label]="tts.isPaused() ? 'Riprendi' : 'Pausa'"
+        (click)="onPauseResume()">
+        <span class="material-icons">{{ tts.isPaused() ? 'play_arrow' : 'pause' }}</span>
+      </button>
+      <button
+        type="button"
+        class="audio-indicator__btn"
+        aria-label="Stop"
+        (click)="onStop()">
+        <span class="material-icons">stop</span>
+      </button>
+    }
+  </div>
+}

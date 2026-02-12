@@ -4,6 +4,8 @@ import {
   Output,
   EventEmitter,
   ChangeDetectionStrategy,
+  inject,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -15,9 +17,14 @@ import { AvatarButtonComponent } from '../avatar-button/avatar-button.component'
 import { LogoComponent } from '../logo/logo.component';
 import { MascotPeekComponent } from '../mascot-peek';
 import { BottomTabBarComponent } from '../bottom-tab-bar/bottom-tab-bar.component';
+import { MascotBottomSheetComponent } from '../mascot-bottom-sheet/mascot-bottom-sheet.component';
 
 // Config
 import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
+
+// AI
+import { FiutoAiGlobalService } from '../../../core/services/fiuto-ai-global.service';
+import { FiutoChatMessage } from '../../../core/models/fiuto-ai.models';
 
 /**
  * TabPageShellDefaultComponent
@@ -35,7 +42,7 @@ import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
  * - Title (controllato da title)
  * - AvatarButton (controllato da avatarMode)
  * - Logo (sempre presente, responsive)
- * - MascotPeek (sempre presente)
+ * - MascotPeek (sempre presente) + MascotBottomSheet (Fiuto AI concierge)
  * - BottomTabBar (controllato da activeTabId)
  */
 @Component({
@@ -48,12 +55,15 @@ import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
     LogoComponent,
     MascotPeekComponent,
     BottomTabBarComponent,
+    MascotBottomSheetComponent,
   ],
   templateUrl: './tab-page-shell-default.component.html',
   styleUrls: ['./tab-page-shell-default.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabPageShellDefaultComponent {
+  private readonly fiutoAi = inject(FiutoAiGlobalService);
+
   /** Titolo pagina */
   @Input() title = '';
 
@@ -81,7 +91,27 @@ export class TabPageShellDefaultComponent {
   /** Tab bar configuration */
   protected readonly tabs = MAIN_TAB_BAR_CONFIG;
 
+  /** Fiuto AI concierge state */
+  showMascotSheet = signal(false);
+  mascotMessages = signal<FiutoChatMessage[]>([]);
+  mascotAiMessage = signal('');
+
   onBack(): void {
     this.backClicked.emit();
+  }
+
+  onMascotTapped(): void {
+    this.mascotAiMessage.set(this.fiutoAi.contextualGreeting());
+    this.showMascotSheet.set(true);
+  }
+
+  async onChatMessage(message: string): Promise<void> {
+    const response = await this.fiutoAi.sendMessage(message);
+    this.mascotMessages.set(this.fiutoAi.getHistory());
+    this.mascotAiMessage.set(response);
+  }
+
+  onMascotSheetClosed(): void {
+    this.showMascotSheet.set(false);
   }
 }

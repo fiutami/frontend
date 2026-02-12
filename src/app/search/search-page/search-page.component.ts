@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   signal,
   computed,
+  inject,
   OnInit,
   OnDestroy,
 } from '@angular/core';
@@ -19,6 +20,9 @@ import {
   SEARCH_CATEGORIES,
   CategoryFilter,
 } from '../models/search.models';
+import { AiSearchService } from '../../core/services/ai-search.service';
+import { VoiceInputButtonComponent } from '../../shared/components/voice-input-button/voice-input-button.component';
+import { AiMessageBubbleComponent } from '../../shared/components/ai-message-bubble/ai-message-bubble.component';
 
 /**
  * SearchPageComponent - Global search with filters and API integration
@@ -35,7 +39,7 @@ import {
 @Component({
   selector: 'app-search-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule, VoiceInputButtonComponent, AiMessageBubbleComponent],
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -82,6 +86,13 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   private searchSubject$ = new Subject<string>();
 
+  /** AI search mode */
+  protected aiMode = signal(false);
+  protected aiSummary = signal('');
+  protected aiLoading = signal(false);
+
+  private aiSearchService = inject(AiSearchService);
+
   constructor(
     private searchService: SearchService,
     private router: Router
@@ -97,7 +108,11 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(query => {
       if (query.trim()) {
-        this.performSearch(query);
+        if (this.aiMode()) {
+          this.performAiSearch(query);
+        } else {
+          this.performSearch(query);
+        }
       }
     });
   }
@@ -199,6 +214,46 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   onResultClick(result: SearchResult): void {
     this.searchService.saveRecentSearch(this.query());
     this.router.navigateByUrl(result.route);
+  }
+
+  /**
+   * Toggle AI search mode
+   */
+  toggleAiMode(): void {
+    this.aiMode.update(v => !v);
+    this.aiSummary.set('');
+  }
+
+  /**
+   * Handle voice transcript
+   */
+  onVoiceTranscript(text: string): void {
+    this.query.set(text);
+    if (this.aiMode()) {
+      this.performAiSearch(text);
+    } else {
+      this.performSearch(text);
+    }
+  }
+
+  /**
+   * Perform AI-assisted search
+   */
+  private async performAiSearch(query: string): Promise<void> {
+    this.aiLoading.set(true);
+    this.searched.set(true);
+
+    try {
+      const interpretation = await this.aiSearchService.processNaturalQuery(query);
+      this.aiSummary.set(interpretation.summary ?? '');
+
+      // Also run normal search
+      this.performSearch(query);
+    } catch {
+      this.aiSummary.set('');
+    } finally {
+      this.aiLoading.set(false);
+    }
   }
 
   /**

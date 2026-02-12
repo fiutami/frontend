@@ -26,8 +26,18 @@
 
   <!-- Footer: Mascot + Tab Bar (automatici) -->
   <ng-container shellFooter>
-    <app-mascot-peek />
+    <app-mascot-peek (mascotTapped)="onMascotTapped()" />
     <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="activeTabId" />
   </ng-container>
 
 </app-tab-page-shell>
+
+<!-- Fiuto AI Concierge Bottom Sheet -->
+<app-mascot-bottom-sheet
+  [isOpen]="showMascotSheet()"
+  [messages]="mascotMessages()"
+  [aiMessage]="mascotAiMessage()"
+  [hideMascot]="true"
+  [enableVoice]="true"
+  (closed)="onMascotSheetClosed()"
+  (chatMessage)="onChatMessage($event)" />

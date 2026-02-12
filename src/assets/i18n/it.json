@@ -2,6 +2,21 @@
   "mascot": {
     "speechBubble": "Posso aiutarti?"
   },
+  "voice": {
+    "record": "Registra con voce",
+    "stopRecording": "Ferma registrazione",
+    "listening": "In ascolto...",
+    "micPermission": "Permesso microfono necessario",
+    "micDenied": "Permesso microfono negato",
+    "notSupported": "Riconoscimento vocale non supportato",
+    "play": "Ascolta messaggio",
+    "stop": "Ferma audio",
+    "pause": "Pausa",
+    "resume": "Riprendi",
+    "autoPlayOn": "Audio automatico attivo",
+    "autoPlayOff": "Audio automatico disattivo",
+    "noSpeech": "Nessun audio rilevato"
+  },
   "common": {
     "language": "Lingua",
     "back": "Indietro",
@@ -579,6 +594,19 @@
     "loading": "Caricamento mappa...",
     "locationError": "Impossibile ottenere la posizione",
     "enableLocation": "Abilita la geolocalizzazione",
+    "currentLocation": "Posizione attuale",
+    "myLocation": "La mia posizione",
+    "partnerShowcase": {
+      "title": "Partner in evidenza",
+      "premium": "PREMIUM",
+      "sponsor": "SPONSOR",
+      "free": "FREE"
+    },
+    "promo": {
+      "text": "Fiuta a pieno, con il Plus",
+      "button": "Scopri"
+    },
+    "mascotMessage": "Ciao! Come posso aiutarti a trovare luoghi pet-friendly?",
     "poi": {
       "verified": "Verificato",
       "reviews": "recensioni",
@@ -590,7 +618,9 @@
       "saved": "Salvato",
       "openNow": "Aperto ora",
       "closed": "Chiuso"
-    }
+    },
+    "expandMap": "Espandi mappa",
+    "closeMap": "Chiudi mappa"
   },
   "home": {
     "greeting": "Ciao",
@@ -1373,8 +1403,13 @@
   },
   "fiuto": {
     "welcome": "Ciao! Sono Fiuto, il tuo assistente. Se hai domande durante il questionario, chiedimi pure!",
+    "greeting": "Ciao! Come posso aiutarti?",
+    "thinking": "Sto pensando...",
     "typing": "Sta scrivendo...",
     "error": "Ops! Qualcosa è andato storto. Riprova.",
+    "aiMode": "Modalità AI",
+    "searchWithFiuto": "Cerca con Fiuto",
+    "concierge": "Concierge",
     "placeholder": "Scrivi un messaggio...",
     "suggestions": {
       "help_question": "Non capisco questa domanda",

@@ -38,7 +38,7 @@
     [isOpen]="showMascotSheet()"
     [hideMascot]="true"
     [suggestions]="mascotSuggestions()"
-    [aiMessage]="'Ciao! Ecco cosa ho trovato per te oggi...'"
+    [aiMessage]="mascotAiMessage() || 'Ciao! Ecco cosa ho trovato per te oggi...'"
     (closed)="closeMascotSheet()"
     (suggestionAction)="onMascotSuggestionClick($event)"
     (aiModeChange)="onAiModeChange($event)"
