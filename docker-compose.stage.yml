@@ -1,8 +1,8 @@
 # =============================================================================
-# Fiutami STAGE Stack - play.francescotrani.com
+# Fiutami STAGE Stack - stage.fiutami.pet
 # =============================================================================
-# Frontend: http://play.francescotrani.com:8082
-# Backend:  http://play.francescotrani.com:5001
+# Frontend: https://stage.fiutami.pet
+# Backend:  https://api.stage.fiutami.pet
 # DB:       localhost:1435 (internal)
 #
 # SECRETS CONFIGURATION:
