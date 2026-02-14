@@ -152,6 +152,12 @@ export class LanguageService {
       if (saved && this.isLanguageSupported(saved)) {
         return saved as SupportedLanguage;
       }
+      // Backward compat: check old key used by drawer
+      const oldSaved = localStorage.getItem('lang');
+      if (oldSaved && this.isLanguageSupported(oldSaved)) {
+        this.saveLanguage(oldSaved as SupportedLanguage);
+        return oldSaved as SupportedLanguage;
+      }
     } catch (error) {
       console.error('Error reading saved language:', error);
     }

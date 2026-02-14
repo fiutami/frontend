@@ -11,12 +11,13 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Subject, takeUntil, fromEvent, debounceTime, startWith } from 'rxjs';
 import { DrawerService } from './drawer.service';
 import { AuthService, User } from '../../../core/services/auth.service';
 import { PetService } from '../../../core/services/pet.service';
+import { LanguageService } from '../../../core/i18n/language.service';
 
 export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' | 'foldable-unfolded';
 
@@ -62,7 +63,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
   private drawerService = inject(DrawerService);
   private authService = inject(AuthService);
   private petService = inject(PetService);
-  private translateService = inject(TranslateService);
+  private languageService = inject(LanguageService);
   private router = inject(Router);
   private cdr = inject(ChangeDetectorRef);
   private destroy$ = new Subject<void>();
@@ -188,11 +189,8 @@ export class DrawerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Get saved language or default
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang && this.languages.some(l => l.code === savedLang)) {
-      this.currentLang = savedLang;
-    }
+    // Sync with LanguageService
+    this.currentLang = this.languageService.currentLanguage;
 
     this.drawerService.isOpen$
       .pipe(takeUntil(this.destroy$))
@@ -305,8 +303,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
 
   onLanguageChange(langCode: string): void {
     this.currentLang = langCode;
-    this.translateService.use(langCode);
-    localStorage.setItem('lang', langCode);
+    this.languageService.setLanguage(langCode as any);
     this.showLanguageDropdown = false;
   }
 

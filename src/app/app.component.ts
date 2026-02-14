@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
+import { LanguageService } from "./core/i18n/language.service";
 
 @Component({
   selector: "app-root",
@@ -8,4 +9,6 @@ import { Component } from "@angular/core";
     <app-user-area-modal></app-user-area-modal>
   `
 })
-export class AppComponent {}
+export class AppComponent {
+  private languageService = inject(LanguageService);
+}
