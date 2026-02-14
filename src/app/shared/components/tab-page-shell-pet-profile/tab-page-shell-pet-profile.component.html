@@ -18,6 +18,16 @@
     <ng-content select="[shellStickyContent]" />
   </div>
 
+  <!-- Quick Actions: colonna 5 icone blu a destra -->
+  <div class="shell-pet-quick-actions">
+    <ng-content select="[shellQuickActions]" />
+  </div>
+
+  <!-- Left Actions: FAB + dots a sinistra -->
+  <div class="shell-pet-left-actions">
+    <ng-content select="[shellLeftActions]" />
+  </div>
+
   <!-- FORMA 1: Cerchio bianco (foto pet) -->
   <div class="shell-pet-circle">
     <ng-content select="[shellPetPhoto]" />

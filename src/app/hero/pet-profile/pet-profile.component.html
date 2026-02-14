@@ -1,4 +1,5 @@
 <app-tab-page-shell-pet-profile
+  title="Profilo"
   activeTabId="pet-profile"
   [showBack]="true"
   (backClicked)="goBack()">
@@ -14,18 +15,44 @@
     }
   </ng-container>
 
-  <!-- Sticky Content Slot: nome e descrizione -->
+  <!-- Quick Actions: 5 icone blu colonna destra -->
+  <ng-container shellQuickActions>
+    @if (!isLoading() && !errorMessage() && pet.id) {
+      <app-profile-icon icon="calendar" variant="circular" ariaLabel="Calendario" (onClick)="onCalendarClick()" />
+      <app-profile-icon icon="notifications" variant="circular" ariaLabel="Notifiche" (onClick)="onNotificationsClick()" />
+      <app-profile-icon icon="edit" variant="circular" ariaLabel="Modifica pet" (onClick)="onEditPetClick()" />
+      <app-profile-icon icon="messages" variant="circular" ariaLabel="Messaggi" (onClick)="onMessagesClick()" />
+      <app-profile-icon icon="bookmark" variant="circular" ariaLabel="Salvati" (onClick)="onSavedClick()" />
+    }
+  </ng-container>
+
+  <!-- Left Actions: FAB + dots a sinistra -->
+  <ng-container shellLeftActions>
+    @if (!isLoading() && !errorMessage() && pet.id) {
+      <button
+        class="pet-profile__add-pet"
+        (click)="onAddPetClick()"
+        aria-label="Aggiungi nuovo pet"
+      >
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </svg>
+      </button>
+      <div class="pet-profile__dots">
+        <span class="pet-profile__dot pet-profile__dot--active"></span>
+        <span class="pet-profile__dot"></span>
+        <span class="pet-profile__dot"></span>
+      </div>
+    }
+  </ng-container>
+
+  <!-- Sticky Content Slot: speech bubble resta nell'area gialla -->
   <ng-container shellStickyContent>
     @if (!isLoading() && !errorMessage() && pet.id) {
-      <div class="pet-profile__header-info">
-        <h1 class="pet-profile__name">{{ pet.name }}</h1>
-        <p class="pet-profile__description">{{ pet.description }}</p>
-        <!-- Speech bubble -->
-        <div class="pet-profile__bubble">
-          <app-speech-bubble tailPosition="left" variant="ai">
-            Andiamo a Fiutare il mondo?
-          </app-speech-bubble>
-        </div>
+      <div class="pet-profile__bubble">
+        <app-speech-bubble tailPosition="left" variant="ai">
+          Andiamo a Fiutare il mondo?
+        </app-speech-bubble>
       </div>
     }
   </ng-container>
@@ -51,29 +78,38 @@
     }
 
     @if (!isLoading() && !errorMessage() && pet.id) {
-      <!-- Pet info card -->
+      <!-- Nome + descrizione SPOSTATI dentro card blu -->
+      <section class="pet-profile__header-info">
+        <h1 class="pet-profile__name">{{ pet.name }}</h1>
+        <p class="pet-profile__description">{{ pet.description }}</p>
+      </section>
+
+      <!-- Pet info card: 5 items -->
       <section class="pet-profile__info">
         <app-pet-info-card [items]="petInfoItems"></app-pet-info-card>
       </section>
 
-      <!-- Yellow CTA buttons -->
+      <!-- CTA: 3 icon buttons + card promo affiancata -->
       <section class="pet-profile__actions">
-        <button class="pet-profile__yellow-btn" (click)="onBandaPelosaClick()">
-          Banda Pelosa
-        </button>
-        <button class="pet-profile__yellow-btn" (click)="onFattiBestialiClick()">
-          Fatti Bestiali
-        </button>
-        <button class="pet-profile__yellow-btn" (click)="onRullinoFeroceClick()">
-          Rullino Feroce
-        </button>
-        <button class="pet-profile__yellow-btn pet-profile__yellow-btn--outline" (click)="onAppCompletaClick()">
-          Prova la App Completa
+        <div class="pet-profile__cta-row">
+          <app-profile-icon icon="foto" variant="cta" ariaLabel="Banda Pelosa" (onClick)="onBandaPelosaClick()" />
+          <app-profile-icon icon="doc" variant="cta" ariaLabel="Fatti Bestiali" (onClick)="onFattiBestialiClick()" />
+          <app-profile-icon icon="friends" variant="cta" ariaLabel="Rullino Feroce" (onClick)="onRullinoFeroceClick()" />
+        </div>
+        <button class="pet-profile__promo-card-inline" (click)="onAppCompletaClick()">
+          <span class="pet-profile__promo-card-inline-title">Vuoi sapere come sta il tuo pet?</span>
+          <span class="pet-profile__promo-card-inline-subtitle">Prova la App Completa</span>
+          <span class="pet-profile__promo-card-inline-dots">
+            <span class="pet-profile__promo-card-dot pet-profile__promo-card-dot--active"></span>
+            <span class="pet-profile__promo-card-dot"></span>
+            <span class="pet-profile__promo-card-dot"></span>
+          </span>
         </button>
       </section>
 
-      <!-- Mini map -->
+      <!-- Testo intro mappa + Mini map -->
       <section class="pet-profile__map">
+        <p class="pet-profile__map-intro">Testa e prova la mappa interattiva</p>
         <div class="pet-profile__map-container">
           <div class="pet-profile__map-placeholder">
             <span>Mappa</span>
@@ -131,17 +167,6 @@
           }
         </div>
       </section>
-
-      <!-- Add pet button -->
-      <button
-        class="pet-profile__add-pet"
-        (click)="onAddPetClick()"
-        aria-label="Aggiungi nuovo pet"
-      >
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-        </svg>
-      </button>
     }
   </div>
 

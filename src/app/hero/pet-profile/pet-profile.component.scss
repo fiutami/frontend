@@ -18,11 +18,11 @@
 }
 
 // ==========================================
-// HEADER INFO (sticky content - name, description)
+// HEADER INFO (now inside blue card, first content)
 // ==========================================
 .pet-profile__header-info {
   text-align: center;
-  padding-bottom: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4) var(--sp-3);
 }
 
 .pet-profile__name {
@@ -39,6 +39,9 @@
   margin: 0;
 }
 
+// ==========================================
+// SPEECH BUBBLE (stays in yellow sticky area)
+// ==========================================
 .pet-profile__bubble {
   margin-top: var(--sp-2);
   display: flex;
@@ -122,48 +125,96 @@
 }
 
 // ==========================================
-// YELLOW CTA BUTTONS
+// CTA SECTION: 3 icon CTA + promo card inline
 // ==========================================
 .pet-profile__actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-2);
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--sp-3);
+
+  @media (max-width: 360px) {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
 }
 
-.pet-profile__yellow-btn {
+.pet-profile__cta-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+
+// Promo card inline (affiancata ai 3 CTA)
+.pet-profile__promo-card-inline {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   padding: var(--sp-3);
-  background: $color-yellow-btn;
-  color: $color-yellow-btn-text;
-  font-size: $typography-body-size;
-  font-weight: 600;
-  border-radius: $border-radius-md;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $border-radius-lg;
+  cursor: pointer;
   transition: $transition-fast;
 
   &:hover {
-    background: $color-yellow-btn-hover;
+    background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
   }
 
   &:active {
-    background: $color-yellow-btn-pressed;
     transform: translateY(0);
   }
+}
 
-  &--outline {
-    grid-column: 1 / -1;
-    background: transparent;
-    border: 2px solid $color-yellow-btn;
-    color: $color-yellow-btn;
+.pet-profile__promo-card-inline-title {
+  font-size: $typography-small-size;
+  font-weight: 600;
+  color: $color-text-inverse;
+  text-align: center;
+  line-height: 1.3;
+}
 
-    &:hover {
-      background: rgba(255, 215, 0, 0.1);
-    }
+.pet-profile__promo-card-inline-subtitle {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.pet-profile__promo-card-inline-dots {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.pet-profile__promo-card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+
+  &--active {
+    background: $color-text-inverse;
   }
 }
 
 // ==========================================
 // MAP SECTION
 // ==========================================
+.pet-profile__map-intro {
+  font-size: $typography-body-size;
+  font-weight: 600;
+  color: $color-text-inverse;
+  text-align: center;
+  margin: 0 0 var(--sp-2);
+}
+
 .pet-profile__map-container {
   position: relative;
   border-radius: $map-border-radius;
@@ -323,23 +374,21 @@
 }
 
 // ==========================================
-// ADD PET FAB
+// ADD PET FAB (now positioned in left-actions slot, relative)
 // ==========================================
 .pet-profile__add-pet {
-  position: fixed;
-  bottom: calc($tab-bar-height + var(--sp-3) + env(safe-area-inset-bottom));
-  right: var(--sp-4);
   width: 56px;
   height: 56px;
   background: $color-yellow-btn;
   color: $color-yellow-btn-text;
   border-radius: 50%;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   transition: $transition-fast;
-  z-index: 100;
+  cursor: pointer;
 
   &:hover {
     background: $color-yellow-btn-hover;
@@ -349,5 +398,39 @@
   &:active {
     background: $color-yellow-btn-pressed;
     transform: scale(0.95);
+  }
+
+  @media (max-width: 360px) {
+    width: 48px;
+    height: 48px;
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+}
+
+// ==========================================
+// PET SELECTOR DOTS (under FAB, left area)
+// ==========================================
+.pet-profile__dots {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pet-profile__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+
+  &--active {
+    background: #4a74f0;
+    width: 10px;
+    height: 10px;
   }
 }

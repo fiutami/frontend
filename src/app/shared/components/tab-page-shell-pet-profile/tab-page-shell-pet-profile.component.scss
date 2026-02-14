@@ -111,6 +111,92 @@ $fiutami-blue: #4a74f0;
 }
 
 // ==========================================
+// QUICK ACTIONS: Colonna 5 icone blu a destra
+// Posizione fissa, sovrapposta al cerchio/giallo
+// ==========================================
+.shell-pet-quick-actions {
+  position: fixed;
+  z-index: 6;
+  right: 12px;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 360px) {
+    right: 8px;
+    top: 70px;
+    gap: 8px;
+  }
+
+  @media (min-width: 480px) {
+    right: 16px;
+    top: 85px;
+    gap: 12px;
+  }
+
+  @media (min-width: 640px) {
+    right: 20px;
+    top: 90px;
+  }
+
+  @media (min-width: 768px) {
+    right: 24px;
+    top: 95px;
+  }
+
+  @media (min-width: 1024px) {
+    right: 32px;
+    top: 100px;
+  }
+}
+
+// ==========================================
+// LEFT ACTIONS: FAB + dots a sinistra
+// Posizione fissa, area gialla sinistra
+// ==========================================
+.shell-pet-left-actions {
+  position: fixed;
+  z-index: 6;
+  left: 12px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  @media (max-width: 360px) {
+    left: 8px;
+    top: 170px;
+  }
+
+  @media (max-width: 500px) {
+    top: 180px;
+  }
+
+  @media (min-width: 480px) {
+    left: 16px;
+    top: 210px;
+  }
+
+  @media (min-width: 640px) {
+    left: 20px;
+    top: 220px;
+  }
+
+  @media (min-width: 768px) {
+    left: 24px;
+    top: 240px;
+  }
+
+  @media (min-width: 1024px) {
+    left: 32px;
+    top: 260px;
+  }
+}
+
+// ==========================================
 // FORMA 1: CERCHIO BIANCO
 // Posizione fissa (non scrolla)
 // Figma: top 40px, left calc(50% + 104px), 497x491px

@@ -15,7 +15,9 @@ import {
 import { SpeechBubbleComponent } from '../../shared/components/speech-bubble';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
 import { TabPageShellPetProfileComponent } from '../../shared/components/tab-page-shell-pet-profile';
+import { ProfileIconComponent } from '../../shared/components/profile-icons';
 import { PetService } from '../../core/services/pet.service';
+import { SpeciesInfoService } from '../../core/services/species-info.service';
 import { PetResponse } from '../../core/models/pet.models';
 
 export interface PetData {
@@ -27,6 +29,8 @@ export interface PetData {
   age: number;
   weight: number;
   breed: string;
+  speciesCode?: string;
+  calculatedAge?: string;
 }
 
 export interface FriendPet {
@@ -46,6 +50,7 @@ export interface FriendPet {
     PetInfoCardComponent,
     SpeechBubbleComponent,
     MascotBottomSheetComponent,
+    ProfileIconComponent,
   ],
   templateUrl: './pet-profile.component.html',
   styleUrls: ['./pet-profile.component.scss'],
@@ -55,6 +60,7 @@ export class PetProfileComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private petService = inject(PetService);
+  private speciesInfoService = inject(SpeciesInfoService);
   private cdr = inject(ChangeDetectorRef);
 
   // Mascot sheet state
@@ -74,12 +80,18 @@ export class PetProfileComponent implements OnInit {
     age: 0,
     weight: 0,
     breed: '',
+    speciesCode: '',
+    calculatedAge: '',
   };
+
+  // Human age computed via SpeciesInfoService
+  humanAge: number | null = null;
+  petRealAge = '';
 
   // Info card data for PetInfoCardComponent
   petInfoItems: PetInfoItem[] = [];
 
-  
+
   // Online friends
   onlineFriends: FriendPet[] = [
     { id: '1', name: 'Luna', avatarUrl: 'assets/images/default-pet-avatar.png', online: true },
@@ -116,7 +128,30 @@ export class PetProfileComponent implements OnInit {
     window.history.back();
   }
 
-  // Yellow button actions
+  // === Quick Action icon navigation ===
+  onCalendarClick(): void {
+    this.router.navigate(['/home/calendar']);
+  }
+
+  onNotificationsClick(): void {
+    this.router.navigate(['/home/notifications']);
+  }
+
+  onEditPetClick(): void {
+    if (this.pet.id) {
+      this.router.navigate(['/profile/pet', this.pet.id]);
+    }
+  }
+
+  onMessagesClick(): void {
+    this.router.navigate(['/home/chat']);
+  }
+
+  onSavedClick(): void {
+    this.router.navigate(['/home/favorites']);
+  }
+
+  // === CTA button actions ===
   onBandaPelosaClick(): void {
     if (this.pet.id) {
       this.router.navigate(['/home/pet-profile', this.pet.id, 'gallery']);
@@ -136,7 +171,6 @@ export class PetProfileComponent implements OnInit {
   }
 
   onAppCompletaClick(): void {
-    // Premium features - Coming Soon
     alert('Funzionalità Premium - Coming Soon!');
   }
 
@@ -172,6 +206,7 @@ export class PetProfileComponent implements OnInit {
     this.petService.getPet(petId).subscribe({
       next: (response: PetResponse) => {
         this.mapResponseToPetData(response);
+        this.loadHumanAge(response);
         this.updatePetInfoItems();
         this.isLoading.set(false);
         this.cdr.markForCheck();
@@ -225,7 +260,29 @@ export class PetProfileComponent implements OnInit {
       age: this.calculateAgeFromString(response.calculatedAge),
       weight: response.weight || 0,
       breed: response.speciesName,
+      speciesCode: response.speciesCategory?.toLowerCase() || '',
+      calculatedAge: response.calculatedAge || '',
     };
+    this.petRealAge = response.calculatedAge || '';
+  }
+
+  /**
+   * Load human-equivalent age via SpeciesInfoService
+   */
+  private loadHumanAge(response: PetResponse): void {
+    const speciesCode = response.speciesCategory?.toLowerCase() || '';
+    const ageMonths = this.pet.age * 12; // approximate
+
+    this.speciesInfoService.calculateHumanAge(speciesCode, ageMonths).subscribe({
+      next: (result) => {
+        this.humanAge = result.humanYears;
+        this.updatePetInfoItems();
+        this.cdr.markForCheck();
+      },
+      error: () => {
+        this.humanAge = null;
+      },
+    });
   }
 
   /**
@@ -238,12 +295,13 @@ export class PetProfileComponent implements OnInit {
   }
 
   /**
-   * Update the pet info items for the PetInfoCardComponent
+   * Update the pet info items for the PetInfoCardComponent (5 items)
    */
   private updatePetInfoItems(): void {
     this.petInfoItems = [
       { label: 'Sex', value: this.pet.sex },
       { label: 'Anni', value: `${this.pet.age}` },
+      { label: 'Anni Umani', value: this.humanAge != null ? `${this.humanAge}` : 'N/D' },
       { label: 'Peso', value: this.pet.weight > 0 ? `${this.pet.weight} kg` : 'N/D' },
       { label: 'Razza', value: this.pet.breed },
     ];
@@ -252,6 +310,5 @@ export class PetProfileComponent implements OnInit {
   // Mascot methods
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
-    // TODO: Call returnToPeek() on shell's mascot-peek when sheet closes
   }
 }
