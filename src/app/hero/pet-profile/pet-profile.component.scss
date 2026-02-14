@@ -440,29 +440,29 @@
 }
 
 // ==========================================
-// ADD PET FAB (now positioned in left-actions slot, relative)
+// ADD PET FAB (bianco, scorre con la card)
 // ==========================================
 .pet-profile__add-pet {
   width: 56px;
   height: 56px;
-  background: $color-yellow-btn;
-  color: $color-yellow-btn-text;
+  background: #FFFFFF;
+  color: #4a74f0;
   border-radius: 50%;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   transition: $transition-fast;
   cursor: pointer;
 
   &:hover {
-    background: $color-yellow-btn-hover;
+    background: #F5F5F5;
     transform: scale(1.1);
   }
 
   &:active {
-    background: $color-yellow-btn-pressed;
+    background: #EEEEEE;
     transform: scale(0.95);
   }
 

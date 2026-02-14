@@ -153,43 +153,49 @@ $fiutami-blue: #4a74f0;
 }
 
 // ==========================================
-// LEFT ACTIONS: FAB + dots in alto a sinistra
-// Area gialla, FUORI dalla card blu
-// Allineato verticalmente con le quick actions a destra
+// LEFT ACTIONS: FAB + dots
+// Flow normale (NON fixed): scorre con la card blu
+// Posizionato appena sopra la card, a sinistra
+// Layout orizzontale: [+] ●●●
 // ==========================================
 .shell-pet-left-actions {
-  position: fixed;
-  z-index: 6;
-  left: 12px;
-  top: 80px;
+  position: relative;
+  z-index: 5;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 260px;
+  margin-bottom: -12px;
+  padding-left: 16px;
 
   @media (max-width: 360px) {
-    left: 8px;
-    top: 70px;
+    margin-top: 200px;
+    padding-left: 12px;
+  }
+
+  @media (max-width: 500px) {
+    margin-top: 210px;
+    padding-left: 12px;
   }
 
   @media (min-width: 480px) {
-    left: 16px;
-    top: 85px;
+    padding-left: 20px;
   }
 
   @media (min-width: 640px) {
-    left: 20px;
-    top: 90px;
+    margin-top: 265px;
+    padding-left: 24px;
   }
 
   @media (min-width: 768px) {
-    left: 24px;
-    top: 95px;
+    margin-top: 270px;
+    padding-left: 28px;
   }
 
   @media (min-width: 1024px) {
-    left: 32px;
-    top: 100px;
+    margin-top: 275px;
+    padding-left: 32px;
   }
 }
 
@@ -240,8 +246,8 @@ $fiutami-blue: #4a74f0;
   position: relative;
   z-index: 5;
 
-  // Spazio sopra per il cerchio (ingrandito)
-  margin-top: 280px;
+  // Piccolo gap dopo il FAB+dots (che gia' ha margin-top per il cerchio)
+  margin-top: 8px;
 
   background: $fiutami-blue;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
@@ -255,7 +261,6 @@ $fiutami-blue: #4a74f0;
 
   // Responsive mobile
   @media (max-width: 500px) {
-    margin-top: 220px;
     border-radius: 60px 0 18px 18px;
   }
 }
