@@ -53,12 +53,12 @@ export const environment = {
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Dev server with hot reload |
-| `npm run build` | Production build |
-| `npm test` | Run unit tests |
-| `npm run lint` | ESLint check |
+| Command         | Description                |
+| --------------- | -------------------------- |
+| `npm start`     | Dev server with hot reload |
+| `npm run build` | Production build           |
+| `npm test`      | Run unit tests             |
+| `npm run lint`  | ESLint check               |
 
 ## Docker
 

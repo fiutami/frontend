@@ -1,12 +1,15 @@
 # Fix Deploy CI/CD - 20 Gennaio 2026
 
 ## Problema Iniziale
+
 Il deploy su GitHub Actions falliva e la produzione non veniva aggiornata con le modifiche al Drawer Menu.
 
 ## Root Cause Analysis
 
 ### 1. package-lock.json Out of Sync
+
 **Errore CI:**
+
 ```
 npm ci can only install packages when your package.json and package-lock.json are in sync
 Missing: chokidar@4.0.3 from lock file
@@ -20,7 +23,9 @@ Missing: readdirp@4.1.2 from lock file
 ---
 
 ### 2. Peer Dependency Conflict
+
 **Errore CI:**
+
 ```
 ERESOLVE could not resolve
 peer @angular/common@">=20.1.3" from @abacritt/angularx-social-login@2.5.1
@@ -30,6 +35,7 @@ Found: @angular/common@18.2.14
 **Causa:** La libreria `@abacritt/angularx-social-login@2.5.1` richiede Angular 20+, ma il progetto usa Angular 18.
 
 **Fix:** Aggiunto `--legacy-peer-deps` a:
+
 - `.github/workflows/deploy.yml` (riga 77)
 - `Dockerfile` (riga 9)
 
@@ -47,7 +53,9 @@ RUN npm ci --legacy-peer-deps
 ---
 
 ### 3. Script e Content Mancanti
+
 **Errore CI:**
+
 ```
 Error: Cannot find module '/home/runner/work/frontend/frontend/scripts/build-breeds-json.js'
 ```
@@ -55,13 +63,16 @@ Error: Cannot find module '/home/runner/work/frontend/frontend/scripts/build-bre
 **Causa:** Le cartelle `scripts/` e `content/` non erano tracciate da git.
 
 **Fix:** Aggiunte al repository:
+
 - `scripts/` - Script per build del contenuto breeds
 - `content/` - Markdown files delle razze
 
 ---
 
 ### 4. TypeScript Strict Mode Error
+
 **Errore CI:**
+
 ```
 TS18048: 'user.provider' is possibly 'undefined'
 ```
@@ -69,6 +80,7 @@ TS18048: 'user.provider' is possibly 'undefined'
 **File:** `src/app/auth/social-login/social-login.component.ts`
 
 **Fix:** Aggiunti null checks:
+
 ```typescript
 // Prima
 this.providerSelected.emit(user.provider.toLowerCase() as 'google' | 'facebook');
@@ -82,7 +94,9 @@ if (user && user.provider && !this.isProcessingAuth) {
 ---
 
 ### 5. SocialAuthServiceConfig Injection Token (BUG PRE-ESISTENTE)
+
 **Errore Produzione:**
+
 ```
 NullInjectorError: No provider for InjectionToken SocialAuthServiceConfig!
 ```
@@ -100,6 +114,7 @@ provide: SOCIAL_AUTH_CONFIG,
 ```
 
 **Fix:**
+
 ```typescript
 import {
   SocialLoginModule,
@@ -127,29 +142,29 @@ providers: [
 
 ## Commit Applicati
 
-| Commit | Descrizione |
-|--------|-------------|
-| `1887a19` | fix(ci): regenerate package-lock.json for CI compatibility |
+| Commit    | Descrizione                                                            |
+| --------- | ---------------------------------------------------------------------- |
+| `1887a19` | fix(ci): regenerate package-lock.json for CI compatibility             |
 | `536df0a` | fix(ci): add --legacy-peer-deps to npm ci for Angular 18 compatibility |
-| `f63a555` | chore: add build scripts for breeds content pipeline |
-| `f835965` | chore: add breeds content markdown files for build pipeline |
-| `1a0e45a` | fix(auth): handle possibly undefined user.provider in social login |
-| `54e262e` | fix(docker): add --legacy-peer-deps to npm ci in Dockerfile |
-| `1624543` | fix(auth): use correct SOCIAL_AUTH_CONFIG injection token |
+| `f63a555` | chore: add build scripts for breeds content pipeline                   |
+| `f835965` | chore: add breeds content markdown files for build pipeline            |
+| `1a0e45a` | fix(auth): handle possibly undefined user.provider in social login     |
+| `54e262e` | fix(docker): add --legacy-peer-deps to npm ci in Dockerfile            |
+| `1624543` | fix(auth): use correct SOCIAL_AUTH_CONFIG injection token              |
 
 ---
 
 ## File Modificati
 
-| File | Modifica |
-|------|----------|
-| `package-lock.json` | Rigenerato con --legacy-peer-deps |
-| `.github/workflows/deploy.yml` | Aggiunto --legacy-peer-deps |
-| `Dockerfile` | Aggiunto --legacy-peer-deps |
-| `src/app/auth/social-login/social-login.component.ts` | Null checks per user.provider |
-| `src/app/auth/auth-shared.module.ts` | Fix SOCIAL_AUTH_CONFIG token |
-| `scripts/*` | Aggiunti al repo (7 file) |
-| `content/*` | Aggiunti al repo (602 file) |
+| File                                                  | Modifica                          |
+| ----------------------------------------------------- | --------------------------------- |
+| `package-lock.json`                                   | Rigenerato con --legacy-peer-deps |
+| `.github/workflows/deploy.yml`                        | Aggiunto --legacy-peer-deps       |
+| `Dockerfile`                                          | Aggiunto --legacy-peer-deps       |
+| `src/app/auth/social-login/social-login.component.ts` | Null checks per user.provider     |
+| `src/app/auth/auth-shared.module.ts`                  | Fix SOCIAL_AUTH_CONFIG token      |
+| `scripts/*`                                           | Aggiunti al repo (7 file)         |
+| `content/*`                                           | Aggiunti al repo (602 file)       |
 
 ---
 
