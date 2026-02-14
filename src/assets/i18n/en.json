@@ -1127,5 +1127,25 @@
       "how_works": "How does the quiz work?",
       "recommend": "What pet do you recommend?"
     }
+  },
+  "fattiBestiali": {
+    "title": "Beast Facts",
+    "subtitle": "Welcome to the control center <strong>of your pet</strong>",
+    "editPet": "Edit",
+    "addPets": "Add Pets",
+    "born": "Born on",
+    "sections": {
+      "appointments": "Appointments",
+      "documents": "Documents",
+      "vaccinations": "Vaccination List",
+      "allergies": "Allergies and medical notes",
+      "activityDiary": "Activity diary",
+      "weightCondition": "Weight and physical condition"
+    },
+    "emptyState": "No items added",
+    "promo": {
+      "text": "Want to know how {{petName}} feels today? Enable emotional monitoring.",
+      "button": "Order now"
+    }
   }
 }

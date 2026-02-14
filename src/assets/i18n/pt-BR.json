@@ -1132,5 +1132,25 @@
       "how_works": "Como funciona o quiz?",
       "recommend": "Que pet você recomenda?"
     }
+  },
+  "fattiBestiali": {
+    "title": "Fatos Bestiais",
+    "subtitle": "Bem-vindo ao centro de controle <strong>do seu pet</strong>",
+    "editPet": "Editar",
+    "addPets": "Adicionar Pets",
+    "born": "Nascido em",
+    "sections": {
+      "appointments": "Compromissos",
+      "documents": "Documentos",
+      "vaccinations": "Lista de Vacinação",
+      "allergies": "Alergias e notas médicas",
+      "activityDiary": "Diário de atividades",
+      "weightCondition": "Peso e condição física"
+    },
+    "emptyState": "Nenhum item adicionado",
+    "promo": {
+      "text": "Quer saber como {{petName}} está se sentindo hoje? Ative o monitoramento emocional.",
+      "button": "Peça agora"
+    }
   }
 }

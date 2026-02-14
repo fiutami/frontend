@@ -1061,5 +1061,25 @@
     },
     "logout": "Cerrar sesión",
     "comingSoon": "Contenido próximamente..."
+  },
+  "fattiBestiali": {
+    "title": "Datos Bestiales",
+    "subtitle": "Bienvenido al centro de control <strong>de tu mascota</strong>",
+    "editPet": "Editar",
+    "addPets": "Agregar Mascotas",
+    "born": "Nacido el",
+    "sections": {
+      "appointments": "Citas",
+      "documents": "Documentos",
+      "vaccinations": "Lista de Vacunación",
+      "allergies": "Alergias y notas médicas",
+      "activityDiary": "Diario de actividades",
+      "weightCondition": "Peso y condición física"
+    },
+    "emptyState": "Ningún elemento agregado",
+    "promo": {
+      "text": "¿Quieres saber cómo se siente {{petName}} hoy? Activa el monitoreo emocional.",
+      "button": "Pedir ahora"
+    }
   }
 }

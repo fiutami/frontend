@@ -1,93 +1,168 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  inject,
+  OnInit,
+  signal,
+  computed,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default';
+import { PetService } from '../../../core/services/pet.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { SubscriptionsService } from '../../../core/services/subscriptions.service';
+import { PetResponse } from '../../../core/models/pet.models';
 
-export interface FunFact {
+export interface FBSection {
   id: string;
-  title: string;
-  description: string;
-  category: 'behavior' | 'health' | 'history' | 'curiosity';
+  titleKey: string;
   icon: string;
+  isLocked: boolean;
 }
 
 @Component({
   selector: 'app-fatti-bestiali',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, TranslateModule, TabPageShellDefaultComponent],
   templateUrl: './fatti-bestiali.component.html',
   styleUrls: ['./fatti-bestiali.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FattiBestialiComponent {
+export class FattiBestialiComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private petService = inject(PetService);
+  private authService = inject(AuthService);
+  private subscriptionsService = inject(SubscriptionsService);
+  private cdr = inject(ChangeDetectorRef);
+
   // State signals
+  pet = signal<PetResponse | null>(null);
   isLoading = signal(false);
-  facts = signal<FunFact[]>([
-    // Mock data - in production, these would be AI-generated based on pet species
-    {
-      id: '1',
-      title: 'Super Olfatto',
-      description: 'Sapevi che i Labrador hanno circa 220 milioni di recettori olfattivi? Possono rilevare odori fino a 100.000 volte meglio degli umani!',
-      category: 'curiosity',
-      icon: 'pets',
-    },
-    {
-      id: '2',
-      title: 'Coda Comunicativa',
-      description: 'La coda del tuo pet non serve solo per equilibrio! È uno strumento di comunicazione complesso che esprime emozioni e stati d\'animo.',
-      category: 'behavior',
-      icon: 'sentiment_satisfied_alt',
-    },
-    {
-      id: '3',
-      title: 'Origini Antiche',
-      description: 'I Labrador Retriever provengono dall\'isola di Terranova, dove aiutavano i pescatori a recuperare le reti e i pesci sfuggiti.',
-      category: 'history',
-      icon: 'history_edu',
-    },
-    {
-      id: '4',
-      title: 'Amici dell\'Acqua',
-      description: 'I Labrador hanno membrane tra le dita delle zampe che li rendono nuotatori eccellenti. Adorano l\'acqua per natura!',
-      category: 'curiosity',
-      icon: 'pool',
-    },
-  ]);
+  errorMessage = signal<string | null>(null);
+  expandedSectionId = signal<string | null>(null);
+  userCity = signal('');
+  userPlanId = signal<string>('free');
 
-  get isEmpty(): boolean {
-    return this.facts().length === 0;
+  // Computed
+  petAge = computed(() => {
+    const p = this.pet();
+    if (!p) return '';
+    if (p.calculatedAge) return p.calculatedAge;
+    if (!p.birthDate) return '';
+    const birth = new Date(p.birthDate);
+    const now = new Date();
+    const diffMs = now.getTime() - birth.getTime();
+    const diffMonths = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 30.44));
+    const years = Math.floor(diffMonths / 12);
+    const months = diffMonths % 12;
+    if (years > 0) return `${years} ${years === 1 ? 'anno' : 'anni'}`;
+    if (months > 0) return `${months} ${months === 1 ? 'mese' : 'mesi'}`;
+    return '';
+  });
+
+  isPremiumOrPro = computed(() => {
+    const plan = this.userPlanId();
+    return plan === 'premium' || plan === 'pro';
+  });
+
+  // Sections definition
+  readonly sections: FBSection[] = [
+    { id: 'appointments', titleKey: 'fattiBestiali.sections.appointments', icon: 'calendar_today', isLocked: false },
+    { id: 'documents', titleKey: 'fattiBestiali.sections.documents', icon: 'description', isLocked: false },
+    { id: 'vaccinations', titleKey: 'fattiBestiali.sections.vaccinations', icon: 'vaccines', isLocked: false },
+    { id: 'allergies', titleKey: 'fattiBestiali.sections.allergies', icon: 'healing', isLocked: false },
+    { id: 'activityDiary', titleKey: 'fattiBestiali.sections.activityDiary', icon: 'directions_run', isLocked: true },
+    { id: 'weightCondition', titleKey: 'fattiBestiali.sections.weightCondition', icon: 'monitor_weight', isLocked: true },
+  ];
+
+  ngOnInit(): void {
+    const petId = this.route.snapshot.paramMap.get('id');
+    if (petId) {
+      this.loadPetData(petId);
+    }
+    this.loadUserProfile();
+    this.loadSubscription();
   }
 
-  goBack(): void {
-    window.history.back();
+  toggleSection(sectionId: string): void {
+    this.expandedSectionId.update(current =>
+      current === sectionId ? null : sectionId
+    );
   }
 
-  onRefreshClick(): void {
-    // Trigger AI to generate new facts
-    console.log('Refresh facts clicked');
+  isSectionExpanded(sectionId: string): boolean {
+    return this.expandedSectionId() === sectionId;
+  }
+
+  isSectionLocked(section: FBSection): boolean {
+    return section.isLocked && !this.isPremiumOrPro();
+  }
+
+  navigateToEditPet(): void {
+    const p = this.pet();
+    if (p) {
+      this.router.navigate(['/profile/pet', p.id]);
+    }
+  }
+
+  navigateToAddPet(): void {
+    this.router.navigate(['/home/pet-register/specie']);
+  }
+
+  navigateToSubscriptions(): void {
+    this.router.navigate(['/home/subscriptions']);
+  }
+
+  formatBirthDate(dateStr: string | null): string {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('it-IT', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+  }
+
+  private loadPetData(petId: string): void {
     this.isLoading.set(true);
-    // Simulate API call
-    setTimeout(() => {
-      this.isLoading.set(false);
-    }, 1500);
+    this.errorMessage.set(null);
+
+    this.petService.getPet(petId).subscribe({
+      next: (response: PetResponse) => {
+        this.pet.set(response);
+        this.isLoading.set(false);
+        this.cdr.markForCheck();
+      },
+      error: (err) => {
+        console.error('Failed to load pet:', err);
+        this.errorMessage.set('Impossibile caricare i dati del pet');
+        this.isLoading.set(false);
+        this.cdr.markForCheck();
+      },
+    });
   }
 
-  getCategoryLabel(category: string): string {
-    const labels: Record<string, string> = {
-      behavior: 'Comportamento',
-      health: 'Salute',
-      history: 'Storia',
-      curiosity: 'Curiosità',
-    };
-    return labels[category] || 'Info';
+  private loadUserProfile(): void {
+    this.authService.getProfile().subscribe({
+      next: (profile) => {
+        this.userCity.set(profile.city || '');
+        this.cdr.markForCheck();
+      },
+      error: () => {},
+    });
   }
 
-  getCategoryColor(category: string): string {
-    const colors: Record<string, string> = {
-      behavior: '#FF9800',
-      health: '#4CAF50',
-      history: '#9C27B0',
-      curiosity: '#2196F3',
-    };
-    return colors[category] || '#9E9E9E';
+  private loadSubscription(): void {
+    this.subscriptionsService.getCurrentSubscription().subscribe({
+      next: (sub) => {
+        this.userPlanId.set(sub.planId || 'free');
+        this.cdr.markForCheck();
+      },
+      error: () => {},
+    });
   }
 }

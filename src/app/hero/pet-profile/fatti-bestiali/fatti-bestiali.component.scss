@@ -1,239 +1,335 @@
 @import 'src/styles/tokens-figma';
 
-.fatti-bestiali {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #4A74F0 0%, #3D5FC4 100%);
+// ========================================
+// Fatti Bestiali - Centro di Controllo Pet
+// BEM prefix: .fb__
+// ========================================
 
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-md;
-    background: rgba(0, 0, 0, 0.1);
-  }
+// Subtitle under logo (branding extra)
+.fb__subtitle {
+  margin: 0;
+  font-size: $typography-body-size;
+  color: $color-text-inverse;
+  text-align: center;
 
-  &__back,
-  &__refresh {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-text-inverse;
-    border-radius: 50%;
-    transition: $transition-fast;
-
-    &:hover:not(:disabled) {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    &:active:not(:disabled) {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-
-  &__refresh-icon--spinning {
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  &__title {
-    font-size: 20px;
+  :host ::ng-deep strong {
     font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0;
-    text-transform: uppercase;
-  }
-
-  &__content {
-    flex: 1;
-    overflow-y: auto;
-    padding: $spacing-md;
-  }
-
-  // Mascot section
-  &__mascot {
-    display: flex;
-    align-items: center;
-    gap: $spacing-md;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: $border-radius-lg;
-    padding: $spacing-md;
-    margin-bottom: $spacing-lg;
-    backdrop-filter: blur(10px);
-  }
-
-  &__mascot-icon {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $color-yellow-btn;
-    border-radius: 50%;
-    flex-shrink: 0;
-    color: $color-yellow-btn-text;
-  }
-
-  &__mascot-text {
-    font-size: $typography-body-size;
-    color: $color-text-inverse;
-    margin: 0;
-    font-weight: 500;
-  }
-
-  // Empty state
-  &__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 300px;
-    padding: $spacing-xl;
-  }
-
-  &__empty-icon {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    margin-bottom: $spacing-lg;
-    color: $color-text-inverse;
-  }
-
-  &__empty-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0 0 $spacing-sm;
-  }
-
-  &__empty-text {
-    font-size: $typography-body-size;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
-    max-width: 280px;
-  }
-
-  // Facts grid
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-md;
-    margin-bottom: $spacing-lg;
-  }
-
-  &__card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: $border-radius-lg;
-    padding: $spacing-lg;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    transition: $transition-fast;
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  &__category {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: $border-radius-full;
-    font-size: $typography-small-size;
-    font-weight: 600;
-    color: white;
-    margin-bottom: $spacing-sm;
-  }
-
-  &__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 50%;
-    margin-bottom: $spacing-md;
-    color: white;
-
-    .material-icons {
-      font-size: 28px;
-    }
-  }
-
-  &__card-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 0 0 $spacing-sm;
-  }
-
-  &__card-description {
-    font-size: $typography-body-size;
-    color: #4a4a4a;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  // Disclaimer
-  &__disclaimer {
-    display: flex;
-    gap: $spacing-sm;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: $border-radius-md;
-    padding: $spacing-md;
-    backdrop-filter: blur(10px);
-    margin-bottom: $spacing-xl;
-
-    svg {
-      flex-shrink: 0;
-      color: $color-yellow-btn;
-    }
-
-    p {
-      font-size: $typography-small-size;
-      color: rgba(255, 255, 255, 0.8);
-      margin: 0;
-      line-height: 1.5;
-    }
   }
 }
 
-// Responsive: larger screens
-@media (min-width: 768px) {
-  .fatti-bestiali {
-    &__grid {
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+// ========================================
+// Pet Summary Card (sticky area)
+// ========================================
+.fb__pet-card {
+  position: relative;
+  background: $color-background-primary;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-md;
+  margin: 0 $spacing-md;
+}
 
-    &__disclaimer {
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.fb__pet-card-badge {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  background: $color-yellow-btn;
+  color: $color-yellow-btn-text;
+  font-size: $typography-small-size;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: $border-radius-full;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fb__pet-card-row {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.fb__pet-card-photo {
+  width: $avatar-size-lg;
+  height: $avatar-size-lg;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid $color-yellow-btn;
+}
+
+.fb__pet-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.fb__pet-card-name {
+  font-size: $typography-button-size;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 4px;
+  padding-right: 100px; // space for badge
+}
+
+.fb__pet-card-detail {
+  font-size: $typography-small-size;
+  color: $color-text-secondary;
+  margin: 0 0 4px;
+}
+
+.fb__pet-card-separator {
+  margin: 0 4px;
+}
+
+.fb__pet-card-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $typography-small-size;
+  color: $color-text-secondary;
+  margin: 0;
+
+  .material-icons {
+    font-size: 16px;
+    color: $color-primary-500;
+  }
+}
+
+.fb__pet-card-actions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.fb__btn-outline {
+  flex: 1;
+  padding: 10px $spacing-md;
+  border: 2px solid $color-primary-500;
+  border-radius: $border-radius-md;
+  background: transparent;
+  color: $color-primary-500;
+  font-size: $typography-body-size;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:active {
+    background: rgba($color-primary-500, 0.08);
+  }
+}
+
+.fb__btn-cta {
+  flex: 1;
+  padding: 10px $spacing-md;
+  border: none;
+  border-radius: $border-radius-md;
+  background: $color-yellow-btn;
+  color: $color-yellow-btn-text;
+  font-size: $typography-body-size;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:active {
+    background: $color-yellow-btn-pressed;
+  }
+}
+
+// ========================================
+// Loading & Error States
+// ========================================
+.fb__loading,
+.fb__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-2xl $spacing-md;
+  text-align: center;
+  color: $color-text-secondary;
+
+  .material-icons {
+    font-size: 40px;
+  }
+
+  p {
+    margin: 0;
+    font-size: $typography-body-size;
+  }
+}
+
+.fb__loading-icon {
+  animation: pulse 1.5s ease-in-out infinite;
+  color: $color-primary-500;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.fb__error .material-icons {
+  color: $color-error;
+}
+
+// ========================================
+// Main Content Area
+// ========================================
+.fb__content {
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+// ========================================
+// Accordion Sections
+// ========================================
+.fb__accordion {
+  background: $color-background-primary;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.fb__accordion-header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: $transition-fast;
+
+  &:active {
+    background: $color-background-secondary;
+  }
+}
+
+.fb__accordion-icon {
+  font-size: 22px;
+  color: $color-primary-500;
+}
+
+.fb__accordion-title {
+  flex: 1;
+  font-size: $typography-body-size;
+  font-weight: 700;
+  color: $color-primary-500;
+}
+
+.fb__accordion-chevron {
+  font-size: 24px;
+  color: $color-text-secondary;
+  transition: $transition-fast;
+}
+
+.fb__accordion--expanded {
+  .fb__accordion-chevron {
+    color: $color-primary-500;
+  }
+}
+
+// Accordion body with slideDown animation
+.fb__accordion-body {
+  padding: 0 $spacing-lg $spacing-lg;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding-bottom: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+    padding-bottom: $spacing-lg;
+  }
+}
+
+.fb__empty-text {
+  font-size: $typography-small-size;
+  color: $color-text-secondary;
+  margin: 0;
+  padding: $spacing-sm 0;
+  text-align: center;
+  font-style: italic;
+}
+
+// ========================================
+// Locked Sections (Pro)
+// ========================================
+.fb__accordion--locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.fb__accordion-header--locked {
+  cursor: default;
+}
+
+.fb__accordion-lock {
+  font-size: 20px;
+  color: $color-text-secondary;
+}
+
+// ========================================
+// Promo Banner
+// ========================================
+.fb__promo {
+  margin-top: $spacing-sm;
+  background: linear-gradient(135deg, $color-ai-primary 0%, #3D5FC4 100%);
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  text-align: center;
+}
+
+.fb__promo-text {
+  font-size: $typography-body-size;
+  color: $color-text-inverse;
+  margin: 0 0 $spacing-md;
+  line-height: 1.5;
+}
+
+.fb__promo-btn {
+  display: inline-block;
+  padding: 10px $spacing-xl;
+  border: none;
+  border-radius: $border-radius-md;
+  background: $color-yellow-btn;
+  color: $color-yellow-btn-text;
+  font-size: $typography-body-size;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-fast;
+  margin-bottom: $spacing-md;
+
+  &:active {
+    background: $color-yellow-btn-pressed;
+  }
+}
+
+.fb__promo-dots {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-xs;
+}
+
+.fb__promo-dot {
+  width: $slider-dot-size;
+  height: $slider-dot-size;
+  border-radius: 50%;
+  background: $slider-dot-inactive;
+
+  &--active {
+    background: $slider-dot-active;
   }
 }

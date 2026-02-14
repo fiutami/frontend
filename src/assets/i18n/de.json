@@ -1083,5 +1083,25 @@
     },
     "logout": "Abmelden",
     "comingSoon": "Inhalt kommt bald..."
+  },
+  "fattiBestiali": {
+    "title": "Tierische Fakten",
+    "subtitle": "Willkommen im Kontrollzentrum <strong>deines Haustiers</strong>",
+    "editPet": "Bearbeiten",
+    "addPets": "Haustiere hinzufügen",
+    "born": "Geboren am",
+    "sections": {
+      "appointments": "Termine",
+      "documents": "Dokumente",
+      "vaccinations": "Impfliste",
+      "allergies": "Allergien und medizinische Hinweise",
+      "activityDiary": "Aktivitätstagebuch",
+      "weightCondition": "Gewicht und körperliche Verfassung"
+    },
+    "emptyState": "Keine Einträge vorhanden",
+    "promo": {
+      "text": "Möchtest du wissen, wie sich {{petName}} heute fühlt? Aktiviere das emotionale Monitoring.",
+      "button": "Jetzt bestellen"
+    }
   }
 }
