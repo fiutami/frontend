@@ -150,7 +150,10 @@
       "specialMarks": "Marcas especiais",
       "specialMarksPlaceholder": "Manchas, cicatrizes, peculiaridades...",
       "uploadingPhoto": "Enviando foto...",
-      "registering": "Registrando..."
+      "registering": "Registrando...",
+      "variantLabel": "Variante / Cruzamento",
+      "variantLabelPlaceholder": "Ex. Cruzamento com Labrador, mistura de Pastor...",
+      "variantLabelHint": "Descreva o cruzamento ou variante (máx. 60 caracteres)"
     },
     "quizResult": {
       "title": "Aqui está seu par perfeito!",

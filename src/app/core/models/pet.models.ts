@@ -11,6 +11,7 @@ export interface PetCreateRequest {
   birthDate?: string | null;
   estimatedAgeMonths?: number | null;
   breedId?: string | null;
+  breedVariantLabel?: string | null;
   color?: string | null;
   weight?: number | null;
   specialMarks?: string | null;
@@ -50,6 +51,9 @@ export interface PetResponse {
   color: string | null;
   weight: number | null;
   notes: string | null;
+  breedId: string | null;
+  breedName: string | null;
+  breedVariantLabel: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -58,6 +62,7 @@ export interface PetSummaryResponse {
   id: string;
   name: string;
   speciesName: string;
+  breedName: string | null;
   profilePhotoUrl: string | null;
   calculatedAge: string;
 }
@@ -133,6 +138,7 @@ export interface PetProfile {
   speciesId: string;
   breed: string;
   breedId?: string;
+  breedVariantLabel?: string | null;
   birthDate: string | null;
   age: string;
   weight: number | null;

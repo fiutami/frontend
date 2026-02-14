@@ -42,6 +42,7 @@ export interface SpeciesDto {
   category: string;
   description: string | null;
   imageUrl: string | null;
+  breedPolicy: 'None' | 'Optional' | 'Required';
 }
 
 /**

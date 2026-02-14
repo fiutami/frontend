@@ -38,6 +38,8 @@ export interface BreedApiResponse {
   lifespan?: { min: number; max: number };
   temperament?: string[];
   isPopular: boolean;
+  breedType?: 'Pure' | 'Mixed' | 'Hybrid';
+  allowsUserVariantLabel?: boolean;
 }
 
 /**
@@ -193,6 +195,8 @@ export class BreedsService {
       origin: b.origin || '',
       recognition: '',
       imageUrl: b.imageUrl || `/assets/breeds/${b.id}.jpg`,
+      breedType: b.breedType,
+      allowsUserVariantLabel: b.allowsUserVariantLabel ?? false,
       size: b.size ? {
         height: { min: 0, max: 0, unit: 'cm' },
         weight: b.weight ? { min: b.weight.min, max: b.weight.max, unit: 'kg' } : { min: 0, max: 0, unit: 'kg' },

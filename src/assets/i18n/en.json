@@ -150,7 +150,10 @@
       "specialMarks": "Distinguishing marks",
       "specialMarksPlaceholder": "Spots, scars, peculiarities...",
       "uploadingPhoto": "Uploading photo...",
-      "registering": "Registering..."
+      "registering": "Registering...",
+      "variantLabel": "Variant / Crossbreed",
+      "variantLabelPlaceholder": "E.g. Labrador cross, Shepherd mix...",
+      "variantLabelHint": "Describe the crossbreed or variant (max 60 chars)"
     },
     "quizResult": {
       "title": "Here's your perfect match!",

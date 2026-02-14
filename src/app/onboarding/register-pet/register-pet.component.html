@@ -110,33 +110,60 @@
         }
       </div>
 
-      <!-- Razza -->
-      <div class="register-pet__field">
-        <label class="register-pet__label" for="razza">{{ 'onboarding.registerPet.breedOptional' | translate }}</label>
-        @if (isLoadingBreeds()) {
-          <div class="register-pet__loading-field">
-            <span class="register-pet__spinner-small"></span>
-            {{ 'onboarding.registerPet.loadingBreeds' | translate }}
-          </div>
-        } @else if (breedOptions.length > 0) {
-          <select
-            id="razza"
-            formControlName="razza"
-            class="register-pet__select">
-            <option value="">{{ 'onboarding.registerPet.breedPlaceholder' | translate }}</option>
-            @for (option of breedOptions; track option.value) {
-              <option [value]="option.label">{{ option.label }}</option>
+      <!-- Razza (hidden when breedPolicy is 'None') -->
+      @if (selectedBreedPolicy() !== 'None') {
+        <div class="register-pet__field">
+          <label class="register-pet__label" for="razza">
+            @if (selectedBreedPolicy() === 'Required') {
+              {{ 'onboarding.registerPet.breedOptional' | translate }} <span class="register-pet__required">*</span>
+            } @else {
+              {{ 'onboarding.registerPet.breedOptional' | translate }}
             }
-          </select>
-        } @else {
-          <input
-            type="text"
-            id="razza"
-            formControlName="razza"
-            class="register-pet__input"
-            [placeholder]="'onboarding.registerPet.breedPlaceholder' | translate" />
+          </label>
+          @if (isLoadingBreeds()) {
+            <div class="register-pet__loading-field">
+              <span class="register-pet__spinner-small"></span>
+              {{ 'onboarding.registerPet.loadingBreeds' | translate }}
+            </div>
+          } @else if (breedOptions.length > 0) {
+            <select
+              id="razza"
+              formControlName="razza"
+              class="register-pet__select"
+              [class.register-pet__select--error]="getFieldError('razza')">
+              <option value="">{{ 'onboarding.registerPet.breedPlaceholder' | translate }}</option>
+              @for (option of breedOptions; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            @if (getFieldError('razza')) {
+              <span class="register-pet__field-error">{{ getFieldError('razza') }}</span>
+            }
+          } @else {
+            <input
+              type="text"
+              id="razza"
+              formControlName="razza"
+              class="register-pet__input"
+              [placeholder]="'onboarding.registerPet.breedPlaceholder' | translate" />
+          }
+        </div>
+
+        <!-- Variant label (only for Mixed/Hybrid breeds) -->
+        @if (showVariantLabel()) {
+          <div class="register-pet__field">
+            <label class="register-pet__label" for="variantLabel">{{ 'onboarding.registerPet.variantLabel' | translate }}</label>
+            <input
+              type="text"
+              id="variantLabel"
+              formControlName="variantLabel"
+              class="register-pet__input"
+              [placeholder]="'onboarding.registerPet.variantLabelPlaceholder' | translate"
+              maxlength="60" />
+            <p class="register-pet__photo-hint">{{ 'onboarding.registerPet.variantLabelHint' | translate }}</p>
+          </div>
         }
-      </div>
+      }
 
       <!-- Sesso -->
       <div class="register-pet__field">

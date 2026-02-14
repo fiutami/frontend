@@ -150,7 +150,10 @@
       "specialMarks": "Marques distinctives",
       "specialMarksPlaceholder": "Taches, cicatrices, particularités...",
       "uploadingPhoto": "Téléchargement photo...",
-      "registering": "Enregistrement..."
+      "registering": "Enregistrement...",
+      "variantLabel": "Variante / Croisement",
+      "variantLabelPlaceholder": "Ex. Croisé Labrador, mélange Berger...",
+      "variantLabelHint": "Décrivez le croisement ou la variante (max 60 caractères)"
     },
     "quizResult": {
       "title": "Voici ton match parfait !",

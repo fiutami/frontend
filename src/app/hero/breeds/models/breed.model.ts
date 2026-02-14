@@ -75,6 +75,10 @@ export interface Breed {
   recognition: string;
   imageUrl: string;
 
+  // Breed classification
+  breedType?: 'Pure' | 'Mixed' | 'Hybrid';
+  allowsUserVariantLabel?: boolean;
+
   // Detailed info sections
   dna?: BreedDNA;
   size?: BreedSize;

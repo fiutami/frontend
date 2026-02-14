@@ -46,7 +46,10 @@ export class PetProfileComponent implements OnInit {
   petSubtitle = computed(() => {
     const p = this.pet();
     if (!p) return '';
-    return `${p.speciesName} · ${p.calculatedAge}`;
+    const breed = p.breedName
+      ? (p.breedVariantLabel ? `${p.breedName} - ${p.breedVariantLabel}` : p.breedName)
+      : p.speciesName;
+    return `${breed} · ${p.calculatedAge}`;
   });
 
   /** Profile photo URL */
@@ -56,11 +59,15 @@ export class PetProfileComponent implements OnInit {
   petInfoItems = computed<PetInfoItem[]>(() => {
     const p = this.pet();
     if (!p) return [];
+    const breedDisplay = p.breedName
+      ? (p.breedVariantLabel ? `${p.breedName} - ${p.breedVariantLabel}` : p.breedName)
+      : null;
     return [
       { label: 'Sesso', value: p.sex === 'male' ? 'M' : p.sex === 'female' ? 'F' : '?' },
       { label: 'Età', value: p.calculatedAge },
       { label: 'Peso', value: p.weight ? `${p.weight} kg` : 'N/D' },
       { label: 'Specie', value: p.speciesName },
+      ...(breedDisplay ? [{ label: 'Razza', value: breedDisplay }] : []),
     ];
   });
 
@@ -139,6 +146,9 @@ const FALLBACK_PET: PetResponse = {
   color: 'Bianco e marrone',
   weight: 12,
   notes: null,
+  breedId: null,
+  breedName: 'Golden Retriever',
+  breedVariantLabel: null,
   createdAt: '2024-06-01T10:00:00Z',
   updatedAt: '2025-01-15T14:30:00Z',
 };

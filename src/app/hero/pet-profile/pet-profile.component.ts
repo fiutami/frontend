@@ -258,6 +258,16 @@ export class PetProfileComponent implements OnInit {
    * Map API response to local PetData interface
    */
   private mapResponseToPetData(response: PetResponse): void {
+    // Build breed display string
+    let breedDisplay: string;
+    if (response.breedName) {
+      breedDisplay = response.breedVariantLabel
+        ? `${response.breedName} - ${response.breedVariantLabel}`
+        : response.breedName;
+    } else {
+      breedDisplay = response.speciesName;
+    }
+
     this.pet = {
       id: response.id,
       name: response.name,
@@ -266,7 +276,7 @@ export class PetProfileComponent implements OnInit {
       sex: response.sex === 'male' ? 'Maschio' : 'Femmina',
       age: this.calculateAgeFromString(response.calculatedAge),
       weight: response.weight || 0,
-      breed: response.speciesName,
+      breed: breedDisplay,
       speciesCode: response.speciesCategory?.toLowerCase() || '',
       calculatedAge: response.calculatedAge || '',
     };

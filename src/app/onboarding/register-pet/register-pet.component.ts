@@ -82,6 +82,12 @@ export class RegisterPetComponent implements OnInit {
   /** Species load error */
   protected speciesError = signal<string | null>(null);
 
+  /** Breed policy for the currently selected species */
+  protected selectedBreedPolicy = signal<'None' | 'Optional' | 'Required'>('Optional');
+
+  /** Whether the selected breed allows a user variant label */
+  protected showVariantLabel = signal(false);
+
   /** Species options (from backend only - no fallback) */
   protected get speciesOptions(): { value: string; label: string }[] {
     return this.backendSpecies().map(s => ({
@@ -103,6 +109,7 @@ export class RegisterPetComponent implements OnInit {
     nome: ['', [Validators.required, Validators.minLength(2)]],
     specie: ['', Validators.required],
     razza: [''],
+    variantLabel: [''],
     sesso: ['', Validators.required],
     dataNascita: [''],
     peso: [''],
@@ -130,13 +137,46 @@ export class RegisterPetComponent implements OnInit {
       this.isLoadingSpecies.set(false);
     }
 
-    // Listen for species changes to load breeds
+    // Listen for species changes to load breeds and update breed policy
     this.petForm.get('specie')?.valueChanges.subscribe(speciesId => {
       if (speciesId) {
-        this.loadBreedsForSpecies(speciesId);
+        const species = this.backendSpecies().find(s => s.id === speciesId);
+        const policy = species?.breedPolicy ?? 'Optional';
+        this.selectedBreedPolicy.set(policy);
+
+        // Update breed field validators based on policy
+        const breedControl = this.petForm.get('razza');
+        if (policy === 'Required') {
+          breedControl?.setValidators(Validators.required);
+        } else {
+          breedControl?.clearValidators();
+        }
+        breedControl?.updateValueAndValidity();
+
+        if (policy !== 'None') {
+          this.loadBreedsForSpecies(speciesId);
+        } else {
+          this.breeds.set([]);
+          breedControl?.setValue('');
+          this.showVariantLabel.set(false);
+        }
       } else {
         this.breeds.set([]);
+        this.selectedBreedPolicy.set('Optional');
+        this.showVariantLabel.set(false);
       }
+    });
+
+    // Listen for breed changes to show/hide variant label
+    this.petForm.get('razza')?.valueChanges.subscribe(breedId => {
+      if (breedId) {
+        const breed = this.breeds().find(b => b.id === breedId);
+        this.showVariantLabel.set(breed?.allowsUserVariantLabel ?? false);
+      } else {
+        this.showVariantLabel.set(false);
+      }
+      // Clear variant label when breed changes
+      this.petForm.get('variantLabel')?.setValue('');
     });
   }
 
@@ -271,6 +311,7 @@ export class RegisterPetComponent implements OnInit {
       sex: formValue.sesso,
       birthDate: formValue.dataNascita || null,
       breedId: formValue.razza || null,
+      breedVariantLabel: formValue.variantLabel?.trim() || null,
       color: formValue.colore || null,
       weight: formValue.peso ? parseFloat(formValue.peso) : null,
       specialMarks: formValue.segniParticolari || null,

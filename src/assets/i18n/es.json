@@ -150,7 +150,10 @@
       "specialMarks": "Marcas especiales",
       "specialMarksPlaceholder": "Manchas, cicatrices, peculiaridades...",
       "uploadingPhoto": "Subiendo foto...",
-      "registering": "Registrando..."
+      "registering": "Registrando...",
+      "variantLabel": "Variante / Cruce",
+      "variantLabelPlaceholder": "Ej. Cruce con Labrador, mezcla de Pastor...",
+      "variantLabelHint": "Describe el cruce o variante (máx. 60 caracteres)"
     },
     "quizResult": {
       "title": "¡Aquí está tu match perfecto!",

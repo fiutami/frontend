@@ -150,7 +150,10 @@
       "specialMarks": "Segni particolari",
       "specialMarksPlaceholder": "Macchie, cicatrici, particolarità...",
       "uploadingPhoto": "Caricamento foto...",
-      "registering": "Registrazione..."
+      "registering": "Registrazione...",
+      "variantLabel": "Variante / Incrocio",
+      "variantLabelPlaceholder": "Es. Incrocio con Labrador, mix Pastore...",
+      "variantLabelHint": "Descrivi l'incrocio o la variante (max 60 caratteri)"
     },
     "quizResult": {
       "title": "Ecco il tuo match perfetto!",

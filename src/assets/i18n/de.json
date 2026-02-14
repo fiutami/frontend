@@ -150,7 +150,10 @@
       "specialMarks": "Besondere Merkmale",
       "specialMarksPlaceholder": "Flecken, Narben, Besonderheiten...",
       "uploadingPhoto": "Foto wird hochgeladen...",
-      "registering": "Registrierung..."
+      "registering": "Registrierung...",
+      "variantLabel": "Variante / Kreuzung",
+      "variantLabelPlaceholder": "Z.B. Labrador-Mischling, Schäferhund-Mix...",
+      "variantLabelHint": "Beschreiben Sie die Kreuzung oder Variante (max. 60 Zeichen)"
     },
     "quizResult": {
       "title": "Hier ist dein perfektes Match!",
