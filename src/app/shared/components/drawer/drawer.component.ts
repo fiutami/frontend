@@ -242,8 +242,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
     this.drawerService.close();
   }
 
-  closeAndGoHome(): void {
-    this.router.navigate(['/home/main'], { replaceUrl: true });
+  closeAndGoBack(): void {
     this.close();
   }
 
