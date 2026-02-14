@@ -120,31 +120,6 @@
         </div>
       </section>
 
-      <!-- Promo slider -->
-      <section class="pet-profile__promo">
-        <div class="pet-profile__promo-slides">
-          @for (slide of promoSlides; track slide.id; let i = $index) {
-            <div
-              class="pet-profile__promo-slide"
-              [class.pet-profile__promo-slide--active]="i === currentSlide"
-            >
-              <h3>{{ slide.title }}</h3>
-              <p>{{ slide.description }}</p>
-            </div>
-          }
-        </div>
-        <div class="pet-profile__promo-dots">
-          @for (slide of promoSlides; track slide.id; let i = $index) {
-            <button
-              class="pet-profile__promo-dot"
-              [class.pet-profile__promo-dot--active]="i === currentSlide"
-              (click)="goToSlide(i)"
-              [attr.aria-label]="'Vai a slide ' + (i + 1)"
-            ></button>
-          }
-        </div>
-      </section>
-
       <!-- Partner in evidenza -->
       <section class="pet-profile__partners">
         <h3 class="pet-profile__partners-title">Partner in evidenza</h3>
@@ -174,6 +149,31 @@
                 </div>
               }
             </button>
+          }
+        </div>
+      </section>
+
+      <!-- Promo slider -->
+      <section class="pet-profile__promo">
+        <div class="pet-profile__promo-slides">
+          @for (slide of promoSlides; track slide.id; let i = $index) {
+            <div
+              class="pet-profile__promo-slide"
+              [class.pet-profile__promo-slide--active]="i === currentSlide"
+            >
+              <h3>{{ slide.title }}</h3>
+              <p>{{ slide.description }}</p>
+            </div>
+          }
+        </div>
+        <div class="pet-profile__promo-dots">
+          @for (slide of promoSlides; track slide.id; let i = $index) {
+            <button
+              class="pet-profile__promo-dot"
+              [class.pet-profile__promo-dot--active]="i === currentSlide"
+              (click)="goToSlide(i)"
+              [attr.aria-label]="'Vai a slide ' + (i + 1)"
+            ></button>
           }
         </div>
       </section>
