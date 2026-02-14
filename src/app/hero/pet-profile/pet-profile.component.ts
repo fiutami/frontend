@@ -33,11 +33,14 @@ export interface PetData {
   calculatedAge?: string;
 }
 
-export interface FriendPet {
+export interface PartnerShowcase {
   id: string;
   name: string;
-  avatarUrl: string;
-  online: boolean;
+  type: 'shop' | 'vet' | 'groomer' | 'shelter' | 'clinic' | 'hotel';
+  location: string;
+  logo?: string;
+  tier: 'free' | 'base' | 'premium';
+  rating?: number;
 }
 
 @Component({
@@ -92,12 +95,22 @@ export class PetProfileComponent implements OnInit {
   petInfoItems: PetInfoItem[] = [];
 
 
-  // Online friends
-  onlineFriends: FriendPet[] = [
-    { id: '1', name: 'Luna', avatarUrl: 'assets/images/default-pet-avatar.png', online: true },
-    { id: '2', name: 'Max', avatarUrl: 'assets/images/default-pet-avatar.png', online: true },
-    { id: '3', name: 'Bella', avatarUrl: 'assets/images/default-pet-avatar.png', online: false },
-  ];
+  // Partner showcase (same data as map page)
+  readonly partnerShowcase = signal<PartnerShowcase[]>([
+    { id: '1', name: 'Pet Paradise', type: 'shop', location: 'Milano', tier: 'premium', rating: 4.8 },
+    { id: '2', name: 'Clinica Zampe Felici', type: 'clinic', location: 'Bergamo', tier: 'premium', rating: 4.9 },
+    { id: '3', name: 'Amici a 4 Zampe', type: 'shelter', location: 'Brescia', tier: 'free' },
+    { id: '4', name: 'Toelettatura Bella', type: 'groomer', location: 'Como', tier: 'base', rating: 4.5 },
+    { id: '5', name: 'Hotel Pets & Relax', type: 'hotel', location: 'Lecco', tier: 'base', rating: 4.3 },
+  ]);
+
+  readonly partnerIcons: Record<string, string> = {
+    shop: '🏪', vet: '🏥', groomer: '✂️', shelter: '🐕', clinic: '💊', hotel: '🏨',
+  };
+
+  readonly partnerColors: Record<string, string> = {
+    shop: '#F4AE1A', vet: '#FF6B6B', groomer: '#4ECDC4', shelter: '#95E1A3', clinic: '#A78BFA', hotel: '#60A5FA',
+  };
 
   // Promo slides
   promoSlides = [
@@ -189,12 +202,6 @@ export class PetProfileComponent implements OnInit {
     this.router.navigate(['/home/pet-register']);
   }
 
-  // Friend click
-  onFriendClick(friend: FriendPet): void {
-    if (friend.id) {
-      this.router.navigate(['/home/pet-profile', friend.id]);
-    }
-  }
 
   /**
    * Load pet data from API by ID

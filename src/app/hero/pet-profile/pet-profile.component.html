@@ -145,23 +145,33 @@
         </div>
       </section>
 
-      <!-- Online friends -->
-      <section class="pet-profile__friends">
-        <h3 class="pet-profile__friends-title">Amici Online</h3>
-        <div class="pet-profile__friends-scroll">
-          @for (friend of onlineFriends; track friend.id) {
-            <button
-              class="pet-profile__friend-card"
-              (click)="onFriendClick(friend)"
-            >
-              <img
-                [src]="friend.avatarUrl"
-                [alt]="friend.name"
-                class="pet-profile__friend-avatar"
-              />
-              <span class="pet-profile__friend-name">{{ friend.name }}</span>
-              @if (friend.online) {
-                <span class="pet-profile__friend-online"></span>
+      <!-- Partner in evidenza -->
+      <section class="pet-profile__partners">
+        <h3 class="pet-profile__partners-title">Partner in evidenza</h3>
+        <div class="pet-profile__partners-scroll">
+          @for (partner of partnerShowcase(); track partner.id) {
+            <button class="pet-profile__partner-card" [style.--partner-color]="partnerColors[partner.type]">
+              <div class="pet-profile__partner-icon">
+                <span>{{ partnerIcons[partner.type] }}</span>
+              </div>
+              <div class="pet-profile__partner-info">
+                <span class="pet-profile__partner-name">{{ partner.name }}</span>
+                <span class="pet-profile__partner-location">{{ partner.location }}</span>
+              </div>
+              <div class="pet-profile__partner-badge" [class]="'pet-profile__partner-badge--' + partner.tier">
+                @if (partner.tier === 'premium') {
+                  Premium
+                } @else if (partner.tier === 'base') {
+                  Sponsor
+                } @else {
+                  Free
+                }
+              </div>
+              @if (partner.rating) {
+                <div class="pet-profile__partner-rating">
+                  <span class="material-icons">star</span>
+                  <span>{{ partner.rating }}</span>
+                </div>
               }
             </button>
           }

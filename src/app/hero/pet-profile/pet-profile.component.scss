@@ -311,66 +311,132 @@
 }
 
 // ==========================================
-// FRIENDS SECTION
+// PARTNER IN EVIDENZA (identico a mappa)
 // ==========================================
-.pet-profile__friends-title {
+.pet-profile__partners-title {
   font-size: $typography-body-size;
   font-weight: 600;
   color: $color-text-inverse;
   margin: 0 0 var(--sp-2);
 }
 
-.pet-profile__friends-scroll {
+.pet-profile__partners-scroll {
   display: flex;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   overflow-x: auto;
-  padding-bottom: var(--sp-2);
+  padding-bottom: var(--sp-3);
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
-.pet-profile__friend-card {
+.pet-profile__partner-card {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-1);
-  padding: var(--sp-2);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: $border-radius-md;
-  min-width: 80px;
-  transition: $transition-fast;
+  gap: 6px;
+  width: 100px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  border: 2px solid var(--partner-color, #4a74f0);
+  background: #FFFFFF;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 200ms ease;
   position: relative;
+  overflow: visible;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }
 
-.pet-profile__friend-avatar {
-  width: 48px;
-  height: 48px;
+.pet-profile__partner-icon {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  object-fit: cover;
+  background: var(--partner-color, #4a74f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.pet-profile__friend-name {
-  font-size: $typography-small-size;
-  color: $color-text-inverse;
+.pet-profile__partner-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
   text-align: center;
+  width: 100%;
 }
 
-.pet-profile__friend-online {
+.pet-profile__partner-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pet-profile__partner-location {
+  font-size: 9px;
+  font-weight: 500;
+  color: #666;
+}
+
+.pet-profile__partner-badge {
   position: absolute;
-  top: var(--sp-2);
-  right: var(--sp-2);
-  width: 10px;
-  height: 10px;
-  background: #4CAF50;
-  border-radius: 50%;
-  border: 2px solid #4a74f0;
+  top: -6px;
+  right: -6px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 7px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+
+  &--premium {
+    background: linear-gradient(135deg, #F4AE1A 0%, #FFD700 100%);
+    color: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(244, 174, 26, 0.4);
+  }
+
+  &--base {
+    background: #4a74f0;
+    color: #FFFFFF;
+  }
+
+  &--free {
+    background: #E0E0E0;
+    color: #666;
+  }
+}
+
+.pet-profile__partner-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #F4AE1A;
+
+  .material-icons {
+    font-size: 12px;
+  }
 }
 
 // ==========================================
