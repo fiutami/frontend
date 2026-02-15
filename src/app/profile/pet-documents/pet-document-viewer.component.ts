@@ -15,7 +15,7 @@ import { PetDocument, DOCUMENT_TYPE_LABELS, DOCUMENT_TYPE_ICONS } from '../../co
         <button class="doc-viewer__back" (click)="goBack()" type="button">
           <span class="material-icons">arrow_back</span>
         </button>
-        <h1 class="doc-viewer__title">{{ document()?.title }}</h1>
+        <h1 class="doc-viewer__title">{{ petDoc()?.title }}</h1>
         <button class="doc-viewer__delete" (click)="confirmDelete()" type="button">
           <span class="material-icons">delete_outline</span>
         </button>
@@ -23,16 +23,16 @@ import { PetDocument, DOCUMENT_TYPE_LABELS, DOCUMENT_TYPE_ICONS } from '../../co
 
       @if (isLoading()) {
         <div class="doc-viewer__loading"><div class="spinner"></div></div>
-      } @else if (document(); as doc) {
+      } @else if (petDoc()) {
         <!-- File preview -->
         <div class="doc-viewer__preview">
-          @if (isImage(doc.contentType)) {
-            <img [src]="doc.fileUrl" [alt]="doc.title" class="doc-viewer__image">
-          } @else if (doc.contentType === 'application/pdf' && doc.fileUrl) {
-            <iframe [src]="doc.fileUrl" class="doc-viewer__pdf" title="PDF Preview"></iframe>
+          @if (isImage(petDoc()!.contentType)) {
+            <img [src]="petDoc()!.fileUrl" [alt]="petDoc()!.title" class="doc-viewer__image">
+          } @else if (petDoc()!.contentType === 'application/pdf' && petDoc()!.fileUrl) {
+            <iframe [src]="petDoc()!.fileUrl" class="doc-viewer__pdf" title="PDF Preview"></iframe>
           } @else {
             <div class="doc-viewer__no-preview">
-              <span class="material-icons">{{ getIcon(doc.documentType) }}</span>
+              <span class="material-icons">{{ getIcon(petDoc()!.documentType) }}</span>
               <p>{{ 'pet.documents.noPreview' | translate }}</p>
             </div>
           }
@@ -43,43 +43,43 @@ import { PetDocument, DOCUMENT_TYPE_LABELS, DOCUMENT_TYPE_ICONS } from '../../co
           <div class="doc-viewer__meta-item">
             <span class="doc-viewer__meta-label">{{ 'pet.documents.typeLabel' | translate }}</span>
             <span class="doc-viewer__meta-value">
-              <span class="material-icons">{{ getIcon(doc.documentType) }}</span>
-              {{ getLabel(doc.documentType) }}
+              <span class="material-icons">{{ getIcon(petDoc()!.documentType) }}</span>
+              {{ getLabel(petDoc()!.documentType) }}
             </span>
           </div>
 
-          @if (doc.documentDate) {
+          @if (petDoc()!.documentDate) {
             <div class="doc-viewer__meta-item">
               <span class="doc-viewer__meta-label">{{ 'pet.documents.dateLabel' | translate }}</span>
-              <span class="doc-viewer__meta-value">{{ formatDate(doc.documentDate) }}</span>
+              <span class="doc-viewer__meta-value">{{ formatDate(petDoc()!.documentDate!) }}</span>
             </div>
           }
 
-          @if (doc.expiryDate) {
+          @if (petDoc()!.expiryDate) {
             <div class="doc-viewer__meta-item">
               <span class="doc-viewer__meta-label">{{ 'pet.documents.expiryLabel' | translate }}</span>
-              <span class="doc-viewer__meta-value">{{ formatDate(doc.expiryDate) }}</span>
+              <span class="doc-viewer__meta-value">{{ formatDate(petDoc()!.expiryDate!) }}</span>
             </div>
           }
 
-          @if (doc.vetName) {
+          @if (petDoc()!.vetName) {
             <div class="doc-viewer__meta-item">
               <span class="doc-viewer__meta-label">{{ 'pet.documents.vetLabel' | translate }}</span>
-              <span class="doc-viewer__meta-value">{{ doc.vetName }}</span>
+              <span class="doc-viewer__meta-value">{{ petDoc()!.vetName }}</span>
             </div>
           }
 
-          @if (doc.notes) {
+          @if (petDoc()!.notes) {
             <div class="doc-viewer__meta-item">
               <span class="doc-viewer__meta-label">{{ 'pet.documents.notesLabel' | translate }}</span>
-              <p class="doc-viewer__meta-value">{{ doc.notes }}</p>
+              <p class="doc-viewer__meta-value">{{ petDoc()!.notes }}</p>
             </div>
           }
         </div>
 
         <!-- Download -->
-        @if (doc.fileUrl) {
-          <a [href]="doc.fileUrl" download class="doc-viewer__download" target="_blank" rel="noopener">
+        @if (petDoc()!.fileUrl) {
+          <a [href]="petDoc()!.fileUrl" download class="doc-viewer__download" target="_blank" rel="noopener">
             <span class="material-icons">file_download</span>
             {{ 'pet.documents.download' | translate }}
           </a>
@@ -137,7 +137,7 @@ export class PetDocumentViewerComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly docService = inject(PetDocumentService);
 
-  document = signal<PetDocument | null>(null);
+  petDoc = signal<PetDocument | null>(null);
   isLoading = signal(true);
   showDeleteConfirm = signal(false);
   petId = '';
@@ -147,7 +147,7 @@ export class PetDocumentViewerComponent implements OnInit {
     const docId = this.route.snapshot.paramMap.get('docId') || '';
     if (this.petId && docId) {
       this.docService.getDocument(this.petId, docId).subscribe({
-        next: doc => { this.document.set(doc); this.isLoading.set(false); },
+        next: doc => { this.petDoc.set(doc); this.isLoading.set(false); },
         error: () => this.isLoading.set(false)
       });
     }
@@ -168,7 +168,7 @@ export class PetDocumentViewerComponent implements OnInit {
   cancelDelete(): void { this.showDeleteConfirm.set(false); }
 
   deleteDocument(): void {
-    const doc = this.document();
+    const doc = this.petDoc();
     if (!doc) return;
     this.docService.deleteDocument(this.petId, doc.id).subscribe({
       next: () => this.router.navigate(['/home/pet-profile', this.petId, 'documents']),
