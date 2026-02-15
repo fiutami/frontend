@@ -1,155 +1,250 @@
 @import 'src/styles/tokens-figma';
 
-.pet-gallery {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #4A74F0 0%, #3D5FC4 100%);
+// ========================================
+// PAYOFF (dentro header blu, sotto logo)
+// ========================================
+.gallery-payoff {
+  text-align: center;
+  padding: 0 $spacing-md $spacing-sm;
 
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-md;
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  &__header-left {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-  }
-
-  &__back,
-  &__add {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &__text {
+    font-family: $font-family-body;
+    font-size: 18px;
+    font-weight: 400;
     color: $color-text-inverse;
-    border-radius: 50%;
-    transition: $transition-fast;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    &:active {
-      background: rgba(255, 255, 255, 0.25);
-    }
-  }
-
-  &__title {
-    font-size: 20px;
-    font-weight: 700;
-    color: $color-text-inverse;
+    line-height: 1.4;
     margin: 0;
-    text-transform: uppercase;
-  }
 
-  &__content {
-    flex: 1;
-    overflow-y: auto;
-    padding: $spacing-md;
-  }
-
-  // Empty state
-  &__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 400px;
-    padding: $spacing-xl;
-  }
-
-  &__empty-icon {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    margin-bottom: $spacing-lg;
-    color: $color-text-inverse;
-  }
-
-  &__empty-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0 0 $spacing-sm;
-  }
-
-  &__empty-text {
-    font-size: $typography-body-size;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 $spacing-xl;
-    max-width: 280px;
-  }
-
-  &__empty-btn {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-    padding: $spacing-md $spacing-xl;
-    background: $color-yellow-btn;
-    color: $color-yellow-btn-text;
-    font-size: $typography-body-size;
-    font-weight: 600;
-    border-radius: $border-radius-full;
-    transition: $transition-fast;
-
-    &:hover {
-      background: $color-yellow-btn-hover;
-      transform: translateY(-2px);
+    strong {
+      font-weight: 700;
     }
-
-    &:active {
-      background: $color-yellow-btn-pressed;
-      transform: translateY(0);
-    }
-  }
-
-  // Photo grid
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: $spacing-sm;
-  }
-
-  &__photo-card {
-    aspect-ratio: 1;
-    border-radius: $border-radius-md;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.1);
-    transition: $transition-fast;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
-  }
-
-  &__photo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 }
 
-// Responsive: larger screens
-@media (min-width: 768px) {
-  .pet-gallery {
-    &__grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: $spacing-md;
+// ========================================
+// VIEW MODE SWITCH (lista / griglia toggle)
+// ========================================
+.view-mode-switch {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $spacing-sm;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 48px;
+    border: 1.5px solid #CBD5E1;
+    background: #F1F5F9;
+    color: #64748B;
+    transition: $transition-fast;
+    cursor: pointer;
+
+    &--list {
+      border-radius: 1234px 0 0 1234px;
+      border-right: none;
     }
+
+    &--grid {
+      border-radius: 0 1234px 1234px 0;
+      border-left: none;
+    }
+
+    &--active {
+      background: $color-cta-primary;
+      border-color: $color-cta-primary;
+      color: $color-text-inverse;
+    }
+  }
+}
+
+// ========================================
+// GALLERY ACTIONS (quick actions + modifica)
+// ========================================
+.gallery-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-xs;
+  margin-bottom: $spacing-xs;
+
+  &__edit-btn {
+    padding: 8px 20px;
+    background: $color-cta-primary;
+    color: $color-text-inverse;
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    font-weight: 600;
+    border-radius: $border-radius-full;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transition: $transition-fast;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &--active {
+      background: darken(#F2B830, 10%);
+    }
+  }
+}
+
+// ========================================
+// SECTION LABEL
+// ========================================
+.gallery-section-label {
+  font-family: $font-family-body;
+  font-size: $typography-small-size;
+  font-weight: 400;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-sm;
+  padding: 0 $spacing-xs;
+}
+
+// ========================================
+// GALLERY GRID (masonry pattern)
+// ========================================
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 2px $spacing-xl;
+}
+
+// ========================================
+// GALLERY CARD (base + varianti)
+// ========================================
+.gallery-card {
+  position: relative;
+  border-radius: 22px 22px 22px 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Large card: spans 2 rows
+  &--large {
+    grid-row: span 2;
+    min-height: 245px;
+    background: rgba(255, 255, 255, 0.69);
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+  }
+
+  // Small card
+  &--small {
+    min-height: 118px;
+    background: rgba(217, 217, 217, 0.55);
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  // Favorite button (top-right)
+  &__favorite {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    z-index: 2;
+    transition: $transition-fast;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    &--active {
+      background: rgba(242, 184, 48, 0.2);
+    }
+  }
+
+  // Photo image
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+  }
+
+  // Upload button (centered, empty state)
+  &__upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: $transition-fast;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // Slot indicator line (bottom, empty state)
+  &__indicator {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 61px;
+    height: 0;
+    border-bottom: 2px solid $color-cta-primary;
+    border-radius: 2px;
+  }
+}
+
+// ========================================
+// UPLOAD OVERLAY (progress during upload)
+// ========================================
+.upload-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  gap: $spacing-sm;
+
+  &__progress {
+    width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &__bar {
+    height: 100%;
+    background: $color-cta-primary;
+    border-radius: 3px;
+    transition: width 0.2s ease;
+  }
+
+  &__text {
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    font-weight: 600;
+    color: $color-text-inverse;
   }
 }

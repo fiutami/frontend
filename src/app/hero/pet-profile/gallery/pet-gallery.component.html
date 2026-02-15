@@ -1,73 +1,128 @@
-<div class="pet-gallery">
-  <!-- Header: Back + Title grouped on left -->
-  <header class="pet-gallery__header">
-    <div class="pet-gallery__header-left">
+<app-tab-page-shell-default
+  title="Rullino Feroce"
+  activeTabId="pet-profile"
+  [showBack]="true"
+  (backClicked)="goBack()">
+
+  <!-- SLOT: shellBrandingExtra (dentro header blu, sotto logo) -->
+  <div shellBrandingExtra class="gallery-payoff">
+    <p class="gallery-payoff__text">
+      <strong>Qui custodisci</strong> i momenti più belli <strong>con il tuo pet.</strong>
+    </p>
+  </div>
+
+  <!-- SLOT: shellStickyContent (area gialla sticky) -->
+  <ng-container shellStickyContent>
+    <!-- View Mode Switch -->
+    <div class="view-mode-switch">
       <button
-        class="pet-gallery__back"
-        (click)="goBack()"
-        aria-label="Torna indietro"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        class="view-mode-switch__btn view-mode-switch__btn--list"
+        [class.view-mode-switch__btn--active]="viewMode() === 'list'"
+        (click)="setViewMode('list')"
+        aria-label="Vista lista">
+        <!-- Hamburger icon -->
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-      <h1 class="pet-gallery__title">Galleria</h1>
+      <button
+        class="view-mode-switch__btn view-mode-switch__btn--grid"
+        [class.view-mode-switch__btn--active]="viewMode() === 'grid'"
+        (click)="setViewMode('grid')"
+        aria-label="Vista griglia">
+        <!-- Grid 2x2 icon -->
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="11" y="0" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="0" y="11" width="7" height="7" rx="1.5" fill="currentColor"/>
+          <rect x="11" y="11" width="7" height="7" rx="1.5" fill="currentColor"/>
+        </svg>
+      </button>
     </div>
 
-    <button
-      class="pet-gallery__add"
-      (click)="onAddPhotoClick()"
-      aria-label="Aggiungi foto"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-      </svg>
-    </button>
-  </header>
+    <!-- Quick Actions + Modifica -->
+    <div class="gallery-actions">
+      <app-quick-actions-row
+        [items]="quickActions"
+        (selected)="onQuickAction($event)" />
+      <button
+        class="gallery-actions__edit-btn"
+        [class.gallery-actions__edit-btn--active]="isEditMode()"
+        (click)="toggleEditMode()">
+        Modifica
+      </button>
+    </div>
 
-  <!-- Content -->
-  <main class="pet-gallery__content">
-    <!-- Empty state -->
-    @if (isEmpty) {
-      <div class="pet-gallery__empty">
-        <div class="pet-gallery__empty-icon">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-          </svg>
-        </div>
-        <h2 class="pet-gallery__empty-title">Nessuna foto ancora</h2>
-        <p class="pet-gallery__empty-text">
-          Aggiungi la prima foto del tuo pet!
-        </p>
+    <!-- Section label -->
+    <p class="gallery-section-label">Momenti speciali con il tuo pet</p>
+  </ng-container>
+
+  <!-- Default content: Gallery Grid -->
+  <div class="gallery-grid">
+    @for (slot of gridSlots(); track $index) {
+      <div
+        class="gallery-card"
+        [class.gallery-card--large]="slot.type === 'large'"
+        [class.gallery-card--small]="slot.type === 'small'">
+
+        <!-- Favorite toggle -->
         <button
-          class="pet-gallery__empty-btn"
-          (click)="onAddPhotoClick()"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+          class="gallery-card__favorite"
+          [class.gallery-card__favorite--active]="slot.isFavorite"
+          (click)="onFavoriteToggle(slot)"
+          aria-label="Preferito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+              [attr.fill]="slot.isFavorite ? '#F2B830' : 'none'"
+              [attr.stroke]="slot.isFavorite ? '#F2B830' : '#999'"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
           </svg>
-          Aggiungi Foto
         </button>
-      </div>
-    }
 
-    <!-- Photo grid -->
-    @if (!isEmpty) {
-      <div class="pet-gallery__grid">
-        @for (photo of photos(); track photo.id) {
+        @if (slot.photo) {
+          <!-- Photo content -->
+          <img
+            [src]="slot.photo.url"
+            [alt]="slot.photo.alt"
+            class="gallery-card__img" />
+        } @else {
+          <!-- Empty state -->
           <button
-            class="pet-gallery__photo-card"
-            (click)="onPhotoClick(photo)"
-          >
-            <img
-              [src]="photo.url"
-              [alt]="photo.alt"
-              class="pet-gallery__photo-img"
-            />
+            class="gallery-card__upload"
+            (click)="onUploadClick()"
+            aria-label="Carica foto">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="19" stroke="#BDBDBD" stroke-width="2"/>
+              <path d="M20 12V28M12 20H28" stroke="#BDBDBD" stroke-width="2" stroke-linecap="round"/>
+            </svg>
           </button>
+          <div class="gallery-card__indicator"></div>
         }
       </div>
     }
-  </main>
-</div>
+  </div>
+
+  <!-- Upload progress overlay -->
+  @if (isUploading()) {
+    <div class="upload-overlay">
+      <div class="upload-overlay__progress">
+        <div class="upload-overlay__bar" [style.width.%]="uploadProgress()"></div>
+      </div>
+      <span class="upload-overlay__text">Caricamento... {{ uploadProgress() }}%</span>
+    </div>
+  }
+
+  <!-- Upload Modal -->
+  @if (showUploadModal()) {
+    <app-photo-upload-modal
+      [aspectRatio]="4/3"
+      (confirmed)="onPhotoConfirmed($event)"
+      (cancelled)="showUploadModal.set(false)" />
+  }
+
+</app-tab-page-shell-default>
