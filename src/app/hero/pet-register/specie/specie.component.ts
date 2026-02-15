@@ -115,6 +115,10 @@ export class SpecieComponent implements OnInit {
     try {
       const species = await this.speciesService.getAllSpecies();
       this.allSpecies.set(species);
+      // Verifica che ci siano species selezionabili (taxonRank='species')
+      if (species.filter(s => s.taxonRank === 'species').length === 0) {
+        this.loadError.set('Nessuna specie disponibile al momento.');
+      }
     } catch (error) {
       console.error('Failed to load species:', error);
       this.loadError.set('Impossibile caricare le specie. Riprova.');

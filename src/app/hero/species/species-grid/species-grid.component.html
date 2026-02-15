@@ -5,6 +5,12 @@
       <span class="species-grid__spinner"></span>
       <p>Caricamento...</p>
     </div>
+  } @else if (loadError()) {
+    <!-- Error state -->
+    <div class="species-grid__loading">
+      <p>{{ loadError() }}</p>
+      <button class="species-grid__retry" type="button" (click)="retry()">Riprova</button>
+    </div>
   } @else {
     <!-- Categories grid -->
     <div class="species-grid__cards">

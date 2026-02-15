@@ -198,8 +198,8 @@ export class SpeciesQuestionnaireService {
           this.http.get<SpeciesDto[]>(`${this.apiUrl}/species`)
         );
       } catch (fallbackError) {
-        console.warn('Failed to get species list:', fallbackError);
-        return [];
+        console.error('Both species endpoints failed:', fallbackError);
+        throw new Error('Impossibile caricare le specie dal server');
       }
     }
   }
