@@ -55,6 +55,45 @@ export class PhotoUploadService {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = `${environment.apiUrl}/pets`;
 
+  // Presigned URL cache - stores URLs with their expiry times
+  private urlCache = new Map<string, { url: string; expiresAt: number }>();
+  private readonly URL_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
+  /**
+   * Get a cached or fresh presigned URL for a photo
+   */
+  async getPresignedUrl(fileId: string): Promise<string> {
+    const cached = this.urlCache.get(fileId);
+    const now = Date.now();
+
+    if (cached && cached.expiresAt > now) {
+      return cached.url;
+    }
+
+    const response = await firstValueFrom(
+      this.http.get<{ url: string }>(`${environment.apiUrl}/files/${fileId}/url`)
+    );
+
+    this.urlCache.set(fileId, {
+      url: response.url,
+      expiresAt: now + this.URL_CACHE_TTL
+    });
+
+    return response.url;
+  }
+
+  /**
+   * Clear expired entries from the URL cache
+   */
+  clearExpiredCache(): void {
+    const now = Date.now();
+    for (const [key, value] of this.urlCache) {
+      if (value.expiresAt <= now) {
+        this.urlCache.delete(key);
+      }
+    }
+  }
+
   /**
    * Upload a photo to pet gallery with progress tracking
    *

@@ -46,6 +46,9 @@
     "termsAccept": "En te connectant, tu acceptes nos Conditions et Confidentialité",
     "termsAndConditions": "Conditions générales",
     "privacyPolicy": "Politique de confidentialité",
+    "cookiePolicy": "Politique de cookies",
+    "consentPrefix": "J'accepte les",
+    "consentAnd": "et la",
     "alreadyHaveAccount": "Tu as déjà un compte ?",
     "dontHaveAccount": "Tu n'as pas de compte ?",
     "loginButton": "Se connecter",
@@ -1100,6 +1103,60 @@
     "promo": {
       "text": "Voulez-vous savoir comment se sent {{petName}} aujourd'hui ? Activez le suivi émotionnel.",
       "button": "Commander"
+    }
+  },
+  "pet": {
+    "documents": {
+      "title": "Documents",
+      "allTypes": "Tous",
+      "empty": "Aucun document téléchargé",
+      "upload": "Télécharger un Document",
+      "selectFile": "Sélectionner un fichier",
+      "titleLabel": "Titre",
+      "typeLabel": "Type de Document",
+      "dateLabel": "Date du Document",
+      "expiryLabel": "Date d'Expiration",
+      "vetLabel": "Vétérinaire",
+      "notesLabel": "Notes",
+      "uploading": "Téléchargement...",
+      "uploadBtn": "Télécharger le Document",
+      "download": "Télécharger",
+      "noPreview": "Aperçu non disponible",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce document ?",
+      "expired": "Expiré",
+      "expiringSoon": "Expire bientôt"
+    }
+  },
+  "gdpr": {
+    "cookies": {
+      "title": "Nous utilisons des cookies",
+      "description": "Nous utilisons des cookies pour améliorer votre expérience. Vous pouvez choisir quels cookies accepter.",
+      "acceptAll": "Tout accepter",
+      "necessaryOnly": "Nécessaires uniquement",
+      "customize": "Personnaliser",
+      "customizeTitle": "Préférences des Cookies",
+      "necessary": "Nécessaires",
+      "necessaryDesc": "Essentiels au fonctionnement du site. Ne peuvent pas être désactivés.",
+      "functional": "Fonctionnels",
+      "functionalDesc": "Permettent des fonctionnalités supplémentaires comme la personnalisation.",
+      "analytics": "Analytiques",
+      "analyticsDesc": "Nous aident à comprendre comment vous utilisez le site."
+    },
+    "consent": {
+      "signupCheckbox": "J'ai lu et j'accepte les",
+      "termsAndPrivacy": "Conditions d'Utilisation et la Politique de Confidentialité",
+      "required": "Vous devez accepter les conditions pour continuer"
+    },
+    "export": {
+      "title": "Exporter vos Données",
+      "description": "Nous générerons un fichier ZIP contenant toutes vos données personnelles, photos et documents. Cela peut prendre quelques minutes.",
+      "request": "Demander l'Exportation",
+      "requesting": "Demande en cours...",
+      "processing": "Exportation en cours...",
+      "completed": "Exportation terminée !",
+      "download": "Télécharger vos données",
+      "rateLimit": "Vous pouvez demander une exportation toutes les 24 heures",
+      "expired": "Le lien de téléchargement a expiré. Demandez une nouvelle exportation."
     }
   }
 }

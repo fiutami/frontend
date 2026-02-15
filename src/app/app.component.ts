@@ -7,6 +7,7 @@ import { LanguageService } from "./core/i18n/language.service";
     <router-outlet></router-outlet>
     <app-drawer></app-drawer>
     <app-user-area-modal></app-user-area-modal>
+    <app-cookie-consent-banner></app-cookie-consent-banner>
   `
 })
 export class AppComponent {

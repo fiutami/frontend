@@ -93,6 +93,21 @@
           [errorMessage]="getConfirmPasswordError()">
         </app-form-input>
 
+        <!-- Consent Checkbox -->
+        <label class="signup__consent">
+          <input
+            type="checkbox"
+            formControlName="acceptTerms"
+            class="signup__consent-checkbox" />
+          <span class="signup__consent-text">
+            {{ 'auth.consentPrefix' | translate }}
+            <a href="/terms" class="signup__consent-link">{{ 'auth.termsAndConditions' | translate }}</a>,
+            <a href="/privacy" class="signup__consent-link">{{ 'auth.privacyPolicy' | translate }}</a>
+            {{ 'auth.consentAnd' | translate }}
+            <a href="/cookie-policy" class="signup__consent-link">{{ 'auth.cookiePolicy' | translate }}</a>
+          </span>
+        </label>
+
         <!-- Submit Button -->
         <app-button
           variant="primary"

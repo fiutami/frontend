@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { ConsentService } from '../../core/services/consent.service';
 
 /**
  * SignupComponent - User registration form
@@ -31,6 +32,8 @@ export class SignupComponent {
   isSubmitting = false;
   errorMessage = '';
 
+  private consentService = inject(ConsentService);
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -41,10 +44,15 @@ export class SignupComponent {
       email: ['', [Validators.required, Validators.email]],
       inviteCode: ['', [Validators.required, this.inviteCodeValidator]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordStrengthValidator]],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]],
+      acceptTerms: [false, [Validators.requiredTrue]]
     }, {
       validators: this.passwordMatchValidator
     });
+  }
+
+  get acceptTerms() {
+    return this.signupForm.get('acceptTerms');
   }
 
   get email() {
@@ -167,6 +175,11 @@ export class SignupComponent {
       // firstName and lastName are optional for now, user can complete profile later
       this.authService.signup(signupPayload).subscribe({
         next: () => {
+          // Register GDPR consents after successful signup
+          this.consentService.grantConsent('terms_of_service', '1.0').subscribe();
+          this.consentService.grantConsent('privacy_policy', '1.0').subscribe();
+          this.consentService.grantConsent('data_processing', '1.0').subscribe();
+
           // New users always go to onboarding (no pets yet)
           this.router.navigate(['/onboarding/welcome']);
         },

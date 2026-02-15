@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { DrawerComponent } from './shared/components/drawer';
 import { UserAreaModalComponent } from './shared/components/user-area-modal';
+import { CookieConsentBannerComponent } from './shared/components/cookie-consent/cookie-consent-banner.component';
 import { I18nModule } from './core/i18n/i18n.module';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { I18nModule } from './core/i18n/i18n.module';
     AppRoutingModule,
     I18nModule,
     DrawerComponent,
-    UserAreaModalComponent
+    UserAreaModalComponent,
+    CookieConsentBannerComponent
   ],
   providers: [
     {

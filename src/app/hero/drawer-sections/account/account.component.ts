@@ -136,26 +136,49 @@ export class AccountDrawerComponent implements OnInit {
     this.showExportModal.set(false);
   }
 
+  exportRateLimit = signal(false);
+  exportStatus = signal<string | null>(null);
+
   exportData(): void {
     if (this.isExporting()) return;
 
     this.isExporting.set(true);
+    this.exportRateLimit.set(false);
 
-    this.http.get(`${environment.apiUrl}/account/export`, { responseType: 'blob' }).subscribe({
-      next: (blob: Blob) => {
+    this.http.post<{ status: string }>(`${environment.apiUrl}/account/export`, {}).subscribe({
+      next: (res) => {
+        this.exportStatus.set(res.status);
         this.isExporting.set(false);
         this.exportSuccess.set(true);
-
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `fiutami-data-${new Date().toISOString().split('T')[0]}.json`;
-        link.click();
-        window.URL.revokeObjectURL(url);
+        // Start polling for completion
+        this.pollExportStatus();
       },
-      error: () => {
+      error: (err) => {
         this.isExporting.set(false);
+        if (err.status === 429) {
+          this.exportRateLimit.set(true);
+        }
       }
     });
+  }
+
+  private pollExportStatus(): void {
+    const interval = setInterval(() => {
+      this.http.get<{ status: string; downloadUrl?: string }>(`${environment.apiUrl}/account/export/status`).subscribe({
+        next: (res) => {
+          this.exportStatus.set(res.status);
+          if (res.status === 'completed' && res.downloadUrl) {
+            clearInterval(interval);
+            window.open(res.downloadUrl, '_blank');
+          } else if (res.status === 'failed') {
+            clearInterval(interval);
+          }
+        },
+        error: () => clearInterval(interval)
+      });
+    }, 5000);
+
+    // Stop polling after 5 minutes
+    setTimeout(() => clearInterval(interval), 300000);
   }
 }

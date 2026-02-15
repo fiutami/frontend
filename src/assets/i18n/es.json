@@ -46,6 +46,9 @@
     "termsAccept": "Al iniciar sesión aceptas nuestros Términos y Privacidad",
     "termsAndConditions": "Términos y condiciones",
     "privacyPolicy": "Política de privacidad",
+    "cookiePolicy": "Política de cookies",
+    "consentPrefix": "Acepto los",
+    "consentAnd": "y la",
     "alreadyHaveAccount": "¿Ya tienes una cuenta?",
     "dontHaveAccount": "¿No tienes una cuenta?",
     "loginButton": "Iniciar sesión",
@@ -1080,6 +1083,60 @@
     "promo": {
       "text": "¿Quieres saber cómo se siente {{petName}} hoy? Activa el monitoreo emocional.",
       "button": "Pedir ahora"
+    }
+  },
+  "pet": {
+    "documents": {
+      "title": "Documentos",
+      "allTypes": "Todos",
+      "empty": "No hay documentos cargados",
+      "upload": "Subir Documento",
+      "selectFile": "Seleccionar archivo",
+      "titleLabel": "Título",
+      "typeLabel": "Tipo de Documento",
+      "dateLabel": "Fecha del Documento",
+      "expiryLabel": "Fecha de Vencimiento",
+      "vetLabel": "Veterinario",
+      "notesLabel": "Notas",
+      "uploading": "Subiendo...",
+      "uploadBtn": "Subir Documento",
+      "download": "Descargar",
+      "noPreview": "Vista previa no disponible",
+      "confirmDelete": "¿Estás seguro de que deseas eliminar este documento?",
+      "expired": "Vencido",
+      "expiringSoon": "Por vencer"
+    }
+  },
+  "gdpr": {
+    "cookies": {
+      "title": "Usamos cookies",
+      "description": "Usamos cookies para mejorar tu experiencia. Puedes elegir qué cookies aceptar.",
+      "acceptAll": "Aceptar todas",
+      "necessaryOnly": "Solo necesarias",
+      "customize": "Personalizar",
+      "customizeTitle": "Preferencias de Cookies",
+      "necessary": "Necesarias",
+      "necessaryDesc": "Esenciales para el funcionamiento del sitio. No se pueden desactivar.",
+      "functional": "Funcionales",
+      "functionalDesc": "Permiten funciones adicionales como la personalización.",
+      "analytics": "Analíticas",
+      "analyticsDesc": "Nos ayudan a entender cómo usas el sitio para mejorarlo."
+    },
+    "consent": {
+      "signupCheckbox": "He leído y acepto los",
+      "termsAndPrivacy": "Términos y Condiciones y la Política de Privacidad",
+      "required": "Debes aceptar los términos para continuar"
+    },
+    "export": {
+      "title": "Exportar tus Datos",
+      "description": "Generaremos un archivo ZIP con todos tus datos personales, fotos y documentos. Puede tardar unos minutos.",
+      "request": "Solicitar Exportación",
+      "requesting": "Solicitando...",
+      "processing": "Exportando...",
+      "completed": "¡Exportación completada!",
+      "download": "Descargar tus datos",
+      "rateLimit": "Puedes solicitar una exportación cada 24 horas",
+      "expired": "El enlace de descarga ha expirado. Solicita una nueva exportación."
     }
   }
 }

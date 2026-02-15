@@ -125,4 +125,42 @@
   }
 }
 
+  // Consent Checkbox
+  &__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-xs;
+    cursor: pointer;
+  }
+
+  &__consent-checkbox {
+    margin-top: 3px;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    accent-color: $color-cta-primary;
+    cursor: pointer;
+  }
+
+  &__consent-text {
+    font-size: $typography-terms-size-mobile;
+    color: $color-text-inverse;
+    line-height: 1.4;
+
+    @include respond(md) {
+      font-size: 13px;
+    }
+  }
+
+  &__consent-link {
+    color: $color-cta-primary;
+    text-decoration: underline;
+    transition: $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
 // Form and Button styles now provided by SharedModule components

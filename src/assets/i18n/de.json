@@ -46,6 +46,9 @@
     "termsAccept": "Mit der Anmeldung akzeptierst du unsere AGB & Datenschutz",
     "termsAndConditions": "Allgemeine Geschäftsbedingungen",
     "privacyPolicy": "Datenschutzrichtlinie",
+    "cookiePolicy": "Cookie-Richtlinie",
+    "consentPrefix": "Ich akzeptiere die",
+    "consentAnd": "und die",
     "alreadyHaveAccount": "Hast du schon ein Konto?",
     "dontHaveAccount": "Hast du noch kein Konto?",
     "loginButton": "Anmelden",
@@ -1102,6 +1105,60 @@
     "promo": {
       "text": "Möchtest du wissen, wie sich {{petName}} heute fühlt? Aktiviere das emotionale Monitoring.",
       "button": "Jetzt bestellen"
+    }
+  },
+  "pet": {
+    "documents": {
+      "title": "Dokumente",
+      "allTypes": "Alle",
+      "empty": "Keine Dokumente hochgeladen",
+      "upload": "Dokument hochladen",
+      "selectFile": "Datei auswählen",
+      "titleLabel": "Titel",
+      "typeLabel": "Dokumenttyp",
+      "dateLabel": "Dokumentdatum",
+      "expiryLabel": "Ablaufdatum",
+      "vetLabel": "Tierarzt",
+      "notesLabel": "Notizen",
+      "uploading": "Wird hochgeladen...",
+      "uploadBtn": "Dokument hochladen",
+      "download": "Herunterladen",
+      "noPreview": "Vorschau nicht verfügbar",
+      "confirmDelete": "Möchten Sie dieses Dokument wirklich löschen?",
+      "expired": "Abgelaufen",
+      "expiringSoon": "Läuft bald ab"
+    }
+  },
+  "gdpr": {
+    "cookies": {
+      "title": "Wir verwenden Cookies",
+      "description": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Sie können wählen, welche Cookies Sie akzeptieren.",
+      "acceptAll": "Alle akzeptieren",
+      "necessaryOnly": "Nur notwendige",
+      "customize": "Anpassen",
+      "customizeTitle": "Cookie-Einstellungen",
+      "necessary": "Notwendig",
+      "necessaryDesc": "Wesentlich für die Funktion der Website. Können nicht deaktiviert werden.",
+      "functional": "Funktional",
+      "functionalDesc": "Ermöglichen zusätzliche Funktionen wie Personalisierung.",
+      "analytics": "Analytisch",
+      "analyticsDesc": "Helfen uns zu verstehen, wie Sie die Website nutzen."
+    },
+    "consent": {
+      "signupCheckbox": "Ich habe die",
+      "termsAndPrivacy": "AGB und Datenschutzerklärung gelesen und akzeptiere sie",
+      "required": "Sie müssen die Bedingungen akzeptieren, um fortzufahren"
+    },
+    "export": {
+      "title": "Ihre Daten exportieren",
+      "description": "Wir erstellen eine ZIP-Datei mit all Ihren persönlichen Daten, Fotos und Dokumenten. Dies kann einige Minuten dauern.",
+      "request": "Export anfordern",
+      "requesting": "Wird angefordert...",
+      "processing": "Wird exportiert...",
+      "completed": "Export abgeschlossen!",
+      "download": "Ihre Daten herunterladen",
+      "rateLimit": "Sie können alle 24 Stunden einen Export anfordern",
+      "expired": "Der Download-Link ist abgelaufen. Fordern Sie einen neuen Export an."
     }
   }
 }

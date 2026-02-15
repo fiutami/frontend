@@ -122,6 +122,11 @@ export class PetProfileComponent implements OnInit {
     if (id) this.router.navigate(['/home/pet-profile', id, 'fatti-bestiali']);
   }
 
+  onDocumentsClick(): void {
+    const id = this.pet()?.id;
+    if (id) this.router.navigate(['/home/pet-profile', id, 'documents']);
+  }
+
   onFiutaClick(): void {
     this.router.navigate(['/home/map']);
   }
