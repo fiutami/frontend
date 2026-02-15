@@ -182,8 +182,8 @@ jobs:
             if [ -f .last_sha_${{ env.SERVICE }} ]; then cp .last_sha_${{ env.SERVICE }} .last_sha_${{ env.SERVICE }}.prev; fi && \
             echo '${IMAGE_TAG}' > .last_sha_${{ env.SERVICE }} && \
             export IMAGE_TAG=${IMAGE_TAG} && \
-            docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
-            docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }} && \
+            docker compose -p \"${COMPOSE_PROJECT}\" --env-file .env -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
+            docker compose -p \"${COMPOSE_PROJECT}\" --env-file .env -f ${COMPOSE_FILE} up -d --no-deps ${{ env.SERVICE }} && \
             docker image prune -f --filter 'dangling=true' --filter 'until=168h'"
 
           echo "::notice::${{ env.SERVICE }} deployed successfully!"
@@ -246,13 +246,13 @@ jobs:
               PREV_SHA=\$(cat .last_sha_${{ env.SERVICE }}.prev) && \
               echo \"Rolling back to \$PREV_SHA\" && \
               export IMAGE_TAG=\$PREV_SHA && \
-              docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
-              docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}; \
+              docker compose -p \"${COMPOSE_PROJECT}\" --env-file .env -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
+              docker compose -p \"${COMPOSE_PROJECT}\" --env-file .env -f ${COMPOSE_FILE} up -d --no-deps ${{ env.SERVICE }}; \
             else \
               echo 'No previous SHA found, using env tag' && \
               export IMAGE_TAG=${{ needs.setup.outputs.image_tag }} && \
-              docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
-              docker compose -p \"${COMPOSE_PROJECT}\" -f ${COMPOSE_FILE} up -d ${{ env.SERVICE }}; \
+              docker compose -p \"${COMPOSE_PROJECT}\" --env-file .env -f ${COMPOSE_FILE} pull ${{ env.SERVICE }} && \
+              docker compose -p \"${COMPOSE_PROJECT}\" --env-file .env -f ${COMPOSE_FILE} up -d --no-deps ${{ env.SERVICE }}; \
             fi"
 
   # ===========================================
