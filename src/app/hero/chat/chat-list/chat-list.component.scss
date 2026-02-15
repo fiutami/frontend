@@ -1,89 +1,10 @@
+// Chat List - Content inside shell standard
+// Header, background, back button, logo, mascot, tab bar managed by shell
 @import 'src/styles/_tokens-figma';
 
-// Colors from Figma
-$chat-header-bg: #4A74F0;
 $chat-online-dot: #66BA00;
-$chat-gradient-start: rgba(252, 239, 209, 1);
-$chat-gradient-mid: rgba(248, 215, 139, 1);
-$chat-gradient-end: rgba(242, 184, 48, 1);
 
 .chat-list {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(125deg, $chat-gradient-start 0%, $chat-gradient-mid 19%, $chat-gradient-end 82%);
-  padding-bottom: $tab-bar-height;
-
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-md;
-    padding-top: calc($spacing-md + env(safe-area-inset-top, 0px));
-    background: $chat-header-bg;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  &__back-btn {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-text-inverse;
-    border-radius: 50%;
-    transition: $transition-fast;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-
-  &__header-actions {
-    display: flex;
-    gap: $spacing-xs;
-  }
-
-  &__search-btn,
-  &__menu-btn {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-text-inverse;
-    border-radius: 50%;
-    transition: $transition-fast;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-
-  &__title {
-    font-family: $font-family-body;
-    font-size: $typography-button-size;
-    font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0;
-  }
-
-  &__content {
-    flex: 1;
-    overflow-y: auto;
-  }
-
   &__list {
     list-style: none;
     padding: 0;
@@ -95,14 +16,10 @@ $chat-gradient-end: rgba(242, 184, 48, 1);
     gap: $spacing-md;
     padding: $spacing-md;
     background: rgba(255, 255, 255, 0.9);
-    margin: $spacing-xs $spacing-md;
+    margin-bottom: $spacing-xs;
     border-radius: $border-radius-lg;
     cursor: pointer;
     transition: $transition-fast;
-
-    &:first-child {
-      margin-top: $spacing-md;
-    }
 
     &:hover {
       background: rgba(255, 255, 255, 1);
@@ -227,7 +144,7 @@ $chat-gradient-end: rgba(242, 184, 48, 1);
     justify-content: center;
     padding: $spacing-2xl $spacing-lg;
     text-align: center;
-    min-height: 60vh;
+    min-height: 40vh;
   }
 
   &__empty-illustration {
@@ -255,7 +172,7 @@ $chat-gradient-end: rgba(242, 184, 48, 1);
   }
 
   &__find-btn {
-    background: $chat-header-bg;
+    background: #4A74F0;
     color: $color-text-inverse;
     font-family: $font-family-body;
     font-size: $typography-button-size;
@@ -284,23 +201,5 @@ $chat-gradient-end: rgba(242, 184, 48, 1);
   }
   50% {
     transform: translateY(-10px);
-  }
-}
-
-// Mobile optimizations
-@media (max-width: 768px) {
-  .chat-list {
-    &__item {
-      margin: $spacing-xs $spacing-sm;
-    }
-
-    &__empty-illustration svg {
-      width: 100px;
-      height: 100px;
-    }
-
-    &__empty-title {
-      font-size: $typography-button-size;
-    }
   }
 }

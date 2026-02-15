@@ -43,6 +43,8 @@ export interface SpeciesDto {
   description: string | null;
   imageUrl: string | null;
   breedPolicy: 'None' | 'Optional' | 'Required';
+  taxonRank: string;
+  parentSpeciesId: string | null;
 }
 
 /**

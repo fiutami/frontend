@@ -1,5 +1,6 @@
 @import 'src/styles/tokens-figma';
 @import 'src/styles/mixins';
+@import 'src/styles/shell-contract';
 
 // ===========================================
 // LOGIN - Mobile-First Responsive Design
@@ -58,17 +59,9 @@
     background: $color-overlay-light;
   }
 
-  // Back Button (Top-Left) - uses app-icon-button
+  // Back Button (Top-Left) - uses shell-contract standard positioning
   &__back {
-    position: absolute;
-    top: $spacing-auth-mobile-padding;
-    left: $spacing-auth-mobile-padding;
-    z-index: 20;
-
-    @include respond(md) {
-      top: $spacing-xl;
-      left: $spacing-xl;
-    }
+    @include shell-back-standard;
   }
 
   // Main Content Container

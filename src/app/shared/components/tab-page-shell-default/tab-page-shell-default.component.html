@@ -1,13 +1,17 @@
 <app-tab-page-shell
   [title]="title"
+  [showTitle]="showTitle"
   [backgroundVariant]="backgroundVariant"
   [imageName]="imageName"
   [overlayOpacity]="overlayOpacity"
   [showBack]="showBack"
   (backClicked)="onBack()">
 
-  <!-- Header Right: Avatar (automatico) -->
-  <app-avatar-button shellHeaderRight [mode]="avatarMode" />
+  <!-- Header Right: Action slot + Avatar (automatico) -->
+  <div shellHeaderRight class="shell-default-header-right">
+    <ng-content select="[shellHeaderAction]"></ng-content>
+    <app-avatar-button [mode]="avatarMode" />
+  </div>
 
   <!-- Branding: Logo + Extra Content (dentro blu) -->
   <div shellBranding class="shell-default-branding">

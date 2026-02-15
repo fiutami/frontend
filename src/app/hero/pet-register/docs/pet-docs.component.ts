@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Species } from '../data/species.data';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
+import { SpeciesDto } from '../../species-questionnaire/species-questionnaire.service';
 
 /**
  * PetDocsComponent - Pet Documentation Page
@@ -12,13 +14,15 @@ import { Species } from '../data/species.data';
  */
 @Component({
   selector: 'app-pet-docs',
+  standalone: true,
+  imports: [CommonModule, TabPageShellDefaultComponent],
   templateUrl: './pet-docs.component.html',
   styleUrls: ['./pet-docs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetDocsComponent implements OnInit {
-  /** Selected species from previous step */
-  selectedSpecies: Species | null = null;
+  /** Selected species from previous step (SpeciesDto with UUID) */
+  selectedSpecies: SpeciesDto | null = null;
 
   /** Document checklist items */
   documentItems = [
@@ -49,7 +53,7 @@ export class PetDocsComponent implements OnInit {
     // Adjust documents based on species category
     const category = this.selectedSpecies.category;
 
-    if (category === 'rettili' || category === 'anfibi') {
+    if (category === 'rettile' || category === 'anfibio') {
       // Add CITES for exotic species
       this.documentItems.push({
         id: 'cites',
@@ -59,7 +63,7 @@ export class PetDocsComponent implements OnInit {
       });
     }
 
-    if (category === 'pesci' || category === 'invertebrati') {
+    if (category === 'pesce' || category === 'invertebrato') {
       // Remove microchip requirement for fish/invertebrates
       const microchipItem = this.documentItems.find((d) => d.id === 'microchip');
       if (microchipItem) {

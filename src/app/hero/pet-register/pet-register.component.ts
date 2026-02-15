@@ -1,6 +1,9 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
+import { SharedModule } from '../../shared/shared.module';
 
 /**
  * PetRegisterComponent - Pet Registration Menu Page
@@ -12,6 +15,8 @@ import { Location } from '@angular/common';
  */
 @Component({
   selector: 'app-pet-register',
+  standalone: true,
+  imports: [CommonModule, TabPageShellDefaultComponent, SharedModule],
   templateUrl: './pet-register.component.html',
   styleUrls: ['./pet-register.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

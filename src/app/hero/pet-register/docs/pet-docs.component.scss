@@ -5,53 +5,10 @@
 // PET DOCS - Documentation Checklist Page
 // Based on Figma designs
 // Mobile-First Design (390x844)
+// Wrapped in TabPageShellDefaultComponent
 // ===========================================
 
 .pet-docs {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  width: 100%;
-  max-width: 440px;
-  margin: 0 auto;
-  padding: 0 $spacing-lg $spacing-2xl;
-  overflow-y: auto;
-  border-radius: $border-radius-page;
-  background: linear-gradient(
-    180deg,
-    #4A74F0 0%,
-    #6B8CF5 100%
-  );
-
-  // Header
-  &__header {
-    display: flex;
-    align-items: center;
-    padding-top: 45px;
-    margin-bottom: $spacing-lg;
-  }
-
-  &__back {
-    flex-shrink: 0;
-  }
-
-  &__title {
-    flex: 1;
-    margin: 0;
-    font-family: $font-family-body;
-    font-size: 20px;
-    font-weight: 600;
-    color: $color-text-inverse;
-    text-align: center;
-    padding-right: 34px;
-  }
-
-  // Logo
-  &__logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: $spacing-lg;
-  }
 
   // Description
   &__description {
@@ -193,20 +150,6 @@
 
     &:hover {
       background: darken($color-cta-primary, 10%);
-    }
-  }
-
-  // Responsive
-  @include respond(md) {
-    max-width: 500px;
-    padding: 0 $spacing-xl $spacing-2xl;
-
-    &__header {
-      padding-top: 60px;
-    }
-
-    &__title {
-      font-size: 24px;
     }
   }
 }

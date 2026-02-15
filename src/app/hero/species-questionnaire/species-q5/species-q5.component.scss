@@ -1,5 +1,6 @@
 @import 'src/styles/tokens-figma';
 @import 'src/styles/mixins';
+@import 'src/styles/shell-contract';
 
 // ===========================================
 // SPECIES Q5 COMPONENT
@@ -14,18 +15,29 @@
   position: relative;
   z-index: 1;
   padding: $spacing-md;
+  padding-top: calc(#{$shell-header-height} + #{$spacing-md});
   overflow-x: hidden;
 
   // ===========================================
-  // HEADER
+  // LOGO OVERLAY (shell-contract standard)
   // ===========================================
 
-  &__header {
-    display: flex;
-    justify-content: flex-start;
-    padding-bottom: $spacing-md;
-    position: relative;
-    z-index: 10;
+  &__logo-overlay {
+    @include shell-logo-standard;
+    @include shell-logo-responsive;
+    pointer-events: none;
+
+    app-logo {
+      pointer-events: auto;
+    }
+  }
+
+  // ===========================================
+  // BACK BUTTON (shell-contract standard)
+  // ===========================================
+
+  &__back {
+    @include shell-back-standard;
   }
 
   // ===========================================
@@ -87,17 +99,6 @@
     object-fit: contain;
   }
 
-  // ===========================================
-  // FOOTER
-  // ===========================================
-
-  &__footer {
-    display: flex;
-    justify-content: center;
-    padding: $spacing-md 0;
-    position: relative;
-    z-index: 10;
-  }
 }
 
 // ===========================================

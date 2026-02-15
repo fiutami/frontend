@@ -1,150 +1,107 @@
-<div class="result-page">
-  <!-- Header -->
-  <header class="result-header">
-    <button class="result-header__back" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
+<app-tab-page-shell-default
+  title="Risultato"
+  backgroundVariant="blue-solid"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-    <div class="result-header__content">
-      <h1 class="result-header__title">La tua razza</h1>
+  <!-- Loading state -->
+  @if (isLoading()) {
+    <div class="result-loading">
+      <div class="result-loading__spinner"></div>
+      <p>Caricamento dettagli...</p>
     </div>
+  }
 
-    <button class="result-header__menu" aria-label="Menu">
-      <span class="material-icons">menu</span>
-    </button>
-  </header>
+  <!-- Error state -->
+  @if (error()) {
+    <div class="result-error">
+      <span class="material-icons">error_outline</span>
+      <p>{{ error() }}</p>
+      <button class="result-error__retry" (click)="goBack()">
+        Torna indietro
+      </button>
+    </div>
+  }
 
-  <!-- Main Content -->
-  <main class="result-content">
-    <!-- Loading state -->
-    @if (isLoading()) {
-      <div class="result-loading">
-        <div class="result-loading__spinner"></div>
-        <p>Caricamento dettagli...</p>
+  <!-- Breed details -->
+  @if (breed() && !isLoading()) {
+    <!-- Breed Image & Name -->
+    <section class="breed-hero">
+      <div class="breed-hero__image-container">
+        <img
+          [src]="breed()!.imageUrl"
+          [alt]="breed()!.name"
+          class="breed-hero__image"
+          (error)="$any($event.target).src='/assets/placeholder-breed.svg'">
       </div>
-    }
 
-    <!-- Error state -->
-    @if (error()) {
-      <div class="result-error">
-        <span class="material-icons">error_outline</span>
-        <p>{{ error() }}</p>
-        <button class="result-error__retry" (click)="goBack()">
-          Torna indietro
-        </button>
+      <h2 class="breed-hero__name">{{ breed()!.name }}</h2>
+
+      <!-- Badges -->
+      <div class="breed-hero__badges">
+        <span class="badge badge--origin">
+          <span class="material-icons">place</span>
+          {{ breed()!.origin }}
+        </span>
+        <span class="badge badge--recognition">
+          <span class="material-icons">verified</span>
+          {{ breed()!.recognition }}
+        </span>
       </div>
-    }
+    </section>
 
-    <!-- Breed details -->
-    @if (breed() && !isLoading()) {
-      <!-- Breed Image & Name -->
-      <section class="breed-hero">
-        <div class="breed-hero__image-container">
-          <img
-            [src]="breed()!.imageUrl"
-            [alt]="breed()!.name"
-            class="breed-hero__image"
-            (error)="$any($event.target).src='/assets/placeholder-breed.svg'">
-        </div>
+    <!-- Info Sections -->
+    <section class="info-sections">
+      @for (section of infoSections(); track trackBySection($index, section)) {
+        @if (getSectionContent(section.id)) {
+          <div
+            class="info-card"
+            [class.info-card--expanded]="isSectionExpanded(section.id)">
+            <button
+              class="info-card__header"
+              (click)="toggleSection(section.id)"
+              [attr.aria-expanded]="isSectionExpanded(section.id)">
+              <span class="info-card__icon">
+                <span class="material-icons">{{ section.icon }}</span>
+              </span>
+              <span class="info-card__title">{{ section.title }}</span>
+              <span class="material-icons info-card__chevron">
+                {{ isSectionExpanded(section.id) ? 'expand_less' : 'expand_more' }}
+              </span>
+            </button>
 
-        <h2 class="breed-hero__name">{{ breed()!.name }}</h2>
-
-        <!-- Badges -->
-        <div class="breed-hero__badges">
-          <span class="badge badge--origin">
-            <span class="material-icons">place</span>
-            {{ breed()!.origin }}
-          </span>
-          <span class="badge badge--recognition">
-            <span class="material-icons">verified</span>
-            {{ breed()!.recognition }}
-          </span>
-        </div>
-      </section>
-
-      <!-- Info Sections -->
-      <section class="info-sections">
-        @for (section of infoSections(); track trackBySection($index, section)) {
-          @if (getSectionContent(section.id)) {
-            <div
-              class="info-card"
-              [class.info-card--expanded]="isSectionExpanded(section.id)">
-              <button
-                class="info-card__header"
-                (click)="toggleSection(section.id)"
-                [attr.aria-expanded]="isSectionExpanded(section.id)">
-                <span class="info-card__icon">
-                  <span class="material-icons">{{ section.icon }}</span>
-                </span>
-                <span class="info-card__title">{{ section.title }}</span>
-                <span class="material-icons info-card__chevron">
-                  {{ isSectionExpanded(section.id) ? 'expand_less' : 'expand_more' }}
-                </span>
-              </button>
-
-              @if (isSectionExpanded(section.id)) {
-                <div class="info-card__content">
-                  @if (section.id === 'rituals' || section.id === 'health') {
-                    <!-- List content -->
-                    <ul class="info-card__list">
-                      @for (item of getSectionContent(section.id); track item) {
-                        <li>{{ item }}</li>
-                      }
-                    </ul>
-                  } @else {
-                    <!-- Text content -->
-                    <p class="info-card__text">{{ getSectionContent(section.id) }}</p>
-                  }
-                </div>
-              }
-            </div>
-          }
+            @if (isSectionExpanded(section.id)) {
+              <div class="info-card__content">
+                @if (section.id === 'rituals' || section.id === 'health') {
+                  <!-- List content -->
+                  <ul class="info-card__list">
+                    @for (item of getSectionContent(section.id); track item) {
+                      <li>{{ item }}</li>
+                    }
+                  </ul>
+                } @else {
+                  <!-- Text content -->
+                  <p class="info-card__text">{{ getSectionContent(section.id) }}</p>
+                }
+              </div>
+            }
+          </div>
         }
-      </section>
+      }
+    </section>
 
-      <!-- Action Buttons -->
-      <section class="result-actions">
-        <button class="result-actions__primary" (click)="goToFinder()">
-          <span class="material-icons">photo_camera</span>
-          <span>Analizza un'altra foto</span>
-        </button>
-        <button class="result-actions__secondary" (click)="goBack()">
-          <span class="material-icons">grid_view</span>
-          <span>Esplora altre specie</span>
-        </button>
-      </section>
-    }
-  </main>
+    <!-- Action Buttons -->
+    <section class="result-actions">
+      <button class="result-actions__primary" (click)="goToFinder()">
+        <span class="material-icons">photo_camera</span>
+        <span>Analizza un'altra foto</span>
+      </button>
+      <button class="result-actions__secondary" (click)="goBack()">
+        <span class="material-icons">grid_view</span>
+        <span>Esplora altre specie</span>
+      </button>
+    </section>
+  }
 
-  <!-- Mascot Fiuto -->
-  <div class="mascot-bubble">
-    <img src="/assets/mascot/fiuto-bubble.svg" alt="Fiuto mascotte" class="mascot-bubble__image">
-    <div class="mascot-bubble__text">
-      <p>Che bella scoperta!</p>
-    </div>
-  </div>
-
-  <!-- Bottom Tab Bar -->
-  <nav class="tab-bar">
-    <a routerLink="/home/main" class="tab-bar__item">
-      <span class="material-icons">home</span>
-      <span>Home</span>
-    </a>
-    <a routerLink="/home/calendar" class="tab-bar__item">
-      <span class="material-icons">calendar_today</span>
-      <span>Calendario</span>
-    </a>
-    <a routerLink="/home/map" class="tab-bar__item">
-      <span class="material-icons">place</span>
-      <span>Mappa</span>
-    </a>
-    <a routerLink="/home/pet-profile" class="tab-bar__item">
-      <span class="material-icons">pets</span>
-      <span>Pet</span>
-    </a>
-    <a routerLink="/home/breeds" class="tab-bar__item tab-bar__item--active">
-      <span class="material-icons">public</span>
-      <span>Specie</span>
-    </a>
-  </nav>
-</div>
+</app-tab-page-shell-default>

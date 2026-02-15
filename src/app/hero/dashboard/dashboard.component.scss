@@ -1,61 +1,18 @@
-.dashboard {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fef7e0 0%, #fff5d6 100%);
-  display: flex;
-  flex-direction: column;
-}
+// Dashboard - Content inside shell standard
+// Header, background, back button, logo, mascot, tab bar managed by shell
 
-.dashboard__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.dashboard__brand {
-  display: flex;
-  align-items: center;
-}
-
-.dashboard__logo {
-  height: 32px;
-  width: auto;
-}
-
-.dashboard__user-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.dashboard__logout-btn {
-  padding: 0.5rem 1.25rem;
-  background: #e74c3c;
-  color: white;
+.shell-action-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
   border: none;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
-
-  &:hover {
-    background: #c0392b;
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-}
-
-.dashboard__content {
-  flex: 1;
+  color: #fff;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 2rem 1.5rem;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .dashboard__welcome {
@@ -77,12 +34,10 @@
 }
 
 .dashboard__placeholder {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 400px;
 }
 
 .dashboard__coming-soon {

@@ -5,11 +5,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Subject, takeUntil, forkJoin } from 'rxjs';
 import { Plan, Subscription } from '../models/premium.models';
 import { PremiumService } from '../services/premium.service';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
 @Component({
   selector: 'app-premium-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule],
+  imports: [CommonModule, RouterModule, TranslateModule, TabPageShellDefaultComponent],
   templateUrl: './premium-page.component.html',
   styleUrl: './premium-page.component.scss'
 })

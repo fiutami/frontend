@@ -1,25 +1,9 @@
-<div class="pet-wellness">
-  <!-- Header -->
-  <div class="pet-wellness__header">
-    <app-back-button
-      class="pet-wellness__back"
-      variant="glass"
-      ariaLabel="Torna indietro"
-      (clicked)="onBack()">
-    </app-back-button>
-
-    <h1 class="pet-wellness__title">Guida al Benessere</h1>
-  </div>
-
-  <!-- Logo -->
-  <div class="pet-wellness__logo">
-    <app-logo
-      variant="color"
-      size="lg"
-      loading="eager"
-      href="https://fiutami.pet">
-    </app-logo>
-  </div>
+<app-tab-page-shell-default
+  activeTabId="home"
+  title="Benessere"
+  backgroundVariant="blue-solid"
+  [showBack]="true"
+  (backClicked)="onBack()">
 
   <!-- Description -->
   <p class="pet-wellness__description">
@@ -73,4 +57,5 @@
   <button class="pet-wellness__complete" type="button" (click)="onComplete()">
     Completa Registrazione
   </button>
-</div>
+
+</app-tab-page-shell-default>

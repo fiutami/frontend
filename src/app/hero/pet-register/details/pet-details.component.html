@@ -1,50 +1,16 @@
-<div class="pet-details">
-  <!-- Header -->
-  <div class="pet-details__header">
-    <app-back-button
-      class="pet-details__back"
-      variant="glass"
-      ariaLabel="Torna indietro"
-      (clicked)="onBack()">
-    </app-back-button>
-
-    <h1 class="pet-details__title">Dati Anagrafici</h1>
-  </div>
-
-  <!-- Logo -->
-  <div class="pet-details__logo">
-    <app-logo
-      variant="color"
-      size="lg"
-      loading="eager"
-      href="https://fiutami.pet">
-    </app-logo>
-  </div>
+<app-tab-page-shell-default
+  activeTabId="home"
+  title="Dati"
+  backgroundVariant="blue-solid"
+  [showBack]="true"
+  (backClicked)="onBack()">
 
   <!-- Species Badge -->
-  <div *ngIf="selectedSpecies" class="pet-details__species-badge">
-    <span class="pet-details__species-label">Specie selezionata:</span>
-    <span class="pet-details__species-name">{{ selectedSpecies.name }}</span>
-    <!-- Species loading indicator -->
-    <span *ngIf="isLoadingSpecies()" class="pet-details__species-loading">
-      (caricamento...)
-    </span>
-    <!-- Species match indicator -->
-    <span *ngIf="!isLoadingSpecies() && speciesDto" class="pet-details__species-ok">
-      ✓
-    </span>
-    <span *ngIf="!isLoadingSpecies() && !speciesDto" class="pet-details__species-error">
-      ✗
-    </span>
-  </div>
-
-  <!-- Species Load Error -->
-  <div *ngIf="speciesLoadError()" class="pet-details__species-error-message">
-    <span class="material-icons">warning</span>
-    {{ speciesLoadError() }}
-    <button type="button" class="pet-details__retry-btn" (click)="loadSpeciesFromBackend()">
-      Riprova
-    </button>
+  <div *ngIf="speciesDto" class="pet-details__species-badge">
+    <span class="pet-details__species-label">Specie:</span>
+    <span class="pet-details__species-name">{{ speciesDto.name }}</span>
+    <span *ngIf="selectedBreedName" class="pet-details__breed-name">- {{ selectedBreedName }}</span>
+    <span class="pet-details__species-ok">&#10003;</span>
   </div>
 
   <!-- Form -->
@@ -178,4 +144,5 @@
       <p *ngIf="!speciesDto">* Specie non caricata - torna indietro</p>
     </div>
   </form>
-</div>
+
+</app-tab-page-shell-default>

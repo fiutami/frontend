@@ -1,0 +1,138 @@
+// === SHELL LAYOUT CONTRACT ===
+// Tutte le shell e pagine DEVONO usare questi valori.
+// Fonte unica per coordinate, dimensioni e z-index del layout.
+
+// ── Blue header heights (sync con page-background blue-shape) ──
+$shell-header-height: 190px;
+$shell-header-height-480: 195px;
+$shell-header-height-640: 200px;
+$shell-header-height-768: 210px;
+$shell-header-height-1024: 220px;
+$shell-header-height-1280: 235px;
+$shell-header-height-1920: 250px;
+$shell-header-height-2560: 260px;
+
+// ── Header chrome ──
+$shell-header-padding: var(--sp-2) var(--sp-4) var(--sp-3);
+$shell-header-margin-top: -8px;
+
+// ── Back button (responsive) ──
+$shell-back-size: 34px;
+$shell-back-size-480: 36px;
+$shell-back-size-640: 38px;
+$shell-back-size-768: 40px;
+$shell-back-size-1024: 44px;
+
+// ── Title (responsive) ──
+$shell-title-size: 16px;
+$shell-title-size-480: 17px;
+$shell-title-size-640: 18px;
+$shell-title-size-768: 19px;
+$shell-title-size-1024: 20px;
+$shell-title-color-on-blue: var(--white);
+$shell-title-color-on-yellow: var(--blue-1);
+
+// ── Logo (responsive height) ──
+$shell-logo-height: 48px;
+$shell-logo-height-480: 54px;
+$shell-logo-height-560: 58px;
+$shell-logo-height-640: 62px;
+$shell-logo-height-768: 68px;
+$shell-logo-height-1024: 72px;
+$shell-logo-height-1280: 80px;
+
+// ── Avatar ──
+$shell-avatar-margin-right: -8px;
+
+// ── Safe area ──
+$shell-safe-area-top: env(safe-area-inset-top, 0px);
+$shell-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+// ── Z-index stack ──
+$shell-z-blue-header: 10;
+$shell-z-sticky: 9;
+$shell-z-tab-bar: 1000;
+$shell-z-mascot: 1001;
+$shell-z-landscape-overlay: 9999;
+
+// ── Content max-width (leggibilita 50-75 chars/riga) ──
+$shell-content-max-width-768: 480px;
+$shell-content-max-width-1024: 520px;
+$shell-content-max-width-1280: 560px;
+$shell-content-max-width-1920: 640px;
+$shell-content-max-width-2560: 720px;
+
+// Per griglie/liste (map, dashboard), usare max-width piu ampio:
+$shell-grid-max-width-1920: 960px;
+$shell-grid-max-width-2560: 1120px;
+
+// ── Landscape soft-lock (token soglia) ──
+$shell-landscape-lock-max-height: 500px;
+
+// ── MIXIN: logo posizionamento standard (per pagine senza shell) ──
+// NOTA: NO padding-top safe-area qui! Il logo deve centrarsi nell'intero
+// blue header (190px), identico alla shell branding che usa position:absolute
+// e ignora il padding del parent. La safe area e' gestita dal contenitore pagina.
+@mixin shell-logo-standard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $shell-header-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $shell-z-blue-header;
+  pointer-events: none;
+
+  @media (min-width: 480px) { height: $shell-header-height-480; }
+  @media (min-width: 640px) { height: $shell-header-height-640; }
+  @media (min-width: 768px) { height: $shell-header-height-768; }
+  @media (min-width: 1024px) { height: $shell-header-height-1024; }
+  @media (min-width: 1280px) { height: $shell-header-height-1280; }
+  @media (min-width: 1920px) and (min-height: 900px) { height: $shell-header-height-1920; }
+  @media (min-width: 2560px) and (min-height: 1200px) { height: $shell-header-height-2560; }
+}
+
+// ── MIXIN: back button standard (per pagine senza shell) ──
+@mixin shell-back-standard {
+  position: absolute;
+  top: calc(var(--sp-2) + #{$shell-safe-area-top});
+  left: var(--sp-4);
+  z-index: calc(#{$shell-z-blue-header} + 1);
+}
+
+// ── MIXIN: logo responsive heights (per ::ng-deep su app-logo) ──
+@mixin shell-logo-responsive {
+  img,
+  .logo {
+    height: #{$shell-logo-height} !important;
+    width: auto !important;
+  }
+
+  @media (min-width: 480px) {
+    img, .logo { height: #{$shell-logo-height-480} !important; }
+  }
+  @media (min-width: 560px) {
+    img, .logo { height: #{$shell-logo-height-560} !important; }
+  }
+  @media (min-width: 640px) {
+    img, .logo { height: #{$shell-logo-height-640} !important; }
+  }
+  @media (min-width: 768px) {
+    img, .logo { height: #{$shell-logo-height-768} !important; }
+  }
+  @media (min-width: 1024px) {
+    img, .logo { height: #{$shell-logo-height-1024} !important; }
+  }
+  @media (min-width: 1280px) {
+    img, .logo { height: #{$shell-logo-height-1280} !important; }
+  }
+}
+
+// ── MIXIN: landscape soft-lock media query ──
+@mixin landscape-soft-lock {
+  @media (orientation: landscape) and (max-height: #{$shell-landscape-lock-max-height}) {
+    @content;
+  }
+}

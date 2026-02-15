@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Species } from '../data/species.data';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
+import { SpeciesDto } from '../../species-questionnaire/species-questionnaire.service';
 
 /**
  * PetWellnessComponent - Pet Wellness Guide Page
@@ -12,13 +14,15 @@ import { Species } from '../data/species.data';
  */
 @Component({
   selector: 'app-pet-wellness',
+  standalone: true,
+  imports: [CommonModule, TabPageShellDefaultComponent],
   templateUrl: './pet-wellness.component.html',
   styleUrls: ['./pet-wellness.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetWellnessComponent implements OnInit {
-  /** Selected species from previous step */
-  selectedSpecies: Species | null = null;
+  /** Selected species from previous step (SpeciesDto with UUID) */
+  selectedSpecies: SpeciesDto | null = null;
 
   /** Wellness guide categories */
   wellnessCategories = [

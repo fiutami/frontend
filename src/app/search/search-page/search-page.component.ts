@@ -23,23 +23,12 @@ import {
 import { AiSearchService } from '../../core/services/ai-search.service';
 import { VoiceInputButtonComponent } from '../../shared/components/voice-input-button/voice-input-button.component';
 import { AiMessageBubbleComponent } from '../../shared/components/ai-message-bubble/ai-message-bubble.component';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
-/**
- * SearchPageComponent - Global search with filters and API integration
- *
- * Features:
- * - Yellow header with search input
- * - Category filter pills (horizontal scroll)
- * - Debounced API search
- * - Suggestions and recent searches when input empty
- * - Results list when searching
- * - Empty state when no results
- * - Loading state during API calls
- */
 @Component({
   selector: 'app-search-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule, VoiceInputButtonComponent, AiMessageBubbleComponent],
+  imports: [CommonModule, FormsModule, TranslateModule, VoiceInputButtonComponent, AiMessageBubbleComponent, TabPageShellDefaultComponent],
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

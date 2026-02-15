@@ -1,60 +1,5 @@
-@use 'src/styles/tokens' as *;
-
-.result-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-  background: linear-gradient(180deg, #1a5f7a 0%, #0d3b4c 100%);
-  padding-bottom: 80px;
-}
-
-// Header
-.result-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-
-  &__back,
-  &__menu {
-    width: 44px;
-    height: 44px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-  }
-
-  &__content {
-    text-align: center;
-    flex: 1;
-  }
-
-  &__title {
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
-    margin: 0;
-  }
-}
-
-// Main content
-.result-content {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-}
+// Breed Result - Content inside shell standard
+// Header, background, back button, logo, mascot, tab bar managed by shell
 
 // Loading
 .result-loading {
@@ -63,13 +8,13 @@
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  color: white;
+  color: #666;
 
   &__spinner {
     width: 48px;
     height: 48px;
-    border: 4px solid rgba(255, 255, 255, 0.2);
-    border-top-color: white;
+    border: 4px solid #eee;
+    border-top-color: #4a74f0;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
@@ -93,12 +38,12 @@
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  color: white;
+  color: #666;
   text-align: center;
 
   .material-icons {
     font-size: 64px;
-    opacity: 0.6;
+    opacity: 0.4;
     margin-bottom: 16px;
   }
 
@@ -109,18 +54,18 @@
 
   &__retry {
     padding: 12px 24px;
-    border: 2px solid white;
+    border: 2px solid var(--blue-1);
     border-radius: 8px;
     background: transparent;
-    color: white;
+    color: var(--blue-1);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover {
-      background: white;
-      color: #1a5f7a;
+      background: var(--blue-1);
+      color: #fff;
     }
   }
 }
@@ -136,8 +81,8 @@
     margin: 0 auto 20px;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid white;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 4px solid #4a74f0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   &__image {
@@ -149,9 +94,8 @@
   &__name {
     font-size: 32px;
     font-weight: 700;
-    color: white;
+    color: #333;
     margin: 0 0 16px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   &__badges {
@@ -177,8 +121,8 @@
   }
 
   &--origin {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    background: rgba(74, 116, 240, 0.15);
+    color: var(--blue-1);
   }
 
   &--recognition {
@@ -200,9 +144,10 @@
   border-radius: 12px;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
   &--expanded {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   &__header {
@@ -225,7 +170,7 @@
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: linear-gradient(135deg, #1a5f7a 0%, #0d3b4c 100%);
+    background: linear-gradient(135deg, #4a74f0 0%, #3458c0 100%);
     color: white;
     display: flex;
     align-items: center;
@@ -332,78 +277,12 @@
 
   &__secondary {
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    color: white;
+    border: 2px solid #ddd;
+    color: #666;
 
     &:hover {
-      border-color: white;
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
-}
-
-// Mascot bubble
-.mascot-bubble {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  z-index: 50;
-
-  &__image {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-  }
-
-  &__text {
-    background: white;
-    padding: 8px 12px;
-    border-radius: 12px 12px 0 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    max-width: 150px;
-
-    p {
-      margin: 0;
-      font-size: 12px;
-      color: #1a5f7a;
-      font-weight: 500;
-    }
-  }
-}
-
-// Tab bar
-.tab-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-around;
-  background: white;
-  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: 8px 12px;
-    color: #666;
-    text-decoration: none;
-    font-size: 10px;
-    transition: color 0.2s ease;
-
-    .material-icons {
-      font-size: 24px;
-    }
-
-    &--active {
-      color: #f5a623;
+      border-color: var(--blue-1);
+      color: var(--blue-1);
     }
   }
 }

@@ -1,25 +1,9 @@
-<div class="pet-docs">
-  <!-- Header -->
-  <div class="pet-docs__header">
-    <app-back-button
-      class="pet-docs__back"
-      variant="glass"
-      ariaLabel="Torna indietro"
-      (clicked)="onBack()">
-    </app-back-button>
-
-    <h1 class="pet-docs__title">Documentazioni</h1>
-  </div>
-
-  <!-- Logo -->
-  <div class="pet-docs__logo">
-    <app-logo
-      variant="color"
-      size="lg"
-      loading="eager"
-      href="https://fiutami.pet">
-    </app-logo>
-  </div>
+<app-tab-page-shell-default
+  activeTabId="home"
+  title="Documenti"
+  backgroundVariant="blue-solid"
+  [showBack]="true"
+  (backClicked)="onBack()">
 
   <!-- Description -->
   <p class="pet-docs__description">
@@ -66,4 +50,5 @@
   <button class="pet-docs__continue" type="button" (click)="onContinue()">
     Continua
   </button>
-</div>
+
+</app-tab-page-shell-default>

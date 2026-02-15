@@ -1,72 +1,78 @@
-<div class="specie">
-  <!-- Header -->
-  <div class="specie__header">
-    <app-back-button
-      class="specie__back"
-      variant="glass"
-      ariaLabel="Torna indietro"
-      (clicked)="onBack()">
-    </app-back-button>
-
-    <h1 class="specie__title">Specie</h1>
-  </div>
-
-  <!-- Logo -->
-  <div class="specie__logo">
-    <app-logo
-      variant="color"
-      size="lg"
-      loading="eager"
-      href="https://fiutami.pet">
-    </app-logo>
-  </div>
+<app-tab-page-shell-default
+  activeTabId="home"
+  title="Specie"
+  backgroundVariant="blue-solid"
+  [showBack]="true"
+  (backClicked)="onBack()">
 
   <!-- Description -->
   <p class="specie__description">Seleziona la categoria e poi la specie del tuo animale</p>
 
-  <!-- Categories Accordion -->
-  <div class="specie__categories">
-    <div
-      *ngFor="let category of categories"
-      class="specie__category"
-      [class.specie__category--expanded]="isCategoryExpanded(category.id)">
-
-      <!-- Category Header (Expandable) -->
-      <button
-        class="specie__category-header"
-        type="button"
-        (click)="toggleCategory(category)"
-        [attr.aria-expanded]="isCategoryExpanded(category.id)"
-        [attr.aria-controls]="'species-' + category.id">
-        <span class="specie__category-label">{{ category.label }}</span>
-        <svg
-          class="specie__category-chevron"
-          [class.specie__category-chevron--rotated]="isCategoryExpanded(category.id)"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true">
-          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-        </svg>
-      </button>
-
-      <!-- Species List (Collapsible) -->
-      <div
-        *ngIf="isCategoryExpanded(category.id)"
-        [id]="'species-' + category.id"
-        class="specie__species-list"
-        role="listbox"
-        [attr.aria-label]="'Specie ' + category.label">
-        <button
-          *ngFor="let species of getSpeciesForCategory(category.id)"
-          class="specie__species-item"
-          [class.specie__species-item--selected]="isSpeciesSelected(species.id)"
-          type="button"
-          role="option"
-          [attr.aria-selected]="isSpeciesSelected(species.id)"
-          (click)="selectSpecies(species)">
-          {{ species.name }}
-        </button>
-      </div>
+  <!-- Loading State -->
+  @if (isLoading()) {
+    <div class="specie__loading">
+      <span class="specie__loading-spinner"></span>
+      <p class="specie__loading-text">Caricamento specie...</p>
     </div>
-  </div>
-</div>
+  }
+
+  <!-- Error State -->
+  @if (loadError(); as error) {
+    <div class="specie__error">
+      <p class="specie__error-text">{{ error }}</p>
+      <button class="specie__error-retry" type="button" (click)="retry()">Riprova</button>
+    </div>
+  }
+
+  <!-- Categories Accordion -->
+  @if (!isLoading() && !loadError()) {
+    <div class="specie__categories">
+      @for (category of categories(); track category.id) {
+        <div
+          class="specie__category"
+          [class.specie__category--expanded]="isCategoryExpanded(category.id)">
+
+          <!-- Category Header (Expandable) -->
+          <button
+            class="specie__category-header"
+            type="button"
+            (click)="toggleCategory(category.id)"
+            [attr.aria-expanded]="isCategoryExpanded(category.id)"
+            [attr.aria-controls]="'species-' + category.id">
+            <span class="specie__category-label">{{ category.label }}</span>
+            <svg
+              class="specie__category-chevron"
+              [class.specie__category-chevron--rotated]="isCategoryExpanded(category.id)"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true">
+              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+          </button>
+
+          <!-- Species List (Collapsible) -->
+          @if (isCategoryExpanded(category.id)) {
+            <div
+              [id]="'species-' + category.id"
+              class="specie__species-list"
+              role="listbox"
+              [attr.aria-label]="'Specie ' + category.label">
+              @for (species of category.species; track species.id) {
+                <button
+                  class="specie__species-item"
+                  [class.specie__species-item--selected]="isSpeciesSelected(species.id)"
+                  type="button"
+                  role="option"
+                  [attr.aria-selected]="isSpeciesSelected(species.id)"
+                  (click)="selectSpecies(species)">
+                  {{ species.name }}
+                </button>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+
+</app-tab-page-shell-default>

@@ -1,0 +1,193 @@
+@import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
+
+// ===========================================
+// BREED SELECT - Breed Selection Page
+// Mobile-First Design (390x844)
+// ===========================================
+
+.breed-select {
+
+  &__description {
+    margin: 0 0 $spacing-xl;
+    padding: 0 $spacing-sm;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: $typography-body-weight;
+    line-height: 1.5;
+    color: $color-text-inverse;
+    text-align: center;
+  }
+
+  // Loading state
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-xl 0;
+  }
+
+  &__loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: $color-text-inverse;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  &__loading-text {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-inverse;
+  }
+
+  // Error state
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-xl $spacing-md;
+    background: $color-background-primary;
+    border-radius: $border-radius-md;
+  }
+
+  &__error-text {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    text-align: center;
+  }
+
+  &__error-retry {
+    padding: $spacing-xs $spacing-lg;
+    background: $color-cta-primary;
+    color: $color-text-inverse;
+    border: none;
+    border-radius: $border-radius-full;
+    font-family: $font-family-body;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  // Breeds list
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  // Individual breed item
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: $spacing-sm $spacing-lg;
+    background: $color-background-primary;
+    border: 2px solid transparent;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: $transition-base;
+    text-align: left;
+
+    &:hover {
+      border-color: $color-cta-primary;
+      box-shadow: $shadow-sm;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-cta-primary;
+      outline-offset: 2px;
+    }
+
+    &--selected {
+      background: $color-cta-primary;
+      border-color: $color-cta-primary;
+
+      .breed-select__item-name {
+        color: $color-text-inverse;
+      }
+
+      .breed-select__item-origin,
+      .breed-select__item-hint {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      &:hover {
+        background: darken($color-cta-primary, 10%);
+      }
+    }
+
+    &--meticcio {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      background: #F0F4FF;
+    }
+  }
+
+  &__item-name {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    font-weight: 500;
+    color: $color-text-primary;
+  }
+
+  &__item-origin {
+    font-family: $font-family-body;
+    font-size: 12px;
+    color: $color-text-secondary;
+  }
+
+  &__item-hint {
+    font-family: $font-family-body;
+    font-size: 12px;
+    color: $color-text-secondary;
+    font-style: italic;
+  }
+
+  // Skip button
+  &__skip {
+    width: 100%;
+    padding: $spacing-md;
+    margin-top: $spacing-md;
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.4);
+    border-radius: $border-radius-md;
+    font-family: $font-family-body;
+    font-size: 14px;
+    color: $color-text-inverse;
+    cursor: pointer;
+    transition: $transition-base;
+    text-align: center;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // Responsive
+  @include respond(md) {
+    &__description {
+      font-size: 18px;
+    }
+
+    &__item-name {
+      font-size: 16px;
+    }
+  }
+}

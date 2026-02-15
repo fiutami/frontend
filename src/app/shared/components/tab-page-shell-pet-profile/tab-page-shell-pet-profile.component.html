@@ -5,8 +5,11 @@
   [showBack]="showBack"
   (backClicked)="onBack()">
 
-  <!-- Header Right: Avatar (clonato da Yellow) -->
-  <app-avatar-button shellHeaderRight [mode]="avatarMode" />
+  <!-- Header Right: Action slot + Avatar (automatico, come Default) -->
+  <div shellHeaderRight class="shell-pet-header-right">
+    <ng-content select="[shellHeaderAction]" />
+    <app-avatar-button [mode]="avatarMode" />
+  </div>
 
   <!-- Branding: Logo (clonato da Yellow) -->
   <div shellBranding class="shell-pet-branding">
@@ -40,8 +43,18 @@
 
   <!-- Footer: Mascot + Tab Bar (clonato da Yellow) -->
   <ng-container shellFooter>
-    <app-mascot-peek />
+    <app-mascot-peek (mascotTapped)="onMascotTapped()" />
     <app-bottom-tab-bar [tabs]="tabs" [activeTabId]="activeTabId" />
   </ng-container>
 
 </app-tab-page-shell>
+
+<!-- Fiuto AI Concierge Bottom Sheet -->
+<app-mascot-bottom-sheet
+  [isOpen]="showMascotSheet()"
+  [messages]="mascotMessages()"
+  [aiMessage]="mascotAiMessage()"
+  [hideMascot]="true"
+  [enableVoice]="true"
+  (closed)="onMascotSheetClosed()"
+  (chatMessage)="onChatMessage($event)" />

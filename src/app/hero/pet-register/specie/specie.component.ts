@@ -1,86 +1,162 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, inject, signal, computed } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import {
-  SPECIES_CATEGORIES,
-  SPECIES,
-  Species,
-  SpeciesCategory,
-  SpeciesCategoryInfo,
-  getSpeciesByCategory,
-} from '../data/species.data';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
+import { SpeciesQuestionnaireService, SpeciesDto } from '../../species-questionnaire/species-questionnaire.service';
+
+/** Category metadata for accordion display */
+const CATEGORY_META: Record<string, { label: string; icon: string }> = {
+  mammifero: { label: 'Mammiferi', icon: 'paw' },
+  uccello: { label: 'Uccelli', icon: 'bird' },
+  rettile: { label: 'Rettili', icon: 'reptile' },
+  anfibio: { label: 'Anfibi', icon: 'frog' },
+  pesce: { label: "Pesci d'acquario", icon: 'fish' },
+  invertebrato: { label: 'Invertebrati', icon: 'bug' },
+};
+
+/** Category display order */
+const CATEGORY_ORDER = ['mammifero', 'uccello', 'rettile', 'anfibio', 'pesce', 'invertebrato'];
+
+export interface CategoryGroup {
+  id: string;
+  label: string;
+  icon: string;
+  species: SpeciesDto[];
+}
 
 /**
  * SpecieComponent - Species Selection Page
  *
- * Allows users to select their pet's species from categorized options.
- * Shows expandable categories with species list.
- *
- * Based on Figma design: FxJsfOV7R7qoXBM2xTyXRE, node 12286:4434
+ * Loads species from backend API, groups by category, and allows selection.
+ * Only species with taxonRank='species' are shown as selectable items.
  */
 @Component({
   selector: 'app-specie',
+  standalone: true,
+  imports: [CommonModule, TabPageShellDefaultComponent],
   templateUrl: './specie.component.html',
   styleUrls: ['./specie.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpecieComponent {
-  /** All species categories */
-  readonly categories = SPECIES_CATEGORIES;
+export class SpecieComponent implements OnInit {
+  private router = inject(Router);
+  private speciesService = inject(SpeciesQuestionnaireService);
+
+  /** All species loaded from API */
+  private allSpecies = signal<SpeciesDto[]>([]);
+
+  /** Loading state */
+  isLoading = signal(true);
+
+  /** Error message */
+  loadError = signal<string | null>(null);
 
   /** Currently expanded category */
-  expandedCategory: SpeciesCategory | null = null;
+  expandedCategory = signal<string | null>(null);
 
   /** Selected species */
-  selectedSpecies: Species | null = null;
+  selectedSpecies = signal<SpeciesDto | null>(null);
 
-  constructor(private router: Router) {}
+  /** Grouped categories computed from API data */
+  categories = computed<CategoryGroup[]>(() => {
+    const species = this.allSpecies();
+    // Only selectable species (not category-level entries)
+    const selectableSpecies = species.filter(s => s.taxonRank === 'species');
 
-  /**
-   * Navigate back to pet-register main page
-   */
+    // Group by category
+    const grouped = new Map<string, SpeciesDto[]>();
+    for (const s of selectableSpecies) {
+      const cat = s.category;
+      if (!grouped.has(cat)) {
+        grouped.set(cat, []);
+      }
+      grouped.get(cat)!.push(s);
+    }
+
+    // Build ordered category groups
+    const result: CategoryGroup[] = [];
+    for (const catId of CATEGORY_ORDER) {
+      const speciesList = grouped.get(catId);
+      if (speciesList && speciesList.length > 0) {
+        const meta = CATEGORY_META[catId] ?? { label: catId, icon: 'paw' };
+        result.push({
+          id: catId,
+          label: meta.label,
+          icon: meta.icon,
+          species: speciesList,
+        });
+      }
+    }
+
+    // Add any categories not in the predefined order
+    for (const [catId, speciesList] of grouped) {
+      if (!CATEGORY_ORDER.includes(catId) && speciesList.length > 0) {
+        const meta = CATEGORY_META[catId] ?? { label: catId, icon: 'paw' };
+        result.push({
+          id: catId,
+          label: meta.label,
+          icon: meta.icon,
+          species: speciesList,
+        });
+      }
+    }
+
+    return result;
+  });
+
+  async ngOnInit(): Promise<void> {
+    await this.loadSpecies();
+  }
+
+  private async loadSpecies(): Promise<void> {
+    this.isLoading.set(true);
+    this.loadError.set(null);
+
+    try {
+      const species = await this.speciesService.getAllSpecies();
+      this.allSpecies.set(species);
+    } catch (error) {
+      console.error('Failed to load species:', error);
+      this.loadError.set('Impossibile caricare le specie. Riprova.');
+    } finally {
+      this.isLoading.set(false);
+    }
+  }
+
   onBack(): void {
     this.router.navigate(['/home/pet-register']);
   }
 
-  /**
-   * Toggle category expansion
-   */
-  toggleCategory(category: SpeciesCategoryInfo): void {
-    if (this.expandedCategory === category.id) {
-      this.expandedCategory = null;
+  toggleCategory(categoryId: string): void {
+    this.expandedCategory.update(current =>
+      current === categoryId ? null : categoryId
+    );
+  }
+
+  isCategoryExpanded(categoryId: string): boolean {
+    return this.expandedCategory() === categoryId;
+  }
+
+  selectSpecies(species: SpeciesDto): void {
+    this.selectedSpecies.set(species);
+    // Store the full SpeciesDto (with real UUID) in sessionStorage
+    sessionStorage.setItem('selectedSpecies', JSON.stringify(species));
+    // Clear any previously selected breed
+    sessionStorage.removeItem('selectedBreed');
+
+    // Navigate to breed selection if species has breeds, otherwise go to details
+    if (species.breedPolicy !== 'None') {
+      this.router.navigate(['/home/pet-register/breed-select']);
     } else {
-      this.expandedCategory = category.id;
+      this.router.navigate(['/home/pet-register/details']);
     }
   }
 
-  /**
-   * Check if category is expanded
-   */
-  isCategoryExpanded(categoryId: SpeciesCategory): boolean {
-    return this.expandedCategory === categoryId;
-  }
-
-  /**
-   * Get species for a category
-   */
-  getSpeciesForCategory(categoryId: SpeciesCategory): Species[] {
-    return getSpeciesByCategory(categoryId);
-  }
-
-  /**
-   * Select a species and navigate to details
-   */
-  selectSpecies(species: Species): void {
-    this.selectedSpecies = species;
-    // Store selected species in session/state and navigate to details
-    sessionStorage.setItem('selectedSpecies', JSON.stringify(species));
-    this.router.navigate(['/home/pet-register/details']);
-  }
-
-  /**
-   * Check if species is selected
-   */
   isSpeciesSelected(speciesId: string): boolean {
-    return this.selectedSpecies?.id === speciesId;
+    return this.selectedSpecies()?.id === speciesId;
+  }
+
+  async retry(): Promise<void> {
+    await this.loadSpecies();
   }
 }

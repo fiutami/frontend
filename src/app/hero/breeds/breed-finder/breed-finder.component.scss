@@ -1,67 +1,9 @@
-@use 'src/styles/tokens' as *;
+// Breed Finder - Content inside shell standard
+// Header, background, back button, logo, mascot, tab bar managed by shell
 
-.finder-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-  background: linear-gradient(180deg, #1a5f7a 0%, #0d3b4c 100%);
-  padding-bottom: 80px;
-}
-
-// Header
-.finder-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-
-  &__back,
-  &__menu {
-    width: 44px;
-    height: 44px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-  }
-
-  &__content {
-    text-align: center;
-    flex: 1;
-  }
-
-  &__title {
-    font-size: 24px;
-    font-weight: 700;
-    color: white;
-    margin: 0;
-  }
-
-  &__subtitle {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 4px 0 0;
-  }
-}
-
-// Main content
-.finder-content {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+// Sticky search area
+.finder-sticky {
+  padding: 0 var(--sp-4) var(--sp-3);
 }
 
 // Search bar
@@ -120,12 +62,12 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(74, 116, 240, 0.15);
   padding: 8px 12px;
   border-radius: 20px;
-  color: white;
+  color: var(--blue-1);
   font-size: 14px;
-  align-self: flex-start;
+  margin-bottom: 16px;
 
   .material-icons {
     font-size: 18px;
@@ -136,8 +78,8 @@
     height: 20px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    color: white;
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--blue-1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,16 +94,18 @@
 
 // Upload section
 .upload-section {
+  margin-bottom: 20px;
+
   &__title {
     font-size: 18px;
     font-weight: 600;
-    color: white;
+    color: #333;
     margin: 0 0 4px;
   }
 
   &__desc {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
+    color: #666;
     margin: 0 0 16px;
   }
 }
@@ -172,15 +116,15 @@
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border: 2px dashed #ccc;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.03);
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.15);
+    border-color: #4a74f0;
+    background: rgba(74, 116, 240, 0.05);
   }
 
   &__input {
@@ -194,12 +138,12 @@
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    color: white;
+    color: #666;
   }
 
   &__icon {
     font-size: 48px;
-    opacity: 0.8;
+    opacity: 0.6;
   }
 
   &__text {
@@ -218,7 +162,7 @@
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 
   &__image {
     width: 100%;
@@ -250,20 +194,22 @@
 
 // Description section
 .description-section {
+  margin-bottom: 20px;
+
   &__label {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: white;
+    color: #333;
     margin-bottom: 8px;
   }
 
   &__input {
     width: 100%;
     padding: 12px 16px;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.9);
+    background: #fff;
     font-size: 14px;
     color: #333;
     resize: none;
@@ -275,8 +221,8 @@
     }
 
     &:focus {
-      background: white;
-      box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.3);
+      border-color: #4a74f0;
+      box-shadow: 0 0 0 3px rgba(74, 116, 240, 0.15);
     }
   }
 }
@@ -297,6 +243,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-bottom: 16px;
 
   &:hover:not(:disabled) {
     background: darken(#f5a623, 10%);
@@ -338,7 +285,7 @@
 .analysis-progress {
   &__bar {
     height: 8px;
-    background: rgba(255, 255, 255, 0.2);
+    background: #eee;
     border-radius: 4px;
     overflow: hidden;
   }
@@ -353,73 +300,7 @@
   &__text {
     margin: 12px 0 0;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-  }
-}
-
-// Mascot bubble
-.mascot-bubble {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  z-index: 50;
-
-  &__image {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-  }
-
-  &__text {
-    background: white;
-    padding: 8px 12px;
-    border-radius: 12px 12px 0 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    max-width: 150px;
-
-    p {
-      margin: 0;
-      font-size: 12px;
-      color: #1a5f7a;
-      font-weight: 500;
-    }
-  }
-}
-
-// Tab bar
-.tab-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-around;
-  background: white;
-  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: 8px 12px;
     color: #666;
-    text-decoration: none;
-    font-size: 10px;
-    transition: color 0.2s ease;
-
-    .material-icons {
-      font-size: 24px;
-    }
-
-    &--active {
-      color: #f5a623;
-    }
+    text-align: center;
   }
 }

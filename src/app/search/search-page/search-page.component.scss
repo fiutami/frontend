@@ -1,4 +1,5 @@
-// Search Page Styles
+// Search Page - Content inside shell standard
+// Header, background, back button, logo, mascot, tab bar managed by shell
 
 // Variables
 $header-bg: #f4ae1a;
@@ -17,56 +18,17 @@ $badge-places: #ff9800;
 $badge-breeds: #9c27b0;
 $badge-events: #e91e63;
 
-.search-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fff 0%, #fcf0d4 100%);
+// Sticky search area
+.search-sticky {
+  padding: 0 var(--sp-4) var(--sp-3);
 }
 
-// Header
-.search-header {
-  background: $header-bg;
-  padding: 16px;
-  padding-top: max(16px, env(safe-area-inset-top));
-  border-radius: 0 0 24px 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  &__top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-}
-
-.btn-back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.2s;
-
-  .material-icons {
-    color: $bg-white;
-    font-size: 24px;
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.5);
-  }
-}
-
+// Search input
 .search-input-wrapper {
-  flex: 1;
   position: relative;
   display: flex;
   align-items: center;
+  margin-bottom: 12px;
 }
 
 .search-icon {
@@ -116,7 +78,7 @@ $badge-events: #e91e63;
 
 // AI mode toggle
 .ai-mode-toggle {
-  padding: 8px 0 4px;
+  padding: 0 0 8px;
 }
 
 .ai-chip {
@@ -124,10 +86,10 @@ $badge-events: #e91e63;
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba($primary-blue, 0.3);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.2);
-  color: $bg-white;
+  background: rgba($primary-blue, 0.1);
+  color: $primary-blue;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -138,13 +100,13 @@ $badge-events: #e91e63;
   }
 
   &--active {
-    background: $bg-white;
-    border-color: $bg-white;
-    color: $primary-blue;
+    background: $primary-blue;
+    border-color: $primary-blue;
+    color: $bg-white;
   }
 
   &:hover:not(&--active) {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba($primary-blue, 0.2);
   }
 }
 
@@ -172,44 +134,37 @@ $badge-events: #e91e63;
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid $border-color;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.3);
+  background: $bg-white;
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s;
 
   &__icon {
     font-size: 18px;
-    color: $bg-white;
+    color: $text-secondary;
   }
 
   &__label {
     font-size: 14px;
     font-weight: 500;
-    color: $bg-white;
+    color: $text-primary;
   }
 
   &--active {
-    background: $bg-white;
-    border-color: $bg-white;
+    background: $primary-blue;
+    border-color: $primary-blue;
 
     .category-pill__icon,
     .category-pill__label {
-      color: $header-bg;
+      color: $bg-white;
     }
   }
 
   &:hover:not(&--active) {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba($primary-blue, 0.08);
   }
-}
-
-// Content
-.search-content {
-  flex: 1;
-  padding: 20px 16px;
-  overflow-y: auto;
 }
 
 // Loading state

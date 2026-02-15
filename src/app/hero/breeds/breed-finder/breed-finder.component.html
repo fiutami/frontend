@@ -1,23 +1,12 @@
-<div class="finder-page">
-  <!-- Header -->
-  <header class="finder-header">
-    <button class="finder-header__back" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
+<app-tab-page-shell-default
+  title="Breed Finder"
+  backgroundVariant="blue-solid"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-    <div class="finder-header__content">
-      <h1 class="finder-header__title">Specie speciale</h1>
-      <p class="finder-header__subtitle">Scopri la razza del tuo amico</p>
-    </div>
-
-    <button class="finder-header__menu" aria-label="Menu">
-      <span class="material-icons">menu</span>
-    </button>
-  </header>
-
-  <!-- Main Content -->
-  <main class="finder-content">
-    <!-- Search Bar -->
+  <!-- Sticky Content: Search Bar -->
+  <div shellStickyContent class="finder-sticky">
     <div class="search-bar">
       <span class="material-icons search-bar__icon">search</span>
       <input
@@ -31,126 +20,95 @@
         <span class="material-icons">mic</span>
       </button>
     </div>
+  </div>
 
-    <!-- Selected Species Badge -->
-    @if (selectedSpeciesName()) {
-      <div class="species-badge">
-        <span class="material-icons">pets</span>
-        <span>{{ selectedSpeciesName() }}</span>
-        <button (click)="selectedSpeciesId.set(null)" aria-label="Rimuovi filtro">
+  <!-- Selected Species Badge -->
+  @if (selectedSpeciesName()) {
+    <div class="species-badge">
+      <span class="material-icons">pets</span>
+      <span>{{ selectedSpeciesName() }}</span>
+      <button (click)="selectedSpeciesId.set(null)" aria-label="Rimuovi filtro">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+  }
+
+  <!-- Photo Upload Area -->
+  <section class="upload-section">
+    <h2 class="upload-section__title">Carica una foto</h2>
+    <p class="upload-section__desc">Scatta o carica una foto del tuo pet per identificare la razza</p>
+
+    @if (!photoPreview()) {
+      <!-- Upload placeholder -->
+      <label class="upload-area" for="photo-input">
+        <input
+          type="file"
+          id="photo-input"
+          accept="image/*"
+          capture="environment"
+          (change)="onFileSelected($event)"
+          class="upload-area__input">
+        <div class="upload-area__content">
+          <span class="material-icons upload-area__icon">add_a_photo</span>
+          <span class="upload-area__text">Tocca per caricare</span>
+          <span class="upload-area__hint">JPG, PNG - max 10MB</span>
+        </div>
+      </label>
+    } @else {
+      <!-- Photo preview -->
+      <div class="photo-preview">
+        <img [src]="photoPreview()" alt="Foto caricata" class="photo-preview__image">
+        <button class="photo-preview__remove" (click)="removePhoto()" aria-label="Rimuovi foto">
           <span class="material-icons">close</span>
         </button>
       </div>
     }
+  </section>
 
-    <!-- Photo Upload Area -->
-    <section class="upload-section">
-      <h2 class="upload-section__title">Carica una foto</h2>
-      <p class="upload-section__desc">Scatta o carica una foto del tuo pet per identificare la razza</p>
+  <!-- Description Field -->
+  <section class="description-section">
+    <label for="pet-description" class="description-section__label">
+      Descrivi il tuo pet (opzionale)
+    </label>
+    <textarea
+      id="pet-description"
+      class="description-section__input"
+      placeholder="Es: pelo lungo, orecchie a punta, taglia media..."
+      [ngModel]="description()"
+      (ngModelChange)="description.set($event)"
+      rows="3">
+    </textarea>
+  </section>
 
-      @if (!photoPreview()) {
-        <!-- Upload placeholder -->
-        <label class="upload-area" for="photo-input">
-          <input
-            type="file"
-            id="photo-input"
-            accept="image/*"
-            capture="environment"
-            (change)="onFileSelected($event)"
-            class="upload-area__input">
-          <div class="upload-area__content">
-            <span class="material-icons upload-area__icon">add_a_photo</span>
-            <span class="upload-area__text">Tocca per caricare</span>
-            <span class="upload-area__hint">JPG, PNG - max 10MB</span>
-          </div>
-        </label>
-      } @else {
-        <!-- Photo preview -->
-        <div class="photo-preview">
-          <img [src]="photoPreview()" alt="Foto caricata" class="photo-preview__image">
-          <button class="photo-preview__remove" (click)="removePhoto()" aria-label="Rimuovi foto">
-            <span class="material-icons">close</span>
-          </button>
-        </div>
-      }
-    </section>
-
-    <!-- Description Field -->
-    <section class="description-section">
-      <label for="pet-description" class="description-section__label">
-        Descrivi il tuo pet (opzionale)
-      </label>
-      <textarea
-        id="pet-description"
-        class="description-section__input"
-        placeholder="Es: pelo lungo, orecchie a punta, taglia media..."
-        [ngModel]="description()"
-        (ngModelChange)="description.set($event)"
-        rows="3">
-      </textarea>
-    </section>
-
-    <!-- Analyze Button -->
-    <button
-      class="analyze-button"
-      [disabled]="!canAnalyze()"
-      (click)="analyzePhoto()">
-      @if (isAnalyzing()) {
-        <span class="analyze-button__progress">
-          <span class="analyze-button__spinner"></span>
-          <span>Analisi in corso... {{ analysisProgress() | number:'1.0-0' }}%</span>
-        </span>
-      } @else {
-        <span class="material-icons">auto_awesome</span>
-        <span>Identifica la razza</span>
-      }
-    </button>
-
-    <!-- Analysis Progress -->
+  <!-- Analyze Button -->
+  <button
+    class="analyze-button"
+    [disabled]="!canAnalyze()"
+    (click)="analyzePhoto()">
     @if (isAnalyzing()) {
-      <div class="analysis-progress">
-        <div class="analysis-progress__bar">
-          <div
-            class="analysis-progress__fill"
-            [style.width.%]="analysisProgress()">
-          </div>
-        </div>
-        <p class="analysis-progress__text">
-          L'AI sta analizzando la foto...
-        </p>
-      </div>
+      <span class="analyze-button__progress">
+        <span class="analyze-button__spinner"></span>
+        <span>Analisi in corso... {{ analysisProgress() | number:'1.0-0' }}%</span>
+      </span>
+    } @else {
+      <span class="material-icons">auto_awesome</span>
+      <span>Identifica la razza</span>
     }
-  </main>
+  </button>
 
-  <!-- Mascot Fiuto -->
-  <div class="mascot-bubble">
-    <img src="/assets/mascot/fiuto-bubble.svg" alt="Fiuto mascotte" class="mascot-bubble__image">
-    <div class="mascot-bubble__text">
-      <p>Ogni pet è unico!</p>
+  <!-- Analysis Progress -->
+  @if (isAnalyzing()) {
+    <div class="analysis-progress">
+      <div class="analysis-progress__bar">
+        <div
+          class="analysis-progress__fill"
+          [style.width.%]="analysisProgress()">
+        </div>
+      </div>
+      <p class="analysis-progress__text">
+        L'AI sta analizzando la foto...
+      </p>
     </div>
-  </div>
+  }
 
-  <!-- Bottom Tab Bar -->
-  <nav class="tab-bar">
-    <a routerLink="/home/main" class="tab-bar__item">
-      <span class="material-icons">home</span>
-      <span>Home</span>
-    </a>
-    <a routerLink="/home/calendar" class="tab-bar__item">
-      <span class="material-icons">calendar_today</span>
-      <span>Calendario</span>
-    </a>
-    <a routerLink="/home/map" class="tab-bar__item">
-      <span class="material-icons">place</span>
-      <span>Mappa</span>
-    </a>
-    <a routerLink="/home/pet-profile" class="tab-bar__item">
-      <span class="material-icons">pets</span>
-      <span>Pet</span>
-    </a>
-    <a routerLink="/home/breeds" class="tab-bar__item tab-bar__item--active">
-      <span class="material-icons">public</span>
-      <span>Specie</span>
-    </a>
-  </nav>
-</div>
+</app-tab-page-shell-default>

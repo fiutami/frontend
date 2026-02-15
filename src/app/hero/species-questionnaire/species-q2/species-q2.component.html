@@ -5,13 +5,17 @@
     overlayOpacity="light">
   </app-page-background>
 
-  <!-- Header -->
-  <header class="species-q2__header">
-    <app-back-button
-      variant="solid"
-      (clicked)="onBack()">
-    </app-back-button>
-  </header>
+  <!-- Logo Overlay (centered in header area) -->
+  <div class="species-q2__logo-overlay">
+    <app-logo variant="white" size="md" href="https://fiutami.pet"></app-logo>
+  </div>
+
+  <!-- Back Button -->
+  <app-back-button
+    class="species-q2__back"
+    variant="solid"
+    (clicked)="onBack()">
+  </app-back-button>
 
   <!-- Content -->
   <main class="species-q2__content">
@@ -41,9 +45,4 @@
         class="species-q2__mascot-img" />
     </div>
   </main>
-
-  <!-- Footer -->
-  <footer class="species-q2__footer">
-    <app-logo variant="white" size="md" href="https://fiutami.pet"></app-logo>
-  </footer>
 </div>

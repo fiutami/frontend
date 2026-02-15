@@ -6,11 +6,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Conversation } from '../models/chat.models';
 import { ChatService } from '../services/chat.service';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
 @Component({
   selector: 'app-chat-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, TranslateModule],
+  imports: [CommonModule, RouterModule, FormsModule, TranslateModule, TabPageShellDefaultComponent],
   templateUrl: './chat-list.component.html',
   styleUrls: ['./chat-list.component.scss']
 })

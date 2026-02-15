@@ -1,0 +1,72 @@
+<app-tab-page-shell-default
+  activeTabId="home"
+  title="Razza"
+  backgroundVariant="blue-solid"
+  [showBack]="true"
+  (backClicked)="onBack()">
+
+  <!-- Description -->
+  @if (speciesDto) {
+    <p class="breed-select__description">
+      Seleziona la razza del tuo {{ speciesDto.name }}
+    </p>
+  }
+
+  <!-- Loading State -->
+  @if (isLoading()) {
+    <div class="breed-select__loading">
+      <span class="breed-select__loading-spinner"></span>
+      <p class="breed-select__loading-text">Caricamento razze...</p>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (loadError(); as error) {
+    <div class="breed-select__error">
+      <p class="breed-select__error-text">{{ error }}</p>
+      <button class="breed-select__error-retry" type="button" (click)="retry()">Riprova</button>
+    </div>
+  }
+
+  <!-- Breeds List -->
+  @if (!isLoading() && !loadError()) {
+    <div class="breed-select__list">
+      <!-- Meticcio option (always first if available) -->
+      @if (meticcioBeed(); as meticcio) {
+        <button
+          class="breed-select__item breed-select__item--meticcio"
+          [class.breed-select__item--selected]="isBreedSelected(meticcio.id)"
+          type="button"
+          (click)="selectBreed(meticcio)">
+          <span class="breed-select__item-name">Meticcio</span>
+          <span class="breed-select__item-hint">Non conosco la razza</span>
+        </button>
+      }
+
+      <!-- Pure breeds -->
+      @for (breed of pureBreeds(); track breed.id) {
+        <button
+          class="breed-select__item"
+          [class.breed-select__item--selected]="isBreedSelected(breed.id)"
+          type="button"
+          (click)="selectBreed(breed)">
+          <span class="breed-select__item-name">{{ breed.name }}</span>
+          @if (breed.origin) {
+            <span class="breed-select__item-origin">{{ breed.origin }}</span>
+          }
+        </button>
+      }
+
+      <!-- Skip option (for Optional breed policy) -->
+      @if (speciesDto && speciesDto.breedPolicy === 'Optional') {
+        <button
+          class="breed-select__skip"
+          type="button"
+          (click)="skipBreed()">
+          Salta - scegliero dopo
+        </button>
+      }
+    </div>
+  }
+
+</app-tab-page-shell-default>

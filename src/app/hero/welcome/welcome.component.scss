@@ -1,5 +1,6 @@
 @import 'src/styles/tokens-figma';
 @import 'src/styles/mixins';
+@import 'src/styles/shell-contract';
 
 // ===========================================
 // WELCOME - Pet Onboarding Page
@@ -32,26 +33,27 @@
     object-position: center top;
   }
 
-  // Header - Back Button & Language
-  &__header {
-    position: relative;
-    z-index: 20;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: $spacing-md;
-    width: 100%;
+  // Logo Overlay - centered in header area (shell-contract standard)
+  &__logo-overlay {
+    @include shell-logo-standard;
+    @include shell-logo-responsive;
+    pointer-events: none;
 
-    @include respond(md) {
-      padding: $spacing-xl;
+    app-logo {
+      pointer-events: auto;
     }
   }
 
+  // Back Button - top-left (shell-contract standard)
   &__back {
-    // Uses app-icon-button with glass variant
+    @include shell-back-standard;
   }
 
   &__language {
+    position: absolute;
+    top: calc(var(--sp-2) + #{$shell-safe-area-top});
+    right: var(--sp-4);
+    z-index: calc(#{$shell-z-blue-header} + 1);
     display: flex;
     align-items: center;
     gap: $spacing-xs;
@@ -126,26 +128,6 @@
     }
 
     @include focus-ring($color-text-inverse, 1px, 2px);
-  }
-
-  // Footer - Logo
-  &__footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 15;
-    background-color: #4A74F0; // Blue from Figma
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: $spacing-sm 0;
-    height: 70px;
-  }
-
-  &__logo {
-    height: 48px;
-    width: auto;
   }
 
   // Coming Soon Modal

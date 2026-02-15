@@ -1,37 +1,23 @@
-<div class="calendar">
-  <!-- Header -->
-  <header class="calendar__header">
-    <button
-      class="calendar__back-btn"
-      (click)="goBack()"
-      aria-label="Torna indietro"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-      </svg>
-    </button>
+<app-tab-page-shell-default
+  title="Calendario"
+  activeTabId="calendar"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-    <h1 class="calendar__title">Calendario</h1>
+  <!-- Header Action: "Oggi" button (a sinistra dell'avatar) -->
+  <button shellHeaderAction
+    class="calendar__today-btn"
+    (click)="goToToday()"
+    aria-label="Vai a oggi">
+    Oggi
+  </button>
 
-    <div class="calendar__header-actions">
-      <button
-        class="calendar__today-btn"
-        (click)="goToToday()"
-        aria-label="Vai a oggi"
-      >
-        Oggi
-      </button>
-      <app-avatar-button size="medium"></app-avatar-button>
-    </div>
-  </header>
-
-  <!-- Month navigation -->
-  <div class="calendar__nav">
+  <!-- Sticky: Month navigation -->
+  <div shellStickyContent class="calendar__nav">
     <button
       class="calendar__nav-btn"
       (click)="goToPreviousMonth()"
-      aria-label="Mese precedente"
-    >
+      aria-label="Mese precedente">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
       </svg>
@@ -45,24 +31,22 @@
     <button
       class="calendar__nav-btn"
       (click)="goToNextMonth()"
-      aria-label="Mese successivo"
-    >
+      aria-label="Mese successivo">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
         <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
       </svg>
     </button>
   </div>
 
-  <!-- Calendar month grid -->
+  <!-- Main Content: Calendar grid + Events -->
   <div class="calendar__body">
     <app-calendar-month
       [currentDate]="currentDate()"
       [events]="getEventsForCurrentMonth()"
-      (daySelected)="onDaySelected($event)"
-    ></app-calendar-month>
+      (daySelected)="onDaySelected($event)">
+    </app-calendar-month>
   </div>
 
-  <!-- Events list for current month -->
   <div class="calendar__events-section">
     <h2 class="calendar__events-title">Eventi del mese</h2>
     @if (getEventsForCurrentMonth().length === 0) {
@@ -73,8 +57,8 @@
           <li class="calendar__event-item">
             <span
               class="calendar__event-indicator"
-              [style.background-color]="event.color"
-            ></span>
+              [style.background-color]="event.color">
+            </span>
             <div class="calendar__event-content">
               <span class="calendar__event-title">{{ event.title }}</span>
               <span class="calendar__event-date">
@@ -91,8 +75,7 @@
   <button
     class="calendar__fab"
     (click)="openEventModal()"
-    aria-label="Aggiungi evento"
-  >
+    aria-label="Aggiungi evento">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
       <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
     </svg>
@@ -102,28 +85,8 @@
   @if (showEventModal()) {
     <app-event-create
       (eventCreated)="onEventCreated($event)"
-      (cancel)="closeEventModal()"
-    ></app-event-create>
+      (cancel)="closeEventModal()">
+    </app-event-create>
   }
 
-  <!-- Mascot Peek -->
-  <app-mascot-peek
-    #mascotPeek
-    [hidden]="showMascotSheet()"
-    (mascotTapped)="onMascotClick()">
-  </app-mascot-peek>
-
-  <!-- Mascot Bottom Sheet -->
-  <app-mascot-bottom-sheet
-    [isOpen]="showMascotSheet()"
-    [hideMascot]="true"
-    [aiMessage]="'Ciao! Come posso aiutarti?'"
-    (closed)="closeMascotSheet()">
-  </app-mascot-bottom-sheet>
-
-  <!-- Bottom Tab Bar -->
-  <app-bottom-tab-bar
-    [tabs]="tabs"
-    [activeTabId]="'calendar'">
-  </app-bottom-tab-bar>
-</div>
+</app-tab-page-shell-default>

@@ -6,11 +6,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { AdoptionService } from '../services/adoption.service';
 import { Adoption, AdoptionSearchParams } from '../models/adoption.models';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
 @Component({
   selector: 'app-adoption-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, TranslateModule],
+  imports: [CommonModule, RouterModule, FormsModule, TranslateModule, TabPageShellDefaultComponent],
   templateUrl: './adoption-list.component.html',
   styleUrls: ['./adoption-list.component.scss']
 })

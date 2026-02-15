@@ -1,46 +1,27 @@
-.lost-pets-container {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #4A74F0 0%, #4A74F0 200px, #f5f5f5 200px);
-}
+// Lost Pets List - Contenuto dentro shell standard
+// Header, background, back button, logo, mascot, tab bar gestiti dalla shell
 
-.lost-header {
+// Action button nello slot header
+.shell-action-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  background: transparent;
-  color: #fff;
-
-  h1 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-  }
-
-  .back-btn,
-  .report-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  }
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .hero-section {
-  padding: 0 16px 16px;
+  padding: 0 var(--sp-4) var(--sp-4);
   text-align: center;
 
   .hero-subtitle {
-    color: #fff;
+    color: var(--blue-1);
     font-size: 20px;
     font-weight: 700;
     font-family: 'Montserrat', sans-serif;
@@ -52,7 +33,7 @@
 .quick-actions {
   display: flex;
   gap: 12px;
-  padding: 0 16px 16px;
+  padding: 0 var(--sp-4) var(--sp-4);
 
   .action-card {
     flex: 1;
@@ -84,10 +65,6 @@
       font-family: 'Montserrat', sans-serif;
       color: #fff;
     }
-
-    &.primary {
-      background: #F2B830;
-    }
   }
 }
 
@@ -95,7 +72,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 0 17px 16px;
+  margin: 0 var(--sp-4) var(--sp-4);
   padding: 12px 16px;
   background: #fff;
   border: 1px solid #D6D6D6;
@@ -114,9 +91,7 @@
     font-family: 'Montserrat', sans-serif;
     color: #333;
 
-    &::placeholder {
-      color: #878787;
-    }
+    &::placeholder { color: #878787; }
   }
 
   .filter-btn {
@@ -126,9 +101,7 @@
     padding: 0;
     cursor: pointer;
 
-    svg {
-      stroke: #333;
-    }
+    svg { stroke: #333; }
   }
 }
 
@@ -136,7 +109,7 @@
   display: flex;
   background: #fff;
   border-bottom: 1px solid #eee;
-  margin: 0 17px;
+  margin: 0 var(--sp-4);
   border-radius: 8px 8px 0 0;
   overflow: hidden;
 
@@ -207,7 +180,7 @@
 }
 
 .lost-list {
-  padding: 0 17px 24px;
+  padding: 0;
 }
 
 .lost-card {
@@ -305,28 +278,13 @@
       align-items: center;
       gap: 4px;
 
-      svg {
-        flex-shrink: 0;
-      }
+      svg { flex-shrink: 0; }
     }
 
-    .species {
-      font-weight: 400;
-    }
-
-    .owner {
-      font-weight: 600;
-    }
-
-    .date {
-      font-size: 14px;
-      color: #000;
-    }
-
-    .sightings {
-      color: #4A74F0;
-      font-weight: 500;
-    }
+    .species { font-weight: 400; }
+    .owner { font-weight: 600; }
+    .date { font-size: 14px; color: #000; }
+    .sightings { color: #4A74F0; font-weight: 500; }
   }
 
   .card-actions {
@@ -360,20 +318,16 @@
 }
 
 .view-all-link {
-  padding: 16px;
+  padding: 16px 0;
   text-align: left;
 
   a {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #fff;
+    color: var(--blue-1);
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
-
-    svg {
-      stroke: #fff;
-    }
   }
 }

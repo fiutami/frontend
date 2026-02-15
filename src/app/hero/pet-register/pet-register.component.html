@@ -1,21 +1,9 @@
-<div class="pet-register">
-  <!-- Back Button -->
-  <app-back-button
-    class="pet-register__back"
-    variant="glass"
-    ariaLabel="Torna indietro"
-    (clicked)="onBack()">
-  </app-back-button>
-
-  <!-- Logo -->
-  <div class="pet-register__logo">
-    <app-logo
-      variant="color"
-      size="lg"
-      loading="eager"
-      href="https://fiutami.pet">
-    </app-logo>
-  </div>
+<app-tab-page-shell-default
+  activeTabId="home"
+  title="Registra Pet"
+  backgroundVariant="blue-solid"
+  [showBack]="true"
+  (backClicked)="onBack()">
 
   <!-- Description -->
   <p class="pet-register__description">{{ description }}</p>
@@ -46,4 +34,5 @@
         loading="eager" />
     </div>
   </div>
-</div>
+
+</app-tab-page-shell-default>

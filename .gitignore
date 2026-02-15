@@ -44,3 +44,6 @@ yarn-error.log*
 
 # Figma
 .figma/specs/
+
+# Generated content
+content/

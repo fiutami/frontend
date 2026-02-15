@@ -1,5 +1,6 @@
 @import 'src/styles/tokens-figma';
 @import 'src/styles/mixins';
+@import 'src/styles/shell-contract';
 
 // ===========================================
 // WELCOME AI - AI-Guided Onboarding Page
@@ -23,12 +24,20 @@
   );
   background-color: #F5A623;
 
-  // Back Button - Top Left (uses app-back-button component)
+  // Logo Overlay - centered in header area (shell-contract standard)
+  &__logo-overlay {
+    @include shell-logo-standard;
+    @include shell-logo-responsive;
+    pointer-events: none;
+
+    app-logo {
+      pointer-events: auto;
+    }
+  }
+
+  // Back Button - Top Left (shell-contract standard)
   &__back {
-    position: absolute;
-    top: 45px;
-    left: 31px;
-    z-index: 20;
+    @include shell-back-standard;
   }
 
   // AI Speech Bubble - Main Message
@@ -146,34 +155,10 @@
     text-align: center;
   }
 
-  // Footer with Logo
-  &__footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 25;
-    height: 70px;
-    background-color: #4A74F0; // Blue from Figma
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__logo {
-    height: 45px;
-    width: auto;
-  }
-
   // Responsive adjustments
   @include respond(md) {
     max-width: 500px;
     border-radius: $border-radius-page;
-
-    &__back {
-      top: 60px;
-      left: 40px;
-    }
 
     &__speech-bubble {
       top: 200px;

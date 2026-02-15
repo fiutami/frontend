@@ -6,8 +6,8 @@
     "logLevel": "debug"
   },
   "/api": {
-    "target": "http://localhost:5062",
-    "secure": false,
+    "target": "https://api.stage.fiutami.pet",
+    "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
   }

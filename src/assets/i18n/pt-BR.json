@@ -31,7 +31,8 @@
     "error": "Erro",
     "success": "Sucesso",
     "next": "Próximo",
-    "remove": "Remover"
+    "remove": "Remover",
+    "rotateDevice": "Gire o dispositivo na vertical para continuar"
   },
   "auth": {
     "login": "Entrar",
@@ -1209,5 +1210,37 @@
       "rateLimit": "Você pode solicitar uma exportação a cada 24 horas",
       "expired": "O link de download expirou. Solicite uma nova exportação."
     }
+  },
+  "species": {
+    "cane": "Cachorro",
+    "gatto": "Gato",
+    "coniglio": "Coelho",
+    "criceto": "Hamster",
+    "cavia": "Porquinho-da-índia",
+    "furetto": "Furão",
+    "gerbillo": "Gerbo",
+    "ratto": "Rato",
+    "tartaruga": "Tartaruga",
+    "serpente": "Serpente",
+    "pesce": "Peixe",
+    "anfibio": "Anfíbio",
+    "canarino": "Canário",
+    "pappagallino": "Periquito",
+    "betta": "Betta",
+    "guppy": "Guppy",
+    "axolotl": "Axolote",
+    "rana": "Rã",
+    "tritone_salamandra": "Tritões e Salamandras"
+  },
+  "sizeCategory": {
+    "piccola": "Pequeno",
+    "media": "Médio",
+    "grande": "Grande",
+    "gigante": "Gigante"
+  },
+  "levels": {
+    "bassa": "Baixo",
+    "media": "Médio",
+    "alta": "Alto"
   }
 }

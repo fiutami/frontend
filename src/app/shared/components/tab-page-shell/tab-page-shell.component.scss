@@ -1,53 +1,63 @@
 /**
  * TabPageShellComponent - Telaio standard tab pages
  *
- * REGOLA: Solo CSS vars da tokens!
+ * REGOLA: Usa variabili da _shell-contract.scss!
  * FIGMA: Header fisso, non scrolla
  *
  * RESPONSIVE: Centered mobile-like container for tablets/foldables/desktop
  * - < 768px: Full width mobile layout
- * - 768px - 1024px: Foldable/tablet centered (max-width: 480px)
- * - > 1024px: Desktop centered (max-width: 520px)
+ * - 768px+: Foldable/tablet centered
+ * - 1024px+: Desktop centered
+ * - 1920px+/2560px+: 4K scaling
  */
+
+@import 'src/styles/shell-contract';
 
 // ===========================================
 // CSS CUSTOM PROPERTIES FOR RESPONSIVE CONTAINER
 // ===========================================
 :root {
-  // App container max-width for larger screens
   --app-container-max-width: 100%;
   --app-container-bg: transparent;
   --app-container-shadow: none;
 
-  // Foldable devices (768px - 1024px)
   @media (min-width: 768px) {
-    --app-container-max-width: 480px;
+    --app-container-max-width: #{$shell-content-max-width-768};
     --app-container-bg: var(--white, #fff);
     --app-container-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
   }
 
-  // Tablets (1024px+)
   @media (min-width: 1024px) {
-    --app-container-max-width: 520px;
+    --app-container-max-width: #{$shell-content-max-width-1024};
     --app-container-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
   }
 
-  // Desktop (1280px+)
   @media (min-width: 1280px) {
-    --app-container-max-width: 560px;
+    --app-container-max-width: #{$shell-content-max-width-1280};
+  }
+
+  @media (min-width: 1440px) {
+    --app-container-max-width: #{$shell-content-max-width-1920};
+  }
+
+  @media (min-width: 1920px) and (min-height: 900px) {
+    --app-container-max-width: #{$shell-content-max-width-1920};
+  }
+
+  @media (min-width: 2560px) and (min-height: 1200px) {
+    --app-container-max-width: #{$shell-content-max-width-2560};
   }
 }
 
-// Host level - previeni scroll del body
+// Host level
 :host {
   display: block;
   height: 100dvh;
   overflow: hidden;
   position: fixed;
   inset: 0;
-  overscroll-behavior: none; // Previene bounce su iOS
+  overscroll-behavior: none;
 
-  // Centered container background for larger screens
   @media (min-width: 768px) {
     background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
     display: flex;
@@ -62,21 +72,16 @@
   height: 100%;
   position: relative;
   z-index: 1;
-  overflow: hidden; // Impedisce scroll del container
+  overflow: hidden;
 
-  // ===========================================
-  // RESPONSIVE CENTERED CONTAINER
-  // Mobile-like app experience on larger screens
-  // ===========================================
   @media (min-width: 768px) {
     max-width: var(--app-container-max-width);
     width: 100%;
     margin: 0 auto;
     box-shadow: var(--app-container-shadow);
-    border-radius: 0; // No rounded corners on the shell itself
+    border-radius: 0;
     position: relative;
 
-    // Subtle border to define the app area
     &::before {
       content: '';
       position: absolute;
@@ -90,61 +95,53 @@
 }
 
 // ==========================================
-// BLUE HEADER - Header + Branding (no scroll, dentro blu)
-// Altezza = blue-shape (25.1%, min 180px, max 220px)
-// Flexbox per spingere branding al bottom della blue-shape
+// BLUE HEADER
 // ==========================================
-
 .shell-blue-header {
   position: relative;
-  z-index: 10;
+  z-index: $shell-z-blue-header;
   display: flex;
   flex-direction: column;
-  // Spinge header in alto e branding in basso
   justify-content: space-between;
-  // Altezza fissa responsive (sync con blue-shape)
-  height: 190px;
-  padding-top: env(safe-area-inset-top, 0px);
+  height: $shell-header-height;
+  padding-top: $shell-safe-area-top;
 
-  // Breakpoints: sync esatto con blue-shape
-  @media (min-width: 480px) { height: 195px; }
-  @media (min-width: 640px) { height: 200px; }
-  @media (min-width: 768px) { height: 210px; }
-  @media (min-width: 1024px) { height: 220px; }
-  @media (min-width: 1280px) { height: 235px; }
+  @media (min-width: 480px) { height: $shell-header-height-480; }
+  @media (min-width: 640px) { height: $shell-header-height-640; }
+  @media (min-width: 768px) { height: $shell-header-height-768; }
+  @media (min-width: 1024px) { height: $shell-header-height-1024; }
+  @media (min-width: 1280px) { height: $shell-header-height-1280; }
+  @media (min-width: 1920px) and (min-height: 900px) { height: $shell-header-height-1920; }
+  @media (min-width: 2560px) and (min-height: 1200px) { height: $shell-header-height-2560; }
 }
 
 // ==========================================
 // HEADER
 // ==========================================
-
 .shell-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // padding-top ridotto + margin-top negativo per alzare solo header
-  padding: var(--sp-2) var(--sp-4) var(--sp-3);
-  margin-top: -8px;
+  padding: $shell-header-padding;
+  margin-top: $shell-header-margin-top;
 
   &__left {
     display: flex;
     align-items: center;
     gap: var(--sp-3);
+    min-width: $shell-back-size; // Previene shift del logo quando titolo presente/assente
   }
 
   &__right {
     display: flex;
     align-items: center;
     gap: var(--sp-2);
-    // Sposta avatar più nell'angolo (dentro l'area blu)
-    margin-right: -8px;
+    margin-right: $shell-avatar-margin-right;
   }
 
   &__back {
-    // Figma: circular white button with arrow
-    // Base: Mobile (360px)
-    width: 34px;
-    height: 34px;
+    width: $shell-back-size;
+    height: $shell-back-size;
     padding: 0;
     border: none;
     border-radius: 50%;
@@ -161,100 +158,77 @@
       height: 100%;
     }
 
-    &:hover {
-      opacity: 0.9;
-    }
+    &:hover { opacity: 0.9; }
+    &:active { transform: scale(0.95); }
 
-    &:active {
-      transform: scale(0.95);
-    }
-
-    // 480px: Mobile large
     @media (min-width: 480px) {
-      width: 36px;
-      height: 36px;
+      width: $shell-back-size-480;
+      height: $shell-back-size-480;
     }
-
-    // 640px: Phablet
     @media (min-width: 640px) {
-      width: 38px;
-      height: 38px;
+      width: $shell-back-size-640;
+      height: $shell-back-size-640;
     }
-
-    // 768px: Tablet
     @media (min-width: 768px) {
-      width: 40px;
-      height: 40px;
+      width: $shell-back-size-768;
+      height: $shell-back-size-768;
     }
-
-    // 1024px: Desktop
     @media (min-width: 1024px) {
-      width: 44px;
-      height: 44px;
+      width: $shell-back-size-1024;
+      height: $shell-back-size-1024;
     }
   }
 
   &__title {
     font-family: var(--font-body);
-    // Base: Mobile (360px)
-    font-size: 16px;
+    font-size: $shell-title-size;
     font-weight: 500;
-    color: var(--white);
+    color: $shell-title-color-on-blue;
     margin: 0;
     padding: 0;
     text-transform: capitalize;
-    line-height: 34px;
-    height: 34px;
+    line-height: $shell-back-size;
+    height: $shell-back-size;
 
-    // 480px: Mobile large
     @media (min-width: 480px) {
-      font-size: 17px;
-      line-height: 36px;
-      height: 36px;
+      font-size: $shell-title-size-480;
+      line-height: $shell-back-size-480;
+      height: $shell-back-size-480;
     }
-
-    // 640px: Phablet
     @media (min-width: 640px) {
-      font-size: 18px;
-      line-height: 38px;
-      height: 38px;
+      font-size: $shell-title-size-640;
+      line-height: $shell-back-size-640;
+      height: $shell-back-size-640;
     }
-
-    // 768px: Tablet
     @media (min-width: 768px) {
-      font-size: 19px;
-      line-height: 40px;
-      height: 40px;
+      font-size: $shell-title-size-768;
+      line-height: $shell-back-size-768;
+      height: $shell-back-size-768;
     }
-
-    // 1024px: Desktop
     @media (min-width: 1024px) {
-      font-size: 20px;
-      line-height: 44px;
-      height: 44px;
+      font-size: $shell-title-size-1024;
+      line-height: $shell-back-size-1024;
+      height: $shell-back-size-1024;
     }
   }
 }
 
 // ==========================================
-// STICKY YELLOW AREA - Icone e chips (non scrolla)
-// Stile sticky per rimanere fisso durante scroll del contenuto
+// STICKY YELLOW AREA
 // ==========================================
-
 .shell-sticky-yellow {
   position: relative;
-  z-index: 9;
-  flex-shrink: 0; // Non si comprime mai
-  background: transparent; // Lo sfondo viene dal page-background
+  z-index: $shell-z-sticky;
+  flex-shrink: 0;
+  background: transparent;
 }
 
 // ==========================================
-// MAIN CONTENT - Solo questo scrolla
+// MAIN CONTENT
 // ==========================================
-
 .shell-content {
   flex: 1;
-  min-height: 0; // Permette shrink per flex
+  min-height: 0;
   padding: 0 var(--sp-4);
   padding-bottom: var(--content-padding-bottom);
   overflow-y: auto;

@@ -5,11 +5,21 @@
  * Due forme aggiunte: cerchio bianco + card blu
  */
 
+@import 'src/styles/shell-contract';
+
 $fiutami-blue: #4a74f0;
 
 // ==========================================
+// HEADER RIGHT - Avatar + Action slot (come Default)
+// display:contents preserva posizione originale avatar
+// ==========================================
+.shell-pet-header-right {
+  display: contents;
+}
+
+// ==========================================
 // BRANDING SECTION (clonato da Yellow)
-// Logo fluttua su giallo
+// Logo SEMPRE centrato al 50%, extra content in basso
 // ==========================================
 .shell-pet-branding {
   position: absolute;
@@ -17,61 +27,36 @@ $fiutami-blue: #4a74f0;
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 var(--sp-4);
   pointer-events: none;
 
   &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: block;
     pointer-events: auto;
   }
 }
 
-// Extra content posizionato in basso
+// Extra content ancorato in basso al blue header
 :host ::ng-deep [shellBrandingExtra] {
   position: absolute;
-  bottom: 0;
+  bottom: 8px;
   left: 0;
   right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   pointer-events: auto;
 }
 
 // ==========================================
-// LOGO RESPONSIVE (clonato da Yellow)
+// LOGO RESPONSIVE - usa mixin dal contract
 // ==========================================
 :host ::ng-deep .shell-pet-branding__logo {
-  img,
-  .logo {
-    height: 48px !important;
-    width: auto !important;
-  }
-
-  @media (min-width: 480px) {
-    img, .logo { height: 54px !important; }
-  }
-
-  @media (min-width: 560px) {
-    img, .logo { height: 58px !important; }
-  }
-
-  @media (min-width: 640px) {
-    img, .logo { height: 62px !important; }
-  }
-
-  @media (min-width: 768px) {
-    img, .logo { height: 68px !important; }
-  }
-
-  @media (min-width: 1024px) {
-    img, .logo { height: 72px !important; }
-  }
-
-  @media (min-width: 1280px) {
-    img, .logo { height: 80px !important; }
-  }
+  @include shell-logo-responsive;
 }
 
 // ==========================================

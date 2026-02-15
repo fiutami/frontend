@@ -31,7 +31,8 @@
     "error": "Fehler",
     "success": "Erfolg",
     "next": "Weiter",
-    "remove": "Entfernen"
+    "remove": "Entfernen",
+    "rotateDevice": "Bitte drehen Sie Ihr Gerät ins Hochformat"
   },
   "auth": {
     "login": "Anmelden",
@@ -1160,5 +1161,37 @@
       "rateLimit": "Sie können alle 24 Stunden einen Export anfordern",
       "expired": "Der Download-Link ist abgelaufen. Fordern Sie einen neuen Export an."
     }
+  },
+  "species": {
+    "cane": "Hund",
+    "gatto": "Katze",
+    "coniglio": "Kaninchen",
+    "criceto": "Hamster",
+    "cavia": "Meerschweinchen",
+    "furetto": "Frettchen",
+    "gerbillo": "Rennmaus",
+    "ratto": "Ratte",
+    "tartaruga": "Schildkröte",
+    "serpente": "Schlange",
+    "pesce": "Fisch",
+    "anfibio": "Amphibie",
+    "canarino": "Kanarienvogel",
+    "pappagallino": "Wellensittich",
+    "betta": "Betta",
+    "guppy": "Guppy",
+    "axolotl": "Axolotl",
+    "rana": "Frosch",
+    "tritone_salamandra": "Molche und Salamander"
+  },
+  "sizeCategory": {
+    "piccola": "Klein",
+    "media": "Mittel",
+    "grande": "Groß",
+    "gigante": "Riesig"
+  },
+  "levels": {
+    "bassa": "Niedrig",
+    "media": "Mittel",
+    "alta": "Hoch"
   }
 }

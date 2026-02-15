@@ -13,11 +13,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 import { LostPetsModuleService } from '../services/lost-pets.service';
 import { LostPet } from '../models/lost-pets.models';
+import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
 @Component({
   selector: 'app-lost-pets-list',
   standalone: true,
-  imports: [CommonModule, TranslateModule, SharedModule, RouterLink],
+  imports: [CommonModule, TranslateModule, SharedModule, RouterLink, TabPageShellDefaultComponent],
   templateUrl: './lost-pets-list.component.html',
   styleUrls: ['./lost-pets-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

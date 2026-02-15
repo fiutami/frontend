@@ -1,282 +1,188 @@
 @import 'src/styles/tokens-figma';
 
-.calendar {
-  min-height: 100vh;
+// ===========================================
+// CALENDAR - Wrapped in TabPageShellDefault
+// Header, logo, avatar, mascot, tab bar from shell
+// ===========================================
+
+// "Oggi" button (proiettato in shellHeaderAction)
+.calendar__today-btn {
+  padding: $spacing-xs $spacing-sm;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: $border-radius-md;
+  font-size: $typography-small-size;
+  font-weight: 600;
+  transition: $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Month navigation (proiettato in shellStickyContent)
+.calendar__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+  background: rgba(255, 255, 255, 0.9);
+  margin: 0 (-$spacing-md);
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+}
+
+.calendar__nav-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-primary;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.calendar__nav-current {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #fde5a7 0%, #f7bc34 50%, #e98b0c 100%);
-  padding-bottom: $spacing-2xl;
+  align-items: center;
+  gap: $spacing-xs;
+}
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $spacing-md;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+.calendar__month {
+  font-size: $typography-h2-size;
+  font-weight: $typography-h2-weight;
+  color: $color-text-primary;
+  text-transform: capitalize;
+}
+
+.calendar__year {
+  font-size: $typography-body-size;
+  color: $color-text-secondary;
+}
+
+// Calendar grid
+.calendar__body {
+  margin-bottom: $spacing-lg;
+}
+
+// Events section
+.calendar__events-section {
+  background: rgba(255, 255, 255, 0.9);
+  padding: $spacing-lg;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  margin-bottom: $spacing-lg;
+}
+
+.calendar__events-title {
+  font-size: $typography-button-size;
+  font-weight: $typography-h2-weight;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md;
+}
+
+.calendar__events-empty {
+  font-size: $typography-body-size;
+  color: $color-text-secondary;
+  margin: 0;
+  text-align: center;
+  padding: $spacing-lg 0;
+}
+
+.calendar__events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.calendar__event-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-background-primary;
+  border-radius: $border-radius-md;
+  transition: $transition-fast;
+
+  &:hover {
+    transform: translateX(4px);
+    box-shadow: $shadow-sm;
+  }
+}
+
+.calendar__event-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.calendar__event-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calendar__event-title {
+  font-size: $typography-body-size;
+  font-weight: 600;
+  color: $color-text-primary;
+}
+
+.calendar__event-date {
+  font-size: $typography-small-size;
+  color: $color-text-secondary;
+}
+
+// FAB button
+.calendar__fab {
+  position: fixed;
+  bottom: 90px;
+  right: $spacing-lg;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: $color-cta-primary;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-xl;
+  transition: $transition-base;
+  z-index: 100;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   }
 
-  &__back-btn {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-text-primary;
-    border-radius: 50%;
-    transition: $transition-fast;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    &:active {
-      background: rgba(0, 0, 0, 0.2);
-    }
+  &:active {
+    transform: scale(0.95);
   }
 
-  &__title {
-    font-size: $typography-h2-size;
-    font-weight: $typography-h2-weight;
-    color: $color-text-primary;
-    margin: 0;
-  }
-
-  &__today-btn {
-    padding: $spacing-sm $spacing-md;
-    background: $color-background-primary;
-    color: $color-text-primary;
-    border-radius: $border-radius-md;
-    font-size: $typography-body-size;
-    font-weight: 600;
-    transition: $transition-fast;
-    box-shadow: $shadow-md;
-
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: $shadow-lg;
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $spacing-lg $spacing-md;
-    background: rgba(255, 255, 255, 0.9);
-    margin: $spacing-md;
-    border-radius: $border-radius-lg;
-    box-shadow: $shadow-md;
-  }
-
-  &__nav-btn {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-text-primary;
-    border-radius: 50%;
-    transition: $transition-fast;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
-    }
-
-    &:active {
-      background: rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  &__nav-current {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $spacing-xs;
-  }
-
-  &__month {
-    font-size: $typography-h2-size;
-    font-weight: $typography-h2-weight;
-    color: $color-text-primary;
-    text-transform: capitalize;
-  }
-
-  &__year {
-    font-size: $typography-body-size;
-    color: $color-text-secondary;
-  }
-
-  &__body {
-    padding: 0 $spacing-md;
-    margin-bottom: $spacing-lg;
-  }
-
-  &__events-section {
-    background: rgba(255, 255, 255, 0.9);
-    margin: 0 $spacing-md;
-    padding: $spacing-lg;
-    border-radius: $border-radius-lg;
-    box-shadow: $shadow-md;
-  }
-
-  &__events-title {
-    font-size: $typography-button-size;
-    font-weight: $typography-h2-weight;
-    color: $color-text-primary;
-    margin: 0 0 $spacing-md;
-  }
-
-  &__events-empty {
-    font-size: $typography-body-size;
-    color: $color-text-secondary;
-    margin: 0;
-    text-align: center;
-    padding: $spacing-lg 0;
-  }
-
-  &__events-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-sm;
-  }
-
-  &__event-item {
-    display: flex;
-    align-items: center;
-    gap: $spacing-md;
-    padding: $spacing-md;
-    background: $color-background-primary;
-    border-radius: $border-radius-md;
-    transition: $transition-fast;
-
-    &:hover {
-      transform: translateX(4px);
-      box-shadow: $shadow-sm;
-    }
-
-    &:active {
-      transform: translateX(2px);
-    }
-  }
-
-  &__event-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  &__event-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  &__event-title {
-    font-size: $typography-body-size;
-    font-weight: 600;
-    color: $color-text-primary;
-  }
-
-  &__event-date {
-    font-size: $typography-small-size;
-    color: $color-text-secondary;
-  }
-
-  &__fab {
-    position: fixed;
-    bottom: $spacing-2xl;
-    right: $spacing-lg;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: $color-cta-primary;
-    color: $color-text-primary;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: $shadow-xl;
-    transition: $transition-base;
-    z-index: 100;
-
-    &:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-
-    svg {
-      width: 28px;
-      height: 28px;
-    }
-  }
-
-  // Tablet and desktop styles
-  @media (min-width: 768px) {
-    &__header {
-      padding: $spacing-lg $spacing-xl;
-    }
-
-    &__title {
-      font-size: 32px;
-    }
-
-    &__nav {
-      margin: $spacing-lg $spacing-xl;
-      padding: $spacing-xl;
-    }
-
-    &__month {
-      font-size: 32px;
-    }
-
-    &__body {
-      padding: 0 $spacing-xl;
-    }
-
-    &__events-section {
-      margin: 0 $spacing-xl;
-      padding: $spacing-xl;
-    }
-
-    &__fab {
-      bottom: $spacing-2xl;
-      right: $spacing-2xl;
-      width: 64px;
-      height: 64px;
-
-      svg {
-        width: 32px;
-        height: 32px;
-      }
-    }
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: none;
-
-    &__header,
-    &__nav,
-    &__body,
-    &__events-section {
-      background: rgba(255, 255, 255, 0.95);
-    }
+  svg {
+    width: 28px;
+    height: 28px;
   }
 }

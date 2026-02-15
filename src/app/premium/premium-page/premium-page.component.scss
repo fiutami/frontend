@@ -1,8 +1,5 @@
-.premium-page {
-  min-height: 100vh;
-  background: #4A74F0;
-  padding-bottom: 32px;
-}
+// Premium Page - Contenuto dentro shell standard
+// Header, background, back button, logo, mascot, tab bar gestiti dalla shell
 
 // Loading
 .loading-container {
@@ -37,47 +34,9 @@
   font-size: 14px;
 }
 
-// Header
-.premium-header {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  position: sticky;
-  top: 0;
-  background: #4A74F0;
-  z-index: 10;
-}
-
-.back-button {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-}
-
-.header-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: white;
-  text-transform: uppercase;
-  margin-left: 8px;
-}
-
 // Content
 .premium-content {
-  padding: 0 16px;
+  padding: 0;
 }
 
 // Hero Banner

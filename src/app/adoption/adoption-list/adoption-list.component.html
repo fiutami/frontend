@@ -1,12 +1,15 @@
-<div class="adoption-container">
-  <header class="adoption-header">
-    <button class="back-btn" (click)="goBack()">←</button>
-    <h1>{{ 'adoption.title' | translate }}</h1>
-    <button class="create-btn" (click)="createAdoption()">+</button>
-  </header>
+<app-tab-page-shell-default
+  title="Adozioni"
+  backgroundVariant="tab-menu"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-  <!-- Filtri -->
-  <div class="filters">
+  <!-- Action Button: "+" per creare annuncio -->
+  <button shellHeaderAction class="shell-action-btn" (click)="createAdoption()">+</button>
+
+  <!-- Filtri nella zona sticky -->
+  <div shellStickyContent class="filters">
     <select [(ngModel)]="selectedSpecies" (change)="onFilterChange()">
       <option value="">{{ 'adoption.allSpecies' | translate }}</option>
       <option *ngFor="let species of speciesOptions" [value]="species">{{ species }}</option>
@@ -31,7 +34,7 @@
 
   <!-- Empty State -->
   <div *ngIf="!loading && !error && adoptions.length === 0" class="empty-state">
-    <div class="illustration">🏠</div>
+    <div class="illustration">&#127968;</div>
     <h2>{{ 'adoption.empty.title' | translate }}</h2>
     <p>{{ 'adoption.empty.subtitle' | translate }}</p>
     <button class="btn-primary" (click)="createAdoption()">
@@ -48,22 +51,22 @@
 
       <div class="pet-photo">
         <img *ngIf="adoption.petPhotoUrl" [src]="adoption.petPhotoUrl" [alt]="adoption.petName">
-        <div *ngIf="!adoption.petPhotoUrl" class="photo-placeholder">🐾</div>
+        <div *ngIf="!adoption.petPhotoUrl" class="photo-placeholder">&#128062;</div>
         <span class="status-badge" [attr.data-status]="adoption.status">
-          {{ adoption.status === 'available' ? '🟢' : adoption.status === 'pending' ? '🟡' : '✅' }}
+          {{ adoption.status === 'available' ? '&#128994;' : adoption.status === 'pending' ? '&#128993;' : '&#9989;' }}
         </span>
       </div>
 
       <div class="card-content">
         <h3>{{ adoption.petName }}</h3>
-        <p class="species">{{ adoption.petSpecies }} <span *ngIf="adoption.petBreed">• {{ adoption.petBreed }}</span></p>
-        <p class="location">📍 {{ adoption.city || adoption.location }}</p>
+        <p class="species">{{ adoption.petSpecies }} <span *ngIf="adoption.petBreed">&bull; {{ adoption.petBreed }}</span></p>
+        <p class="location">&#128205; {{ adoption.city || adoption.location }}</p>
         <p class="fee" *ngIf="adoption.adoptionFee !== undefined">
           {{ adoption.adoptionFee === 0 ? ('adoption.free' | translate) : '€' + adoption.adoptionFee }}
         </p>
       </div>
 
-      <span class="arrow">→</span>
+      <span class="arrow">&rarr;</span>
     </div>
   </div>
 
@@ -71,4 +74,5 @@
   <div class="sponsor-banner">
     <p>{{ 'adoption.sponsorText' | translate }}</p>
   </div>
-</div>
+
+</app-tab-page-shell-default>

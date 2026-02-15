@@ -1,4 +1,14 @@
 <div class="welcome-ai">
+  <!-- Logo Overlay (centered in header area) -->
+  <div class="welcome-ai__logo-overlay">
+    <app-logo
+      variant="color"
+      size="lg"
+      loading="lazy"
+      href="https://fiutami.pet">
+    </app-logo>
+  </div>
+
   <!-- Back Button -->
   <app-back-button
     class="welcome-ai__back"
@@ -37,14 +47,4 @@
   <div class="welcome-ai__cta-bubble">
     <p class="welcome-ai__cta-text">{{ ctaText }}</p>
   </div>
-
-  <!-- Footer with Logo -->
-  <footer class="welcome-ai__footer">
-    <app-logo
-      variant="color"
-      size="lg"
-      loading="lazy"
-      href="https://fiutami.pet">
-    </app-logo>
-  </footer>
 </div>

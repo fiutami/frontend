@@ -70,6 +70,9 @@ export class TabPageShellDefaultComponent {
   /** Mostra back button */
   @Input() showBack = true;
 
+  /** Mostra titolo */
+  @Input() showTitle = true;
+
   /** ID della tab attiva nella bottom bar */
   @Input() activeTabId = 'home';
 

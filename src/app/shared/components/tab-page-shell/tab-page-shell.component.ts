@@ -48,6 +48,9 @@ export class TabPageShellComponent {
   /** Mostra back button */
   @Input() showBack = true;
 
+  /** Mostra titolo */
+  @Input() showTitle = true;
+
   /** Variante background */
   @Input() backgroundVariant: 'tab-menu' | 'blue-solid' | 'yellow-solid' | 'profile-pet' | 'image' = 'tab-menu';
 

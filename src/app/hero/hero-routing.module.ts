@@ -11,6 +11,7 @@ import { SpecieComponent } from './pet-register/specie/specie.component';
 import { PetDetailsComponent } from './pet-register/details/pet-details.component';
 import { PetDocsComponent } from './pet-register/docs/pet-docs.component';
 import { PetWellnessComponent } from './pet-register/wellness/pet-wellness.component';
+import { BreedSelectComponent } from './pet-register/breed-select/breed-select.component';
 import { SpeciesQ1Component } from './species-questionnaire/species-q1/species-q1.component';
 import { SpeciesQ2Component } from './species-questionnaire/species-q2/species-q2.component';
 import { SpeciesQ3Component } from './species-questionnaire/species-q3/species-q3.component';
@@ -133,6 +134,10 @@ const routes: Routes = [
   {
     path: 'pet-register/specie',
     component: SpecieComponent
+  },
+  {
+    path: 'pet-register/breed-select',
+    component: BreedSelectComponent
   },
   {
     path: 'pet-register/details',

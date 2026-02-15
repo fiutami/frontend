@@ -1,17 +1,19 @@
-<div class="chat-list-container">
-  <!-- Header -->
-  <div class="header">
-    <button class="back-button" (click)="goBack()">
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-        <circle cx="17" cy="17" r="17" fill="white"/>
-        <path d="M20 11L14 17L20 23" stroke="#4A74F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <h1 class="title">{{ 'chat.title' | translate }}</h1>
-  </div>
+<app-tab-page-shell-default
+  title="Chat"
+  backgroundVariant="tab-menu"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-  <!-- Search Bar -->
-  <div class="search-container">
+  <!-- Action Button: New Message -->
+  <button shellHeaderAction class="shell-action-btn" (click)="startNewMessage()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Sticky Content: Search Bar -->
+  <div shellStickyContent class="search-container">
     <div class="search-bar">
       <svg class="search-icon" width="17" height="17" viewBox="0 0 17 17" fill="none">
         <circle cx="7.5" cy="7.5" r="6.5" stroke="#4A74F0" stroke-width="2"/>
@@ -153,4 +155,5 @@
       </div>
     </div>
   </div>
-</div>
+
+</app-tab-page-shell-default>

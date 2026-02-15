@@ -6,7 +6,11 @@ $breakpoints: (
   sm: 480,
   md: 768,
   lg: 1024,
-  xl: 1280
+  xl: 1280,
+  xxl: 1440,
+  hd: 1920,
+  qhd: 2560,
+  uhd: 3840
 ) !default;
 /* ========== FIUTAMI MIXINS ==========
    Dipende da: _tokens.scss (per $breakpoints)
@@ -94,6 +98,21 @@ $breakpoints: (
   // Desktop (1280px+)
   @media (min-width: 1280px) {
     max-width: $desktop-max;
+  }
+
+  // Full HD (1440px+)
+  @media (min-width: 1440px) {
+    max-width: 640px;
+  }
+
+  // Full HD (1920px+) - solo se viewport anche alto
+  @media (min-width: 1920px) and (min-height: 900px) {
+    max-width: 640px;
+  }
+
+  // 2K/QHD (2560px+)
+  @media (min-width: 2560px) and (min-height: 1200px) {
+    max-width: 720px;
   }
 }
 

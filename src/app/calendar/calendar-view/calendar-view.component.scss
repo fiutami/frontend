@@ -17,15 +17,14 @@
 }
 
 // ===========================================
-// INFO BLOCK (in shellBrandingExtra)
-// Questi stili sono fuori da .calendar perché
-// il blocco è nel slot shellBrandingExtra del shell
+// INFO BLOCK (in shellStickyContent)
+// Sticky sotto il blue header, su sfondo blue-solid
 // ===========================================
 .calendar__info-block {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   gap: $spacing-md;
-  padding: $spacing-sm $spacing-md $spacing-md;
+  padding: $spacing-xs ($spacing-md * 2) $spacing-sm;
   align-items: center;
   width: 100%;
 }
@@ -62,18 +61,19 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-// Colonna Centrale: Divider
+// Colonna Centrale: Divider (più spesso)
 .calendar__divider {
-  width: 1px;
+  width: 3px;
   height: 80px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
 }
 
-// Colonna Destra: Eventi + Crea evento
+// Colonna Destra: Eventi + Crea evento (allineati a destra)
 .calendar__events-column {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: $spacing-sm;
 }
 
@@ -88,7 +88,7 @@
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
-  text-align: left;
+  text-align: right;
   transition: opacity 150ms ease;
 
   &:hover {
@@ -124,191 +124,13 @@
   }
 }
 
+// ===========================================
+// CALENDAR CONTENT (dentro shell-content)
+// Solo stili per il contenuto della pagina.
+// Header, logo, info-block, mascot, tab-bar: dalla shell.
+// ===========================================
+
 .calendar {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
-  background-color: $color-ai-primary;
-
-  // ===========================================
-  // SEZIONE FISSA (Non scrolla)
-  // Header + Logo + Info Block
-  // ===========================================
-
-  &__fixed-section {
-    flex-shrink: 0;
-    background-color: $color-ai-primary;
-  }
-
-  // ===========================================
-  // HEADER
-  // ===========================================
-
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-md;
-    padding-top: $spacing-lg;
-  }
-
-  &__header-left {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-  }
-
-  &__title {
-    margin: 0;
-    font-family: $font-family-body;
-    font-size: 18px;
-    font-weight: 500;
-    color: $color-text-inverse;
-    text-transform: capitalize;
-  }
-
-  // ===========================================
-  // BRANDING (Logo)
-  // ===========================================
-
-  &__branding {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    padding: $spacing-xs $spacing-md;
-
-    app-logo {
-      ::ng-deep img,
-      ::ng-deep svg {
-        height: 48px;
-        width: auto;
-      }
-    }
-  }
-
-  // ===========================================
-  // INFO BLOCK (3 Colonne)
-  // Data oggi | Divider | Eventi + Crea evento
-  // ===========================================
-
-  &__info-block {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: $spacing-md;
-    padding: $spacing-sm $spacing-md $spacing-md;
-    align-items: center;
-  }
-
-  // Colonna Sinistra: Data di oggi
-  &__today-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-  }
-
-  &__today-day-name {
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  &__today-day-number {
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 48px;
-    font-weight: 700;
-    color: $color-text-inverse;
-    line-height: 1;
-  }
-
-  &__today-month-year {
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 14px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
-  }
-
-  // Colonna Centrale: Divider
-  &__divider {
-    width: 1px;
-    height: 80px;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-
-  // Colonna Destra: Eventi + Crea evento
-  &__events-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: $spacing-sm;
-  }
-
-  &__events-status-text {
-    background: transparent;
-    border: none;
-    padding: 0;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 14px;
-    font-weight: 500;
-    color: $color-text-inverse;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    cursor: pointer;
-    text-align: left;
-    transition: opacity 150ms ease;
-
-    &:hover {
-      opacity: 0.8;
-    }
-
-    &:active {
-      opacity: 0.6;
-    }
-  }
-
-  // Bottone Crea evento - BIANCO (non giallo!)
-  &__create-btn {
-    padding: $spacing-xs $spacing-md;
-    background-color: white;
-    border: none;
-    border-radius: 100px;
-    font-family: 'Montserrat', $font-family-body;
-    font-size: 13px;
-    font-weight: 600;
-    color: $color-text-primary;
-    cursor: pointer;
-    box-shadow: $shadow-sm;
-    transition: transform 150ms ease, box-shadow 150ms ease;
-
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: $shadow-md;
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-  }
-
-  // ===========================================
-  // SEZIONE SCROLLABILE
-  // Titolo mese + Griglia + Eventi + Promo
-  // ===========================================
-
-  &__scrollable-section {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background-color: $color-ai-primary;
-    -webkit-overflow-scrolling: touch;
-  }
 
   // ===========================================
   // MONTH HEADER (Titolo + Navigazione)

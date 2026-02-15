@@ -4,11 +4,12 @@ import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { BreedsService } from '../breeds.service';
 import { Breed, InfoSection } from '../models/breed.model';
 import { SpeciesInfoService, InsightSection } from '../../../core/services/species-info.service';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
 @Component({
   selector: 'app-breed-result',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TabPageShellDefaultComponent],
   templateUrl: './breed-result.component.html',
   styleUrls: ['./breed-result.component.scss']
 })

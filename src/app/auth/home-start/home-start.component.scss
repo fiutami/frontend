@@ -1,5 +1,6 @@
 @import 'src/styles/tokens-figma';
 @import 'src/styles/mixins';
+@import 'src/styles/shell-contract';
 
 // ===========================================
 // HOME START - Split Layout Desktop
@@ -167,6 +168,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: $spacing-xs;
+    @include shell-logo-responsive;
 
     @include respond(md) {
       margin-bottom: $spacing-sm;
@@ -174,20 +176,10 @@
   }
 
   &__logo-img {
-    width: clamp(140px, 38vw, 170px);
-    height: auto;
+    width: auto !important; // Let height from shell-logo-responsive drive sizing
     filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
 
-    @include respond(sm) {
-      width: clamp(150px, 35vw, 180px);
-    }
-
-    @include respond(md) {
-      width: clamp(170px, 25vw, 210px);
-    }
-
     @include respond(lg) {
-      width: clamp(180px, 15vw, 240px);
       filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
     }
   }

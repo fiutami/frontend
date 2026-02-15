@@ -13,11 +13,12 @@ import { BottomTabBarComponent } from '../../../shared/components/bottom-tab-bar
 import { MAIN_TAB_BAR_CONFIG } from '../../../core/config/tab-bar.config';
 import { ChatService } from '../../../chat/services/chat.service';
 import { Conversation } from '../../../chat/models/chat.models';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
 @Component({
   selector: 'app-chat-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, BottomTabBarComponent],
+  imports: [CommonModule, RouterModule, TabPageShellDefaultComponent],
   templateUrl: './chat-list.component.html',
   styleUrls: ['./chat-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
