@@ -53,7 +53,7 @@ export interface PhotoUploadResult {
 @Injectable({ providedIn: 'root' })
 export class PhotoUploadService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = `${environment.apiUrl}/pets`;
+  private readonly baseUrl = `${environment.apiUrl}/pet`;
 
   // Presigned URL cache - stores URLs with their expiry times
   private urlCache = new Map<string, { url: string; expiresAt: number }>();
