@@ -61,7 +61,8 @@ export class SpecieComponent implements OnInit {
   categories = computed<CategoryGroup[]>(() => {
     const species = this.allSpecies();
     // Only selectable species (not category-level entries)
-    const selectableSpecies = species.filter(s => s.taxonRank === 'species');
+    // If taxonRank is missing (old backend), treat as 'species' (safe default)
+    const selectableSpecies = species.filter(s => (s.taxonRank ?? 'species') === 'species');
 
     // Group by category
     const grouped = new Map<string, SpeciesDto[]>();
@@ -116,7 +117,7 @@ export class SpecieComponent implements OnInit {
       const species = await this.speciesService.getAllSpecies();
       this.allSpecies.set(species);
       // Verifica che ci siano species selezionabili (taxonRank='species')
-      if (species.filter(s => s.taxonRank === 'species').length === 0) {
+      if (species.filter(s => (s.taxonRank ?? 'species') === 'species').length === 0) {
         this.loadError.set('Nessuna specie disponibile al momento.');
       }
     } catch (error) {
