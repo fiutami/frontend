@@ -8,8 +8,24 @@
     <p class="pet-chat-list__subtitle">Le tue conversazioni</p>
   </ng-container>
 
+  <!-- Loading state -->
+  @if (isLoading()) {
+    <div class="pet-chat-list__loading">
+      <div class="pet-chat-list__spinner"></div>
+      <p>Caricamento conversazioni...</p>
+    </div>
+  }
+
+  <!-- Error state -->
+  @if (errorMessage() && !isLoading()) {
+    <div class="pet-chat-list__error">
+      <span class="material-icons">error_outline</span>
+      <p>{{ errorMessage() }}</p>
+    </div>
+  }
+
   <!-- Empty state -->
-  @if (!hasConversations()) {
+  @if (!isLoading() && !errorMessage() && !hasConversations()) {
     <div class="pet-chat-list__empty">
       <div class="pet-chat-list__empty-illustration">
         <svg width="120" height="120" viewBox="0 0 200 200" fill="none">
@@ -38,7 +54,7 @@
   }
 
   <!-- Conversations list -->
-  @if (hasConversations()) {
+  @if (!isLoading() && hasConversations()) {
     <ul class="pet-chat-list__list" role="list">
       @for (conversation of conversations(); track conversation.id) {
         <li
@@ -47,32 +63,32 @@
           (click)="openConversation(conversation.id)"
           tabindex="0"
           (keydown.enter)="openConversation(conversation.id)"
-          [attr.aria-label]="'Conversazione con ' + conversation.petName + (conversation.unreadCount > 0 ? ', ' + conversation.unreadCount + ' messaggi non letti' : '')"
+          [attr.aria-label]="'Conversazione con ' + conversation.recipientName + (conversation.unreadCount > 0 ? ', ' + conversation.unreadCount + ' messaggi non letti' : '')"
         >
           <!-- Avatar -->
           <div class="pet-chat-list__avatar">
-            <img
-              [src]="conversation.petAvatarUrl"
-              [alt]="conversation.petName"
-              class="pet-chat-list__avatar-img"
-              loading="lazy"
-            />
+            @if (conversation.recipientAvatar) {
+              <img
+                [src]="conversation.recipientAvatar"
+                [alt]="conversation.recipientName"
+                class="pet-chat-list__avatar-img"
+                loading="lazy"
+              />
+            } @else {
+              <span class="pet-chat-list__avatar-placeholder">
+                {{ conversation.recipientName.charAt(0).toUpperCase() }}
+              </span>
+            }
             @if (conversation.isOnline) {
-              <span
-                class="pet-chat-list__online-dot"
-                aria-label="Online"
-              ></span>
+              <span class="pet-chat-list__online-dot" aria-label="Online"></span>
             }
           </div>
 
           <!-- Conversation info -->
           <div class="pet-chat-list__info">
             <div class="pet-chat-list__top-row">
-              <div class="pet-chat-list__name-group">
-                <span class="pet-chat-list__name">{{ conversation.petName }}</span>
-                <span class="pet-chat-list__species">{{ conversation.petSpecies }}</span>
-              </div>
-              <span class="pet-chat-list__time">{{ formatTime(conversation.timestamp) }}</span>
+              <span class="pet-chat-list__name">{{ conversation.recipientName }}</span>
+              <span class="pet-chat-list__time">{{ formatTime(conversation.lastMessageTime) }}</span>
             </div>
             <div class="pet-chat-list__bottom-row">
               <p class="pet-chat-list__message">{{ conversation.lastMessage }}</p>
@@ -84,22 +100,8 @@
             </div>
           </div>
 
-          <!-- Action buttons -->
+          <!-- Delete action -->
           <div class="pet-chat-list__actions">
-            <button
-              class="pet-chat-list__action-btn"
-              (click)="toggleBookmark($event, conversation.id)"
-              [attr.aria-label]="conversation.isBookmarked ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'"
-              [class.pet-chat-list__action-btn--active]="conversation.isBookmarked"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                @if (conversation.isBookmarked) {
-                  <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
-                } @else {
-                  <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
-                }
-              </svg>
-            </button>
             <button
               class="pet-chat-list__action-btn pet-chat-list__action-btn--delete"
               (click)="deleteConversation($event, conversation.id)"

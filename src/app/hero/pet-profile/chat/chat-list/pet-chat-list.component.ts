@@ -1,25 +1,18 @@
 import {
   Component,
   ChangeDetectionStrategy,
+  OnInit,
+  OnDestroy,
   inject,
   signal,
   computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { TabPageShellYellowComponent } from '../../../../shared/components/tab-page-shell-yellow/tab-page-shell-yellow.component';
-
-export interface ChatConversation {
-  id: string;
-  petName: string;
-  petSpecies: string;
-  petAvatarUrl: string;
-  lastMessage: string;
-  timestamp: Date;
-  unreadCount: number;
-  isOnline: boolean;
-  isBookmarked: boolean;
-}
+import { ChatService } from '../../../../chat/services/chat.service';
+import { Conversation } from '../../../../chat/models/chat.models';
 
 @Component({
   selector: 'app-pet-chat-list',
@@ -29,70 +22,52 @@ export interface ChatConversation {
   styleUrls: ['./pet-chat-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetChatListComponent {
+export class PetChatListComponent implements OnInit, OnDestroy {
   private readonly router = inject(Router);
+  private readonly chatService = inject(ChatService);
+  private readonly destroy$ = new Subject<void>();
 
-  /** Chat conversations list */
-  conversations = signal<ChatConversation[]>([
-    {
-      id: 'conv-1',
-      petName: 'Luna',
-      petSpecies: 'Labrador Retriever',
-      petAvatarUrl: 'assets/images/default-pet-avatar.png',
-      lastMessage: 'Ci vediamo al parco domani alle 10?',
-      timestamp: new Date(2026, 1, 16, 14, 23),
-      unreadCount: 3,
-      isOnline: true,
-      isBookmarked: false,
-    },
-    {
-      id: 'conv-2',
-      petName: 'Max',
-      petSpecies: 'Golden Retriever',
-      petAvatarUrl: 'assets/images/default-pet-avatar.png',
-      lastMessage: 'Grazie per la passeggiata di ieri!',
-      timestamp: new Date(2026, 1, 16, 11, 5),
-      unreadCount: 0,
-      isOnline: true,
-      isBookmarked: true,
-    },
-    {
-      id: 'conv-3',
-      petName: 'Bella',
-      petSpecies: 'Beagle',
-      petAvatarUrl: 'assets/images/default-pet-avatar.png',
-      lastMessage: 'Ha adorato il nuovo giocattolo che gli hai regalato',
-      timestamp: new Date(2026, 1, 15, 18, 42),
-      unreadCount: 1,
-      isOnline: false,
-      isBookmarked: false,
-    },
-    {
-      id: 'conv-4',
-      petName: 'Rocky',
-      petSpecies: 'Pastore Tedesco',
-      petAvatarUrl: 'assets/images/default-pet-avatar.png',
-      lastMessage: 'Conosci un buon veterinario in zona?',
-      timestamp: new Date(2026, 1, 14, 9, 15),
-      unreadCount: 0,
-      isOnline: false,
-      isBookmarked: false,
-    },
-    {
-      id: 'conv-5',
-      petName: 'Mia',
-      petSpecies: 'Gatto Persiano',
-      petAvatarUrl: 'assets/images/default-pet-avatar.png',
-      lastMessage: 'Che tenero nella foto di oggi!',
-      timestamp: new Date(2026, 1, 13, 20, 30),
-      unreadCount: 0,
-      isOnline: true,
-      isBookmarked: true,
-    },
-  ]);
+  /** Conversations from API */
+  conversations = signal<Conversation[]>([]);
 
-  /** Whether the list is empty */
+  /** Loading state */
+  isLoading = signal(true);
+
+  /** Error state */
+  errorMessage = signal<string | null>(null);
+
+  /** Whether the list has conversations */
   hasConversations = computed(() => this.conversations().length > 0);
+
+  ngOnInit(): void {
+    this.loadConversations();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  /** Load conversations from API */
+  private loadConversations(): void {
+    this.isLoading.set(true);
+    this.errorMessage.set(null);
+
+    this.chatService
+      .getConversations()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (conversations) => {
+          this.conversations.set(conversations);
+          this.isLoading.set(false);
+        },
+        error: (err) => {
+          console.error('Failed to load conversations:', err);
+          this.errorMessage.set('Impossibile caricare le conversazioni');
+          this.isLoading.set(false);
+        },
+      });
+  }
 
   /** Navigate back */
   goBack(): void {
@@ -101,6 +76,11 @@ export class PetChatListComponent {
 
   /** Open a conversation */
   openConversation(conversationId: string): void {
+    this.chatService
+      .markAsRead(conversationId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
+
     this.router.navigate(['/home/pet-profile/chat/messages'], {
       queryParams: { conversationId },
     });
@@ -111,33 +91,20 @@ export class PetChatListComponent {
     this.router.navigate(['/home/pet-profile/chat/messages']);
   }
 
-  /** Delete a conversation */
+  /** Delete a conversation (local only for now) */
   deleteConversation(event: Event, conversationId: string): void {
     event.stopPropagation();
-    this.conversations.update(convs =>
-      convs.filter(c => c.id !== conversationId)
+    this.conversations.update((convs) =>
+      convs.filter((c) => c.id !== conversationId)
     );
-  }
-
-  /** Toggle bookmark on a conversation */
-  toggleBookmark(event: Event, conversationId: string): void {
-    event.stopPropagation();
-    this.conversations.update(convs =>
-      convs.map(c =>
-        c.id === conversationId ? { ...c, isBookmarked: !c.isBookmarked } : c
-      )
-    );
-  }
-
-  /** Get avatar placeholder initial */
-  getAvatarPlaceholder(name: string): string {
-    return name.charAt(0).toUpperCase();
   }
 
   /** Format timestamp to relative time */
-  formatTime(date: Date): string {
+  formatTime(date: Date | string | undefined): string {
+    if (!date) return '';
+    const d = typeof date === 'string' ? new Date(date) : date;
     const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
+    const diffMs = now.getTime() - d.getTime();
     const diffMins = Math.floor(diffMs / (1000 * 60));
     const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -147,7 +114,7 @@ export class PetChatListComponent {
     if (diffHours < 24) return `${diffHours}h`;
     if (diffDays < 7) return `${diffDays}g`;
 
-    return date.toLocaleDateString('it-IT', {
+    return d.toLocaleDateString('it-IT', {
       day: 'numeric',
       month: 'short',
     });
