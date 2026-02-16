@@ -116,7 +116,7 @@ export class PhotoUploadService {
     }
 
     return this.uploadWithProgress(
-      `${this.baseUrl}/${petId}/gallery`,
+      `${this.baseUrl}/${petId}/photos`,
       formData,
       onProgress
     );
@@ -199,7 +199,7 @@ export class PhotoUploadService {
     }
 
     const subject = new Subject<UploadProgressEvent>();
-    const request = new HttpRequest('POST', `${this.baseUrl}/${petId}/gallery`, formData, {
+    const request = new HttpRequest('POST', `${this.baseUrl}/${petId}/photos`, formData, {
       reportProgress: true
     });
 
