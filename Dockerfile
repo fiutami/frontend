@@ -18,11 +18,18 @@ RUN npm run build -- --configuration=production
 FROM nginx:alpine AS production
 WORKDIR /usr/share/nginx/html
 
+# Build metadata (passed from CI)
+ARG BUILD_SHA=unknown
+ARG BUILD_DATE=unknown
+
 # Remove default nginx static assets
 RUN rm -rf ./*
 
 # Copy built assets from build stage
 COPY --from=build /app/dist/angular-webapp .
+
+# Generate health check with build info
+RUN printf '{"status":"healthy","build_sha":"%s","build_date":"%s"}' "$BUILD_SHA" "$BUILD_DATE" > /usr/share/nginx/html/health.json
 
 # Copy nginx configuration
 COPY src/nginx.conf /etc/nginx/conf.d/default.conf
