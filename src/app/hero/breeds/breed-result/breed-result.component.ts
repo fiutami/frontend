@@ -1,5 +1,5 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { BreedsService } from '../breeds.service';
 import { Breed, InfoSection } from '../models/breed.model';
@@ -16,6 +16,7 @@ import { TabPageShellDefaultComponent } from '../../../shared/components/tab-pag
 export class BreedResultComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private readonly location = inject(Location);
   private readonly breedsService = inject(BreedsService);
   private readonly speciesInfoService = inject(SpeciesInfoService);
 
@@ -44,7 +45,13 @@ export class BreedResultComponent implements OnInit {
     this.route.params.subscribe(params => {
       const breedId = params['id'];
       if (breedId) {
-        this.loadBreed(breedId);
+        // Check if breed is already loaded in service (e.g. synthetic species entry)
+        const existing = this.breedsService.selectedBreed();
+        if (existing && existing.id === breedId) {
+          this.breed.set(existing);
+        } else {
+          this.loadBreed(breedId);
+        }
       }
     });
   }
@@ -132,7 +139,7 @@ export class BreedResultComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/home/breeds']);
+    this.location.back();
   }
 
   goToFinder(): void {

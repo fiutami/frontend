@@ -6,11 +6,13 @@ import {
   HostListener,
 } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 import { SectionNavigatorComponent, SectionItem } from '../../../shared/components/section-navigator';
-import { SpeciesGridComponent } from '../species-grid';
+import { SpeciesGridComponent, SpeciesCategory } from '../species-grid';
 import { SpeciesSpecialComponent } from '../species-special';
 import { YourBreedComponent } from '../your-breed';
+import { BreedsService } from '../../breeds/breeds.service';
 import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
@@ -31,6 +33,8 @@ import { SharedModule } from '../../../shared/shared.module';
 })
 export class SpeciesHomeComponent {
   private readonly location = inject(Location);
+  private readonly router = inject(Router);
+  private readonly breedsService = inject(BreedsService);
 
   // Section navigation
   readonly sections: SectionItem[] = [
@@ -111,5 +115,14 @@ export class SpeciesHomeComponent {
   @HostListener('swiperight')
   onSwipeRight(): void {
     this.prevSection();
+  }
+
+  // Species grid click → navigate to breeds list
+  onSpeciesSelected(category: SpeciesCategory): void {
+    const species = this.breedsService.getSpeciesById(category.id);
+    if (species) {
+      this.breedsService.selectSpecies(species);
+    }
+    this.router.navigate(['/home/breeds/list', category.id]);
   }
 }

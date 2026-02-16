@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BreedsHomeComponent } from './breeds-home/breeds-home.component';
+import { BreedsListComponent } from './breeds-list/breeds-list.component';
 import { BreedFinderComponent } from './breed-finder/breed-finder.component';
 import { BreedResultComponent } from './breed-result/breed-result.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BreedsHomeComponent
+    redirectTo: '/home/species',
+    pathMatch: 'full'
+  },
+  {
+    path: 'list/:speciesId',
+    component: BreedsListComponent
   },
   {
     path: 'finder',

@@ -1,0 +1,78 @@
+<app-tab-page-shell-default
+  title="Specie"
+  activeTabId="breeds"
+  [showBack]="true"
+  (backClicked)="onBack()">
+
+  <!-- Sticky: subtitle + search bar + section title -->
+  <ng-container shellStickyContent>
+    <div class="breeds-list-intro">
+      <h2 class="breeds-list-intro__title">Tutte le razze, in un solo posto.</h2>
+      <p class="breeds-list-intro__subtitle">Info chiare, sempre a portata di mano.</p>
+    </div>
+
+    <div class="breeds-list-search">
+      <span class="material-icons breeds-list-search__icon">search</span>
+      <input
+        type="text"
+        class="breeds-list-search__input"
+        placeholder="Cerca"
+        [value]="searchQuery()"
+        (input)="onSearch($event)">
+      <button class="breeds-list-search__voice" aria-label="Ricerca vocale">
+        <span class="material-icons">mic</span>
+      </button>
+    </div>
+
+    <!-- Section title: nome specie -->
+    @if (species()) {
+      <div class="breeds-list-section">
+        <h3 class="breeds-list-section__title">{{ species()!.name }}</h3>
+        <div class="breeds-list-section__divider"></div>
+      </div>
+    }
+  </ng-container>
+
+  <!-- Loading -->
+  @if (isLoadingBreeds()) {
+    <div class="breeds-list-loading">
+      <div class="breeds-list-loading__spinner"></div>
+      <p>Caricamento razze...</p>
+    </div>
+  }
+
+  <!-- Breed items list -->
+  @if (!isLoadingBreeds()) {
+    @if (hasBreeds()) {
+      <div class="breeds-list-items">
+        @for (breed of displayItems(); track trackByBreed($index, breed)) {
+          <button class="breed-item" (click)="onBreedClick(breed)">
+            <img
+              class="breed-item__icon"
+              [src]="breed.imageUrl"
+              [alt]="breed.name"
+              loading="lazy"
+              (error)="$any($event.target).src='/assets/images/breeds/placeholder-breed.png'">
+            <span class="breed-item__name">{{ breed.name }}</span>
+          </button>
+        }
+
+        <!-- Empty search results -->
+        @if (displayItems().length === 0 && searchQuery()) {
+          <div class="breeds-list-empty">
+            <span class="material-icons breeds-list-empty__icon">search_off</span>
+            <p>Nessuna razza trovata per "{{ searchQuery() }}"</p>
+          </div>
+        }
+      </div>
+    } @else {
+      <!-- No breeds available for this species -->
+      <div class="breeds-list-empty">
+        <span class="material-icons breeds-list-empty__icon">pets</span>
+        <p class="breeds-list-empty__title">Razze non ancora disponibili</p>
+        <p>Le razze per {{ species()?.name || 'questa specie' }} saranno aggiunte presto.</p>
+      </div>
+    }
+  }
+
+</app-tab-page-shell-default>

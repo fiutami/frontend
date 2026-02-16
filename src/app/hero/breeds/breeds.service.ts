@@ -27,20 +27,42 @@ export interface SpeciesApiResponse {
   parentSpeciesId?: string | null;
 }
 
+/** List endpoint response shape: GET /api/breed?speciesId=... */
+export interface BreedListApiResponse {
+  breeds: BreedApiResponse[];
+  totalCount: number;
+}
+
+/** Single breed (from list or detail) */
 export interface BreedApiResponse {
   id: string;
   speciesId: string;
+  speciesName?: string;
   name: string;
-  origin?: string;
+  nameOriginal?: string;
+  origin?: string | null;
   description?: string;
-  imageUrl?: string;
-  size?: string;
-  weight?: { min: number; max: number };
-  lifespan?: { min: number; max: number };
-  temperament?: string[];
-  isPopular: boolean;
+  imageUrl?: string | null;
+  popularity?: number;
   breedType?: 'Pure' | 'Mixed' | 'Hybrid';
   allowsUserVariantLabel?: boolean;
+  // Detail-only fields
+  dna?: {
+    geneticsInfo?: string;
+    groupFCI?: string;
+    ancestralBreeds?: string[];
+  };
+  size?: {
+    heightMinCm?: number;
+    heightMaxCm?: number;
+    weightMinKg?: number;
+    weightMaxKg?: number;
+    coatType?: string;
+    colors?: string[];
+    lifespanMinYears?: number;
+    lifespanMaxYears?: number;
+  };
+  temperament?: string[];
 }
 
 /**
@@ -152,13 +174,16 @@ export class BreedsService {
 
   /**
    * Get breeds by species ID from backend API
+   * Endpoint: GET /api/breed?speciesId={id} → { breeds: [...] }
    */
   getBreedsBySpecies(speciesId: string): Observable<Breed[]> {
     this.isLoading.set(true);
     this.error.set(null);
 
-    return this.http.get<BreedApiResponse[]>(`${environment.apiUrl}/species/${speciesId}/breeds`).pipe(
-      map(response => this.mapBreedsResponse(response)),
+    return this.http.get<BreedListApiResponse>(`${environment.apiUrl}/breed`, {
+      params: { speciesId, take: '200' }
+    }).pipe(
+      map(response => this.mapBreedsResponse(response.breeds || [])),
       tap(breeds => this.breedsList.set(breeds)),
       catchError(err => {
         console.error('Failed to load breeds:', err);
@@ -176,7 +201,7 @@ export class BreedsService {
     this.isLoading.set(true);
     this.error.set(null);
 
-    return this.http.get<BreedApiResponse>(`${environment.apiUrl}/breeds/${breedId}`).pipe(
+    return this.http.get<BreedApiResponse>(`${environment.apiUrl}/breed/${breedId}`).pipe(
       map(response => this.mapBreedResponse(response)),
       tap(breed => {
         if (breed) {
@@ -211,23 +236,30 @@ export class BreedsService {
       name: b.name,
       origin: b.origin || '',
       recognition: '',
-      imageUrl: b.imageUrl || `/assets/breeds/${b.id}.jpg`,
+      imageUrl: b.imageUrl || '/assets/images/breeds/placeholder-breed.png',
       breedType: b.breedType,
       allowsUserVariantLabel: b.allowsUserVariantLabel ?? false,
+      dna: b.dna ? {
+        genetics: b.dna.geneticsInfo || '',
+        ancestralBreeds: b.dna.ancestralBreeds || [],
+        groupFCI: b.dna.groupFCI,
+      } : undefined,
       size: b.size ? {
-        height: { min: 0, max: 0, unit: 'cm' },
-        weight: b.weight ? { min: b.weight.min, max: b.weight.max, unit: 'kg' } : { min: 0, max: 0, unit: 'kg' },
-        coat: '',
-        colors: [],
-        lifespan: b.lifespan
+        height: { min: b.size.heightMinCm || 0, max: b.size.heightMaxCm || 0, unit: 'cm' },
+        weight: { min: b.size.weightMinKg || 0, max: b.size.weightMaxKg || 0, unit: 'kg' },
+        coat: b.size.coatType || '',
+        colors: b.size.colors || [],
+        lifespan: (b.size.lifespanMinYears && b.size.lifespanMaxYears)
+          ? { min: b.size.lifespanMinYears, max: b.size.lifespanMaxYears }
+          : undefined,
       } : undefined,
       temperament: b.temperament ? {
         energy: 'media',
         sociality: 'media',
         trainability: 'media',
-        traits: b.temperament
+        traits: b.temperament,
       } : undefined,
-      history: b.description
+      history: b.description,
     };
   }
 
@@ -267,7 +299,7 @@ export class BreedsService {
   }
 
   /**
-   * Search breeds by query - uses backend search API with local fallback
+   * Search breeds by query - client-side only (no backend search endpoint)
    */
   searchBreeds(query: string): Observable<Breed[]> {
     this.searchQuery.set(query);
@@ -276,29 +308,19 @@ export class BreedsService {
       return of(this.breedsList());
     }
 
-    return this.http.get<BreedApiResponse[]>(`${environment.apiUrl}/breeds/search`, {
-      params: { q: query }
-    }).pipe(
-      map(response => this.mapBreedsResponse(response)),
-      catchError(() => {
-        // Fallback to local filtering
-        const filtered = this.breedsList().filter(b =>
-          b.name.toLowerCase().includes(query.toLowerCase()) ||
-          b.origin.toLowerCase().includes(query.toLowerCase())
-        );
-        return of(filtered);
-      })
+    const filtered = this.breedsList().filter(b =>
+      b.name.toLowerCase().includes(query.toLowerCase()) ||
+      b.origin.toLowerCase().includes(query.toLowerCase())
     );
+    return of(filtered);
   }
 
   /**
-   * Select a species
+   * Select a species (state only, no pre-fetch - breeds-list loads on its own)
    */
   selectSpecies(species: Species | null): void {
     this.selectedSpecies.set(species);
-    if (species) {
-      this.getBreedsBySpecies(species.id).subscribe();
-    } else {
+    if (!species) {
       this.breedsList.set([]);
     }
   }

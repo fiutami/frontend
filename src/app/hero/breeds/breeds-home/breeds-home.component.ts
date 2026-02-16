@@ -36,10 +36,7 @@ export class BreedsHomeComponent implements OnInit {
 
   selectSpecies(species: Species): void {
     this.breedsService.selectSpecies(species);
-    // Navigate to finder or show breeds list
-    this.router.navigate(['/home/breeds/finder'], {
-      queryParams: { species: species.id }
-    });
+    this.router.navigate(['/home/breeds/list', species.id]);
   }
 
   goToFinder(): void {

@@ -38,7 +38,7 @@
     (touchend)="onTouchEnd($event)">
     @switch (currentSectionIndex()) {
       @case (0) {
-        <app-species-grid [searchQuery]="searchQuery()"></app-species-grid>
+        <app-species-grid [searchQuery]="searchQuery()" (categorySelected)="onSpeciesSelected($event)"></app-species-grid>
       }
       @case (1) {
         <app-species-special></app-species-special>
