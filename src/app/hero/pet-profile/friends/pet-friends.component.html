@@ -1,106 +1,103 @@
-<div class="pet-friends">
-  <!-- Header: Back + Title grouped on left -->
-  <header class="pet-friends__header">
-    <div class="pet-friends__header-left">
-      <button
-        class="pet-friends__back"
-        (click)="goBack()"
-        aria-label="Torna indietro"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-        </svg>
-      </button>
-      <h1 class="pet-friends__title">Amici</h1>
-    </div>
+<app-tab-page-shell-default
+  title="Banda Pelosa"
+  activeTabId="pet-profile"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-    <button
-      class="pet-friends__add"
-      (click)="onAddFriendClick()"
-      aria-label="Aggiungi amico"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-      </svg>
-    </button>
-  </header>
-
-  <!-- Content -->
-  <main class="pet-friends__content">
-    <!-- Empty state -->
-    @if (isEmpty) {
-      <div class="pet-friends__empty">
-        <div class="pet-friends__empty-icon">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-          </svg>
-        </div>
-        <h2 class="pet-friends__empty-title">Nessun amico ancora</h2>
-        <p class="pet-friends__empty-text">
-          Trova nuovi amici pelosi con cui giocare!
-        </p>
+  <!-- Sticky: motto + add friend CTA -->
+  <ng-container shellStickyContent>
+    <div class="pet-friends-intro">
+      <p class="pet-friends-intro__motto">
+        "Qui trovi la tua banda pelosa. Gli amici con cui hai gi&agrave; interagito"
+      </p>
+      <div class="pet-friends-intro__actions">
         <button
-          class="pet-friends__empty-btn"
+          class="pet-friends-intro__action-btn"
           (click)="onAddFriendClick()"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-          </svg>
-          Trova Amici
+          aria-label="Aggiungi amico">
+          <span class="material-icons">person_add</span>
+        </button>
+        <button
+          class="pet-friends-intro__action-btn"
+          aria-label="Messaggi">
+          <span class="material-icons">chat_bubble_outline</span>
+        </button>
+        <button
+          class="pet-friends-intro__action-btn"
+          aria-label="Notifiche">
+          <span class="material-icons">notifications_none</span>
         </button>
       </div>
-    }
+    </div>
+  </ng-container>
 
-    <!-- Friends list -->
-    @if (!isEmpty) {
-      <div class="pet-friends__list">
-        @for (friend of friends(); track friend.id) {
-          <button
-            class="pet-friends__card"
-            (click)="onFriendClick(friend)"
-          >
-            <!-- Avatar with online indicator -->
-            <div class="pet-friends__avatar-wrapper">
-              <img
-                [src]="friend.avatarUrl"
-                [alt]="friend.name"
-                class="pet-friends__avatar"
-              />
-              @if (friend.online) {
-                <span class="pet-friends__online-badge"></span>
-              }
-            </div>
-
-            <!-- Info -->
-            <div class="pet-friends__info">
-              <h3 class="pet-friends__name">{{ friend.name }}</h3>
-              <p class="pet-friends__species">{{ friend.species }}</p>
-              <p class="pet-friends__owner">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-                {{ friend.ownerName }}
-              </p>
-              <p class="pet-friends__since">
-                Amici da {{ formatFriendsSince(friend.friendsSince) }}
-              </p>
-            </div>
-
-            <!-- Status -->
-            <div class="pet-friends__status">
-              @if (friend.online) {
-                <span class="pet-friends__status-text pet-friends__status-text--online">
-                  Online
-                </span>
-              } @else {
-                <span class="pet-friends__status-text">
-                  Offline
-                </span>
-              }
-            </div>
-          </button>
-        }
+  <!-- Empty state -->
+  @if (isEmpty()) {
+    <div class="pet-friends-empty">
+      <div class="pet-friends-empty__icon-wrapper">
+        <span class="material-icons pet-friends-empty__icon">group</span>
       </div>
-    }
-  </main>
-</div>
+      <h2 class="pet-friends-empty__title">Nessun amico ancora</h2>
+      <p class="pet-friends-empty__text">
+        Trova nuovi amici pelosi con cui giocare!
+      </p>
+      <button
+        class="pet-friends-empty__btn"
+        (click)="onAddFriendClick()">
+        <span class="material-icons">person_add</span>
+        Trova Amici
+      </button>
+    </div>
+  }
+
+  <!-- Friends list -->
+  @if (!isEmpty()) {
+    <div class="pet-friends-list">
+      @for (friend of friends(); track friend.id) {
+        <button
+          class="pet-friends-card"
+          (click)="onFriendClick(friend)">
+
+          <!-- Avatar with online indicator -->
+          <div class="pet-friends-card__avatar-wrapper">
+            <img
+              [src]="friend.avatarUrl"
+              [alt]="friend.name"
+              class="pet-friends-card__avatar"
+              loading="lazy" />
+            @if (friend.online) {
+              <span class="pet-friends-card__online-badge"></span>
+            }
+          </div>
+
+          <!-- Info -->
+          <div class="pet-friends-card__info">
+            <h3 class="pet-friends-card__name">{{ friend.name }}</h3>
+            <p class="pet-friends-card__species">{{ friend.species }}</p>
+            <p class="pet-friends-card__owner">
+              <span class="material-icons">person</span>
+              {{ friend.ownerName }}
+            </p>
+            <p class="pet-friends-card__since">
+              Amici da {{ formatFriendsSince(friend.friendsSince) }}
+            </p>
+          </div>
+
+          <!-- Status -->
+          <div class="pet-friends-card__status">
+            @if (friend.online) {
+              <span class="pet-friends-card__status-badge pet-friends-card__status-badge--online">
+                Online
+              </span>
+            } @else {
+              <span class="pet-friends-card__status-badge">
+                Offline
+              </span>
+            }
+          </div>
+        </button>
+      }
+    </div>
+  }
+
+</app-tab-page-shell-default>

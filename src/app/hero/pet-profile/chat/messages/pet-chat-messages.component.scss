@@ -1,0 +1,296 @@
+@import 'src/styles/tokens-figma';
+
+// Chat-specific tokens
+$chat-bubble-mine: $color-cta-primary;
+$chat-bubble-theirs: #FFFFFF;
+$chat-input-bg: #F5F5F5;
+$chat-input-border: #E0E0E0;
+$chat-avatar-size: 32px;
+
+.pet-chat {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px); // Account for shell header + tab bar
+  min-height: 0;
+
+  // Messages area
+  &__messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-md;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__messages-inner {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding-bottom: $spacing-md;
+  }
+
+  // Date separator
+  &__date-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: $spacing-md 0;
+
+    span {
+      font-family: $font-family-body;
+      font-size: $typography-small-size;
+      font-weight: 600;
+      color: $color-text-secondary;
+      background: rgba(0, 0, 0, 0.06);
+      padding: 4px 16px;
+      border-radius: $border-radius-full;
+    }
+  }
+
+  // Message row
+  &__message {
+    display: flex;
+    gap: $spacing-xs;
+    max-width: 80%;
+
+    &--mine {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    &--theirs {
+      align-self: flex-start;
+    }
+  }
+
+  // Avatar (for received messages)
+  &__avatar {
+    width: $chat-avatar-size;
+    height: $chat-avatar-size;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #ccc 0%, #aaa 100%);
+    color: $color-text-inverse;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $typography-small-size;
+    font-weight: 600;
+    flex-shrink: 0;
+    overflow: hidden;
+    align-self: flex-end;
+  }
+
+  &__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  // Message bubble
+  &__bubble {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 16px;
+    word-wrap: break-word;
+    max-width: 100%;
+    box-shadow: $shadow-sm;
+
+    .pet-chat__message--mine & {
+      background: $chat-bubble-mine;
+      color: $color-text-dark;
+      border-radius: 20px 20px 0 20px;
+    }
+
+    .pet-chat__message--theirs & {
+      background: $chat-bubble-theirs;
+      color: $color-text-primary;
+      border-radius: 20px 20px 20px 0;
+    }
+  }
+
+  // Message text
+  &__text {
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  // Timestamp
+  &__time {
+    font-family: $font-family-body;
+    font-size: $typography-micro-size;
+    align-self: flex-end;
+
+    .pet-chat__message--mine & {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .pet-chat__message--theirs & {
+      color: $color-text-secondary;
+    }
+  }
+
+  // Typing indicator
+  &__typing {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    align-self: flex-start;
+  }
+
+  &__typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: $chat-bubble-theirs;
+    padding: 12px 16px;
+    border-radius: 20px 20px 20px 0;
+    box-shadow: $shadow-sm;
+
+    span {
+      width: 6px;
+      height: 6px;
+      background: $color-text-secondary;
+      border-radius: 50%;
+      animation: typing-bounce 1.4s ease-in-out infinite;
+
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+    }
+  }
+
+  // Input area
+  &__input-area {
+    background: $chat-input-bg;
+    border-top: 1px solid $chat-input-border;
+    padding: $spacing-sm $spacing-md;
+    padding-bottom: calc($spacing-sm + env(safe-area-inset-bottom, 0px));
+    flex-shrink: 0;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    background: $color-background-primary;
+    border-radius: 28px;
+    padding: 4px;
+    border: 1px solid $chat-input-border;
+  }
+
+  // Attach button
+  &__attach-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-secondary;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+      background: rgba(0, 0, 0, 0.1);
+      transform: scale(0.95);
+    }
+  }
+
+  // Text input
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: $font-family-body;
+    font-size: $typography-body-size;
+    color: $color-text-primary;
+    padding: $spacing-xs 0;
+    min-width: 0;
+
+    &::placeholder {
+      color: $color-text-secondary;
+    }
+  }
+
+  // Send button
+  &__send-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-cta-primary;
+    color: $color-text-inverse;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: $transition-fast;
+
+    &:not(:disabled):hover {
+      background: $color-yellow-btn-hover;
+      transform: scale(1.05);
+    }
+
+    &:not(:disabled):active {
+      background: $color-yellow-btn-pressed;
+      transform: scale(0.95);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Typing bounce animation
+@keyframes typing-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 767px) {
+  .pet-chat {
+    &__message {
+      max-width: 85%;
+    }
+
+    &__bubble {
+      padding: 8px 14px;
+    }
+  }
+}
+
+// Tablet and up
+@media (min-width: 768px) {
+  .pet-chat {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+
+    &__messages-inner {
+      padding: $spacing-md $spacing-lg;
+    }
+  }
+}

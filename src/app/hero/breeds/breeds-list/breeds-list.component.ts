@@ -88,7 +88,7 @@ export class BreedsListComponent implements OnInit {
     if (breed.id.startsWith('species-')) {
       this.breedsService.selectBreed(breed);
     }
-    this.router.navigate(['/home/breeds/result', breed.id]);
+    this.router.navigate(['/home/breeds/detail', breed.id]);
   }
 
   onBack(): void {

@@ -56,6 +56,46 @@
   }
 }
 
+// Photo edit context menu
+.pet-profile__photo-menu {
+  position: absolute;
+  bottom: -76px;
+  right: 0;
+  min-width: 170px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  overflow: hidden;
+}
+
+.pet-profile__photo-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  font-family: $font-family-body;
+  font-size: 13px;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: background 120ms ease;
+
+  &:hover {
+    background: #f5f5f5;
+  }
+
+  &--danger {
+    color: #e53935;
+
+    &:hover {
+      background: #ffebee;
+    }
+  }
+}
+
 .pet-profile__photo-uploading {
   position: absolute;
   inset: 0;

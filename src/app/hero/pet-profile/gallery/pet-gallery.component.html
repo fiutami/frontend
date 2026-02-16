@@ -90,6 +90,42 @@
             [src]="slot.photo.url"
             [alt]="slot.photo.alt"
             class="gallery-card__img" />
+
+          <!-- Context menu button -->
+          <button
+            class="gallery-card__menu-btn"
+            (click)="openPhotoMenu($event, slot.photo)"
+            aria-label="Menu foto">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <circle cx="8" cy="3" r="1.5"/>
+              <circle cx="8" cy="8" r="1.5"/>
+              <circle cx="8" cy="13" r="1.5"/>
+            </svg>
+          </button>
+
+          <!-- Dropdown menu -->
+          @if (activeMenuPhotoId() === slot.photo.id) {
+            <div class="gallery-card__menu" (click)="$event.stopPropagation()">
+              <button class="gallery-card__menu-item" (click)="setAsPrimary(slot.photo)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span>Imposta come profilo</span>
+              </button>
+              <button class="gallery-card__menu-item" (click)="replacePhoto(slot.photo)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                </svg>
+                <span>Sostituisci</span>
+              </button>
+              <button class="gallery-card__menu-item gallery-card__menu-item--danger" (click)="deletePhoto(slot.photo)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                </svg>
+                <span>Elimina</span>
+              </button>
+            </div>
+          }
         } @else {
           <!-- Empty state -->
           <button
@@ -123,6 +159,14 @@
       [aspectRatio]="4/3"
       (confirmed)="onPhotoConfirmed($event)"
       (cancelled)="showUploadModal.set(false)" />
+  }
+
+  <!-- Replace Photo Modal -->
+  @if (showReplaceModal()) {
+    <app-photo-upload-modal
+      [aspectRatio]="4/3"
+      (confirmed)="onReplacePhotoConfirmed($event)"
+      (cancelled)="showReplaceModal.set(false)" />
   }
 
 </app-tab-page-shell-default>

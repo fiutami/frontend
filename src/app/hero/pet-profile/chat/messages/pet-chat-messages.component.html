@@ -1,0 +1,105 @@
+<app-tab-page-shell-yellow
+  title="Chat"
+  activeTabId="pet-profile"
+  [showBack]="true"
+  (backClicked)="goBack()">
+
+  <div class="pet-chat">
+    <!-- Messages area -->
+    <div class="pet-chat__messages" #messagesContainer>
+      <div class="pet-chat__messages-inner">
+        <!-- Date separator -->
+        @if (messages().length > 0) {
+          <div class="pet-chat__date-separator">
+            <span>Oggi</span>
+          </div>
+        }
+
+        @for (message of messages(); track message.id) {
+          <div
+            class="pet-chat__message"
+            [class.pet-chat__message--mine]="message.isMine"
+            [class.pet-chat__message--theirs]="!message.isMine"
+          >
+            <!-- Avatar for received messages -->
+            @if (!message.isMine) {
+              <div class="pet-chat__avatar">
+                @if (message.senderAvatar) {
+                  <img
+                    [src]="message.senderAvatar"
+                    [alt]="message.senderName"
+                    class="pet-chat__avatar-img"
+                  />
+                } @else {
+                  {{ getInitial(message.senderName) }}
+                }
+              </div>
+            }
+
+            <div class="pet-chat__bubble">
+              <p class="pet-chat__text">{{ message.text }}</p>
+              <span class="pet-chat__time">{{ formatTime(message.timestamp) }}</span>
+            </div>
+          </div>
+        }
+
+        <!-- Typing indicator -->
+        @if (isTyping()) {
+          <div class="pet-chat__typing">
+            <div class="pet-chat__avatar">
+              <img
+                src="assets/images/default-pet-avatar.png"
+                alt="Marco"
+                class="pet-chat__avatar-img"
+              />
+            </div>
+            <div class="pet-chat__typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Input area -->
+    <footer class="pet-chat__input-area">
+      <div class="pet-chat__input-wrapper">
+        <!-- Attach button -->
+        <button
+          class="pet-chat__attach-btn"
+          aria-label="Allega file"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5a2.5 2.5 0 0 1 5 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 0 0 5 0V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/>
+          </svg>
+        </button>
+
+        <!-- Text input -->
+        <input
+          type="text"
+          class="pet-chat__input"
+          placeholder="Scrivi un messaggio..."
+          [value]="messageInput()"
+          (input)="messageInput.set($any($event.target).value)"
+          (keypress)="onInputKeyPress($event)"
+          aria-label="Scrivi un messaggio"
+        />
+
+        <!-- Send button -->
+        <button
+          class="pet-chat__send-btn"
+          (click)="sendMessage()"
+          [disabled]="!messageInput().trim()"
+          aria-label="Invia messaggio"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+</app-tab-page-shell-yellow>

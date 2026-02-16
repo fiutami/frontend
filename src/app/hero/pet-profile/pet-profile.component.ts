@@ -5,6 +5,7 @@ import {
   OnInit,
   signal,
   ChangeDetectorRef,
+  HostListener,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
@@ -77,6 +78,9 @@ export class PetProfileComponent implements OnInit {
   showPhotoUpload = signal(false);
   isUploadingPhoto = signal(false);
   uploadProgress = signal(0);
+
+  // Photo edit menu state
+  showPhotoMenu = signal(false);
 
   // Loading and error state
   isLoading = signal(false);
@@ -160,13 +164,11 @@ export class PetProfileComponent implements OnInit {
   }
 
   onEditPetClick(): void {
-    if (this.pet.id) {
-      this.router.navigate(['/profile/pet', this.pet.id]);
-    }
+    this.router.navigate(['/home/pet-profile/edit']);
   }
 
   onMessagesClick(): void {
-    this.router.navigate(['/home/chat']);
+    this.router.navigate(['/home/pet-profile/chat/list']);
   }
 
   onSavedClick(): void {
@@ -176,7 +178,7 @@ export class PetProfileComponent implements OnInit {
   // === CTA button actions ===
   onBandaPelosaClick(): void {
     if (this.pet.id) {
-      this.router.navigate(['/home/pet-profile', this.pet.id, 'gallery']);
+      this.router.navigate(['/home/pet-profile', this.pet.id, 'friends']);
     }
   }
 
@@ -188,7 +190,7 @@ export class PetProfileComponent implements OnInit {
 
   onRullinoFeroceClick(): void {
     if (this.pet.id) {
-      this.router.navigate(['/home/pet-profile', this.pet.id, 'friends']);
+      this.router.navigate(['/home/pet-profile', this.pet.id, 'gallery']);
     }
   }
 
@@ -333,9 +335,37 @@ export class PetProfileComponent implements OnInit {
     ];
   }
 
-  // === Photo upload ===
+  // === Photo upload / edit menu ===
+  @HostListener('document:click')
+  onDocumentClick(): void {
+    this.showPhotoMenu.set(false);
+  }
+
   onEditPhotoClick(): void {
+    this.showPhotoMenu.update(v => !v);
+  }
+
+  onChangePhoto(): void {
+    this.showPhotoMenu.set(false);
     this.showPhotoUpload.set(true);
+  }
+
+  deleteProfilePhoto(): void {
+    this.showPhotoMenu.set(false);
+    if (!this.pet.id) return;
+
+    // Find current profile photo and delete it
+    this.petService.getPetGallery(this.pet.id).subscribe(photos => {
+      const primary = photos.find(p => p.isProfilePhoto);
+      if (primary) {
+        this.petService.deletePhoto(this.pet.id, primary.id).subscribe({
+          next: () => {
+            this.pet.photoUrl = 'assets/images/default-pet-avatar.png';
+            this.cdr.markForCheck();
+          },
+        });
+      }
+    });
   }
 
   onPhotoCancelled(): void {

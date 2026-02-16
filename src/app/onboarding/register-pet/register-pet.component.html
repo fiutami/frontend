@@ -16,12 +16,18 @@
       <div
         class="register-pet__photo-upload"
         (click)="triggerFileInput()"
-        [class.register-pet__photo-upload--has-photo]="photoPreview()">
+        [class.register-pet__photo-upload--has-photo]="photoPreview()"
+        [class.register-pet__photo-upload--transparent]="isBgRemoved()">
         @if (photoPreview()) {
           <img
             [src]="photoPreview()"
             [alt]="'onboarding.registerPet.addPhoto' | translate"
             class="register-pet__photo-preview" />
+          @if (isRemovingBg()) {
+            <div class="register-pet__photo-processing">
+              <span class="register-pet__spinner-small"></span>
+            </div>
+          }
           <button
             type="button"
             class="register-pet__photo-remove"
@@ -42,6 +48,14 @@
         accept="image/jpeg,image/png,image/webp"
         (change)="onFileSelected($event)"
         hidden />
+      @if (selectedFile) {
+        <button type="button" class="register-pet__bg-toggle" (click)="toggleRemoveBg()" [disabled]="isRemovingBg()">
+          <span class="register-pet__bg-toggle-track" [class.register-pet__bg-toggle-track--active]="removeBgEnabled()">
+            <span class="register-pet__bg-toggle-thumb"></span>
+          </span>
+          <span class="register-pet__bg-toggle-label">Rimuovi sfondo</span>
+        </button>
+      }
       @if (uploadError()) {
         <p class="register-pet__photo-error">{{ uploadError() }}</p>
       } @else {
@@ -240,7 +254,7 @@
       <button
         type="submit"
         class="register-pet__submit"
-        [disabled]="isLoading() || isUploading() || isLoadingSpecies() || speciesError()">
+        [disabled]="isLoading() || isUploading() || isLoadingSpecies() || speciesError() || isRemovingBg()">
         @if (isUploading()) {
           <span class="register-pet__spinner"></span>
           {{ 'onboarding.registerPet.uploadingPhoto' | translate }}

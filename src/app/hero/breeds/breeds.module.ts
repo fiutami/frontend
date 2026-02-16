@@ -4,6 +4,7 @@ import { BreedsRoutingModule } from './breeds-routing.module';
 import { BreedsListComponent } from './breeds-list/breeds-list.component';
 import { BreedFinderComponent } from './breed-finder/breed-finder.component';
 import { BreedResultComponent } from './breed-result/breed-result.component';
+import { BreedDetailComponent } from './breed-detail/breed-detail.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { BreedResultComponent } from './breed-result/breed-result.component';
     // Standalone components
     BreedsListComponent,
     BreedFinderComponent,
-    BreedResultComponent
+    BreedResultComponent,
+    BreedDetailComponent
   ]
 })
 export class BreedsModule { }

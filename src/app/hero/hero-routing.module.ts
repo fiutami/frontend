@@ -32,6 +32,11 @@ import { MapComponent } from './map/map.component';
 import { ChatListComponent } from './chat/chat-list/chat-list.component';
 import { ChatScreenComponent } from './chat/chat-screen/chat-screen.component';
 
+// Pet Profile sub-pages (new)
+import { PetChatListComponent } from './pet-profile/chat/chat-list/pet-chat-list.component';
+import { PetChatMessagesComponent } from './pet-profile/chat/messages/pet-chat-messages.component';
+import { PetEditComponent } from './pet-profile/edit/pet-edit.component';
+
 // Account Drawer Component (direct import)
 import { AccountDrawerComponent } from './drawer-sections/account/account.component';
 
@@ -67,6 +72,19 @@ const routes: Routes = [
     path: 'pet-profile',
     component: PetProfileComponent,
     runGuardsAndResolvers: 'always'
+  },
+  // Static pet-profile routes MUST come before :id to avoid being captured
+  {
+    path: 'pet-profile/edit',
+    component: PetEditComponent
+  },
+  {
+    path: 'pet-profile/chat/list',
+    component: PetChatListComponent
+  },
+  {
+    path: 'pet-profile/chat/messages',
+    component: PetChatMessagesComponent
   },
   {
     path: 'pet-profile/:id',

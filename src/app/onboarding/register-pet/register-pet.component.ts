@@ -15,6 +15,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { PetService, PetCreateRequest, AuthService } from '../../core';
 import { BreedsService } from '../../hero/breeds/breeds.service';
 import { Species, Breed } from '../../hero/breeds/models/breed.model';
+import { BackgroundRemovalService } from '../../core/services/background-removal.service';
 
 /**
  * RegisterPetComponent - Single-form pet registration
@@ -43,6 +44,7 @@ export class RegisterPetComponent implements OnInit {
   private readonly petService = inject(PetService);
   private readonly authService = inject(AuthService);
   private readonly breedsService = inject(BreedsService);
+  private readonly bgRemovalService = inject(BackgroundRemovalService);
 
   /** File input reference */
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
@@ -58,6 +60,27 @@ export class RegisterPetComponent implements OnInit {
 
   /** Selected photo file */
   protected selectedFile: File | null = null;
+
+  /** Original file before bg removal */
+  private originalFile: File | null = null;
+
+  /** Processed file with bg removed */
+  private processedFile: File | null = null;
+
+  /** Original preview URL */
+  private originalPreview: string | null = null;
+
+  /** Processed preview URL */
+  private processedPreview: string | null = null;
+
+  /** Background removal toggle */
+  protected removeBgEnabled = signal(true);
+
+  /** Background removal in progress */
+  protected isRemovingBg = signal(false);
+
+  /** Whether the current preview has bg removed */
+  protected isBgRemoved = signal(false);
 
   /** Photo preview URL */
   protected photoPreview = signal<string | null>(null);
@@ -262,15 +285,83 @@ export class RegisterPetComponent implements OnInit {
         return;
       }
 
-      this.selectedFile = file;
       this.uploadError.set(null);
 
-      // Create preview
+      // Reset previous state
+      this.originalFile = file;
+      this.processedFile = null;
+      this.processedPreview = null;
+      this.isBgRemoved.set(false);
+
+      // Create original preview
       const reader = new FileReader();
       reader.onload = () => {
-        this.photoPreview.set(reader.result as string);
+        this.originalPreview = reader.result as string;
+        this.photoPreview.set(this.originalPreview);
+        this.selectedFile = file;
+
+        // Auto-process bg removal if toggle is on
+        if (this.removeBgEnabled()) {
+          this.processBackgroundRemoval(file);
+        }
       };
       reader.readAsDataURL(file);
+    }
+  }
+
+  /**
+   * Toggle background removal on/off
+   */
+  toggleRemoveBg(): void {
+    this.removeBgEnabled.update(v => !v);
+
+    if (!this.originalFile) return;
+
+    if (this.removeBgEnabled()) {
+      // Turning ON: use processed version if available, otherwise process
+      if (this.processedFile && this.processedPreview) {
+        this.selectedFile = this.processedFile;
+        this.photoPreview.set(this.processedPreview);
+        this.isBgRemoved.set(true);
+      } else {
+        this.processBackgroundRemoval(this.originalFile);
+      }
+    } else {
+      // Turning OFF: revert to original
+      this.selectedFile = this.originalFile;
+      this.photoPreview.set(this.originalPreview);
+      this.isBgRemoved.set(false);
+    }
+  }
+
+  /**
+   * Process background removal on the given file
+   */
+  private async processBackgroundRemoval(file: File): Promise<void> {
+    this.isRemovingBg.set(true);
+    try {
+      const resultBlob = await this.bgRemovalService.removeBackground(file);
+      this.processedFile = new File([resultBlob], file.name.replace(/\.\w+$/, '.png'), {
+        type: 'image/png',
+      });
+
+      // Create preview for processed file
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.processedPreview = reader.result as string;
+        // Only apply if toggle is still on
+        if (this.removeBgEnabled()) {
+          this.selectedFile = this.processedFile;
+          this.photoPreview.set(this.processedPreview);
+          this.isBgRemoved.set(true);
+        }
+        this.isRemovingBg.set(false);
+      };
+      reader.readAsDataURL(this.processedFile);
+    } catch (err) {
+      console.error('Background removal failed:', err);
+      this.uploadError.set('Rimozione sfondo fallita. Foto originale mantenuta.');
+      this.isRemovingBg.set(false);
     }
   }
 
@@ -280,8 +371,13 @@ export class RegisterPetComponent implements OnInit {
   removePhoto(event: Event): void {
     event.stopPropagation();
     this.selectedFile = null;
+    this.originalFile = null;
+    this.processedFile = null;
+    this.originalPreview = null;
+    this.processedPreview = null;
     this.photoPreview.set(null);
     this.uploadError.set(null);
+    this.isBgRemoved.set(false);
     if (this.fileInput) {
       this.fileInput.nativeElement.value = '';
     }
@@ -291,7 +387,7 @@ export class RegisterPetComponent implements OnInit {
    * Submit form and create pet
    */
   async onSubmit(): Promise<void> {
-    if (!this.isFormValid || this.isLoading()) return;
+    if (!this.isFormValid || this.isLoading() || this.isRemovingBg()) return;
 
     // Mark all fields as touched to show validation errors
     Object.keys(this.petForm.controls).forEach(key => {

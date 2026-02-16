@@ -1,0 +1,130 @@
+<app-tab-page-shell-yellow
+  title="Chat"
+  activeTabId="pet-profile"
+  [showBack]="true"
+  (backClicked)="goBack()">
+
+  <ng-container shellStickyContent>
+    <p class="pet-chat-list__subtitle">Le tue conversazioni</p>
+  </ng-container>
+
+  <!-- Empty state -->
+  @if (!hasConversations()) {
+    <div class="pet-chat-list__empty">
+      <div class="pet-chat-list__empty-illustration">
+        <svg width="120" height="120" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="80" fill="#FFF9E6"/>
+          <path
+            d="M60 80C60 71.7157 66.7157 65 75 65H125C133.284 65 140 71.7157 140 80V110C140 118.284 133.284 125 125 125H90L70 140V125C63.3726 125 60 121.627 60 115V80Z"
+            fill="#F2B830"
+          />
+          <circle cx="85" cy="92" r="5" fill="white"/>
+          <circle cx="100" cy="92" r="5" fill="white"/>
+          <circle cx="115" cy="92" r="5" fill="white"/>
+        </svg>
+      </div>
+      <h2 class="pet-chat-list__empty-title">Nessun messaggio</h2>
+      <p class="pet-chat-list__empty-text">
+        Inizia a chattare con gli amici del tuo pet!
+      </p>
+      <button
+        class="pet-chat-list__empty-btn"
+        (click)="newMessage()"
+        aria-label="Inizia una nuova conversazione"
+      >
+        Nuovo Messaggio
+      </button>
+    </div>
+  }
+
+  <!-- Conversations list -->
+  @if (hasConversations()) {
+    <ul class="pet-chat-list__list" role="list">
+      @for (conversation of conversations(); track conversation.id) {
+        <li
+          class="pet-chat-list__item"
+          role="listitem"
+          (click)="openConversation(conversation.id)"
+          tabindex="0"
+          (keydown.enter)="openConversation(conversation.id)"
+          [attr.aria-label]="'Conversazione con ' + conversation.petName + (conversation.unreadCount > 0 ? ', ' + conversation.unreadCount + ' messaggi non letti' : '')"
+        >
+          <!-- Avatar -->
+          <div class="pet-chat-list__avatar">
+            <img
+              [src]="conversation.petAvatarUrl"
+              [alt]="conversation.petName"
+              class="pet-chat-list__avatar-img"
+              loading="lazy"
+            />
+            @if (conversation.isOnline) {
+              <span
+                class="pet-chat-list__online-dot"
+                aria-label="Online"
+              ></span>
+            }
+          </div>
+
+          <!-- Conversation info -->
+          <div class="pet-chat-list__info">
+            <div class="pet-chat-list__top-row">
+              <div class="pet-chat-list__name-group">
+                <span class="pet-chat-list__name">{{ conversation.petName }}</span>
+                <span class="pet-chat-list__species">{{ conversation.petSpecies }}</span>
+              </div>
+              <span class="pet-chat-list__time">{{ formatTime(conversation.timestamp) }}</span>
+            </div>
+            <div class="pet-chat-list__bottom-row">
+              <p class="pet-chat-list__message">{{ conversation.lastMessage }}</p>
+              @if (conversation.unreadCount > 0) {
+                <span class="pet-chat-list__badge" [attr.aria-label]="conversation.unreadCount + ' non letti'">
+                  {{ conversation.unreadCount }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="pet-chat-list__actions">
+            <button
+              class="pet-chat-list__action-btn"
+              (click)="toggleBookmark($event, conversation.id)"
+              [attr.aria-label]="conversation.isBookmarked ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'"
+              [class.pet-chat-list__action-btn--active]="conversation.isBookmarked"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                @if (conversation.isBookmarked) {
+                  <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                } @else {
+                  <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>
+                }
+              </svg>
+            </button>
+            <button
+              class="pet-chat-list__action-btn pet-chat-list__action-btn--delete"
+              (click)="deleteConversation($event, conversation.id)"
+              aria-label="Elimina conversazione"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/>
+              </svg>
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+
+  <!-- FAB: Nuovo Messaggio -->
+  <button
+    class="pet-chat-list__fab"
+    (click)="newMessage()"
+    aria-label="Nuovo messaggio"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zm-9-4h2v2h-2v-2zm0-6h2v4h-2V6z"/>
+    </svg>
+    <span class="pet-chat-list__fab-label">Nuovo Messaggio</span>
+  </button>
+
+</app-tab-page-shell-yellow>

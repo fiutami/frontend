@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 
 export interface FriendPet {
   id: string;
@@ -15,7 +16,7 @@ export interface FriendPet {
 @Component({
   selector: 'app-pet-friends',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TabPageShellDefaultComponent],
   templateUrl: './pet-friends.component.html',
   styleUrls: ['./pet-friends.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -54,9 +55,8 @@ export class PetFriendsComponent {
     },
   ]);
 
-  get isEmpty(): boolean {
-    return this.friends().length === 0;
-  }
+  /** Whether the friends list is empty */
+  readonly isEmpty = computed(() => this.friends().length === 0);
 
   goBack(): void {
     window.history.back();

@@ -1,0 +1,171 @@
+<app-tab-page-shell-blue
+  [title]="breedName()"
+  activeTabId="breeds"
+  [showBack]="true"
+  (backClicked)="goBack()">
+
+  <!-- Loading state -->
+  @if (isLoading()) {
+    <div class="detail-loading">
+      <div class="detail-loading__spinner"></div>
+      <p>Caricamento dettagli...</p>
+    </div>
+  }
+
+  <!-- Error state (no breed loaded and not loading) -->
+  @if (!breed() && !isLoading()) {
+    <div class="detail-error">
+      <span class="material-icons">error_outline</span>
+      <p>Razza non trovata</p>
+      <button class="detail-error__retry" (click)="goBack()">
+        Torna indietro
+      </button>
+    </div>
+  }
+
+  <!-- Breed details -->
+  @if (breed() && !isLoading()) {
+    <!-- Hero Image -->
+    <section class="breed-hero">
+      <div class="breed-hero__image-wrapper">
+        <img
+          [src]="heroImageUrl()"
+          [alt]="breedName()"
+          class="breed-hero__image"
+          (error)="$any($event.target).src='assets/images/breeds/placeholder-breed.png'"
+          loading="eager">
+        <div class="breed-hero__gradient"></div>
+      </div>
+    </section>
+
+    <!-- Breed Name + Origin -->
+    <section class="breed-identity">
+      <h1 class="breed-identity__name">{{ breed()!.name }}</h1>
+
+      @if (breed()!.origin) {
+        <span class="breed-identity__origin">
+          <span class="material-icons">place</span>
+          {{ originLabel() }}
+        </span>
+      }
+
+      @if (breed()!.recognition) {
+        <span class="breed-identity__recognition">
+          <span class="material-icons">verified</span>
+          {{ breed()!.recognition }}
+        </span>
+      }
+
+      @if (lifespanLabel()) {
+        <span class="breed-identity__lifespan">
+          <span class="material-icons">favorite</span>
+          {{ lifespanLabel() }}
+        </span>
+      }
+    </section>
+
+    <!-- Quick Stats Row -->
+    <section class="quick-stats">
+      <div class="quick-stats__card">
+        <span class="material-icons quick-stats__icon">fitness_center</span>
+        <span class="quick-stats__value">{{ weightLabel() }}</span>
+        <span class="quick-stats__label">Peso</span>
+      </div>
+
+      <div class="quick-stats__card">
+        <span class="material-icons quick-stats__icon">height</span>
+        <span class="quick-stats__value">{{ heightLabel() }}</span>
+        <span class="quick-stats__label">Altezza</span>
+      </div>
+
+      <div class="quick-stats__card">
+        <span class="material-icons quick-stats__icon">content_cut</span>
+        <span class="quick-stats__value">{{ coatLabel() }}</span>
+        <span class="quick-stats__label">Pelo</span>
+      </div>
+
+      <div class="quick-stats__card">
+        <span class="material-icons quick-stats__icon">bolt</span>
+        <span class="quick-stats__value">{{ energyLabel() }}</span>
+        <span class="quick-stats__label">Energia</span>
+      </div>
+    </section>
+
+    <!-- Info Sections (Accordion) -->
+    <section class="info-sections">
+      @for (section of infoSections(); track trackBySection($index, section)) {
+        @if (getSectionContent(section.id)) {
+          <div
+            class="info-card"
+            [class.info-card--expanded]="isSectionExpanded(section.id)">
+            <button
+              class="info-card__header"
+              (click)="toggleSection(section.id)"
+              [attr.aria-expanded]="isSectionExpanded(section.id)"
+              [attr.aria-controls]="'section-' + section.id">
+              <span class="info-card__icon">
+                <span class="material-icons">{{ section.icon }}</span>
+              </span>
+              <span class="info-card__title">{{ section.title }}</span>
+              <span class="material-icons info-card__chevron">
+                {{ isSectionExpanded(section.id) ? 'expand_less' : 'expand_more' }}
+              </span>
+            </button>
+
+            @if (isSectionExpanded(section.id)) {
+              <div
+                class="info-card__content"
+                [id]="'section-' + section.id"
+                role="region"
+                [attr.aria-label]="section.title">
+                @if (section.id === 'rituals' || section.id === 'health') {
+                  <!-- List content -->
+                  <ul class="info-card__list">
+                    @for (item of $any(getSectionContent(section.id)); track item) {
+                      <li>{{ item }}</li>
+                    }
+                  </ul>
+                } @else {
+                  <!-- Text content -->
+                  <p class="info-card__text">{{ getSectionContent(section.id) }}</p>
+                }
+              </div>
+            }
+          </div>
+        }
+      }
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="detail-actions">
+      <button
+        class="detail-actions__primary"
+        (click)="goToFindPuppy()"
+        aria-label="Trova un cucciolo">
+        <span class="material-icons">search</span>
+        <span>Trova un cucciolo</span>
+      </button>
+
+      <button
+        class="detail-actions__outlined"
+        (click)="goToCompare()"
+        aria-label="Confronta razze">
+        <span class="material-icons">compare_arrows</span>
+        <span>Confronta razze</span>
+      </button>
+
+      <button
+        class="detail-actions__favorite"
+        [class.detail-actions__favorite--active]="isFavorite()"
+        (click)="toggleFavorite()"
+        [attr.aria-label]="isFavorite() ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'"
+        [attr.aria-pressed]="isFavorite()">
+        <span class="material-icons">
+          {{ isFavorite() ? 'bookmark' : 'bookmark_border' }}
+        </span>
+        <span>{{ isFavorite() ? 'Salvato' : 'Aggiungi ai preferiti' }}</span>
+      </button>
+    </section>
+  }
+
+</app-tab-page-shell-blue>

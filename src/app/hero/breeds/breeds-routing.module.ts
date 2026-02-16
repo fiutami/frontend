@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BreedsListComponent } from './breeds-list/breeds-list.component';
 import { BreedFinderComponent } from './breed-finder/breed-finder.component';
 import { BreedResultComponent } from './breed-result/breed-result.component';
+import { BreedDetailComponent } from './breed-detail/breed-detail.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'result/:id',
     component: BreedResultComponent
+  },
+  {
+    path: 'detail/:breedId',
+    component: BreedDetailComponent
   }
 ];
 

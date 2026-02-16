@@ -1,107 +1,126 @@
+/**
+ * PetFriendsComponent - SCSS
+ * "Banda Pelosa" - Pet Friends page using tab-page-shell-default
+ */
+
 @import 'src/styles/tokens-figma';
 
-.pet-friends {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #4A74F0 0%, #3D5FC4 100%);
+// ==========================================
+// INTRO (shellStickyContent) - Motto + Actions
+// ==========================================
+.pet-friends-intro {
+  text-align: center;
+  padding: $spacing-md $spacing-md $spacing-sm;
 
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-md;
-    background: rgba(0, 0, 0, 0.1);
+  &__motto {
+    font-family: $font-family-body;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    color: $color-white-80;
+    margin: 0 0 $spacing-sm;
+    line-height: 1.5;
   }
 
-  &__header-left {
+  &__actions {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: $spacing-sm;
+    margin-top: $spacing-xs;
   }
 
-  &__back,
-  &__add {
+  &__action-btn {
     width: 44px;
     height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: $color-white-20;
+    border: none;
+    border-radius: $border-radius-full;
     color: $color-text-inverse;
-    border-radius: 50%;
+    cursor: pointer;
     transition: $transition-fast;
 
+    .material-icons {
+      font-size: 22px;
+    }
+
     &:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: $color-white-40;
     }
 
     &:active {
-      background: rgba(255, 255, 255, 0.25);
+      background: $color-white-20;
+      transform: scale(0.95);
     }
   }
+}
 
-  &__title {
-    font-size: 20px;
-    font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0;
-    text-transform: uppercase;
-  }
+// ==========================================
+// EMPTY STATE
+// ==========================================
+.pet-friends-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 300px;
+  padding: $spacing-xl $spacing-lg;
 
-  &__content {
-    flex: 1;
-    overflow-y: auto;
-    padding: $spacing-md;
-  }
-
-  // Empty state
-  &__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 400px;
-    padding: $spacing-xl;
-  }
-
-  &__empty-icon {
+  &__icon-wrapper {
     width: 80px;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
+    background: rgba(74, 116, 240, 0.1);
+    border-radius: $border-radius-full;
     margin-bottom: $spacing-lg;
-    color: $color-text-inverse;
   }
 
-  &__empty-title {
-    font-size: 24px;
+  &__icon {
+    font-size: 40px;
+    color: $color-ai-primary;
+    opacity: 0.6;
+  }
+
+  &__title {
+    font-family: $font-family-body;
+    font-size: 20px;
     font-weight: 700;
-    color: $color-text-inverse;
-    margin: 0 0 $spacing-sm;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-xs;
   }
 
-  &__empty-text {
+  &__text {
+    font-family: $font-family-body;
     font-size: $typography-body-size;
-    color: rgba(255, 255, 255, 0.8);
+    color: $color-text-secondary;
     margin: 0 0 $spacing-xl;
     max-width: 280px;
   }
 
-  &__empty-btn {
+  &__btn {
     display: flex;
     align-items: center;
-    gap: $spacing-sm;
-    padding: $spacing-md $spacing-xl;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-xl;
     background: $color-yellow-btn;
     color: $color-yellow-btn-text;
+    font-family: $font-family-body;
     font-size: $typography-body-size;
     font-weight: 600;
+    border: none;
     border-radius: $border-radius-full;
+    cursor: pointer;
     transition: $transition-fast;
+
+    .material-icons {
+      font-size: 20px;
+    }
 
     &:hover {
       background: $color-yellow-btn-hover;
@@ -113,76 +132,94 @@
       transform: translateY(0);
     }
   }
+}
 
-  // Friends list
-  &__list {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-md;
+// ==========================================
+// FRIENDS LIST
+// ==========================================
+.pet-friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: 0 $spacing-md $spacing-lg;
+}
+
+// ==========================================
+// FRIEND CARD
+// ==========================================
+.pet-friends-card {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: #F5F3EB;
+  border: none;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 3px 7px 1px rgba(0, 0, 0, 0.12);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  transition: $transition-fast;
+
+  &:hover {
+    background: #EDE9DD;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.18);
   }
 
-  &__card {
-    display: flex;
-    align-items: center;
-    gap: $spacing-md;
-    padding: $spacing-md;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: $border-radius-lg;
-    backdrop-filter: blur(10px);
-    text-align: left;
-    transition: $transition-fast;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
+  &:active {
+    transform: scale(0.98);
   }
 
+  // Avatar
   &__avatar-wrapper {
     position: relative;
     flex-shrink: 0;
   }
 
   &__avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    border-radius: $border-radius-full;
     object-fit: cover;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid $color-white-40;
   }
 
   &__online-badge {
     position: absolute;
     bottom: 2px;
     right: 2px;
-    width: 16px;
-    height: 16px;
-    background: #4CAF50;
-    border-radius: 50%;
-    border: 3px solid #3D5FC4;
+    width: 14px;
+    height: 14px;
+    background: $color-success;
+    border-radius: $border-radius-full;
+    border: 2px solid #F5F3EB;
   }
 
+  // Info block
   &__info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
+    min-width: 0; // prevent overflow
   }
 
   &__name {
-    font-size: 18px;
+    font-family: $font-family-body;
+    font-size: 17px;
     font-weight: 700;
-    color: $color-text-inverse;
+    color: $color-text-primary;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__species {
-    font-size: $typography-body-size;
-    color: rgba(255, 255, 255, 0.9);
+    font-family: $font-family-body;
+    font-size: $typography-small-size;
+    color: $color-text-secondary;
     margin: 0;
   }
 
@@ -190,47 +227,58 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    font-family: $font-family-body;
     font-size: $typography-small-size;
-    color: rgba(255, 255, 255, 0.7);
+    color: $color-text-secondary;
     margin: 0;
 
-    svg {
+    .material-icons {
+      font-size: 14px;
       flex-shrink: 0;
+      opacity: 0.7;
     }
   }
 
   &__since {
-    font-size: $typography-small-size;
-    color: rgba(255, 255, 255, 0.6);
+    font-family: $font-family-body;
+    font-size: $typography-micro-size;
+    color: $color-text-secondary;
     font-style: italic;
     margin: 0;
+    opacity: 0.7;
   }
 
+  // Status badge
   &__status {
     flex-shrink: 0;
   }
 
-  &__status-text {
-    font-size: $typography-small-size;
+  &__status-badge {
+    font-family: $font-family-body;
+    font-size: $typography-micro-size;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.6);
-    padding: 4px 12px;
+    color: $color-text-secondary;
+    padding: 4px 10px;
     border-radius: $border-radius-full;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.06);
 
     &--online {
-      color: #4CAF50;
-      background: rgba(76, 175, 80, 0.2);
+      color: $color-success;
+      background: rgba(67, 160, 71, 0.12);
     }
   }
 }
 
-// Responsive: larger screens
+// ==========================================
+// RESPONSIVE: Tablet and up
+// ==========================================
 @media (min-width: 768px) {
-  .pet-friends {
-    &__list {
-      max-width: 600px;
-      margin: 0 auto;
-    }
+  .pet-friends-list {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .pet-friends-empty {
+    min-height: 400px;
   }
 }

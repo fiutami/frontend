@@ -1,0 +1,217 @@
+<app-tab-page-shell-blue
+  title="Modifica Profilo"
+  activeTabId="pet-profile"
+  [showBack]="true"
+  (backClicked)="goBack()">
+
+  <!-- Main scrollable content -->
+  <div class="pet-edit">
+
+    <!-- Section: Profile Photo -->
+    <section class="pet-edit__photo-section" aria-label="Foto profilo">
+      <div class="pet-edit__avatar-wrapper">
+        <img
+          [src]="profilePhoto()"
+          alt="Foto profilo del pet"
+          class="pet-edit__avatar"
+        />
+        <button
+          class="pet-edit__avatar-overlay"
+          (click)="onChangeProfilePhoto()"
+          aria-label="Cambia foto profilo"
+          type="button"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12m-3.2 0a3.2 3.2 0 1 0 6.4 0a3.2 3.2 0 1 0 -6.4 0"/>
+            <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+          </svg>
+        </button>
+      </div>
+      <p class="pet-edit__photo-hint">Tocca per cambiare foto</p>
+    </section>
+
+    <!-- Section: Cover Photos -->
+    <section class="pet-edit__cover-section" aria-label="Galleria foto">
+      <label class="pet-edit__label">FOTO</label>
+      <div class="pet-edit__cover-scroll">
+        @for (photo of coverPhotos(); track $index) {
+          <button
+            class="pet-edit__cover-thumb"
+            (click)="onCoverPhotoClick($index)"
+            [attr.aria-label]="'Foto ' + ($index + 1)"
+            type="button"
+          >
+            <img [src]="photo" [alt]="'Foto ' + ($index + 1)" />
+          </button>
+        }
+        <button
+          class="pet-edit__cover-add"
+          (click)="onAddCoverPhoto()"
+          aria-label="Aggiungi foto"
+          type="button"
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Section: Form Fields -->
+    <section class="pet-edit__form" aria-label="Dati del pet">
+
+      <!-- Nome -->
+      <div class="pet-edit__field">
+        <label class="pet-edit__label" for="pet-name">NOME</label>
+        <input
+          id="pet-name"
+          type="text"
+          class="pet-edit__input"
+          [ngModel]="form().name"
+          (ngModelChange)="updateField('name', $event)"
+          placeholder="Nome del pet"
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Razza (readonly) -->
+      <div class="pet-edit__field">
+        <label class="pet-edit__label" for="pet-breed">RAZZA</label>
+        <input
+          id="pet-breed"
+          type="text"
+          class="pet-edit__input pet-edit__input--disabled"
+          [ngModel]="form().breed"
+          readonly
+          tabindex="-1"
+        />
+      </div>
+
+      <!-- Sesso -->
+      <div class="pet-edit__field">
+        <label class="pet-edit__label" for="pet-sex">SESSO</label>
+        <select
+          id="pet-sex"
+          class="pet-edit__input pet-edit__select"
+          [ngModel]="form().sex"
+          (ngModelChange)="updateField('sex', $event)"
+        >
+          @for (option of sexOptions; track option) {
+            <option [value]="option">{{ option }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Data di nascita -->
+      <div class="pet-edit__field">
+        <label class="pet-edit__label" for="pet-birthdate">DATA DI NASCITA</label>
+        <input
+          id="pet-birthdate"
+          type="date"
+          class="pet-edit__input"
+          [ngModel]="form().birthDate"
+          (ngModelChange)="updateField('birthDate', $event)"
+        />
+      </div>
+
+      <!-- Peso -->
+      <div class="pet-edit__field">
+        <label class="pet-edit__label" for="pet-weight">PESO</label>
+        <div class="pet-edit__input-group">
+          <input
+            id="pet-weight"
+            type="number"
+            class="pet-edit__input pet-edit__input--weight"
+            [ngModel]="form().weight"
+            (ngModelChange)="updateField('weight', $event)"
+            placeholder="0"
+            min="0"
+            max="200"
+            step="0.1"
+          />
+          <span class="pet-edit__input-suffix">kg</span>
+        </div>
+      </div>
+
+      <!-- Bio / Descrizione -->
+      <div class="pet-edit__field">
+        <label class="pet-edit__label" for="pet-bio">DESCRIZIONE</label>
+        <textarea
+          id="pet-bio"
+          class="pet-edit__input pet-edit__textarea"
+          [ngModel]="form().bio"
+          (ngModelChange)="updateField('bio', $event)"
+          placeholder="Racconta qualcosa sul tuo pet..."
+          rows="4"
+          maxlength="300"
+        ></textarea>
+        <span class="pet-edit__char-count">
+          {{ form().bio.length }} / 300
+        </span>
+      </div>
+    </section>
+
+    <!-- Section: Personality Chips -->
+    <section class="pet-edit__chips-section" aria-label="Tratti di personalita">
+      <label class="pet-edit__label">PERSONALITA</label>
+      <div class="pet-edit__chips">
+        @for (chip of chips(); track chip.id) {
+          <span class="pet-edit__chip">
+            {{ chip.label }}
+            <button
+              class="pet-edit__chip-remove"
+              (click)="removeChip(chip.id)"
+              [attr.aria-label]="'Rimuovi ' + chip.label"
+              type="button"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </button>
+          </span>
+        }
+        <button
+          class="pet-edit__chip pet-edit__chip--add"
+          (click)="addChip()"
+          aria-label="Aggiungi tratto di personalita"
+          type="button"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          Aggiungi
+        </button>
+      </div>
+    </section>
+
+    <!-- Save Button -->
+    <div class="pet-edit__actions">
+      <button
+        class="pet-edit__save-btn"
+        (click)="onSave()"
+        [disabled]="isSaving()"
+        type="button"
+      >
+        @if (isSaving()) {
+          <span class="pet-edit__spinner"></span>
+          Salvataggio...
+        } @else {
+          Salva Modifiche
+        }
+      </button>
+    </div>
+
+    <!-- Delete Profile -->
+    <div class="pet-edit__danger-zone">
+      <button
+        class="pet-edit__delete-btn"
+        (click)="onDeleteProfile()"
+        type="button"
+      >
+        Elimina Profilo
+      </button>
+    </div>
+
+  </div>
+
+</app-tab-page-shell-blue>

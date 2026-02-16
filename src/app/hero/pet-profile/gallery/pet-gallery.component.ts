@@ -5,6 +5,7 @@ import {
   computed,
   inject,
   OnInit,
+  HostListener,
 } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -58,6 +59,12 @@ export class PetGalleryComponent implements OnInit {
   showUploadModal = signal(false);
   uploadProgress = signal(0);
   isUploading = signal(false);
+
+  // Context menu state
+  activeMenuPhotoId = signal<string | null>(null);
+  isDeleting = signal(false);
+  showReplaceModal = signal(false);
+  replaceTargetPhotoId = signal<string | null>(null);
 
   // Quick actions config
   quickActions: QuickActionItem[] = [
@@ -136,6 +143,73 @@ export class PetGalleryComponent implements OnInit {
       this.isUploading.set(false);
       this.uploadProgress.set(0);
     }
+  }
+
+  // === Context menu methods ===
+
+  @HostListener('document:click')
+  onDocumentClick(): void {
+    this.activeMenuPhotoId.set(null);
+  }
+
+  openPhotoMenu(event: Event, photo: PhotoItem): void {
+    event.stopPropagation();
+    this.activeMenuPhotoId.update(current =>
+      current === photo.id ? null : photo.id
+    );
+  }
+
+  deletePhoto(photo: PhotoItem): void {
+    if (!this.petId() || this.isDeleting()) return;
+    this.isDeleting.set(true);
+    this.activeMenuPhotoId.set(null);
+
+    this.petService.deletePhoto(this.petId(), photo.id).subscribe({
+      next: () => {
+        this.loadPhotos();
+        this.isDeleting.set(false);
+      },
+      error: () => {
+        this.isDeleting.set(false);
+      },
+    });
+  }
+
+  replacePhoto(photo: PhotoItem): void {
+    this.activeMenuPhotoId.set(null);
+    this.replaceTargetPhotoId.set(photo.id);
+    this.showReplaceModal.set(true);
+  }
+
+  async onReplacePhotoConfirmed(blob: Blob): Promise<void> {
+    this.showReplaceModal.set(false);
+    const oldPhotoId = this.replaceTargetPhotoId();
+    if (!this.petId() || !oldPhotoId) return;
+
+    this.isUploading.set(true);
+    const file = new File([blob], 'gallery-photo.jpg', { type: 'image/jpeg' });
+    try {
+      await this.photoUploadService.uploadGalleryPhoto(
+        this.petId(), file, (p) => this.uploadProgress.set(p)
+      );
+      // Delete old photo after new one is uploaded
+      this.petService.deletePhoto(this.petId(), oldPhotoId).subscribe({
+        next: () => this.loadPhotos(),
+        error: () => this.loadPhotos(),
+      });
+    } finally {
+      this.isUploading.set(false);
+      this.uploadProgress.set(0);
+      this.replaceTargetPhotoId.set(null);
+    }
+  }
+
+  setAsPrimary(photo: PhotoItem): void {
+    if (!this.petId()) return;
+    this.activeMenuPhotoId.set(null);
+    this.petService.setPrimaryPhoto(this.petId(), photo.id).subscribe({
+      next: () => this.loadPhotos(),
+    });
   }
 
   private loadPhotos(): void {
