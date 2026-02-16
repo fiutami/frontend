@@ -35,18 +35,6 @@ export interface QuestionnaireResultResponse {
   matchScore: number;
 }
 
-export interface SpeciesDto {
-  id: string;
-  code: string;
-  name: string;
-  category: string;
-  description: string | null;
-  imageUrl: string | null;
-  breedPolicy: 'None' | 'Optional' | 'Required';
-  taxonRank: string;
-  parentSpeciesId: string | null;
-}
-
 /**
  * SpeciesQuestionnaireService - Manages questionnaire state
  *
@@ -178,30 +166,6 @@ export class SpeciesQuestionnaireService {
    */
   isQuestionAnswered(questionId: QuestionKey): boolean {
     return this.answersSignal()[questionId] !== null;
-  }
-
-  /**
-   * Get all species from server
-   * Tries /api/questionnaire/species first (stable), falls back to /api/species
-   */
-  async getAllSpecies(): Promise<SpeciesDto[]> {
-    try {
-      // Try questionnaire endpoint first (stable, always available)
-      return await firstValueFrom(
-        this.http.get<SpeciesDto[]>(`${this.apiUrl}/species`)
-      );
-    } catch (error) {
-      console.warn('Failed to get species from /api/questionnaire/species, trying dedicated endpoint:', error);
-      try {
-        // Fallback to dedicated species controller
-        return await firstValueFrom(
-          this.http.get<SpeciesDto[]>(`${environment.apiUrl}/species`)
-        );
-      } catch (fallbackError) {
-        console.error('Both species endpoints failed:', fallbackError);
-        throw new Error('Impossibile caricare le specie dal server');
-      }
-    }
   }
 
   /**

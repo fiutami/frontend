@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
-import { SpeciesDto } from '../../species-questionnaire/species-questionnaire.service';
+import { Species } from '../../breeds/models/breed.model';
 import { environment } from '../../../../environments/environment';
 
 interface BreedSummary {
@@ -43,7 +43,7 @@ export class BreedSelectComponent implements OnInit {
   private http = inject(HttpClient);
 
   /** Species selected in previous step */
-  speciesDto: SpeciesDto | null = null;
+  speciesDto: Species | null = null;
 
   /** Breeds loaded from API */
   breeds = signal<BreedSummary[]>([]);
@@ -71,7 +71,7 @@ export class BreedSelectComponent implements OnInit {
     const stored = sessionStorage.getItem('selectedSpecies');
     if (stored) {
       try {
-        this.speciesDto = JSON.parse(stored) as SpeciesDto;
+        this.speciesDto = JSON.parse(stored) as Species;
       } catch {
         this.speciesDto = null;
       }

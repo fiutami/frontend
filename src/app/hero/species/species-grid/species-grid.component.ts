@@ -9,7 +9,7 @@ import {
   inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpeciesQuestionnaireService } from '../../species-questionnaire/species-questionnaire.service';
+import { BreedsService } from '../../breeds/breeds.service';
 
 export interface SpeciesCategory {
   id: string;
@@ -86,7 +86,7 @@ const DEFAULT_IMAGE = 'assets/images/species/species-cane.png';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpeciesGridComponent implements OnInit {
-  private speciesService = inject(SpeciesQuestionnaireService);
+  private breedsService = inject(BreedsService);
 
   readonly categories = signal<SpeciesCategory[]>([]);
   readonly isLoading = signal(true);
@@ -98,32 +98,32 @@ export class SpeciesGridComponent implements OnInit {
 
   @Output() categorySelected = new EventEmitter<SpeciesCategory>();
 
-  async ngOnInit(): Promise<void> {
-    await this.loadCategories();
+  ngOnInit(): void {
+    this.loadCategories();
   }
 
-  private async loadCategories(): Promise<void> {
+  private loadCategories(): void {
     this.isLoading.set(true);
     this.loadError.set(null);
 
-    try {
-      const allSpecies = await this.speciesService.getAllSpecies();
-
-      const mapped: SpeciesCategory[] = allSpecies.map(s => ({
-        id: s.id,
-        code: s.code,
-        name: s.name,
-        image: s.imageUrl || SPECIES_IMAGE_MAP[s.code] || DEFAULT_IMAGE,
-        count: 0,
-      }));
-
-      this.categories.set(mapped);
-    } catch (error) {
-      console.error('Failed to load species for grid:', error);
-      this.loadError.set('Impossibile caricare le specie.');
-    } finally {
-      this.isLoading.set(false);
-    }
+    this.breedsService.loadSpecies().subscribe({
+      next: (speciesList) => {
+        const mapped: SpeciesCategory[] = speciesList.map(s => ({
+          id: s.id,
+          code: s.code,
+          name: s.name,
+          image: SPECIES_IMAGE_MAP[s.code] || s.imageUrl || DEFAULT_IMAGE,
+          count: 0,
+        }));
+        this.categories.set(mapped);
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        console.error('Failed to load species for grid:', err);
+        this.loadError.set('Impossibile caricare le specie.');
+        this.isLoading.set(false);
+      }
+    });
   }
 
   selectCategory(category: SpeciesCategory): void {
@@ -145,7 +145,7 @@ export class SpeciesGridComponent implements OnInit {
     return category.id;
   }
 
-  async retry(): Promise<void> {
-    await this.loadCategories();
+  retry(): void {
+    this.loadCategories();
   }
 }

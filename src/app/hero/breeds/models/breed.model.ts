@@ -14,11 +14,15 @@ export type TraitLevel = 'bassa' | 'media' | 'alta';
  */
 export interface Species {
   id: string;
+  code: string;
   name: string;
   icon: string;
   imageUrl: string;
-  category: SpeciesCategory;
+  category: string;
   description?: string;
+  breedPolicy?: 'None' | 'Optional' | 'Required';
+  taxonRank?: string;
+  parentSpeciesId?: string | null;
 }
 
 /**

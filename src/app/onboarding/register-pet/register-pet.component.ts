@@ -13,9 +13,8 @@ import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 import { PetService, PetCreateRequest, AuthService } from '../../core';
-import { SpeciesQuestionnaireService, SpeciesDto } from '../../hero/species-questionnaire/species-questionnaire.service';
 import { BreedsService } from '../../hero/breeds/breeds.service';
-import { Breed } from '../../hero/breeds/models/breed.model';
+import { Species, Breed } from '../../hero/breeds/models/breed.model';
 
 /**
  * RegisterPetComponent - Single-form pet registration
@@ -43,7 +42,6 @@ export class RegisterPetComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly petService = inject(PetService);
   private readonly authService = inject(AuthService);
-  private readonly speciesService = inject(SpeciesQuestionnaireService);
   private readonly breedsService = inject(BreedsService);
 
   /** File input reference */
@@ -68,7 +66,7 @@ export class RegisterPetComponent implements OnInit {
   protected uploadError = signal<string | null>(null);
 
   /** Species from backend */
-  protected backendSpecies = signal<SpeciesDto[]>([]);
+  protected backendSpecies = signal<Species[]>([]);
 
   /** Breeds for selected species */
   protected breeds = signal<Breed[]>([]);
@@ -120,22 +118,25 @@ export class RegisterPetComponent implements OnInit {
   /**
    * Load species from backend on init
    */
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.isLoadingSpecies.set(true);
     this.speciesError.set(null);
-    try {
-      const species = await this.speciesService.getAllSpecies();
-      if (species.length === 0) {
-        this.speciesError.set('Nessuna specie disponibile. Riprova più tardi.');
-      } else {
-        this.backendSpecies.set(species);
+
+    this.breedsService.loadSpecies().subscribe({
+      next: (species) => {
+        if (species.length === 0) {
+          this.speciesError.set('Nessuna specie disponibile. Riprova più tardi.');
+        } else {
+          this.backendSpecies.set(species);
+        }
+        this.isLoadingSpecies.set(false);
+      },
+      error: (err) => {
+        console.error('Failed to load species:', err);
+        this.speciesError.set('Errore nel caricamento delle specie. Riprova più tardi.');
+        this.isLoadingSpecies.set(false);
       }
-    } catch (error) {
-      console.error('Failed to load species:', error);
-      this.speciesError.set('Errore nel caricamento delle specie. Riprova più tardi.');
-    } finally {
-      this.isLoadingSpecies.set(false);
-    }
+    });
 
     // Listen for species changes to load breeds and update breed policy
     this.petForm.get('specie')?.valueChanges.subscribe(speciesId => {

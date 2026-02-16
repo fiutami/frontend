@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
-import { SpeciesDto } from '../../species-questionnaire/species-questionnaire.service';
+import { Species } from '../../breeds/models/breed.model';
 
 /**
  * PetDocsComponent - Pet Documentation Page
@@ -21,8 +21,8 @@ import { SpeciesDto } from '../../species-questionnaire/species-questionnaire.se
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetDocsComponent implements OnInit {
-  /** Selected species from previous step (SpeciesDto with UUID) */
-  selectedSpecies: SpeciesDto | null = null;
+  /** Selected species from previous step (Species with UUID) */
+  selectedSpecies: Species | null = null;
 
   /** Document checklist items */
   documentItems = [

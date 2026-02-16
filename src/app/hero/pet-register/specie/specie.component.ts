@@ -2,7 +2,8 @@ import { Component, ChangeDetectionStrategy, OnInit, inject, signal, computed } 
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
-import { SpeciesQuestionnaireService, SpeciesDto } from '../../species-questionnaire/species-questionnaire.service';
+import { BreedsService } from '../../breeds/breeds.service';
+import { Species } from '../../breeds/models/breed.model';
 
 /** Category metadata for accordion display */
 const CATEGORY_META: Record<string, { label: string; icon: string }> = {
@@ -21,7 +22,7 @@ export interface CategoryGroup {
   id: string;
   label: string;
   icon: string;
-  species: SpeciesDto[];
+  species: Species[];
 }
 
 /**
@@ -40,10 +41,10 @@ export interface CategoryGroup {
 })
 export class SpecieComponent implements OnInit {
   private router = inject(Router);
-  private speciesService = inject(SpeciesQuestionnaireService);
+  private breedsService = inject(BreedsService);
 
   /** All species loaded from API */
-  private allSpecies = signal<SpeciesDto[]>([]);
+  private allSpecies = signal<Species[]>([]);
 
   /** Loading state */
   isLoading = signal(true);
@@ -55,7 +56,7 @@ export class SpecieComponent implements OnInit {
   expandedCategory = signal<string | null>(null);
 
   /** Selected species */
-  selectedSpecies = signal<SpeciesDto | null>(null);
+  selectedSpecies = signal<Species | null>(null);
 
   /** Grouped categories computed from API data */
   categories = computed<CategoryGroup[]>(() => {
@@ -65,7 +66,7 @@ export class SpecieComponent implements OnInit {
     const selectableSpecies = species.filter(s => (s.taxonRank ?? 'species') === 'species');
 
     // Group by category
-    const grouped = new Map<string, SpeciesDto[]>();
+    const grouped = new Map<string, Species[]>();
     for (const s of selectableSpecies) {
       const cat = s.category;
       if (!grouped.has(cat)) {
@@ -105,27 +106,28 @@ export class SpecieComponent implements OnInit {
     return result;
   });
 
-  async ngOnInit(): Promise<void> {
-    await this.loadSpecies();
+  ngOnInit(): void {
+    this.loadSpecies();
   }
 
-  private async loadSpecies(): Promise<void> {
+  private loadSpecies(): void {
     this.isLoading.set(true);
     this.loadError.set(null);
 
-    try {
-      const species = await this.speciesService.getAllSpecies();
-      this.allSpecies.set(species);
-      // Verifica che ci siano species selezionabili (taxonRank='species')
-      if (species.filter(s => (s.taxonRank ?? 'species') === 'species').length === 0) {
-        this.loadError.set('Nessuna specie disponibile al momento.');
+    this.breedsService.loadSpecies().subscribe({
+      next: (species) => {
+        this.allSpecies.set(species);
+        if (species.filter(s => (s.taxonRank ?? 'species') === 'species').length === 0) {
+          this.loadError.set('Nessuna specie disponibile al momento.');
+        }
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        console.error('Failed to load species:', err);
+        this.loadError.set('Impossibile caricare le specie. Riprova.');
+        this.isLoading.set(false);
       }
-    } catch (error) {
-      console.error('Failed to load species:', error);
-      this.loadError.set('Impossibile caricare le specie. Riprova.');
-    } finally {
-      this.isLoading.set(false);
-    }
+    });
   }
 
   onBack(): void {
@@ -142,9 +144,9 @@ export class SpecieComponent implements OnInit {
     return this.expandedCategory() === categoryId;
   }
 
-  selectSpecies(species: SpeciesDto): void {
+  selectSpecies(species: Species): void {
     this.selectedSpecies.set(species);
-    // Store the full SpeciesDto (with real UUID) in sessionStorage
+    // Store the full Species (with real UUID) in sessionStorage
     sessionStorage.setItem('selectedSpecies', JSON.stringify(species));
     // Clear any previously selected breed
     sessionStorage.removeItem('selectedBreed');
@@ -161,7 +163,7 @@ export class SpecieComponent implements OnInit {
     return this.selectedSpecies()?.id === speciesId;
   }
 
-  async retry(): Promise<void> {
-    await this.loadSpecies();
+  retry(): void {
+    this.loadSpecies();
   }
 }

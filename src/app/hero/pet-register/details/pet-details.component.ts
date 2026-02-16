@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 import { PetService, PetCreateRequest, AuthService } from '../../../core';
-import { SpeciesDto } from '../../species-questionnaire/species-questionnaire.service';
+import { Species } from '../../breeds/models/breed.model';
 
 /**
  * PetDetailsComponent - Pet Registration Details Form
  *
  * Form for entering pet details: Name, Sex, Birth date, Age, Origin, Color, etc.
- * The SpeciesDto (with real UUID) comes directly from sessionStorage,
+ * The Species (with real UUID) comes directly from sessionStorage,
  * set by the specie selection page.
  */
 @Component({
@@ -27,7 +27,7 @@ export class PetDetailsComponent implements OnInit {
   private authService = inject(AuthService);
 
   /** Species DTO with UUID from backend (loaded from sessionStorage) */
-  speciesDto: SpeciesDto | null = null;
+  speciesDto: Species | null = null;
 
   /** Selected breed ID (may be null if breedPolicy is None or user skipped) */
   selectedBreedId: string | null = null;
@@ -50,11 +50,11 @@ export class PetDetailsComponent implements OnInit {
   microchipNumber = '';
 
   ngOnInit(): void {
-    // Read SpeciesDto directly from sessionStorage (already has UUID from API)
+    // Read Species directly from sessionStorage (already has UUID from API)
     const stored = sessionStorage.getItem('selectedSpecies');
     if (stored) {
       try {
-        this.speciesDto = JSON.parse(stored) as SpeciesDto;
+        this.speciesDto = JSON.parse(stored) as Species;
       } catch {
         this.speciesDto = null;
       }

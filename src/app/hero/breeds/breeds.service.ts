@@ -22,6 +22,9 @@ export interface SpeciesApiResponse {
   emoji?: string;
   isPopular: boolean;
   displayOrder: number;
+  breedPolicy?: 'None' | 'Optional' | 'Required';
+  taxonRank?: string;
+  parentSpeciesId?: string | null;
 }
 
 export interface BreedApiResponse {
@@ -135,11 +138,15 @@ export class BreedsService {
   private mapSpeciesResponse(response: SpeciesApiResponse[]): Species[] {
     return response.map(s => ({
       id: s.id,
+      code: s.code,
       name: s.name,
       icon: s.emoji || 'pets',
       imageUrl: s.imageUrl || `/assets/species/${s.code}.jpg`,
-      category: s.category as any,
-      description: s.description
+      category: s.category,
+      description: s.description,
+      breedPolicy: s.breedPolicy,
+      taxonRank: s.taxonRank,
+      parentSpeciesId: s.parentSpeciesId,
     }));
   }
 
