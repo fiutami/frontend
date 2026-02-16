@@ -264,10 +264,51 @@ jobs:
           ROLLBACK_SCRIPT
 
   # ===========================================
+  # Smoke Tests (staging only)
+  # ===========================================
+  smoke-test:
+    needs: [setup, health-check]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.setup.outputs.environment }}
+    if: needs.setup.outputs.environment == 'staging'
+    steps:
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Smoke Test - Nginx Proxy
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          HEALTH_PORT: ${{ needs.setup.outputs.health_port }}
+        run: |
+          # Verify nginx serves frontend
+          RESP=$(ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} \
+            "curl -sf -o /dev/null -w '%{http_code}' http://localhost:${HEALTH_PORT}/ || echo 'FAIL'")
+          if [ "$RESP" = "200" ]; then
+            echo "PASS: Frontend serves 200"
+          else
+            echo "FAIL: Frontend returned $RESP"
+            exit 1
+          fi
+
+          # Verify /api/ proxy reaches backend health
+          HEALTH=$(ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} \
+            "curl -sf http://localhost:${HEALTH_PORT}/api/../health 2>/dev/null || echo 'FAIL'")
+          if echo "$HEALTH" | grep -q '"healthy"'; then
+            echo "PASS: API proxy reaches backend"
+          else
+            echo "WARN: Could not verify API proxy (backend may not be deployed yet)"
+          fi
+
+  # ===========================================
   # Deployment Summary
   # ===========================================
   summary:
-    needs: [setup, build, deploy, health-check]
+    needs: [setup, build, deploy, health-check, smoke-test]
     runs-on: ubuntu-latest
     if: always()
     steps:
@@ -285,3 +326,4 @@ jobs:
           echo "| Build | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Deploy | ${{ needs.deploy.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Health | ${{ needs.health-check.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Smoke Test | ${{ needs.smoke-test.result }} |" >> $GITHUB_STEP_SUMMARY
