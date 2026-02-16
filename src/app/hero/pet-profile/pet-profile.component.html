@@ -7,11 +7,35 @@
   <!-- Pet Photo Slot: vai dentro il cerchio bianco -->
   <ng-container shellPetPhoto>
     @if (!isLoading() && !errorMessage() && pet.id) {
-      <img
-        [src]="pet.photoUrl"
-        [alt]="pet.name"
-        class="pet-profile__photo"
-      />
+      <div class="pet-profile__photo-wrapper">
+        <img
+          [src]="pet.photoUrl"
+          [alt]="pet.name"
+          class="pet-profile__photo"
+        />
+        @if (isUploadingPhoto()) {
+          <div class="pet-profile__photo-uploading">
+            <div class="pet-profile__photo-progress">
+              <svg viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="16" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+                <circle cx="18" cy="18" r="16" fill="none" stroke="white" stroke-width="3"
+                  stroke-dasharray="100.53" [attr.stroke-dashoffset]="100.53 - (100.53 * uploadProgress() / 100)"
+                  stroke-linecap="round" transform="rotate(-90 18 18)"/>
+              </svg>
+            </div>
+          </div>
+        }
+        <button
+          class="pet-profile__photo-edit"
+          (click)="onEditPhotoClick()"
+          aria-label="Cambia foto profilo"
+          [disabled]="isUploadingPhoto()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12m-3.2 0a3.2 3.2 0 1 0 6.4 0a3.2 3.2 0 1 0 -6.4 0"/>
+            <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+          </svg>
+        </button>
+      </div>
     }
   </ng-container>
 
@@ -187,5 +211,16 @@
     [aiMessage]="'Ciao! Come posso aiutarti?'"
     (closed)="closeMascotSheet()">
   </app-mascot-bottom-sheet>
+
+  <!-- Photo Upload Modal -->
+  @if (showPhotoUpload()) {
+    <app-photo-upload-modal
+      [aspectRatio]="1"
+      [maxSize]="600"
+      title="Foto profilo"
+      (confirmed)="onPhotoConfirmed($event)"
+      (cancelled)="onPhotoCancelled()">
+    </app-photo-upload-modal>
+  }
 
 </app-tab-page-shell-pet-profile>

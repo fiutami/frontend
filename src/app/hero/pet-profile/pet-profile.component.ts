@@ -16,7 +16,9 @@ import { SpeechBubbleComponent } from '../../shared/components/speech-bubble';
 import { MascotBottomSheetComponent } from '../../shared/components/mascot-bottom-sheet';
 import { TabPageShellPetProfileComponent } from '../../shared/components/tab-page-shell-pet-profile';
 import { ProfileIconComponent } from '../../shared/components/profile-icons';
+import { PhotoUploadModalComponent } from '../../shared/components/photo-upload-modal/photo-upload-modal.component';
 import { PetService } from '../../core/services/pet.service';
+import { PhotoUploadService } from '../../core/services/photo-upload.service';
 import { SpeciesInfoService } from '../../core/services/species-info.service';
 import { PetResponse } from '../../core/models/pet.models';
 
@@ -54,6 +56,7 @@ export interface PartnerShowcase {
     SpeechBubbleComponent,
     MascotBottomSheetComponent,
     ProfileIconComponent,
+    PhotoUploadModalComponent,
   ],
   templateUrl: './pet-profile.component.html',
   styleUrls: ['./pet-profile.component.scss'],
@@ -63,11 +66,17 @@ export class PetProfileComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private petService = inject(PetService);
+  private photoUploadService = inject(PhotoUploadService);
   private speciesInfoService = inject(SpeciesInfoService);
   private cdr = inject(ChangeDetectorRef);
 
   // Mascot sheet state
   showMascotSheet = signal(false);
+
+  // Photo upload state
+  showPhotoUpload = signal(false);
+  isUploadingPhoto = signal(false);
+  uploadProgress = signal(0);
 
   // Loading and error state
   isLoading = signal(false);
@@ -322,6 +331,43 @@ export class PetProfileComponent implements OnInit {
       { label: 'Peso', value: this.pet.weight > 0 ? `${this.pet.weight} kg` : 'N/D' },
       { label: 'Razza', value: this.pet.breed },
     ];
+  }
+
+  // === Photo upload ===
+  onEditPhotoClick(): void {
+    this.showPhotoUpload.set(true);
+  }
+
+  onPhotoCancelled(): void {
+    this.showPhotoUpload.set(false);
+  }
+
+  async onPhotoConfirmed(blob: Blob): Promise<void> {
+    this.showPhotoUpload.set(false);
+
+    if (!this.pet.id) return;
+
+    this.isUploadingPhoto.set(true);
+    this.uploadProgress.set(0);
+
+    const file = new File([blob], 'profile-photo.jpg', { type: 'image/jpeg' });
+
+    try {
+      await this.photoUploadService.uploadProfilePhoto(
+        this.pet.id,
+        file,
+        (p) => this.uploadProgress.set(p)
+      );
+      // Reload pet data to get the new photo URL
+      this.loadPetData(this.pet.id);
+    } catch (err) {
+      console.error('Profile photo upload failed:', err);
+      this.errorMessage.set('Impossibile caricare la foto. Riprova.');
+    } finally {
+      this.isUploadingPhoto.set(false);
+      this.uploadProgress.set(0);
+      this.cdr.markForCheck();
+    }
   }
 
   // Mascot methods

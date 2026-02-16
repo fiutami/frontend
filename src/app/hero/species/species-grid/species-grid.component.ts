@@ -22,25 +22,57 @@ export interface SpeciesCategory {
 /** Maps species code → local image asset */
 const SPECIES_IMAGE_MAP: Record<string, string> = {
   // Mammiferi
-  'cane':          'assets/images/species/species-cane.png',
-  'gatto':         'assets/images/species/species-gatto.png',
-  'cavallo':       'assets/images/species/species-cavallo.png',
+  'cane':                   'assets/images/species/species-cane.png',
+  'gatto':                  'assets/images/species/species-gatto.png',
+  'coniglio':               'assets/images/species/species-coniglio.png',
+  'furetto':                'assets/images/species/species-furetto.png',
+  'roditore':               'assets/images/species/species-cane.png',
+  'cavallo':                'assets/images/species/species-cavallo.png',
   // Uccelli
-  'pappagallo':    'assets/images/species/species-pappagalli.png',
-  'canarino':      'assets/images/species/species-canarini.png',
-  'uccello':       'assets/images/species/species-pappagalli.png',
+  'canarino':               'assets/images/species/species-canarini.png',
+  'cocorita':               'assets/images/species/species-pappagalli.png',
+  'calopsita':              'assets/images/species/species-pappagalli.png',
+  'inseparabile':           'assets/images/species/species-pappagalli.png',
+  'parrocchetto':           'assets/images/species/species-pappagalli.png',
+  'diamantino':             'assets/images/species/species-pappagalli.png',
+  'piccione-viaggiatore':   'assets/images/species/species-pappagalli.png',
+  'pappagallo':             'assets/images/species/species-pappagalli.png',
+  'uccello':                'assets/images/species/species-pappagalli.png',
   // Rettili
-  'tartaruga':     'assets/images/species/species-tartarughe.png',
-  'serpente':      'assets/images/species/species-serpenti.png',
-  'rettile':       'assets/images/species/species-serpenti.png',
+  'tartaruga':              'assets/images/species/species-tartarughe.png',
+  'tartaruga-terra':        'assets/images/species/species-tartarughe.png',
+  'tartaruga-acqua':        'assets/images/species/species-tartarughe.png',
+  'pogona':                 'assets/images/species/species-serpenti.png',
+  'geco-leopardino':        'assets/images/species/species-serpenti.png',
+  'serpente':               'assets/images/species/species-serpenti.png',
+  'serpente-non-velenoso':  'assets/images/species/species-serpenti.png',
+  'rettile':                'assets/images/species/species-serpenti.png',
   // Anfibi
-  'rana':          'assets/images/species/species-rana.png',
-  'anfibio':       'assets/images/species/species-rana.png',
+  'axolotl':                'assets/images/species/species-rana.png',
+  'rana-pacman':            'assets/images/species/species-rana.png',
+  'tritone':                'assets/images/species/species-rana.png',
+  'salamandra':             'assets/images/species/species-rana.png',
+  'anfibio':                'assets/images/species/species-rana.png',
   // Pesci
-  'pesce':         'assets/images/species/species-pesci.png',
+  'pesce':                  'assets/images/species/species-pesci.png',
+  'pesce-rosso':            'assets/images/species/species-pesci.png',
+  'betta-splendens':        'assets/images/species/species-pesci.png',
+  'guppy':                  'assets/images/species/species-pesci.png',
+  'molly':                  'assets/images/species/species-pesci.png',
+  'platy':                  'assets/images/species/species-pesci.png',
+  'discus':                 'assets/images/species/species-pesci.png',
+  'neon':                   'assets/images/species/species-pesci.png',
+  'corydoras':              'assets/images/species/species-pesci.png',
+  'ciclidi-africani':       'assets/images/species/species-pesci.png',
+  'pesci-tropicali':        'assets/images/species/species-pesci.png',
   // Invertebrati
-  'ape':           'assets/images/species/species-api.png',
-  'invertebrato':  'assets/images/species/species-api.png',
+  'invertebrato':           'assets/images/species/species-api.png',
+  'ape':                    'assets/images/species/species-api.png',
+  'gamberetto':             'assets/images/species/species-api.png',
+  'granchio-acqua-dolce':   'assets/images/species/species-api.png',
+  'insetto-stecco':         'assets/images/species/species-api.png',
+  'insetto-foglia':         'assets/images/species/species-api.png',
+  'tarantola':              'assets/images/species/species-api.png',
 };
 
 const DEFAULT_IMAGE = 'assets/images/species/species-cane.png';
@@ -77,10 +109,7 @@ export class SpeciesGridComponent implements OnInit {
     try {
       const allSpecies = await this.speciesService.getAllSpecies();
 
-      // Top-level only: species without parent (mammiferi + categories)
-      const gridSpecies = allSpecies.filter(s => !s.parentSpeciesId);
-
-      const mapped: SpeciesCategory[] = gridSpecies.map(s => ({
+      const mapped: SpeciesCategory[] = allSpecies.map(s => ({
         id: s.id,
         code: s.code,
         name: s.name,
