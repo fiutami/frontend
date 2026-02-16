@@ -2,26 +2,19 @@ import {
   Component,
   ChangeDetectionStrategy,
   signal,
+  inject,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
-import { Species, SPECIES_CONFIG, SpeciesConfig } from '../breeds.models';
 import { AvatarButtonComponent } from '../../shared/components/avatar-button';
+import { BreedsService } from '../../hero/breeds/breeds.service';
+import { Species } from '../../hero/breeds/models/breed.model';
 
 type ViewMode = 'species' | 'breeds';
 
-/**
- * BreedsListComponent - Species selection grid (mob_breeds design)
- *
- * Features:
- * - Background gradient with decorative header
- * - Species selector switch (Specie/Razze)
- * - 3-column scrollable grid of species cards
- * - Interactive mascot with speech bubble
- * - Bottom tab bar navigation
- */
 @Component({
   selector: 'app-breeds-list',
   standalone: true,
@@ -30,9 +23,16 @@ type ViewMode = 'species' | 'breeds';
   styleUrls: ['./breeds-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BreedsListComponent {
-  /** All available species */
-  protected readonly species = SPECIES_CONFIG;
+export class BreedsListComponent implements OnInit {
+  private readonly router = inject(Router);
+  private readonly breedsService = inject(BreedsService);
+
+  /** Species list from API */
+  protected readonly species = this.breedsService.speciesList;
+
+  /** Loading / error from service */
+  protected readonly isLoading = this.breedsService.isLoading;
+  protected readonly error = this.breedsService.error;
 
   /** Current view mode */
   protected viewMode = signal<ViewMode>('species');
@@ -52,64 +52,48 @@ export class BreedsListComponent {
     { id: 'profile', icon: 'person', route: '/profile' },
   ];
 
-  constructor(private router: Router) {}
+  ngOnInit(): void {
+    if (this.species().length === 0) {
+      this.breedsService.loadSpecies().subscribe();
+    }
+  }
 
-  /**
-   * Get current view label
-   */
   get currentLabel(): string {
     return this.viewLabels[this.viewMode()];
   }
 
-  /**
-   * Switch to previous view mode
-   */
   onPreviousView(): void {
     this.viewMode.set(this.viewMode() === 'species' ? 'breeds' : 'species');
   }
 
-  /**
-   * Switch to next view mode
-   */
   onNextView(): void {
     this.viewMode.set(this.viewMode() === 'species' ? 'breeds' : 'species');
   }
 
-  /**
-   * Navigate to species detail (breeds of this species)
-   */
-  onSpeciesClick(species: SpeciesConfig): void {
+  onSpeciesClick(species: Species): void {
     this.router.navigate(['/breeds'], {
       queryParams: { species: species.id },
     });
   }
 
-  /**
-   * Navigate back
-   */
   onBack(): void {
     this.router.navigate(['/home']);
   }
 
-  /**
-   * Open drawer menu
-   */
   onOpenDrawer(): void {
-    // TODO: Implement drawer service
     console.log('Open drawer');
   }
 
-  /**
-   * Check if label should be small (for long species names)
-   */
+  onRetry(): void {
+    this.breedsService.error.set(null);
+    this.breedsService.loadSpecies(true).subscribe();
+  }
+
   isSmallLabel(label: string): boolean {
     return label.length > 6;
   }
 
-  /**
-   * TrackBy function for species
-   */
-  trackBySpeciesId(_index: number, species: SpeciesConfig): string {
+  trackBySpeciesId(_index: number, species: Species): string {
     return species.id;
   }
 }

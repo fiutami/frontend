@@ -34,19 +34,42 @@
     <p>{{ 'breeds.description' | translate }}</p>
   </div>
 
-  <!-- Species Grid -->
-  <div class="breeds-page__grid-container">
-    <div class="breeds-page__grid">
-      @for (item of species; track trackBySpeciesId($index, item)) {
-        <app-species-card
-          [label]="item.label"
-          [image]="item.image"
-          [smallLabel]="isSmallLabel(item.label)"
-          (clicked)="onSpeciesClick(item)">
-        </app-species-card>
-      }
+  <!-- Loading State -->
+  @if (isLoading() && species().length === 0) {
+    <div class="breeds-page__loading">
+      <span class="material-symbols-outlined breeds-page__spinner">progress_activity</span>
     </div>
-  </div>
+  }
+
+  <!-- Error State -->
+  @if (error() && species().length === 0) {
+    <div class="breeds-page__error">
+      <p>{{ 'breeds.error_unavailable' | translate }}</p>
+      <button
+        type="button"
+        class="breeds-page__retry-btn"
+        [disabled]="isLoading()"
+        (click)="onRetry()">
+        {{ 'breeds.retry' | translate }}
+      </button>
+    </div>
+  }
+
+  <!-- Species Grid -->
+  @if (species().length > 0) {
+    <div class="breeds-page__grid-container">
+      <div class="breeds-page__grid">
+        @for (item of species(); track trackBySpeciesId($index, item)) {
+          <app-species-card
+            [label]="item.name"
+            [image]="item.imageUrl"
+            [smallLabel]="isSmallLabel(item.name)"
+            (clicked)="onSpeciesClick(item)">
+          </app-species-card>
+        }
+      </div>
+    </div>
+  }
 
   <!-- Interactive Mascot -->
   <div class="breeds-page__mascot">

@@ -1,13 +1,11 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, delay, map, tap, catchError, finalize } from 'rxjs';
+import { Observable, of, delay, map, tap, catchError, finalize, shareReplay } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {
   Species,
   Breed,
   BreedAnalysisResult,
-  MOCK_SPECIES,
-  MOCK_BREEDS
 } from './models/breed.model';
 
 /**
@@ -44,11 +42,15 @@ export interface BreedApiResponse {
 
 /**
  * BreedsService - State management and API calls for Breeds module
- * Uses signals for reactive state management
+ * Uses signals for reactive state management.
+ * DB is the single source of truth - no mock fallbacks.
  */
 @Injectable({ providedIn: 'root' })
 export class BreedsService {
   private readonly http = inject(HttpClient);
+
+  // In-flight request cache for race-condition protection
+  private speciesRequest$: Observable<Species[]> | null = null;
 
   // State signals
   readonly speciesList = signal<Species[]>([]);
@@ -91,24 +93,40 @@ export class BreedsService {
   });
 
   /**
-   * Load all species from backend API
+   * Load all species from backend API.
+   * Idempotent: returns cached data if already loaded (unless forced).
+   * Race-condition safe: concurrent calls share the same in-flight request.
    */
-  loadSpecies(): Observable<Species[]> {
+  loadSpecies(force = false): Observable<Species[]> {
+    // Already loaded and not forced -> return cached
+    if (!force && this.speciesList().length > 0) {
+      return of(this.speciesList());
+    }
+
+    // Already loading -> return in-flight request
+    if (this.speciesRequest$) {
+      return this.speciesRequest$;
+    }
+
     this.isLoading.set(true);
     this.error.set(null);
 
-    return this.http.get<SpeciesApiResponse[]>(`${environment.apiUrl}/species`).pipe(
+    this.speciesRequest$ = this.http.get<SpeciesApiResponse[]>(`${environment.apiUrl}/species`).pipe(
       map(response => this.mapSpeciesResponse(response)),
       tap(species => this.speciesList.set(species)),
       catchError(err => {
-        console.error('Failed to load species from API, using fallback:', err);
+        console.error('Failed to load species:', err);
         this.error.set('Errore nel caricamento delle specie');
-        // Fallback to mock data if API fails
-        this.speciesList.set(MOCK_SPECIES);
-        return of(MOCK_SPECIES);
+        return of([]);
       }),
-      finalize(() => this.isLoading.set(false))
+      finalize(() => {
+        this.isLoading.set(false);
+        this.speciesRequest$ = null;
+      }),
+      shareReplay(1)
     );
+
+    return this.speciesRequest$;
   }
 
   /**
@@ -136,11 +154,9 @@ export class BreedsService {
       map(response => this.mapBreedsResponse(response)),
       tap(breeds => this.breedsList.set(breeds)),
       catchError(err => {
-        console.error('Failed to load breeds from API, using fallback:', err);
-        // Fallback to mock data filtered by speciesId
-        const filtered = MOCK_BREEDS.filter(b => b.speciesId === speciesId);
-        this.breedsList.set(filtered);
-        return of(filtered);
+        console.error('Failed to load breeds:', err);
+        this.error.set('Errore nel caricamento delle razze');
+        return of([]);
       }),
       finalize(() => this.isLoading.set(false))
     );
@@ -163,15 +179,9 @@ export class BreedsService {
         }
       }),
       catchError(err => {
-        console.error('Failed to load breed details from API:', err);
-        // Fallback to mock data
-        const breed = MOCK_BREEDS.find(b => b.id === breedId) || null;
-        if (breed) {
-          this.selectedBreed.set(breed);
-        } else {
-          this.error.set('Razza non trovata');
-        }
-        return of(breed);
+        console.error('Failed to load breed details:', err);
+        this.error.set('Razza non trovata');
+        return of(null);
       }),
       finalize(() => this.isLoading.set(false))
     );
@@ -222,37 +232,35 @@ export class BreedsService {
     this.isLoading.set(true);
     this.error.set(null);
 
-    // MVP: Simulate AI analysis with mock result
+    // MVP: Simulate AI analysis with inline mock result
+    const mockBreed: Breed = {
+      id: 'mock-analysis',
+      speciesId: 'dog',
+      name: 'Razza rilevata',
+      origin: '',
+      recognition: '',
+      imageUrl: '/assets/breeds/placeholder.jpg',
+    };
+
     const mockResult: BreedAnalysisResult = {
-      breed: MOCK_BREEDS.find(b => b.id === 'pug') || MOCK_BREEDS[0],
+      breed: mockBreed,
       confidence: 0.87,
-      alternativeBreeds: [
-        {
-          breed: MOCK_BREEDS.find(b => b.id === 'labrador') || MOCK_BREEDS[1],
-          confidence: 0.45
-        }
-      ],
+      alternativeBreeds: [],
       analysisDetails: 'Analisi basata su caratteristiche fisiche: muso corto, orecchie piccole, corporatura compatta.'
     };
 
     return of(mockResult).pipe(
-      delay(2000), // Simulate AI processing time
+      delay(2000),
       map(result => {
         this.selectedBreed.set(result.breed);
         this.isLoading.set(false);
         return result;
       })
     );
-
-    // TODO: Real API
-    // const formData = new FormData();
-    // formData.append('photo', file);
-    // formData.append('description', description);
-    // return this.http.post<BreedAnalysisResult>('/api/breeds/analyze', formData);
   }
 
   /**
-   * Search breeds by query - uses backend search API
+   * Search breeds by query - uses backend search API with local fallback
    */
   searchBreeds(query: string): Observable<Breed[]> {
     this.searchQuery.set(query);
@@ -265,8 +273,7 @@ export class BreedsService {
       params: { q: query }
     }).pipe(
       map(response => this.mapBreedsResponse(response)),
-      catchError(err => {
-        console.error('Failed to search breeds:', err);
+      catchError(() => {
         // Fallback to local filtering
         const filtered = this.breedsList().filter(b =>
           b.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -308,16 +315,16 @@ export class BreedsService {
   }
 
   /**
-   * Get species by ID
+   * Get species by ID (from signal only)
    */
   getSpeciesById(id: string): Species | undefined {
-    return this.speciesList().find(s => s.id === id) || MOCK_SPECIES.find(s => s.id === id);
+    return this.speciesList().find(s => s.id === id);
   }
 
   /**
-   * Get breed by ID (sync)
+   * Get breed by ID (from signal only)
    */
   getBreedById(id: string): Breed | undefined {
-    return this.breedsList().find(b => b.id === id) || MOCK_BREEDS.find(b => b.id === id);
+    return this.breedsList().find(b => b.id === id);
   }
 }

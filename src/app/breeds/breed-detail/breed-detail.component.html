@@ -1,16 +1,33 @@
 <div class="breed-detail">
-  <h1>Test Breed Detail</h1>
-  <p>Loading: {{ loading() }}</p>
-  <p>Breed: {{ breed()?.name || 'nessuno' }}</p>
+  <!-- Loading State -->
+  @if (loading()) {
+    <div class="breed-detail__loading">
+      <span class="material-symbols-outlined breed-detail__spinner">progress_activity</span>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (error(); as errorMsg) {
+    <div class="breed-detail__error">
+      <p>{{ errorMsg }}</p>
+      <button (click)="onBack()">{{ 'breeds.back_to_list' | translate }}</button>
+    </div>
+  }
 
   @if (breed(); as breedData) {
     <div style="padding: 20px;">
       <h2>{{ breedData.name }}</h2>
-      <p>{{ breedData.image }} - {{ breedData.species }}</p>
-      <p>{{ breedData.description }}</p>
+      @if (breedData.imageUrl) {
+        <img [src]="breedData.imageUrl" [alt]="breedData.name" style="max-width: 100%; border-radius: 12px;" />
+      }
+      <p>{{ breedData.origin }} - {{ breedData.speciesId }}</p>
+      @if (breedData.history) {
+        <p>{{ breedData.history }}</p>
+      }
       <button (click)="onBack()">Indietro</button>
+      <button (click)="onSelectBreed()">Questo e il mio pet</button>
     </div>
-  } @else {
+  } @else if (!loading() && !error()) {
     <p>Nessuna razza trovata</p>
     <button (click)="onBack()">Torna alla lista</button>
   }

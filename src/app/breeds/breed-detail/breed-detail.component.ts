@@ -2,35 +2,19 @@ import {
   Component,
   ChangeDetectionStrategy,
   signal,
-  computed,
+  inject,
   OnInit,
+  DestroyRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
-import {
-  BreedDetail,
-  BreedTab,
-  BreedTabId,
-  BREED_TABS,
-  getBreedDetail,
-} from '../breeds.models';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { switchMap } from 'rxjs';
+import { BreedsService } from '../../hero/breeds/breeds.service';
+import { Breed } from '../../hero/breeds/models/breed.model';
 
-/**
- * BreedDetailComponent - Detailed view of a single breed
- *
- * Features:
- * - Large image header with breed info
- * - 6 tabs for different info categories (Overview, Size, Temperament, Care, Health, Pedigree)
- * - Characteristics rating bars
- * - Pro/Contro section
- * - "This is my pet" CTA button
- *
- * Data source:
- * - Static JSON files loaded via BreedsDataService
- * - Falls back to mock data if JSON not found
- */
 @Component({
   selector: 'app-breed-detail',
   standalone: true,
@@ -40,56 +24,47 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreedDetailComponent implements OnInit {
-  /** Available tabs */
-  protected readonly tabs = BREED_TABS;
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly breedsService = inject(BreedsService);
+  private readonly destroyRef = inject(DestroyRef);
 
-  /** Current breed data */
-  protected breed = signal<BreedDetail | null>(null);
-
-  /** Loading state */
+  protected breed = signal<Breed | null>(null);
   protected loading = signal<boolean>(false);
-
-  /** Current active tab */
-  protected activeTab = signal<BreedTabId>('overview');
-
-  /** Get active tab configuration */
-  protected activeTabConfig = computed<BreedTab | undefined>(() => {
-    return this.tabs.find(t => t.id === this.activeTab());
-  });
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  protected error = signal<string | null>(null);
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log('BreedDetailComponent ngOnInit, id:', id);
-
-    if (id) {
-      const data = getBreedDetail(id);
-      console.log('Breed data:', data);
-      this.breed.set(data);
-    }
+    this.route.paramMap.pipe(
+      switchMap(params => {
+        const id = params.get('id');
+        if (!id) {
+          this.error.set('ID razza mancante');
+          return [];
+        }
+        this.loading.set(true);
+        this.error.set(null);
+        return this.breedsService.getBreedDetails(id);
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (breed) => {
+        this.breed.set(breed ?? null);
+        if (!breed) {
+          this.error.set('Razza non trovata');
+        }
+        this.loading.set(false);
+      },
+      error: () => {
+        this.error.set('Errore nel caricamento');
+        this.loading.set(false);
+      }
+    });
   }
 
-  /**
-   * Set active tab
-   */
-  setActiveTab(tabId: BreedTabId): void {
-    this.activeTab.set(tabId);
-  }
-
-  /**
-   * Navigate back to breeds list
-   */
   onBack(): void {
     this.router.navigate(['/breeds']);
   }
 
-  /**
-   * Navigate to register pet with breed pre-selected
-   */
   onSelectBreed(): void {
     const breed = this.breed();
     if (breed) {
@@ -97,12 +72,5 @@ export class BreedDetailComponent implements OnInit {
         queryParams: { breed: breed.id },
       });
     }
-  }
-
-  /**
-   * Check if tab is active
-   */
-  isTabActive(tabId: BreedTabId): boolean {
-    return this.activeTab() === tabId;
   }
 }

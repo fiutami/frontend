@@ -28,14 +28,6 @@
     "docs:generate": "echo '📝 Generating component documentation...' && echo 'Feature coming soon!'",
     "claude:setup": "echo '🎨 Claude Code + Figma Integration Setup' && npm run figma:sync-tokens",
     "images:optimize": "node scripts/optimize-images.js",
-    "content:convert-pdf": "node scripts/convert-breeds-pdf-to-md.js",
-    "content:parse-text": "node scripts/parse-breed-text.js",
-    "content:extract-pdf": "node scripts/pdf-to-normalized-txt.js",
-    "content:batch-convert": "node scripts/batch-convert-txt-to-md.js",
-    "content:full-pipeline": "npm run content:extract-pdf && npm run content:batch-convert",
-    "content:build-json": "node scripts/build-breeds-json.js",
-    "prebuild": "npm run content:build-json",
-    "prebuild:prod": "npm run content:build-json",
     "validate:flow": "npx ts-node --project tools/tsconfig.json tools/flow-graph-validator.ts"
   },
   "dependencies": {
