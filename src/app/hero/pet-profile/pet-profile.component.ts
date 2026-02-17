@@ -3,12 +3,17 @@ import {
   ChangeDetectionStrategy,
   inject,
   OnInit,
+  AfterViewInit,
+  OnDestroy,
   signal,
   ChangeDetectorRef,
   HostListener,
+  ElementRef,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
+import * as L from 'leaflet';
 import {
   PetInfoCardComponent,
   PetInfoItem,
@@ -21,7 +26,7 @@ import { PhotoUploadModalComponent } from '../../shared/components/photo-upload-
 import { PetService } from '../../core/services/pet.service';
 import { PhotoUploadService } from '../../core/services/photo-upload.service';
 import { SpeciesInfoService } from '../../core/services/species-info.service';
-import { PetResponse } from '../../core/models/pet.models';
+import { PetResponse, PetSummaryResponse } from '../../core/models/pet.models';
 
 export interface PetData {
   id: string;
@@ -63,7 +68,7 @@ export interface PartnerShowcase {
   styleUrls: ['./pet-profile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetProfileComponent implements OnInit {
+export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private petService = inject(PetService);
@@ -85,6 +90,22 @@ export class PetProfileComponent implements OnInit {
   // Loading and error state
   isLoading = signal(false);
   errorMessage = signal<string | null>(null);
+
+  // All pets list + current index for swipe/dots
+  allPets = signal<PetSummaryResponse[]>([]);
+  currentPetIndex = signal(0);
+
+  // Max pets allowed
+  readonly MAX_PETS = 2;
+
+  // Mini map preview
+  @ViewChild('miniMapEl') miniMapEl!: ElementRef<HTMLDivElement>;
+  private miniMap: L.Map | null = null;
+
+  // Swipe tracking
+  private swipeStartX = 0;
+  private swipeStartY = 0;
+  private isSwiping = false;
 
   // Pet data - loaded from API
   pet: PetData = {
@@ -134,19 +155,56 @@ export class PetProfileComponent implements OnInit {
   currentSlide = 0;
 
   ngOnInit(): void {
-    // Get pet ID from route first, then fall back to sessionStorage
-    let petId = this.route.snapshot.paramMap.get('id');
+    this.isLoading.set(true);
+    this.errorMessage.set(null);
 
-    if (!petId) {
-      // Try to get from sessionStorage (set during onboarding)
-      petId = sessionStorage.getItem('createdPetId');
+    // Get target pet ID from route or sessionStorage
+    let targetPetId = this.route.snapshot.paramMap.get('id');
+    if (!targetPetId) {
+      targetPetId = sessionStorage.getItem('createdPetId');
     }
 
-    if (petId) {
-      this.loadPetData(petId);
-    } else {
-      // No pet ID available, try to load user's first pet
-      this.loadFirstPet();
+    // Load all pets first, then resolve the current one
+    this.petService.loadPets().subscribe({
+      next: (response) => {
+        if (!response.pets || response.pets.length === 0) {
+          this.errorMessage.set('Nessun pet trovato. Registra il tuo primo pet!');
+          this.isLoading.set(false);
+          this.cdr.markForCheck();
+          return;
+        }
+
+        this.allPets.set(response.pets);
+
+        // Find the index of the target pet, default to 0
+        let index = 0;
+        if (targetPetId) {
+          const found = response.pets.findIndex(p => p.id === targetPetId);
+          if (found >= 0) index = found;
+        }
+        this.currentPetIndex.set(index);
+
+        // Load full details for this pet
+        this.loadPetData(response.pets[index].id);
+      },
+      error: (err) => {
+        console.error('Failed to load pets:', err);
+        this.errorMessage.set('Impossibile caricare i dati');
+        this.isLoading.set(false);
+        this.cdr.markForCheck();
+      },
+    });
+  }
+
+  ngAfterViewInit(): void {
+    // Init map after view is ready — delayed to let the container render
+    setTimeout(() => this.initMiniMap(), 300);
+  }
+
+  ngOnDestroy(): void {
+    if (this.miniMap) {
+      this.miniMap.remove();
+      this.miniMap = null;
     }
   }
 
@@ -156,7 +214,7 @@ export class PetProfileComponent implements OnInit {
 
   // === Quick Action icon navigation ===
   onCalendarClick(): void {
-    this.router.navigate(['/home/calendar']);
+    this.router.navigate(['/calendar/month']);
   }
 
   onNotificationsClick(): void {
@@ -208,9 +266,55 @@ export class PetProfileComponent implements OnInit {
     this.currentSlide = index;
   }
 
-  // Add new pet
+  // Add new pet (max 2)
   onAddPetClick(): void {
+    if (this.allPets().length >= this.MAX_PETS) {
+      return; // Button hidden via template, but guard here too
+    }
     this.router.navigate(['/home/pet-register']);
+  }
+
+  canAddPet(): boolean {
+    return this.allPets().length < this.MAX_PETS;
+  }
+
+  // === Pet swipe / dot navigation ===
+  goToPet(index: number): void {
+    const pets = this.allPets();
+    if (index < 0 || index >= pets.length || index === this.currentPetIndex()) return;
+    this.currentPetIndex.set(index);
+    this.loadPetData(pets[index].id);
+  }
+
+  nextPet(): void {
+    this.goToPet(this.currentPetIndex() + 1);
+  }
+
+  prevPet(): void {
+    this.goToPet(this.currentPetIndex() - 1);
+  }
+
+  onSwipeStart(e: PointerEvent): void {
+    this.swipeStartX = e.clientX;
+    this.swipeStartY = e.clientY;
+    this.isSwiping = true;
+  }
+
+  onSwipeEnd(e: PointerEvent): void {
+    if (!this.isSwiping) return;
+    this.isSwiping = false;
+
+    const deltaX = e.clientX - this.swipeStartX;
+    const deltaY = e.clientY - this.swipeStartY;
+
+    // Only trigger if horizontal movement > 50px and greater than vertical
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) {
+        this.nextPet();   // swipe left → next
+      } else {
+        this.prevPet();   // swipe right → prev
+      }
+    }
   }
 
 
@@ -232,33 +336,6 @@ export class PetProfileComponent implements OnInit {
       error: (err) => {
         console.error('Failed to load pet:', err);
         this.errorMessage.set('Impossibile caricare i dati del pet');
-        this.isLoading.set(false);
-        this.cdr.markForCheck();
-      },
-    });
-  }
-
-  /**
-   * Load the user's first pet if no specific ID is provided
-   */
-  private loadFirstPet(): void {
-    this.isLoading.set(true);
-    this.errorMessage.set(null);
-
-    this.petService.loadPets().subscribe({
-      next: (response) => {
-        if (response.pets && response.pets.length > 0) {
-          // Load the first pet's full details
-          this.loadPetData(response.pets[0].id);
-        } else {
-          this.errorMessage.set('Nessun pet trovato. Registra il tuo primo pet!');
-          this.isLoading.set(false);
-          this.cdr.markForCheck();
-        }
-      },
-      error: (err) => {
-        console.error('Failed to load pets:', err);
-        this.errorMessage.set('Impossibile caricare i dati');
         this.isLoading.set(false);
         this.cdr.markForCheck();
       },
@@ -403,5 +480,27 @@ export class PetProfileComponent implements OnInit {
   // Mascot methods
   closeMascotSheet(): void {
     this.showMascotSheet.set(false);
+  }
+
+  // === Mini map preview (read-only Leaflet) ===
+  private initMiniMap(): void {
+    if (!this.miniMapEl?.nativeElement || this.miniMap) return;
+
+    this.miniMap = L.map(this.miniMapEl.nativeElement, {
+      center: [45.6983, 9.6773],
+      zoom: 13,
+      zoomControl: false,
+      attributionControl: false,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      touchZoom: false,
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(this.miniMap);
   }
 }

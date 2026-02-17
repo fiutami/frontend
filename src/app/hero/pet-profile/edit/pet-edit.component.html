@@ -7,6 +7,21 @@
   <!-- Main scrollable content -->
   <div class="pet-edit">
 
+    @if (isLoading()) {
+      <div class="pet-edit__loading">
+        <span class="pet-edit__spinner"></span>
+        <p>Caricamento...</p>
+      </div>
+    }
+
+    @if (errorMessage() && !isLoading()) {
+      <div class="pet-edit__error">
+        <p>{{ errorMessage() }}</p>
+        <button class="pet-edit__save-btn" (click)="goBack()">Torna indietro</button>
+      </div>
+    }
+
+    @if (!isLoading() && !errorMessage()) {
     <!-- Section: Profile Photo -->
     <section class="pet-edit__photo-section" aria-label="Foto profilo">
       <div class="pet-edit__avatar-wrapper">
@@ -211,7 +226,68 @@
         Elimina Profilo
       </button>
     </div>
+    } <!-- end @if (!isLoading() && !errorMessage()) -->
 
   </div>
+
+  <!-- Slide-to-Delete Confirmation Modal -->
+  @if (showDeleteModal()) {
+    <div class="delete-confirm__backdrop" (click)="cancelDelete()">
+      <div class="delete-confirm__modal" (click)="$event.stopPropagation()">
+
+        <!-- Warning icon -->
+        <div class="delete-confirm__icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+        </div>
+
+        <h3 class="delete-confirm__title">Eliminare {{ form().name }}?</h3>
+        <p class="delete-confirm__message">
+          Questa azione non puo essere annullata. Tutti i dati, le foto e i ricordi di {{ form().name }} verranno eliminati definitivamente.
+        </p>
+
+        <!-- Slide track -->
+        <div class="delete-confirm__track"
+          (pointerdown)="onSlideStart($event)"
+          (pointermove)="onSlideMove($event)"
+          (pointerup)="onSlideEnd()"
+          (pointerleave)="onSlideEnd()"
+          (touchstart)="onSlideStart($event)"
+          (touchmove)="onSlideMove($event)"
+          (touchend)="onSlideEnd()">
+
+          <!-- Fill bar -->
+          <div class="delete-confirm__fill"
+            [style.width.%]="slideProgress() * 100">
+          </div>
+
+          <!-- Label -->
+          <span class="delete-confirm__label"
+            [style.opacity]="1 - slideProgress()">
+            Scorri per eliminare
+          </span>
+
+          <!-- Handle -->
+          <div class="delete-confirm__handle"
+            [style.left.%]="slideProgress() * (100 - 18)"
+            [class.delete-confirm__handle--ready]="slideProgress() >= 0.9">
+            @if (isDeleting()) {
+              <span class="pet-edit__spinner"></span>
+            } @else {
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+              </svg>
+            }
+          </div>
+        </div>
+
+        <!-- Cancel -->
+        <button class="delete-confirm__cancel" (click)="cancelDelete()" type="button">
+          Annulla
+        </button>
+      </div>
+    </div>
+  }
 
 </app-tab-page-shell-blue>

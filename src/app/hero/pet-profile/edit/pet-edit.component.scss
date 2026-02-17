@@ -5,6 +5,26 @@
   padding-bottom: $spacing-2xl;
 
   // ==========================================
+  // LOADING / ERROR STATES
+  // ==========================================
+
+  &__loading,
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: $color-text-inverse;
+    text-align: center;
+    gap: $spacing-md;
+
+    p {
+      font-size: $typography-body-size;
+    }
+  }
+
+  // ==========================================
   // PROFILE PHOTO SECTION
   // ==========================================
 
@@ -395,8 +415,162 @@
 }
 
 // ==========================================
+// SLIDE-TO-DELETE CONFIRMATION MODAL
+// ==========================================
+
+.delete-confirm {
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: $spacing-md;
+    animation: delete-fade-in 200ms ease;
+  }
+
+  &__modal {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 24px 24px 24px 24px;
+    padding: $spacing-xl $spacing-lg $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    animation: delete-slide-up 300ms ease;
+    margin-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba($color-error, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-error;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__message {
+    font-size: $typography-body-size;
+    color: $color-text-secondary;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  // The slide track
+  &__track {
+    position: relative;
+    width: 100%;
+    height: 56px;
+    background: #FEE2E2;
+    border-radius: $border-radius-full;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    cursor: grab;
+    margin-top: $spacing-sm;
+  }
+
+  &__fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, $color-error 0%, darken($color-error, 10%) 100%);
+    border-radius: $border-radius-full;
+    transition: none;
+    pointer-events: none;
+  }
+
+  &__label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-error;
+    letter-spacing: 0.3px;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+  }
+
+  // The draggable handle
+  &__handle {
+    position: absolute;
+    top: 4px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: $color-error;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba($color-error, 0.4);
+    transition: background 200ms ease, box-shadow 200ms ease;
+    pointer-events: none;
+    left: 4px; // default, overridden by [style.left.%]
+
+    &--ready {
+      background: darken($color-error, 15%);
+      box-shadow: 0 0 0 4px rgba($color-error, 0.3), 0 2px 12px rgba($color-error, 0.5);
+    }
+  }
+
+  &__cancel {
+    width: 100%;
+    padding: $spacing-md;
+    background: transparent;
+    color: $color-text-secondary;
+    font-size: $typography-body-size;
+    font-weight: 600;
+    font-family: $font-family-body, $font-family-fallback;
+    border: none;
+    border-radius: $border-radius-full;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// ==========================================
 // ANIMATIONS
 // ==========================================
+
+@keyframes delete-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes delete-slide-up {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
 @keyframes pet-edit-spin {
   to {

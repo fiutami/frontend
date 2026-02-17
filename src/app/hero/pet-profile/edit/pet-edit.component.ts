@@ -1,13 +1,17 @@
 import {
   Component,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   inject,
   signal,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+import { PetService } from '../../../core/services/pet.service';
+import { PetResponse } from '../../../core/models/pet.models';
 
 export interface PetEditForm {
   name: string;
@@ -31,41 +35,98 @@ export interface PersonalityChip {
   styleUrls: ['./pet-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetEditComponent {
+export class PetEditComponent implements OnInit {
   private readonly router = inject(Router);
+  private readonly petService = inject(PetService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
+  // The pet being edited
+  private petId = '';
+
+  // Loading / error
+  readonly isLoading = signal(true);
+  readonly errorMessage = signal<string | null>(null);
 
   // Profile photo
   readonly profilePhoto = signal('assets/images/default-pet-avatar.png');
 
-  // Cover / gallery photos (mock)
-  readonly coverPhotos = signal<string[]>([
-    'assets/images/default-pet-avatar.png',
-    'assets/images/default-pet-avatar.png',
-    'assets/images/default-pet-avatar.png',
-  ]);
+  // Cover / gallery photos
+  readonly coverPhotos = signal<string[]>([]);
 
-  // Form data (mock pre-filled)
+  // Form data
   readonly form = signal<PetEditForm>({
-    name: 'Rocky',
-    breed: 'Labrador',
+    name: '',
+    breed: '',
     sex: 'Maschio',
-    birthDate: '2022-03-15',
-    weight: 28,
-    bio: 'Sono Rocky, amo correre al parco e fare il bagno al mare!',
+    birthDate: '',
+    weight: null,
+    bio: '',
   });
 
   // Personality chips
-  readonly chips = signal<PersonalityChip[]>([
-    { id: '1', label: 'Giocherellone' },
-    { id: '2', label: 'Socievole' },
-    { id: '3', label: 'Energico' },
-  ]);
+  readonly chips = signal<PersonalityChip[]>([]);
 
   // Saving state
   readonly isSaving = signal(false);
+  readonly isDeleting = signal(false);
+
+  // Delete confirmation slide-to-confirm
+  readonly showDeleteModal = signal(false);
+  readonly slideProgress = signal(0); // 0..1
+  private slideTrackWidth = 0;
+  private slideStartX = 0;
+  private isSliding = false;
 
   // Sex options for the select
   readonly sexOptions: Array<'Maschio' | 'Femmina'> = ['Maschio', 'Femmina'];
+
+  ngOnInit(): void {
+    const pet = this.petService.selectedPet();
+    if (!pet) {
+      this.errorMessage.set('Nessun pet selezionato');
+      this.isLoading.set(false);
+      return;
+    }
+
+    this.petId = pet.id;
+    this.mapPetToForm(pet);
+    this.loadGalleryPhotos(pet.id);
+    this.isLoading.set(false);
+  }
+
+  private mapPetToForm(pet: PetResponse): void {
+    // Build breed display
+    let breedDisplay = pet.speciesName;
+    if (pet.breedName) {
+      breedDisplay = pet.breedVariantLabel
+        ? `${pet.breedName} - ${pet.breedVariantLabel}`
+        : pet.breedName;
+    }
+
+    this.profilePhoto.set(pet.profilePhotoUrl || 'assets/images/default-pet-avatar.png');
+
+    this.form.set({
+      name: pet.name,
+      breed: breedDisplay,
+      sex: pet.sex === 'male' ? 'Maschio' : 'Femmina',
+      birthDate: pet.birthDate || '',
+      weight: pet.weight,
+      bio: pet.notes || '',
+    });
+  }
+
+  private loadGalleryPhotos(petId: string): void {
+    this.petService.getPetGallery(petId).subscribe({
+      next: (photos) => {
+        this.coverPhotos.set(photos.map(p => p.thumbnailUrl || p.url));
+        this.cdr.markForCheck();
+      },
+      error: () => {
+        // Gallery not available, leave empty
+        this.coverPhotos.set([]);
+      },
+    });
+  }
 
   // --- Navigation ---
 
@@ -88,11 +149,7 @@ export class PetEditComponent {
 
   onAddCoverPhoto(): void {
     // In production this would open a file picker
-    const current = this.coverPhotos();
-    this.coverPhotos.set([
-      ...current,
-      'assets/images/default-pet-avatar.png',
-    ]);
+    console.log('Add cover photo');
   }
 
   // --- Form Updates ---
@@ -121,23 +178,97 @@ export class PetEditComponent {
   // --- Actions ---
 
   onSave(): void {
+    if (!this.petId) return;
+
     this.isSaving.set(true);
-    // Simulate API call
-    setTimeout(() => {
-      this.isSaving.set(false);
-      console.log('Saved pet data:', this.form());
-      console.log('Personality:', this.chips());
-      this.goBack();
-    }, 1200);
+    const formData = this.form();
+
+    this.petService.updatePet(this.petId, {
+      name: formData.name || null,
+      sex: formData.sex === 'Maschio' ? 'male' : 'female',
+      birthDate: formData.birthDate || null,
+      weight: formData.weight,
+    }).subscribe({
+      next: () => {
+        this.isSaving.set(false);
+        this.goBack();
+      },
+      error: (err) => {
+        console.error('Failed to update pet:', err);
+        this.isSaving.set(false);
+        this.cdr.markForCheck();
+      },
+    });
   }
 
+  // --- Delete with slide-to-confirm ---
+
   onDeleteProfile(): void {
-    const confirmed = confirm(
-      'Sei sicuro di voler eliminare questo profilo? Questa azione non puo essere annullata.'
-    );
-    if (confirmed) {
-      console.log('Delete pet profile');
-      this.router.navigate(['/home/main']);
+    this.showDeleteModal.set(true);
+    this.slideProgress.set(0);
+  }
+
+  cancelDelete(): void {
+    this.showDeleteModal.set(false);
+    this.slideProgress.set(0);
+    this.isSliding = false;
+  }
+
+  onSlideStart(e: PointerEvent | TouchEvent): void {
+    const track = (e.target as HTMLElement).closest('.delete-confirm__track');
+    if (!track) return;
+    this.slideTrackWidth = track.clientWidth - 56; // track width minus handle width
+    this.slideStartX = this.getClientX(e);
+    this.isSliding = true;
+  }
+
+  onSlideMove(e: PointerEvent | TouchEvent): void {
+    if (!this.isSliding) return;
+    e.preventDefault();
+
+    const currentX = this.getClientX(e);
+    const delta = currentX - this.slideStartX;
+    const progress = Math.max(0, Math.min(1, delta / this.slideTrackWidth));
+    this.slideProgress.set(progress);
+    this.cdr.markForCheck();
+  }
+
+  onSlideEnd(): void {
+    if (!this.isSliding) return;
+    this.isSliding = false;
+
+    if (this.slideProgress() >= 0.9) {
+      this.executeDelete();
+    } else {
+      this.slideProgress.set(0);
+      this.cdr.markForCheck();
     }
+  }
+
+  private getClientX(e: PointerEvent | TouchEvent): number {
+    if ('touches' in e) {
+      return e.touches[0]?.clientX ?? 0;
+    }
+    return e.clientX;
+  }
+
+  private executeDelete(): void {
+    if (!this.petId) return;
+    this.isDeleting.set(true);
+
+    this.petService.deletePet(this.petId).subscribe({
+      next: () => {
+        this.showDeleteModal.set(false);
+        this.isDeleting.set(false);
+        this.router.navigate(['/home/main']);
+      },
+      error: (err) => {
+        console.error('Failed to delete pet:', err);
+        this.isDeleting.set(false);
+        this.showDeleteModal.set(false);
+        this.slideProgress.set(0);
+        this.cdr.markForCheck();
+      },
+    });
   }
 }

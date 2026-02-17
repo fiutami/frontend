@@ -69,36 +69,38 @@
   <!-- Left Actions: FAB + dots a sinistra -->
   <ng-container shellLeftActions>
     @if (!isLoading() && !errorMessage() && pet.id) {
-      <button
-        class="pet-profile__add-pet"
-        (click)="onAddPetClick()"
-        aria-label="Aggiungi nuovo pet"
-      >
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-        </svg>
-      </button>
+      @if (canAddPet()) {
+        <button
+          class="pet-profile__add-pet"
+          (click)="onAddPetClick()"
+          aria-label="Aggiungi nuovo pet"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </button>
+      }
       <div class="pet-profile__dots">
-        <span class="pet-profile__dot pet-profile__dot--active"></span>
-        <span class="pet-profile__dot"></span>
-        <span class="pet-profile__dot"></span>
+        @for (p of allPets(); track p.id; let i = $index) {
+          <button
+            class="pet-profile__dot"
+            [class.pet-profile__dot--active]="i === currentPetIndex()"
+            (click)="goToPet(i)"
+            [attr.aria-label]="'Vai a ' + p.name"
+          ></button>
+        }
       </div>
     }
   </ng-container>
 
-  <!-- Sticky Content Slot: speech bubble resta nell'area gialla -->
+  <!-- Sticky Content Slot -->
   <ng-container shellStickyContent>
-    @if (!isLoading() && !errorMessage() && pet.id) {
-      <div class="pet-profile__bubble">
-        <app-speech-bubble tailPosition="left" variant="ai">
-          Andiamo a Fiutare il mondo?
-        </app-speech-bubble>
-      </div>
-    }
   </ng-container>
 
   <!-- Main Content: scrollabile dentro la card blu -->
-  <div class="pet-profile__content">
+  <div class="pet-profile__content"
+    (pointerdown)="onSwipeStart($event)"
+    (pointerup)="onSwipeEnd($event)">
     <!-- Loading state -->
     @if (isLoading()) {
       <div class="pet-profile__loading">
@@ -132,28 +134,17 @@
       <!-- CTA: 3 icon buttons + card promo affiancata -->
       <section class="pet-profile__actions">
         <div class="pet-profile__cta-row">
-          <app-profile-icon icon="foto" variant="cta" ariaLabel="Banda Pelosa" (onClick)="onBandaPelosaClick()" />
+          <app-profile-icon icon="friends" variant="cta" ariaLabel="Banda Pelosa" (onClick)="onBandaPelosaClick()" />
           <app-profile-icon icon="doc" variant="cta" ariaLabel="Fatti Bestiali" (onClick)="onFattiBestialiClick()" />
-          <app-profile-icon icon="friends" variant="cta" ariaLabel="Rullino Feroce" (onClick)="onRullinoFeroceClick()" />
+          <app-profile-icon icon="foto" variant="cta" ariaLabel="Rullino Feroce" (onClick)="onRullinoFeroceClick()" />
         </div>
-        <button class="pet-profile__promo-card-inline" (click)="onAppCompletaClick()">
-          <span class="pet-profile__promo-card-inline-title">Vuoi sapere come sta il tuo pet?</span>
-          <span class="pet-profile__promo-card-inline-subtitle">Prova la App Completa</span>
-          <span class="pet-profile__promo-card-inline-dots">
-            <span class="pet-profile__promo-card-dot pet-profile__promo-card-dot--active"></span>
-            <span class="pet-profile__promo-card-dot"></span>
-            <span class="pet-profile__promo-card-dot"></span>
-          </span>
-        </button>
       </section>
 
       <!-- Testo intro mappa + Mini map -->
       <section class="pet-profile__map">
         <p class="pet-profile__map-intro">Testa e prova la mappa interattiva</p>
         <div class="pet-profile__map-container">
-          <div class="pet-profile__map-placeholder">
-            <span>Mappa</span>
-          </div>
+          <div #miniMapEl class="pet-profile__minimap"></div>
           <button class="pet-profile__fiuta-btn" (click)="onFiutaClick()">
             FIUTA
           </button>
