@@ -16,12 +16,12 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; // Allinea foto a sinistra del cerchio bianco
 }
 
 .pet-profile__photo {
-  width: 65%;
-  height: 65%;
+  width: 87%;
+  height: 87%;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -29,9 +29,9 @@
 
 .pet-profile__photo-edit {
   position: absolute;
-  // Position relative to the inner photo circle (65% of container)
-  bottom: 20%;
-  right: 20%;
+  // Basso-destra della FOTO (87% del container, allineata a sinistra)
+  bottom: 14%;
+  right: 16%;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -103,11 +103,11 @@
 
 .pet-profile__photo-uploading {
   position: absolute;
-  // Centered over the inner photo (65% of container)
-  top: 17.5%;
-  left: 17.5%;
-  width: 65%;
-  height: 65%;
+  // Centered over the inner photo (87% of container, left-aligned)
+  top: 6.5%;
+  left: 0;
+  width: 87%;
+  height: 87%;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.4);
   display: flex;
@@ -259,18 +259,49 @@
   align-items: stretch;
   gap: var(--sp-2);
   width: 100%;
+}
 
-  // Each CTA button fills equal space
-  > * {
-    flex: 1;
-    min-width: 0;
+// Pulsanti CTA Figma: gradiente bianco→giallo, bordo arrotondato, icona + testo
+.pet-profile__cta-btn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 95px;
+  padding: 12px 8px;
+  border: 1px solid #ffffff;
+  border-radius: 22px;
+  background: linear-gradient(158deg, #ffffff 6%, #FCEFCD 19%, #F8D78B 39%, #F2B830 86%);
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 200ms ease;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.96);
   }
 }
 
-// Override profile-icon max-width inside CTA row to fill available space
-:host ::ng-deep .pet-profile__cta-row .profile-icon--cta {
-  max-width: none;
-  width: 100%;
+.pet-profile__cta-icon {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.pet-profile__cta-label {
+  font-family: 'Montserrat', $font-family-body;
+  font-weight: 700;
+  font-size: 12px;
+  color: #4A74F0;
+  text-align: center;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 // Promo card inline (affiancata ai 3 CTA)
