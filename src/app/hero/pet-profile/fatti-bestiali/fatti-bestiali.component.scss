@@ -264,6 +264,87 @@
   font-style: italic;
 }
 
+// Document item row
+.fb__doc-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.fb__doc-item-icon {
+  font-size: 20px;
+  color: $color-primary-500;
+  flex-shrink: 0;
+}
+
+.fb__doc-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fb__doc-item-title {
+  font-size: $typography-small-size;
+  font-weight: 600;
+  color: $color-text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fb__doc-item-date {
+  font-size: 11px;
+  color: $color-text-secondary;
+}
+
+// Upload CTA button
+.fb__upload-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  width: 100%;
+  margin-top: $spacing-sm;
+  padding: 12px $spacing-md;
+  border: 2px dashed $color-primary-500;
+  border-radius: $border-radius-md;
+  background: rgba($color-primary-500, 0.04);
+  color: $color-primary-500;
+  font-size: $typography-small-size;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:active {
+    background: rgba($color-primary-500, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.fb__upload-cta-icon {
+  font-size: 20px;
+
+  &--spin {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 // ========================================
 // Locked Sections (Pro)
 // ========================================

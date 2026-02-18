@@ -1147,6 +1147,7 @@
       "weightCondition": "Weight and physical condition"
     },
     "emptyState": "No items added",
+    "uploadDocument": "Upload a document",
     "promo": {
       "text": "Want to know how {{petName}} feels today? Enable emotional monitoring.",
       "button": "Order now"

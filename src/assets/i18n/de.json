@@ -1103,6 +1103,7 @@
       "weightCondition": "Gewicht und körperliche Verfassung"
     },
     "emptyState": "Keine Einträge vorhanden",
+    "uploadDocument": "Dokument hochladen",
     "promo": {
       "text": "Möchtest du wissen, wie sich {{petName}} heute fühlt? Aktiviere das emotionale Monitoring.",
       "button": "Jetzt bestellen"

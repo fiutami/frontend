@@ -1444,6 +1444,7 @@
       "weightCondition": "Peso e condizione fisica"
     },
     "emptyState": "Nessun elemento aggiunto",
+    "uploadDocument": "Carica un documento",
     "promo": {
       "text": "Vuoi sapere come si sente {{petName}} oggi? Attiva il monitoraggio emozionale.",
       "button": "Order now"

@@ -6,15 +6,19 @@ import {
   signal,
   computed,
   ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default';
 import { PetService } from '../../../core/services/pet.service';
+import { PetDocumentService } from '../../../core/services/pet-document.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { SubscriptionsService } from '../../../core/services/subscriptions.service';
 import { PetResponse } from '../../../core/models/pet.models';
+import { PetDocument, PetDocumentType } from '../../../core/models/pet-document.models';
 
 export interface FBSection {
   id: string;
@@ -35,9 +39,12 @@ export class FattiBestialiComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private petService = inject(PetService);
+  private petDocumentService = inject(PetDocumentService);
   private authService = inject(AuthService);
   private subscriptionsService = inject(SubscriptionsService);
   private cdr = inject(ChangeDetectorRef);
+
+  @ViewChild('fileInput') fileInputRef!: ElementRef<HTMLInputElement>;
 
   // State signals
   pet = signal<PetResponse | null>(null);
@@ -46,6 +53,13 @@ export class FattiBestialiComponent implements OnInit {
   expandedSectionId = signal<string | null>(null);
   userCity = signal('');
   userPlanId = signal<string>('free');
+
+  // Documents state
+  documents = signal<PetDocument[]>([]);
+  vaccinations = signal<PetDocument[]>([]);
+  isUploading = signal(false);
+  uploadProgress = signal(0);
+  uploadTargetType: PetDocumentType = 'other';
 
   // Computed
   petAge = computed(() => {
@@ -92,6 +106,12 @@ export class FattiBestialiComponent implements OnInit {
     this.expandedSectionId.update(current =>
       current === sectionId ? null : sectionId
     );
+    // Load documents when expanding relevant sections
+    if (this.expandedSectionId() === 'documents') {
+      this.loadDocuments();
+    } else if (this.expandedSectionId() === 'vaccinations') {
+      this.loadVaccinations();
+    }
   }
 
   isSectionExpanded(sectionId: string): boolean {
@@ -124,6 +144,77 @@ export class FattiBestialiComponent implements OnInit {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
+    });
+  }
+
+  // --- Document upload ---
+
+  triggerUpload(type: PetDocumentType): void {
+    this.uploadTargetType = type;
+    this.fileInputRef.nativeElement.value = '';
+    this.fileInputRef.nativeElement.click();
+  }
+
+  async onFileSelected(event: Event): Promise<void> {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    const p = this.pet();
+    if (!file || !p) return;
+
+    this.isUploading.set(true);
+    this.uploadProgress.set(0);
+    this.cdr.markForCheck();
+
+    try {
+      await this.petDocumentService.uploadDocument(
+        p.id,
+        file,
+        {
+          title: file.name.replace(/\.[^.]+$/, ''),
+          documentType: this.uploadTargetType,
+        },
+        (progress) => {
+          this.uploadProgress.set(progress);
+          this.cdr.markForCheck();
+        },
+      );
+
+      // Refresh the relevant list
+      if (this.uploadTargetType === 'vaccination') {
+        this.loadVaccinations();
+      } else {
+        this.loadDocuments();
+      }
+    } catch (err) {
+      console.error('Document upload failed:', err);
+    } finally {
+      this.isUploading.set(false);
+      this.uploadProgress.set(0);
+      this.cdr.markForCheck();
+    }
+  }
+
+  private loadDocuments(): void {
+    const p = this.pet();
+    if (!p) return;
+    this.petDocumentService.getDocuments(p.id).subscribe({
+      next: (docs) => {
+        this.documents.set(docs.filter(d => d.documentType !== 'vaccination'));
+        this.cdr.markForCheck();
+      },
+      error: () => {},
+    });
+  }
+
+  private loadVaccinations(): void {
+    const p = this.pet();
+    if (!p) return;
+    this.petDocumentService.getDocuments(p.id, 'vaccination').subscribe({
+      next: (docs) => {
+        this.vaccinations.set(docs);
+        this.cdr.markForCheck();
+      },
+      error: () => {},
     });
   }
 

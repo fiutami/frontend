@@ -92,7 +92,55 @@
             </button>
             @if (isSectionExpanded(section.id)) {
               <div class="fb__accordion-body">
-                <p class="fb__empty-text">{{ 'fattiBestiali.emptyState' | translate }}</p>
+                @if (section.id === 'documents') {
+                  <!-- Existing documents -->
+                  @for (doc of documents(); track doc.id) {
+                    <div class="fb__doc-item">
+                      <span class="material-icons fb__doc-item-icon">insert_drive_file</span>
+                      <div class="fb__doc-item-info">
+                        <span class="fb__doc-item-title">{{ doc.title }}</span>
+                        @if (doc.documentDate) {
+                          <span class="fb__doc-item-date">{{ formatBirthDate(doc.documentDate) }}</span>
+                        }
+                      </div>
+                    </div>
+                  }
+                  <!-- Upload CTA -->
+                  <button class="fb__upload-cta" (click)="triggerUpload('other')" [disabled]="isUploading()">
+                    @if (isUploading() && uploadTargetType === 'other') {
+                      <span class="material-icons fb__upload-cta-icon fb__upload-cta-icon--spin">sync</span>
+                      <span>Caricamento... {{ uploadProgress() }}%</span>
+                    } @else {
+                      <span class="material-icons fb__upload-cta-icon">cloud_upload</span>
+                      <span>{{ 'fattiBestiali.uploadDocument' | translate }}</span>
+                    }
+                  </button>
+                } @else if (section.id === 'vaccinations') {
+                  <!-- Existing vaccinations -->
+                  @for (doc of vaccinations(); track doc.id) {
+                    <div class="fb__doc-item">
+                      <span class="material-icons fb__doc-item-icon">vaccines</span>
+                      <div class="fb__doc-item-info">
+                        <span class="fb__doc-item-title">{{ doc.title }}</span>
+                        @if (doc.documentDate) {
+                          <span class="fb__doc-item-date">{{ formatBirthDate(doc.documentDate) }}</span>
+                        }
+                      </div>
+                    </div>
+                  }
+                  <!-- Upload CTA -->
+                  <button class="fb__upload-cta" (click)="triggerUpload('vaccination')" [disabled]="isUploading()">
+                    @if (isUploading() && uploadTargetType === 'vaccination') {
+                      <span class="material-icons fb__upload-cta-icon fb__upload-cta-icon--spin">sync</span>
+                      <span>Caricamento... {{ uploadProgress() }}%</span>
+                    } @else {
+                      <span class="material-icons fb__upload-cta-icon">cloud_upload</span>
+                      <span>{{ 'fattiBestiali.uploadDocument' | translate }}</span>
+                    }
+                  </button>
+                } @else {
+                  <p class="fb__empty-text">{{ 'fattiBestiali.emptyState' | translate }}</p>
+                }
               </div>
             }
           </div>
@@ -127,5 +175,13 @@
 
     </div>
   }
+
+  <!-- Hidden file input for document upload -->
+  <input
+    #fileInput
+    type="file"
+    accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+    style="display: none"
+    (change)="onFileSelected($event)" />
 
 </app-tab-page-shell-default>
