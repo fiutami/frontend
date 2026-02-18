@@ -72,13 +72,9 @@
       <span class="section-pill__title">{{ sectionTitle() }}</span>
     </div>
 
-    <!-- Section content card -->
+    <!-- Section content card (post-it beige) -->
     <div class="section-card">
-      @if (sectionContent()) {
-        <p class="section-card__text">{{ sectionContent() }}</p>
-      } @else {
-        <p class="section-card__empty">Nessun dato disponibile per questa sezione.</p>
-      }
+      <p class="section-card__text">{{ sectionContent() }}</p>
     </div>
   }
 

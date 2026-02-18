@@ -66,14 +66,17 @@
 }
 
 // ==========================================
-// HERO IMAGE (same as breed-detail)
+// HERO IMAGE (raised closer to logo)
 // ==========================================
 
 .breed-hero {
   display: flex;
   justify-content: center;
+  margin-top: -48px;
   margin-bottom: $spacing-sm;
   padding-top: 0;
+  position: relative;
+  z-index: 1;
 
   &__circle {
     width: 180px;
@@ -162,18 +165,19 @@
 }
 
 // ==========================================
-// YELLOW CATEGORY PILL
+// YELLOW CATEGORY PILL (speech-bubble shape)
 // ==========================================
 
 .section-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 0 $spacing-md $spacing-sm;
+  margin: 0 $spacing-md $spacing-xs;
   padding: 10px 20px;
   background: #F2B830;
-  border-radius: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  // Figma: rounded on 3 corners, flat top-left (speech-bubble)
+  border-radius: 0 26px 26px 26px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
   &__icon {
     font-size: 22px;
@@ -181,7 +185,7 @@
   }
 
   &__title {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     font-family: 'Montserrat', $font-family-body;
     color: #ffffff;
@@ -189,20 +193,22 @@
 }
 
 // ==========================================
-// SECTION CONTENT CARD
+// POST-IT CONTENT CARD (beige #F5F3EB)
 // ==========================================
 
 .section-card {
   margin: 0 $spacing-md $spacing-xl;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
+  background: #F5F3EB;
+  border-radius: 8px;
   padding: $spacing-lg;
+  box-shadow: 0px 3px 7px 1px rgba(0, 0, 0, 0.25);
 
   &__text {
-    font-size: 14px;
-    line-height: 1.7;
-    font-family: $font-family-body;
-    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Montserrat', $font-family-body;
+    font-weight: 400;
+    color: #000000;
     margin: 0;
     white-space: pre-line;
   }
@@ -210,7 +216,7 @@
   &__empty {
     font-size: 14px;
     font-family: $font-family-body;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.4);
     text-align: center;
     margin: 0;
     padding: $spacing-md 0;
@@ -250,5 +256,11 @@
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .section-pill {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
   }
 }
