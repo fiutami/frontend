@@ -3,6 +3,18 @@
 @import 'src/styles/_tokens-figma';
 
 $chat-online-dot: #66BA00;
+$fiutami-blue: #4a74f0;
+
+// ========================================
+// HEADER OVERRIDES - Blue title & back arrow (like pet-profile)
+// ========================================
+:host ::ng-deep .shell-header__title {
+  color: $fiutami-blue !important;
+}
+
+:host ::ng-deep .shell-header__back img {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(65%) saturate(2500%) hue-rotate(210deg) brightness(97%) contrast(92%);
+}
 
 // ========================================
 // LOADING & ERROR

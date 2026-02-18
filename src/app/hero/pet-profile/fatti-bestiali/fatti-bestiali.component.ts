@@ -102,6 +102,10 @@ export class FattiBestialiComponent implements OnInit {
     this.loadSubscription();
   }
 
+  goBack(): void {
+    window.history.back();
+  }
+
   toggleSection(sectionId: string): void {
     this.expandedSectionId.update(current =>
       current === sectionId ? null : sectionId

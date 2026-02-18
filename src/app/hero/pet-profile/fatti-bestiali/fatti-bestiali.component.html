@@ -1,7 +1,9 @@
 <app-tab-page-shell-default
   [title]="'fattiBestiali.title' | translate"
   activeTabId="pet-profile"
-  backgroundVariant="tab-menu">
+  backgroundVariant="tab-menu"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <!-- Branding extra: subtitle under logo -->
   <p shellBrandingExtra class="fb__subtitle"

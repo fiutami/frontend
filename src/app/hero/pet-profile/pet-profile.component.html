@@ -254,4 +254,44 @@
     </div>
   }
 
+  <!-- Calendar Month Overlay -->
+  <app-calendar-month-overlay />
+
+  <!-- Notifications Overlay -->
+  <app-calendar-overlay-base
+    title="Notifiche di oggi"
+    [isOpen]="showNotificationsOverlay()"
+    (closed)="closeNotificationsOverlay()">
+    <div class="notif-overlay">
+      @if (isLoadingNotifications()) {
+        <p class="notif-overlay__loading">Caricamento...</p>
+      } @else if (todayNotifications().length === 0) {
+        <div class="notif-overlay__empty">
+          <span class="material-icons notif-overlay__empty-icon">notifications_none</span>
+          <p>Nessuna notifica per oggi</p>
+        </div>
+      } @else {
+        @for (notif of todayNotifications(); track notif.id) {
+          <div class="notif-overlay__item" [class.notif-overlay__item--unread]="!notif.isRead">
+            <span class="material-icons notif-overlay__item-icon">
+              @switch (notif.type) {
+                @case ('appointment') { calendar_today }
+                @case ('vaccination_due') { vaccines }
+                @case ('health_alert') { warning }
+                @case ('pet_reminder') { pets }
+                @default { notifications }
+              }
+            </span>
+            <div class="notif-overlay__item-info">
+              <span class="notif-overlay__item-title">{{ notif.title }}</span>
+              @if (notif.message) {
+                <span class="notif-overlay__item-message">{{ notif.message }}</span>
+              }
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </app-calendar-overlay-base>
+
 </app-tab-page-shell-pet-profile>

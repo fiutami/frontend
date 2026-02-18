@@ -26,7 +26,11 @@ import { PhotoUploadModalComponent } from '../../shared/components/photo-upload-
 import { PetService } from '../../core/services/pet.service';
 import { PhotoUploadService } from '../../core/services/photo-upload.service';
 import { SpeciesInfoService } from '../../core/services/species-info.service';
-import { PetResponse, PetSummaryResponse } from '../../core/models/pet.models';
+import { NotificationService } from '../../core/services/notification.service';
+import { CalendarOverlayService } from '../../calendar/services/calendar-overlay.service';
+import { CalendarMonthOverlayComponent } from '../../calendar/overlays/calendar-month-overlay.component';
+import { CalendarOverlayBaseComponent } from '../../calendar/overlays/calendar-overlay-base.component';
+import { PetResponse, PetSummaryResponse, NotificationResponse } from '../../core/models/pet.models';
 
 export interface PetData {
   id: string;
@@ -63,6 +67,8 @@ export interface PartnerShowcase {
     MascotBottomSheetComponent,
     ProfileIconComponent,
     PhotoUploadModalComponent,
+    CalendarMonthOverlayComponent,
+    CalendarOverlayBaseComponent,
   ],
   templateUrl: './pet-profile.component.html',
   styleUrls: ['./pet-profile.component.scss'],
@@ -74,10 +80,17 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   private petService = inject(PetService);
   private photoUploadService = inject(PhotoUploadService);
   private speciesInfoService = inject(SpeciesInfoService);
+  private notificationService = inject(NotificationService);
+  calendarOverlayService = inject(CalendarOverlayService);
   private cdr = inject(ChangeDetectorRef);
 
   // Mascot sheet state
   showMascotSheet = signal(false);
+
+  // Notifications overlay
+  showNotificationsOverlay = signal(false);
+  todayNotifications = signal<NotificationResponse[]>([]);
+  isLoadingNotifications = signal(false);
 
   // Photo upload state
   showPhotoUpload = signal(false);
@@ -214,11 +227,40 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // === Quick Action icon navigation ===
   onCalendarClick(): void {
-    this.router.navigate(['/calendar/month']);
+    this.calendarOverlayService.openMonth();
   }
 
   onNotificationsClick(): void {
-    this.router.navigate(['/home/notifications']);
+    this.showNotificationsOverlay.set(true);
+    this.loadTodayNotifications();
+  }
+
+  closeNotificationsOverlay(): void {
+    this.showNotificationsOverlay.set(false);
+  }
+
+  private loadTodayNotifications(): void {
+    this.isLoadingNotifications.set(true);
+    this.notificationService.loadNotifications(1, 10).subscribe({
+      next: (response) => {
+        // Filter to today's notifications
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const todayItems = response.notifications.filter(n => {
+          const nDate = new Date(n.createdAt);
+          nDate.setHours(0, 0, 0, 0);
+          return nDate.getTime() === today.getTime();
+        });
+        this.todayNotifications.set(todayItems);
+        this.isLoadingNotifications.set(false);
+        this.cdr.markForCheck();
+      },
+      error: () => {
+        this.todayNotifications.set([]);
+        this.isLoadingNotifications.set(false);
+        this.cdr.markForCheck();
+      },
+    });
   }
 
   onEditPetClick(): void {
