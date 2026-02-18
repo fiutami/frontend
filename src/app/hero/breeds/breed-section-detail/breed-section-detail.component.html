@@ -1,0 +1,83 @@
+<app-tab-page-shell-blue
+  [title]="sectionTitle()"
+  activeTabId="breeds"
+  [showBack]="true"
+  (backClicked)="goBack()">
+
+  <!-- Loading -->
+  @if (isLoading()) {
+    <div class="section-loading">
+      <div class="section-loading__spinner"></div>
+      <p>Caricamento...</p>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (!breed() && !isLoading()) {
+    <div class="section-error">
+      <span class="material-icons">error_outline</span>
+      <p>Dati non disponibili</p>
+      <button class="section-error__back" (click)="goBack()">
+        Torna indietro
+      </button>
+    </div>
+  }
+
+  <!-- Content -->
+  @if (breed() && !isLoading()) {
+    <div class="section-content">
+      <!-- Section header -->
+      <div class="section-header">
+        <span class="material-icons section-header__icon">{{ sectionIcon() }}</span>
+        <h2 class="section-header__title">{{ sectionTitle() }}</h2>
+        <p class="section-header__breed">{{ breed()!.name }}</p>
+      </div>
+
+      <!-- Data section (dna, size, temperament) -->
+      @if (isDataSection()) {
+        <div class="section-card">
+          @if (sectionItems().length > 0) {
+            @for (item of sectionItems(); track item.label) {
+              <div class="data-row">
+                <span class="data-row__label">{{ item.label }}</span>
+                <span class="data-row__value">{{ item.value }}</span>
+              </div>
+            }
+          } @else {
+            <p class="section-card__empty">Nessun dato disponibile per questa sezione.</p>
+          }
+        </div>
+      }
+
+      <!-- List section (rituals, health) -->
+      @if (isListSection()) {
+        <div class="section-card">
+          @if (sectionList().length > 0) {
+            <ul class="section-list">
+              @for (item of sectionList(); track item) {
+                <li class="section-list__item">
+                  <span class="material-icons section-list__bullet">circle</span>
+                  {{ item }}
+                </li>
+              }
+            </ul>
+          } @else {
+            <p class="section-card__empty">Nessun dato disponibile per questa sezione.</p>
+          }
+        </div>
+      }
+
+      <!-- Text section (history) -->
+      @if (isTextSection()) {
+        <div class="section-card">
+          @if (sectionText()) {
+            <p class="section-text">{{ sectionText() }}</p>
+          } @else {
+            <p class="section-card__empty">Nessun dato disponibile per questa sezione.</p>
+          }
+        </div>
+      }
+    </div>
+  }
+
+</app-tab-page-shell-blue>

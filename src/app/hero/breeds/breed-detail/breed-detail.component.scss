@@ -83,19 +83,22 @@
 }
 
 // ==========================================
-// HERO IMAGE
+// HERO IMAGE (Circular with yellow border)
 // ==========================================
 
 .breed-hero {
+  display: flex;
+  justify-content: center;
   margin-bottom: $spacing-lg;
+  padding-top: $spacing-md;
 
-  &__image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    border-radius: $border-radius-xl;
+  &__circle {
+    width: 180px;
+    height: 180px;
+    border-radius: $border-radius-full;
+    border: 4px solid #F2B830;
     overflow: hidden;
-    box-shadow: $shadow-lg;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   }
 
   &__image {
@@ -104,24 +107,10 @@
     object-fit: cover;
     display: block;
   }
-
-  &__gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.45) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    pointer-events: none;
-  }
 }
 
 // ==========================================
-// BREED IDENTITY (Name + Origin)
+// BREED IDENTITY (Name + Badges + Description)
 // ==========================================
 
 .breed-identity {
@@ -130,382 +119,163 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-xs;
+  gap: $spacing-sm;
+  padding: 0 $spacing-md;
 
   &__name {
-    font-size: 28px;
-    font-weight: $typography-h1-weight;
-    font-family: $font-family-body;
-    color: $color-text-primary;
-    margin: 0;
-    line-height: $typography-h1-line-height;
-  }
-
-  &__origin,
-  &__recognition,
-  &__lifespan {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px $spacing-md;
-    border-radius: $border-radius-full;
-    font-size: $typography-small-size;
+    font-size: 40px;
     font-weight: 500;
-    font-family: $font-family-body;
-
-    .material-icons {
-      font-size: 16px;
-    }
+    font-family: 'Montserrat', $font-family-body;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.1;
   }
 
-  &__origin {
-    background: rgba($color-ai-primary, 0.12);
-    color: $color-ai-primary;
-  }
-
-  &__recognition {
-    background: $color-primary-500;
-    color: $color-text-inverse;
-  }
-
-  &__lifespan {
-    background: rgba($color-success, 0.12);
-    color: $color-success;
-  }
-}
-
-// ==========================================
-// QUICK STATS ROW
-// ==========================================
-
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $spacing-xs;
-  margin-bottom: $spacing-lg;
-
-  &__card {
+  &__badges {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    background: rgba($color-ai-primary, 0.08);
-    border-radius: $border-radius-lg;
-    padding: $spacing-sm;
-    text-align: center;
-    transition: $transition-base;
-
-    &:active {
-      transform: scale(0.96);
-    }
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-xs;
+    margin-top: $spacing-xs;
   }
 
-  &__icon {
-    font-size: 22px;
-    color: $color-ai-primary;
-  }
-
-  &__value {
+  &__description {
     font-size: 13px;
-    font-weight: 600;
     font-family: $font-family-body;
-    color: $color-text-primary;
-    line-height: 1.2;
-    word-break: break-word;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    margin: $spacing-xs 0 0;
+    max-width: 340px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.breed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: $font-family-body;
+
+  .material-icons {
+    font-size: 16px;
   }
 
-  &__label {
-    font-size: $typography-micro-size;
-    font-family: $font-family-body;
-    color: $color-text-secondary;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  &--origin {
+    background: #ffffff;
+    color: $color-text-primary;
+  }
+
+  &--fci {
+    background: #7FA438;
+    color: #ffffff;
   }
 }
 
 // ==========================================
-// INFO SECTIONS (Accordion Cards)
+// NAVIGATION BUTTONS (Category links)
 // ==========================================
 
-.info-sections {
+.breed-nav {
   display: flex;
   flex-direction: column;
-  gap: $spacing-xs;
-  margin-bottom: $spacing-lg;
-}
+  gap: $spacing-sm;
+  padding: 0 $spacing-md $spacing-xl;
 
-.info-card {
-  background: $color-background-primary;
-  border-radius: $border-radius-lg;
-  overflow: hidden;
-  transition: $transition-base;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-
-  &--expanded {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  }
-
-  &__header {
+  &__item {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: $spacing-md;
+    min-height: 52px;
+    padding: 12px 16px;
+    background: #F5F3EB;
     border: none;
-    background: none;
+    border-radius: 8px;
+    box-shadow: 0px 3px 7px 1px rgba(0, 0, 0, 0.25);
     cursor: pointer;
-    text-align: left;
-    transition: $transition-fast;
+    transition: $transition-base;
     -webkit-tap-highlight-color: transparent;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.02);
+      transform: translateY(-1px);
+      box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.3);
     }
 
     &:active {
-      background: rgba(0, 0, 0, 0.04);
+      transform: scale(0.98);
+      box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.2);
     }
 
     &:focus-visible {
       outline: 2px solid $color-ai-primary;
-      outline-offset: -2px;
-      border-radius: $border-radius-lg;
-    }
-  }
-
-  &__icon {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, $color-ai-primary 0%, darken($color-ai-primary, 12%) 100%);
-    color: $color-text-inverse;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: $spacing-sm;
-
-    .material-icons {
-      font-size: 22px;
-    }
-  }
-
-  &__title {
-    flex: 1;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: $font-family-body;
-    color: $color-text-primary;
-  }
-
-  &__chevron {
-    color: $color-text-secondary;
-    transition: transform 0.2s ease;
-    opacity: 0.6;
-  }
-
-  &--expanded &__chevron {
-    transform: rotate(180deg);
-  }
-
-  &__content {
-    padding: 0 $spacing-md $spacing-md;
-    animation: slideDown 0.2s ease;
-  }
-
-  &__text {
-    font-size: 14px;
-    line-height: 1.6;
-    font-family: $font-family-body;
-    color: $color-text-secondary;
-    margin: 0;
-    white-space: pre-line;
-  }
-
-  &__list {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 14px;
-    line-height: 1.8;
-    font-family: $font-family-body;
-    color: $color-text-secondary;
-
-    li {
-      margin-bottom: 4px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// ==========================================
-// ACTION BUTTONS
-// ==========================================
-
-.detail-actions {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm;
-  padding-bottom: $spacing-xl;
-
-  &__primary,
-  &__outlined,
-  &__favorite {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 14px $spacing-lg;
-    border-radius: $border-radius-lg;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: $font-family-body;
-    cursor: pointer;
-    transition: $transition-base;
-    -webkit-tap-highlight-color: transparent;
-
-    .material-icons {
-      font-size: 22px;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-text-primary;
       outline-offset: 2px;
     }
   }
 
-  // Primary yellow CTA
-  &__primary {
-    background: $color-yellow-btn;
-    border: none;
-    color: $color-yellow-btn-text;
-
-    &:hover {
-      background: $color-yellow-btn-hover;
-      transform: translateY(-1px);
-      box-shadow: $shadow-md;
-    }
-
-    &:active {
-      background: $color-yellow-btn-pressed;
-      transform: translateY(0);
-    }
+  &__icon {
+    font-size: 26px;
+    color: $color-ai-primary;
+    margin-right: 12px;
+    flex-shrink: 0;
   }
 
-  // Outlined secondary button
-  &__outlined {
-    background: transparent;
-    border: $border-width-button solid rgba($color-text-secondary, 0.3);
-    color: $color-text-secondary;
-
-    &:hover {
-      border-color: $color-ai-primary;
-      color: $color-ai-primary;
-    }
-
-    &:active {
-      background: rgba($color-ai-primary, 0.05);
-    }
+  &__title {
+    flex: 1;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Montserrat', $font-family-body;
+    color: $color-text-primary;
   }
 
-  // Bookmark favorite button
-  &__favorite {
-    background: transparent;
-    border: $border-width-button solid rgba($color-text-secondary, 0.3);
+  &__arrow {
+    font-size: 24px;
     color: $color-text-secondary;
-
-    &:hover {
-      border-color: $color-primary-500;
-      color: $color-primary-500;
-    }
-
-    &:active {
-      background: rgba($color-primary-500, 0.05);
-    }
-
-    &--active {
-      border-color: $color-primary-500;
-      color: $color-primary-500;
-      background: rgba($color-primary-500, 0.08);
-    }
+    opacity: 0.5;
+    flex-shrink: 0;
   }
 }
 
 // ==========================================
-// RESPONSIVE - Mobile-first adjustments
+// RESPONSIVE
 // ==========================================
 
 // Small phones (320px)
 @media (max-width: 359px) {
-  .breed-identity__name {
-    font-size: 24px;
+  .breed-hero__circle {
+    width: 140px;
+    height: 140px;
   }
 
-  .quick-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-xs;
+  .breed-identity__name {
+    font-size: 30px;
+  }
 
-    &__card {
-      padding: $spacing-xs;
-    }
+  .breed-nav__title {
+    font-size: 16px;
   }
 }
 
 // Tablet and up
 @media (min-width: 768px) {
-  .breed-hero__image-wrapper {
-    height: 280px;
-    border-radius: $border-radius-page;
+  .breed-hero__circle {
+    width: 220px;
+    height: 220px;
   }
 
   .breed-identity__name {
-    font-size: 32px;
+    font-size: 48px;
   }
 
-  .quick-stats {
-    gap: $spacing-sm;
-
-    &__card {
-      padding: $spacing-md;
-    }
-
-    &__value {
-      font-size: 15px;
-    }
-  }
-
-  .detail-actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    &__primary {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    &__outlined {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    &__favorite {
-      width: auto;
-      flex: 0;
-      min-width: auto;
-      padding: 14px $spacing-lg;
-    }
+  .breed-nav {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-bottom: $spacing-xl;
   }
 }
