@@ -69,17 +69,15 @@
   <!-- Left Actions: FAB + dots a sinistra -->
   <ng-container shellLeftActions>
     @if (!isLoading() && !errorMessage() && pet.id) {
-      @if (canAddPet()) {
-        <button
-          class="pet-profile__add-pet"
-          (click)="onAddPetClick()"
-          aria-label="Aggiungi nuovo pet"
-        >
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-          </svg>
-        </button>
-      }
+      <button
+        class="pet-profile__add-pet"
+        (click)="onAddPetClick()"
+        aria-label="Aggiungi nuovo pet"
+      >
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </svg>
+      </button>
       <div class="pet-profile__dots">
         @for (p of allPets(); track p.id; let i = $index) {
           <button
@@ -228,6 +226,23 @@
       (confirmed)="onPhotoConfirmed($event)"
       (cancelled)="onPhotoCancelled()">
     </app-photo-upload-modal>
+  }
+
+  <!-- Paywall Modal -->
+  @if (showPaywall()) {
+    <div class="pet-profile__paywall-overlay" (click)="closePaywall()">
+      <div class="pet-profile__paywall" (click)="$event.stopPropagation()">
+        <button class="pet-profile__paywall-close" (click)="closePaywall()" aria-label="Chiudi">
+          <span class="material-icons">close</span>
+        </button>
+        <span class="material-icons pet-profile__paywall-icon">pets</span>
+        <h3 class="pet-profile__paywall-title">Limite raggiunto</h3>
+        <p class="pet-profile__paywall-text">Hai raggiunto il numero massimo di pet per il tuo piano. Passa a <strong>Premium</strong> per aggiungerne altri!</p>
+        <button class="pet-profile__paywall-btn" (click)="goToPremium()">
+          Passa a Premium
+        </button>
+      </div>
+    </div>
   }
 
 </app-tab-page-shell-pet-profile>

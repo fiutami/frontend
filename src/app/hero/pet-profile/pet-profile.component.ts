@@ -266,16 +266,24 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currentSlide = index;
   }
 
-  // Add new pet (max 2)
+  // Add new pet — always visible, paywall if limit reached
+  showPaywall = signal(false);
+
   onAddPetClick(): void {
     if (this.allPets().length >= this.MAX_PETS) {
-      return; // Button hidden via template, but guard here too
+      this.showPaywall.set(true);
+      return;
     }
     this.router.navigate(['/home/pet-register']);
   }
 
-  canAddPet(): boolean {
-    return this.allPets().length < this.MAX_PETS;
+  closePaywall(): void {
+    this.showPaywall.set(false);
+  }
+
+  goToPremium(): void {
+    this.showPaywall.set(false);
+    this.router.navigate(['/premium']);
   }
 
   // === Pet swipe / dot navigation ===

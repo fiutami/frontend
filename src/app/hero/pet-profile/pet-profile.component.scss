@@ -14,19 +14,24 @@
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pet-profile__photo {
-  width: 100%;
-  height: 100%;
+  width: 65%;
+  height: 65%;
   object-fit: cover;
   border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .pet-profile__photo-edit {
   position: absolute;
-  bottom: 2px;
-  right: 2px;
+  // Position relative to the inner photo circle (65% of container)
+  bottom: 20%;
+  right: 20%;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -98,7 +103,11 @@
 
 .pet-profile__photo-uploading {
   position: absolute;
-  inset: 0;
+  // Centered over the inner photo (65% of container)
+  top: 17.5%;
+  left: 17.5%;
+  width: 65%;
+  height: 65%;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.4);
   display: flex;
@@ -247,9 +256,21 @@
 .pet-profile__cta-row {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   gap: var(--sp-2);
-  flex-shrink: 0;
+  width: 100%;
+
+  // Each CTA button fills equal space
+  > * {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+// Override profile-icon max-width inside CTA row to fill available space
+:host ::ng-deep .pet-profile__cta-row .profile-icon--cta {
+  max-width: none;
+  width: 100%;
 }
 
 // Promo card inline (affiancata ai 3 CTA)
@@ -342,18 +363,36 @@
   bottom: var(--sp-3);
   left: 50%;
   transform: translateX(-50%);
-  padding: var(--sp-2) var(--sp-5);
+  padding: 14px 40px;
   background: $color-yellow-btn;
   color: $color-yellow-btn-text;
-  font-size: $typography-body-size;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
   border-radius: $border-radius-full;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: $transition-fast;
+  box-shadow: 0 4px 16px rgba(244, 174, 26, 0.5);
+  animation: fiuta-pulse 2s ease-in-out infinite;
 
   &:hover {
     background: $color-yellow-btn-hover;
-    transform: translateX(-50%) scale(1.05);
+    animation: none;
+    transform: translateX(-50%) scale(1.08);
+    box-shadow: 0 6px 20px rgba(244, 174, 26, 0.6);
+  }
+
+  &:active {
+    transform: translateX(-50%) scale(0.96);
+  }
+}
+
+@keyframes fiuta-pulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 4px 16px rgba(244, 174, 26, 0.5);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+    box-shadow: 0 6px 24px rgba(244, 174, 26, 0.7);
   }
 }
 
@@ -608,5 +647,94 @@
     background: #4a74f0;
     width: 10px;
     height: 10px;
+  }
+}
+
+// ==========================================
+// PAYWALL MODAL
+// ==========================================
+.pet-profile__paywall-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.pet-profile__paywall {
+  position: relative;
+  background: #fff;
+  border-radius: 24px;
+  padding: 32px 24px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.pet-profile__paywall-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .material-icons {
+    font-size: 18px;
+    color: #666;
+  }
+}
+
+.pet-profile__paywall-icon {
+  font-size: 48px;
+  color: $color-cta-primary;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.pet-profile__paywall-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px;
+}
+
+.pet-profile__paywall-text {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.pet-profile__paywall-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #F4AE1A 0%, #FFD700 100%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(244, 174, 26, 0.4);
+  transition: $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(244, 174, 26, 0.5);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }
