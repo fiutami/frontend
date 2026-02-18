@@ -66,17 +66,21 @@
 }
 
 // ==========================================
-// HERO IMAGE (raised closer to logo)
+// STICKY AREA OVERRIDE (overlap blue header)
+// ==========================================
+:host ::ng-deep .shell-blue-sticky {
+  margin-top: -48px;
+}
+
+// ==========================================
+// HERO IMAGE (in sticky area, overlaps blue header)
 // ==========================================
 
 .breed-hero {
   display: flex;
   justify-content: center;
-  margin-top: -48px;
   margin-bottom: $spacing-sm;
   padding-top: 0;
-  position: relative;
-  z-index: 1;
 
   &__circle {
     width: 180px;
@@ -197,7 +201,7 @@
 // ==========================================
 
 .section-card {
-  margin: 0 $spacing-md $spacing-xl;
+  margin: $spacing-sm $spacing-md 120px;
   background: #F5F3EB;
   border-radius: 8px;
   padding: $spacing-lg;

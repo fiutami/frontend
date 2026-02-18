@@ -4,6 +4,51 @@
   [showBack]="true"
   (backClicked)="goBack()">
 
+  <!-- Hero + Identity (non-scrolling, overlaps blue header via sticky slot) -->
+  <div shellStickyContent>
+    @if (breed() && !isLoading()) {
+      <section class="breed-hero">
+        <div class="breed-hero__circle">
+          <img
+            [src]="heroImageUrl()"
+            [alt]="breedName()"
+            class="breed-hero__image"
+            (error)="$any($event.target).src='assets/images/breeds/placeholder-breed.png'"
+            loading="eager">
+        </div>
+      </section>
+
+      <section class="breed-identity">
+        <h1 class="breed-identity__name">{{ breed()!.name }}</h1>
+
+        <div class="breed-identity__badges">
+          @if (breed()!.origin) {
+            <span class="breed-badge breed-badge--origin">
+              <span class="material-icons">star</span>
+              Origin: {{ originLabel() }}
+            </span>
+          }
+
+          @if (breed()!.recognition) {
+            <span class="breed-badge breed-badge--fci">
+              <span class="material-icons">check_circle</span>
+              {{ breed()!.recognition }}
+            </span>
+          } @else {
+            <span class="breed-badge breed-badge--fci">
+              <span class="material-icons">check_circle</span>
+              FCI Riconosciuta
+            </span>
+          }
+        </div>
+
+        @if (breed()!.history) {
+          <p class="breed-identity__description">{{ breed()!.history }}</p>
+        }
+      </section>
+    }
+  </div>
+
   <!-- Loading state -->
   @if (isLoading()) {
     <div class="detail-loading">
@@ -12,7 +57,7 @@
     </div>
   }
 
-  <!-- Error state (no breed loaded and not loading) -->
+  <!-- Error state -->
   @if (!breed() && !isLoading()) {
     <div class="detail-error">
       <span class="material-icons">error_outline</span>
@@ -23,51 +68,8 @@
     </div>
   }
 
-  <!-- Breed details -->
+  <!-- Navigation buttons (scrollable) -->
   @if (breed() && !isLoading()) {
-    <!-- Hero: circular image -->
-    <section class="breed-hero">
-      <div class="breed-hero__circle">
-        <img
-          [src]="heroImageUrl()"
-          [alt]="breedName()"
-          class="breed-hero__image"
-          (error)="$any($event.target).src='assets/images/breeds/placeholder-breed.png'"
-          loading="eager">
-      </div>
-    </section>
-
-    <!-- Name + Badges + Description -->
-    <section class="breed-identity">
-      <h1 class="breed-identity__name">{{ breed()!.name }}</h1>
-
-      <div class="breed-identity__badges">
-        @if (breed()!.origin) {
-          <span class="breed-badge breed-badge--origin">
-            <span class="material-icons">star</span>
-            Origin: {{ originLabel() }}
-          </span>
-        }
-
-        @if (breed()!.recognition) {
-          <span class="breed-badge breed-badge--fci">
-            <span class="material-icons">check_circle</span>
-            {{ breed()!.recognition }}
-          </span>
-        } @else {
-          <span class="breed-badge breed-badge--fci">
-            <span class="material-icons">check_circle</span>
-            FCI Riconosciuta
-          </span>
-        }
-      </div>
-
-      @if (breed()!.history) {
-        <p class="breed-identity__description">{{ breed()!.history }}</p>
-      }
-    </section>
-
-    <!-- Navigation buttons -->
     <section class="breed-nav">
       @for (section of infoSections(); track trackBySection($index, section)) {
         <button class="breed-nav__item" (click)="goToSection(section.id)">

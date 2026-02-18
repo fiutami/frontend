@@ -4,6 +4,57 @@
   [showBack]="true"
   (backClicked)="goBack()">
 
+  <!-- Hero + Identity + Pill (non-scrolling, overlaps blue header via sticky slot) -->
+  <div shellStickyContent>
+    @if (breed() && !isLoading()) {
+      <section class="breed-hero">
+        <div class="breed-hero__circle">
+          <img
+            [src]="heroImageUrl()"
+            [alt]="breedName()"
+            class="breed-hero__image"
+            (error)="$any($event.target).src='assets/images/breeds/placeholder-breed.png'"
+            loading="eager">
+        </div>
+      </section>
+
+      <section class="breed-identity">
+        <h1 class="breed-identity__name">{{ breed()!.name }}</h1>
+
+        <div class="breed-identity__badges">
+          @if (breed()!.origin) {
+            <span class="breed-badge breed-badge--origin">
+              <span class="material-icons">star</span>
+              Origin: {{ originLabel() }}
+            </span>
+          }
+
+          @if (breed()!.recognition) {
+            <span class="breed-badge breed-badge--fci">
+              <span class="material-icons">check_circle</span>
+              {{ breed()!.recognition }}
+            </span>
+          } @else {
+            <span class="breed-badge breed-badge--fci">
+              <span class="material-icons">check_circle</span>
+              FCI Riconosciuta
+            </span>
+          }
+        </div>
+
+        @if (breed()!.history) {
+          <p class="breed-identity__description">{{ breed()!.history }}</p>
+        }
+      </section>
+
+      <!-- Yellow category pill -->
+      <div class="section-pill">
+        <span class="material-icons section-pill__icon">{{ sectionIcon() }}</span>
+        <span class="section-pill__title">{{ sectionTitle() }}</span>
+      </div>
+    }
+  </div>
+
   <!-- Loading -->
   @if (isLoading()) {
     <div class="section-loading">
@@ -23,58 +74,14 @@
     </div>
   }
 
-  <!-- Content -->
+  <!-- Section content card (scrollable, post-it beige) -->
   @if (breed() && !isLoading()) {
-    <!-- Hero: same as breed-detail (photo + name + badges + description) -->
-    <section class="breed-hero">
-      <div class="breed-hero__circle">
-        <img
-          [src]="heroImageUrl()"
-          [alt]="breedName()"
-          class="breed-hero__image"
-          (error)="$any($event.target).src='assets/images/breeds/placeholder-breed.png'"
-          loading="eager">
-      </div>
-    </section>
-
-    <section class="breed-identity">
-      <h1 class="breed-identity__name">{{ breed()!.name }}</h1>
-
-      <div class="breed-identity__badges">
-        @if (breed()!.origin) {
-          <span class="breed-badge breed-badge--origin">
-            <span class="material-icons">star</span>
-            Origin: {{ originLabel() }}
-          </span>
-        }
-
-        @if (breed()!.recognition) {
-          <span class="breed-badge breed-badge--fci">
-            <span class="material-icons">check_circle</span>
-            {{ breed()!.recognition }}
-          </span>
-        } @else {
-          <span class="breed-badge breed-badge--fci">
-            <span class="material-icons">check_circle</span>
-            FCI Riconosciuta
-          </span>
-        }
-      </div>
-
-      @if (breed()!.history) {
-        <p class="breed-identity__description">{{ breed()!.history }}</p>
-      }
-    </section>
-
-    <!-- Yellow category pill -->
-    <div class="section-pill">
-      <span class="material-icons section-pill__icon">{{ sectionIcon() }}</span>
-      <span class="section-pill__title">{{ sectionTitle() }}</span>
-    </div>
-
-    <!-- Section content card (post-it beige) -->
     <div class="section-card">
-      <p class="section-card__text">{{ sectionContent() }}</p>
+      @if (sectionContent()) {
+        <p class="section-card__text">{{ sectionContent() }}</p>
+      } @else {
+        <p class="section-card__empty">Informazioni non ancora disponibili per questa sezione.</p>
+      }
     </div>
   }
 
