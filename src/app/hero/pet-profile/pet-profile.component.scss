@@ -391,9 +391,9 @@
 
 .pet-profile__fiuta-btn {
   position: absolute;
-  bottom: var(--sp-3);
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   padding: 14px 40px;
   background: $color-yellow-btn;
   color: $color-yellow-btn-text;
@@ -407,22 +407,22 @@
   &:hover {
     background: $color-yellow-btn-hover;
     animation: none;
-    transform: translateX(-50%) scale(1.08);
+    transform: translate(-50%, -50%) scale(1.08);
     box-shadow: 0 6px 20px rgba(244, 174, 26, 0.6);
   }
 
   &:active {
-    transform: translateX(-50%) scale(0.96);
+    transform: translate(-50%, -50%) scale(0.96);
   }
 }
 
 @keyframes fiuta-pulse {
   0%, 100% {
-    transform: translateX(-50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
     box-shadow: 0 4px 16px rgba(244, 174, 26, 0.5);
   }
   50% {
-    transform: translateX(-50%) scale(1.08);
+    transform: translate(-50%, -50%) scale(1.08);
     box-shadow: 0 6px 24px rgba(244, 174, 26, 0.7);
   }
 }
