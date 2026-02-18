@@ -230,6 +230,27 @@
 
   </div>
 
+  <!-- Upload progress overlay -->
+  @if (isUploadingPhoto()) {
+    <div class="upload-overlay">
+      <div class="upload-overlay__content">
+        <span class="pet-edit__spinner"></span>
+        <p>Caricamento foto... {{ uploadProgress() }}%</p>
+      </div>
+    </div>
+  }
+
+  <!-- Photo Upload Modal -->
+  @if (showPhotoUpload()) {
+    <app-photo-upload-modal
+      [aspectRatio]="photoUploadMode() === 'profile' ? 1 : 4/3"
+      [maxSize]="800"
+      [title]="photoUploadMode() === 'profile' ? 'Foto profilo' : 'Aggiungi foto'"
+      (confirmed)="onPhotoConfirmed($event)"
+      (cancelled)="onPhotoCancelled()">
+    </app-photo-upload-modal>
+  }
+
   <!-- Slide-to-Delete Confirmation Modal -->
   @if (showDeleteModal()) {
     <div class="delete-confirm__backdrop" (click)="cancelDelete()">

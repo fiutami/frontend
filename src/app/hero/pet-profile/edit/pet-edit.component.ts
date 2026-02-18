@@ -10,7 +10,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+import { PhotoUploadModalComponent } from '../../../shared/components/photo-upload-modal/photo-upload-modal.component';
 import { PetService } from '../../../core/services/pet.service';
+import { PhotoUploadService } from '../../../core/services/photo-upload.service';
 import { PetResponse } from '../../../core/models/pet.models';
 
 export interface PetEditForm {
@@ -30,7 +32,7 @@ export interface PersonalityChip {
 @Component({
   selector: 'app-pet-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule, TabPageShellBlueComponent],
+  imports: [CommonModule, FormsModule, TabPageShellBlueComponent, PhotoUploadModalComponent],
   templateUrl: './pet-edit.component.html',
   styleUrls: ['./pet-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,6 +40,7 @@ export interface PersonalityChip {
 export class PetEditComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly petService = inject(PetService);
+  private readonly photoUploadService = inject(PhotoUploadService);
   private readonly cdr = inject(ChangeDetectorRef);
 
   // The pet being edited
@@ -52,6 +55,12 @@ export class PetEditComponent implements OnInit {
 
   // Cover / gallery photos
   readonly coverPhotos = signal<string[]>([]);
+
+  // Photo upload modal state
+  readonly showPhotoUpload = signal(false);
+  readonly photoUploadMode = signal<'profile' | 'gallery'>('profile');
+  readonly isUploadingPhoto = signal(false);
+  readonly uploadProgress = signal(0);
 
   // Form data
   readonly form = signal<PetEditForm>({
@@ -137,8 +146,8 @@ export class PetEditComponent implements OnInit {
   // --- Profile Photo ---
 
   onChangeProfilePhoto(): void {
-    // In production this would open a file picker or camera modal
-    console.log('Change profile photo');
+    this.photoUploadMode.set('profile');
+    this.showPhotoUpload.set(true);
   }
 
   // --- Cover Photos ---
@@ -148,8 +157,68 @@ export class PetEditComponent implements OnInit {
   }
 
   onAddCoverPhoto(): void {
-    // In production this would open a file picker
-    console.log('Add cover photo');
+    this.photoUploadMode.set('gallery');
+    this.showPhotoUpload.set(true);
+  }
+
+  // --- Photo Upload Modal Handlers ---
+
+  async onPhotoConfirmed(blob: Blob): Promise<void> {
+    this.showPhotoUpload.set(false);
+    if (!this.petId) return;
+
+    this.isUploadingPhoto.set(true);
+    this.uploadProgress.set(0);
+    this.cdr.markForCheck();
+
+    const fileName = this.photoUploadMode() === 'profile' ? 'profile-photo.jpg' : 'gallery-photo.jpg';
+    const file = new File([blob], fileName, { type: 'image/jpeg' });
+
+    try {
+      if (this.photoUploadMode() === 'profile') {
+        await this.photoUploadService.uploadProfilePhoto(
+          this.petId,
+          file,
+          (p) => {
+            this.uploadProgress.set(p);
+            this.cdr.markForCheck();
+          },
+        );
+        // Refresh pet data to get new profile photo URL
+        this.petService.getPet(this.petId).subscribe({
+          next: (pet) => {
+            this.profilePhoto.set(pet.profilePhotoUrl || 'assets/images/default-pet-avatar.png');
+            this.isUploadingPhoto.set(false);
+            this.cdr.markForCheck();
+          },
+          error: () => {
+            this.isUploadingPhoto.set(false);
+            this.cdr.markForCheck();
+          },
+        });
+      } else {
+        await this.photoUploadService.uploadGalleryPhoto(
+          this.petId,
+          file,
+          (p) => {
+            this.uploadProgress.set(p);
+            this.cdr.markForCheck();
+          },
+        );
+        // Refresh gallery
+        this.loadGalleryPhotos(this.petId);
+        this.isUploadingPhoto.set(false);
+        this.cdr.markForCheck();
+      }
+    } catch (err) {
+      console.error('Photo upload failed:', err);
+      this.isUploadingPhoto.set(false);
+      this.cdr.markForCheck();
+    }
+  }
+
+  onPhotoCancelled(): void {
+    this.showPhotoUpload.set(false);
   }
 
   // --- Form Updates ---
