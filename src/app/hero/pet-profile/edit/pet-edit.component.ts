@@ -257,6 +257,7 @@ export class PetEditComponent implements OnInit {
       sex: formData.sex === 'Maschio' ? 'male' : 'female',
       birthDate: formData.birthDate || null,
       weight: formData.weight,
+      notes: formData.bio || null,
     }).subscribe({
       next: () => {
         this.isSaving.set(false);

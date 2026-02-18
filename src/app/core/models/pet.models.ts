@@ -24,6 +24,7 @@ export interface PetUpdateRequest {
   birthDate?: string | null;
   color?: string | null;
   weight?: number | null;
+  notes?: string | null;
   specialMarks?: string | null;
   microchipNumber?: string | null;
   isNeutered?: boolean | null;
