@@ -1,6 +1,6 @@
 <app-tab-page-shell-blue
   [title]="sectionTitle()"
-  activeTabId="breeds"
+  activeTabId="species"
   [showBack]="true"
   (backClicked)="goBack()">
 
@@ -25,57 +25,59 @@
 
   <!-- Content -->
   @if (breed() && !isLoading()) {
-    <div class="section-content">
-      <!-- Section header -->
-      <div class="section-header">
-        <span class="material-icons section-header__icon">{{ sectionIcon() }}</span>
-        <h2 class="section-header__title">{{ sectionTitle() }}</h2>
-        <p class="section-header__breed">{{ breed()!.name }}</p>
+    <!-- Hero: same as breed-detail (photo + name + badges + description) -->
+    <section class="breed-hero">
+      <div class="breed-hero__circle">
+        <img
+          [src]="heroImageUrl()"
+          [alt]="breedName()"
+          class="breed-hero__image"
+          (error)="$any($event.target).src='assets/images/breeds/placeholder-breed.png'"
+          loading="eager">
+      </div>
+    </section>
+
+    <section class="breed-identity">
+      <h1 class="breed-identity__name">{{ breed()!.name }}</h1>
+
+      <div class="breed-identity__badges">
+        @if (breed()!.origin) {
+          <span class="breed-badge breed-badge--origin">
+            <span class="material-icons">star</span>
+            Origin: {{ originLabel() }}
+          </span>
+        }
+
+        @if (breed()!.recognition) {
+          <span class="breed-badge breed-badge--fci">
+            <span class="material-icons">check_circle</span>
+            {{ breed()!.recognition }}
+          </span>
+        } @else {
+          <span class="breed-badge breed-badge--fci">
+            <span class="material-icons">check_circle</span>
+            FCI Riconosciuta
+          </span>
+        }
       </div>
 
-      <!-- Data section (dna, size, temperament) -->
-      @if (isDataSection()) {
-        <div class="section-card">
-          @if (sectionItems().length > 0) {
-            @for (item of sectionItems(); track item.label) {
-              <div class="data-row">
-                <span class="data-row__label">{{ item.label }}</span>
-                <span class="data-row__value">{{ item.value }}</span>
-              </div>
-            }
-          } @else {
-            <p class="section-card__empty">Nessun dato disponibile per questa sezione.</p>
-          }
-        </div>
+      @if (breed()!.history) {
+        <p class="breed-identity__description">{{ breed()!.history }}</p>
       }
+    </section>
 
-      <!-- List section (rituals, health) -->
-      @if (isListSection()) {
-        <div class="section-card">
-          @if (sectionList().length > 0) {
-            <ul class="section-list">
-              @for (item of sectionList(); track item) {
-                <li class="section-list__item">
-                  <span class="material-icons section-list__bullet">circle</span>
-                  {{ item }}
-                </li>
-              }
-            </ul>
-          } @else {
-            <p class="section-card__empty">Nessun dato disponibile per questa sezione.</p>
-          }
-        </div>
-      }
+    <!-- Yellow category pill -->
+    <div class="section-pill">
+      <span class="material-icons section-pill__icon">{{ sectionIcon() }}</span>
+      <span class="section-pill__title">{{ sectionTitle() }}</span>
+    </div>
 
-      <!-- Text section (history) -->
-      @if (isTextSection()) {
-        <div class="section-card">
-          @if (sectionText()) {
-            <p class="section-text">{{ sectionText() }}</p>
-          } @else {
-            <p class="section-card__empty">Nessun dato disponibile per questa sezione.</p>
-          }
-        </div>
+    <!-- Section content card -->
+    <div class="section-card">
+      @if (sectionContent()) {
+        <p class="section-card__text">{{ sectionContent() }}</p>
+      } @else {
+        <p class="section-card__empty">Nessun dato disponibile per questa sezione.</p>
       }
     </div>
   }

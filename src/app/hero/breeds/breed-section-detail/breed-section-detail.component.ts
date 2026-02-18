@@ -38,39 +38,69 @@ export class BreedSectionDetailComponent implements OnInit {
   readonly sectionCode = signal<string>('');
   readonly sectionMeta = signal<InfoSection | null>(null);
 
-  // Computed
+  // Computed — hero
+  readonly breedName = computed(() => this.breed()?.name || '');
+
+  readonly heroImageUrl = computed(() => {
+    const b = this.breed();
+    return b?.imageUrl || 'assets/images/breeds/placeholder-breed.png';
+  });
+
+  readonly originLabel = computed(() => {
+    const b = this.breed();
+    return b?.origin || 'Sconosciuta';
+  });
+
+  // Computed — section
   readonly sectionTitle = computed(() => this.sectionMeta()?.title || this.getFallbackTitle());
   readonly sectionIcon = computed(() => this.sectionMeta()?.icon || this.getFallbackIcon());
 
-  readonly sectionItems = computed<SectionData[]>(() => {
-    const b = this.breed();
-    if (!b) return [];
-    return this.buildSectionData(b);
-  });
-
-  readonly sectionList = computed<string[]>(() => {
-    const b = this.breed();
-    if (!b) return [];
-    const code = this.sectionCode();
-    if (code === 'rituals') return b.rituals || [];
-    if (code === 'health') return b.healthRisks || [];
-    return [];
-  });
-
-  readonly sectionText = computed<string | null>(() => {
+  readonly sectionContent = computed<string | null>(() => {
     const b = this.breed();
     if (!b) return null;
-    if (this.sectionCode() === 'history') return b.history || null;
-    return null;
-  });
-
-  readonly isListSection = computed(() => {
     const code = this.sectionCode();
-    return code === 'rituals' || code === 'health';
-  });
 
-  readonly isTextSection = computed(() => this.sectionCode() === 'history');
-  readonly isDataSection = computed(() => !this.isListSection() && !this.isTextSection());
+    switch (code) {
+      case 'dna':
+        if (!b.dna) return null;
+        const dnaParts = [b.dna.genetics];
+        if (b.dna.groupFCI) dnaParts.push(`Gruppo FCI: ${b.dna.groupFCI}`);
+        if (b.dna.ancestralBreeds?.length) dnaParts.push(`Ancestori: ${b.dna.ancestralBreeds.join(', ')}`);
+        return dnaParts.filter(Boolean).join(' - ');
+
+      case 'size':
+        if (!b.size) return null;
+        const sizeParts = [
+          `Taglia: ${b.size.weight.min}-${b.size.weight.max} ${b.size.weight.unit}, ${b.size.height.min}-${b.size.height.max} ${b.size.height.unit}`,
+          `Pelo ${b.size.coat}`,
+        ];
+        if (b.size.colors?.length) sizeParts.push(`Colore: ${b.size.colors.join(', ')}`);
+        if (b.size.lifespan) sizeParts.push(`Aspettativa di vita: ${b.size.lifespan.min}-${b.size.lifespan.max} anni`);
+        return sizeParts.join('. - ');
+
+      case 'temperament':
+        if (!b.temperament) return null;
+        const tempParts = [
+          `Energia: ${b.temperament.energy}`,
+          `Socialità: ${b.temperament.sociality}`,
+          `Addestrabilità: ${b.temperament.trainability}`,
+        ];
+        if (b.temperament.traits?.length) tempParts.push(`Tratti: ${b.temperament.traits.join(', ')}`);
+        return tempParts.join('. - ');
+
+      case 'rituals':
+        return b.rituals?.join('. - ') || null;
+
+      case 'health':
+        return b.healthRisks?.join('. - ') || null;
+
+      case 'history':
+        return b.history || null;
+
+      default:
+        return null;
+    }
+  });
 
   ngOnInit(): void {
     const breedId = this.route.snapshot.paramMap.get('breedId') || '';
@@ -118,45 +148,6 @@ export class BreedSectionDetailComponent implements OnInit {
         this.isLoading.set(false);
       },
     });
-  }
-
-  private buildSectionData(b: Breed): SectionData[] {
-    const code = this.sectionCode();
-
-    switch (code) {
-      case 'dna':
-        if (!b.dna) return [];
-        return [
-          { label: 'Genetica', value: b.dna.genetics || '--' },
-          { label: 'Gruppo FCI', value: b.dna.groupFCI || 'N/A' },
-          { label: 'Ancestori', value: b.dna.ancestralBreeds?.join(', ') || 'N/A' },
-        ].filter((d) => d.value !== '--');
-
-      case 'size':
-        if (!b.size) return [];
-        const items: SectionData[] = [
-          { label: 'Altezza', value: `${b.size.height.min}–${b.size.height.max} ${b.size.height.unit}` },
-          { label: 'Peso', value: `${b.size.weight.min}–${b.size.weight.max} ${b.size.weight.unit}` },
-          { label: 'Pelo', value: b.size.coat || '--' },
-          { label: 'Colori', value: b.size.colors?.join(', ') || '--' },
-        ];
-        if (b.size.lifespan) {
-          items.push({ label: 'Aspettativa di vita', value: `${b.size.lifespan.min}–${b.size.lifespan.max} anni` });
-        }
-        return items;
-
-      case 'temperament':
-        if (!b.temperament) return [];
-        return [
-          { label: 'Energia', value: b.temperament.energy },
-          { label: 'Socialita\'', value: b.temperament.sociality },
-          { label: 'Addestrabilita\'', value: b.temperament.trainability },
-          { label: 'Tratti', value: b.temperament.traits?.join(', ') || '--' },
-        ];
-
-      default:
-        return [];
-    }
   }
 
   private getFallbackTitle(): string {

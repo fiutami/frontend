@@ -89,8 +89,8 @@
 .breed-hero {
   display: flex;
   justify-content: center;
-  margin-bottom: $spacing-lg;
-  padding-top: $spacing-md;
+  margin-bottom: $spacing-sm;
+  padding-top: 0;
 
   &__circle {
     width: 180px;

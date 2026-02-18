@@ -66,165 +66,189 @@
 }
 
 // ==========================================
-// CONTENT
+// HERO IMAGE (same as breed-detail)
 // ==========================================
 
-.section-content {
-  padding: $spacing-md $spacing-md $spacing-xl;
+.breed-hero {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $spacing-sm;
+  padding-top: 0;
+
+  &__circle {
+    width: 180px;
+    height: 180px;
+    border-radius: $border-radius-full;
+    border: 4px solid #F2B830;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 // ==========================================
-// SECTION HEADER
+// BREED IDENTITY (same as breed-detail)
 // ==========================================
 
-.section-header {
+.breed-identity {
   text-align: center;
-  margin-bottom: $spacing-lg;
+  margin-bottom: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 0 $spacing-md;
 
-  &__icon {
+  &__name {
     font-size: 40px;
-    color: rgba(255, 255, 255, 0.9);
-    display: block;
-    margin-bottom: $spacing-xs;
-  }
-
-  &__title {
-    font-size: 28px;
     font-weight: 500;
     font-family: 'Montserrat', $font-family-body;
     color: #ffffff;
-    margin: 0 0 4px;
+    margin: 0;
+    line-height: 1.1;
   }
 
-  &__breed {
-    font-size: 14px;
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-xs;
+    margin-top: $spacing-xs;
+  }
+
+  &__description {
+    font-size: 13px;
     font-family: $font-family-body;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    margin: $spacing-xs 0 0;
+    max-width: 340px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.breed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: $font-family-body;
+
+  .material-icons {
+    font-size: 16px;
+  }
+
+  &--origin {
+    background: #ffffff;
+    color: $color-text-primary;
+  }
+
+  &--fci {
+    background: #7FA438;
+    color: #ffffff;
   }
 }
 
 // ==========================================
-// CARD CONTAINER
+// YELLOW CATEGORY PILL
+// ==========================================
+
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 $spacing-md $spacing-sm;
+  padding: 10px 20px;
+  background: #F2B830;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &__icon {
+    font-size: 22px;
+    color: #ffffff;
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Montserrat', $font-family-body;
+    color: #ffffff;
+  }
+}
+
+// ==========================================
+// SECTION CONTENT CARD
 // ==========================================
 
 .section-card {
-  background: #ffffff;
+  margin: 0 $spacing-md $spacing-xl;
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   padding: $spacing-lg;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.7;
+    font-family: $font-family-body;
+    color: #ffffff;
+    margin: 0;
+    white-space: pre-line;
+  }
 
   &__empty {
     font-size: 14px;
     font-family: $font-family-body;
-    color: $color-text-secondary;
+    color: rgba(255, 255, 255, 0.6);
     text-align: center;
     margin: 0;
-    padding: $spacing-lg 0;
+    padding: $spacing-md 0;
   }
-}
-
-// ==========================================
-// DATA ROWS (dna, size, temperament)
-// ==========================================
-
-.data-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-
-  &:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &__label {
-    font-size: 14px;
-    font-weight: 500;
-    font-family: $font-family-body;
-    color: $color-text-secondary;
-    flex-shrink: 0;
-    margin-right: $spacing-md;
-  }
-
-  &__value {
-    font-size: 15px;
-    font-weight: 500;
-    font-family: $font-family-body;
-    color: $color-text-primary;
-    text-align: right;
-    word-break: break-word;
-  }
-}
-
-// ==========================================
-// LIST (rituals, health)
-// ==========================================
-
-.section-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  &__item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px 0;
-    font-size: 15px;
-    line-height: 1.5;
-    font-family: $font-family-body;
-    color: $color-text-primary;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-
-    &:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    &:first-child {
-      padding-top: 0;
-    }
-  }
-
-  &__bullet {
-    font-size: 8px;
-    color: $color-ai-primary;
-    margin-top: 6px;
-    flex-shrink: 0;
-  }
-}
-
-// ==========================================
-// TEXT (history)
-// ==========================================
-
-.section-text {
-  font-size: 15px;
-  line-height: 1.7;
-  font-family: $font-family-body;
-  color: $color-text-primary;
-  margin: 0;
-  white-space: pre-line;
 }
 
 // ==========================================
 // RESPONSIVE
 // ==========================================
 
-@media (min-width: 768px) {
-  .section-content {
-    max-width: 560px;
-    margin: 0 auto;
+@media (max-width: 359px) {
+  .breed-hero__circle {
+    width: 140px;
+    height: 140px;
   }
 
-  .section-header__title {
-    font-size: 34px;
+  .breed-identity__name {
+    font-size: 30px;
+  }
+
+  .section-pill__title {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .breed-hero__circle {
+    width: 220px;
+    height: 220px;
+  }
+
+  .breed-identity__name {
+    font-size: 48px;
+  }
+
+  .section-card {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
