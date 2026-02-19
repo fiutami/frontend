@@ -1,15 +1,18 @@
 <app-tab-page-shell-default
   title="Banda Pelosa"
   activeTabId="pet-profile"
+  backgroundVariant="tab-menu"
   [showBack]="true"
   (backClicked)="goBack()">
 
-  <!-- Sticky: motto + add friend CTA -->
+  <!-- Branding extra: subtitle under logo (same style as fatti-bestiali) -->
+  <p shellBrandingExtra class="pet-friends-subtitle">
+    Qui trovi la tua <strong>banda pelosa</strong>, gli amici con cui hai gi&agrave; interagito
+  </p>
+
+  <!-- Sticky: action buttons -->
   <ng-container shellStickyContent>
     <div class="pet-friends-intro">
-      <p class="pet-friends-intro__motto">
-        "Qui trovi la tua banda pelosa. Gli amici con cui hai gi&agrave; interagito"
-      </p>
       <div class="pet-friends-intro__actions">
         <button
           class="pet-friends-intro__action-btn"

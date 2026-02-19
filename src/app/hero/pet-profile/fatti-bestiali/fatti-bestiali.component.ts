@@ -17,7 +17,7 @@ import { PetService } from '../../../core/services/pet.service';
 import { PetDocumentService } from '../../../core/services/pet-document.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { SubscriptionsService } from '../../../core/services/subscriptions.service';
-import { PetResponse } from '../../../core/models/pet.models';
+import { PetResponse, PetSummaryResponse } from '../../../core/models/pet.models';
 import { PetDocument, PetDocumentType } from '../../../core/models/pet-document.models';
 
 export interface FBSection {
@@ -61,6 +61,13 @@ export class FattiBestialiComponent implements OnInit {
   uploadProgress = signal(0);
   uploadTargetType: PetDocumentType = 'other';
 
+  // Multi-pet switching
+  allPets = signal<PetSummaryResponse[]>([]);
+  currentPetIndex = signal(0);
+
+  // Description expand state
+  descriptionExpanded = signal(false);
+
   // Computed
   petAge = computed(() => {
     const p = this.pet();
@@ -100,6 +107,7 @@ export class FattiBestialiComponent implements OnInit {
     }
     this.loadUserProfile();
     this.loadSubscription();
+    this.loadAllPets();
   }
 
   goBack(): void {
@@ -126,15 +134,25 @@ export class FattiBestialiComponent implements OnInit {
     return section.isLocked && !this.isPremiumOrPro();
   }
 
-  navigateToEditPet(): void {
-    const p = this.pet();
-    if (p) {
-      this.router.navigate(['/profile/pet', p.id]);
-    }
+  // === Pet switching ===
+
+  goToPet(index: number): void {
+    const pets = this.allPets();
+    if (index < 0 || index >= pets.length || index === this.currentPetIndex()) return;
+    this.currentPetIndex.set(index);
+    this.descriptionExpanded.set(false);
+    this.expandedSectionId.set(null);
+    this.documents.set([]);
+    this.vaccinations.set([]);
+    this.loadPetData(pets[index].id);
   }
 
   navigateToAddPet(): void {
     this.router.navigate(['/home/pet-register/specie']);
+  }
+
+  toggleDescription(): void {
+    this.descriptionExpanded.update(v => !v);
   }
 
   navigateToSubscriptions(): void {
@@ -255,6 +273,22 @@ export class FattiBestialiComponent implements OnInit {
     this.subscriptionsService.getCurrentSubscription().subscribe({
       next: (sub) => {
         this.userPlanId.set(sub.planId || 'free');
+        this.cdr.markForCheck();
+      },
+      error: () => {},
+    });
+  }
+
+  private loadAllPets(): void {
+    this.petService.loadPets().subscribe({
+      next: (response) => {
+        this.allPets.set(response.pets);
+        // Find index of current pet
+        const currentPetId = this.route.snapshot.paramMap.get('id');
+        if (currentPetId) {
+          const idx = response.pets.findIndex(p => p.id === currentPetId);
+          if (idx >= 0) this.currentPetIndex.set(idx);
+        }
         this.cdr.markForCheck();
       },
       error: () => {},

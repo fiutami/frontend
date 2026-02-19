@@ -146,6 +146,19 @@
   text-transform: uppercase;
 }
 
+.pet-profile__birthdate {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 var(--sp-1);
+
+  .material-icons {
+    font-size: 16px;
+  }
+}
+
 .pet-profile__description {
   font-size: $typography-body-size;
   color: rgba(255, 255, 255, 0.8);

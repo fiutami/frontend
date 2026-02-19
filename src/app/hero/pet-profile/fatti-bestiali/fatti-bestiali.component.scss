@@ -98,42 +98,81 @@
   }
 }
 
-.fb__pet-card-actions {
-  display: flex;
-  gap: $spacing-sm;
-}
-
-.fb__btn-outline {
-  flex: 1;
-  padding: 10px $spacing-md;
-  border: 2px solid $color-primary-500;
-  border-radius: $border-radius-md;
-  background: transparent;
-  color: $color-primary-500;
-  font-size: $typography-body-size;
-  font-weight: 600;
+// Description (expandable on tap)
+.fb__pet-card-description {
+  margin-top: $spacing-sm;
+  max-height: 52px;
+  overflow: hidden;
   cursor: pointer;
-  transition: $transition-fast;
+  transition: max-height 300ms ease;
 
-  &:active {
-    background: rgba($color-primary-500, 0.08);
+  &--expanded {
+    max-height: 120px;
+    overflow-y: auto;
   }
 }
 
-.fb__btn-cta {
-  flex: 1;
-  padding: 10px $spacing-md;
+.fb__pet-card-description-text {
+  font-size: 13px;
+  color: $color-text-secondary;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  .fb__pet-card-description--expanded & {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+}
+
+// Footer: dots or add-pet link
+.fb__pet-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: $spacing-sm;
+  min-height: 20px;
+}
+
+.fb__pet-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.fb__pet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
   border: none;
-  border-radius: $border-radius-md;
-  background: $color-yellow-btn;
-  color: $color-yellow-btn-text;
-  font-size: $typography-body-size;
-  font-weight: 600;
+  padding: 0;
   cursor: pointer;
-  transition: $transition-fast;
+  transition: all 200ms ease;
+
+  &--active {
+    background: $color-primary-500;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.fb__add-pet-link {
+  background: none;
+  border: none;
+  color: $color-text-secondary;
+  font-size: 12px;
+  font-family: $font-family-body;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
 
   &:active {
-    background: $color-yellow-btn-pressed;
+    color: $color-primary-500;
   }
 }
 

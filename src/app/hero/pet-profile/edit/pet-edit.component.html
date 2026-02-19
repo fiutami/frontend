@@ -45,19 +45,29 @@
       <p class="pet-edit__photo-hint">Tocca per cambiare foto</p>
     </section>
 
-    <!-- Section: Cover Photos -->
+    <!-- Section: Cover Photos (tap to set as profile) -->
     <section class="pet-edit__cover-section" aria-label="Galleria foto">
-      <label class="pet-edit__label">FOTO</label>
+      <label class="pet-edit__label">FOTO — tocca per impostare come profilo</label>
       <div class="pet-edit__cover-scroll">
-        @for (photo of coverPhotos(); track $index) {
-          <button
-            class="pet-edit__cover-thumb"
-            (click)="onCoverPhotoClick($index)"
-            [attr.aria-label]="'Foto ' + ($index + 1)"
-            type="button"
-          >
-            <img [src]="photo" [alt]="'Foto ' + ($index + 1)" />
-          </button>
+        @for (photo of galleryPhotos(); track photo.id; let i = $index) {
+          @if (i < 6) {
+            <button
+              class="pet-edit__cover-thumb"
+              [class.pet-edit__cover-thumb--selected]="photo.isProfilePhoto"
+              (click)="onSetAsProfilePhoto(photo)"
+              [attr.aria-label]="photo.isProfilePhoto ? 'Foto profilo attuale' : 'Imposta come foto profilo'"
+              type="button"
+            >
+              <img [src]="photo.thumbnailUrl || photo.url" [alt]="'Foto ' + (i + 1)" />
+              @if (photo.isProfilePhoto) {
+                <span class="pet-edit__cover-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                </span>
+              }
+            </button>
+          }
         }
         <button
           class="pet-edit__cover-add"
@@ -166,38 +176,6 @@
       </div>
     </section>
 
-    <!-- Section: Personality Chips -->
-    <section class="pet-edit__chips-section" aria-label="Tratti di personalita">
-      <label class="pet-edit__label">PERSONALITA</label>
-      <div class="pet-edit__chips">
-        @for (chip of chips(); track chip.id) {
-          <span class="pet-edit__chip">
-            {{ chip.label }}
-            <button
-              class="pet-edit__chip-remove"
-              (click)="removeChip(chip.id)"
-              [attr.aria-label]="'Rimuovi ' + chip.label"
-              type="button"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-              </svg>
-            </button>
-          </span>
-        }
-        <button
-          class="pet-edit__chip pet-edit__chip--add"
-          (click)="addChip()"
-          aria-label="Aggiungi tratto di personalita"
-          type="button"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-          </svg>
-          Aggiungi
-        </button>
-      </div>
-    </section>
 
     <!-- Save Button -->
     <div class="pet-edit__actions">

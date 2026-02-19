@@ -43,6 +43,7 @@ export interface PetData {
   breed: string;
   speciesCode?: string;
   calculatedAge?: string;
+  birthDate?: string | null;
 }
 
 export interface PartnerShowcase {
@@ -227,7 +228,10 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // === Quick Action icon navigation ===
   onCalendarClick(): void {
-    this.calendarOverlayService.openMonth();
+    const now = new Date();
+    this.router.navigate(['/calendar/month'], {
+      queryParams: { month: now.getMonth(), year: now.getFullYear() },
+    });
   }
 
   onNotificationsClick(): void {
@@ -260,6 +264,16 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isLoadingNotifications.set(false);
         this.cdr.markForCheck();
       },
+    });
+  }
+
+  formatBirthDate(dateStr: string | null | undefined): string {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('it-IT', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
     });
   }
 
@@ -417,6 +431,7 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
       breed: breedDisplay,
       speciesCode: response.speciesCategory?.toLowerCase() || '',
       calculatedAge: response.calculatedAge || '',
+      birthDate: response.birthDate,
     };
     this.petRealAge = response.calculatedAge || '';
   }

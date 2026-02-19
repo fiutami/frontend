@@ -118,9 +118,15 @@
     }
 
     @if (!isLoading() && !errorMessage() && pet.id) {
-      <!-- Nome + descrizione SPOSTATI dentro card blu -->
+      <!-- Nome + descrizione + data nascita -->
       <section class="pet-profile__header-info">
         <h1 class="pet-profile__name">{{ pet.name }}</h1>
+        @if (pet.birthDate) {
+          <p class="pet-profile__birthdate">
+            <span class="material-icons">cake</span>
+            {{ formatBirthDate(pet.birthDate) }}
+          </p>
+        }
         <p class="pet-profile__description">{{ pet.description }}</p>
       </section>
 

@@ -13,7 +13,7 @@ import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-s
 import { PhotoUploadModalComponent } from '../../../shared/components/photo-upload-modal/photo-upload-modal.component';
 import { PetService } from '../../../core/services/pet.service';
 import { PhotoUploadService } from '../../../core/services/photo-upload.service';
-import { PetResponse } from '../../../core/models/pet.models';
+import { PetResponse, PetPhoto } from '../../../core/models/pet.models';
 
 export interface PetEditForm {
   name: string;
@@ -24,10 +24,6 @@ export interface PetEditForm {
   bio: string;
 }
 
-export interface PersonalityChip {
-  id: string;
-  label: string;
-}
 
 @Component({
   selector: 'app-pet-edit',
@@ -53,8 +49,8 @@ export class PetEditComponent implements OnInit {
   // Profile photo
   readonly profilePhoto = signal('assets/images/default-pet-avatar.png');
 
-  // Cover / gallery photos
-  readonly coverPhotos = signal<string[]>([]);
+  // Gallery photos (full objects for quick-select)
+  readonly galleryPhotos = signal<PetPhoto[]>([]);
 
   // Photo upload modal state
   readonly showPhotoUpload = signal(false);
@@ -71,9 +67,6 @@ export class PetEditComponent implements OnInit {
     weight: null,
     bio: '',
   });
-
-  // Personality chips
-  readonly chips = signal<PersonalityChip[]>([]);
 
   // Saving state
   readonly isSaving = signal(false);
@@ -118,7 +111,7 @@ export class PetEditComponent implements OnInit {
       name: pet.name,
       breed: breedDisplay,
       sex: pet.sex === 'male' ? 'Maschio' : 'Femmina',
-      birthDate: pet.birthDate || '',
+      birthDate: pet.birthDate ? pet.birthDate.substring(0, 10) : '',
       weight: pet.weight,
       bio: pet.notes || '',
     });
@@ -127,12 +120,12 @@ export class PetEditComponent implements OnInit {
   private loadGalleryPhotos(petId: string): void {
     this.petService.getPetGallery(petId).subscribe({
       next: (photos) => {
-        this.coverPhotos.set(photos.map(p => p.thumbnailUrl || p.url));
+        // Keep full photo objects, limit to 6 for display
+        this.galleryPhotos.set(photos.slice(0, 6));
         this.cdr.markForCheck();
       },
       error: () => {
-        // Gallery not available, leave empty
-        this.coverPhotos.set([]);
+        this.galleryPhotos.set([]);
       },
     });
   }
@@ -150,10 +143,35 @@ export class PetEditComponent implements OnInit {
     this.showPhotoUpload.set(true);
   }
 
-  // --- Cover Photos ---
+  // --- Gallery Quick-Select as Profile Photo ---
 
-  onCoverPhotoClick(index: number): void {
-    console.log('Cover photo clicked:', index);
+  onSetAsProfilePhoto(photo: PetPhoto): void {
+    if (!this.petId || photo.isProfilePhoto) return;
+
+    this.isUploadingPhoto.set(true);
+    this.cdr.markForCheck();
+
+    this.petService.setPrimaryPhoto(this.petId, photo.id).subscribe({
+      next: () => {
+        // Refresh pet data and gallery
+        this.petService.getPet(this.petId).subscribe({
+          next: (pet) => {
+            this.profilePhoto.set(pet.profilePhotoUrl || 'assets/images/default-pet-avatar.png');
+            this.loadGalleryPhotos(this.petId);
+            this.isUploadingPhoto.set(false);
+            this.cdr.markForCheck();
+          },
+          error: () => {
+            this.isUploadingPhoto.set(false);
+            this.cdr.markForCheck();
+          },
+        });
+      },
+      error: () => {
+        this.isUploadingPhoto.set(false);
+        this.cdr.markForCheck();
+      },
+    });
   }
 
   onAddCoverPhoto(): void {
@@ -225,23 +243,6 @@ export class PetEditComponent implements OnInit {
 
   updateField<K extends keyof PetEditForm>(field: K, value: PetEditForm[K]): void {
     this.form.update(current => ({ ...current, [field]: value }));
-  }
-
-  // --- Personality Chips ---
-
-  removeChip(chipId: string): void {
-    this.chips.update(current => current.filter(c => c.id !== chipId));
-  }
-
-  addChip(): void {
-    const label = prompt('Aggiungi tratto di personalita:');
-    if (label && label.trim()) {
-      const newId = Date.now().toString();
-      this.chips.update(current => [
-        ...current,
-        { id: newId, label: label.trim() },
-      ]);
-    }
   }
 
   // --- Actions ---

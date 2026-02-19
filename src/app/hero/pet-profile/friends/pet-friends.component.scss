@@ -6,11 +6,30 @@
 @import 'src/styles/tokens-figma';
 
 // ==========================================
-// INTRO (shellStickyContent) - Motto + Actions
+// SUBTITLE (shellBrandingExtra) - same style as fatti-bestiali
+// ==========================================
+.pet-friends-subtitle {
+  text-align: center;
+  font-family: $font-family-body;
+  font-size: 13px;
+  font-weight: 400;
+  color: $color-text-inverse;
+  opacity: 0.85;
+  margin: 0;
+  padding: 0 $spacing-md;
+  line-height: 1.5;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+// ==========================================
+// INTRO (shellStickyContent) - Actions
 // ==========================================
 .pet-friends-intro {
   text-align: center;
-  padding: $spacing-md $spacing-md $spacing-sm;
+  padding: $spacing-sm $spacing-md $spacing-sm;
 
   &__motto {
     font-family: $font-family-body;

@@ -44,13 +44,33 @@
         </div>
       </div>
 
-      <div class="fb__pet-card-actions">
-        <button class="fb__btn-outline" (click)="navigateToEditPet()">
-          {{ 'fattiBestiali.editPet' | translate }}
-        </button>
-        <button class="fb__btn-cta" (click)="navigateToAddPet()">
-          {{ 'fattiBestiali.addPets' | translate }}
-        </button>
+      <!-- Pet description (expandable) -->
+      @if (p.notes) {
+        <div class="fb__pet-card-description"
+             [class.fb__pet-card-description--expanded]="descriptionExpanded()"
+             (click)="toggleDescription()">
+          <p class="fb__pet-card-description-text">{{ p.notes }}</p>
+        </div>
+      }
+
+      <!-- Dot indicators or "Aggiungi un altro pet" -->
+      <div class="fb__pet-card-footer">
+        @if (allPets().length > 1) {
+          <div class="fb__pet-dots">
+            @for (pet of allPets(); track pet.id; let i = $index) {
+              <button
+                class="fb__pet-dot"
+                [class.fb__pet-dot--active]="i === currentPetIndex()"
+                (click)="goToPet(i)"
+                [attr.aria-label]="'Vai a ' + pet.name"
+              ></button>
+            }
+          </div>
+        } @else {
+          <button class="fb__add-pet-link" (click)="navigateToAddPet()">
+            Aggiungi un altro pet
+          </button>
+        }
       </div>
     </div>
   }
