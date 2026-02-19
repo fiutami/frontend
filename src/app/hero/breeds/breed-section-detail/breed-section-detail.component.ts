@@ -64,43 +64,48 @@ export class BreedSectionDetailComponent implements OnInit {
     switch (code) {
       case 'dna':
         if (b.dna) {
-          const dnaParts = [b.dna.genetics];
+          const dnaParts: string[] = [];
+          if (b.dna.genetics) dnaParts.push(b.dna.genetics);
           if (b.dna.groupFCI) dnaParts.push(`Gruppo FCI: ${b.dna.groupFCI}`);
           if (b.dna.ancestralBreeds?.length) dnaParts.push(`Ancestori: ${b.dna.ancestralBreeds.join(', ')}`);
-          result = dnaParts.filter(Boolean).join(' - ');
+          result = dnaParts.length > 0 ? dnaParts.join('\n\n') : null;
         }
         break;
 
       case 'size':
         if (b.size) {
-          const sizeParts = [
-            `Taglia "${b.name}": ${b.size.weight.min}-${b.size.weight.max} ${b.size.weight.unit}, alto ${b.size.height.min}-${b.size.height.max} ${b.size.height.unit}`,
-            `Pelo ${b.size.coat}`,
-          ];
-          if (b.size.colors?.length) sizeParts.push(`Colore: ${b.size.colors.join(', ')}`);
+          const sizeParts: string[] = [];
+          if (b.size.weight.min || b.size.weight.max) {
+            sizeParts.push(`Peso: ${b.size.weight.min}-${b.size.weight.max} ${b.size.weight.unit}`);
+          }
+          if (b.size.height.min || b.size.height.max) {
+            sizeParts.push(`Altezza: ${b.size.height.min}-${b.size.height.max} ${b.size.height.unit}`);
+          }
+          if (b.size.coat) sizeParts.push(`Pelo: ${b.size.coat}`);
+          if (b.size.colors?.length) sizeParts.push(`Colori: ${b.size.colors.join(', ')}`);
           if (b.size.lifespan) sizeParts.push(`Aspettativa di vita: ${b.size.lifespan.min}-${b.size.lifespan.max} anni`);
-          result = sizeParts.join('. - ');
+          result = sizeParts.length > 0 ? sizeParts.join('\n\n') : null;
         }
         break;
 
       case 'temperament':
         if (b.temperament) {
-          const tempParts = [
-            `Energia: ${b.temperament.energy}`,
-            `Socialit\u00e0: ${b.temperament.sociality}`,
-            `Addestrabilit\u00e0: ${b.temperament.trainability}`,
-          ];
+          const tempParts: string[] = [];
+          tempParts.push(`Energia: ${b.temperament.energy}`);
+          tempParts.push(`Socialità: ${b.temperament.sociality}`);
+          tempParts.push(`Addestrabilità: ${b.temperament.trainability}`);
           if (b.temperament.traits?.length) tempParts.push(`Tratti: ${b.temperament.traits.join(', ')}`);
-          result = tempParts.join('. - ');
+          if (b.temperament.suitableFor?.length) tempParts.push(`Adatto a: ${b.temperament.suitableFor.join(', ')}`);
+          result = tempParts.join('\n\n');
         }
         break;
 
       case 'rituals':
-        result = b.rituals?.join('. - ') || null;
+        result = b.rituals?.filter(Boolean).join('\n\n') || null;
         break;
 
       case 'health':
-        result = b.healthRisks?.join('. - ') || null;
+        result = b.healthRisks?.filter(Boolean).join('\n\n') || null;
         break;
 
       case 'history':

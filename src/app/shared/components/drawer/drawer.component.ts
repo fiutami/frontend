@@ -53,8 +53,8 @@ export interface Language {
       transition('closed <=> open', animate('200ms ease-out')),
     ]),
     trigger('fadeInOut', [
-      state('closed', style({ opacity: 0, visibility: 'hidden' })),
-      state('open', style({ opacity: 1, visibility: 'visible' })),
+      state('closed', style({ opacity: 0, visibility: 'hidden', pointerEvents: 'none' })),
+      state('open', style({ opacity: 1, visibility: 'visible', pointerEvents: 'auto' })),
       transition('closed <=> open', animate('200ms ease-out')),
     ]),
   ],

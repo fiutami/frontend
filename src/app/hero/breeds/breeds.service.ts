@@ -62,7 +62,17 @@ export interface BreedApiResponse {
     lifespanMinYears?: number;
     lifespanMaxYears?: number;
   };
-  temperament?: string[];
+  temperament?: {
+    energyLevel?: string;
+    socialityLevel?: string;
+    trainabilityLevel?: string;
+    traits?: string[];
+    suitableFor?: string[];
+  } | string[];
+  careRituals?: string[];
+  healthRisks?: string[];
+  history?: string;
+  recognition?: string | null;
 }
 
 /**
@@ -230,36 +240,70 @@ export class BreedsService {
    * Map single API response to frontend Breed model
    */
   private mapBreedResponse(b: BreedApiResponse): Breed {
+    // DNA: only set if there's actual data (not all nulls)
+    const hasDnaData = b.dna && (b.dna.geneticsInfo || b.dna.groupFCI || (b.dna.ancestralBreeds && b.dna.ancestralBreeds.length > 0));
+    const dna = hasDnaData ? {
+      genetics: b.dna!.geneticsInfo || '',
+      ancestralBreeds: b.dna!.ancestralBreeds || [],
+      groupFCI: b.dna!.groupFCI,
+    } : undefined;
+
+    // Size: only set if there's actual data
+    const hasSizeData = b.size && (
+      b.size.heightMinCm || b.size.heightMaxCm ||
+      b.size.weightMinKg || b.size.weightMaxKg ||
+      b.size.coatType || (b.size.colors && b.size.colors.length > 0) ||
+      b.size.lifespanMinYears || b.size.lifespanMaxYears
+    );
+    const size = hasSizeData ? {
+      height: { min: b.size!.heightMinCm || 0, max: b.size!.heightMaxCm || 0, unit: 'cm' },
+      weight: { min: b.size!.weightMinKg || 0, max: b.size!.weightMaxKg || 0, unit: 'kg' },
+      coat: b.size!.coatType || '',
+      colors: b.size!.colors || [],
+      lifespan: (b.size!.lifespanMinYears && b.size!.lifespanMaxYears)
+        ? { min: b.size!.lifespanMinYears, max: b.size!.lifespanMaxYears }
+        : undefined,
+    } : undefined;
+
+    // Temperament: API may return object or string[] depending on endpoint
+    let temperament: Breed['temperament'];
+    if (b.temperament) {
+      if (Array.isArray(b.temperament)) {
+        // Old format: string[]
+        temperament = {
+          energy: 'media',
+          sociality: 'media',
+          trainability: 'media',
+          traits: b.temperament,
+        };
+      } else {
+        // New format: object with energyLevel, traits, suitableFor
+        const t = b.temperament;
+        temperament = {
+          energy: (t.energyLevel as any) || 'media',
+          sociality: (t.socialityLevel as any) || 'media',
+          trainability: (t.trainabilityLevel as any) || 'media',
+          traits: t.traits || [],
+          suitableFor: t.suitableFor,
+        };
+      }
+    }
+
     return {
       id: b.id,
       speciesId: b.speciesId,
       name: b.name,
       origin: b.origin || '',
-      recognition: '',
+      recognition: b.recognition || '',
       imageUrl: b.imageUrl || '/assets/images/breeds/placeholder-breed.png',
       breedType: b.breedType,
       allowsUserVariantLabel: b.allowsUserVariantLabel ?? false,
-      dna: b.dna ? {
-        genetics: b.dna.geneticsInfo || '',
-        ancestralBreeds: b.dna.ancestralBreeds || [],
-        groupFCI: b.dna.groupFCI,
-      } : undefined,
-      size: b.size ? {
-        height: { min: b.size.heightMinCm || 0, max: b.size.heightMaxCm || 0, unit: 'cm' },
-        weight: { min: b.size.weightMinKg || 0, max: b.size.weightMaxKg || 0, unit: 'kg' },
-        coat: b.size.coatType || '',
-        colors: b.size.colors || [],
-        lifespan: (b.size.lifespanMinYears && b.size.lifespanMaxYears)
-          ? { min: b.size.lifespanMinYears, max: b.size.lifespanMaxYears }
-          : undefined,
-      } : undefined,
-      temperament: b.temperament ? {
-        energy: 'media',
-        sociality: 'media',
-        trainability: 'media',
-        traits: b.temperament,
-      } : undefined,
-      history: b.description,
+      dna,
+      size,
+      temperament,
+      rituals: b.careRituals?.filter(Boolean),
+      healthRisks: b.healthRisks?.filter(Boolean),
+      history: b.history || b.description,
     };
   }
 
