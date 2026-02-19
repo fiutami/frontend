@@ -25,32 +25,6 @@
             </div>
           </div>
         }
-        <button
-          class="pet-profile__photo-edit"
-          (click)="onEditPhotoClick(); $event.stopPropagation()"
-          aria-label="Cambia foto profilo"
-          [disabled]="isUploadingPhoto()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 12m-3.2 0a3.2 3.2 0 1 0 6.4 0a3.2 3.2 0 1 0 -6.4 0"/>
-            <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
-          </svg>
-        </button>
-        @if (showPhotoMenu()) {
-          <div class="pet-profile__photo-menu" (click)="$event.stopPropagation()">
-            <button class="pet-profile__photo-menu-item" (click)="onChangePhoto()">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-              </svg>
-              <span>Cambia foto</span>
-            </button>
-            <button class="pet-profile__photo-menu-item pet-profile__photo-menu-item--danger" (click)="deleteProfilePhoto()">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
-              </svg>
-              <span>Elimina foto</span>
-            </button>
-          </div>
-        }
       </div>
     }
   </ng-container>

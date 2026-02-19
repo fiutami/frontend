@@ -1102,7 +1102,7 @@
       "activityDiary": "Aktivitätstagebuch",
       "weightCondition": "Gewicht und körperliche Verfassung"
     },
-    "emptyState": "Keine Einträge vorhanden",
+    "emptyState": "Dokument hochladen",
     "uploadDocument": "Dokument hochladen",
     "promo": {
       "text": "Möchtest du wissen, wie sich {{petName}} heute fühlt? Aktiviere das emotionale Monitoring.",

@@ -131,7 +131,7 @@ export class SpecieComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/home/pet-register']);
+    window.history.back();
   }
 
   toggleCategory(categoryId: string): void {

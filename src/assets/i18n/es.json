@@ -1080,7 +1080,7 @@
       "activityDiary": "Diario de actividades",
       "weightCondition": "Peso y condición física"
     },
-    "emptyState": "Ningún elemento agregado",
+    "emptyState": "Subir un documento",
     "uploadDocument": "Subir un documento",
     "promo": {
       "text": "¿Quieres saber cómo se siente {{petName}} hoy? Activa el monitoreo emocional.",

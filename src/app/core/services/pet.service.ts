@@ -112,7 +112,7 @@ export class PetService {
     this.loadingSignal.set(true);
     this.errorSignal.set(null);
 
-    return this.http.put<PetResponse>(`${this.baseUrl}/${petId}`, request).pipe(
+    return this.http.patch<PetResponse>(`${this.baseUrl}/${petId}`, request).pipe(
       tap(response => {
         this.selectedPetSignal.set(response);
         this.loadingSignal.set(false);

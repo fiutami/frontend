@@ -1146,7 +1146,7 @@
       "activityDiary": "Activity diary",
       "weightCondition": "Weight and physical condition"
     },
-    "emptyState": "No items added",
+    "emptyState": "Upload a document",
     "uploadDocument": "Upload a document",
     "promo": {
       "text": "Want to know how {{petName}} feels today? Enable emotional monitoring.",

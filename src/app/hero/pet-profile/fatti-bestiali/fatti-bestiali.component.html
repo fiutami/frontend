@@ -161,7 +161,10 @@
                     }
                   </button>
                 } @else {
-                  <p class="fb__empty-text">{{ 'fattiBestiali.emptyState' | translate }}</p>
+                  <p class="fb__empty-text fb__empty-text--action" (click)="triggerUpload('other')">
+                    <span class="material-icons fb__empty-text-icon">cloud_upload</span>
+                    {{ 'fattiBestiali.emptyState' | translate }}
+                  </p>
                 }
               </div>
             }
