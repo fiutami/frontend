@@ -32,7 +32,9 @@
     "success": "Erfolg",
     "next": "Weiter",
     "remove": "Entfernen",
-    "rotateDevice": "Bitte drehen Sie Ihr Gerät ins Hochformat"
+    "rotateDevice": "Bitte drehen Sie Ihr Gerät ins Hochformat",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen"
   },
   "auth": {
     "login": "Anmelden",
@@ -163,7 +165,106 @@
       "title": "Hier ist dein perfektes Match!",
       "compatibility": "Kompatibilität",
       "viewDetails": "Details ansehen",
-      "tryAgain": "Quiz wiederholen"
+      "tryAgain": "Quiz wiederholen",
+      "compatibleWithYou": "kompatibel mit dir",
+      "discoverMore": "Mehr erfahren",
+      "exploreOtherSpecies": "Andere Arten entdecken",
+      "registerAnyway": "Trotzdem ein Tier registrieren",
+      "calculatingMatch": "Berechne dein Match...",
+      "fiutoPerfectMatch": "Perfektes Match! Dieses Tier ist wie für dich gemacht!",
+      "fiutoGreatCompatibility": "Tolle Kompatibilität! Ihr wärt ein tolles Paar!",
+      "fiutoGoodStart": "Könnte ein guter Anfang sein! Erfahre mehr.",
+      "fiutoGreatChoice": "Tolle Wahl! Dieses Tier passt zu dir!"
+    },
+    "questionnaireResult": {
+      "loadingExplanation": "Erklärung wird geladen...",
+      "toConsider": "Zu beachten:",
+      "discoverMore": "Mehr erfahren",
+      "noBreedFound": "Keine Rasse gefunden",
+      "noBreedFoundDesc": "Wir haben keine Rassen gefunden, die deinen Kriterien entsprechen. Versuche, einige Antworten zu ändern.",
+      "compatibleWithProfile": "{{name}} ist mit deinem Profil kompatibel."
+    },
+    "matching": {
+      "loadingBreeds": "Lade Rassenkatalog...",
+      "noCompatibleBreeds": "Keine kompatiblen Rassen gefunden",
+      "noBreedsPassConstraints": "Keine Rasse erfüllt die Bedingungen",
+      "analyzingCompatibility": "Analysiere semantische Kompatibilität...",
+      "calculatingScores": "Berechne Punkte...",
+      "compatibleBreedsFound": "{{count}} kompatible Rassen gefunden",
+      "calculationError": "Fehler bei der Kompatibilitätsberechnung",
+      "loadingCatalog": "Lade Katalog...",
+      "filteringBreeds": "Filtere Rassen...",
+      "applyingFilters": "Wende Filter an...",
+      "breedsFound": "{{count}} Rassen gefunden",
+      "calculationErrorShort": "Berechnungsfehler",
+      "reason_apartmentFriendly": "Geeignet für Wohnungshaltung",
+      "reason_goodWithChildren": "Toll mit Kindern",
+      "reason_easyToTrain": "Leicht zu trainieren, ideal für Anfänger",
+      "reason_lowExercise": "Geringe Bewegungsanforderungen",
+      "reason_lowGrooming": "Geringer Pflegeaufwand",
+      "category_housing": "Wohnung",
+      "category_family": "Familie",
+      "category_experience": "Erfahrung",
+      "category_time": "Zeit",
+      "category_care": "Pflege",
+      "tradeoff_highShedding": "Starker Haarausfall, erfordert häufiges Reinigen",
+      "tradeoff_highBarking": "Neigt zu häufigem Bellen, könnte Probleme mit Nachbarn verursachen",
+      "tradeoff_giantSize": "Große Größe, benötigt ausreichend Platz",
+      "tradeoff_highExpense": "Monatliche Ausgaben über dem Durchschnitt",
+      "category_coat": "Fell",
+      "category_noise": "Lärm",
+      "category_space": "Platz",
+      "category_cost": "Kosten"
+    },
+    "fiutoAi": {
+      "toConsider": "Zu beachten: {{warnings}}",
+      "recommendedBecause": "{{name}} wird empfohlen, weil: {{reasons}}.{{warnings}}"
+    },
+    "fiutoChat": {
+      "welcomeQuestionnaire": "Hallo! Ich bin Fiuto 🐕 Ich bin hier, um dir beim Fragebogen zu helfen. Wenn du Fragen hast, frag mich einfach!",
+      "welcomeResults": "Hier sind deine Ergebnisse! Wenn du verstehen möchtest, warum wir diese Rassen vorschlagen, erkläre ich es dir gerne. 🎯",
+      "welcomeGeneral": "Hallo! Ich bin Fiuto, dein Assistent, um das perfekte Tier zu finden! 🐾"
+    },
+    "speciesQuiz": {
+      "q1": {
+        "intro": "Jedes Tier braucht deine Zeit und Aufmerksamkeit. Lass uns hier anfangen.",
+        "question": "Wie viel Zeit kannst du täglich aufbringen?",
+        "poco": "Wenig",
+        "medio": "Mittel",
+        "molto": "Viel"
+      },
+      "q2": {
+        "intro": "Manche Tiere sind unabhängiger, andere brauchen Gesellschaft.",
+        "question": "Wie viel Zeit verbringst du außer Haus?",
+        "less2h": "Weniger als 2 Stunden",
+        "2to6h": "2-6 Stunden",
+        "more6h": "Mehr als 6 Stunden"
+      },
+      "q3": {
+        "intro": "Jedes Tier braucht seinen eigenen Platz. Schauen wir, was du bieten kannst.",
+        "question": "Welchen Platz hast du zur Verfügung?",
+        "indoor": "Keinen (nur drinnen)",
+        "balcony": "Balkon / kleiner Bereich",
+        "garden": "Garten"
+      },
+      "q4": {
+        "intro": "Um dich gut beraten zu können, müssen wir eventuelle Allergien berücksichtigen.",
+        "question": "Gibt es Allergien zu Hause?",
+        "yes": "Ja",
+        "no": "Nein"
+      },
+      "q5": {
+        "intro": "Jedes Tier bietet eine andere Art von Beziehung. Was suchst du wirklich?",
+        "question": "Was wünschst du dir von deinem Tier?",
+        "companionship": "Gesellschaft und Zuneigung",
+        "tranquility": "Ruhe und Stille",
+        "activity": "Gemeinsame Aktivitäten",
+        "independent": "Ein unabhängiges Tier"
+      }
+    },
+    "registerPetErrors": {
+      "noSpeciesAvailable": "Keine Arten verfügbar. Bitte versuche es später erneut.",
+      "speciesLoadError": "Fehler beim Laden der Arten. Bitte versuche es später erneut."
     }
   },
   "questionnaire": {
@@ -626,7 +727,14 @@
       "offline": "Offline",
       "findFriends": "Freunde finden",
       "emptyTitle": "Hier findest du deine pelzige Bande.",
-      "emptyMessage": "Freunde, mit denen du schon interagiert hast"
+      "emptyMessage": "Freunde, mit denen du schon interagiert hast",
+      "sectionTitle": "Freunde",
+      "sectionSubtitle": "Haustiere, mit denen du bereits interagiert oder gechattet hast",
+      "edit": "Bearbeiten",
+      "promoTitle": "Fiutail Spielpartner",
+      "promoButton": "Jetzt entdecken",
+      "suggestedTitle": "Vorgeschlagene Freunde",
+      "suggestedSubtitle": "Basierend auf Rasse, Affinität, Standort und gemeinsamen Gewohnheiten"
     },
     "memories": {
       "title": "Erinnerungen",

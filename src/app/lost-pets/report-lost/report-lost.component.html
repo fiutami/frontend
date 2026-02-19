@@ -95,7 +95,8 @@
               type="text"
               id="lastSeenLocation"
               formControlName="lastSeenLocation"
-              [placeholder]="'lostPets.report.lastSeenPlaceholder' | translate" />
+              [placeholder]="'lostPets.report.lastSeenPlaceholder' | translate"
+              maxlength="500" />
             <button type="button" class="location-btn" (click)="getCurrentLocation()">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2"/>
@@ -135,7 +136,8 @@
             id="description"
             formControlName="description"
             rows="4"
-            [placeholder]="'lostPets.report.descriptionPlaceholder' | translate"></textarea>
+            [placeholder]="'lostPets.report.descriptionPlaceholder' | translate"
+            maxlength="2000"></textarea>
           @if (reportForm.get('description')?.touched && reportForm.get('description')?.errors?.['required']) {
             <span class="error">{{ 'errors.required' | translate }}</span>
           }
@@ -170,7 +172,8 @@
             type="tel"
             id="contactPhone"
             formControlName="contactPhone"
-            [placeholder]="'lostPets.report.phonePlaceholder' | translate" />
+            [placeholder]="'lostPets.report.phonePlaceholder' | translate"
+            maxlength="50" />
           @if (reportForm.get('contactPhone')?.touched && reportForm.get('contactPhone')?.errors?.['pattern']) {
             <span class="error">{{ 'lostPets.report.invalidPhone' | translate }}</span>
           }

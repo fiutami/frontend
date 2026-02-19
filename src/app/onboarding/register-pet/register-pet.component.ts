@@ -10,7 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 import { PetService, PetCreateRequest, AuthService } from '../../core';
 import { BreedsService } from '../../hero/breeds/breeds.service';
@@ -40,6 +40,7 @@ import { BackgroundRemovalService } from '../../core/services/background-removal
 })
 export class RegisterPetComponent implements OnInit {
   private readonly router = inject(Router);
+  private readonly translate = inject(TranslateService);
   private readonly fb = inject(FormBuilder);
   private readonly petService = inject(PetService);
   private readonly authService = inject(AuthService);
@@ -148,7 +149,7 @@ export class RegisterPetComponent implements OnInit {
     this.breedsService.loadSpecies().subscribe({
       next: (species) => {
         if (species.length === 0) {
-          this.speciesError.set('Nessuna specie disponibile. Riprova più tardi.');
+          this.speciesError.set(this.translate.instant('onboarding.registerPetErrors.noSpeciesAvailable'));
         } else {
           this.backendSpecies.set(species);
         }
@@ -156,7 +157,7 @@ export class RegisterPetComponent implements OnInit {
       },
       error: (err) => {
         console.error('Failed to load species:', err);
-        this.speciesError.set('Errore nel caricamento delle specie. Riprova più tardi.');
+        this.speciesError.set(this.translate.instant('onboarding.registerPetErrors.speciesLoadError'));
         this.isLoadingSpecies.set(false);
       }
     });

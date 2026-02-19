@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble/speech-bubble.component';
 import { AnswerSquareComponent, AnswerOption } from '../../../shared/components/answer-square';
@@ -23,6 +24,7 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
   imports: [
     CommonModule,
     SharedModule,
+    TranslateModule,
     SpeechBubbleComponent,
     AnswerSquareComponent,
     PageBackgroundComponent,
@@ -33,20 +35,20 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
 })
 export class SpeciesQ1Component implements OnInit {
   private router = inject(Router);
+  private translate = inject(TranslateService);
   private questionnaireService = inject(SpeciesQuestionnaireService);
 
   /** Intro message displayed in blue bubble */
-  readonly introMessage =
-    'Ogni animale ha bisogno del tuo tempo e delle tue attenzioni. Iniziamo da qui.';
+  readonly introMessage = this.translate.instant('onboarding.speciesQuiz.q1.intro');
 
   /** Question text */
-  readonly question = 'Quanto tempo puoi dedicargli ogni giorno?';
+  readonly question = this.translate.instant('onboarding.speciesQuiz.q1.question');
 
   /** Answer options */
   readonly options: AnswerOption[] = [
-    { value: 'poco', label: 'Poco' },
-    { value: 'medio', label: 'Medio' },
-    { value: 'molto', label: 'Molto' },
+    { value: 'poco', label: this.translate.instant('onboarding.speciesQuiz.q1.poco') },
+    { value: 'medio', label: this.translate.instant('onboarding.speciesQuiz.q1.medio') },
+    { value: 'molto', label: this.translate.instant('onboarding.speciesQuiz.q1.molto') },
   ];
 
   /** Currently selected answer */

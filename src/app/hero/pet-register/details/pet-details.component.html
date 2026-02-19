@@ -25,7 +25,8 @@
         [(ngModel)]="petName"
         name="petName"
         placeholder="Nome del tuo animale"
-        required />
+        required
+        maxlength="100" />
     </div>
 
     <!-- Sex Selection -->
@@ -93,7 +94,8 @@
         class="pet-details__input"
         [(ngModel)]="color"
         name="color"
-        placeholder="Colore del mantello" />
+        placeholder="Colore del mantello"
+        maxlength="50" />
     </div>
 
     <!-- Weight -->
@@ -117,7 +119,8 @@
         [(ngModel)]="specialMarks"
         name="specialMarks"
         placeholder="Descrivi eventuali segni particolari..."
-        rows="3"></textarea>
+        rows="3"
+        maxlength="200"></textarea>
     </div>
 
     <!-- Error Message -->

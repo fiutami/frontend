@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble/speech-bubble.component';
 import { AnswerSquareComponent, AnswerOption } from '../../../shared/components/answer-square';
@@ -20,6 +21,7 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
   imports: [
     CommonModule,
     SharedModule,
+    TranslateModule,
     SpeechBubbleComponent,
     AnswerSquareComponent,
     PageBackgroundComponent,
@@ -30,20 +32,20 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
 })
 export class SpeciesQ2Component implements OnInit {
   private router = inject(Router);
+  private translate = inject(TranslateService);
   private questionnaireService = inject(SpeciesQuestionnaireService);
 
   /** Intro message displayed in blue bubble */
-  readonly introMessage =
-    'Alcuni animali sono più indipendenti, altri hanno bisogno di compagnia.';
+  readonly introMessage = this.translate.instant('onboarding.speciesQuiz.q2.intro');
 
   /** Question text */
-  readonly question = 'Quanto tempo passi fuori casa?';
+  readonly question = this.translate.instant('onboarding.speciesQuiz.q2.question');
 
   /** Answer options */
   readonly options: AnswerOption[] = [
-    { value: 'meno_2h', label: 'Meno di 2 ore' },
-    { value: '2_6h', label: '2-6 ore' },
-    { value: 'piu_6h', label: 'Più di 6 ore' },
+    { value: 'meno_2h', label: this.translate.instant('onboarding.speciesQuiz.q2.less2h') },
+    { value: '2_6h', label: this.translate.instant('onboarding.speciesQuiz.q2.2to6h') },
+    { value: 'piu_6h', label: this.translate.instant('onboarding.speciesQuiz.q2.more6h') },
   ];
 
   /** Currently selected answer */

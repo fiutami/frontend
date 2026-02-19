@@ -23,6 +23,9 @@ export class SecurityComponent implements OnInit {
   sessionErrorMessage = '';
 
   showPasswordForm = false;
+  showCurrentPassword = false;
+  showNewPassword = false;
+  showConfirmPassword = false;
 
   constructor(
     private fb: FormBuilder,

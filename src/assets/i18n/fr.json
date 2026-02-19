@@ -32,7 +32,9 @@
     "success": "Succès",
     "next": "Suivant",
     "remove": "Supprimer",
-    "rotateDevice": "Veuillez tourner votre appareil en mode portrait"
+    "rotateDevice": "Veuillez tourner votre appareil en mode portrait",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe"
   },
   "auth": {
     "login": "Connexion",
@@ -163,7 +165,106 @@
       "title": "Voici ton match parfait !",
       "compatibility": "Compatibilité",
       "viewDetails": "Voir les détails",
-      "tryAgain": "Refaire le quiz"
+      "tryAgain": "Refaire le quiz",
+      "compatibleWithYou": "compatible avec toi",
+      "discoverMore": "En savoir plus",
+      "exploreOtherSpecies": "Explorer d'autres espèces",
+      "registerAnyway": "Enregistrer un animal quand même",
+      "calculatingMatch": "Calcul de ton match...",
+      "fiutoPerfectMatch": "Match parfait ! Cet animal est fait pour toi !",
+      "fiutoGreatCompatibility": "Super compatibilité ! Vous feriez un beau duo !",
+      "fiutoGoodStart": "Ça pourrait être un bon début ! En savoir plus.",
+      "fiutoGreatChoice": "Excellent choix ! Cet animal est fait pour toi !"
+    },
+    "questionnaireResult": {
+      "loadingExplanation": "Chargement de l'explication...",
+      "toConsider": "À considérer :",
+      "discoverMore": "En savoir plus",
+      "noBreedFound": "Aucune race trouvée",
+      "noBreedFoundDesc": "Nous n'avons pas trouvé de races correspondant à tes critères. Essaie de modifier certaines réponses.",
+      "compatibleWithProfile": "{{name}} est compatible avec ton profil."
+    },
+    "matching": {
+      "loadingBreeds": "Chargement du catalogue de races...",
+      "noCompatibleBreeds": "Aucune race compatible trouvée",
+      "noBreedsPassConstraints": "Aucune race ne satisfait les contraintes",
+      "analyzingCompatibility": "Analyse de la compatibilité sémantique...",
+      "calculatingScores": "Calcul des scores...",
+      "compatibleBreedsFound": "{{count}} races compatibles trouvées",
+      "calculationError": "Erreur lors du calcul de la compatibilité",
+      "loadingCatalog": "Chargement du catalogue...",
+      "filteringBreeds": "Filtrage des races...",
+      "applyingFilters": "Application des filtres...",
+      "breedsFound": "{{count}} races trouvées",
+      "calculationErrorShort": "Erreur de calcul",
+      "reason_apartmentFriendly": "Adapté à la vie en appartement",
+      "reason_goodWithChildren": "Excellent avec les enfants",
+      "reason_easyToTrain": "Facile à dresser, idéal pour les débutants",
+      "reason_lowExercise": "Faibles besoins en exercice",
+      "reason_lowGrooming": "Entretien du pelage réduit",
+      "category_housing": "Logement",
+      "category_family": "Famille",
+      "category_experience": "Expérience",
+      "category_time": "Temps",
+      "category_care": "Soins",
+      "tradeoff_highShedding": "Forte perte de poils, nécessite un nettoyage fréquent",
+      "tradeoff_highBarking": "Tendance à aboyer beaucoup, pourrait poser des problèmes avec les voisins",
+      "tradeoff_giantSize": "Grande taille, nécessite un espace adéquat",
+      "tradeoff_highExpense": "Dépenses mensuelles supérieures à la moyenne",
+      "category_coat": "Pelage",
+      "category_noise": "Bruit",
+      "category_space": "Espace",
+      "category_cost": "Coûts"
+    },
+    "fiutoAi": {
+      "toConsider": "À considérer : {{warnings}}",
+      "recommendedBecause": "{{name}} est recommandé car : {{reasons}}.{{warnings}}"
+    },
+    "fiutoChat": {
+      "welcomeQuestionnaire": "Salut ! Je suis Fiuto 🐕 Je suis là pour t'aider pendant le questionnaire. Si tu as des doutes sur une question, demande-moi !",
+      "welcomeResults": "Voici tes résultats ! Si tu veux comprendre pourquoi nous te suggérons ces races, je suis là pour t'expliquer. 🎯",
+      "welcomeGeneral": "Salut ! Je suis Fiuto, ton assistant pour trouver l'animal parfait ! 🐾"
+    },
+    "speciesQuiz": {
+      "q1": {
+        "intro": "Chaque animal a besoin de ton temps et de ton attention. Commençons par ici.",
+        "question": "Combien de temps peux-tu lui consacrer chaque jour ?",
+        "poco": "Peu",
+        "medio": "Moyen",
+        "molto": "Beaucoup"
+      },
+      "q2": {
+        "intro": "Certains animaux sont plus indépendants, d'autres ont besoin de compagnie.",
+        "question": "Combien de temps passes-tu hors de chez toi ?",
+        "less2h": "Moins de 2 heures",
+        "2to6h": "2-6 heures",
+        "more6h": "Plus de 6 heures"
+      },
+      "q3": {
+        "intro": "Chaque animal a besoin de son espace. Voyons ce que tu peux offrir.",
+        "question": "Quel espace as-tu à disposition ?",
+        "indoor": "Aucun (intérieur uniquement)",
+        "balcony": "Balcon / petit espace",
+        "garden": "Jardin"
+      },
+      "q4": {
+        "intro": "Pour bien te conseiller, nous devons prendre en compte d'éventuelles allergies.",
+        "question": "Y a-t-il des allergies à la maison ?",
+        "yes": "Oui",
+        "no": "Non"
+      },
+      "q5": {
+        "intro": "Chaque animal offre un type de relation différent. Que recherches-tu vraiment ?",
+        "question": "Que souhaites-tu de ton animal ?",
+        "companionship": "Compagnie et affection",
+        "tranquility": "Tranquillité et silence",
+        "activity": "Activités ensemble",
+        "independent": "Un animal indépendant"
+      }
+    },
+    "registerPetErrors": {
+      "noSpeciesAvailable": "Aucune espèce disponible. Réessaie plus tard.",
+      "speciesLoadError": "Erreur lors du chargement des espèces. Réessaie plus tard."
     }
   },
   "quiz": {
@@ -624,7 +725,14 @@
       "offline": "Hors ligne",
       "findFriends": "Trouver des amis",
       "emptyTitle": "Ici tu trouves ta bande à poils.",
-      "emptyMessage": "Les amis avec qui tu as déjà interagi"
+      "emptyMessage": "Les amis avec qui tu as déjà interagi",
+      "sectionTitle": "Amis",
+      "sectionSubtitle": "Les animaux avec lesquels vous avez déjà interagi ou discuté",
+      "edit": "Modifier",
+      "promoTitle": "Fiutail partenaires de jeu",
+      "promoButton": "Découvrir",
+      "suggestedTitle": "Amis Suggérés",
+      "suggestedSubtitle": "Basés sur la race, l'affinité, la position et les habitudes mutuelles"
     },
     "memories": {
       "title": "Souvenirs",

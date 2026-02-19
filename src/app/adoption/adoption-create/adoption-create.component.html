@@ -51,7 +51,8 @@
       <textarea
         formControlName="description"
         rows="5"
-        [placeholder]="'adoption.create.descriptionPlaceholder' | translate">
+        [placeholder]="'adoption.create.descriptionPlaceholder' | translate"
+        maxlength="2000">
       </textarea>
       <div class="error-text" *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">
         {{ 'errors.required' | translate }}
@@ -81,7 +82,8 @@
       <input
         type="text"
         formControlName="location"
-        [placeholder]="'adoption.create.locationPlaceholder' | translate">
+        [placeholder]="'adoption.create.locationPlaceholder' | translate"
+        maxlength="500">
       <div class="error-text" *ngIf="form.get('location')?.touched && form.get('location')?.invalid">
         {{ 'errors.required' | translate }}
       </div>
@@ -93,7 +95,8 @@
       <input
         type="text"
         formControlName="city"
-        [placeholder]="'adoption.create.cityPlaceholder' | translate">
+        [placeholder]="'adoption.create.cityPlaceholder' | translate"
+        maxlength="100">
     </div>
 
     <!-- Requirements -->
@@ -102,7 +105,8 @@
       <textarea
         formControlName="requirements"
         rows="3"
-        [placeholder]="'adoption.create.requirementsPlaceholder' | translate">
+        [placeholder]="'adoption.create.requirementsPlaceholder' | translate"
+        maxlength="2000">
       </textarea>
     </div>
 

@@ -1,303 +1,401 @@
 /**
  * PetFriendsComponent - SCSS
- * "Banda Pelosa" - Pet Friends page using tab-page-shell-default
+ * "Banda Pelosa" — Figma node 12271-5837
+ * BEM prefix: .pf__
  */
 
 @import 'src/styles/tokens-figma';
 
 // ==========================================
-// SUBTITLE (shellBrandingExtra) - same style as fatti-bestiali
+// SUBTITLE (shellBrandingExtra — blue header)
 // ==========================================
-.pet-friends-subtitle {
-  text-align: center;
-  font-family: $font-family-body;
-  font-size: 13px;
-  font-weight: 400;
-  color: $color-text-inverse;
-  opacity: 0.85;
+.pf__subtitle {
   margin: 0;
-  padding: 0 $spacing-md;
-  line-height: 1.5;
-
-  strong {
-    font-weight: 700;
-  }
+  font-size: $typography-body-size;
+  color: $color-text-inverse;
+  text-align: center;
 }
 
 // ==========================================
-// INTRO (shellStickyContent) - Actions
+// PHOTO GRID (shellStickyContent — yellow gradient)
 // ==========================================
-.pet-friends-intro {
-  text-align: center;
-  padding: $spacing-sm $spacing-md $spacing-sm;
+.pf__photo-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 6px;
+  padding: $spacing-sm $spacing-md;
+  min-height: 180px;
+}
 
-  &__motto {
-    font-family: $font-family-body;
-    font-size: 15px;
-    font-weight: 400;
-    font-style: italic;
-    color: $color-white-80;
-    margin: 0 0 $spacing-sm;
-    line-height: 1.5;
+.pf__photo-grid-main {
+  position: relative;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+}
+
+.pf__photo-grid-side {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pf__photo-grid-side-item {
+  position: relative;
+  flex: 1;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+}
+
+.pf__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pf__photo-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 14px;
+  height: 14px;
+  background: $color-success;
+  border-radius: $border-radius-full;
+  border: 2px solid #fff;
+}
+
+// ==========================================
+// SECTION: "Amici"
+// ==========================================
+.pf__section {
+  padding: $spacing-md;
+}
+
+.pf__section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.pf__section-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pf__section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 2px;
+}
+
+.pf__section-subtitle {
+  font-size: $typography-small-size;
+  color: $color-text-secondary;
+  margin: 0;
+}
+
+.pf__section-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-shrink: 0;
+}
+
+.pf__section-action {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1.5px solid $color-primary-500;
+  border-radius: $border-radius-full;
+  color: $color-primary-500;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  .material-icons {
+    font-size: 20px;
   }
 
-  &__actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: $spacing-sm;
-    margin-top: $spacing-xs;
-  }
-
-  &__action-btn {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $color-white-20;
-    border: none;
-    border-radius: $border-radius-full;
-    color: $color-text-inverse;
-    cursor: pointer;
-    transition: $transition-fast;
-
-    .material-icons {
-      font-size: 22px;
-    }
-
-    &:hover {
-      background: $color-white-40;
-    }
-
-    &:active {
-      background: $color-white-20;
-      transform: scale(0.95);
-    }
+  &:active {
+    background: rgba($color-primary-500, 0.1);
+    transform: scale(0.92);
   }
 }
 
 // ==========================================
 // EMPTY STATE
 // ==========================================
-.pet-friends-empty {
+.pf__empty {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  min-height: 300px;
-  padding: $spacing-xl $spacing-lg;
-
-  &__icon-wrapper {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(74, 116, 240, 0.1);
-    border-radius: $border-radius-full;
-    margin-bottom: $spacing-lg;
-  }
-
-  &__icon {
-    font-size: 40px;
-    color: $color-ai-primary;
-    opacity: 0.6;
-  }
-
-  &__title {
-    font-family: $font-family-body;
-    font-size: 20px;
-    font-weight: 700;
-    color: $color-text-primary;
-    margin: 0 0 $spacing-xs;
-  }
-
-  &__text {
-    font-family: $font-family-body;
-    font-size: $typography-body-size;
-    color: $color-text-secondary;
-    margin: 0 0 $spacing-xl;
-    max-width: 280px;
-  }
-
-  &__btn {
-    display: flex;
-    align-items: center;
-    gap: $spacing-xs;
-    padding: $spacing-sm $spacing-xl;
-    background: $color-yellow-btn;
-    color: $color-yellow-btn-text;
-    font-family: $font-family-body;
-    font-size: $typography-body-size;
-    font-weight: 600;
-    border: none;
-    border-radius: $border-radius-full;
-    cursor: pointer;
-    transition: $transition-fast;
-
-    .material-icons {
-      font-size: 20px;
-    }
-
-    &:hover {
-      background: $color-yellow-btn-hover;
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      background: $color-yellow-btn-pressed;
-      transform: translateY(0);
-    }
-  }
+  padding: $spacing-xl $spacing-md;
 }
 
-// ==========================================
-// FRIENDS LIST
-// ==========================================
-.pet-friends-list {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm;
-  padding: 0 $spacing-md $spacing-lg;
+.pf__empty-icon {
+  font-size: 48px;
+  color: $color-text-secondary;
+  opacity: 0.4;
+  margin-bottom: $spacing-sm;
 }
 
-// ==========================================
-// FRIEND CARD
-// ==========================================
-.pet-friends-card {
+.pf__empty-text {
+  font-size: $typography-body-size;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-lg;
+}
+
+.pf__empty-btn {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
-  padding: $spacing-md;
-  background: #F5F3EB;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-xl;
+  background: $color-yellow-btn;
+  color: $color-yellow-btn-text;
+  font-size: $typography-body-size;
+  font-weight: 600;
+  border: none;
+  border-radius: $border-radius-full;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  .material-icons {
+    font-size: 20px;
+  }
+
+  &:active {
+    background: $color-yellow-btn-pressed;
+    transform: scale(0.96);
+  }
+}
+
+// ==========================================
+// FRIENDS LIST (compact cards)
+// ==========================================
+.pf__friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.pf__friend-card {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: $color-background-primary;
   border: none;
   border-radius: $border-radius-lg;
-  box-shadow: 0 3px 7px 1px rgba(0, 0, 0, 0.12);
+  box-shadow: $shadow-sm;
   text-align: left;
   cursor: pointer;
   width: 100%;
   transition: $transition-fast;
 
-  &:hover {
-    background: #EDE9DD;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.18);
-  }
-
   &:active {
     transform: scale(0.98);
+    background: $color-background-secondary;
   }
+}
 
-  // Avatar
-  &__avatar-wrapper {
-    position: relative;
-    flex-shrink: 0;
-  }
+.pf__friend-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
 
-  &__avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: $border-radius-full;
-    object-fit: cover;
-    border: 2px solid $color-white-40;
-  }
+.pf__friend-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: $border-radius-full;
+  object-fit: cover;
+}
 
-  &__online-badge {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 14px;
-    height: 14px;
-    background: $color-success;
-    border-radius: $border-radius-full;
-    border: 2px solid #F5F3EB;
-  }
+.pf__friend-online {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 12px;
+  height: 12px;
+  background: $color-success;
+  border-radius: $border-radius-full;
+  border: 2px solid $color-background-primary;
+}
 
-  // Info block
-  &__info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0; // prevent overflow
-  }
+.pf__friend-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
 
-  &__name {
-    font-family: $font-family-body;
-    font-size: 17px;
-    font-weight: 700;
-    color: $color-text-primary;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.pf__friend-name {
+  font-size: $typography-body-size;
+  font-weight: 700;
+  color: $color-text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  &__species {
-    font-family: $font-family-body;
-    font-size: $typography-small-size;
-    color: $color-text-secondary;
-    margin: 0;
-  }
+.pf__friend-species {
+  font-size: $typography-small-size;
+  color: $color-text-secondary;
+}
 
-  &__owner {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-family: $font-family-body;
-    font-size: $typography-small-size;
-    color: $color-text-secondary;
-    margin: 0;
+.pf__friend-status {
+  flex-shrink: 0;
+  font-size: $typography-micro-size;
+  font-weight: 600;
+  color: $color-text-secondary;
+  padding: 3px 8px;
+  border-radius: $border-radius-full;
+  background: rgba(0, 0, 0, 0.06);
 
-    .material-icons {
-      font-size: 14px;
-      flex-shrink: 0;
-      opacity: 0.7;
-    }
-  }
-
-  &__since {
-    font-family: $font-family-body;
-    font-size: $typography-micro-size;
-    color: $color-text-secondary;
-    font-style: italic;
-    margin: 0;
-    opacity: 0.7;
-  }
-
-  // Status badge
-  &__status {
-    flex-shrink: 0;
-  }
-
-  &__status-badge {
-    font-family: $font-family-body;
-    font-size: $typography-micro-size;
-    font-weight: 600;
-    color: $color-text-secondary;
-    padding: 4px 10px;
-    border-radius: $border-radius-full;
-    background: rgba(0, 0, 0, 0.06);
-
-    &--online {
-      color: $color-success;
-      background: rgba(67, 160, 71, 0.12);
-    }
+  &--online {
+    color: $color-success;
+    background: rgba(79, 175, 90, 0.12);
   }
 }
 
 // ==========================================
-// RESPONSIVE: Tablet and up
+// PROMO BANNER
+// ==========================================
+.pf__promo {
+  margin: 0 $spacing-md;
+  padding: $spacing-lg;
+  background: #101010;
+  border-radius: $border-radius-lg;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pf__promo-title {
+  font-size: $typography-button-size;
+  font-weight: 600;
+  color: $color-text-inverse;
+  margin: 0 0 $spacing-sm;
+}
+
+.pf__promo-btn {
+  display: inline-block;
+  padding: 8px $spacing-lg;
+  background: $color-text-inverse;
+  color: #101010;
+  font-size: $typography-small-size;
+  font-weight: 600;
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  margin-bottom: $spacing-sm;
+  transition: $transition-fast;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.pf__promo-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.pf__promo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+
+  &--active {
+    background: #fff;
+  }
+}
+
+// ==========================================
+// AMICI SUGGERITI
+// ==========================================
+.pf__suggested {
+  margin: $spacing-md 0 0;
+  padding: $spacing-lg $spacing-md;
+  background: $color-primary-500;
+  border-radius: $border-radius-lg $border-radius-lg 0 0;
+}
+
+.pf__suggested-title {
+  font-size: $typography-button-size;
+  font-weight: 700;
+  color: $color-text-inverse;
+  margin: 0 0 4px;
+}
+
+.pf__suggested-subtitle {
+  font-size: $typography-small-size;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 $spacing-md;
+}
+
+.pf__suggested-scroll {
+  display: flex;
+  gap: $spacing-md;
+  overflow-x: auto;
+  padding-bottom: $spacing-xs;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pf__suggested-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.pf__suggested-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: $border-radius-full;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.pf__suggested-name {
+  font-size: $typography-small-size;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+// ==========================================
+// RESPONSIVE
 // ==========================================
 @media (min-width: 768px) {
-  .pet-friends-list {
-    max-width: 600px;
+  .pf__photo-grid {
+    max-width: 500px;
     margin: 0 auto;
+    min-height: 240px;
   }
 
-  .pet-friends-empty {
-    min-height: 400px;
+  .pf__section,
+  .pf__promo {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

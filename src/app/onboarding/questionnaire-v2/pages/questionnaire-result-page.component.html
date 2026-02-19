@@ -96,7 +96,7 @@
                   @if (isLoadingExplanation()) {
                     <div class="explanation-loading">
                       <span class="mini-spinner"></span>
-                      Caricando spiegazione...
+                      {{ 'onboarding.questionnaireResult.loadingExplanation' | translate }}
                     </div>
                   } @else if (breedExplanation()) {
                     <div class="explanation">
@@ -108,7 +108,7 @@
                   <!-- Tradeoffs -->
                   @if (result.tradeoffs.length > 0) {
                     <div class="tradeoffs">
-                      <h4>Da considerare:</h4>
+                      <h4>{{ 'onboarding.questionnaireResult.toConsider' | translate }}</h4>
                       @for (tradeoff of result.tradeoffs; track tradeoff.aspect) {
                         <div class="tradeoff-item" [class]="tradeoff.severity">
                           <span class="tradeoff-icon">
@@ -125,7 +125,7 @@
                   <!-- Actions -->
                   <div class="breed-actions">
                     <button class="btn-view" (click)="viewBreedDetails(result.breed.id)">
-                      Scopri di più
+                      {{ 'onboarding.questionnaireResult.discoverMore' | translate }}
                     </button>
                   </div>
                 </div>
@@ -137,8 +137,8 @@
         <!-- No Results -->
         <section class="no-results">
           <div class="no-results-icon">🔍</div>
-          <h3>Nessuna razza trovata</h3>
-          <p>Non abbiamo trovato razze che corrispondono ai tuoi criteri. Prova a modificare alcune risposte.</p>
+          <h3>{{ 'onboarding.questionnaireResult.noBreedFound' | translate }}</h3>
+          <p>{{ 'onboarding.questionnaireResult.noBreedFoundDesc' | translate }}</p>
         </section>
       }
 

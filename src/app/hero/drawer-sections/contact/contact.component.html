@@ -66,6 +66,7 @@
             placeholder="Il tuo nome"
             autocomplete="name"
             aria-describedby="name-error"
+            maxlength="100"
           />
           @if (isFieldInvalid('name')) {
             <span id="name-error" class="form-group__error">
@@ -129,6 +130,7 @@
             placeholder="Descrivi la tua richiesta..."
             rows="6"
             aria-describedby="message-error"
+            maxlength="2000"
           ></textarea>
           @if (isFieldInvalid('message')) {
             <span id="message-error" class="form-group__error">

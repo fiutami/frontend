@@ -32,7 +32,9 @@
     "success": "Success",
     "next": "Next",
     "remove": "Remove",
-    "rotateDevice": "Please rotate your device to portrait mode"
+    "rotateDevice": "Please rotate your device to portrait mode",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   },
   "auth": {
     "login": "Login",
@@ -163,7 +165,106 @@
       "title": "Here's your perfect match!",
       "compatibility": "Compatibility",
       "viewDetails": "View details",
-      "tryAgain": "Take quiz again"
+      "tryAgain": "Take quiz again",
+      "compatibleWithYou": "compatible with you",
+      "discoverMore": "Discover more",
+      "exploreOtherSpecies": "Explore other species",
+      "registerAnyway": "Register a pet anyway",
+      "calculatingMatch": "Calculating your match...",
+      "fiutoPerfectMatch": "Perfect match! This animal is made for you!",
+      "fiutoGreatCompatibility": "Great compatibility! You'd make a great pair!",
+      "fiutoGoodStart": "Could be a good start! Discover more.",
+      "fiutoGreatChoice": "Great choice! This animal is right for you!"
+    },
+    "questionnaireResult": {
+      "loadingExplanation": "Loading explanation...",
+      "toConsider": "To consider:",
+      "discoverMore": "Discover more",
+      "noBreedFound": "No breed found",
+      "noBreedFoundDesc": "We didn't find breeds matching your criteria. Try changing some answers.",
+      "compatibleWithProfile": "{{name}} is compatible with your profile."
+    },
+    "matching": {
+      "loadingBreeds": "Loading breed catalog...",
+      "noCompatibleBreeds": "No compatible breeds found",
+      "noBreedsPassConstraints": "No breeds pass the constraints",
+      "analyzingCompatibility": "Analyzing semantic compatibility...",
+      "calculatingScores": "Calculating scores...",
+      "compatibleBreedsFound": "{{count}} compatible breeds found",
+      "calculationError": "Error calculating compatibility",
+      "loadingCatalog": "Loading catalog...",
+      "filteringBreeds": "Filtering breeds...",
+      "applyingFilters": "Applying filters...",
+      "breedsFound": "{{count}} breeds found",
+      "calculationErrorShort": "Calculation error",
+      "reason_apartmentFriendly": "Suitable for apartment living",
+      "reason_goodWithChildren": "Great with children",
+      "reason_easyToTrain": "Easy to train, ideal for beginners",
+      "reason_lowExercise": "Low exercise requirements",
+      "reason_lowGrooming": "Low grooming maintenance",
+      "category_housing": "Housing",
+      "category_family": "Family",
+      "category_experience": "Experience",
+      "category_time": "Time",
+      "category_care": "Care",
+      "tradeoff_highShedding": "High shedding, requires frequent cleaning",
+      "tradeoff_highBarking": "Tends to bark a lot, may cause issues with neighbors",
+      "tradeoff_giantSize": "Large size, requires adequate space",
+      "tradeoff_highExpense": "Monthly expenses above average",
+      "category_coat": "Coat",
+      "category_noise": "Noise",
+      "category_space": "Space",
+      "category_cost": "Cost"
+    },
+    "fiutoAi": {
+      "toConsider": "To consider: {{warnings}}",
+      "recommendedBecause": "{{name}} is recommended because: {{reasons}}.{{warnings}}"
+    },
+    "fiutoChat": {
+      "welcomeQuestionnaire": "Hi! I'm Fiuto 🐕 I'm here to help you during the questionnaire. If you have doubts about a question, just ask me!",
+      "welcomeResults": "Here are your results! If you want to understand why we suggest these breeds, I'm here to explain. 🎯",
+      "welcomeGeneral": "Hi! I'm Fiuto, your assistant for finding the perfect pet! 🐾"
+    },
+    "speciesQuiz": {
+      "q1": {
+        "intro": "Every animal needs your time and attention. Let's start here.",
+        "question": "How much time can you dedicate each day?",
+        "poco": "Little",
+        "medio": "Medium",
+        "molto": "A lot"
+      },
+      "q2": {
+        "intro": "Some animals are more independent, others need company.",
+        "question": "How much time do you spend away from home?",
+        "less2h": "Less than 2 hours",
+        "2to6h": "2-6 hours",
+        "more6h": "More than 6 hours"
+      },
+      "q3": {
+        "intro": "Every animal needs its own space. Let's see what you can offer.",
+        "question": "What space do you have available?",
+        "indoor": "None (indoor only)",
+        "balcony": "Balcony / small space",
+        "garden": "Garden"
+      },
+      "q4": {
+        "intro": "To advise you well, we need to consider any allergies.",
+        "question": "Are there allergies at home?",
+        "yes": "Yes",
+        "no": "No"
+      },
+      "q5": {
+        "intro": "Every animal offers a different kind of relationship. What are you really looking for?",
+        "question": "What do you want from your pet?",
+        "companionship": "Companionship and affection",
+        "tranquility": "Peace and quiet",
+        "activity": "Activities together",
+        "independent": "An independent animal"
+      }
+    },
+    "registerPetErrors": {
+      "noSpeciesAvailable": "No species available. Please try again later.",
+      "speciesLoadError": "Error loading species. Please try again later."
     }
   },
   "quiz": {
@@ -605,7 +706,14 @@
       "offline": "Offline",
       "findFriends": "Find friends",
       "emptyTitle": "This is where you find your furry gang.",
-      "emptyMessage": "Friends you've already interacted with"
+      "emptyMessage": "Friends you've already interacted with",
+      "sectionTitle": "Friends",
+      "sectionSubtitle": "Pets you've already interacted or chatted with",
+      "edit": "Edit",
+      "promoTitle": "Fiutail play partners",
+      "promoButton": "Discover now",
+      "suggestedTitle": "Suggested Friends",
+      "suggestedSubtitle": "Based on breed, affinity, location and mutual habits"
     },
     "memories": {
       "title": "Memories",

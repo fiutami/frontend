@@ -87,7 +87,8 @@
           formControlName="nome"
           class="register-pet__input"
           [placeholder]="'onboarding.registerPet.petNamePlaceholder' | translate"
-          [class.register-pet__input--error]="getFieldError('nome')" />
+          [class.register-pet__input--error]="getFieldError('nome')"
+          maxlength="100" />
         @if (getFieldError('nome')) {
           <span class="register-pet__field-error">{{ getFieldError('nome') }}</span>
         }
@@ -236,7 +237,8 @@
           id="colore"
           formControlName="colore"
           class="register-pet__input"
-          [placeholder]="'onboarding.registerPet.colorPlaceholder' | translate" />
+          [placeholder]="'onboarding.registerPet.colorPlaceholder' | translate"
+          maxlength="50" />
       </div>
 
       <!-- Segni particolari -->
@@ -247,7 +249,8 @@
           formControlName="segniParticolari"
           class="register-pet__textarea"
           [placeholder]="'onboarding.registerPet.specialMarksPlaceholder' | translate"
-          rows="3"></textarea>
+          rows="3"
+          maxlength="200"></textarea>
       </div>
 
       <!-- Submit button -->

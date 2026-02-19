@@ -96,6 +96,7 @@
           (ngModelChange)="updateField('name', $event)"
           placeholder="Nome del pet"
           autocomplete="off"
+          maxlength="100"
         />
       </div>
 
@@ -168,10 +169,10 @@
           (ngModelChange)="updateField('bio', $event)"
           placeholder="Racconta qualcosa sul tuo pet..."
           rows="4"
-          maxlength="300"
+          maxlength="2000"
         ></textarea>
         <span class="pet-edit__char-count">
-          {{ form().bio.length }} / 300
+          {{ form().bio.length }} / 2000
         </span>
       </div>
     </section>

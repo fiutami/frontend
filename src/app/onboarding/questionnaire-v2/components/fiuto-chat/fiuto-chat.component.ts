@@ -20,7 +20,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FiutoAiService, ChatContext, ChatMessage } from '../../engine/fiuto-ai.service';
 import { UserPreferenceProfile } from '../../models/profile.models';
 
@@ -34,6 +34,7 @@ import { UserPreferenceProfile } from '../../models/profile.models';
 })
 export class FiutoChatComponent implements AfterViewChecked {
   private readonly fiutoAi = inject(FiutoAiService);
+  private readonly translate = inject(TranslateService);
 
   // Inputs
   currentQuestionId = input<string | undefined>();
@@ -63,21 +64,21 @@ export class FiutoChatComponent implements AfterViewChecked {
     const p = this.phase();
     if (p === 'questionnaire') {
       return [
-        { text: 'Non capisco questa domanda', icon: '❓' },
-        { text: 'Qual è la differenza tra le opzioni?', icon: '🔄' },
-        { text: 'Perché mi chiedi questo?', icon: '💭' }
+        { text: this.translate.instant('fiuto.suggestions.help_question'), icon: '❓' },
+        { text: this.translate.instant('fiuto.suggestions.difference'), icon: '🔄' },
+        { text: this.translate.instant('fiuto.suggestions.why_asking'), icon: '💭' }
       ];
     }
     if (p === 'results') {
       return [
-        { text: 'Perché questa razza?', icon: '🐕' },
-        { text: 'Quali sono i contro?', icon: '⚖️' },
-        { text: 'Alternative simili?', icon: '🔍' }
+        { text: this.translate.instant('fiuto.suggestions.why_breed'), icon: '🐕' },
+        { text: this.translate.instant('fiuto.suggestions.cons'), icon: '⚖️' },
+        { text: this.translate.instant('fiuto.suggestions.alternatives'), icon: '🔍' }
       ];
     }
     return [
-      { text: 'Come funziona il quiz?', icon: '📝' },
-      { text: 'Che animale mi consigli?', icon: '🐾' }
+      { text: this.translate.instant('fiuto.suggestions.how_works'), icon: '📝' },
+      { text: this.translate.instant('fiuto.suggestions.recommend'), icon: '🐾' }
     ];
   });
 
@@ -150,14 +151,12 @@ export class FiutoChatComponent implements AfterViewChecked {
   private getWelcomeMessage(): string {
     const p = this.phase();
     if (p === 'questionnaire') {
-      return 'Ciao! Sono Fiuto 🐕 Sono qui per aiutarti durante il questionario. ' +
-        'Se hai dubbi su una domanda, chiedimi pure!';
+      return this.translate.instant('onboarding.fiutoChat.welcomeQuestionnaire');
     }
     if (p === 'results') {
-      return 'Ecco i tuoi risultati! Se vuoi capire meglio perché ti suggeriamo ' +
-        'queste razze, sono qui per spiegarti. 🎯';
+      return this.translate.instant('onboarding.fiutoChat.welcomeResults');
     }
-    return 'Ciao! Sono Fiuto, il tuo assistente per trovare l\'animale perfetto! 🐾';
+    return this.translate.instant('onboarding.fiutoChat.welcomeGeneral');
   }
 
   trackByMessageId(_: number, message: ChatMessage): string {

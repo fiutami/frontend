@@ -151,7 +151,13 @@ export class PetDocumentUploadComponent {
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files?.length) {
-      this.selectedFile.set(input.files[0]);
+      const file = input.files[0];
+      const maxSize = 25 * 1024 * 1024; // 25MB
+      if (file.size > maxSize) {
+        this.error.set('File troppo grande. Massimo 25MB.');
+        return;
+      }
+      this.selectedFile.set(file);
       this.error.set('');
     }
   }

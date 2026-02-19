@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble/speech-bubble.component';
 import { AnswerSquareComponent, AnswerOption } from '../../../shared/components/answer-square';
@@ -20,6 +21,7 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
   imports: [
     CommonModule,
     SharedModule,
+    TranslateModule,
     SpeechBubbleComponent,
     AnswerSquareComponent,
     PageBackgroundComponent,
@@ -30,21 +32,21 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
 })
 export class SpeciesQ5Component implements OnInit {
   private router = inject(Router);
+  private translate = inject(TranslateService);
   private questionnaireService = inject(SpeciesQuestionnaireService);
 
   /** Intro message displayed in blue bubble */
-  readonly introMessage =
-    'Ogni animale offre un tipo diverso di relazione. Cosa cerchi davvero?';
+  readonly introMessage = this.translate.instant('onboarding.speciesQuiz.q5.intro');
 
   /** Question text */
-  readonly question = 'Cosa desideri dal tuo animale?';
+  readonly question = this.translate.instant('onboarding.speciesQuiz.q5.question');
 
   /** Answer options */
   readonly options: AnswerOption[] = [
-    { value: 'compagnia', label: 'Compagnia e affetto' },
-    { value: 'tranquillita', label: 'Tranquillità e silenzio' },
-    { value: 'attivita', label: 'Attività assieme' },
-    { value: 'indipendente', label: 'Un animale indipendente' },
+    { value: 'compagnia', label: this.translate.instant('onboarding.speciesQuiz.q5.companionship') },
+    { value: 'tranquillita', label: this.translate.instant('onboarding.speciesQuiz.q5.tranquility') },
+    { value: 'attivita', label: this.translate.instant('onboarding.speciesQuiz.q5.activity') },
+    { value: 'indipendente', label: this.translate.instant('onboarding.speciesQuiz.q5.independent') },
   ];
 
   /** Currently selected answer */

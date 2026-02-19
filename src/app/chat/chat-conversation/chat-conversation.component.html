@@ -89,6 +89,7 @@
         [placeholder]="'chat.placeholder' | translate"
         [(ngModel)]="newMessage"
         (keypress)="onKeyPress($event)"
+        maxlength="4000"
       />
     </div>
 

@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble/speech-bubble.component';
 import { AnswerSquareComponent, AnswerOption } from '../../../shared/components/answer-square';
@@ -20,6 +21,7 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
   imports: [
     CommonModule,
     SharedModule,
+    TranslateModule,
     SpeechBubbleComponent,
     AnswerSquareComponent,
     PageBackgroundComponent,
@@ -30,20 +32,20 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
 })
 export class SpeciesQ3Component implements OnInit {
   private router = inject(Router);
+  private translate = inject(TranslateService);
   private questionnaireService = inject(SpeciesQuestionnaireService);
 
   /** Intro message displayed in blue bubble */
-  readonly introMessage =
-    'Ogni animale ha bisogno del suo spazio. Vediamo cosa puoi offrirgli.';
+  readonly introMessage = this.translate.instant('onboarding.speciesQuiz.q3.intro');
 
   /** Question text */
-  readonly question = 'Che spazio hai a disposizione?';
+  readonly question = this.translate.instant('onboarding.speciesQuiz.q3.question');
 
   /** Answer options */
   readonly options: AnswerOption[] = [
-    { value: 'interno', label: 'Nessuno (solo interno)' },
-    { value: 'balcone', label: 'Balcone / piccolo spazio' },
-    { value: 'giardino', label: 'Giardino' },
+    { value: 'interno', label: this.translate.instant('onboarding.speciesQuiz.q3.indoor') },
+    { value: 'balcone', label: this.translate.instant('onboarding.speciesQuiz.q3.balcony') },
+    { value: 'giardino', label: this.translate.instant('onboarding.speciesQuiz.q3.garden') },
   ];
 
   /** Currently selected answer */

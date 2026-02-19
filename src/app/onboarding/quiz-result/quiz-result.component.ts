@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 import { QuizMatchingService, SpeciesMatch } from '../services/quiz-matching.service';
 import { QuizAnswers, EMPTY_QUIZ_STATE } from '../quiz/quiz.models';
@@ -23,13 +24,14 @@ import { PrototypeService } from '../../profile/services/prototype.service';
 @Component({
   selector: 'app-quiz-result',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, TranslateModule],
   templateUrl: './quiz-result.component.html',
   styleUrls: ['./quiz-result.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizResultComponent implements OnInit {
   private readonly router = inject(Router);
+  private readonly translate = inject(TranslateService);
   private readonly matchingService = inject(QuizMatchingService);
   private readonly prototypeService = inject(PrototypeService);
 
@@ -40,7 +42,7 @@ export class QuizResultComponent implements OnInit {
   protected allMatches = signal<SpeciesMatch[]>([]);
 
   /** Fiuto message */
-  protected fiutoMessage = signal('Ottima scelta! Questo animale fa per te!');
+  protected fiutoMessage = signal(this.translate.instant('onboarding.quizResult.fiutoGreatChoice'));
 
   ngOnInit(): void {
     this.loadResults();
@@ -63,11 +65,11 @@ export class QuizResultComponent implements OnInit {
 
           // Update Fiuto message based on compatibility
           if (matches[0].compatibility >= 90) {
-            this.fiutoMessage.set('Match perfetto! Questo animale e fatto per te!');
+            this.fiutoMessage.set(this.translate.instant('onboarding.quizResult.fiutoPerfectMatch'));
           } else if (matches[0].compatibility >= 75) {
-            this.fiutoMessage.set('Ottima compatibilita! Sareste una bella coppia!');
+            this.fiutoMessage.set(this.translate.instant('onboarding.quizResult.fiutoGreatCompatibility'));
           } else {
-            this.fiutoMessage.set('Potrebbe essere un buon inizio! Scopri di piu.');
+            this.fiutoMessage.set(this.translate.instant('onboarding.quizResult.fiutoGoodStart'));
           }
         }
       } catch (e) {

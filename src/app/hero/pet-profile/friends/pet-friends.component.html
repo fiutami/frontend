@@ -1,106 +1,147 @@
 <app-tab-page-shell-default
-  title="Banda Pelosa"
+  [title]="'petProfile.friends.title' | translate"
   activeTabId="pet-profile"
   backgroundVariant="tab-menu"
   [showBack]="true"
   (backClicked)="goBack()">
 
-  <!-- Branding extra: subtitle under logo (same style as fatti-bestiali) -->
-  <p shellBrandingExtra class="pet-friends-subtitle">
-    Qui trovi la tua <strong>banda pelosa</strong><br>
-    Gli amici con cui hai gi&agrave; interagito
+  <!-- Branding extra: subtitle in blue header -->
+  <p shellBrandingExtra class="pf__subtitle">
+    {{ 'petProfile.friends.emptyTitle' | translate }}<br>
+    {{ 'petProfile.friends.emptyMessage' | translate }}
   </p>
 
-  <!-- Sticky: action buttons -->
+  <!-- Sticky: photo grid on yellow gradient -->
   <ng-container shellStickyContent>
-    <div class="pet-friends-intro">
-      <div class="pet-friends-intro__actions">
-        <button
-          class="pet-friends-intro__action-btn"
-          (click)="onAddFriendClick()"
-          aria-label="Aggiungi amico">
-          <span class="material-icons">person_add</span>
-        </button>
-        <button
-          class="pet-friends-intro__action-btn"
-          aria-label="Messaggi">
-          <span class="material-icons">chat_bubble_outline</span>
-        </button>
-        <button
-          class="pet-friends-intro__action-btn"
-          aria-label="Notifiche">
-          <span class="material-icons">notifications_none</span>
-        </button>
+    @if (gridFriends().length > 0) {
+      <div class="pf__photo-grid">
+        <!-- Large photo left -->
+        <div class="pf__photo-grid-main">
+          <img
+            [src]="gridFriends()[0].avatarUrl"
+            [alt]="gridFriends()[0].name"
+            class="pf__photo"
+            loading="lazy" />
+          @if (gridFriends()[0].online) {
+            <span class="pf__photo-badge"></span>
+          }
+        </div>
+        <!-- Two stacked photos right -->
+        <div class="pf__photo-grid-side">
+          @if (gridFriends()[1]; as f) {
+            <div class="pf__photo-grid-side-item">
+              <img
+                [src]="f.avatarUrl"
+                [alt]="f.name"
+                class="pf__photo"
+                loading="lazy" />
+              @if (f.online) {
+                <span class="pf__photo-badge"></span>
+              }
+            </div>
+          }
+          @if (gridFriends()[2]; as f) {
+            <div class="pf__photo-grid-side-item">
+              <img
+                [src]="f.avatarUrl"
+                [alt]="f.name"
+                class="pf__photo"
+                loading="lazy" />
+              @if (f.online) {
+                <span class="pf__photo-badge"></span>
+              }
+            </div>
+          }
+        </div>
       </div>
-    </div>
+    }
   </ng-container>
 
-  <!-- Empty state -->
-  @if (isEmpty()) {
-    <div class="pet-friends-empty">
-      <div class="pet-friends-empty__icon-wrapper">
-        <span class="material-icons pet-friends-empty__icon">group</span>
+  <!-- Section: Amici -->
+  <div class="pf__section">
+    <div class="pf__section-header">
+      <div class="pf__section-header-text">
+        <h2 class="pf__section-title">{{ 'petProfile.friends.sectionTitle' | translate }}</h2>
+        <p class="pf__section-subtitle">{{ 'petProfile.friends.sectionSubtitle' | translate }}</p>
       </div>
-      <h2 class="pet-friends-empty__title">Nessun amico ancora</h2>
-      <p class="pet-friends-empty__text">
-        Trova nuovi amici pelosi con cui giocare!
-      </p>
-      <button
-        class="pet-friends-empty__btn"
-        (click)="onAddFriendClick()">
-        <span class="material-icons">person_add</span>
-        Trova Amici
-      </button>
-    </div>
-  }
-
-  <!-- Friends list -->
-  @if (!isEmpty()) {
-    <div class="pet-friends-list">
-      @for (friend of friends(); track friend.id) {
-        <button
-          class="pet-friends-card"
-          (click)="onFriendClick(friend)">
-
-          <!-- Avatar with online indicator -->
-          <div class="pet-friends-card__avatar-wrapper">
-            <img
-              [src]="friend.avatarUrl"
-              [alt]="friend.name"
-              class="pet-friends-card__avatar"
-              loading="lazy" />
-            @if (friend.online) {
-              <span class="pet-friends-card__online-badge"></span>
-            }
-          </div>
-
-          <!-- Info -->
-          <div class="pet-friends-card__info">
-            <h3 class="pet-friends-card__name">{{ friend.name }}</h3>
-            <p class="pet-friends-card__species">{{ friend.species }}</p>
-            <p class="pet-friends-card__owner">
-              <span class="material-icons">person</span>
-              {{ friend.ownerName }}
-            </p>
-            <p class="pet-friends-card__since">
-              Amici da {{ formatFriendsSince(friend.friendsSince) }}
-            </p>
-          </div>
-
-          <!-- Status -->
-          <div class="pet-friends-card__status">
-            @if (friend.online) {
-              <span class="pet-friends-card__status-badge pet-friends-card__status-badge--online">
-                Online
-              </span>
-            } @else {
-              <span class="pet-friends-card__status-badge">
-                Offline
-              </span>
-            }
-          </div>
+      <div class="pf__section-actions">
+        <button class="pf__section-action" (click)="onEditClick()" [attr.aria-label]="'petProfile.friends.edit' | translate">
+          <span class="material-icons">edit</span>
         </button>
-      }
+        <button class="pf__section-action" (click)="onAddFriendClick()" [attr.aria-label]="'petProfile.friends.findFriends' | translate">
+          <span class="material-icons">add</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    @if (isEmpty()) {
+      <div class="pf__empty">
+        <span class="material-icons pf__empty-icon">group</span>
+        <p class="pf__empty-text">{{ 'petProfile.friends.emptyMessage' | translate }}</p>
+        <button class="pf__empty-btn" (click)="onAddFriendClick()">
+          <span class="material-icons">person_add</span>
+          {{ 'petProfile.friends.findFriends' | translate }}
+        </button>
+      </div>
+    }
+
+    <!-- Friends list (compact) -->
+    @if (!isEmpty()) {
+      <div class="pf__friends-list">
+        @for (friend of friends(); track friend.id) {
+          <button class="pf__friend-card" (click)="onFriendClick(friend)">
+            <div class="pf__friend-avatar-wrap">
+              <img
+                [src]="friend.avatarUrl"
+                [alt]="friend.name"
+                class="pf__friend-avatar"
+                loading="lazy" />
+              @if (friend.online) {
+                <span class="pf__friend-online"></span>
+              }
+            </div>
+            <div class="pf__friend-info">
+              <span class="pf__friend-name">{{ friend.name }}</span>
+              <span class="pf__friend-species">{{ friend.species }}</span>
+            </div>
+            <span class="pf__friend-status" [class.pf__friend-status--online]="friend.online">
+              {{ (friend.online ? 'petProfile.friends.online' : 'petProfile.friends.offline') | translate }}
+            </span>
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Promo banner -->
+  <div class="pf__promo" (click)="onPromoClick()">
+    <p class="pf__promo-title">{{ 'petProfile.friends.promoTitle' | translate }}</p>
+    <button class="pf__promo-btn">{{ 'petProfile.friends.promoButton' | translate }}</button>
+    <div class="pf__promo-dots">
+      <span class="pf__promo-dot pf__promo-dot--active"></span>
+      <span class="pf__promo-dot"></span>
+      <span class="pf__promo-dot"></span>
+    </div>
+  </div>
+
+  <!-- Amici Suggeriti -->
+  @if (suggestedFriends().length > 0) {
+    <div class="pf__suggested">
+      <h3 class="pf__suggested-title">{{ 'petProfile.friends.suggestedTitle' | translate }}</h3>
+      <p class="pf__suggested-subtitle">{{ 'petProfile.friends.suggestedSubtitle' | translate }}</p>
+      <div class="pf__suggested-scroll">
+        @for (pet of suggestedFriends(); track pet.id) {
+          <button class="pf__suggested-item" (click)="onSuggestedClick(pet)">
+            <img
+              [src]="pet.avatarUrl"
+              [alt]="pet.name"
+              class="pf__suggested-avatar"
+              loading="lazy" />
+            <span class="pf__suggested-name">{{ pet.name }}</span>
+          </button>
+        }
+      </div>
     </div>
   }
 

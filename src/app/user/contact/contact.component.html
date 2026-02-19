@@ -23,7 +23,7 @@
 
       <div class="form-group">
         <label>{{ 'contact.name' | translate }}</label>
-        <input type="text" [(ngModel)]="name" name="name" required>
+        <input type="text" [(ngModel)]="name" name="name" required maxlength="100">
       </div>
 
       <div class="form-group">
@@ -48,7 +48,8 @@
           name="message"
           rows="5"
           required
-          placeholder="{{ 'contact.messagePlaceholder' | translate }}"></textarea>
+          placeholder="{{ 'contact.messagePlaceholder' | translate }}"
+          maxlength="2000"></textarea>
       </div>
 
       <div class="error" *ngIf="error">{{ error }}</div>

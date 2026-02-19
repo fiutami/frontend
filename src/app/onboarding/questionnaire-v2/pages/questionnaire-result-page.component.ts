@@ -153,7 +153,7 @@ export class QuestionnaireResultPageComponent implements OnInit, OnDestroy {
 
   private getDefaultExplanation(breed: MatchResult): string {
     const reasons = breed.matchReasons.map(r => r.reason).join('. ');
-    return reasons || `${breed.breed.name} è compatibile con il tuo profilo.`;
+    return reasons || this.translateService.instant('onboarding.questionnaireResult.compatibleWithProfile', { name: breed.breed.name });
   }
 
   /** Get score color class */

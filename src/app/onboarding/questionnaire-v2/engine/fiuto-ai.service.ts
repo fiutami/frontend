@@ -8,6 +8,7 @@
  */
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { UserPreferenceProfile } from '../models/profile.models';
@@ -44,6 +45,7 @@ export interface ProfileSummary {
 @Injectable({ providedIn: 'root' })
 export class FiutoAiService {
   private readonly http = inject(HttpClient);
+  private readonly translate = inject(TranslateService);
   private readonly globalAi = inject(FiutoAiGlobalService);
   private readonly REQUEST_TIMEOUT_MS = 35000;
 
@@ -161,9 +163,9 @@ export class FiutoAiService {
   private getDefaultExplanation(breed: MatchResult): string {
     const reasons = breed.matchReasons.map(r => r.reason).join('. ');
     const warnings = breed.tradeoffs.length > 0
-      ? `\n\nDa considerare: ${breed.tradeoffs.map(t => t.description).join('. ')}`
+      ? '\n\n' + this.translate.instant('onboarding.fiutoAi.toConsider', { warnings: breed.tradeoffs.map(t => t.description).join('. ') })
       : '';
 
-    return `${breed.breed.name} è consigliato perché: ${reasons}.${warnings}`;
+    return this.translate.instant('onboarding.fiutoAi.recommendedBecause', { name: breed.breed.name, reasons, warnings });
   }
 }

@@ -31,6 +31,7 @@ export class FormInputComponent implements ControlValueAccessor {
   @Input() hint = '';
   @Input() errorMessage = '';
   @Input() hasError = false;
+  @Input() maxlength: number | null = null;
   @Input() autocomplete = 'off';
   @Input() inputId = `input-${Math.random().toString(36).substring(2, 9)}`;
 
@@ -41,6 +42,7 @@ export class FormInputComponent implements ControlValueAccessor {
   disabled = false;
   focused = false;
   touched = false;
+  showPassword = false;
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
@@ -101,11 +103,37 @@ export class FormInputComponent implements ControlValueAccessor {
     return classes;
   }
 
+  get isPasswordType(): boolean {
+    return this.type === 'password';
+  }
+
+  get actualType(): string {
+    return this.isPasswordType && this.showPassword ? 'text' : this.type;
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+    this.cdr.markForCheck();
+  }
+
   get showHint(): boolean {
     return !!this.hint && !this.hasError && this.focused;
   }
 
   get showError(): boolean {
     return this.hasError && !!this.errorMessage;
+  }
+
+  get showCharCounter(): boolean {
+    return this.maxlength !== null && this.maxlength > 0;
+  }
+
+  get charCounterText(): string {
+    return `${(this.value || '').length} / ${this.maxlength}`;
+  }
+
+  get isNearLimit(): boolean {
+    if (!this.maxlength) return false;
+    return (this.value || '').length > this.maxlength * 0.9;
   }
 }

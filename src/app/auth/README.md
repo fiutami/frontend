@@ -486,7 +486,7 @@ export class AppComponent {
 - [ ] AuthService integration
 - [ ] Error handling (toast notifications)
 - [ ] Loading states (spinners)
-- [ ] Password visibility toggle
+- [x] Password visibility toggle
 - [ ] "Remember me" checkbox (LoginComponent)
 
 ### Phase 3 (Future)

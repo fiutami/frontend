@@ -61,36 +61,84 @@
       >
         <div class="form-group">
           <label for="currentPassword" class="form-label">Password Attuale</label>
-          <input
-            type="password"
-            id="currentPassword"
-            formControlName="currentPassword"
-            class="form-input"
-            placeholder="Inserisci la password attuale"
-          >
+          <div class="form-input-wrapper">
+            <input
+              [type]="showCurrentPassword ? 'text' : 'password'"
+              id="currentPassword"
+              formControlName="currentPassword"
+              class="form-input form-input--has-toggle"
+              placeholder="Inserisci la password attuale"
+            >
+            <button
+              type="button"
+              class="form-input-toggle"
+              (click)="showCurrentPassword = !showCurrentPassword"
+              [attr.aria-label]="showCurrentPassword ? 'Nascondi password' : 'Mostra password'"
+              tabindex="-1">
+              <svg *ngIf="!showCurrentPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg *ngIf="showCurrentPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="newPassword" class="form-label">Nuova Password</label>
-          <input
-            type="password"
-            id="newPassword"
-            formControlName="newPassword"
-            class="form-input"
-            placeholder="Inserisci la nuova password"
-          >
+          <div class="form-input-wrapper">
+            <input
+              [type]="showNewPassword ? 'text' : 'password'"
+              id="newPassword"
+              formControlName="newPassword"
+              class="form-input form-input--has-toggle"
+              placeholder="Inserisci la nuova password"
+            >
+            <button
+              type="button"
+              class="form-input-toggle"
+              (click)="showNewPassword = !showNewPassword"
+              [attr.aria-label]="showNewPassword ? 'Nascondi password' : 'Mostra password'"
+              tabindex="-1">
+              <svg *ngIf="!showNewPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg *ngIf="showNewPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
           <span class="form-hint">Minimo 8 caratteri</span>
         </div>
 
         <div class="form-group">
           <label for="confirmPassword" class="form-label">Conferma Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            formControlName="confirmPassword"
-            class="form-input"
-            placeholder="Conferma la nuova password"
-          >
+          <div class="form-input-wrapper">
+            <input
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              class="form-input form-input--has-toggle"
+              placeholder="Conferma la nuova password"
+            >
+            <button
+              type="button"
+              class="form-input-toggle"
+              (click)="showConfirmPassword = !showConfirmPassword"
+              [attr.aria-label]="showConfirmPassword ? 'Nascondi password' : 'Mostra password'"
+              tabindex="-1">
+              <svg *ngIf="!showConfirmPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg *ngIf="showConfirmPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
           <span
             class="form-error"
             *ngIf="passwordForm.hasError('passwordMismatch') && passwordForm.get('confirmPassword')?.touched"

@@ -631,6 +631,12 @@
   z-index: 1001;
   animation: slideUp 0.3s ease;
 
+  // Quando mappa espansa, POI card deve stare sopra backdrop (1100) e mappa (1101)
+  &--expanded {
+    z-index: 1200;
+    bottom: 56px;
+  }
+
   @keyframes slideUp {
     from {
       transform: translateY(100%);

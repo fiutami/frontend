@@ -22,6 +22,18 @@
   }
 }
 
+.form-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &--password {
+    .form-input {
+      padding-right: 48px;
+    }
+  }
+}
+
 .form-input {
   width: 100%;
   height: $spacing-auth-mobile-button-height; // 50px
@@ -69,6 +81,38 @@
   }
 }
 
+.form-input-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    color: $color-text-inverse;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:active {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  svg {
+    display: block;
+  }
+}
+
 .form-hint {
   font-size: $typography-terms-size-mobile;
   color: rgba(255, 255, 255, 0.7);
@@ -91,5 +135,21 @@
 
   @include respond(md) {
     font-size: 13px;
+  }
+}
+
+.form-char-counter {
+  font-size: $typography-terms-size-mobile;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: right;
+  transition: color 0.2s ease;
+
+  @include respond(md) {
+    font-size: 12px;
+  }
+
+  &--warning {
+    color: #FF6B6B;
+    font-weight: 500;
   }
 }

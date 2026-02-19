@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 // Legacy Components (Non-Standalone)
 import { ButtonComponent } from './components/button/button.component';
@@ -71,6 +72,7 @@ const STANDALONE_COMPONENTS = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    TranslateModule,
     // Import standalone components
     ...STANDALONE_COMPONENTS,
   ],

@@ -11,6 +11,7 @@
 
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { UserPreferenceProfile } from '../models/profile.models';
 import { EmbeddingService } from './embedding.service';
@@ -69,6 +70,7 @@ export interface MatchingState {
 @Injectable({ providedIn: 'root' })
 export class MatchingEngineService {
   private readonly http = inject(HttpClient);
+  private readonly translate = inject(TranslateService);
   private readonly embeddingService = inject(EmbeddingService);
 
   // State
@@ -96,31 +98,31 @@ export class MatchingEngineService {
   async computeMatches(profile: UserPreferenceProfile): Promise<MatchResult[]> {
     try {
       // Step 1: Load candidates
-      this.updateState('loading', 10, 'Caricando catalogo razze...');
+      this.updateState('loading', 10, this.translate.instant('onboarding.matching.loadingBreeds'));
       const candidates = await this.loadCandidates(profile);
 
       if (candidates.length === 0) {
-        this.updateState('done', 100, 'Nessuna razza compatibile trovata');
+        this.updateState('done', 100, this.translate.instant('onboarding.matching.noCompatibleBreeds'));
         this._results.set([]);
         return [];
       }
 
       // Step 2: Filter by hard constraints
-      this.updateState('filtering', 25, 'Applicando filtri...');
+      this.updateState('filtering', 25, this.translate.instant('onboarding.matching.applyingFilters'));
       const filtered = this.applyHardConstraints(candidates, profile);
 
       if (filtered.length === 0) {
-        this.updateState('done', 100, 'Nessuna razza supera i vincoli');
+        this.updateState('done', 100, this.translate.instant('onboarding.matching.noBreedsPassConstraints'));
         this._results.set([]);
         return [];
       }
 
       // Step 3: Compute semantic scores (if embeddings available)
-      this.updateState('embedding', 40, 'Analizzando compatibilità semantica...');
+      this.updateState('embedding', 40, this.translate.instant('onboarding.matching.analyzingCompatibility'));
       const withSemanticScores = await this.computeSemanticScores(filtered, profile);
 
       // Step 4: Compute rule-based scores
-      this.updateState('scoring', 70, 'Calcolando punteggi...');
+      this.updateState('scoring', 70, this.translate.instant('onboarding.matching.calculatingScores'));
       const withAllScores = this.computeRuleScores(withSemanticScores, profile);
 
       // Step 5: Sort and return top results
@@ -128,13 +130,13 @@ export class MatchingEngineService {
         .sort((a, b) => b.score - a.score)
         .slice(0, 10);
 
-      this.updateState('done', 100, `${sorted.length} razze compatibili trovate`);
+      this.updateState('done', 100, this.translate.instant('onboarding.matching.compatibleBreedsFound', { count: sorted.length }));
       this._results.set(sorted);
 
       return sorted;
     } catch (err) {
       console.error('[MatchingEngine] Error:', err);
-      this.updateState('error', 0, 'Errore nel calcolo delle compatibilità');
+      this.updateState('error', 0, this.translate.instant('onboarding.matching.calculationError'));
       return [];
     }
   }
@@ -144,13 +146,13 @@ export class MatchingEngineService {
    */
   async computeMatchesLocal(profile: UserPreferenceProfile): Promise<MatchResult[]> {
     try {
-      this.updateState('loading', 10, 'Caricando catalogo...');
+      this.updateState('loading', 10, this.translate.instant('onboarding.matching.loadingCatalog'));
       const candidates = await this.loadCandidates(profile);
 
-      this.updateState('filtering', 40, 'Filtrando razze...');
+      this.updateState('filtering', 40, this.translate.instant('onboarding.matching.filteringBreeds'));
       const filtered = this.applyHardConstraints(candidates, profile);
 
-      this.updateState('scoring', 70, 'Calcolando punteggi...');
+      this.updateState('scoring', 70, this.translate.instant('onboarding.matching.calculatingScores'));
       const results = filtered.map(breed => {
         const ruleScore = this.calculateRuleScore(breed, profile);
         return {
@@ -167,13 +169,13 @@ export class MatchingEngineService {
         .sort((a, b) => b.score - a.score)
         .slice(0, 10);
 
-      this.updateState('done', 100, `${sorted.length} razze trovate`);
+      this.updateState('done', 100, this.translate.instant('onboarding.matching.breedsFound', { count: sorted.length }));
       this._results.set(sorted);
 
       return sorted;
     } catch (err) {
       console.error('[MatchingEngine] Local error:', err);
-      this.updateState('error', 0, 'Errore nel calcolo');
+      this.updateState('error', 0, this.translate.instant('onboarding.matching.calculationErrorShort'));
       return [];
     }
   }
@@ -424,8 +426,8 @@ export class MatchingEngineService {
 
     if (attrs.apartmentFriendly && isApartment) {
       reasons.push({
-        category: 'Abitazione',
-        reason: 'Adatto alla vita in appartamento',
+        category: this.translate.instant('onboarding.matching.category_housing'),
+        reason: this.translate.instant('onboarding.matching.reason_apartmentFriendly'),
         impact: 'positive'
       });
     }
@@ -436,8 +438,8 @@ export class MatchingEngineService {
 
     if (attrs.goodWithChildren && hasChildren) {
       reasons.push({
-        category: 'Famiglia',
-        reason: 'Ottimo con i bambini',
+        category: this.translate.instant('onboarding.matching.category_family'),
+        reason: this.translate.instant('onboarding.matching.reason_goodWithChildren'),
         impact: 'positive'
       });
     }
@@ -446,8 +448,8 @@ export class MatchingEngineService {
     const experience = profile.LifestyleProfile?.experience;
     if (attrs.trainability === 'high' && (experience === 'none' || experience === 'some')) {
       reasons.push({
-        category: 'Esperienza',
-        reason: 'Facile da addestrare, ideale per principianti',
+        category: this.translate.instant('onboarding.matching.category_experience'),
+        reason: this.translate.instant('onboarding.matching.reason_easyToTrain'),
         impact: 'positive'
       });
     }
@@ -456,16 +458,16 @@ export class MatchingEngineService {
     const dailyTime = profile.LifestyleProfile?.dailyTime;
     if (attrs.exerciseNeeds === 'low' && (dailyTime === 'low' || dailyTime === 'minimal')) {
       reasons.push({
-        category: 'Tempo',
-        reason: 'Basse esigenze di esercizio',
+        category: this.translate.instant('onboarding.matching.category_time'),
+        reason: this.translate.instant('onboarding.matching.reason_lowExercise'),
         impact: 'positive'
       });
     }
 
     if (attrs.groomingNeeds === 'low') {
       reasons.push({
-        category: 'Cura',
-        reason: 'Manutenzione del pelo ridotta',
+        category: this.translate.instant('onboarding.matching.category_care'),
+        reason: this.translate.instant('onboarding.matching.reason_lowGrooming'),
         impact: 'positive'
       });
     }
@@ -482,8 +484,8 @@ export class MatchingEngineService {
 
     if (attrs.shedding === 'high') {
       tradeoffs.push({
-        aspect: 'Pelo',
-        description: 'Perdita di pelo elevata, richiede pulizia frequente',
+        aspect: this.translate.instant('onboarding.matching.category_coat'),
+        description: this.translate.instant('onboarding.matching.tradeoff_highShedding'),
         severity: 'medium'
       });
     }
@@ -494,16 +496,16 @@ export class MatchingEngineService {
 
     if (attrs.barkingLevel === 'high' && isApartment) {
       tradeoffs.push({
-        aspect: 'Rumore',
-        description: 'Tende ad abbaiare molto, potrebbero esserci problemi con i vicini',
+        aspect: this.translate.instant('onboarding.matching.category_noise'),
+        description: this.translate.instant('onboarding.matching.tradeoff_highBarking'),
         severity: 'high'
       });
     }
 
     if (attrs.size === 'giant') {
       tradeoffs.push({
-        aspect: 'Spazio',
-        description: 'Taglia grande, richiede spazio adeguato',
+        aspect: this.translate.instant('onboarding.matching.category_space'),
+        description: this.translate.instant('onboarding.matching.tradeoff_giantSize'),
         severity: 'medium'
       });
     }
@@ -511,8 +513,8 @@ export class MatchingEngineService {
     // Budget check - use correct enum value 'medium'
     if (attrs.monthlyExpense === 'high' && profile.FinanceProfile?.monthlyBudget === 'medium') {
       tradeoffs.push({
-        aspect: 'Costi',
-        description: 'Spese mensili superiori alla media',
+        aspect: this.translate.instant('onboarding.matching.category_cost'),
+        description: this.translate.instant('onboarding.matching.tradeoff_highExpense'),
         severity: 'medium'
       });
     }

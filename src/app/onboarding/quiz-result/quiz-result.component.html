@@ -10,7 +10,7 @@
   <!-- Main content -->
   <main class="quiz-result__content">
     <!-- Title -->
-    <h1 class="quiz-result__title">Ecco il tuo match perfetto!</h1>
+    <h1 class="quiz-result__title">{{ 'onboarding.quizResult.title' | translate }}</h1>
 
     @if (topMatch()) {
       <!-- Result card -->
@@ -35,7 +35,7 @@
             </div>
           </div>
           <span class="quiz-result__compatibility-text">
-            {{ topMatch()!.compatibility }}% compatibile con te
+            {{ topMatch()!.compatibility }}% {{ 'onboarding.quizResult.compatibleWithYou' | translate }}
           </span>
         </div>
 
@@ -65,14 +65,14 @@
           type="button"
           class="quiz-result__btn quiz-result__btn--primary"
           (click)="onExploreSpecies()">
-          Scopri di piu
+          {{ 'onboarding.quizResult.discoverMore' | translate }}
         </button>
 
         <button
           type="button"
           class="quiz-result__btn quiz-result__btn--secondary"
           (click)="onExploreAll()">
-          Esplora altre specie
+          {{ 'onboarding.quizResult.exploreOtherSpecies' | translate }}
         </button>
       </div>
 
@@ -80,13 +80,13 @@
       <a
         class="quiz-result__link"
         (click)="onRegisterAnyway()">
-        Registra comunque un animale
+        {{ 'onboarding.quizResult.registerAnyway' | translate }}
       </a>
     } @else {
       <!-- Loading state -->
       <div class="quiz-result__loading">
         <div class="quiz-result__spinner"></div>
-        <p>Calcolando il tuo match...</p>
+        <p>{{ 'onboarding.quizResult.calculatingMatch' | translate }}</p>
       </div>
     }
   </main>

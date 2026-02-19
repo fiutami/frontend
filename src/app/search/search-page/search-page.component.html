@@ -16,6 +16,7 @@
         [value]="query()"
         (input)="onQueryChange($any($event.target).value)"
         autocomplete="off"
+        maxlength="200"
       />
       @if (query()) {
         <button class="btn-clear" (click)="onClearSearch()" aria-label="Clear">

@@ -130,7 +130,7 @@
 
   <!-- POI Card (bottom sheet overlay) -->
   @if (selectedPOI(); as poi) {
-    <div class="poi-card" (click)="$event.stopPropagation()">
+    <div class="poi-card" [class.poi-card--expanded]="isMapExpanded()" (click)="$event.stopPropagation()">
       <button class="poi-card__close" (click)="closePOICard()">
         <span class="material-icons">close</span>
       </button>

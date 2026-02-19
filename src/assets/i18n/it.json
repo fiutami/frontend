@@ -32,7 +32,9 @@
     "success": "Successo",
     "next": "Avanti",
     "remove": "Rimuovi",
-    "rotateDevice": "Ruota il dispositivo in verticale per continuare"
+    "rotateDevice": "Ruota il dispositivo in verticale per continuare",
+    "showPassword": "Mostra password",
+    "hidePassword": "Nascondi password"
   },
   "auth": {
     "login": "Accedi",
@@ -163,7 +165,106 @@
       "title": "Ecco il tuo match perfetto!",
       "compatibility": "Compatibilità",
       "viewDetails": "Vedi dettagli",
-      "tryAgain": "Rifai il quiz"
+      "tryAgain": "Rifai il quiz",
+      "compatibleWithYou": "compatibile con te",
+      "discoverMore": "Scopri di piu",
+      "exploreOtherSpecies": "Esplora altre specie",
+      "registerAnyway": "Registra comunque un animale",
+      "calculatingMatch": "Calcolando il tuo match...",
+      "fiutoPerfectMatch": "Match perfetto! Questo animale e fatto per te!",
+      "fiutoGreatCompatibility": "Ottima compatibilita! Sareste una bella coppia!",
+      "fiutoGoodStart": "Potrebbe essere un buon inizio! Scopri di piu.",
+      "fiutoGreatChoice": "Ottima scelta! Questo animale fa per te!"
+    },
+    "questionnaireResult": {
+      "loadingExplanation": "Caricando spiegazione...",
+      "toConsider": "Da considerare:",
+      "discoverMore": "Scopri di più",
+      "noBreedFound": "Nessuna razza trovata",
+      "noBreedFoundDesc": "Non abbiamo trovato razze che corrispondono ai tuoi criteri. Prova a modificare alcune risposte.",
+      "compatibleWithProfile": "{{name}} è compatibile con il tuo profilo."
+    },
+    "matching": {
+      "loadingBreeds": "Caricando catalogo razze...",
+      "noCompatibleBreeds": "Nessuna razza compatibile trovata",
+      "noBreedsPassConstraints": "Nessuna razza supera i vincoli",
+      "analyzingCompatibility": "Analizzando compatibilità semantica...",
+      "calculatingScores": "Calcolando punteggi...",
+      "compatibleBreedsFound": "{{count}} razze compatibili trovate",
+      "calculationError": "Errore nel calcolo delle compatibilità",
+      "loadingCatalog": "Caricando catalogo...",
+      "filteringBreeds": "Filtrando razze...",
+      "applyingFilters": "Applicando filtri...",
+      "breedsFound": "{{count}} razze trovate",
+      "calculationErrorShort": "Errore nel calcolo",
+      "reason_apartmentFriendly": "Adatto alla vita in appartamento",
+      "reason_goodWithChildren": "Ottimo con i bambini",
+      "reason_easyToTrain": "Facile da addestrare, ideale per principianti",
+      "reason_lowExercise": "Basse esigenze di esercizio",
+      "reason_lowGrooming": "Manutenzione del pelo ridotta",
+      "category_housing": "Abitazione",
+      "category_family": "Famiglia",
+      "category_experience": "Esperienza",
+      "category_time": "Tempo",
+      "category_care": "Cura",
+      "tradeoff_highShedding": "Perdita di pelo elevata, richiede pulizia frequente",
+      "tradeoff_highBarking": "Tende ad abbaiare molto, potrebbero esserci problemi con i vicini",
+      "tradeoff_giantSize": "Taglia grande, richiede spazio adeguato",
+      "tradeoff_highExpense": "Spese mensili superiori alla media",
+      "category_coat": "Pelo",
+      "category_noise": "Rumore",
+      "category_space": "Spazio",
+      "category_cost": "Costi"
+    },
+    "fiutoAi": {
+      "toConsider": "Da considerare: {{warnings}}",
+      "recommendedBecause": "{{name}} è consigliato perché: {{reasons}}.{{warnings}}"
+    },
+    "fiutoChat": {
+      "welcomeQuestionnaire": "Ciao! Sono Fiuto 🐕 Sono qui per aiutarti durante il questionario. Se hai dubbi su una domanda, chiedimi pure!",
+      "welcomeResults": "Ecco i tuoi risultati! Se vuoi capire meglio perché ti suggeriamo queste razze, sono qui per spiegarti. 🎯",
+      "welcomeGeneral": "Ciao! Sono Fiuto, il tuo assistente per trovare l'animale perfetto! 🐾"
+    },
+    "speciesQuiz": {
+      "q1": {
+        "intro": "Ogni animale ha bisogno del tuo tempo e delle tue attenzioni. Iniziamo da qui.",
+        "question": "Quanto tempo puoi dedicargli ogni giorno?",
+        "poco": "Poco",
+        "medio": "Medio",
+        "molto": "Molto"
+      },
+      "q2": {
+        "intro": "Alcuni animali sono più indipendenti, altri hanno bisogno di compagnia.",
+        "question": "Quanto tempo passi fuori casa?",
+        "less2h": "Meno di 2 ore",
+        "2to6h": "2-6 ore",
+        "more6h": "Più di 6 ore"
+      },
+      "q3": {
+        "intro": "Ogni animale ha bisogno del suo spazio. Vediamo cosa puoi offrirgli.",
+        "question": "Che spazio hai a disposizione?",
+        "indoor": "Nessuno (solo interno)",
+        "balcony": "Balcone / piccolo spazio",
+        "garden": "Giardino"
+      },
+      "q4": {
+        "intro": "Per consigliarti bene, dobbiamo considerare eventuali allergie.",
+        "question": "Ci sono allergie in casa?",
+        "yes": "Sì",
+        "no": "No"
+      },
+      "q5": {
+        "intro": "Ogni animale offre un tipo diverso di relazione. Cosa cerchi davvero?",
+        "question": "Cosa desideri dal tuo animale?",
+        "companionship": "Compagnia e affetto",
+        "tranquility": "Tranquillità e silenzio",
+        "activity": "Attività assieme",
+        "independent": "Un animale indipendente"
+      }
+    },
+    "registerPetErrors": {
+      "noSpeciesAvailable": "Nessuna specie disponibile. Riprova più tardi.",
+      "speciesLoadError": "Errore nel caricamento delle specie. Riprova più tardi."
     }
   },
   "quiz": {
@@ -306,7 +407,14 @@
       "offline": "Offline",
       "findFriends": "Trova amici",
       "emptyTitle": "Qui trovi la tua banda pelosa.",
-      "emptyMessage": "Gli amici con cui hai già interagito"
+      "emptyMessage": "Gli amici con cui hai già interagito",
+      "sectionTitle": "Amici",
+      "sectionSubtitle": "I pets con cui hai già interagito o chattato",
+      "edit": "Modifica",
+      "promoTitle": "Fiutail partner di giochi",
+      "promoButton": "Scopri ora",
+      "suggestedTitle": "Amici Suggeriti",
+      "suggestedSubtitle": "Basati su razza, affinità, posizione e abitudini reciproche"
     },
     "memories": {
       "title": "Ricordi",

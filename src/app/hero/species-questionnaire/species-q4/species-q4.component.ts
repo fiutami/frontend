@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { SpeechBubbleComponent } from '../../../shared/components/speech-bubble/speech-bubble.component';
 import { AnswerSquareComponent, AnswerOption } from '../../../shared/components/answer-square';
@@ -20,6 +21,7 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
   imports: [
     CommonModule,
     SharedModule,
+    TranslateModule,
     SpeechBubbleComponent,
     AnswerSquareComponent,
     PageBackgroundComponent,
@@ -30,19 +32,19 @@ import { PageBackgroundComponent } from '../../../shared/components/page-backgro
 })
 export class SpeciesQ4Component implements OnInit {
   private router = inject(Router);
+  private translate = inject(TranslateService);
   private questionnaireService = inject(SpeciesQuestionnaireService);
 
   /** Intro message displayed in blue bubble */
-  readonly introMessage =
-    'Per consigliarti bene, dobbiamo considerare eventuali allergie.';
+  readonly introMessage = this.translate.instant('onboarding.speciesQuiz.q4.intro');
 
   /** Question text */
-  readonly question = 'Ci sono allergie in casa?';
+  readonly question = this.translate.instant('onboarding.speciesQuiz.q4.question');
 
   /** Answer options */
   readonly options: AnswerOption[] = [
-    { value: 'si', label: 'Sì' },
-    { value: 'no', label: 'No' },
+    { value: 'si', label: this.translate.instant('onboarding.speciesQuiz.q4.yes') },
+    { value: 'no', label: this.translate.instant('onboarding.speciesQuiz.q4.no') },
   ];
 
   /** Currently selected answer */
