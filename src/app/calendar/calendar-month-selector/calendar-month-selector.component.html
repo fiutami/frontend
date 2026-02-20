@@ -10,17 +10,18 @@
 
   <!-- Sticky Content (su giallo): Quick Actions + Chips + Testo -->
   <ng-container shellStickyContent>
-    <!-- Quick Actions Row (3 icons: notifications, calendar, bookmark) -->
-    <app-quick-actions-row
-      class="quick-actions--on-yellow"
-      [items]="quickActionItems"
-      [activeId]="overlayService.activeFilter()"
-      (selected)="onFilterIconClick($event)" />
+    <!-- Quick Actions + Action Chips (1 riga unica) -->
+    <div class="calendar-actions-inline">
+      <app-quick-actions-row
+        class="quick-actions--on-yellow"
+        [items]="quickActionItems"
+        [activeId]="overlayService.activeFilter()"
+        (selected)="onFilterIconClick($event)" />
 
-    <!-- Action Chips Row (3 pills) -->
-    <app-action-chips-row
-      [chips]="actionChips"
-      (chipClicked)="onActionButtonClick($event)" />
+      <app-action-chips-row
+        [chips]="actionChips"
+        (chipClicked)="onActionButtonClick($event)" />
+    </div>
 
     <!-- Descriptive Text -->
     <p class="calendar-description">{{ 'calendar.monthSelector.description' | translate }}</p>

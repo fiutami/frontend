@@ -303,7 +303,7 @@ import { CalendarEvent } from '../../core/models/calendar.models';
     .day-events__confirm-backdrop {
       position: fixed;
       inset: 0;
-      z-index: 1100;
+      z-index: 2000;
       background: rgba(0, 0, 0, 0.5);
       display: flex;
       align-items: center;

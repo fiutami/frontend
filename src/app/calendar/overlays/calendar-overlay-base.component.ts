@@ -57,7 +57,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     .calendar-overlay-backdrop {
       position: fixed;
       inset: 0;
-      z-index: 1100;
+      z-index: 2000;
       background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -127,6 +127,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       flex: 1;
       overflow-y: auto;
       padding: 20px;
+      padding-bottom: 40px;
       color: white;
     }
   `],
