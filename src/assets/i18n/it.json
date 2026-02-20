@@ -696,6 +696,37 @@
       "medicine": "Medicina",
       "birthday": "Compleanno",
       "other": "Altro"
+    },
+    "createEvent": {
+      "title": "Crea evento",
+      "editTitle": "Modifica evento",
+      "name": "Nome evento",
+      "namePlaceholder": "Es. Visita veterinario",
+      "location": "Luogo",
+      "locationPlaceholder": "Es. Via Roma 123, Milano",
+      "date": "Data",
+      "time": "Ora",
+      "phone": "Numero (opzionale)",
+      "phonePlaceholder": "Es. +39 02 1234567",
+      "color": "Colore",
+      "recurrence": "Ripetizione",
+      "recurrenceOptions": {
+        "none": "Mai",
+        "daily": "Ogni giorno",
+        "weekly": "Ogni settimana",
+        "monthly": "Ogni mese",
+        "yearly": "Ogni anno"
+      },
+      "save": "Salva evento",
+      "cancel": "Annulla"
+    },
+    "dayEvents": {
+      "title": "Eventi del giorno",
+      "noEvents": "Nessun evento per questo giorno",
+      "edit": "Modifica",
+      "delete": "Elimina",
+      "deleteConfirm": "Sei sicuro di voler eliminare questo evento?",
+      "addEvent": "Aggiungi evento"
     }
   },
   "map": {

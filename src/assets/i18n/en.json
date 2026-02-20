@@ -995,6 +995,37 @@
       "medicine": "Medicine",
       "birthday": "Birthday",
       "other": "Other"
+    },
+    "createEvent": {
+      "title": "Create event",
+      "editTitle": "Edit event",
+      "name": "Event name",
+      "namePlaceholder": "E.g. Vet visit",
+      "location": "Location",
+      "locationPlaceholder": "E.g. 123 Main St, Rome",
+      "date": "Date",
+      "time": "Time",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "E.g. +39 02 1234567",
+      "color": "Color",
+      "recurrence": "Recurrence",
+      "recurrenceOptions": {
+        "none": "Never",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "save": "Save event",
+      "cancel": "Cancel"
+    },
+    "dayEvents": {
+      "title": "Events of the day",
+      "noEvents": "No events for this day",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Are you sure you want to delete this event?",
+      "addEvent": "Add event"
     }
   },
   "map": {

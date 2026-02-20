@@ -26,7 +26,7 @@
       <button
         class="calendar__create-btn"
         (click)="openCreateEventOverlay()">
-        Crea evento
+        {{ 'calendar.addEvent' | translate }}
       </button>
     </div>
   </div>
@@ -80,7 +80,7 @@
                 @for (event of day.events.slice(0, 3); track event.id) {
                   <span
                     class="calendar__day-dot"
-                    [style.background-color]="eventColors[event.type]">
+                    [style.background-color]="getEventColor(event)">
                   </span>
                 }
               </div>
@@ -94,26 +94,24 @@
     @if (selectedDayEvents().length > 0) {
       <div class="calendar__events-section">
         <div class="calendar__events-header">
-          <h3 class="calendar__events-title">Eventi del giorno</h3>
+          <h3 class="calendar__events-title">{{ 'calendar.dayEvents.title' | translate }}</h3>
         </div>
         <div class="calendar__events-list">
           @for (event of selectedDayEvents(); track trackByEvent($index, event)) {
             <button
               class="calendar__event-card"
-              (click)="onEventClick(event)">
+              (click)="overlayService.openDayEvents(selectedDate())">
               <div
                 class="calendar__event-icon"
-                [style.background-color]="eventColors[event.type]">
-                {{ getEventIcon(event.type) }}
+                [style.background-color]="getEventColor(event)">
+                <span class="material-icons" style="font-size: 20px; color: white;">event</span>
               </div>
               <div class="calendar__event-info">
                 <span class="calendar__event-title">{{ event.title }}</span>
                 <span class="calendar__event-meta">
-                  @if (event.time) {
-                    <span class="calendar__event-time">{{ event.time }}</span>
-                  }
-                  @if (event.petName) {
-                    <span class="calendar__event-pet">{{ event.petName }}</span>
+                  <span class="calendar__event-time">{{ formatEventTime(event) }}</span>
+                  @if (event.location) {
+                    <span class="calendar__event-pet">{{ event.location }}</span>
                   }
                 </span>
               </div>
@@ -124,7 +122,7 @@
       </div>
     } @else {
       <div class="calendar__no-events">
-        <p class="calendar__no-events-text">In questo mese non ci sono eventi</p>
+        <p class="calendar__no-events-text">{{ 'calendar.noEventsToday' | translate }}</p>
       </div>
     }
 
@@ -165,5 +163,18 @@
     [aiMessage]="'Ciao! Posso aiutarti con il calendario?'"
     (closed)="closeMascotSheet()">
   </app-mascot-bottom-sheet>
+
+  <!-- Overlays -->
+  @if (overlayService.isOpen()) {
+    @switch (overlayService.overlayType()) {
+      @case ('create-event') { <app-calendar-create-event-overlay /> }
+      @case ('day-events') { <app-calendar-day-events-overlay /> }
+      @case ('events-list') { <app-calendar-events-overlay /> }
+      @case ('birthdays') { <app-calendar-birthdays-overlay /> }
+      @case ('saved') { <app-calendar-saved-overlay /> }
+      @case ('month') { <app-calendar-month-overlay /> }
+      @case ('notifications') { <app-calendar-notifications-overlay /> }
+    }
+  }
 
 </app-tab-page-shell-blue>

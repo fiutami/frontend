@@ -1069,6 +1069,37 @@
       "medicine": "Medikament",
       "birthday": "Geburtstag",
       "other": "Sonstiges"
+    },
+    "createEvent": {
+      "title": "Ereignis erstellen",
+      "editTitle": "Ereignis bearbeiten",
+      "name": "Ereignisname",
+      "namePlaceholder": "Z.B. Tierarztbesuch",
+      "location": "Ort",
+      "locationPlaceholder": "Z.B. Hauptstr. 123, Berlin",
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "phone": "Telefon (optional)",
+      "phonePlaceholder": "Z.B. +49 30 1234567",
+      "color": "Farbe",
+      "recurrence": "Wiederholung",
+      "recurrenceOptions": {
+        "none": "Nie",
+        "daily": "Täglich",
+        "weekly": "Wöchentlich",
+        "monthly": "Monatlich",
+        "yearly": "Jährlich"
+      },
+      "save": "Ereignis speichern",
+      "cancel": "Abbrechen"
+    },
+    "dayEvents": {
+      "title": "Ereignisse des Tages",
+      "noEvents": "Keine Ereignisse für diesen Tag",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "deleteConfirm": "Möchten Sie dieses Ereignis wirklich löschen?",
+      "addEvent": "Ereignis hinzufügen"
     }
   },
   "profile": {

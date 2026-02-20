@@ -1067,6 +1067,37 @@
       "medicine": "Médicament",
       "birthday": "Anniversaire",
       "other": "Autre"
+    },
+    "createEvent": {
+      "title": "Créer un événement",
+      "editTitle": "Modifier l'événement",
+      "name": "Nom de l'événement",
+      "namePlaceholder": "Ex. Visite vétérinaire",
+      "location": "Lieu",
+      "locationPlaceholder": "Ex. 123 Rue de Rivoli, Paris",
+      "date": "Date",
+      "time": "Heure",
+      "phone": "Téléphone (optionnel)",
+      "phonePlaceholder": "Ex. +33 1 23456789",
+      "color": "Couleur",
+      "recurrence": "Récurrence",
+      "recurrenceOptions": {
+        "none": "Jamais",
+        "daily": "Quotidien",
+        "weekly": "Hebdomadaire",
+        "monthly": "Mensuel",
+        "yearly": "Annuel"
+      },
+      "save": "Enregistrer l'événement",
+      "cancel": "Annuler"
+    },
+    "dayEvents": {
+      "title": "Événements du jour",
+      "noEvents": "Aucun événement pour ce jour",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet événement ?",
+      "addEvent": "Ajouter un événement"
     }
   },
   "profile": {

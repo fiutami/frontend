@@ -23,6 +23,7 @@ import { CalendarNotificationsOverlayComponent } from '../overlays/calendar-noti
 import { CalendarCreateEventOverlayComponent } from '../overlays/calendar-create-event-overlay.component';
 import { CalendarEventsOverlayComponent } from '../overlays/calendar-events-overlay.component';
 import { CalendarBirthdaysOverlayComponent } from '../overlays/calendar-birthdays-overlay.component';
+import { CalendarDayEventsOverlayComponent } from '../overlays/calendar-day-events-overlay.component';
 
 // Services
 import { CalendarOverlayService, CalendarFilterIcon, CalendarActionButton } from '../services/calendar-overlay.service';
@@ -62,6 +63,7 @@ interface MonthItem {
     CalendarCreateEventOverlayComponent,
     CalendarEventsOverlayComponent,
     CalendarBirthdaysOverlayComponent,
+    CalendarDayEventsOverlayComponent,
   ],
   templateUrl: './calendar-month-selector.component.html',
   styleUrls: ['./calendar-month-selector.component.scss'],

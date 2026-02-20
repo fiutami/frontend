@@ -7,6 +7,7 @@ export type CalendarOverlayType =
   | 'create-event'
   | 'events-list'
   | 'birthdays'
+  | 'day-events'
   | null;
 
 export type CalendarFilterIcon = 'saved' | 'month' | 'notifications' | null;
@@ -50,6 +51,13 @@ export class CalendarOverlayService {
   private _notificationCount = signal(3); // Mock value
   readonly notificationCount = this._notificationCount.asReadonly();
 
+  // Context for overlays: selected date and edit event ID
+  private _selectedDate = signal<Date | null>(null);
+  readonly selectedDate = this._selectedDate.asReadonly();
+
+  private _editEventId = signal<string | null>(null);
+  readonly editEventId = this._editEventId.asReadonly();
+
   /**
    * Open Salvati overlay (saved events, birthdays, recurring, reminders)
    */
@@ -72,10 +80,21 @@ export class CalendarOverlayService {
   }
 
   /**
-   * Open Create Event overlay
+   * Open Create Event overlay.
+   * Optionally pass a date to pre-fill and/or an eventId for edit mode.
    */
-  openCreateEvent(): void {
+  openCreateEvent(date?: Date, editEventId?: string): void {
+    this._selectedDate.set(date ?? null);
+    this._editEventId.set(editEventId ?? null);
     this.openOverlay('create-event', null, 'create');
+  }
+
+  /**
+   * Open Day Events overlay for a specific date
+   */
+  openDayEvents(date: Date): void {
+    this._selectedDate.set(date);
+    this.openOverlay('day-events', null, null);
   }
 
   /**
@@ -100,6 +119,8 @@ export class CalendarOverlayService {
     this._overlayType.set(null);
     this._activeFilter.set(null);
     this._activeAction.set(null);
+    this._selectedDate.set(null);
+    this._editEventId.set(null);
     // Restore body scroll
     document.body.style.overflow = '';
   }

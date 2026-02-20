@@ -1047,6 +1047,37 @@
       "medicine": "Medicamento",
       "birthday": "Cumpleaños",
       "other": "Otro"
+    },
+    "createEvent": {
+      "title": "Crear evento",
+      "editTitle": "Editar evento",
+      "name": "Nombre del evento",
+      "namePlaceholder": "Ej. Visita veterinario",
+      "location": "Lugar",
+      "locationPlaceholder": "Ej. Calle Mayor 123, Madrid",
+      "date": "Fecha",
+      "time": "Hora",
+      "phone": "Teléfono (opcional)",
+      "phonePlaceholder": "Ej. +34 91 1234567",
+      "color": "Color",
+      "recurrence": "Repetición",
+      "recurrenceOptions": {
+        "none": "Nunca",
+        "daily": "Diario",
+        "weekly": "Semanal",
+        "monthly": "Mensual",
+        "yearly": "Anual"
+      },
+      "save": "Guardar evento",
+      "cancel": "Cancelar"
+    },
+    "dayEvents": {
+      "title": "Eventos del día",
+      "noEvents": "No hay eventos para este día",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "deleteConfirm": "¿Estás seguro de que quieres eliminar este evento?",
+      "addEvent": "Añadir evento"
     }
   },
   "profile": {

@@ -761,6 +761,37 @@
       "medicine": "Medicamento",
       "birthday": "Aniversário",
       "other": "Outro"
+    },
+    "createEvent": {
+      "title": "Criar evento",
+      "editTitle": "Editar evento",
+      "name": "Nome do evento",
+      "namePlaceholder": "Ex. Visita ao veterinário",
+      "location": "Local",
+      "locationPlaceholder": "Ex. Rua Augusta 123, São Paulo",
+      "date": "Data",
+      "time": "Hora",
+      "phone": "Telefone (opcional)",
+      "phonePlaceholder": "Ex. +55 11 91234567",
+      "color": "Cor",
+      "recurrence": "Repetição",
+      "recurrenceOptions": {
+        "none": "Nunca",
+        "daily": "Diário",
+        "weekly": "Semanal",
+        "monthly": "Mensal",
+        "yearly": "Anual"
+      },
+      "save": "Salvar evento",
+      "cancel": "Cancelar"
+    },
+    "dayEvents": {
+      "title": "Eventos do dia",
+      "noEvents": "Nenhum evento para este dia",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "deleteConfirm": "Tem certeza de que deseja excluir este evento?",
+      "addEvent": "Adicionar evento"
     }
   },
   "profile": {
