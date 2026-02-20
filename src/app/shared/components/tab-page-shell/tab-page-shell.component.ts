@@ -4,6 +4,7 @@ import {
   Output,
   EventEmitter,
   ChangeDetectionStrategy,
+  HostBinding,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageBackgroundComponent } from '../page-background/page-background.component';
@@ -59,6 +60,11 @@ export class TabPageShellComponent {
 
   /** Opacità overlay (solo per variant='image') */
   @Input() overlayOpacity: 'none' | 'light' | 'medium' | 'dark' = 'light';
+
+  /** Compact header mode (drawer pages: solo back + title, altezza ridotta) */
+  @Input() compactHeader = false;
+
+  @HostBinding('class.compact-header') get isCompact() { return this.compactHeader; }
 
   /** Emesso quando si clicca back */
   @Output() backClicked = new EventEmitter<void>();

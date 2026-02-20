@@ -113,6 +113,20 @@
   @media (min-width: 1280px) { height: $shell-header-height-1280; }
   @media (min-width: 1920px) and (min-height: 900px) { height: $shell-header-height-1920; }
   @media (min-width: 2560px) and (min-height: 1200px) { height: $shell-header-height-2560; }
+
+  // Compact mode: drawer pages con solo back + title
+  :host(.compact-header) & {
+    height: $shell-header-compact;
+    justify-content: flex-start;
+
+    @media (min-width: 480px) { height: $shell-header-compact-480; }
+    @media (min-width: 640px) { height: $shell-header-compact-640; }
+    @media (min-width: 768px) { height: $shell-header-compact-768; }
+    @media (min-width: 1024px) { height: $shell-header-compact-1024; }
+    @media (min-width: 1280px) { height: $shell-header-compact-1280; }
+    @media (min-width: 1920px) and (min-height: 900px) { height: $shell-header-compact-1920; }
+    @media (min-width: 2560px) and (min-height: 1200px) { height: $shell-header-compact-2560; }
+  }
 }
 
 // ==========================================

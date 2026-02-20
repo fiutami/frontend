@@ -12,6 +12,16 @@ $shell-header-height-1280: 235px;
 $shell-header-height-1920: 250px;
 $shell-header-height-2560: 260px;
 
+// ── Compact header heights (drawer pages: solo back + title) ──
+$shell-header-compact: 64px;
+$shell-header-compact-480: 68px;
+$shell-header-compact-640: 72px;
+$shell-header-compact-768: 76px;
+$shell-header-compact-1024: 80px;
+$shell-header-compact-1280: 84px;
+$shell-header-compact-1920: 88px;
+$shell-header-compact-2560: 92px;
+
 // ── Header chrome ──
 $shell-header-padding: var(--sp-2) var(--sp-4) var(--sp-3);
 $shell-header-margin-top: -8px;
