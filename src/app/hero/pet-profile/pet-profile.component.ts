@@ -319,10 +319,6 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   showPaywall = signal(false);
 
   onAddPetClick(): void {
-    if (this.allPets().length >= this.MAX_PETS) {
-      this.showPaywall.set(true);
-      return;
-    }
     this.router.navigate(['/home/pet-register']);
   }
 

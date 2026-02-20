@@ -159,7 +159,8 @@
       "registering": "Registering...",
       "variantLabel": "Variant / Crossbreed",
       "variantLabelPlaceholder": "E.g. Labrador cross, Shepherd mix...",
-      "variantLabelHint": "Describe the crossbreed or variant (max 60 chars)"
+      "variantLabelHint": "Describe the crossbreed or variant (max 60 chars)",
+      "maxPetsMessage": "You've reached the maximum number of pets. To add more, upgrade to Fiutami Plus in the subscriptions section."
     },
     "quizResult": {
       "title": "Here's your perfect match!",
@@ -1600,7 +1601,8 @@
     "emptyState": "Add contacts to invite them to Fiutami",
     "confirmTitle": "Confirm send",
     "confirmMessage": "You are about to send an invite to {{name}}. Continue?",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "searchPlaceholder": "Search contact..."
   },
   "drawerLostPets": {
     "title": "Lost Pets",
@@ -1633,7 +1635,9 @@
     "sendMessageAria": "Send message",
     "message": "Message",
     "viewPetsAria": "View pets",
-    "pets": "Pets"
+    "pets": "Pets",
+    "searchPlaceholder": "Search friend...",
+    "selectFriends": "Select friends"
   },
   "drawerSaved": {
     "title": "Saved",

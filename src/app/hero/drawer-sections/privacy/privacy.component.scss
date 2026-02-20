@@ -136,15 +136,10 @@ $nav-height: 52px;
 
 .privacy-section {
   margin-bottom: $spacing-xl;
-  padding: $spacing-lg;
-  background: white;
-  border-radius: $border-radius-lg;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   scroll-margin-top: 130px; // Account for sticky header + nav
 
   @include respond(md) {
     scroll-margin-top: 150px;
-    padding: $spacing-xl;
   }
 
   &__title {
@@ -256,12 +251,7 @@ $nav-height: 52px;
   }
 
   .privacy-section {
-    transition: all 0.2s ease;
-
-    &:hover {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      transform: translateY(-2px);
-    }
+    // No hover effect (no card box)
   }
 }
 

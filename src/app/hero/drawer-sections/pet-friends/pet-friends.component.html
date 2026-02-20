@@ -21,81 +21,61 @@
       </div>
     }
 
-    <!-- Empty State -->
-    @else if (friends().length === 0) {
-      <div class="empty-state">
-        <span class="material-icons">group</span>
-        <p>{{ 'drawerPetFriends.empty' | translate }}</p>
-        <p class="subtext">{{ 'drawerPetFriends.emptySubtext' | translate }}</p>
-      </div>
-    }
-
-    <!-- Friends List -->
     @else {
-      <ul class="friends-list">
-        @for (friend of friends(); track friend.id) {
-          <li class="friend-card" (click)="viewProfile(friend)">
-            <div class="friend-card__avatar">
-              @if (friend.userAvatar) {
-                <img [src]="friend.userAvatar" [alt]="friend.userName" loading="lazy" />
-              } @else {
-                <span class="friend-card__initials">{{ getInitials(friend.userName) }}</span>
-              }
-              <span class="friend-card__status-indicator" [class.friend-card__status-indicator--online]="friend.isOnline"></span>
-            </div>
-            <div class="friend-card__content">
-              <div class="friend-card__header">
-                <h3 class="friend-card__name">{{ friend.userName }}</h3>
-                @if (friend.isOnline) {
-                  <span class="friend-card__online-badge">{{ 'drawerPetFriends.online' | translate }}</span>
-                } @else if (friend.lastSeen) {
-                  <span class="friend-card__last-seen">{{ formatLastSeen(friend.lastSeen) }}</span>
-                }
-              </div>
-              @if (friend.location) {
-                <div class="friend-card__location">
-                  <span class="material-icons">location_on</span>
-                  {{ friend.location }}
-                </div>
-              }
-              <div class="friend-card__pets">
-                <span class="material-icons friend-card__pets-icon">pets</span>
-                <span class="friend-card__pets-list">
-                  @for (petName of getPetNames(friend); track petName; let last = $last) {
-                    <span class="friend-card__pet">{{ petName }}</span>
-                    @if (!last) {
-                      <span class="friend-card__pet-separator">,</span>
-                    }
-                  }
-                </span>
-                <span class="friend-card__pets-count">({{ friend.pets.length }})</span>
-              </div>
-              <div class="friend-card__meta">
-                <span class="friend-card__friends-since">
-                  <span class="material-icons">calendar_today</span>
-                  {{ formatFriendsSince(friend.friendsSince) }}
-                </span>
-                @if (friend.mutualFriends && friend.mutualFriends > 0) {
-                  <span class="friend-card__mutual">
-                    <span class="material-icons">people</span>
-                    {{ 'drawerPetFriends.mutualFriends' | translate: { count: friend.mutualFriends } }}
-                  </span>
-                }
-              </div>
-              <div class="friend-card__actions">
-                <button class="friend-card__action friend-card__action--message" (click)="sendMessage(friend); $event.stopPropagation()" [attr.aria-label]="'drawerPetFriends.sendMessageAria' | translate">
-                  <span class="material-icons">chat</span>
-                  {{ 'drawerPetFriends.message' | translate }}
-                </button>
-                <button class="friend-card__action friend-card__action--pets" (click)="viewPets(friend); $event.stopPropagation()" [attr.aria-label]="'drawerPetFriends.viewPetsAria' | translate">
-                  <span class="material-icons">pets</span>
-                  {{ 'drawerPetFriends.pets' | translate }}
-                </button>
-              </div>
-            </div>
-          </li>
+      <!-- Intro Text -->
+      <p class="friends-intro">{{ 'drawerPetFriends.emptySubtext' | translate }}</p>
+
+      <!-- Search Bar -->
+      <div class="friends-search">
+        <span class="material-icons friends-search__icon">search</span>
+        <input
+          type="text"
+          class="friends-search__input"
+          [placeholder]="'drawerPetFriends.searchPlaceholder' | translate"
+          [value]="searchQuery()"
+          (input)="searchQuery.set($any($event.target).value)" />
+        @if (searchQuery()) {
+          <button class="friends-search__clear" (click)="searchQuery.set('')">
+            <span class="material-icons">close</span>
+          </button>
         }
-      </ul>
+      </div>
+
+      <!-- Section Title -->
+      <div class="friends-section-title">
+        <h3>{{ 'drawerPetFriends.title' | translate }}</h3>
+        <div class="friends-section-title__line"></div>
+      </div>
+
+      <!-- Select Friends Button -->
+      <button class="friends-select-btn" (click)="selectFriends()">
+        <span class="material-icons">group_add</span>
+        {{ 'drawerPetFriends.selectFriends' | translate }}
+      </button>
+
+      <!-- Friends List -->
+      @if (filteredFriends().length > 0) {
+        <ul class="friends-list">
+          @for (friend of filteredFriends(); track friend.id) {
+            <li class="friend-card" (click)="viewProfile(friend)">
+              <div class="friend-card__avatar">
+                @if (friend.userAvatar) {
+                  <img [src]="friend.userAvatar" [alt]="friend.userName" loading="lazy" />
+                } @else {
+                  <span class="friend-card__initials">{{ getInitials(friend.userName) }}</span>
+                }
+              </div>
+              <span class="friend-card__name">{{ friend.userName }}</span>
+            </li>
+          }
+        </ul>
+      } @else {
+        <!-- Empty State -->
+        <div class="empty-state">
+          <span class="material-icons">group</span>
+          <p>{{ 'drawerPetFriends.empty' | translate }}</p>
+        </div>
+      }
     }
   </main>
 

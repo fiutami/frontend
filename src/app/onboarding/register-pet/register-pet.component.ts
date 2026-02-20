@@ -50,6 +50,12 @@ export class RegisterPetComponent implements OnInit {
   /** File input reference */
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
+  /** Max pets limit */
+  readonly MAX_PETS = 2;
+
+  /** Whether user has reached max pets */
+  readonly maxPetsReached = signal(false);
+
   /** Loading state */
   protected isLoading = signal(false);
 
@@ -143,6 +149,17 @@ export class RegisterPetComponent implements OnInit {
    * Load species from backend on init
    */
   ngOnInit(): void {
+    // Check if user has reached max pets
+    this.petService.loadPets().subscribe({
+      next: (res: any) => {
+        const pets = res?.pets || res || [];
+        if (Array.isArray(pets) && pets.length >= this.MAX_PETS) {
+          this.maxPetsReached.set(true);
+        }
+      },
+      error: () => { /* ignore - allow registration anyway */ }
+    });
+
     this.isLoadingSpecies.set(true);
     this.speciesError.set(null);
 

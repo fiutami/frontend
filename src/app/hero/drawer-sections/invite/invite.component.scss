@@ -64,345 +64,100 @@
   }
 }
 
-.invite-hero {
-  text-align: center;
-  padding: $spacing-lg 0;
+// ================================
+// Intro Text
+// ================================
 
-  &__icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto $spacing-md;
-    background: linear-gradient(135deg, $color-cta-primary 0%, $color-accent-500 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .material-icons { font-size: 40px; color: white; }
-  }
-
-  &__title {
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-text-primary;
-    margin: 0 0 $spacing-xs;
-    @include respond(md) { font-size: 28px; }
-  }
-
-  &__description {
-    font-size: 14px;
-    color: $color-text-secondary;
-    margin: 0;
-    @include respond(md) { font-size: 16px; }
-  }
-}
-
-.invite-stats {
-  display: flex;
-  justify-content: center;
-  gap: $spacing-md;
-  padding: $spacing-md 0;
-  margin-bottom: $spacing-md;
-
-  &__item {
-    flex: 1;
-    max-width: 100px;
-    text-align: center;
-    padding: $spacing-sm;
-    background: white;
-    border-radius: $border-radius-md;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    &--success .invite-stats__value { color: $color-success; }
-  }
-
-  &__value {
-    display: block;
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-cta-primary;
-    @include respond(md) { font-size: 28px; }
-  }
-
-  &__label {
-    display: block;
-    font-size: 11px;
-    color: $color-text-secondary;
-    margin-top: 2px;
-  }
-}
-
-.invite-code-section {
-  background: white;
-  border-radius: $border-radius-lg;
-  padding: $spacing-lg;
-  margin-bottom: $spacing-md;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+.invite-intro {
+  font-size: 15px;
+  color: white;
+  line-height: 1.6;
+  margin: 0 0 $spacing-lg;
   text-align: center;
 
-  &__title {
-    font-size: 14px;
-    font-weight: 500;
-    color: $color-text-secondary;
-    margin: 0 0 $spacing-sm;
-  }
-
-  &__copied {
-    font-size: 12px;
-    color: $color-success;
-    margin: $spacing-sm 0 0;
-  }
-
-  &__hint {
-    font-size: 12px;
-    color: $color-text-secondary;
-    margin: $spacing-sm 0 0;
-    opacity: 0.7;
+  @include respond(md) {
+    font-size: 16px;
   }
 }
 
-.invite-code-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $spacing-md;
-  padding: $spacing-md;
-  background: rgba($color-cta-primary, 0.08);
-  border-radius: $border-radius-md;
-  border: 2px dashed rgba($color-cta-primary, 0.3);
+// ================================
+// Search Bar
+// ================================
 
-  &__code {
-    font-size: 24px;
-    font-weight: 700;
-    color: $color-cta-primary;
-    letter-spacing: 2px;
-  }
-
-  &__copy {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: $spacing-sm $spacing-md;
-    background: $color-cta-primary;
-    color: white;
-    border: none;
-    border-radius: $border-radius-md;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    .material-icons { font-size: 18px; }
-    &:hover { background: darken($color-cta-primary, 10%); }
-    &--copied { background: $color-success; }
-  }
-}
-
-.invite-share {
-  margin-bottom: $spacing-md;
-
-  &__title {
-    font-size: 14px;
-    font-weight: 600;
-    color: $color-text-secondary;
-    margin: 0 0 $spacing-sm;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  &__options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-sm;
-    justify-content: center;
-  }
-
-  &__option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: $spacing-md;
-    background: white;
-    border: none;
-    border-radius: $border-radius-md;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-width: 72px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    &:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
-    &:active { transform: scale(0.95); }
-  }
-
-  &__option-icon {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--option-color, $color-cta-primary);
-    color: white;
-    border-radius: 50%;
-    font-size: 22px;
-  }
-
-  &__option-label {
-    font-size: 11px;
-    font-weight: 500;
-    color: $color-text-primary;
-  }
-}
-
-.invite-link-section {
-  margin-bottom: $spacing-lg;
-}
-
-.invite-link-box {
+.invite-search {
   display: flex;
   align-items: center;
   gap: $spacing-sm;
-  padding: $spacing-sm $spacing-md;
-  background: white;
-  border-radius: $border-radius-md;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-
-  &__url {
-    flex: 1;
-    font-size: 13px;
-    color: $color-text-secondary;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  &__copy {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba($color-cta-primary, 0.1);
-    color: $color-cta-primary;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    .material-icons { font-size: 20px; }
-    &:hover { background: rgba($color-cta-primary, 0.2); }
-    &--copied { background: $color-success; color: white; }
-  }
-}
-
-.invite-history {
-  &__title {
-    font-size: 14px;
-    font-weight: 600;
-    color: $color-text-secondary;
-    margin: 0 0 $spacing-sm;
-    text-transform: uppercase;
-  }
-
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-sm;
-  }
-}
-
-.invite-item {
-  display: flex;
-  align-items: center;
-  gap: $spacing-md;
-  padding: $spacing-md;
-  background: white;
-  border-radius: $border-radius-md;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 10px $spacing-md;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $border-radius-lg;
+  margin-bottom: $spacing-lg;
 
   &__icon {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: white;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__clear {
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba($color-cta-primary, 0.1);
-    color: $color-cta-primary;
-    border-radius: 50%;
-    .material-icons { font-size: 20px; }
-  }
-
-  &__content { flex: 1; min-width: 0; }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: $spacing-sm;
-    margin-bottom: 2px;
-  }
-
-  &__recipient {
-    font-size: 14px;
-    font-weight: 500;
-    color: $color-text-primary;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  &__status {
-    padding: 2px $spacing-xs;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: $border-radius-sm;
-    &.status--pending { background: rgba($color-warning, 0.1); color: $color-warning; }
-    &.status--accepted { background: rgba($color-success, 0.1); color: $color-success; }
-    &.status--expired { background: rgba($color-text-secondary, 0.1); color: $color-text-secondary; }
-  }
-
-  &__meta {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-    font-size: 12px;
-    color: $color-text-secondary;
-  }
-
-  &__method { font-weight: 500; }
-  &__time { opacity: 0.7; }
-  &__expires { display: block; font-size: 11px; color: $color-warning; margin-top: 2px; }
-
-  &__actions { display: flex; gap: $spacing-xs; }
-
-  &__resend {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba($color-cta-primary, 0.1);
-    color: $color-cta-primary;
+    background: rgba(255, 255, 255, 0.2);
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.2s ease;
-    .material-icons { font-size: 18px; }
-    &:hover { background: rgba($color-cta-primary, 0.2); }
+    color: white;
+
+    .material-icons { font-size: 16px; }
+    &:hover { background: rgba(255, 255, 255, 0.3); }
   }
 }
 
-// ============================================================
-// Contact Picker Section
-// ============================================================
+// ================================
+// Section Title (yellow style)
+// ================================
 
-.invite-contact-picker {
-  margin-top: $spacing-lg;
-  padding-top: $spacing-lg;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+.invite-section-title {
+  margin-bottom: $spacing-lg;
 
-  &__import-btn {
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-cta-primary;
+    margin: 0 0 $spacing-xs;
+  }
+
+  &__line {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1px;
+  }
+}
+
+// ================================
+// Actions (import + manual)
+// ================================
+
+.invite-actions {
+  margin-bottom: $spacing-lg;
+
+  &__import {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -410,35 +165,21 @@
     width: 100%;
     padding: 14px;
     background: $color-cta-primary;
-    color: white;
+    color: $color-text-dark;
     border: none;
     border-radius: $border-radius-md;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-md;
     transition: all 0.2s ease;
 
     .material-icons { font-size: 22px; }
-    &:hover { background: darken($color-cta-primary, 10%); }
+    &:hover { background: darken($color-cta-primary, 5%); }
     &:active { transform: scale(0.98); }
   }
 
   &__manual {
-    margin-bottom: $spacing-lg;
-  }
-
-  &__manual-title,
-  &__section-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: $color-text-secondary;
-    margin: 0 0 $spacing-sm;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  &__manual-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -446,22 +187,25 @@
 
   &__input {
     padding: 12px;
-    border: 1px solid #D1D5DB;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: $border-radius-md;
     font-size: 15px;
     outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
     transition: border-color 0.2s ease;
 
+    &::placeholder { color: rgba(255, 255, 255, 0.5); }
     &:focus { border-color: $color-cta-primary; }
   }
 
-  &__add-btn {
+  &__add {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 12px;
-    background: white;
+    background: transparent;
     border: 2px solid $color-cta-primary;
     border-radius: $border-radius-md;
     color: $color-cta-primary;
@@ -475,51 +219,80 @@
       cursor: not-allowed;
     }
 
-    &:not(:disabled):hover { background: rgba($color-cta-primary, 0.08); }
+    &:not(:disabled):hover { background: rgba($color-cta-primary, 0.15); }
     &:not(:disabled):active { transform: scale(0.98); }
   }
+}
 
-  &__contact-card {
-    display: flex;
-    align-items: center;
-    padding: $spacing-md;
-    background: white;
-    border: 1px solid #E5E7EB;
-    border-radius: $border-radius-md;
-    margin-bottom: $spacing-sm;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+// ================================
+// Contact List
+// ================================
+
+.invite-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.invite-contact {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: $border-radius-lg;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
   }
 
-  &__contact-info {
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+
+    .material-icons { font-size: 24px; }
+  }
+
+  &__info {
     flex: 1;
     min-width: 0;
   }
 
-  &__contact-name {
+  &__name {
     display: block;
     font-size: 15px;
-    font-weight: 500;
-    color: $color-text-primary;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  &__contact-phone {
+  &__phone {
     display: block;
     font-size: 13px;
-    color: $color-text-secondary;
+    color: rgba(255, 255, 255, 0.7);
     margin-top: 2px;
   }
 
-  &__contact-actions {
-    display: flex;
-    gap: $spacing-xs;
-  }
-
-  &__whatsapp-btn {
+  &__send {
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
     background: #25D366;
     color: white;
     border: none;
@@ -532,43 +305,46 @@
     &:active { transform: scale(0.95); }
   }
 
-  &__remove-btn {
+  &__remove {
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: #F3F4F6;
-    color: $color-text-secondary;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
     border: none;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
 
-    .material-icons { font-size: 18px; }
-    &:hover { background: #E5E7EB; }
-  }
-
-  &__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32px 20px;
-    color: $color-text-secondary;
-    opacity: 0.7;
-
-    p { font-size: 14px; margin: 0; }
-  }
-
-  &__empty-icon {
-    font-size: 48px;
-    margin-bottom: $spacing-sm;
+    .material-icons { font-size: 16px; }
+    &:hover { background: rgba(255, 255, 255, 0.2); color: white; }
   }
 }
 
-// ============================================================
+// ================================
+// Empty State
+// ================================
+
+.invite-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px;
+  color: rgba(255, 255, 255, 0.6);
+
+  .material-icons {
+    font-size: 48px;
+    margin-bottom: $spacing-sm;
+  }
+
+  p { font-size: 14px; margin: 0; }
+}
+
+// ================================
 // Confirm Dialog
-// ============================================================
+// ================================
 
 .invite-dialog-overlay {
   position: fixed;

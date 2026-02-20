@@ -3,22 +3,6 @@
   [showBack]="true"
   (backClicked)="goBack()">
 
-  <!-- Tab Bar -->
-  <nav class="saved-tabs" role="tablist">
-    @for (tab of tabOptions; track tab.id) {
-      <button
-        class="saved-tabs__item"
-        [class.saved-tabs__item--active]="activeTab() === tab.id"
-        (click)="selectTab(tab.id)"
-        [attr.aria-selected]="activeTab() === tab.id"
-        role="tab"
-        type="button">
-        <span class="material-icons saved-tabs__icon">{{ tab.icon }}</span>
-        <span class="saved-tabs__label">{{ tab.labelKey | translate }}</span>
-      </button>
-    }
-  </nav>
-
   <!-- Content -->
   <main class="saved-content">
     <!-- Loading State -->

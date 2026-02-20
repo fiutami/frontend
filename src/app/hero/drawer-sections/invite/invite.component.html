@@ -22,176 +22,86 @@
     }
 
     @if (!isLoading() && !hasError()) {
-      <!-- Hero Section -->
-      <section class="invite-hero">
-        <div class="invite-hero__icon">
-          <span class="material-icons">card_giftcard</span>
-        </div>
-        <h2 class="invite-hero__title">{{ 'drawerInvite.heroTitle' | translate }}</h2>
-        <p class="invite-hero__description">{{ 'drawerInvite.heroDescription' | translate }}</p>
-      </section>
+      <!-- Intro Text -->
+      <p class="invite-intro">{{ 'drawerInvite.heroDescription' | translate }}</p>
 
-      <!-- Stats Section -->
-      @if (stats()) {
-        <section class="invite-stats">
-          <div class="invite-stats__item">
-            <span class="invite-stats__value">{{ stats()!.totalSent }}</span>
-            <span class="invite-stats__label">{{ 'drawerInvite.statsSent' | translate }}</span>
-          </div>
-          <div class="invite-stats__item invite-stats__item--success">
-            <span class="invite-stats__value">{{ stats()!.accepted }}</span>
-            <span class="invite-stats__label">{{ 'drawerInvite.statsAccepted' | translate }}</span>
-          </div>
-          <div class="invite-stats__item">
-            <span class="invite-stats__value">{{ stats()!.pending }}</span>
-            <span class="invite-stats__label">{{ 'drawerInvite.statsPending' | translate }}</span>
-          </div>
-        </section>
-      }
-
-      <!-- Invite Code Section -->
-      <section class="invite-code-section">
-        <h3 class="invite-code-section__title">{{ 'drawerInvite.codeTitle' | translate }}</h3>
-        <div class="invite-code-box">
-          <span class="invite-code-box__code">{{ inviteCode }}</span>
-          <button class="invite-code-box__copy" (click)="copyCode()" [class.invite-code-box__copy--copied]="codeCopied()">
-            <span class="material-icons">{{ codeCopied() ? 'check' : 'content_copy' }}</span>
-            {{ codeCopied() ? ('drawerInvite.copied' | translate) : ('drawerInvite.copy' | translate) }}
+      <!-- Search Bar -->
+      <div class="invite-search">
+        <span class="material-icons invite-search__icon">search</span>
+        <input
+          type="text"
+          class="invite-search__input"
+          [placeholder]="'drawerInvite.searchPlaceholder' | translate"
+          [value]="searchQuery()"
+          (input)="searchQuery.set($any($event.target).value)" />
+        @if (searchQuery()) {
+          <button class="invite-search__clear" (click)="searchQuery.set('')">
+            <span class="material-icons">close</span>
           </button>
-        </div>
-        @if (codeCopied()) {
-          <p class="invite-code-section__copied">{{ 'drawerInvite.copiedToClipboard' | translate }}</p>
         }
-        <p class="invite-code-section__hint">{{ 'drawerInvite.codeHint' | translate }}</p>
-      </section>
+      </div>
 
-      <!-- Share Options -->
-      <section class="invite-share">
-        <h3 class="invite-share__title">{{ 'drawerInvite.shareVia' | translate }}</h3>
-        <div class="invite-share__options">
-          @for (option of inviteOptions(); track option.id) {
-            <button class="invite-share__option" (click)="shareVia(option)" [style.--option-color]="option.color" [attr.aria-label]="option.description">
-              <span class="material-icons invite-share__option-icon">{{ option.icon }}</span>
-              <span class="invite-share__option-label">{{ option.label }}</span>
-            </button>
-          }
-        </div>
-      </section>
+      <!-- Section Title -->
+      <div class="invite-section-title">
+        <h3>{{ 'drawerInvite.contactList' | translate }}</h3>
+        <div class="invite-section-title__line"></div>
+      </div>
 
-      <!-- Copy Link Section -->
-      <section class="invite-link-section">
-        <div class="invite-link-box">
-          <span class="invite-link-box__url">{{ inviteLink }}</span>
-          <button class="invite-link-box__copy" (click)="copyLink()" [class.invite-link-box__copy--copied]="linkCopied()">
-            <span class="material-icons">{{ linkCopied() ? 'check' : 'content_copy' }}</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- Pending Invites -->
-      @if (pendingInvites().length > 0) {
-        <section class="invite-history">
-          <h3 class="invite-history__title">{{ 'drawerInvite.recentInvites' | translate }}</h3>
-          <ul class="invite-history__list">
-            @for (invite of pendingInvites(); track invite.id) {
-              <li class="invite-item">
-                <div class="invite-item__icon">
-                  <span class="material-icons">{{ getMethodIcon(invite.method) }}</span>
-                </div>
-                <div class="invite-item__content">
-                  <div class="invite-item__header">
-                    <span class="invite-item__recipient">{{ getRecipientDisplay(invite) }}</span>
-                    <span class="invite-item__status" [class]="getStatusClass(invite.status)">
-                      {{ getStatusLabel(invite.status) }}
-                    </span>
-                  </div>
-                  <div class="invite-item__meta">
-                    <span class="invite-item__method">{{ getMethodLabel(invite.method) }}</span>
-                    <span class="invite-item__time">{{ formatRelativeTime(invite.sentAt) }}</span>
-                  </div>
-                  @if (invite.status === 'pending' && invite.expiresAt) {
-                    <span class="invite-item__expires">{{ formatExpiresIn(invite.expiresAt) }}</span>
-                  }
-                </div>
-                @if (invite.status === 'pending' || invite.status === 'expired') {
-                  <div class="invite-item__actions">
-                    <button class="invite-item__resend" (click)="resendInvite(invite)" [attr.aria-label]="'drawerInvite.resendAriaLabel' | translate">
-                      <span class="material-icons">refresh</span>
-                    </button>
-                  </div>
-                }
-              </li>
-            }
-          </ul>
-        </section>
-      }
-
-      <!-- Contact Picker Section -->
-      <section class="invite-contact-picker">
-        <!-- Import from contacts (if supported) -->
+      <!-- Import + Manual Add -->
+      <div class="invite-actions">
         @if (isContactPickerSupported()) {
-          <button class="invite-contact-picker__import-btn" (click)="importContacts()">
+          <button class="invite-actions__import" (click)="importContacts()">
             <span class="material-icons">contacts</span>
             {{ 'drawerInvite.importContacts' | translate }}
           </button>
         }
-
-        <!-- Manual input -->
-        <div class="invite-contact-picker__manual">
-          <h3 class="invite-contact-picker__manual-title">{{ 'drawerInvite.addManually' | translate }}</h3>
-          <div class="invite-contact-picker__manual-form">
-            <input
-              type="text"
-              class="invite-contact-picker__input"
-              [placeholder]="'drawerInvite.namePlaceholder' | translate"
-              [value]="manualName()"
-              (input)="manualName.set($any($event.target).value)"
-            />
-            <input
-              type="tel"
-              class="invite-contact-picker__input"
-              [placeholder]="'drawerInvite.phonePlaceholder' | translate"
-              [value]="manualPhone()"
-              (input)="manualPhone.set($any($event.target).value)"
-            />
-            <button class="invite-contact-picker__add-btn" (click)="addManualContact()" [disabled]="!manualPhone().trim()">
-              <span class="material-icons">person_add</span>
-              {{ 'drawerInvite.add' | translate }}
-            </button>
-          </div>
+        <div class="invite-actions__manual">
+          <input
+            type="text"
+            class="invite-actions__input"
+            [placeholder]="'drawerInvite.namePlaceholder' | translate"
+            [value]="manualName()"
+            (input)="manualName.set($any($event.target).value)" />
+          <input
+            type="tel"
+            class="invite-actions__input"
+            [placeholder]="'drawerInvite.phonePlaceholder' | translate"
+            [value]="manualPhone()"
+            (input)="manualPhone.set($any($event.target).value)" />
+          <button class="invite-actions__add" (click)="addManualContact()" [disabled]="!manualPhone().trim()">
+            <span class="material-icons">person_add</span>
+            {{ 'drawerInvite.add' | translate }}
+          </button>
         </div>
+      </div>
 
-        <!-- Contact list -->
-        @if (contacts().length > 0) {
-          <div class="invite-contact-picker__contacts">
-            <h3 class="invite-contact-picker__section-title">{{ 'drawerInvite.contactList' | translate }}</h3>
-            @for (contact of contacts(); track $index) {
-              <div class="invite-contact-picker__contact-card">
-                <div class="invite-contact-picker__contact-info">
-                  <span class="invite-contact-picker__contact-name">{{ contact.name }}</span>
-                  <span class="invite-contact-picker__contact-phone">{{ contact.phone }}</span>
-                </div>
-                <div class="invite-contact-picker__contact-actions">
-                  <button class="invite-contact-picker__whatsapp-btn" (click)="confirmInvite(contact)">
-                    <span class="material-icons">send</span>
-                  </button>
-                  <button class="invite-contact-picker__remove-btn" (click)="removeContact($index)">
-                    <span class="material-icons">close</span>
-                  </button>
-                </div>
+      <!-- Contact List -->
+      @if (filteredContacts().length > 0) {
+        <ul class="invite-list">
+          @for (contact of filteredContacts(); track $index) {
+            <li class="invite-contact">
+              <div class="invite-contact__avatar">
+                <span class="material-icons">person</span>
               </div>
-            }
-          </div>
-        }
-
-        <!-- Empty state -->
-        @if (contacts().length === 0) {
-          <div class="invite-contact-picker__empty">
-            <span class="material-icons invite-contact-picker__empty-icon">group_add</span>
-            <p>{{ 'drawerInvite.emptyState' | translate }}</p>
-          </div>
-        }
-      </section>
+              <div class="invite-contact__info">
+                <span class="invite-contact__name">{{ contact.name }}</span>
+                <span class="invite-contact__phone">{{ contact.phone }}</span>
+              </div>
+              <button class="invite-contact__send" (click)="confirmInvite(contact)">
+                <span class="material-icons">send</span>
+              </button>
+              <button class="invite-contact__remove" (click)="removeContact($index)">
+                <span class="material-icons">close</span>
+              </button>
+            </li>
+          }
+        </ul>
+      } @else {
+        <div class="invite-empty">
+          <span class="material-icons">group_add</span>
+          <p>{{ 'drawerInvite.emptyState' | translate }}</p>
+        </div>
+      }
     }
   </main>
 

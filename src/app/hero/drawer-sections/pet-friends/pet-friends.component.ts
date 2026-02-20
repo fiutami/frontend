@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, signal, computed, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -31,6 +31,19 @@ export class PetFriendsComponent implements OnInit {
   friends = signal<PetFriend[]>([]);
   isLoading = signal(true);
   hasError = signal(false);
+
+  // Search
+  readonly searchQuery = signal('');
+
+  // Filtered friends based on search
+  readonly filteredFriends = computed(() => {
+    const query = this.searchQuery().toLowerCase().trim();
+    const list = this.friends();
+    if (!query) return list;
+    return list.filter(f =>
+      f.userName.toLowerCase().includes(query)
+    );
+  });
 
   constructor() {
     this.translate.onLangChange.subscribe(() => {
@@ -70,38 +83,13 @@ export class PetFriendsComponent implements OnInit {
     return name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
   }
 
-  formatFriendsSince(date: Date): string {
-    return this.petFriendsService.formatFriendsSince(date);
-  }
-
-  formatLastSeen(date: Date | undefined): string {
-    if (!date) return '';
-    return this.petFriendsService.formatRelativeTime(date);
-  }
-
-  getPetNames(friend: PetFriend): string[] {
-    return friend.pets.slice(0, 2).map(pet => pet.name);
-  }
-
-  getExtraPetsCount(friend: PetFriend): number {
-    return Math.max(0, friend.pets.length - 2);
-  }
-
-  sendMessage(friend: PetFriend): void {
-    this.router.navigate(['/home/chat'], {
-      queryParams: { userId: friend.id }
-    });
-  }
-
-  viewPets(friend: PetFriend): void {
-    // Navigate to first pet's profile
-    if (friend.pets && friend.pets.length > 0) {
-      this.router.navigate(['/home/pet-profile', friend.pets[0].id]);
-    }
-  }
-
   viewProfile(friend: PetFriend): void {
     // Navigate to user profile
     this.router.navigate(['/user/profile', friend.id]);
+  }
+
+  selectFriends(): void {
+    // Navigate to search/friend selection
+    this.router.navigate(['/home/chat']);
   }
 }

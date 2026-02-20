@@ -159,7 +159,8 @@
       "registering": "Registrazione...",
       "variantLabel": "Variante / Incrocio",
       "variantLabelPlaceholder": "Es. Incrocio con Labrador, mix Pastore...",
-      "variantLabelHint": "Descrivi l'incrocio o la variante (max 60 caratteri)"
+      "variantLabelHint": "Descrivi l'incrocio o la variante (max 60 caratteri)",
+      "maxPetsMessage": "Hai raggiunto il massimo dei pet. Se vuoi aggiungerne altri devi passare a Fiutami Plus, vedi zona abbonamenti."
     },
     "quizResult": {
       "title": "Ecco il tuo match perfetto!",
@@ -1897,7 +1898,8 @@
     "emptyState": "Aggiungi contatti per invitarli su Fiutami",
     "confirmTitle": "Conferma invio",
     "confirmMessage": "Stai per inviare un invito a {{name}}. Continuare?",
-    "cancel": "Annulla"
+    "cancel": "Annulla",
+    "searchPlaceholder": "Cerca contatto..."
   },
   "drawerLostPets": {
     "title": "Animali Smarriti",
@@ -1930,7 +1932,9 @@
     "sendMessageAria": "Invia messaggio",
     "message": "Messaggio",
     "viewPetsAria": "Vedi pet",
-    "pets": "Pet"
+    "pets": "Pet",
+    "searchPlaceholder": "Cerca amico...",
+    "selectFriends": "Seleziona amici"
   },
   "drawerSaved": {
     "title": "Salvati",

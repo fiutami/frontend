@@ -159,7 +159,8 @@
       "registering": "Registrando...",
       "variantLabel": "Variante / Cruce",
       "variantLabelPlaceholder": "Ej. Cruce con Labrador, mezcla de Pastor...",
-      "variantLabelHint": "Describe el cruce o variante (máx. 60 caracteres)"
+      "variantLabelHint": "Describe el cruce o variante (máx. 60 caracteres)",
+      "maxPetsMessage": "Has alcanzado el máximo de mascotas. Para añadir más, actualiza a Fiutami Plus en la sección de suscripciones."
     },
     "quizResult": {
       "title": "¡Aquí está tu match perfecto!",
@@ -1534,7 +1535,8 @@
     "emptyState": "Agrega contactos para invitarlos a Fiutami",
     "confirmTitle": "Confirmar envío",
     "confirmMessage": "Estás por enviar una invitación a {{name}}. ¿Continuar?",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "searchPlaceholder": "Buscar contacto..."
   },
   "drawerLostPets": {
     "title": "Mascotas Perdidas",
@@ -1567,7 +1569,9 @@
     "sendMessageAria": "Enviar mensaje",
     "message": "Mensaje",
     "viewPetsAria": "Ver mascotas",
-    "pets": "Mascotas"
+    "pets": "Mascotas",
+    "searchPlaceholder": "Buscar amigo...",
+    "selectFriends": "Seleccionar amigos"
   },
   "drawerSaved": {
     "title": "Guardados",

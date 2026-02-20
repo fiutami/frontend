@@ -159,7 +159,8 @@
       "registering": "Enregistrement...",
       "variantLabel": "Variante / Croisement",
       "variantLabelPlaceholder": "Ex. Croisé Labrador, mélange Berger...",
-      "variantLabelHint": "Décrivez le croisement ou la variante (max 60 caractères)"
+      "variantLabelHint": "Décrivez le croisement ou la variante (max 60 caractères)",
+      "maxPetsMessage": "Vous avez atteint le nombre maximum d'animaux. Pour en ajouter d'autres, passez à Fiutami Plus dans la section abonnements."
     },
     "quizResult": {
       "title": "Voici ton match parfait !",
@@ -1554,7 +1555,8 @@
     "emptyState": "Ajoutez des contacts pour les inviter sur Fiutami",
     "confirmTitle": "Confirmer l'envoi",
     "confirmMessage": "Vous êtes sur le point d'envoyer une invitation à {{name}}. Continuer ?",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "searchPlaceholder": "Rechercher un contact..."
   },
   "drawerLostPets": {
     "title": "Animaux Perdus",
@@ -1587,7 +1589,9 @@
     "sendMessageAria": "Envoyer un message",
     "message": "Message",
     "viewPetsAria": "Voir les animaux",
-    "pets": "Animaux"
+    "pets": "Animaux",
+    "searchPlaceholder": "Rechercher un ami...",
+    "selectFriends": "Sélectionner des amis"
   },
   "drawerSaved": {
     "title": "Sauvegardés",

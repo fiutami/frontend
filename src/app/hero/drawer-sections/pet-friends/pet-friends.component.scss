@@ -1,9 +1,18 @@
 @import 'src/styles/tokens-figma';
+@import 'src/styles/mixins';
 
 .page-content {
   flex: 1;
   padding: $spacing-md;
   padding-bottom: 100px;
+
+  @include respond(md) {
+    padding: $spacing-lg $spacing-xl;
+    padding-bottom: 100px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 .loading-state,
@@ -15,7 +24,7 @@
   justify-content: center;
   min-height: 300px;
   text-align: center;
-  color: $color-text-secondary;
+  color: rgba(255, 255, 255, 0.6);
 
   .material-icons {
     font-size: 64px;
@@ -64,6 +73,122 @@
   }
 }
 
+// ================================
+// Intro Text
+// ================================
+
+.friends-intro {
+  font-size: 15px;
+  color: white;
+  line-height: 1.6;
+  margin: 0 0 $spacing-lg;
+  text-align: center;
+
+  @include respond(md) {
+    font-size: 16px;
+  }
+}
+
+// ================================
+// Search Bar
+// ================================
+
+.friends-search {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 10px $spacing-md;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $border-radius-lg;
+  margin-bottom: $spacing-lg;
+
+  &__icon {
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: white;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__clear {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+
+    .material-icons { font-size: 16px; }
+    &:hover { background: rgba(255, 255, 255, 0.3); }
+  }
+}
+
+// ================================
+// Section Title (yellow + white line)
+// ================================
+
+.friends-section-title {
+  margin-bottom: $spacing-lg;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-cta-primary;
+    margin: 0 0 $spacing-xs;
+  }
+
+  &__line {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1px;
+  }
+}
+
+// ================================
+// Select Friends Button (yellow)
+// ================================
+
+.friends-select-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  width: 100%;
+  padding: 14px;
+  background: $color-cta-primary;
+  color: $color-text-dark;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: $spacing-lg;
+  transition: all 0.2s ease;
+
+  .material-icons { font-size: 22px; }
+  &:hover { background: darken($color-cta-primary, 5%); }
+  &:active { transform: scale(0.98); }
+}
+
+// ================================
+// Friends List (simplified: photo + name)
+// ================================
+
 .friends-list {
   list-style: none;
   margin: 0;
@@ -75,16 +200,17 @@
 
 .friend-card {
   display: flex;
+  align-items: center;
   gap: $spacing-md;
   padding: $spacing-md;
-  background: white;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: $border-radius-lg;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.18);
   }
 
   &:active {
@@ -92,16 +218,15 @@
   }
 
   &__avatar {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
-    background: linear-gradient(135deg, $color-cta-primary 0%, darken($color-cta-primary, 10%) 100%);
+    background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 
     img {
       width: 100%;
@@ -111,162 +236,18 @@
   }
 
   &__initials {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: white;
     text-transform: uppercase;
   }
 
-  &__status-indicator {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: $color-text-secondary;
-    border: 2px solid white;
-
-    &--online {
-      background: #4caf50;
-    }
-  }
-
-  &__content {
-    flex: 1;
-    min-width: 0;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-    margin-bottom: 4px;
-  }
-
   &__name {
     font-size: 16px;
     font-weight: 600;
-    margin: 0;
-    color: $color-text-primary;
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  &__online-badge {
-    font-size: 11px;
-    padding: 2px 8px;
-    background: rgba(76, 175, 80, 0.1);
-    color: #4caf50;
-    border-radius: 10px;
-    font-weight: 500;
-    flex-shrink: 0;
-  }
-
-  &__last-seen {
-    font-size: 12px;
-    color: $color-text-secondary;
-    flex-shrink: 0;
-  }
-
-  &__location {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    color: $color-text-secondary;
-    margin-bottom: 4px;
-
-    .material-icons {
-      font-size: 16px;
-    }
-  }
-
-  &__pets {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    color: $color-text-secondary;
-    margin-bottom: $spacing-xs;
-  }
-
-  &__pets-icon {
-    font-size: 16px !important;
-    color: $color-cta-primary;
-  }
-
-  &__pet-separator {
-    margin-right: 2px;
-  }
-
-  &__pets-count {
-    opacity: 0.7;
-  }
-
-  &__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-sm;
-    margin-bottom: $spacing-sm;
-  }
-
-  &__friends-since,
-  &__mutual {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-    color: $color-text-secondary;
-
-    .material-icons {
-      font-size: 14px;
-    }
-  }
-
-  &__actions {
-    display: flex;
-    gap: $spacing-sm;
-  }
-
-  &__action {
-    display: flex;
-    align-items: center;
-    gap: $spacing-xs;
-    padding: $spacing-xs $spacing-md;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: $border-radius-md;
-    background: transparent;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    .material-icons {
-      font-size: 16px;
-    }
-
-    &--message {
-      color: $color-cta-primary;
-      border-color: $color-cta-primary;
-
-      &:hover {
-        background: $color-cta-primary;
-        color: white;
-      }
-    }
-
-    &--pets {
-      color: $color-text-secondary;
-
-      &:hover {
-        background: rgba(0, 0, 0, 0.05);
-      }
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
   }
 }

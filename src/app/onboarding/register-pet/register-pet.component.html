@@ -11,6 +11,13 @@
   <main class="register-pet__content">
     <h1 class="register-pet__title">{{ 'onboarding.registerPet.title' | translate }}</h1>
 
+    @if (maxPetsReached()) {
+      <div class="register-pet__limit-banner">
+        <span class="material-icons">info</span>
+        <p>{{ 'onboarding.registerPet.maxPetsMessage' | translate }}</p>
+      </div>
+    }
+
     <!-- Photo upload section -->
     <div class="register-pet__photo-section">
       <div
@@ -257,7 +264,7 @@
       <button
         type="submit"
         class="register-pet__submit"
-        [disabled]="isLoading() || isUploading() || isLoadingSpecies() || speciesError() || isRemovingBg()">
+        [disabled]="isLoading() || isUploading() || isLoadingSpecies() || speciesError() || isRemovingBg() || maxPetsReached()">
         @if (isUploading()) {
           <span class="register-pet__spinner"></span>
           {{ 'onboarding.registerPet.uploadingPhoto' | translate }}

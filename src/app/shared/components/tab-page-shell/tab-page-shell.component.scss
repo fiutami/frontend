@@ -221,6 +221,10 @@
   z-index: $shell-z-sticky;
   flex-shrink: 0;
   background: transparent;
+
+  &:empty {
+    display: none;
+  }
 }
 
 // ==========================================

@@ -5,100 +5,6 @@
 // Saved/Favorites Page - Mobile First
 // ================================
 
-$tab-bar-height: 64px;
-
-// ================================
-// Tab Navigation
-// ================================
-
-.saved-tabs {
-  display: flex;
-  background: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  &__item {
-    flex: 1;
-    min-width: max-content;
-    padding: $spacing-sm $spacing-md;
-    background: none;
-    border: none;
-    color: $color-text-secondary;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-
-    @include respond(md) {
-      flex-direction: row;
-      gap: $spacing-sm;
-      font-size: 14px;
-      padding: $spacing-md $spacing-lg;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 3px;
-      background: $color-cta-primary;
-      border-radius: 3px 3px 0 0;
-      transition: width 0.2s ease;
-    }
-
-    &:hover {
-      color: $color-text-primary;
-      background: rgba(0, 0, 0, 0.02);
-    }
-
-    &--active {
-      color: $color-cta-primary;
-      font-weight: 600;
-
-      &::after {
-        width: 60%;
-      }
-
-      .saved-tabs__icon {
-        color: $color-cta-primary;
-      }
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-cta-primary;
-      outline-offset: -2px;
-    }
-  }
-
-  &__icon {
-    font-size: 20px;
-    color: $color-text-secondary;
-    transition: color 0.2s ease;
-
-    @include respond(md) {
-      font-size: 22px;
-    }
-  }
-
-  &__label {
-    white-space: nowrap;
-  }
-}
-
 // ================================
 // Content Area
 // ================================
@@ -465,10 +371,10 @@ $tab-bar-height: 64px;
   align-items: center;
   gap: $spacing-sm;
   padding: $spacing-lg $spacing-md;
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: $border-radius-lg;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: all 0.2s ease;
 
