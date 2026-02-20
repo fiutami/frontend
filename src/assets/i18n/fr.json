@@ -770,6 +770,10 @@
       "high": "Élevé",
       "yes": "Oui",
       "no": "Non"
+    },
+    "maxPets": {
+      "title": "Attention",
+      "message": "Vous avez atteint le nombre maximum d'animaux pour votre forfait. Changez votre abonnement pour en ajouter d'autres."
     }
   },
   "premium": {

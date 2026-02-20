@@ -750,6 +750,10 @@
       "high": "Alto",
       "yes": "Sí",
       "no": "No"
+    },
+    "maxPets": {
+      "title": "Atención",
+      "message": "Has alcanzado el número máximo de mascotas para tu plan. Cambia tu suscripción para añadir más."
     }
   },
   "premium": {

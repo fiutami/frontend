@@ -452,6 +452,10 @@
       "high": "Alto",
       "yes": "Sì",
       "no": "No"
+    },
+    "maxPets": {
+      "title": "Attenzione",
+      "message": "Hai raggiunto il numero massimo di pet per il tuo piano. Cambia il tuo abbonamento per aggiungerne altri."
     }
   },
   "premium": {

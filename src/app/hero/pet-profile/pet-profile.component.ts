@@ -23,6 +23,7 @@ import { MascotBottomSheetComponent } from '../../shared/components/mascot-botto
 import { TabPageShellPetProfileComponent } from '../../shared/components/tab-page-shell-pet-profile';
 import { ProfileIconComponent } from '../../shared/components/profile-icons';
 import { PhotoUploadModalComponent } from '../../shared/components/photo-upload-modal/photo-upload-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 import { PetService } from '../../core/services/pet.service';
 import { PhotoUploadService } from '../../core/services/photo-upload.service';
 import { SpeciesInfoService } from '../../core/services/species-info.service';
@@ -60,6 +61,7 @@ export interface PartnerShowcase {
   imports: [
     CommonModule,
     RouterModule,
+    TranslateModule,
     TabPageShellPetProfileComponent,
     PetInfoCardComponent,
     SpeechBubbleComponent,
@@ -319,6 +321,10 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   showPaywall = signal(false);
 
   onAddPetClick(): void {
+    if (this.allPets().length >= this.MAX_PETS) {
+      this.showPaywall.set(true);
+      return;
+    }
     this.router.navigate(['/home/pet-register']);
   }
 

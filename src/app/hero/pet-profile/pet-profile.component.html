@@ -217,18 +217,15 @@
     </app-photo-upload-modal>
   }
 
-  <!-- Paywall Modal -->
+  <!-- Max Pets Dialog -->
   @if (showPaywall()) {
     <div class="pet-profile__paywall-overlay" (click)="closePaywall()">
       <div class="pet-profile__paywall" (click)="$event.stopPropagation()">
-        <button class="pet-profile__paywall-close" (click)="closePaywall()" aria-label="Chiudi">
-          <span class="material-icons">close</span>
-        </button>
-        <span class="material-icons pet-profile__paywall-icon">pets</span>
-        <h3 class="pet-profile__paywall-title">Limite raggiunto</h3>
-        <p class="pet-profile__paywall-text">Hai raggiunto il numero massimo di pet per il tuo piano. Passa a <strong>Premium</strong> per aggiungerne altri!</p>
+        <span class="material-icons pet-profile__paywall-icon">warning</span>
+        <h3 class="pet-profile__paywall-title">{{ 'petProfile.maxPets.title' | translate }}</h3>
+        <p class="pet-profile__paywall-text">{{ 'petProfile.maxPets.message' | translate }}</p>
         <button class="pet-profile__paywall-btn" (click)="goToPremium()">
-          Passa a Premium
+          OK
         </button>
       </div>
     </div>

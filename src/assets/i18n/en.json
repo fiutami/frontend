@@ -751,6 +751,10 @@
       "high": "High",
       "yes": "Yes",
       "no": "No"
+    },
+    "maxPets": {
+      "title": "Warning",
+      "message": "You've reached the maximum number of pets for your plan. Change your subscription to add more."
     }
   },
   "premium": {

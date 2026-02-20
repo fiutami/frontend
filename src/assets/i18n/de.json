@@ -772,6 +772,10 @@
       "high": "Hoch",
       "yes": "Ja",
       "no": "Nein"
+    },
+    "maxPets": {
+      "title": "Achtung",
+      "message": "Du hast die maximale Anzahl an Haustieren für deinen Plan erreicht. Ändere dein Abonnement, um weitere hinzuzufügen."
     }
   },
   "premium": {
