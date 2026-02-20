@@ -1837,7 +1837,8 @@
     "gender": {
       "male": "Maschio",
       "female": "Femmina"
-    }
+    },
+    "introText": "Non sei l'unico a cercare il branco giusto. Qui c'è chi aspetta proprio te."
   },
   "drawerBlocked": {
     "title": "Utenti Bloccati",
@@ -1870,7 +1871,14 @@
     "errorDefault": "Si è verificato un errore. Riprova più tardi.",
     "errorRequired": "Questo campo è obbligatorio",
     "errorEmail": "Inserisci un indirizzo email valido",
-    "errorMinLength": "Minimo {{min}} caratteri richiesti"
+    "errorMinLength": "Minimo {{min}} caratteri richiesti",
+    "support": {
+      "reportProblem": "Segnala un problema",
+      "accountStatus": "Stato dell'account",
+      "helpCenter": "Centro assistenza",
+      "assistanceRequest": "Richiesta di assistenza",
+      "fiutoAssistance": "Assistenza Fiuto"
+    }
   },
   "drawerInvite": {
     "title": "Invita Amici",
@@ -1984,5 +1992,8 @@
     "perYear": "/anno",
     "currentPlan": "Piano attuale",
     "subscribe": "Abbonati"
+  },
+  "drawerTerms": {
+    "introText": "Trasparenza prima di tutto. Qui trovi le regole che fanno funzionare FiutaMi."
   }
 }

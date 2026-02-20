@@ -112,3 +112,15 @@
     }
   </nav>
 </aside>
+
+<!-- Max Pets Paywall Popup -->
+@if (showMaxPetsPopup()) {
+  <div class="drawer-paywall-overlay" (click)="closeMaxPetsPopup()">
+    <div class="drawer-paywall" (click)="$event.stopPropagation()">
+      <span class="material-icons drawer-paywall__icon">warning</span>
+      <h3 class="drawer-paywall__title">{{ 'petProfile.maxPets.title' | translate }}</h3>
+      <p class="drawer-paywall__text">{{ 'petProfile.maxPets.message' | translate }}</p>
+      <button class="drawer-paywall__btn" (click)="goToSubscriptions()" type="button">OK</button>
+    </div>
+  </div>
+}

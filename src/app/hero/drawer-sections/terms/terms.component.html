@@ -3,16 +3,17 @@
   [showBack]="true"
   (backClicked)="goBack()">
 
-  <!-- Quick Navigation -->
+  <!-- Quick Navigation — Numbered Circles -->
   <nav class="terms-nav" aria-label="Navigazione sezioni">
     <div class="terms-nav__scroll">
-      @for (section of sections; track section.id) {
+      @for (section of sections; track section.id; let i = $index) {
         <button
-          class="terms-nav__item"
-          [class.terms-nav__item--active]="activeSection() === section.id"
+          class="terms-nav__circle"
+          [class.terms-nav__circle--active]="activeSection() === section.id"
           (click)="scrollToSection(section.id)"
-          type="button">
-          {{ section.title.split('.')[0] }}
+          type="button"
+          [attr.aria-label]="section.title">
+          {{ i + 1 }}
         </button>
       }
     </div>
@@ -26,7 +27,7 @@
         <span class="material-icons terms-intro__icon">gavel</span>
         <h2 class="terms-intro__title">{{ 'drawer.terms' | translate }}</h2>
         <p class="terms-intro__subtitle">
-          {{ 'auth.termsAccept' | translate }} FiutaMi
+          {{ 'drawerTerms.introText' | translate }}
         </p>
       </div>
 

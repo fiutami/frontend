@@ -4,6 +4,12 @@
   (backClicked)="goBack()">
 
   <main class="adopt-content">
+    <!-- Intro -->
+    <div class="adopt-intro">
+      <span class="material-icons adopt-intro__icon">volunteer_activism</span>
+      <p class="adopt-intro__text">{{ 'drawerAdopt.introText' | translate }}</p>
+    </div>
+
     <!-- Loading State -->
     @if (isLoading()) {
       <div class="adopt-loading">

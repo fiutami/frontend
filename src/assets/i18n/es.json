@@ -1474,7 +1474,8 @@
     "gender": {
       "male": "Macho",
       "female": "Hembra"
-    }
+    },
+    "introText": "No eres el único que busca la manada adecuada. Aquí hay alguien que te espera."
   },
   "drawerBlocked": {
     "title": "Usuarios Bloqueados",
@@ -1507,7 +1508,14 @@
     "errorDefault": "Ha ocurrido un error. Inténtalo de nuevo más tarde.",
     "errorRequired": "Este campo es obligatorio",
     "errorEmail": "Introduce una dirección de correo válida",
-    "errorMinLength": "Mínimo {{min}} caracteres requeridos"
+    "errorMinLength": "Mínimo {{min}} caracteres requeridos",
+    "support": {
+      "reportProblem": "Reportar un problema",
+      "accountStatus": "Estado de la cuenta",
+      "helpCenter": "Centro de ayuda",
+      "assistanceRequest": "Solicitud de asistencia",
+      "fiutoAssistance": "Asistencia Fiuto"
+    }
   },
   "drawerInvite": {
     "title": "Invitar Amigos",
@@ -1621,5 +1629,8 @@
     "perYear": "/año",
     "currentPlan": "Plan actual",
     "subscribe": "Suscribirse"
+  },
+  "drawerTerms": {
+    "introText": "Transparencia ante todo. Aquí encontrarás las reglas que hacen funcionar FiutaMi."
   }
 }

@@ -5,6 +5,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SavedService, SavedItem, SavedTab } from '../../../core/services/saved.service';
 
+interface SavedGroup {
+  id: string;
+  name: string;
+  icon: string;
+  createdAt: string;
+}
+
 // Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
 import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
@@ -39,6 +46,9 @@ export class SavedComponent implements OnInit, OnDestroy {
   showCreateGroup = signal(false);
   newGroupName = signal('');
 
+  // User-created groups (persisted in localStorage)
+  userGroups = signal<SavedGroup[]>([]);
+
   // Categories data
   readonly categories = signal([
     { id: 'places', icon: 'place', nameKey: 'drawerSaved.places', count: 0 },
@@ -68,6 +78,7 @@ export class SavedComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.loadUserGroups();
     this.loadSavedItems();
     this.loadSavedCount();
   }
@@ -107,12 +118,37 @@ export class SavedComponent implements OnInit, OnDestroy {
     this.showCreateGroup.set(false);
   }
 
-  createGroup(): void {
-    const name = this.newGroupName();
-    if (name.trim()) {
-      // TODO: API call to create group
-      this.showCreateGroup.set(false);
+  loadUserGroups(): void {
+    try {
+      const stored = localStorage.getItem('fiutami_saved_groups');
+      if (stored) {
+        this.userGroups.set(JSON.parse(stored));
+      }
+    } catch {
+      // ignore corrupt data
     }
+  }
+
+  private persistGroups(groups: SavedGroup[]): void {
+    localStorage.setItem('fiutami_saved_groups', JSON.stringify(groups));
+    this.userGroups.set(groups);
+  }
+
+  createGroup(): void {
+    const name = this.newGroupName().trim();
+    if (!name) return;
+    const group: SavedGroup = {
+      id: crypto.randomUUID(),
+      name,
+      icon: 'folder',
+      createdAt: new Date().toISOString(),
+    };
+    this.persistGroups([...this.userGroups(), group]);
+    this.closeCreateGroup();
+  }
+
+  deleteGroup(groupId: string): void {
+    this.persistGroups(this.userGroups().filter(g => g.id !== groupId));
   }
 
   get selectedCategoryName(): string {

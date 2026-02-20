@@ -472,6 +472,84 @@
   }
 }
 
+// ================================
+// Max Pets Paywall Popup
+// ================================
+
+.drawer-paywall-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: $spacing-lg;
+  animation: drawerPaywallFadeIn 0.2s ease;
+}
+
+.drawer-paywall {
+  background: white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl $spacing-lg;
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+  animation: drawerPaywallSlideUp 0.25s ease;
+
+  &__icon {
+    font-size: 48px;
+    color: #f59e0b;
+    margin-bottom: $spacing-md;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-sm 0;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: $color-text-secondary;
+    margin: 0 0 $spacing-lg 0;
+  }
+
+  &__btn {
+    width: 100%;
+    padding: $spacing-md;
+    background: $color-cta-primary;
+    color: white;
+    border: none;
+    border-radius: $border-radius-md;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+@keyframes drawerPaywallFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes drawerPaywallSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 // Short viewport adjustments (foldables, landscape)
 @media (max-height: 600px) {
   .drawer {

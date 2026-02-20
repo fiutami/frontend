@@ -34,6 +34,20 @@
         </p>
       </div>
 
+      <!-- Support Options -->
+      <div class="contact-support-options">
+        @for (option of supportOptions; track option.labelKey) {
+          <button
+            class="contact-support-option"
+            [class.contact-support-option--active]="selectedSupportOption() === option.labelKey"
+            (click)="selectSupportOption(option.labelKey)"
+            type="button">
+            <span class="material-icons contact-support-option__icon">{{ option.icon }}</span>
+            <span class="contact-support-option__label">{{ option.labelKey | translate }}</span>
+          </button>
+        }
+      </div>
+
       <!-- Error Banner -->
       @if (hasError()) {
         <div class="contact-error" role="alert">

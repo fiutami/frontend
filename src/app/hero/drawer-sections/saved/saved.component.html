@@ -41,6 +41,21 @@
           </button>
         }
 
+        <!-- User-created Groups -->
+        @for (group of userGroups(); track group.id) {
+          <div class="saved__category-card saved__category-card--user-group"
+            (click)="selectCategory(group.id)">
+            <span class="material-icons saved__category-icon">{{ group.icon }}</span>
+            <span class="saved__category-name">{{ group.name }}</span>
+            <button class="saved__group-delete"
+              (click)="deleteGroup(group.id); $event.stopPropagation()"
+              type="button"
+              aria-label="Delete group">
+              <span class="material-icons">close</span>
+            </button>
+          </div>
+        }
+
         <!-- Create Group Button -->
         <button
           class="saved__create-group-btn"

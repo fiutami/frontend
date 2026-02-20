@@ -34,6 +34,16 @@ export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
   subjectOptions: string[] = [];
 
+  // Support request types
+  readonly supportOptions: { icon: string; labelKey: string }[] = [
+    { icon: 'bug_report', labelKey: 'drawerContact.support.reportProblem' },
+    { icon: 'manage_accounts', labelKey: 'drawerContact.support.accountStatus' },
+    { icon: 'help_center', labelKey: 'drawerContact.support.helpCenter' },
+    { icon: 'headset_mic', labelKey: 'drawerContact.support.assistanceRequest' },
+    { icon: 'smart_toy', labelKey: 'drawerContact.support.fiutoAssistance' },
+  ];
+  selectedSupportOption = signal<string>('');
+
   // State signals
   isSubmitting = signal(false);
   isSuccess = signal(false);
@@ -63,6 +73,12 @@ export class ContactComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  selectSupportOption(labelKey: string): void {
+    this.selectedSupportOption.set(labelKey);
+    const translatedLabel = this.translate.instant(labelKey);
+    this.contactForm.patchValue({ subject: translatedLabel });
   }
 
   onSubmit(): void {

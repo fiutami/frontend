@@ -422,6 +422,44 @@
   border-radius: 12px;
 }
 
+.saved__category-card--user-group {
+  position: relative;
+
+  .saved__category-icon {
+    color: #607D8B;
+  }
+}
+
+.saved__group-delete {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+
+  .material-icons {
+    font-size: 16px;
+    color: $color-text-secondary;
+  }
+
+  &:hover {
+    background: rgba($color-error, 0.15);
+
+    .material-icons {
+      color: $color-error;
+    }
+  }
+}
+
 .saved__create-group-btn {
   display: flex;
   flex-direction: column;

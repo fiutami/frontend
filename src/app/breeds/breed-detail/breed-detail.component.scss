@@ -203,12 +203,9 @@
     letter-spacing: 0.3px;
   }
 
-  // Scrollable content
+  // Content — scrolls with the page so header+photo scroll away
   &__content {
-    flex: 1;
     padding: $spacing-lg;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     padding-bottom: 100px; // space for fixed footer
   }
 

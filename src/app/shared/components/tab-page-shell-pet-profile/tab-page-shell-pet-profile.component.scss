@@ -101,9 +101,10 @@ $fiutami-blue: #4a74f0;
 // ==========================================
 .shell-pet-quick-actions {
   position: fixed;
-  z-index: 6;
+  z-index: 15; // Must be > shell-z-blue-header (10) to be clickable
   right: 12px;
   top: 80px;
+  pointer-events: auto;
   display: flex;
   flex-direction: column;
   align-items: center;

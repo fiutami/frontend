@@ -73,6 +73,9 @@ export class DrawerComponent implements OnInit, OnDestroy {
   showLanguageDropdown = false;
   currentLang = 'it';
 
+  // Max pets paywall popup
+  showMaxPetsPopup = signal(false);
+
   // User from auth service
   user$ = this.authService.currentUser$;
 
@@ -271,20 +274,27 @@ export class DrawerComponent implements OnInit, OnDestroy {
   /**
    * Logica "Aggiungi Pets" con limite 2 pet gratis
    * - Se < 2 pet → vai a form registrazione pet
-   * - Se >= 2 pet → vai a pagina abbonamenti (FIUTAMI Plus)
+   * - Se >= 2 pet → mostra popup avviso, poi abbonamenti
    */
   onAddPetClick(): void {
     const count = this.petService.petCount();
 
     if (count < 2) {
-      // Può aggiungere pet gratis
       this.router.navigate(['/home/pet-register']);
+      this.close();
     } else {
-      // Limite raggiunto → abbonamento
-      this.router.navigate(['/home/subscriptions']);
+      this.close();
+      this.showMaxPetsPopup.set(true);
     }
+  }
 
-    this.close();
+  closeMaxPetsPopup(): void {
+    this.showMaxPetsPopup.set(false);
+  }
+
+  goToSubscriptions(): void {
+    this.showMaxPetsPopup.set(false);
+    this.router.navigate(['/home/subscriptions']);
   }
 
   onSearchChange(event: Event): void {

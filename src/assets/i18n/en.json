@@ -1540,7 +1540,8 @@
     "gender": {
       "male": "Male",
       "female": "Female"
-    }
+    },
+    "introText": "You're not the only one looking for the right pack. There's someone here waiting just for you."
   },
   "drawerBlocked": {
     "title": "Blocked Users",
@@ -1573,7 +1574,14 @@
     "errorDefault": "An error occurred. Please try again later.",
     "errorRequired": "This field is required",
     "errorEmail": "Please enter a valid email address",
-    "errorMinLength": "Minimum {{min}} characters required"
+    "errorMinLength": "Minimum {{min}} characters required",
+    "support": {
+      "reportProblem": "Report a problem",
+      "accountStatus": "Account status",
+      "helpCenter": "Help center",
+      "assistanceRequest": "Assistance request",
+      "fiutoAssistance": "Fiuto assistance"
+    }
   },
   "drawerInvite": {
     "title": "Invite Friends",
@@ -1687,5 +1695,8 @@
     "perYear": "/year",
     "currentPlan": "Current plan",
     "subscribe": "Subscribe"
+  },
+  "drawerTerms": {
+    "introText": "Transparency first. Here you'll find the rules that make FiutaMi work."
   }
 }
