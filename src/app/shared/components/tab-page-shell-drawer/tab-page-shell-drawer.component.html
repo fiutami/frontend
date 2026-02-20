@@ -1,0 +1,15 @@
+<app-tab-page-shell
+  [title]="title"
+  backgroundVariant="blue-solid"
+  [showBack]="showBack"
+  (backClicked)="onBack()">
+
+  <!-- Sticky Content slot -->
+  <div shellStickyYellow>
+    <ng-content select="[shellStickyContent]" />
+  </div>
+
+  <!-- Main Content -->
+  <ng-content />
+
+</app-tab-page-shell>

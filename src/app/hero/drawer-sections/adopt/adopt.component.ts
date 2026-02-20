@@ -9,8 +9,8 @@ import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
 import { AdoptService, AdoptionAd, PetType } from '../../../core/services/adopt.service';
 
@@ -20,7 +20,7 @@ import { AdoptService, AdoptionAd, PetType } from '../../../core/services/adopt.
   imports: [
     CommonModule,
     TranslateModule,
-    TabPageShellBlueComponent,
+    TabPageShellDrawerComponent,
   ],
   templateUrl: './adopt.component.html',
   styleUrls: ['./adopt.component.scss'],
@@ -38,6 +38,25 @@ export class AdoptComponent implements OnInit {
   adoptionAds = signal<AdoptionAd[]>([]);
   isLoading = signal(true);
   hasError = signal(false);
+
+  /** Tracks which cards are expanded */
+  readonly expandedCards = signal<Set<string>>(new Set());
+
+  toggleCard(id: string): void {
+    this.expandedCards.update(set => {
+      const newSet = new Set(set);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  }
+
+  isExpanded(id: string): boolean {
+    return this.expandedCards().has(id);
+  }
 
   constructor() {
     this.translate.onLangChange.subscribe(() => {

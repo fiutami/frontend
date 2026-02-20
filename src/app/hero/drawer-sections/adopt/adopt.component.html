@@ -1,6 +1,5 @@
-<app-tab-page-shell-blue
+<app-tab-page-shell-drawer
   [title]="pageTitle"
-  activeTabId="home"
   [showBack]="true"
   (backClicked)="goBack()">
 
@@ -35,7 +34,17 @@
     @if (!isLoading() && !hasError() && adoptionAds().length > 0) {
       <ul class="adopt-list" role="list">
         @for (ad of adoptionAds(); track ad.id) {
-          <li class="adopt-card" (click)="viewDetails(ad)">
+          <li
+            class="adopt-card"
+            [class.adopt-card--expanded]="isExpanded(ad.id)"
+            (click)="toggleCard(ad.id)"
+            [attr.aria-expanded]="isExpanded(ad.id)"
+            role="button"
+            tabindex="0"
+            (keydown.enter)="toggleCard(ad.id)"
+            (keydown.space)="toggleCard(ad.id); $event.preventDefault()">
+
+            <!-- Image Section (always visible) -->
             <div class="adopt-card__image">
               @if (ad.imageUrl) {
                 <img [src]="ad.imageUrl" [alt]="ad.petName" />
@@ -49,6 +58,8 @@
                 <span class="adopt-card__urgent-badge">{{ 'drawerAdopt.urgent' | translate }}</span>
               }
             </div>
+
+            <!-- Summary Section (always visible) -->
             <div class="adopt-card__content">
               <div class="adopt-card__header">
                 <h3 class="adopt-card__name">{{ ad.petName }}</h3>
@@ -68,34 +79,68 @@
                 </span>
               </div>
               <p class="adopt-card__description">{{ ad.description }}</p>
-              <div class="adopt-card__location">
-                <span class="material-icons">location_on</span>
-                {{ ad.location }}
-              </div>
-              @if (ad.shelterName) {
-                <div class="adopt-card__shelter">
-                  <span class="material-icons">home</span>
-                  {{ ad.shelterName }}
-                </div>
-              }
-              <div class="adopt-card__meta">
-                <span class="adopt-card__time">{{ formatRelativeTime(ad.publishedAt) }}</span>
-              </div>
-              <div class="adopt-card__actions">
-                <button class="adopt-card__action adopt-card__action--contact" (click)="contactOwner(ad); $event.stopPropagation()">
-                  <span class="material-icons">chat</span>
-                  {{ 'drawerAdopt.contact' | translate }}
-                </button>
-                <button class="adopt-card__action adopt-card__action--details" (click)="viewDetails(ad); $event.stopPropagation()">
-                  <span class="material-icons">info</span>
-                  {{ 'drawerAdopt.details' | translate }}
-                </button>
+
+              <!-- Expand Indicator -->
+              <div class="adopt-card__expand-indicator">
+                <span class="material-icons adopt-card__chevron">
+                  {{ isExpanded(ad.id) ? 'expand_less' : 'expand_more' }}
+                </span>
               </div>
             </div>
+
+            <!-- Expanded Details Section -->
+            @if (isExpanded(ad.id)) {
+              <div class="adopt-card__details">
+                <!-- Full Description -->
+                <p class="adopt-card__full-description">{{ ad.description }}</p>
+
+                <!-- Info Rows -->
+                <div class="adopt-card__info-row">
+                  <span class="material-icons">location_on</span>
+                  <span>{{ ad.location }}</span>
+                </div>
+
+                @if (ad.shelterName) {
+                  <div class="adopt-card__info-row">
+                    <span class="material-icons">home</span>
+                    <span>{{ ad.shelterName }}</span>
+                  </div>
+                }
+
+                <div class="adopt-card__info-row">
+                  <span class="material-icons">schedule</span>
+                  <span>{{ formatRelativeTime(ad.publishedAt) }}</span>
+                </div>
+
+                @if (ad.contactPhone) {
+                  <div class="adopt-card__info-row">
+                    <span class="material-icons">phone</span>
+                    <span>{{ ad.contactPhone }}</span>
+                  </div>
+                }
+
+                <!-- Action Buttons -->
+                <div class="adopt-card__actions">
+                  <button
+                    class="adopt-card__contact-btn"
+                    (click)="contactOwner(ad); $event.stopPropagation()"
+                    [attr.aria-label]="'drawerAdopt.contact' | translate">
+                    <span class="material-icons">chat</span>
+                    {{ 'drawerAdopt.contact' | translate }}
+                  </button>
+                  <button
+                    class="adopt-card__action adopt-card__action--details"
+                    (click)="viewDetails(ad); $event.stopPropagation()">
+                    <span class="material-icons">info</span>
+                    {{ 'drawerAdopt.details' | translate }}
+                  </button>
+                </div>
+              </div>
+            }
           </li>
         }
       </ul>
     }
   </main>
 
-</app-tab-page-shell-blue>
+</app-tab-page-shell-drawer>

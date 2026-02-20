@@ -1,6 +1,5 @@
-<app-tab-page-shell-blue
+<app-tab-page-shell-drawer
   [title]="pageTitle"
-  activeTabId="home"
   [showBack]="true"
   (backClicked)="goBack()">
 
@@ -41,52 +40,112 @@
       </div>
     }
 
-    <!-- Empty State -->
-    @else if (savedItems().length === 0) {
-      <div class="saved-empty">
-        <span class="material-icons saved-empty__icon">bookmark_border</span>
-        <p class="saved-empty__text">{{ 'drawerSaved.emptyTitle' | translate }}</p>
-        <p class="saved-empty__subtext">{{ 'drawerSaved.emptySubtitle' | translate }}</p>
+    <!-- Categories View -->
+    @else if (currentView() === 'categories') {
+      <div class="saved__grid">
+        @for (cat of categories(); track cat.id) {
+          <button
+            class="saved__category-card"
+            (click)="selectCategory(cat.id)"
+            type="button"
+            tabindex="0"
+            (keydown.enter)="selectCategory(cat.id)"
+            (keydown.space)="selectCategory(cat.id)">
+            <span class="material-icons saved__category-icon">{{ cat.icon }}</span>
+            <span class="saved__category-name">{{ cat.nameKey | translate }}</span>
+            <span class="saved__category-count">{{ cat.count }}</span>
+          </button>
+        }
+
+        <!-- Create Group Button -->
+        <button
+          class="saved__create-group-btn"
+          (click)="openCreateGroup()"
+          type="button">
+          <span class="material-icons">add_circle_outline</span>
+          <span>{{ 'drawerSaved.createGroup' | translate }}</span>
+        </button>
       </div>
     }
 
-    <!-- Saved Items List -->
+    <!-- Detail View (items for selected category) -->
     @else {
-      <ul class="saved-list" role="list">
-        @for (item of savedItems(); track item.id) {
-          <li
-            class="saved-item"
-            [class]="getItemTypeClass(item.type)"
-            (click)="onItemClick(item)"
-            role="button"
-            tabindex="0"
-            (keydown.enter)="onItemClick(item)"
-            (keydown.space)="onItemClick(item)">
-            <div class="saved-item__image">
-              @if (item.imageUrl) {
-                <img [src]="item.imageUrl" [alt]="item.title" />
-              } @else {
-                <span class="material-icons">{{ item.icon }}</span>
-              }
-            </div>
-            <div class="saved-item__content">
-              <h3 class="saved-item__title">{{ item.title }}</h3>
-              <p class="saved-item__subtitle">{{ item.subtitle }}</p>
-              <time class="saved-item__time" [attr.datetime]="item.timestamp.toISOString()">
-                {{ 'drawerSaved.saved' | translate }} {{ formatTime(item.timestamp) }}
-              </time>
-            </div>
-            <button
-              class="saved-item__remove"
-              (click)="onRemoveItem($event, item)"
-              type="button"
-              [attr.aria-label]="'drawerSaved.removeAria' | translate">
-              <span class="material-icons">bookmark_remove</span>
-            </button>
-          </li>
+      <div class="saved__detail">
+        <button
+          class="saved__back-btn"
+          (click)="backToCategories()"
+          type="button">
+          <span class="material-icons">arrow_back</span>
+          <span>{{ selectedCategoryName | translate }}</span>
+        </button>
+
+        @if (savedItems().length === 0) {
+          <div class="saved__empty">
+            <span class="material-icons">bookmark_border</span>
+            <p>{{ 'drawerSaved.emptyCategory' | translate }}</p>
+          </div>
+        } @else {
+          <ul class="saved-list" role="list">
+            @for (item of savedItems(); track item.id) {
+              <li
+                class="saved-item"
+                [class]="getItemTypeClass(item.type)"
+                (click)="onItemClick(item)"
+                role="button"
+                tabindex="0"
+                (keydown.enter)="onItemClick(item)"
+                (keydown.space)="onItemClick(item)">
+                <div class="saved-item__image">
+                  @if (item.imageUrl) {
+                    <img [src]="item.imageUrl" [alt]="item.title" />
+                  } @else {
+                    <span class="material-icons">{{ item.icon }}</span>
+                  }
+                </div>
+                <div class="saved-item__content">
+                  <h3 class="saved-item__title">{{ item.title }}</h3>
+                  <p class="saved-item__subtitle">{{ item.subtitle }}</p>
+                  <time class="saved-item__time" [attr.datetime]="item.timestamp.toISOString()">
+                    {{ 'drawerSaved.saved' | translate }} {{ formatTime(item.timestamp) }}
+                  </time>
+                </div>
+                <button
+                  class="saved-item__remove"
+                  (click)="onRemoveItem($event, item)"
+                  type="button"
+                  [attr.aria-label]="'drawerSaved.removeAria' | translate">
+                  <span class="material-icons">bookmark_remove</span>
+                </button>
+              </li>
+            }
+          </ul>
         }
-      </ul>
+      </div>
     }
   </main>
 
-</app-tab-page-shell-blue>
+  <!-- Create Group Modal -->
+  @if (showCreateGroup()) {
+    <div class="saved__modal-overlay" (click)="closeCreateGroup()">
+      <div class="saved__modal" (click)="$event.stopPropagation()">
+        <h3 class="saved__modal-title">{{ 'drawerSaved.createGroupTitle' | translate }}</h3>
+        <input
+          class="saved__modal-input"
+          type="text"
+          [placeholder]="'drawerSaved.groupNamePlaceholder' | translate"
+          [value]="newGroupName()"
+          (input)="newGroupName.set($any($event.target).value)"
+          (keydown.enter)="createGroup()" />
+        <div class="saved__modal-actions">
+          <button class="saved__modal-cancel" (click)="closeCreateGroup()" type="button">
+            {{ 'drawerSaved.cancel' | translate }}
+          </button>
+          <button class="saved__modal-create" (click)="createGroup()" type="button">
+            {{ 'drawerSaved.create' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+</app-tab-page-shell-drawer>

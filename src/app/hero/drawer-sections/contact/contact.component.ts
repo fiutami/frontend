@@ -5,8 +5,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { ContactService, ContactFormData, ContactFormResponse } from '../../../core/services/contact.service';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
 @Component({
   selector: 'app-contact',
@@ -15,7 +15,7 @@ import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-s
     CommonModule,
     ReactiveFormsModule,
     TranslateModule,
-    TabPageShellBlueComponent,
+    TabPageShellDrawerComponent,
   ],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],

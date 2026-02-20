@@ -1,6 +1,5 @@
-<app-tab-page-shell-blue
+<app-tab-page-shell-drawer
   [title]="pageTitle"
-  activeTabId="home"
   [showBack]="true"
   (backClicked)="goBack()">
 
@@ -126,7 +125,95 @@
           </ul>
         </section>
       }
+
+      <!-- Contact Picker Section -->
+      <section class="invite-contact-picker">
+        <!-- Import from contacts (if supported) -->
+        @if (isContactPickerSupported()) {
+          <button class="invite-contact-picker__import-btn" (click)="importContacts()">
+            <span class="material-icons">contacts</span>
+            {{ 'drawerInvite.importContacts' | translate }}
+          </button>
+        }
+
+        <!-- Manual input -->
+        <div class="invite-contact-picker__manual">
+          <h3 class="invite-contact-picker__manual-title">{{ 'drawerInvite.addManually' | translate }}</h3>
+          <div class="invite-contact-picker__manual-form">
+            <input
+              type="text"
+              class="invite-contact-picker__input"
+              [placeholder]="'drawerInvite.namePlaceholder' | translate"
+              [value]="manualName()"
+              (input)="manualName.set($any($event.target).value)"
+            />
+            <input
+              type="tel"
+              class="invite-contact-picker__input"
+              [placeholder]="'drawerInvite.phonePlaceholder' | translate"
+              [value]="manualPhone()"
+              (input)="manualPhone.set($any($event.target).value)"
+            />
+            <button class="invite-contact-picker__add-btn" (click)="addManualContact()" [disabled]="!manualPhone().trim()">
+              <span class="material-icons">person_add</span>
+              {{ 'drawerInvite.add' | translate }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Contact list -->
+        @if (contacts().length > 0) {
+          <div class="invite-contact-picker__contacts">
+            <h3 class="invite-contact-picker__section-title">{{ 'drawerInvite.contactList' | translate }}</h3>
+            @for (contact of contacts(); track $index) {
+              <div class="invite-contact-picker__contact-card">
+                <div class="invite-contact-picker__contact-info">
+                  <span class="invite-contact-picker__contact-name">{{ contact.name }}</span>
+                  <span class="invite-contact-picker__contact-phone">{{ contact.phone }}</span>
+                </div>
+                <div class="invite-contact-picker__contact-actions">
+                  <button class="invite-contact-picker__whatsapp-btn" (click)="confirmInvite(contact)">
+                    <span class="material-icons">send</span>
+                  </button>
+                  <button class="invite-contact-picker__remove-btn" (click)="removeContact($index)">
+                    <span class="material-icons">close</span>
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Empty state -->
+        @if (contacts().length === 0) {
+          <div class="invite-contact-picker__empty">
+            <span class="material-icons invite-contact-picker__empty-icon">group_add</span>
+            <p>{{ 'drawerInvite.emptyState' | translate }}</p>
+          </div>
+        }
+      </section>
     }
   </main>
 
-</app-tab-page-shell-blue>
+  <!-- Confirm Dialog -->
+  @if (showConfirmDialog()) {
+    <div class="invite-dialog-overlay" (click)="cancelInvite()">
+      <div class="invite-dialog" (click)="$event.stopPropagation()">
+        <h3 class="invite-dialog__title">{{ 'drawerInvite.confirmTitle' | translate }}</h3>
+        <p class="invite-dialog__text">
+          {{ 'drawerInvite.confirmMessage' | translate:{ name: selectedContact()?.name } }}
+        </p>
+        <div class="invite-dialog__actions">
+          <button class="invite-dialog__cancel" (click)="cancelInvite()">
+            {{ 'drawerInvite.cancel' | translate }}
+          </button>
+          <button class="invite-dialog__send" (click)="sendWhatsAppInvite()">
+            <span class="material-icons">send</span>
+            WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+</app-tab-page-shell-drawer>

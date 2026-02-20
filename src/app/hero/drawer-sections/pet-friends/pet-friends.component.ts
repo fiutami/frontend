@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { PetFriendsService, PetFriend } from '../../../core/services/pet-friends.service';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
 @Component({
   selector: 'app-pet-friends',
@@ -13,7 +13,7 @@ import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-s
   imports: [
     CommonModule,
     TranslateModule,
-    TabPageShellBlueComponent,
+    TabPageShellDrawerComponent,
   ],
   templateUrl: './pet-friends.component.html',
   styleUrls: ['./pet-friends.component.scss'],

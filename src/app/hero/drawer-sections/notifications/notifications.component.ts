@@ -7,8 +7,8 @@ import {
 import { CommonModule, Location } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
 export interface NotificationSetting {
   id: string;
@@ -24,7 +24,7 @@ export interface NotificationSetting {
   imports: [
     CommonModule,
     TranslateModule,
-    TabPageShellBlueComponent,
+    TabPageShellDrawerComponent,
   ],
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],

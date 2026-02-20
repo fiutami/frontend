@@ -66,6 +66,7 @@ export interface PetSummaryResponse {
   breedName: string | null;
   profilePhotoUrl: string | null;
   calculatedAge: string;
+  status: PetStatus;
 }
 
 export interface PetListResponse {

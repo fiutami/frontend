@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -7,10 +7,12 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { AuthService, User } from '../../../core/services/auth.service';
 import { AccountService } from '../../../core/services/account.service';
+import { PetService } from '../../../core/services/pet.service';
+import { PetSummaryResponse } from '../../../core/models/pet.models';
 import { environment } from '../../../../environments/environment';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
 @Component({
   selector: 'app-account-drawer',
@@ -20,7 +22,7 @@ import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-s
     RouterModule,
     FormsModule,
     TranslateModule,
-    TabPageShellBlueComponent,
+    TabPageShellDrawerComponent,
   ],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
@@ -33,6 +35,7 @@ export class AccountDrawerComponent implements OnInit {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
   private accountService = inject(AccountService);
+  private petService = inject(PetService);
   private translate = inject(TranslateService);
 
   /** Translated page title */
@@ -56,6 +59,22 @@ export class AccountDrawerComponent implements OnInit {
   exportRateLimit = signal(false);
   exportStatus = signal<string | null>(null);
 
+  // Pet signals
+  allPets = signal<PetSummaryResponse[]>([]);
+  petsLoading = signal(false);
+  activePets = computed(() => this.allPets().filter(p => p.status !== 'archived'));
+  archivedPets = computed(() => this.allPets().filter(p => p.status === 'archived'));
+  showArchivedPets = signal(false);
+
+  // Change password signals
+  showChangePassword = signal(false);
+  currentPassword = signal('');
+  newPassword = signal('');
+  confirmPassword = signal('');
+  passwordChanging = signal(false);
+  passwordError = signal('');
+  passwordSuccess = signal(false);
+
   constructor() {
     this.translate.onLangChange.subscribe(() => {
       this.pageTitle = this.translate.instant('drawerAccount.title');
@@ -64,6 +83,7 @@ export class AccountDrawerComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUserData();
+    this.loadPets();
   }
 
   goBack(): void {
@@ -157,6 +177,96 @@ export class AccountDrawerComponent implements OnInit {
 
   closeExportModal(): void {
     this.showExportModal.set(false);
+  }
+
+  // ============================================================
+  // Pet Management
+  // ============================================================
+
+  loadPets(): void {
+    this.petsLoading.set(true);
+    this.petService.loadPets().subscribe({
+      next: (res) => {
+        this.allPets.set(res.pets);
+        this.petsLoading.set(false);
+      },
+      error: () => this.petsLoading.set(false)
+    });
+  }
+
+  confirmArchivePet(pet: PetSummaryResponse): void {
+    if (!confirm(this.translate.instant('drawerAccount.archiveConfirm', { name: pet.name }))) return;
+    this.petService.archivePet(pet.id).subscribe({
+      next: () => this.loadPets(),
+      error: () => {}
+    });
+  }
+
+  confirmDeletePet(pet: PetSummaryResponse): void {
+    if (!confirm(this.translate.instant('drawerAccount.deletePetConfirm', { name: pet.name }))) return;
+    this.petService.deletePet(pet.id).subscribe({
+      next: () => this.loadPets(),
+      error: () => {}
+    });
+  }
+
+  restorePet(pet: PetSummaryResponse): void {
+    this.petService.restorePet(pet.id).subscribe({
+      next: () => this.loadPets(),
+      error: () => {}
+    });
+  }
+
+  toggleArchivedPets(): void {
+    this.showArchivedPets.update(v => !v);
+  }
+
+  // ============================================================
+  // Change Password
+  // ============================================================
+
+  toggleChangePassword(): void {
+    this.showChangePassword.update(v => !v);
+    if (!this.showChangePassword()) {
+      this.currentPassword.set('');
+      this.newPassword.set('');
+      this.confirmPassword.set('');
+      this.passwordError.set('');
+      this.passwordSuccess.set(false);
+    }
+  }
+
+  submitPasswordChange(): void {
+    if (this.newPassword() !== this.confirmPassword()) {
+      this.passwordError.set(this.translate.instant('drawerAccount.passwordMismatch'));
+      return;
+    }
+    if (this.newPassword().length < 8) {
+      this.passwordError.set(this.translate.instant('drawerAccount.passwordTooShort'));
+      return;
+    }
+
+    this.passwordChanging.set(true);
+    this.passwordError.set('');
+
+    this.http.put(`${environment.apiUrl}/account/password`, {
+      currentPassword: this.currentPassword(),
+      newPassword: this.newPassword()
+    }).subscribe({
+      next: () => {
+        this.passwordChanging.set(false);
+        this.passwordSuccess.set(true);
+        this.currentPassword.set('');
+        this.newPassword.set('');
+        this.confirmPassword.set('');
+      },
+      error: (err: { error?: { message?: string } }) => {
+        this.passwordChanging.set(false);
+        this.passwordError.set(
+          err.error?.message || this.translate.instant('drawerAccount.passwordErrorGeneric')
+        );
+      }
+    });
   }
 
   exportData(): void {

@@ -5,13 +5,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SavedService, SavedItem, SavedTab } from '../../../core/services/saved.service';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
 @Component({
   selector: 'app-saved',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule, TabPageShellBlueComponent],
+  imports: [CommonModule, RouterModule, TranslateModule, TabPageShellDrawerComponent],
   templateUrl: './saved.component.html',
   styleUrls: ['./saved.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,6 +32,24 @@ export class SavedComponent implements OnInit, OnDestroy {
   hasError = signal(false);
   activeTab = signal<SavedTab>('all');
   savedCount = signal(0);
+
+  // Category view signals
+  currentView = signal<'categories' | 'detail'>('categories');
+  selectedCategory = signal<string>('');
+  showCreateGroup = signal(false);
+  newGroupName = signal('');
+
+  // Categories data
+  readonly categories = signal([
+    { id: 'places', icon: 'place', nameKey: 'drawerSaved.places', count: 0 },
+    { id: 'vets', icon: 'local_hospital', nameKey: 'drawerSaved.vets', count: 0 },
+    { id: 'trainers', icon: 'fitness_center', nameKey: 'drawerSaved.trainers', count: 0 },
+    { id: 'friends', icon: 'people', nameKey: 'drawerSaved.friends', count: 0 },
+    { id: 'shops', icon: 'store', nameKey: 'drawerSaved.shops', count: 0 },
+    { id: 'petSitters', icon: 'pets', nameKey: 'drawerSaved.petSitters', count: 0 },
+    { id: 'events', icon: 'event', nameKey: 'drawerSaved.events', count: 0 },
+    { id: 'pets', icon: 'favorite', nameKey: 'drawerSaved.pets', count: 0 },
+  ]);
 
   // Tab configuration
   tabOptions: { id: SavedTab; labelKey: string; icon: string }[] = [
@@ -68,6 +86,38 @@ export class SavedComponent implements OnInit, OnDestroy {
       this.activeTab.set(tab);
       this.loadSavedItems();
     }
+  }
+
+  selectCategory(categoryId: string): void {
+    this.selectedCategory.set(categoryId);
+    this.currentView.set('detail');
+  }
+
+  backToCategories(): void {
+    this.currentView.set('categories');
+    this.selectedCategory.set('');
+  }
+
+  openCreateGroup(): void {
+    this.showCreateGroup.set(true);
+    this.newGroupName.set('');
+  }
+
+  closeCreateGroup(): void {
+    this.showCreateGroup.set(false);
+  }
+
+  createGroup(): void {
+    const name = this.newGroupName();
+    if (name.trim()) {
+      // TODO: API call to create group
+      this.showCreateGroup.set(false);
+    }
+  }
+
+  get selectedCategoryName(): string {
+    const cat = this.categories().find(c => c.id === this.selectedCategory());
+    return cat?.nameKey || '';
   }
 
   loadSavedItems(): void {

@@ -1,6 +1,5 @@
-<app-tab-page-shell-blue
+<app-tab-page-shell-drawer
   [title]="pageTitle"
-  activeTabId="home"
   [showBack]="true"
   (backClicked)="goBack()">
 
@@ -57,6 +56,125 @@
         </div>
       </section>
 
+      <!-- My Pets Section -->
+      <section class="account-section">
+        <h2 class="account-section__title">
+          <span class="material-icons">pets</span>
+          {{ 'drawerAccount.petsTitle' | translate }}
+        </h2>
+
+        @if (petsLoading()) {
+          <div class="account-loading" style="min-height: 100px">
+            <div class="account-loading__spinner"></div>
+          </div>
+        } @else if (activePets().length === 0) {
+          <p class="account-section__desc">{{ 'drawerAccount.noPets' | translate }}</p>
+        } @else {
+          @for (pet of activePets(); track pet.id) {
+            <div class="account-pet-card">
+              <div class="account-pet-card__avatar">
+                @if (pet.profilePhotoUrl) {
+                  <img [src]="pet.profilePhotoUrl" [alt]="pet.name" />
+                } @else {
+                  <span class="material-icons">pets</span>
+                }
+              </div>
+              <div class="account-pet-card__info">
+                <span class="account-pet-card__name">{{ pet.name }}</span>
+                <span class="account-pet-card__details">{{ pet.speciesName }} {{ pet.breedName ? '- ' + pet.breedName : '' }}</span>
+              </div>
+              <div class="account-pet-card__actions">
+                <button type="button" class="account-action-btn account-action-btn--archive" (click)="confirmArchivePet(pet)" [attr.aria-label]="'drawerAccount.archivePet' | translate">
+                  <span class="material-icons">archive</span>
+                </button>
+                <button type="button" class="account-action-btn account-action-btn--delete" (click)="confirmDeletePet(pet)" [attr.aria-label]="'drawerAccount.deletePetButton' | translate">
+                  <span class="material-icons">delete</span>
+                </button>
+              </div>
+            </div>
+          }
+        }
+
+        <!-- Archived Pets Toggle -->
+        @if (archivedPets().length > 0) {
+          <button type="button" class="account-btn account-btn--ghost" style="margin-top: 12px" (click)="toggleArchivedPets()">
+            <span class="material-icons">{{ showArchivedPets() ? 'expand_less' : 'expand_more' }}</span>
+            {{ 'drawerAccount.archivedPetsTitle' | translate }} ({{ archivedPets().length }})
+          </button>
+
+          @if (showArchivedPets()) {
+            @for (pet of archivedPets(); track pet.id) {
+              <div class="account-pet-card account-pet-card--archived">
+                <div class="account-pet-card__avatar account-pet-card__avatar--archived">
+                  @if (pet.profilePhotoUrl) {
+                    <img [src]="pet.profilePhotoUrl" [alt]="pet.name" />
+                  } @else {
+                    <span class="material-icons">pets</span>
+                  }
+                </div>
+                <div class="account-pet-card__info">
+                  <span class="account-pet-card__name">{{ pet.name }}</span>
+                  <span class="account-pet-card__badge">{{ 'drawerAccount.archived' | translate }}</span>
+                </div>
+                <div class="account-pet-card__actions">
+                  <button type="button" class="account-action-btn account-action-btn--restore" (click)="restorePet(pet)" [attr.aria-label]="'drawerAccount.restorePet' | translate">
+                    <span class="material-icons">unarchive</span>
+                  </button>
+                </div>
+              </div>
+            }
+          }
+        }
+      </section>
+
+      <!-- Change Password Section -->
+      @if (getAccountType() !== 'Google') {
+        <section class="account-section">
+          <h2 class="account-section__title">
+            <span class="material-icons">lock</span>
+            {{ 'drawerAccount.changePassword' | translate }}
+          </h2>
+
+          @if (!showChangePassword()) {
+            <button type="button" class="account-btn account-btn--outline" (click)="toggleChangePassword()">
+              <span class="material-icons">edit</span>
+              {{ 'drawerAccount.changePassword' | translate }}
+            </button>
+          } @else {
+            <div class="account-password-form">
+              <div class="account-password-form__field">
+                <label for="currentPassword">{{ 'drawerAccount.currentPassword' | translate }}</label>
+                <input id="currentPassword" type="password" [value]="currentPassword()" (input)="currentPassword.set($any($event.target).value)" autocomplete="current-password" />
+              </div>
+              <div class="account-password-form__field">
+                <label for="newPassword">{{ 'drawerAccount.newPassword' | translate }}</label>
+                <input id="newPassword" type="password" [value]="newPassword()" (input)="newPassword.set($any($event.target).value)" autocomplete="new-password" />
+              </div>
+              <div class="account-password-form__field">
+                <label for="confirmPassword">{{ 'drawerAccount.confirmPassword' | translate }}</label>
+                <input id="confirmPassword" type="password" [value]="confirmPassword()" (input)="confirmPassword.set($any($event.target).value)" autocomplete="new-password" />
+              </div>
+
+              @if (passwordError()) {
+                <div class="account-password-form__error">{{ passwordError() }}</div>
+              }
+              @if (passwordSuccess()) {
+                <div class="account-password-form__success">{{ 'drawerAccount.passwordChanged' | translate }}</div>
+              }
+
+              <div class="account-password-form__actions">
+                <button type="button" class="account-btn account-btn--ghost" (click)="toggleChangePassword()">
+                  {{ 'drawerAccount.cancel' | translate }}
+                </button>
+                <button type="button" class="account-btn account-btn--primary" [disabled]="passwordChanging()" (click)="submitPasswordChange()">
+                  {{ passwordChanging() ? ('drawerAccount.saving' | translate) : ('drawerAccount.save' | translate) }}
+                </button>
+              </div>
+            </div>
+          }
+        </section>
+      }
+
       <!-- Data Management Section -->
       <section class="account-section">
         <h2 class="account-section__title">
@@ -100,7 +218,7 @@
     }
   </main>
 
-</app-tab-page-shell-blue>
+</app-tab-page-shell-drawer>
 
 <!-- Delete Confirmation Modal -->
 @if (showDeleteConfirm()) {

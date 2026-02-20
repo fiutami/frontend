@@ -183,6 +183,50 @@
   &.activity--comment .activity-item__icon { background: rgba(#00BCD4, 0.1); color: #00BCD4; }
 }
 
+// Usage Time & Locked Sections
+.activity__section {
+  margin-top: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.activity__section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-xs 0;
+}
+
+.activity__usage-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+}
+
+.activity__usage-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: $spacing-md;
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.activity__usage-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-cta-primary;
+}
+
+.activity__usage-label {
+  font-size: 12px;
+  color: $color-text-secondary;
+  text-align: center;
+}
+
 @include respond(lg) {
   .activity-content { max-width: 900px; }
   .activity-list { gap: $spacing-md; }

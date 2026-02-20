@@ -256,13 +256,22 @@ export class PetEditComponent implements OnInit {
     this.petService.updatePet(this.petId, {
       name: formData.name || null,
       sex: formData.sex === 'Maschio' ? 'male' : 'female',
-      birthDate: formData.birthDate || null,
+      birthDate: formData.birthDate ? `${formData.birthDate}T00:00:00.000Z` : null,
       weight: formData.weight,
       notes: formData.bio || null,
     }).subscribe({
       next: () => {
-        this.isSaving.set(false);
-        this.goBack();
+        // Refresh pet data so profile page shows updated values
+        this.petService.getPet(this.petId).subscribe({
+          next: () => {
+            this.isSaving.set(false);
+            this.goBack();
+          },
+          error: () => {
+            this.isSaving.set(false);
+            this.goBack();
+          },
+        });
       },
       error: (err) => {
         console.error('Failed to update pet:', err);

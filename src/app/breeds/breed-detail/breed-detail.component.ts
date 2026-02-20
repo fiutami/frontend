@@ -33,6 +33,20 @@ export class BreedDetailComponent implements OnInit {
   protected loading = signal<boolean>(false);
   protected error = signal<string | null>(null);
 
+  // Tab management
+  readonly activeTab = signal<'overview' | 'size' | 'health' | 'history'>('overview');
+
+  readonly tabs = [
+    { id: 'overview' as const, labelKey: 'breedDetail.overview' },
+    { id: 'size' as const, labelKey: 'breedDetail.size' },
+    { id: 'health' as const, labelKey: 'breedDetail.health' },
+    { id: 'history' as const, labelKey: 'breedDetail.history' },
+  ];
+
+  setTab(tab: 'overview' | 'size' | 'health' | 'history'): void {
+    this.activeTab.set(tab);
+  }
+
   ngOnInit(): void {
     this.route.paramMap.pipe(
       switchMap(params => {
@@ -62,7 +76,7 @@ export class BreedDetailComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/breeds']);
+    this.router.navigate(['/home/species']);
   }
 
   onSelectBreed(): void {

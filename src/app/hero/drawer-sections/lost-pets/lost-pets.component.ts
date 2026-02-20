@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LostPetsService, LostPet } from '../../../core/services/lost-pets.service';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
 @Component({
   selector: 'app-lost-pets',
@@ -14,7 +14,7 @@ import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-s
     CommonModule,
     FormsModule,
     TranslateModule,
-    TabPageShellBlueComponent,
+    TabPageShellDrawerComponent,
   ],
   templateUrl: './lost-pets.component.html',
   styleUrls: ['./lost-pets.component.scss'],

@@ -1,6 +1,5 @@
-<app-tab-page-shell-blue
+<app-tab-page-shell-drawer
   [title]="pageTitle"
-  activeTabId="home"
   [showBack]="true"
   (backClicked)="goBack()">
 
@@ -53,6 +52,38 @@
         }
       </ul>
     }
+
+    <!-- Usage Time Section -->
+    <section class="activity__section">
+      <h2 class="activity__section-title">{{ 'drawerActivity.usageTime' | translate }}</h2>
+      <div class="activity__usage-cards">
+        <div class="activity__usage-card">
+          <span class="activity__usage-value">12m</span>
+          <span class="activity__usage-label">{{ 'drawerActivity.today' | translate }}</span>
+        </div>
+        <div class="activity__usage-card">
+          <span class="activity__usage-value">1h 35m</span>
+          <span class="activity__usage-label">{{ 'drawerActivity.thisWeek' | translate }}</span>
+        </div>
+        <div class="activity__usage-card">
+          <span class="activity__usage-value">6h 20m</span>
+          <span class="activity__usage-label">{{ 'drawerActivity.thisMonth' | translate }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locked Sections -->
+    <section class="activity__section">
+      <app-locked-section-card
+        [title]="'drawerActivity.searchHistory' | translate"
+        icon="search">
+      </app-locked-section-card>
+
+      <app-locked-section-card
+        [title]="'drawerActivity.quizFiutami' | translate"
+        icon="quiz">
+      </app-locked-section-card>
+    </section>
   </div>
 
-</app-tab-page-shell-blue>
+</app-tab-page-shell-drawer>

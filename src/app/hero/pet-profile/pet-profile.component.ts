@@ -27,8 +27,6 @@ import { PetService } from '../../core/services/pet.service';
 import { PhotoUploadService } from '../../core/services/photo-upload.service';
 import { SpeciesInfoService } from '../../core/services/species-info.service';
 import { NotificationService } from '../../core/services/notification.service';
-import { CalendarOverlayService } from '../../calendar/services/calendar-overlay.service';
-import { CalendarMonthOverlayComponent } from '../../calendar/overlays/calendar-month-overlay.component';
 import { CalendarOverlayBaseComponent } from '../../calendar/overlays/calendar-overlay-base.component';
 import { PetResponse, PetSummaryResponse, NotificationResponse } from '../../core/models/pet.models';
 
@@ -68,7 +66,6 @@ export interface PartnerShowcase {
     MascotBottomSheetComponent,
     ProfileIconComponent,
     PhotoUploadModalComponent,
-    CalendarMonthOverlayComponent,
     CalendarOverlayBaseComponent,
   ],
   templateUrl: './pet-profile.component.html',
@@ -82,7 +79,6 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   private photoUploadService = inject(PhotoUploadService);
   private speciesInfoService = inject(SpeciesInfoService);
   private notificationService = inject(NotificationService);
-  calendarOverlayService = inject(CalendarOverlayService);
   private cdr = inject(ChangeDetectorRef);
 
   // Mascot sheet state
@@ -228,7 +224,7 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // === Quick Action icon navigation ===
   onCalendarClick(): void {
-    this.calendarOverlayService.openMonth();
+    this.router.navigate(['/home/calendar']);
   }
 
   onNotificationsClick(): void {

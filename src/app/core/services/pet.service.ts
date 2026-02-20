@@ -128,6 +128,20 @@ export class PetService {
   }
 
   /**
+   * Archive a pet (soft status change)
+   */
+  archivePet(petId: string): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/${petId}/archive`, {});
+  }
+
+  /**
+   * Restore an archived pet
+   */
+  restorePet(petId: string): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/${petId}/restore`, {});
+  }
+
+  /**
    * Delete a pet (soft delete)
    */
   deletePet(petId: string, reason?: string): Observable<void> {

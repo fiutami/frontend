@@ -1,34 +1,304 @@
 <div class="breed-detail">
   <!-- Loading State -->
   @if (loading()) {
-    <div class="breed-detail__loading">
+    <div class="breed-detail breed-detail--loading">
       <span class="material-symbols-outlined breed-detail__spinner">progress_activity</span>
     </div>
   }
 
   <!-- Error State -->
   @if (error(); as errorMsg) {
-    <div class="breed-detail__error">
+    <div class="breed-detail breed-detail--not-found">
+      <span class="material-symbols-outlined" style="font-size:48px;color:#ccc;">error_outline</span>
       <p>{{ errorMsg }}</p>
-      <button (click)="onBack()">{{ 'breeds.back_to_list' | translate }}</button>
+      <button class="breed-detail__cta" (click)="onBack()">{{ 'common.back' | translate }}</button>
     </div>
   }
 
   @if (breed(); as breedData) {
-    <div style="padding: 20px;">
-      <h2>{{ breedData.name }}</h2>
-      @if (breedData.imageUrl) {
-        <img [src]="breedData.imageUrl" [alt]="breedData.name" style="max-width: 100%; border-radius: 12px;" />
+    <!-- FIXED HEADER -->
+    <div class="breed-detail__header">
+      <button class="breed-detail__back" (click)="onBack()" aria-label="Back">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
+
+      <!-- Hero image -->
+      <div class="breed-detail__hero">
+        @if (breedData.imageUrl) {
+          <img
+            [src]="breedData.imageUrl"
+            [alt]="breedData.name"
+            class="breed-detail__hero-img"
+          />
+        } @else {
+          <span class="breed-detail__emoji">🐾</span>
+        }
+      </div>
+
+      <!-- Breed info -->
+      <div class="breed-detail__info">
+        <h1 class="breed-detail__name">{{ breedData.name }}</h1>
+        <div class="breed-detail__meta">
+          <span class="breed-detail__origin">{{ breedData.origin }}</span>
+          @if (breedData.recognition) {
+            <span class="breed-detail__recognition">{{ breedData.recognition }}</span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- STICKY TABS -->
+    <nav class="breed-detail__tabs" role="tablist" aria-label="Breed detail tabs">
+      @for (tab of tabs; track tab.id) {
+        <button
+          class="breed-detail__tab"
+          [class.breed-detail__tab--active]="activeTab() === tab.id"
+          (click)="setTab(tab.id)"
+          role="tab"
+          [attr.aria-selected]="activeTab() === tab.id"
+          [attr.aria-controls]="'panel-' + tab.id"
+        >
+          <span class="breed-detail__tab-label">{{ tab.labelKey | translate }}</span>
+        </button>
       }
-      <p>{{ breedData.origin }} - {{ breedData.speciesId }}</p>
-      @if (breedData.history) {
-        <p>{{ breedData.history }}</p>
+    </nav>
+
+    <!-- SCROLLABLE CONTENT -->
+    <div class="breed-detail__content">
+      @switch (activeTab()) {
+
+        <!-- OVERVIEW TAB -->
+        @case ('overview') {
+          <div class="tab-content" id="panel-overview" role="tabpanel">
+            <h2 class="tab-content__title">{{ 'breedDetail.overview' | translate }}</h2>
+
+            <!-- Quick info grid -->
+            <div class="tab-content__quick-info">
+              @if (breedData.origin) {
+                <div class="quick-info-item">
+                  <span class="material-symbols-outlined quick-info-item__icon">public</span>
+                  <div>
+                    <span class="quick-info-item__label">{{ 'breedDetail.origin' | translate }}</span>
+                    <span class="quick-info-item__value">{{ breedData.origin }}</span>
+                  </div>
+                </div>
+              }
+              @if (breedData.breedType) {
+                <div class="quick-info-item">
+                  <span class="material-symbols-outlined quick-info-item__icon">category</span>
+                  <div>
+                    <span class="quick-info-item__label">{{ 'breedDetail.type' | translate }}</span>
+                    <span class="quick-info-item__value">{{ breedData.breedType }}</span>
+                  </div>
+                </div>
+              }
+              @if (breedData.size?.lifespan) {
+                <div class="quick-info-item">
+                  <span class="material-symbols-outlined quick-info-item__icon">favorite</span>
+                  <div>
+                    <span class="quick-info-item__label">{{ 'breedDetail.lifespan' | translate }}</span>
+                    <span class="quick-info-item__value">{{ breedData.size!.lifespan!.min }}-{{ breedData.size!.lifespan!.max }} {{ 'breedDetail.years' | translate }}</span>
+                  </div>
+                </div>
+              }
+              @if (breedData.popularity) {
+                <div class="quick-info-item">
+                  <span class="material-symbols-outlined quick-info-item__icon">trending_up</span>
+                  <div>
+                    <span class="quick-info-item__label">{{ 'breedDetail.popularity' | translate }}</span>
+                    <span class="quick-info-item__value">#{{ breedData.popularity }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <!-- Temperament traits -->
+            @if (breedData.temperament) {
+              <div class="tab-content__item">
+                <h3>{{ 'breedDetail.temperament' | translate }}</h3>
+                <div class="tab-content__badges">
+                  @for (trait of breedData.temperament.traits; track trait) {
+                    <span class="tab-content__badge">{{ trait }}</span>
+                  }
+                </div>
+              </div>
+
+              <!-- Characteristic bars -->
+              <div class="tab-content__characteristics">
+                <div class="characteristic">
+                  <span class="characteristic__label">{{ 'breedDetail.energy' | translate }}</span>
+                  <div class="characteristic__bar">
+                    <div class="characteristic__fill" [style.width]="breedData.temperament.energy === 'alta' ? '100%' : breedData.temperament.energy === 'media' ? '66%' : '33%'"></div>
+                  </div>
+                  <span class="characteristic__value">{{ 'levels.' + breedData.temperament.energy | translate }}</span>
+                </div>
+                <div class="characteristic">
+                  <span class="characteristic__label">{{ 'breedDetail.sociality' | translate }}</span>
+                  <div class="characteristic__bar">
+                    <div class="characteristic__fill" [style.width]="breedData.temperament.sociality === 'alta' ? '100%' : breedData.temperament.sociality === 'media' ? '66%' : '33%'"></div>
+                  </div>
+                  <span class="characteristic__value">{{ 'levels.' + breedData.temperament.sociality | translate }}</span>
+                </div>
+                <div class="characteristic">
+                  <span class="characteristic__label">{{ 'breedDetail.trainability' | translate }}</span>
+                  <div class="characteristic__bar">
+                    <div class="characteristic__fill" [style.width]="breedData.temperament.trainability === 'alta' ? '100%' : breedData.temperament.trainability === 'media' ? '66%' : '33%'"></div>
+                  </div>
+                  <span class="characteristic__value">{{ 'levels.' + breedData.temperament.trainability | translate }}</span>
+                </div>
+              </div>
+
+              <!-- Suitable for -->
+              @if (breedData.temperament.suitableFor?.length) {
+                <div class="tab-content__item">
+                  <h3>{{ 'breedDetail.suitableFor' | translate }}</h3>
+                  <ul class="tab-content__list">
+                    @for (item of breedData.temperament.suitableFor; track item) {
+                      <li>{{ item }}</li>
+                    }
+                  </ul>
+                </div>
+              }
+            }
+          </div>
+        }
+
+        <!-- SIZE TAB -->
+        @case ('size') {
+          <div class="tab-content" id="panel-size" role="tabpanel">
+            <h2 class="tab-content__title">{{ 'breedDetail.size' | translate }}</h2>
+
+            @if (breedData.size) {
+              <div class="tab-content__grid">
+                <div class="tab-content__stat">
+                  <span class="tab-content__stat-label">{{ 'breedDetail.height' | translate }}</span>
+                  <span class="tab-content__stat-value">{{ breedData.size.height.min }}-{{ breedData.size.height.max }} {{ breedData.size.height.unit }}</span>
+                </div>
+                <div class="tab-content__stat">
+                  <span class="tab-content__stat-label">{{ 'breedDetail.weight' | translate }}</span>
+                  <span class="tab-content__stat-value">{{ breedData.size.weight.min }}-{{ breedData.size.weight.max }} {{ breedData.size.weight.unit }}</span>
+                </div>
+                @if (breedData.size.lifespan) {
+                  <div class="tab-content__stat">
+                    <span class="tab-content__stat-label">{{ 'breedDetail.lifespan' | translate }}</span>
+                    <span class="tab-content__stat-value">{{ breedData.size.lifespan.min }}-{{ breedData.size.lifespan.max }} {{ 'breedDetail.years' | translate }}</span>
+                  </div>
+                }
+                @if (breedData.size.coat) {
+                  <div class="tab-content__stat">
+                    <span class="tab-content__stat-label">{{ 'breedDetail.coat' | translate }}</span>
+                    <span class="tab-content__stat-value">{{ breedData.size.coat }}</span>
+                  </div>
+                }
+              </div>
+
+              <!-- Colors -->
+              @if (breedData.size.colors?.length) {
+                <div class="tab-content__item">
+                  <h3>{{ 'breedDetail.colors' | translate }}</h3>
+                  <div class="tab-content__badges">
+                    @for (color of breedData.size.colors; track color) {
+                      <span class="tab-content__badge">{{ color }}</span>
+                    }
+                  </div>
+                </div>
+              }
+            } @else {
+              <p>{{ 'breedDetail.noData' | translate }}</p>
+            }
+          </div>
+        }
+
+        <!-- HEALTH TAB -->
+        @case ('health') {
+          <div class="tab-content" id="panel-health" role="tabpanel">
+            <h2 class="tab-content__title">{{ 'breedDetail.health' | translate }}</h2>
+
+            @if (breedData.healthRisks?.length) {
+              <div class="tab-content__item tab-content__item--warning">
+                <h3>{{ 'breedDetail.healthRisks' | translate }}</h3>
+                <ul class="tab-content__list">
+                  @for (risk of breedData.healthRisks; track risk) {
+                    <li>{{ risk }}</li>
+                  }
+                </ul>
+              </div>
+            } @else {
+              <div class="tab-content__item">
+                <p>{{ 'breedDetail.noHealthRisks' | translate }}</p>
+              </div>
+            }
+
+            <!-- Rituals / Routine -->
+            @if (breedData.rituals?.length) {
+              <div class="tab-content__item">
+                <h3>{{ 'breedDetail.rituals' | translate }}</h3>
+                <ul class="tab-content__list">
+                  @for (ritual of breedData.rituals; track ritual) {
+                    <li>{{ ritual }}</li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- HISTORY TAB -->
+        @case ('history') {
+          <div class="tab-content" id="panel-history" role="tabpanel">
+            <h2 class="tab-content__title">{{ 'breedDetail.history' | translate }}</h2>
+
+            @if (breedData.history) {
+              <div class="tab-content__item">
+                <p>{{ breedData.history }}</p>
+              </div>
+            } @else {
+              <div class="tab-content__item">
+                <p>{{ 'breedDetail.noHistory' | translate }}</p>
+              </div>
+            }
+
+            <!-- DNA section -->
+            @if (breedData.dna) {
+              <div class="tab-content__item">
+                <h3>{{ 'breedDetail.genetics' | translate }}</h3>
+                <p>{{ breedData.dna.genetics }}</p>
+              </div>
+
+              @if (breedData.dna.ancestralBreeds?.length) {
+                <div class="tab-content__item">
+                  <h3>{{ 'breedDetail.ancestralBreeds' | translate }}</h3>
+                  <div class="tab-content__badges">
+                    @for (ancestor of breedData.dna.ancestralBreeds; track ancestor) {
+                      <span class="tab-content__badge">{{ ancestor }}</span>
+                    }
+                  </div>
+                </div>
+              }
+
+              @if (breedData.dna.groupFCI) {
+                <div class="tab-content__item">
+                  <h3>{{ 'breedDetail.groupFCI' | translate }}</h3>
+                  <p>{{ breedData.dna.groupFCI }}</p>
+                </div>
+              }
+            }
+          </div>
+        }
       }
-      <button (click)="onBack()">Indietro</button>
-      <button (click)="onSelectBreed()">Questo e il mio pet</button>
+    </div>
+
+    <!-- FIXED FOOTER CTA -->
+    <div class="breed-detail__footer">
+      <button class="breed-detail__cta" (click)="onSelectBreed()">
+        {{ 'breedDetail.selectBreed' | translate }}
+      </button>
     </div>
   } @else if (!loading() && !error()) {
-    <p>Nessuna razza trovata</p>
-    <button (click)="onBack()">Torna alla lista</button>
+    <div class="breed-detail breed-detail--not-found">
+      <span class="material-symbols-outlined" style="font-size:48px;color:#ccc;">search_off</span>
+      <p>{{ 'breedDetail.notFound' | translate }}</p>
+      <button class="breed-detail__cta" (click)="onBack()">{{ 'common.back' | translate }}</button>
+    </div>
   }
 </div>

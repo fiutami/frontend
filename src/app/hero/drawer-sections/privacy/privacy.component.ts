@@ -4,13 +4,13 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CmsService } from 'src/app/core/services/cms.service';
 import { CmsSection } from 'src/app/core/models/cms.models';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
 
 @Component({
   selector: 'app-privacy',
   standalone: true,
-  imports: [CommonModule, TranslateModule, TabPageShellBlueComponent],
+  imports: [CommonModule, TranslateModule, TabPageShellDrawerComponent],
   templateUrl: './privacy.component.html',
   styleUrls: ['./privacy.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

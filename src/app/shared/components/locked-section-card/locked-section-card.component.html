@@ -1,0 +1,17 @@
+<button
+  class="locked-card"
+  type="button"
+  (click)="onClick()"
+  [attr.aria-label]="title + ' - ' + ('drawerActivity.comingSoon' | translate)">
+
+  <span class="locked-card__icon material-icons">{{ icon }}</span>
+  <span class="locked-card__title">{{ title }}</span>
+  <span class="locked-card__lock material-icons">lock</span>
+</button>
+
+@if (showToast()) {
+  <div class="locked-card__toast" role="status" aria-live="polite">
+    <span class="material-icons locked-card__toast-icon">schedule</span>
+    {{ 'drawerActivity.comingSoon' | translate }}
+  </div>
+}

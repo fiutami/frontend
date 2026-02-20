@@ -14,8 +14,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { ActivityService, ActivityItem } from '../../../core/services/activity.service';
 
-// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
-import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+// Shell Drawer (sfondo blu solido, solo header + back, niente avatar/logo/mascot/tab bar)
+import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page-shell-drawer';
+import { LockedSectionCardComponent } from '../../../shared/components/locked-section-card';
 
 export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' | 'foldable-unfolded';
 
@@ -26,7 +27,8 @@ export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' |
     CommonModule,
     RouterModule,
     TranslateModule,
-    TabPageShellBlueComponent,
+    TabPageShellDrawerComponent,
+    LockedSectionCardComponent,
   ],
   templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.scss'],
