@@ -1,6 +1,6 @@
 <!-- Usa TabPageShellDefault: Sfondo gradiente giallo, Avatar, Logo, MascotPeek, TabBar automatici -->
 <app-tab-page-shell-default
-  title="Calendario"
+  [title]="calendarTitle"
   activeTabId="calendar"
   [showBack]="true"
   (backClicked)="onBack()">
@@ -23,7 +23,7 @@
       (chipClicked)="onActionButtonClick($event)" />
 
     <!-- Descriptive Text -->
-    <p class="calendar-description">In che mese andiamo a mettere il naso?</p>
+    <p class="calendar-description">{{ 'calendar.monthSelector.description' | translate }}</p>
   </ng-container>
 
   <!-- Main Content: Year Nav + Month Grid -->

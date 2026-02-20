@@ -667,6 +667,9 @@
   "calendar": {
     "title": "Calendario",
     "subtitle": "I tuoi eventi e appuntamenti",
+    "monthSelector": {
+      "description": "In che mese andiamo a mettere il naso?"
+    },
     "today": "Oggi",
     "month": "Mese",
     "week": "Settimana",
@@ -1638,6 +1641,11 @@
     "media": "Media",
     "grande": "Grande",
     "gigante": "Gigante"
+  },
+  "gallery": {
+    "title": "Rullino Feroce",
+    "edit": "Modifica",
+    "sectionLabel": "Momenti speciali con il tuo pet"
   },
   "levels": {
     "bassa": "Bassa",

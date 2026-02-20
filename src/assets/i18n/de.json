@@ -1051,6 +1051,9 @@
   "calendar": {
     "title": "Kalender",
     "subtitle": "Deine Termine und Veranstaltungen",
+    "monthSelector": {
+      "description": "In welchem Monat wollen wir herumschnüffeln?"
+    },
     "today": "Heute",
     "month": "Monat",
     "week": "Woche",
@@ -1297,6 +1300,11 @@
     "media": "Mittel",
     "grande": "Groß",
     "gigante": "Riesig"
+  },
+  "gallery": {
+    "title": "Wilde Rolle",
+    "edit": "Bearbeiten",
+    "sectionLabel": "Besondere Momente mit deinem Haustier"
   },
   "levels": {
     "bassa": "Niedrig",

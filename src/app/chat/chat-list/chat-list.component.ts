@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Conversation } from '../models/chat.models';
 import { ChatService } from '../services/chat.service';
@@ -21,6 +21,7 @@ export class ChatListComponent implements OnInit, OnDestroy {
   allConversations: Conversation[] = [];
   loading = true;
   error = false;
+  chatTitle = '';
 
   // Mock recent contacts for avatar row
   recentContacts = [
@@ -32,6 +33,7 @@ export class ChatListComponent implements OnInit, OnDestroy {
   ];
 
   private destroy$ = new Subject<void>();
+  private translate = inject(TranslateService);
 
   constructor(
     private router: Router,
@@ -39,6 +41,10 @@ export class ChatListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.chatTitle = this.translate.instant('chat.title');
+    this.translate.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.chatTitle = this.translate.instant('chat.title');
+    });
     this.loadConversations();
   }
 

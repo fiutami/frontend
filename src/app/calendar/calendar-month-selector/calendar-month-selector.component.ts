@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 // Shell Default (sfondo gradiente giallo, include: Avatar, Logo, MascotPeek, BottomTabBar)
 import { TabPageShellDefaultComponent } from '../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
@@ -47,6 +48,7 @@ interface MonthItem {
   standalone: true,
   imports: [
     CommonModule,
+    TranslateModule,
     // Layout - TabPageShellDefault gestisce Avatar, Logo, Mascot, TabBar (sfondo gradiente giallo)
     TabPageShellDefaultComponent,
     // Shared UI (solo quelli non automatici)
@@ -67,7 +69,17 @@ interface MonthItem {
 })
 export class CalendarMonthSelectorComponent {
   private readonly router = inject(Router);
+  private readonly translate = inject(TranslateService);
   protected readonly overlayService = inject(CalendarOverlayService);
+
+  /** Translated page title */
+  protected calendarTitle = this.translate.instant('calendar.title');
+
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.calendarTitle = this.translate.instant('calendar.title');
+    });
+  }
 
   /** Current date for display */
   protected currentDate = signal(new Date());
@@ -75,18 +87,16 @@ export class CalendarMonthSelectorComponent {
   /** Currently selected year */
   protected selectedYear = signal(new Date().getFullYear());
 
-  /** Quick Action Items (3 icons: notifications, calendar, bookmark) */
+  /** Quick Action Items (2 icons: notifications, bookmark) */
   protected readonly quickActionItems: QuickActionItem[] = [
     { id: 'notifications', icon: 'notifications', badge: this.overlayService.notificationCount(), ariaLabel: 'Notifiche' },
-    { id: 'month', icon: 'calendar_today', ariaLabel: 'Calendario mese' },
     { id: 'saved', icon: 'bookmark', ariaLabel: 'Salvati' },
   ];
 
-  /** Action Chips (3 pills: birthdays, events, create) - FIGMA: tutti gialli */
+  /** Action Chips (2 pills: birthdays, events) - FIGMA: tutti gialli */
   protected readonly actionChips: ActionChip[] = [
     { id: 'birthdays', label: 'Compleanni in vista', variant: 'yellow' },
     { id: 'events-list', label: 'Eventi', variant: 'yellow' },
-    { id: 'create-event', label: 'Crea Evento', variant: 'yellow' },
   ];
 
   /** Left column months */

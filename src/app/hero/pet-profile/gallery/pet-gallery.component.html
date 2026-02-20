@@ -1,5 +1,5 @@
 <app-tab-page-shell-default
-  title="Rullino Feroce"
+  [title]="galleryTitle"
   activeTabId="pet-profile"
   [showBack]="true"
   (backClicked)="goBack()">
@@ -45,18 +45,19 @@
     <!-- Quick Actions + Modifica -->
     <div class="gallery-actions">
       <app-quick-actions-row
+        class="quick-actions--on-yellow"
         [items]="quickActions"
         (selected)="onQuickAction($event)" />
       <button
         class="gallery-actions__edit-btn"
         [class.gallery-actions__edit-btn--active]="isEditMode()"
         (click)="toggleEditMode()">
-        Modifica
+        {{ galleryEditLabel }}
       </button>
     </div>
 
     <!-- Section label -->
-    <p class="gallery-section-label">Momenti speciali con il tuo pet</p>
+    <p class="gallery-section-label">{{ gallerySectionLabel }}</p>
   </ng-container>
 
   <!-- Default content: Gallery Grid -->

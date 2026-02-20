@@ -8,12 +8,25 @@
  */
 
 // ==========================================
+// COMPACT SPACING OVERRIDES for quick-actions & chips
+// ==========================================
+:host ::ng-deep .quick-actions {
+  padding: 4px 16px 0 !important;
+  gap: 8px !important;
+}
+
+:host ::ng-deep .action-chips-row {
+  padding: 6px 16px !important;
+  justify-content: center !important;
+}
+
+// ==========================================
 // DESCRIPTIVE TEXT
 // FIGMA: Montserrat 14px w600 #71757a
 // ==========================================
 .calendar-description {
   margin: 0;
-  padding: var(--sp-3) var(--sp-4);
+  padding: var(--sp-1) var(--sp-4) var(--sp-2);
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
@@ -33,7 +46,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-6);
-  padding: var(--sp-4);
+  padding: var(--sp-2) var(--sp-4);
 
   &__btn {
     display: flex;

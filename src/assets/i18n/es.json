@@ -1029,6 +1029,9 @@
   "calendar": {
     "title": "Calendario",
     "subtitle": "Tus eventos y citas",
+    "monthSelector": {
+      "description": "¿En qué mes vamos a husmear?"
+    },
     "today": "Hoy",
     "month": "Mes",
     "week": "Semana",
@@ -1275,6 +1278,11 @@
     "media": "Mediano",
     "grande": "Grande",
     "gigante": "Gigante"
+  },
+  "gallery": {
+    "title": "Rollo Salvaje",
+    "edit": "Editar",
+    "sectionLabel": "Momentos especiales con tu mascota"
   },
   "levels": {
     "bassa": "Bajo",

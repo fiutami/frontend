@@ -1049,6 +1049,9 @@
   "calendar": {
     "title": "Calendrier",
     "subtitle": "Tes événements et rendez-vous",
+    "monthSelector": {
+      "description": "Quel mois allons-nous flairer ?"
+    },
     "today": "Aujourd'hui",
     "month": "Mois",
     "week": "Semaine",
@@ -1295,6 +1298,11 @@
     "media": "Moyen",
     "grande": "Grand",
     "gigante": "Géant"
+  },
+  "gallery": {
+    "title": "Rouleau Féroce",
+    "edit": "Modifier",
+    "sectionLabel": "Moments spéciaux avec ton animal"
   },
   "levels": {
     "bassa": "Faible",

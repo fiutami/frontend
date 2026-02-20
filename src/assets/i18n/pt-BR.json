@@ -732,6 +732,9 @@
   "calendar": {
     "title": "Calendário",
     "subtitle": "Seus eventos e compromissos",
+    "monthSelector": {
+      "description": "Em que mês vamos farejar?"
+    },
     "today": "Hoje",
     "month": "Mês",
     "week": "Semana",
@@ -1346,6 +1349,11 @@
     "media": "Médio",
     "grande": "Grande",
     "gigante": "Gigante"
+  },
+  "gallery": {
+    "title": "Rolo Feroz",
+    "edit": "Editar",
+    "sectionLabel": "Momentos especiais com seu pet"
   },
   "levels": {
     "bassa": "Baixo",

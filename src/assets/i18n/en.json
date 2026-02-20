@@ -966,6 +966,9 @@
   "calendar": {
     "title": "Calendar",
     "subtitle": "Your events and appointments",
+    "monthSelector": {
+      "description": "Which month shall we sniff around?"
+    },
     "today": "Today",
     "month": "Month",
     "week": "Week",
@@ -1341,6 +1344,11 @@
     "media": "Medium",
     "grande": "Large",
     "gigante": "Giant"
+  },
+  "gallery": {
+    "title": "Wild Roll",
+    "edit": "Edit",
+    "sectionLabel": "Special moments with your pet"
   },
   "levels": {
     "bassa": "Low",

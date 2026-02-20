@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TabPageShellDefaultComponent } from '../../../shared/components/tab-page-shell-default/tab-page-shell-default.component';
 import {
   QuickActionsRowComponent,
@@ -37,6 +38,7 @@ export interface GallerySlot {
   standalone: true,
   imports: [
     CommonModule,
+    TranslateModule,
     TabPageShellDefaultComponent,
     QuickActionsRowComponent,
     PhotoUploadModalComponent,
@@ -50,6 +52,22 @@ export class PetGalleryComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly photoUploadService = inject(PhotoUploadService);
   private readonly petService = inject(PetService);
+  private readonly translate = inject(TranslateService);
+
+  /** Translated page title */
+  galleryTitle = this.translate.instant('gallery.title');
+  /** Translated edit button label */
+  galleryEditLabel = this.translate.instant('gallery.edit');
+  /** Translated section label */
+  gallerySectionLabel = this.translate.instant('gallery.sectionLabel');
+
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.galleryTitle = this.translate.instant('gallery.title');
+      this.galleryEditLabel = this.translate.instant('gallery.edit');
+      this.gallerySectionLabel = this.translate.instant('gallery.sectionLabel');
+    });
+  }
 
   // State signals
   viewMode = signal<'list' | 'grid'>('grid');
