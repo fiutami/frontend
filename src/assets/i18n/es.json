@@ -1319,5 +1319,39 @@
     "bassa": "Bajo",
     "media": "Medio",
     "alta": "Alto"
+  },
+  "cms": {
+    "loading": "Cargando contenido...",
+    "error": "Contenido temporalmente no disponible",
+    "retry": "Reintentar"
+  },
+  "notifications": {
+    "settingsTitle": "Ajustes de notificaciones",
+    "settings": {
+      "general": {
+        "title": "Notificaciones generales",
+        "description": "Recibe actualizaciones sobre actividades, mensajes y novedades de la app"
+      },
+      "sound": {
+        "title": "Sonido",
+        "description": "Reproduce un sonido al recibir una notificación"
+      },
+      "vibration": {
+        "title": "Vibración",
+        "description": "Activa la vibración para las notificaciones entrantes"
+      },
+      "dnd": {
+        "title": "No molestar",
+        "description": "Silencia todas las notificaciones durante las horas configuradas"
+      },
+      "lockScreen": {
+        "title": "Pantalla de bloqueo",
+        "description": "Mostrar notificaciones en la pantalla de bloqueo del dispositivo"
+      },
+      "reminders": {
+        "title": "Recordatorios",
+        "description": "Recibe recordatorios de eventos, visitas veterinarias y vencimientos"
+      }
+    }
   }
 }

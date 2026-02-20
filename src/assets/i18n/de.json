@@ -1341,5 +1341,39 @@
     "bassa": "Niedrig",
     "media": "Mittel",
     "alta": "Hoch"
+  },
+  "cms": {
+    "loading": "Inhalt wird geladen...",
+    "error": "Inhalt vorübergehend nicht verfügbar",
+    "retry": "Wiederholen"
+  },
+  "notifications": {
+    "settingsTitle": "Benachrichtigungseinstellungen",
+    "settings": {
+      "general": {
+        "title": "Allgemeine Benachrichtigungen",
+        "description": "Erhalte Updates zu Aktivitäten, Nachrichten und App-Neuigkeiten"
+      },
+      "sound": {
+        "title": "Ton",
+        "description": "Spiele einen Ton ab, wenn du eine Benachrichtigung erhältst"
+      },
+      "vibration": {
+        "title": "Vibration",
+        "description": "Aktiviere die Vibration für eingehende Benachrichtigungen"
+      },
+      "dnd": {
+        "title": "Nicht stören",
+        "description": "Alle Benachrichtigungen während festgelegter Zeiten stummschalten"
+      },
+      "lockScreen": {
+        "title": "Sperrbildschirm",
+        "description": "Benachrichtigungen auf dem Sperrbildschirm des Geräts anzeigen"
+      },
+      "reminders": {
+        "title": "Erinnerungen",
+        "description": "Erinnerungen für Termine, Tierarztbesuche und Fristen erhalten"
+      }
+    }
   }
 }

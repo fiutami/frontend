@@ -1,162 +1,103 @@
-import { Component, OnInit, OnDestroy, inject, ChangeDetectionStrategy, signal, computed } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  signal,
+  inject,
+} from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
-import { Subject, fromEvent, debounceTime, startWith, takeUntil } from 'rxjs';
-import { NotificationsService, NotificationItem, NotificationTab } from '../../../core/services/notifications.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' | 'foldable-unfolded';
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+
+export interface NotificationSetting {
+  id: string;
+  icon: string;
+  titleKey: string;
+  descriptionKey: string;
+  enabled: boolean;
+}
 
 @Component({
   selector: 'app-notifications',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotificationsComponent implements OnInit, OnDestroy {
-  private location = inject(Location);
-  private router = inject(Router);
-  private notificationsService = inject(NotificationsService);
-  private destroy$ = new Subject<void>();
+export class NotificationsComponent {
+  private readonly location = inject(Location);
+  private readonly translate = inject(TranslateService);
 
-  title = 'Notifiche';
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('notifications.settingsTitle');
 
-  // State signals
-  notifications = signal<NotificationItem[]>([]);
-  isLoading = signal(true);
-  hasError = signal(false);
-  activeTab = signal<NotificationTab>('all');
-  unreadCount = signal(0);
+  /** Notification settings toggles */
+  protected settings = signal<NotificationSetting[]>([
+    {
+      id: 'general',
+      icon: 'notifications_active',
+      titleKey: 'notifications.settings.general.title',
+      descriptionKey: 'notifications.settings.general.description',
+      enabled: true,
+    },
+    {
+      id: 'sound',
+      icon: 'volume_up',
+      titleKey: 'notifications.settings.sound.title',
+      descriptionKey: 'notifications.settings.sound.description',
+      enabled: true,
+    },
+    {
+      id: 'vibration',
+      icon: 'vibration',
+      titleKey: 'notifications.settings.vibration.title',
+      descriptionKey: 'notifications.settings.vibration.description',
+      enabled: false,
+    },
+    {
+      id: 'dnd',
+      icon: 'do_not_disturb_on',
+      titleKey: 'notifications.settings.dnd.title',
+      descriptionKey: 'notifications.settings.dnd.description',
+      enabled: false,
+    },
+    {
+      id: 'lockScreen',
+      icon: 'lock',
+      titleKey: 'notifications.settings.lockScreen.title',
+      descriptionKey: 'notifications.settings.lockScreen.description',
+      enabled: true,
+    },
+    {
+      id: 'reminders',
+      icon: 'alarm',
+      titleKey: 'notifications.settings.reminders.title',
+      descriptionKey: 'notifications.settings.reminders.description',
+      enabled: true,
+    },
+  ]);
 
-  // Viewport detection
-  private windowWidth = signal(typeof window !== 'undefined' ? window.innerWidth : 375);
-  private windowHeight = signal(typeof window !== 'undefined' ? window.innerHeight : 667);
-
-  viewportSize = computed<ViewportSize>(() => {
-    const width = this.windowWidth();
-    const height = this.windowHeight();
-    const aspectRatio = width / height;
-
-    if (width >= 700 && width <= 800 && height >= 500 && height <= 730) {
-      return aspectRatio > 1 ? 'foldable-folded' : 'foldable-unfolded';
-    }
-    if (width >= 717 && width <= 720 && height >= 500 && height <= 520) {
-      return 'foldable-folded';
-    }
-    if (width >= 1400 && width <= 1500 && height >= 700 && height <= 800) {
-      return 'foldable-unfolded';
-    }
-    if (width < 768) return 'mobile';
-    if (width < 1024) return 'tablet';
-    return 'desktop';
-  });
-
-  // Tab configuration
-  tabOptions: { id: NotificationTab; label: string; icon: string }[] = [
-    { id: 'all', label: 'Tutte', icon: 'notifications' },
-    { id: 'general', label: 'Generali', icon: 'info' },
-    { id: 'security', label: 'Sicurezza', icon: 'security' },
-    { id: 'nearby', label: 'Vicino a me', icon: 'location_on' }
-  ];
-
-
-  ngOnInit(): void {
-    this.loadNotifications();
-    this.loadUnreadCount();
-
-    // Viewport resize listener
-    if (typeof window !== 'undefined') {
-      fromEvent(window, 'resize')
-        .pipe(debounceTime(100), startWith(null), takeUntil(this.destroy$))
-        .subscribe(() => {
-          this.windowWidth.set(window.innerWidth);
-          this.windowHeight.set(window.innerHeight);
-        });
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('notifications.settingsTitle');
+    });
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  selectTab(tab: NotificationTab): void {
-    if (this.activeTab() !== tab) {
-      this.activeTab.set(tab);
-      this.loadNotifications();
-    }
-  }
-
-  loadNotifications(): void {
-    this.isLoading.set(true);
-    this.hasError.set(false);
-
-    this.notificationsService.getNotifications(this.activeTab()).subscribe({
-      next: (data) => {
-        this.notifications.set(data);
-        this.isLoading.set(false);
-      },
-      error: () => {
-        this.hasError.set(true);
-        this.isLoading.set(false);
-      }
-    });
-  }
-
-  loadUnreadCount(): void {
-    this.notificationsService.getUnreadCount().subscribe(count => {
-      this.unreadCount.set(count);
-    });
-  }
-
-  formatTime(date: Date): string {
-    return this.notificationsService.formatRelativeTime(date);
-  }
-
-  onNotificationClick(notification: NotificationItem): void {
-    // Mark as read
-    if (!notification.isRead) {
-      this.notificationsService.markAsRead(notification.id).subscribe();
-      this.notifications.update(list =>
-        list.map(n => n.id === notification.id ? { ...n, isRead: true } : n)
-      );
-      this.unreadCount.update(count => Math.max(0, count - 1));
-    }
-
-    // Navigate if action URL exists
-    if (notification.actionUrl) {
-      this.router.navigate([notification.actionUrl]);
-    }
-  }
-
-  markAllAsRead(): void {
-    this.notificationsService.markAllAsRead().subscribe(() => {
-      this.notifications.update(list =>
-        list.map(n => ({ ...n, isRead: true }))
-      );
-      this.unreadCount.set(0);
-    });
-  }
-
-  getNotificationTypeClass(type: NotificationItem['type']): string {
-    const classMap: Record<NotificationItem['type'], string> = {
-      general: 'notification--general',
-      security: 'notification--security',
-      nearby: 'notification--nearby',
-      friend: 'notification--friend',
-      pet: 'notification--pet',
-      event: 'notification--event',
-      system: 'notification--system'
-    };
-    return classMap[type] || '';
-  }
-
-  retry(): void {
-    this.loadNotifications();
+  toggleSetting(settingId: string): void {
+    this.settings.update(list =>
+      list.map(s =>
+        s.id === settingId ? { ...s, enabled: !s.enabled } : s
+      )
+    );
   }
 }

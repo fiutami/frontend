@@ -1,23 +1,20 @@
-import { Component, inject, ChangeDetectionStrategy, signal, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy, signal, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-
-interface PrivacySection {
-  id: string;
-  title: string;
-  content: string;
-  bullets?: string[];
-}
+import { TranslateModule } from '@ngx-translate/core';
+import { CmsService } from 'src/app/core/services/cms.service';
+import { CmsSection } from 'src/app/core/models/cms.models';
 
 @Component({
   selector: 'app-privacy',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './privacy.component.html',
   styleUrls: ['./privacy.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PrivacyComponent implements AfterViewInit {
+export class PrivacyComponent implements OnInit, AfterViewInit {
   private location = inject(Location);
+  private cmsService = inject(CmsService);
 
   @ViewChildren('sectionEl') sectionElements!: QueryList<ElementRef>;
 
@@ -26,9 +23,10 @@ export class PrivacyComponent implements AfterViewInit {
 
   // Active section for navigation
   activeSection = signal('');
+  isLoading = signal(true);
 
-  // Privacy sections
-  sections: PrivacySection[] = [
+  // Privacy sections (starts with hardcoded fallback, replaced by CMS if available)
+  sections: CmsSection[] = [
     {
       id: 'intro',
       title: '1. Introduzione',
@@ -128,12 +126,30 @@ export class PrivacyComponent implements AfterViewInit {
     }
   ];
 
+  private readonly fallbackSections = [...this.sections];
+
+  ngOnInit(): void {
+    this.cmsService.getPage('privacy').subscribe(page => {
+      if (page) {
+        const parsed = this.cmsService.parseSections(page);
+        if (parsed.length > 0) {
+          this.sections = parsed;
+          this.title = page.title || this.title;
+          const d = new Date(page.lastUpdated);
+          if (!isNaN(d.getTime())) {
+            this.lastUpdated = d.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' });
+          }
+        }
+      }
+      this.isLoading.set(false);
+      if (this.sections.length > 0) {
+        this.activeSection.set(this.sections[0].id);
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
-    // Set first section as active by default
-    if (this.sections.length > 0) {
-      this.activeSection.set(this.sections[0].id);
-    }
+    // activeSection is set in ngOnInit after CMS load
   }
 
   goBack(): void {

@@ -1682,5 +1682,39 @@
     "bassa": "Bassa",
     "media": "Media",
     "alta": "Alta"
+  },
+  "cms": {
+    "loading": "Caricamento contenuto...",
+    "error": "Contenuto non disponibile al momento",
+    "retry": "Riprova"
+  },
+  "notifications": {
+    "settingsTitle": "Impostazioni notifiche",
+    "settings": {
+      "general": {
+        "title": "Notifiche generali",
+        "description": "Ricevi aggiornamenti su attività, messaggi e novità dall'app"
+      },
+      "sound": {
+        "title": "Suono",
+        "description": "Riproduci un suono quando ricevi una notifica"
+      },
+      "vibration": {
+        "title": "Vibrazione",
+        "description": "Attiva la vibrazione per le notifiche in arrivo"
+      },
+      "dnd": {
+        "title": "Non disturbare",
+        "description": "Silenzia tutte le notifiche durante le ore impostate"
+      },
+      "lockScreen": {
+        "title": "Schermata di blocco",
+        "description": "Mostra le notifiche sulla schermata di blocco del dispositivo"
+      },
+      "reminders": {
+        "title": "Promemoria",
+        "description": "Ricevi promemoria per eventi, visite veterinarie e scadenze"
+      }
+    }
   }
 }

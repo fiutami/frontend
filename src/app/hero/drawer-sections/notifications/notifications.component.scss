@@ -1,524 +1,135 @@
 @import 'src/styles/tokens-figma';
-@import 'src/styles/mixins';
 
-// ================================
-// Notifications Page - Mobile First
-// ================================
+// ==========================================
+// Notification Settings Page
+// Shell-blue background, white cards
+// ==========================================
 
-$tab-bar-height: 64px;
-
-.notifications-page {
-  min-height: 100vh;
-  min-height: 100dvh;
-  background: $color-background-primary;
+.notif-settings {
   display: flex;
   flex-direction: column;
-}
+  gap: 12px;
+  padding: 20px 16px 100px;
 
-// ================================
-// Header
-// ================================
-
-.notifications-header {
-  display: flex;
-  align-items: center;
-  gap: $spacing-md;
-  padding: $spacing-md $spacing-lg;
-  background: $color-cta-primary;
-  color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-
-  @include respond(md) {
-    padding: $spacing-lg $spacing-xl;
+  @media (min-width: 768px) {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px 20px 120px;
   }
 
-  &__back {
+  // ========================================
+  // Setting Card
+  // ========================================
+  &__card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // ========================================
+  // Icon Circle
+  // ========================================
+  &__icon {
     width: 44px;
     height: 44px;
     min-width: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
+    background: var(--blue-1, #4A74F0);
     border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    .material-icons {
-      font-size: 24px;
-    }
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-
-    &:focus-visible {
-      outline: 2px solid white;
-      outline-offset: 2px;
-    }
-  }
-
-  &__title {
-    font-family: $font-family-body;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-
-    @include respond(md) {
-      font-size: 24px;
-    }
-  }
-
-  &__badge {
-    background: white;
-    color: $color-cta-primary;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 12px;
-    min-width: 24px;
-    text-align: center;
-  }
-
-  &__action {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    color: #fff;
 
     .material-icons {
       font-size: 22px;
     }
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-
-    &:focus-visible {
-      outline: 2px solid white;
-      outline-offset: 2px;
-    }
-  }
-}
-
-// ================================
-// Tab Navigation
-// ================================
-
-.notifications-tabs {
-  display: flex;
-  background: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
   }
 
-  &__item {
-    flex: 1;
-    min-width: max-content;
-    padding: $spacing-sm $spacing-md;
-    background: none;
-    border: none;
-    color: $color-text-secondary;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-
-    @include respond(md) {
-      flex-direction: row;
-      gap: $spacing-sm;
-      font-size: 14px;
-      padding: $spacing-md $spacing-lg;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 3px;
-      background: $color-cta-primary;
-      border-radius: 3px 3px 0 0;
-      transition: width 0.2s ease;
-    }
-
-    &:hover {
-      color: $color-text-primary;
-      background: rgba(0, 0, 0, 0.02);
-    }
-
-    &--active {
-      color: $color-cta-primary;
-      font-weight: 600;
-
-      &::after {
-        width: 60%;
-      }
-
-      .notifications-tabs__icon {
-        color: $color-cta-primary;
-      }
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-cta-primary;
-      outline-offset: -2px;
-    }
-  }
-
-  &__icon {
-    font-size: 20px;
-    color: $color-text-secondary;
-    transition: color 0.2s ease;
-
-    @include respond(md) {
-      font-size: 22px;
-    }
-  }
-
-  &__label {
-    white-space: nowrap;
-  }
-}
-
-// ================================
-// Content Area
-// ================================
-
-.notifications-content {
-  flex: 1;
-  padding: $spacing-md;
-  padding-bottom: calc($tab-bar-height + $spacing-lg);
-  overflow-y: auto;
-
-  @include respond(md) {
-    padding: $spacing-lg $spacing-xl;
-    padding-bottom: calc($tab-bar-height + $spacing-xl);
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
-  }
-}
-
-// ================================
-// Loading State
-// ================================
-
-.notifications-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  gap: $spacing-md;
-
-  &__spinner {
-    width: 48px;
-    height: 48px;
-    border: 4px solid rgba($color-cta-primary, 0.2);
-    border-top-color: $color-cta-primary;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-
+  // ========================================
+  // Text Area
+  // ========================================
   &__text {
-    color: $color-text-secondary;
-    font-size: 14px;
-    margin: 0;
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// ================================
-// Error State
-// ================================
-
-.notifications-error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  gap: $spacing-md;
-  text-align: center;
-
-  &__icon {
-    font-size: 64px;
-    color: $color-error;
-    opacity: 0.7;
-  }
-
-  &__text {
-    color: $color-text-secondary;
-    font-size: 16px;
-    margin: 0;
-  }
-
-  &__retry {
-    padding: $spacing-sm $spacing-lg;
-    background: $color-cta-primary;
-    color: white;
-    border: none;
-    border-radius: $border-radius-md;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background: darken($color-cta-primary, 10%);
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
-  }
-}
-
-// ================================
-// Empty State
-// ================================
-
-.notifications-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  gap: $spacing-sm;
-  text-align: center;
-  padding: $spacing-lg;
-
-  &__icon {
-    font-size: 72px;
-    color: $color-text-secondary;
-    opacity: 0.4;
-  }
-
-  &__text {
-    color: $color-text-secondary;
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0;
-  }
-
-  &__subtext {
-    color: $color-text-secondary;
-    opacity: 0.7;
-    font-size: 14px;
-    margin: 0;
-  }
-}
-
-// ================================
-// Notifications List
-// ================================
-
-.notifications-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm;
-}
-
-.notification-item {
-  display: flex;
-  gap: $spacing-md;
-  padding: $spacing-md;
-  background: white;
-  border-radius: $border-radius-lg;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease;
-  cursor: pointer;
-  position: relative;
-
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    transform: translateY(-1px);
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-cta-primary;
-    outline-offset: 2px;
-  }
-
-  @include respond(md) {
-    padding: $spacing-lg;
-  }
-
-  &--unread {
-    background: rgba($color-cta-primary, 0.04);
-    border-left: 3px solid $color-cta-primary;
-  }
-
-  &__icon {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba($color-cta-primary, 0.1);
-    border-radius: 50%;
-    color: $color-cta-primary;
-
-    .material-icons {
-      font-size: 24px;
-    }
-  }
-
-  &__content {
     flex: 1;
     min-width: 0;
   }
 
   &__title {
+    font-family: var(--font-body, 'Montserrat', sans-serif);
     font-size: 15px;
-    font-weight: 600;
-    color: $color-text-primary;
-    margin: 0 0 4px 0;
-
-    @include respond(md) {
-      font-size: 16px;
-    }
+    font-weight: 700;
+    color: var(--text, #1a1a2e);
+    margin: 0 0 2px;
+    line-height: 1.3;
   }
 
-  &__message {
-    font-size: 13px;
-    color: $color-text-secondary;
-    margin: 0 0 8px 0;
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-
-    @include respond(md) {
-      font-size: 14px;
-    }
-  }
-
-  &__time {
+  &__desc {
+    font-family: var(--font-body, 'Montserrat', sans-serif);
     font-size: 12px;
-    color: rgba($color-text-secondary, 0.7);
+    font-weight: 400;
+    color: #71757a;
+    margin: 0;
+    line-height: 1.4;
   }
+}
 
-  &__dot {
+// ==========================================
+// Toggle Switch (iOS-style)
+// ==========================================
+.notif-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  min-width: 50px;
+  cursor: pointer;
+
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
     position: absolute;
-    top: $spacing-md;
-    right: $spacing-md;
-    width: 10px;
-    height: 10px;
-    background: $color-cta-primary;
-    border-radius: 50%;
 
-    @include respond(md) {
-      top: $spacing-lg;
-      right: $spacing-lg;
+    &:checked + .notif-toggle__slider {
+      background-color: var(--blue-1, #4A74F0);
+
+      &::before {
+        transform: translateX(22px);
+      }
+    }
+
+    &:focus-visible + .notif-toggle__slider {
+      outline: 2px solid var(--blue-1, #4A74F0);
+      outline-offset: 2px;
     }
   }
 
-  // Type variants
-  &.notification--security .notification-item__icon {
-    background: rgba(#F44336, 0.1);
-    color: #F44336;
-  }
+  &__slider {
+    position: absolute;
+    inset: 0;
+    background-color: #ccc;
+    border-radius: 28px;
+    transition: background-color 0.25s ease;
 
-  &.notification--nearby .notification-item__icon {
-    background: rgba(#4CAF50, 0.1);
-    color: #4CAF50;
-  }
-
-  &.notification--friend .notification-item__icon {
-    background: rgba(#2196F3, 0.1);
-    color: #2196F3;
-  }
-
-  &.notification--pet .notification-item__icon {
-    background: rgba(#FF9800, 0.1);
-    color: #FF9800;
-  }
-
-  &.notification--event .notification-item__icon {
-    background: rgba(#9C27B0, 0.1);
-    color: #9C27B0;
-  }
-
-  &.notification--system .notification-item__icon {
-    background: rgba(#607D8B, 0.1);
-    color: #607D8B;
-  }
-
-  &.notification--general .notification-item__icon {
-    background: rgba($color-cta-primary, 0.1);
-    color: $color-cta-primary;
-  }
-}
-
-// ================================
-// Responsive Adjustments
-// ================================
-
-@include respond(lg) {
-  .notifications-content {
-    max-width: 900px;
-  }
-
-  .notifications-list {
-    gap: $spacing-md;
-  }
-}
-
-// Foldable support
-@media (min-width: 717px) and (max-width: 800px) {
-  .notifications-content {
-    padding: $spacing-md $spacing-lg;
-  }
-
-  .notification-item {
-    padding: $spacing-md $spacing-lg;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: transform 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
   }
 }

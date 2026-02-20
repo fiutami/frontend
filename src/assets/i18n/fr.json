@@ -1339,5 +1339,39 @@
     "bassa": "Faible",
     "media": "Moyen",
     "alta": "Élevé"
+  },
+  "cms": {
+    "loading": "Chargement du contenu...",
+    "error": "Contenu temporairement indisponible",
+    "retry": "Réessayer"
+  },
+  "notifications": {
+    "settingsTitle": "Paramètres de notifications",
+    "settings": {
+      "general": {
+        "title": "Notifications générales",
+        "description": "Reçois des mises à jour sur les activités, messages et nouveautés de l'app"
+      },
+      "sound": {
+        "title": "Son",
+        "description": "Joue un son lorsque tu reçois une notification"
+      },
+      "vibration": {
+        "title": "Vibration",
+        "description": "Active la vibration pour les notifications entrantes"
+      },
+      "dnd": {
+        "title": "Ne pas déranger",
+        "description": "Désactive toutes les notifications pendant les heures définies"
+      },
+      "lockScreen": {
+        "title": "Écran de verrouillage",
+        "description": "Afficher les notifications sur l'écran de verrouillage de l'appareil"
+      },
+      "reminders": {
+        "title": "Rappels",
+        "description": "Reçois des rappels pour les événements, visites vétérinaires et échéances"
+      }
+    }
   }
 }

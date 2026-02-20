@@ -1385,5 +1385,39 @@
     "bassa": "Low",
     "media": "Medium",
     "alta": "High"
+  },
+  "cms": {
+    "loading": "Loading content...",
+    "error": "Content temporarily unavailable",
+    "retry": "Retry"
+  },
+  "notifications": {
+    "settingsTitle": "Notification settings",
+    "settings": {
+      "general": {
+        "title": "General notifications",
+        "description": "Receive updates on activities, messages and app news"
+      },
+      "sound": {
+        "title": "Sound",
+        "description": "Play a sound when you receive a notification"
+      },
+      "vibration": {
+        "title": "Vibration",
+        "description": "Enable vibration for incoming notifications"
+      },
+      "dnd": {
+        "title": "Do not disturb",
+        "description": "Mute all notifications during set hours"
+      },
+      "lockScreen": {
+        "title": "Lock screen",
+        "description": "Show notifications on the device lock screen"
+      },
+      "reminders": {
+        "title": "Reminders",
+        "description": "Receive reminders for events, vet visits and deadlines"
+      }
+    }
   }
 }
