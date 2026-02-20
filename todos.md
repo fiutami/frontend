@@ -8,3 +8,7 @@
 * Richiesta di assistenza
 * Assistenza Fiuto
 Questa sezione va inserita prima delle caselle di compilazione del messaggio, così l’utente può selezionare prima la tipologia di richiesta e poi compilare i campi.
+
+26.Nella pagina home/friends, con titolo “Amici pet”, la struttura deve seguire esattamente il design in Figma. In alto inserisci la frase introduttiva, poi la barra di ricerca con filtro. Sotto deve esserci il titolo in giallo e la linea bianca decorativa come elemento grafico. A seguire, inserisci il pulsante giallo per la selezione amici e, sotto, la lista degli amici già conosciuti su Fiutami, con foto e nome.
+
+LINK FIGMA:https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--originale-?node-id=12439-4821&t=WVRcT0koVbzjwbXp-4
