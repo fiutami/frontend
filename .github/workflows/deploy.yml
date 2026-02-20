@@ -182,6 +182,14 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} bash -s <<DEPLOY_SCRIPT
             set -eo pipefail
             cd "${DEPLOY_PATH}"
+
+            # Pre-flight: ensure .env exists (required by --env-file)
+            if [ ! -f .env ]; then
+              echo "::warning::.env not found at \$(pwd)/.env — creating stub for frontend-only deploy"
+              touch .env
+            fi
+            echo "Pre-flight OK: .env exists (\$(wc -c < .env) bytes) at \$(pwd)"
+
             echo '${GHCR_TOKEN}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             curl -sSfL https://raw.githubusercontent.com/fiutami/infra/main/docker/${COMPOSE_FILE} -o ${COMPOSE_FILE}
             [ -f .last_sha_${{ env.SERVICE }} ] && cp .last_sha_${{ env.SERVICE }} .last_sha_${{ env.SERVICE }}.prev || true
@@ -250,6 +258,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} bash -s <<ROLLBACK_SCRIPT
             set -eo pipefail
             cd "${DEPLOY_PATH}"
+            [ -f .env ] || touch .env
             echo '${GHCR_TOKEN}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             if [ -f .last_sha_${{ env.SERVICE }}.prev ]; then
               PREV_SHA=\$(cat .last_sha_${{ env.SERVICE }}.prev)
