@@ -3,14 +3,25 @@ import { CommonModule, Location } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { AuthService, User } from '../../../core/services/auth.service';
 import { AccountService } from '../../../core/services/account.service';
 import { environment } from '../../../../environments/environment';
 
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
+
 @Component({
   selector: 'app-account-drawer',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,8 +33,10 @@ export class AccountDrawerComponent implements OnInit {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
   private accountService = inject(AccountService);
+  private translate = inject(TranslateService);
 
-  title = 'Account';
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawerAccount.title');
 
   // State signals
   user = signal<User | null>(null);
@@ -40,6 +53,14 @@ export class AccountDrawerComponent implements OnInit {
   isExporting = signal(false);
   exportSuccess = signal(false);
 
+  exportRateLimit = signal(false);
+  exportStatus = signal<string | null>(null);
+
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawerAccount.title');
+    });
+  }
 
   ngOnInit(): void {
     this.loadUserData();
@@ -122,7 +143,9 @@ export class AccountDrawerComponent implements OnInit {
       },
       error: (err: { error?: { message?: string } }) => {
         this.isDeleting.set(false);
-        this.deleteError.set(err.error?.message || 'Errore durante la richiesta di eliminazione.');
+        this.deleteError.set(
+          err.error?.message || this.translate.instant('drawerAccount.deleteErrorGeneric')
+        );
       }
     });
   }
@@ -135,9 +158,6 @@ export class AccountDrawerComponent implements OnInit {
   closeExportModal(): void {
     this.showExportModal.set(false);
   }
-
-  exportRateLimit = signal(false);
-  exportStatus = signal<string | null>(null);
 
   exportData(): void {
     if (this.isExporting()) return;

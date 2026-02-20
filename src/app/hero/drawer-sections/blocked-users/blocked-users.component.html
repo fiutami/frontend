@@ -1,27 +1,25 @@
-<div class="blocked-users-page">
-  <header class="page-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1>Utenti Bloccati</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <main class="page-content">
     @if (isLoading()) {
       <div class="loading-state">
         <div class="spinner"></div>
-        <p>Caricamento...</p>
+        <p>{{ 'drawerBlocked.loading' | translate }}</p>
       </div>
     } @else if (hasError()) {
       <div class="error-state">
         <span class="material-icons">error_outline</span>
-        <p>Errore nel caricamento</p>
-        <button class="retry-btn" (click)="loadBlockedUsers()">Riprova</button>
+        <p>{{ 'drawerBlocked.error' | translate }}</p>
+        <button class="retry-btn" (click)="loadBlockedUsers()">{{ 'drawerBlocked.retry' | translate }}</button>
       </div>
     } @else if (blockedUsers().length === 0) {
       <div class="empty-state">
         <span class="material-icons">person_off</span>
-        <p>Nessun utente bloccato</p>
+        <p>{{ 'drawerBlocked.empty' | translate }}</p>
       </div>
     } @else {
       <div class="users-list">
@@ -38,7 +36,7 @@
               <h3>{{ user.displayName }}</h3>
               <span class="username">{{'@'}}{{ user.username }}</span>
               <div class="blocked-info">
-                <span class="blocked-date">Bloccato {{ formatBlockedDate(user.blockedAt) }}</span>
+                <span class="blocked-date">{{ 'drawerBlocked.blockedPrefix' | translate }} {{ formatBlockedDate(user.blockedAt) }}</span>
                 @if (user.reason) {
                   <span class="blocked-reason">{{ user.reason }}</span>
                 }
@@ -46,7 +44,7 @@
             </div>
             <button class="unblock-btn" (click)="openUnblockConfirm(user)">
               <span class="material-icons">lock_open</span>
-              Sblocca
+              {{ 'drawerBlocked.unblock' | translate }}
             </button>
           </article>
         }
@@ -62,11 +60,11 @@
             <div class="confirm-icon">
               <span class="material-icons">person_add</span>
             </div>
-            <h2>Sbloccare {{ user.displayName }}?</h2>
-            <p>Questo utente potrà nuovamente vedere i tuoi post, inviarti messaggi e interagire con te.</p>
+            <h2>{{ 'drawerBlocked.confirmTitle' | translate: { name: user.displayName } }}</h2>
+            <p>{{ 'drawerBlocked.confirmMessage' | translate }}</p>
           </div>
           <footer class="modal-footer">
-            <button class="cancel-btn" (click)="closeConfirmModal()">Annulla</button>
+            <button class="cancel-btn" (click)="closeConfirmModal()">{{ 'drawerBlocked.cancel' | translate }}</button>
             <button
               class="confirm-btn"
               (click)="confirmUnblock()"
@@ -75,7 +73,7 @@
               @if (isUnblocking()) {
                 <span class="btn-spinner"></span>
               } @else {
-                Sblocca
+                {{ 'drawerBlocked.unblock' | translate }}
               }
             </button>
           </footer>
@@ -84,4 +82,4 @@
     </div>
   }
 
-</div>
+</app-tab-page-shell-blue>

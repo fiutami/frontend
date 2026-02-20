@@ -1,15 +1,8 @@
-<div class="account-page">
-  <!-- Header -->
-  <header class="account-header">
-    <button
-      class="account-header__back"
-      (click)="goBack()"
-      aria-label="Torna indietro"
-      type="button">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1 class="account-header__title">{{ title }}</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <!-- Content -->
   <main class="account-content">
@@ -17,7 +10,7 @@
     @if (isLoading()) {
       <div class="account-loading">
         <div class="account-loading__spinner"></div>
-        <p class="account-loading__text">Caricamento dati account...</p>
+        <p class="account-loading__text">{{ 'drawerAccount.loading' | translate }}</p>
       </div>
     }
 
@@ -25,9 +18,9 @@
     @else if (hasError()) {
       <div class="account-error">
         <span class="material-icons account-error__icon">error_outline</span>
-        <p class="account-error__text">Si è verificato un errore nel caricamento</p>
+        <p class="account-error__text">{{ 'drawerAccount.errorLoading' | translate }}</p>
         <button class="account-error__retry" (click)="retry()" type="button">
-          Riprova
+          {{ 'drawerAccount.retry' | translate }}
         </button>
       </div>
     }
@@ -38,27 +31,27 @@
       <section class="account-section">
         <h2 class="account-section__title">
           <span class="material-icons">person</span>
-          Panoramica Account
+          {{ 'drawerAccount.overviewTitle' | translate }}
         </h2>
 
         <div class="account-info-grid">
           <div class="account-info-item">
-            <span class="account-info-item__label">Email</span>
+            <span class="account-info-item__label">{{ 'drawerAccount.labelEmail' | translate }}</span>
             <span class="account-info-item__value">{{ user()?.email }}</span>
           </div>
           <div class="account-info-item">
-            <span class="account-info-item__label">Tipo Account</span>
+            <span class="account-info-item__label">{{ 'drawerAccount.labelAccountType' | translate }}</span>
             <span class="account-info-item__value">{{ getAccountType() }}</span>
           </div>
           <div class="account-info-item">
-            <span class="account-info-item__label">Data Registrazione</span>
+            <span class="account-info-item__label">{{ 'drawerAccount.labelRegistrationDate' | translate }}</span>
             <span class="account-info-item__value">{{ formatDate(user()?.createdAt) }}</span>
           </div>
           <div class="account-info-item">
-            <span class="account-info-item__label">Stato Account</span>
+            <span class="account-info-item__label">{{ 'drawerAccount.labelAccountStatus' | translate }}</span>
             <span class="account-info-item__value account-info-item__value--active">
               <span class="account-status-dot"></span>
-              Attivo
+              {{ 'drawerAccount.statusActive' | translate }}
             </span>
           </div>
         </div>
@@ -68,11 +61,11 @@
       <section class="account-section">
         <h2 class="account-section__title">
           <span class="material-icons">download</span>
-          Gestione Dati
+          {{ 'drawerAccount.dataManagementTitle' | translate }}
         </h2>
 
         <p class="account-section__desc">
-          In conformità con il GDPR, puoi esportare tutti i tuoi dati personali in qualsiasi momento.
+          {{ 'drawerAccount.dataManagementDesc' | translate }}
         </p>
 
         <button
@@ -80,7 +73,7 @@
           class="account-btn account-btn--outline"
           (click)="openExportModal()">
           <span class="material-icons">file_download</span>
-          Esporta i miei dati
+          {{ 'drawerAccount.exportButton' | translate }}
         </button>
       </section>
 
@@ -88,37 +81,34 @@
       <section class="account-section account-section--danger">
         <h2 class="account-section__title account-section__title--danger">
           <span class="material-icons">warning</span>
-          Zona Pericolosa
+          {{ 'drawerAccount.dangerZoneTitle' | translate }}
         </h2>
 
         <div class="account-danger-box">
           <div class="account-danger-info">
-            <strong>Elimina Account</strong>
-            <p>
-              Una volta eliminato, il tuo account e tutti i dati associati verranno rimossi permanentemente
-              dopo un periodo di grazia di 30 giorni.
-            </p>
+            <strong>{{ 'drawerAccount.deleteAccountLabel' | translate }}</strong>
+            <p>{{ 'drawerAccount.deleteAccountDesc' | translate }}</p>
           </div>
           <button
             type="button"
             class="account-btn account-btn--danger"
             (click)="openDeleteConfirm()">
-            Elimina Account
+            {{ 'drawerAccount.deleteAccountButton' | translate }}
           </button>
         </div>
       </section>
     }
   </main>
 
-</div>
+</app-tab-page-shell-blue>
 
 <!-- Delete Confirmation Modal -->
 @if (showDeleteConfirm()) {
   <div class="modal-overlay" (click)="closeDeleteConfirm()">
     <div class="modal" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
       <div class="modal__header">
-        <h3 class="modal__title">Conferma Eliminazione Account</h3>
-        <button type="button" class="modal__close" (click)="closeDeleteConfirm()" aria-label="Chiudi">
+        <h3 class="modal__title">{{ 'drawerAccount.deleteConfirmTitle' | translate }}</h3>
+        <button type="button" class="modal__close" (click)="closeDeleteConfirm()" [attr.aria-label]="'drawerAccount.closeAriaLabel' | translate">
           <span class="material-icons">close</span>
         </button>
       </div>
@@ -128,13 +118,11 @@
           <span class="material-icons">warning</span>
         </div>
 
-        <p class="modal__text">
-          Stai per richiedere l'eliminazione del tuo account. Questa azione avvierà un periodo di grazia di 30 giorni.
-        </p>
+        <p class="modal__text">{{ 'drawerAccount.deleteConfirmText' | translate }}</p>
 
         <div class="modal__confirm-input">
           <label for="deleteConfirmInput">
-            Per confermare, digita <strong>elimina</strong>:
+            {{ 'drawerAccount.deleteConfirmLabel' | translate }} <strong>elimina</strong>:
           </label>
           <input
             id="deleteConfirmInput"
@@ -154,14 +142,14 @@
 
       <div class="modal__footer">
         <button type="button" class="account-btn account-btn--ghost" (click)="closeDeleteConfirm()">
-          Annulla
+          {{ 'drawerAccount.cancel' | translate }}
         </button>
         <button
           type="button"
           class="account-btn account-btn--danger"
           [disabled]="!canDelete || isDeleting()"
           (click)="confirmDelete()">
-          {{ isDeleting() ? 'Eliminazione...' : 'Elimina' }}
+          {{ isDeleting() ? ('drawerAccount.deleting' | translate) : ('drawerAccount.delete' | translate) }}
         </button>
       </div>
     </div>
@@ -173,8 +161,8 @@
   <div class="modal-overlay" (click)="closeExportModal()">
     <div class="modal modal--small" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
       <div class="modal__header">
-        <h3 class="modal__title">Esporta Dati</h3>
-        <button type="button" class="modal__close" (click)="closeExportModal()" aria-label="Chiudi">
+        <h3 class="modal__title">{{ 'drawerAccount.exportTitle' | translate }}</h3>
+        <button type="button" class="modal__close" (click)="closeExportModal()" [attr.aria-label]="'drawerAccount.closeAriaLabel' | translate">
           <span class="material-icons">close</span>
         </button>
       </div>
@@ -184,27 +172,31 @@
           <div class="modal__icon">
             <span class="material-icons">file_download</span>
           </div>
-          <p class="modal__text">Esporteremo tutti i tuoi dati personali in formato JSON.</p>
+          <p class="modal__text">{{ 'drawerAccount.exportDesc' | translate }}</p>
         } @else {
           <div class="modal__success">
             <span class="material-icons">check_circle</span>
           </div>
-          <p class="modal__text modal__text--success">Dati esportati con successo!</p>
+          <p class="modal__text modal__text--success">{{ 'drawerAccount.exportSuccess' | translate }}</p>
         }
       </div>
 
       <div class="modal__footer">
         @if (!exportSuccess()) {
-          <button type="button" class="account-btn account-btn--ghost" (click)="closeExportModal()">Annulla</button>
+          <button type="button" class="account-btn account-btn--ghost" (click)="closeExportModal()">
+            {{ 'drawerAccount.cancel' | translate }}
+          </button>
           <button
             type="button"
             class="account-btn account-btn--primary"
             [disabled]="isExporting()"
             (click)="exportData()">
-            {{ isExporting() ? 'Esportazione...' : 'Esporta' }}
+            {{ isExporting() ? ('drawerAccount.exporting' | translate) : ('drawerAccount.export' | translate) }}
           </button>
         } @else {
-          <button type="button" class="account-btn account-btn--primary" (click)="closeExportModal()">Chiudi</button>
+          <button type="button" class="account-btn account-btn--primary" (click)="closeExportModal()">
+            {{ 'drawerAccount.close' | translate }}
+          </button>
         }
       </div>
     </div>

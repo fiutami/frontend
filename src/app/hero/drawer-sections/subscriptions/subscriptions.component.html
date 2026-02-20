@@ -1,31 +1,29 @@
-<div class="subscriptions-page">
-  <header class="page-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1>Abbonamenti</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <main class="page-content">
     @if (isLoading()) {
       <div class="loading-state">
         <div class="spinner"></div>
-        <p>Caricamento piani...</p>
+        <p>{{ 'drawerSubscriptions.loading' | translate }}</p>
       </div>
     } @else if (hasError()) {
       <div class="error-state">
         <span class="material-icons">error_outline</span>
-        <p>Errore nel caricamento</p>
-        <button class="retry-btn" (click)="loadData()">Riprova</button>
+        <p>{{ 'drawerSubscriptions.error' | translate }}</p>
+        <button class="retry-btn" (click)="loadData()">{{ 'drawerSubscriptions.retry' | translate }}</button>
       </div>
     } @else {
       <div class="billing-toggle">
-        <span [class.active]="!isYearly()">Mensile</span>
+        <span [class.active]="!isYearly()">{{ 'drawerSubscriptions.monthly' | translate }}</span>
         <button class="toggle-switch" (click)="toggleBillingCycle()" [class.yearly]="isYearly()">
           <span class="toggle-knob"></span>
         </button>
         <span [class.active]="isYearly()">
-          Annuale
+          {{ 'drawerSubscriptions.yearly' | translate }}
           <span class="discount-badge">-33%</span>
         </span>
       </div>
@@ -49,13 +47,13 @@
             <div class="plan-pricing">
               <span class="price">{{ getPrice(plan) }}</span>
               @if (plan.monthlyPrice > 0) {
-                <span class="period">{{ getPeriod() }}</span>
+                <span class="period">{{ getPeriodKey() | translate }}</span>
               }
             </div>
 
             @if (isYearly() && plan.yearlyDiscount > 0) {
               <p class="yearly-savings">
-                Risparmi {{ plan.yearlyDiscount }}% con il piano annuale
+                {{ 'drawerSubscriptions.yearlySavings' | translate: { discount: plan.yearlyDiscount } }}
               </p>
             }
 
@@ -79,7 +77,7 @@
               @if (isSubscribing() && subscribingPlanId() === plan.id) {
                 <span class="btn-spinner"></span>
               } @else {
-                {{ getButtonText(plan) }}
+                {{ getButtonTextKey(plan) | translate }}
               }
             </button>
           </article>
@@ -87,10 +85,10 @@
       </div>
 
       <div class="footer-info">
-        <p>Puoi annullare il tuo abbonamento in qualsiasi momento.</p>
-        <p>I pagamenti sono gestiti in modo sicuro.</p>
+        <p>{{ 'drawerSubscriptions.footerCancel' | translate }}</p>
+        <p>{{ 'drawerSubscriptions.footerSecure' | translate }}</p>
       </div>
     }
   </main>
 
-</div>
+</app-tab-page-shell-blue>

@@ -1,17 +1,15 @@
-<div class="adopt-page">
-  <header class="adopt-header">
-    <button class="adopt-header__back" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1 class="adopt-header__title">Adottare</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <main class="adopt-content">
     <!-- Loading State -->
     @if (isLoading()) {
       <div class="adopt-loading">
         <div class="adopt-loading__spinner"></div>
-        <p class="adopt-loading__text">Caricamento annunci...</p>
+        <p class="adopt-loading__text">{{ 'drawerAdopt.loading' | translate }}</p>
       </div>
     }
 
@@ -19,8 +17,8 @@
     @if (hasError() && !isLoading()) {
       <div class="adopt-error">
         <span class="material-icons adopt-error__icon">error_outline</span>
-        <p class="adopt-error__text">Errore nel caricamento degli annunci</p>
-        <button class="adopt-error__retry" (click)="retry()">Riprova</button>
+        <p class="adopt-error__text">{{ 'drawerAdopt.error' | translate }}</p>
+        <button class="adopt-error__retry" (click)="retry()">{{ 'drawerAdopt.retry' | translate }}</button>
       </div>
     }
 
@@ -28,8 +26,8 @@
     @if (!isLoading() && !hasError() && adoptionAds().length === 0) {
       <div class="adopt-empty">
         <span class="material-icons adopt-empty__icon">pets</span>
-        <p class="adopt-empty__text">Nessun annuncio disponibile</p>
-        <p class="adopt-empty__subtext">Torna più tardi per nuovi annunci</p>
+        <p class="adopt-empty__text">{{ 'drawerAdopt.empty' | translate }}</p>
+        <p class="adopt-empty__subtext">{{ 'drawerAdopt.emptySubtext' | translate }}</p>
       </div>
     }
 
@@ -48,7 +46,7 @@
                 {{ getStatusLabel(ad.status) }}
               </span>
               @if (ad.isUrgent) {
-                <span class="adopt-card__urgent-badge">Urgente</span>
+                <span class="adopt-card__urgent-badge">{{ 'drawerAdopt.urgent' | translate }}</span>
               }
             </div>
             <div class="adopt-card__content">
@@ -66,7 +64,7 @@
                 </span>
                 <span class="adopt-card__gender">
                   <span class="material-icons">{{ ad.gender === 'male' ? 'male' : 'female' }}</span>
-                  {{ ad.gender === 'male' ? 'Maschio' : 'Femmina' }}
+                  {{ (ad.gender === 'male' ? 'drawerAdopt.gender.male' : 'drawerAdopt.gender.female') | translate }}
                 </span>
               </div>
               <p class="adopt-card__description">{{ ad.description }}</p>
@@ -86,11 +84,11 @@
               <div class="adopt-card__actions">
                 <button class="adopt-card__action adopt-card__action--contact" (click)="contactOwner(ad); $event.stopPropagation()">
                   <span class="material-icons">chat</span>
-                  Contatta
+                  {{ 'drawerAdopt.contact' | translate }}
                 </button>
                 <button class="adopt-card__action adopt-card__action--details" (click)="viewDetails(ad); $event.stopPropagation()">
                   <span class="material-icons">info</span>
-                  Dettagli
+                  {{ 'drawerAdopt.details' | translate }}
                 </button>
               </div>
             </div>
@@ -100,4 +98,4 @@
     }
   </main>
 
-</div>
+</app-tab-page-shell-blue>

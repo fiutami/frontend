@@ -1,11 +1,19 @@
 import { Component, OnInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { InviteService, InviteOption, PendingInvite, InviteStats, InviteMethod, InviteStatus } from '../../../core/services/invite.service';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 @Component({
   selector: 'app-invite',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './invite.component.html',
   styleUrls: ['./invite.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -13,6 +21,10 @@ import { InviteService, InviteOption, PendingInvite, InviteStats, InviteMethod, 
 export class InviteComponent implements OnInit {
   private location = inject(Location);
   private inviteService = inject(InviteService);
+  private translate = inject(TranslateService);
+
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawerInvite.title');
 
   inviteOptions = signal<InviteOption[]>([]);
   pendingInvites = signal<PendingInvite[]>([]);
@@ -25,6 +37,11 @@ export class InviteComponent implements OnInit {
   inviteCode: string = '';
   inviteLink: string = '';
 
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawerInvite.title');
+    });
+  }
 
   ngOnInit(): void {
     this.inviteCode = this.inviteService.getInviteCode();
@@ -93,7 +110,7 @@ export class InviteComponent implements OnInit {
         window.open(`sms:?body=${encodeURIComponent(message)}`, '_blank');
         break;
       case 'email':
-        window.open(`mailto:?subject=${encodeURIComponent('Ti invito su FiutaMi!')}&body=${encodeURIComponent(message)}`, '_blank');
+        window.open(`mailto:?subject=${encodeURIComponent(this.translate.instant('drawerInvite.emailSubject'))}&body=${encodeURIComponent(message)}`, '_blank');
         break;
       case 'copy':
         this.copyLink();
@@ -101,7 +118,7 @@ export class InviteComponent implements OnInit {
       case 'share':
         if (navigator.share) {
           navigator.share({
-            title: 'FiutaMi - Invito',
+            title: this.translate.instant('drawerInvite.shareTitle'),
             text: message,
             url: this.inviteLink
           }).catch(() => {});
@@ -138,7 +155,7 @@ export class InviteComponent implements OnInit {
   }
 
   getRecipientDisplay(invite: PendingInvite): string {
-    return invite.recipientName || invite.recipientEmail || invite.recipientPhone || 'Contatto';
+    return invite.recipientName || invite.recipientEmail || invite.recipientPhone || this.translate.instant('drawerInvite.contactFallback');
   }
 
   resendInvite(invite: PendingInvite): void {

@@ -1,15 +1,8 @@
-<div class="privacy-page">
-  <!-- Header -->
-  <header class="privacy-header">
-    <button
-      class="privacy-header__back"
-      (click)="goBack()"
-      aria-label="Torna indietro"
-      type="button">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1 class="privacy-header__title">{{ title }}</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <!-- Quick Navigation -->
   <nav class="privacy-nav" aria-label="Navigazione sezioni">
@@ -32,9 +25,9 @@
       <!-- Title Section -->
       <div class="privacy-intro">
         <span class="material-icons privacy-intro__icon">security</span>
-        <h2 class="privacy-intro__title">Informativa sulla Privacy</h2>
+        <h2 class="privacy-intro__title">{{ title }}</h2>
         <p class="privacy-intro__subtitle">
-          Scopri come proteggiamo e utilizziamo i tuoi dati personali
+          {{ 'drawer.privacy' | translate }}
         </p>
       </div>
 
@@ -59,9 +52,9 @@
       <!-- Last Updated -->
       <div class="privacy-footer">
         <span class="material-icons">update</span>
-        <span>Ultimo aggiornamento: {{ lastUpdated }}</span>
+        <span>{{ lastUpdated }}</span>
       </div>
     </div>
   </main>
 
-</div>
+</app-tab-page-shell-blue>

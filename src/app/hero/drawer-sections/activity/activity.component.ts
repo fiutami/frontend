@@ -1,15 +1,33 @@
-import { Component, OnInit, OnDestroy, inject, ChangeDetectionStrategy, signal, computed } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  inject,
+  ChangeDetectionStrategy,
+  signal,
+  computed,
+} from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Subject, fromEvent, debounceTime, startWith, takeUntil } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { ActivityService, ActivityItem } from '../../../core/services/activity.service';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' | 'foldable-unfolded';
 
 @Component({
   selector: 'app-activity',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -17,9 +35,11 @@ export type ViewportSize = 'mobile' | 'tablet' | 'desktop' | 'foldable-folded' |
 export class ActivityComponent implements OnInit, OnDestroy {
   private location = inject(Location);
   private activityService = inject(ActivityService);
+  private translate = inject(TranslateService);
   private destroy$ = new Subject<void>();
 
-  title = 'La tua attività';
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawerActivity.title');
 
   // State signals
   activities = signal<ActivityItem[]>([]);
@@ -48,6 +68,12 @@ export class ActivityComponent implements OnInit, OnDestroy {
     if (width < 1024) return 'tablet';
     return 'desktop';
   });
+
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawerActivity.title');
+    });
+  }
 
   ngOnInit(): void {
     this.loadActivities();

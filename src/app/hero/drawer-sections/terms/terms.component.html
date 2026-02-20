@@ -1,15 +1,8 @@
-<div class="terms-page">
-  <!-- Header -->
-  <header class="terms-header">
-    <button
-      class="terms-header__back"
-      (click)="goBack()"
-      aria-label="Torna indietro"
-      type="button">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1 class="terms-header__title">{{ title }}</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <!-- Quick Navigation -->
   <nav class="terms-nav" aria-label="Navigazione sezioni">
@@ -32,9 +25,9 @@
       <!-- Title Section -->
       <div class="terms-intro">
         <span class="material-icons terms-intro__icon">gavel</span>
-        <h2 class="terms-intro__title">Termini e Condizioni d'Uso</h2>
+        <h2 class="terms-intro__title">{{ 'drawer.terms' | translate }}</h2>
         <p class="terms-intro__subtitle">
-          Leggi attentamente i seguenti termini prima di utilizzare FiutaMi
+          {{ 'auth.termsAccept' | translate }} FiutaMi
         </p>
       </div>
 
@@ -57,4 +50,4 @@
     </div>
   </main>
 
-</div>
+</app-tab-page-shell-blue>

@@ -1,13 +1,16 @@
 import { Component, inject, ChangeDetectionStrategy, signal, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CmsService } from 'src/app/core/services/cms.service';
 import { CmsSection } from 'src/app/core/models/cms.models';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 @Component({
   selector: 'app-privacy',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, TabPageShellBlueComponent],
   templateUrl: './privacy.component.html',
   styleUrls: ['./privacy.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -15,9 +18,11 @@ import { CmsSection } from 'src/app/core/models/cms.models';
 export class PrivacyComponent implements OnInit, AfterViewInit {
   private location = inject(Location);
   private cmsService = inject(CmsService);
+  private translate = inject(TranslateService);
 
   @ViewChildren('sectionEl') sectionElements!: QueryList<ElementRef>;
 
+  pageTitle = this.translate.instant('drawer.privacy');
   title = 'Privacy Policy';
   lastUpdated = 'Dicembre 2025';
 

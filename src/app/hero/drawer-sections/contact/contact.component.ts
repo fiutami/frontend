@@ -1,12 +1,22 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { ContactService, ContactFormData, ContactFormResponse } from '../../../core/services/contact.service';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -15,8 +25,10 @@ export class ContactComponent implements OnInit {
   private location = inject(Location);
   private contactService = inject(ContactService);
   private fb = inject(FormBuilder);
+  private translate = inject(TranslateService);
 
-  title = 'Contattaci';
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawerContact.title');
 
   // Form
   contactForm!: FormGroup;
@@ -29,6 +41,11 @@ export class ContactComponent implements OnInit {
   errorMessage = signal('');
   successResponse = signal<ContactFormResponse | null>(null);
 
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawerContact.title');
+    });
+  }
 
   ngOnInit(): void {
     this.subjectOptions = this.contactService.getSubjectOptions();
@@ -69,7 +86,9 @@ export class ContactComponent implements OnInit {
       error: (error) => {
         this.isSubmitting.set(false);
         this.hasError.set(true);
-        this.errorMessage.set(error.message || 'Si è verificato un errore. Riprova più tardi.');
+        this.errorMessage.set(
+          error.message || this.translate.instant('drawerContact.errorDefault')
+        );
       }
     });
   }
@@ -87,14 +106,14 @@ export class ContactComponent implements OnInit {
     const control = this.contactForm.get(fieldName);
     if (control?.touched && control.errors) {
       if (control.errors['required']) {
-        return 'Campo obbligatorio';
+        return this.translate.instant('drawerContact.errorRequired');
       }
       if (control.errors['email']) {
-        return 'Email non valida';
+        return this.translate.instant('drawerContact.errorEmail');
       }
       if (control.errors['minlength']) {
         const minLength = control.errors['minlength'].requiredLength;
-        return `Minimo ${minLength} caratteri`;
+        return this.translate.instant('drawerContact.errorMinLength', { min: minLength });
       }
     }
     return '';

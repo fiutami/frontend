@@ -1,17 +1,15 @@
-<div class="invite-page">
-  <header class="invite-header">
-    <button class="invite-header__back" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1 class="invite-header__title">Invita Amici</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <main class="invite-content">
     <!-- Loading State -->
     @if (isLoading()) {
       <div class="invite-loading">
         <div class="invite-loading__spinner"></div>
-        <p class="invite-loading__text">Caricamento...</p>
+        <p class="invite-loading__text">{{ 'drawerInvite.loading' | translate }}</p>
       </div>
     }
 
@@ -19,8 +17,8 @@
     @if (hasError() && !isLoading()) {
       <div class="invite-error">
         <span class="material-icons invite-error__icon">error_outline</span>
-        <p class="invite-error__text">Errore nel caricamento</p>
-        <button class="invite-error__retry" (click)="retry()">Riprova</button>
+        <p class="invite-error__text">{{ 'drawerInvite.error' | translate }}</p>
+        <button class="invite-error__retry" (click)="retry()">{{ 'drawerInvite.retry' | translate }}</button>
       </div>
     }
 
@@ -30,8 +28,8 @@
         <div class="invite-hero__icon">
           <span class="material-icons">card_giftcard</span>
         </div>
-        <h2 class="invite-hero__title">Invita i tuoi amici!</h2>
-        <p class="invite-hero__description">Condividi FiutaMi con chi ami e guadagna premi esclusivi</p>
+        <h2 class="invite-hero__title">{{ 'drawerInvite.heroTitle' | translate }}</h2>
+        <p class="invite-hero__description">{{ 'drawerInvite.heroDescription' | translate }}</p>
       </section>
 
       <!-- Stats Section -->
@@ -39,38 +37,38 @@
         <section class="invite-stats">
           <div class="invite-stats__item">
             <span class="invite-stats__value">{{ stats()!.totalSent }}</span>
-            <span class="invite-stats__label">Inviti inviati</span>
+            <span class="invite-stats__label">{{ 'drawerInvite.statsSent' | translate }}</span>
           </div>
           <div class="invite-stats__item invite-stats__item--success">
             <span class="invite-stats__value">{{ stats()!.accepted }}</span>
-            <span class="invite-stats__label">Accettati</span>
+            <span class="invite-stats__label">{{ 'drawerInvite.statsAccepted' | translate }}</span>
           </div>
           <div class="invite-stats__item">
             <span class="invite-stats__value">{{ stats()!.pending }}</span>
-            <span class="invite-stats__label">In attesa</span>
+            <span class="invite-stats__label">{{ 'drawerInvite.statsPending' | translate }}</span>
           </div>
         </section>
       }
 
       <!-- Invite Code Section -->
       <section class="invite-code-section">
-        <h3 class="invite-code-section__title">Il tuo codice invito</h3>
+        <h3 class="invite-code-section__title">{{ 'drawerInvite.codeTitle' | translate }}</h3>
         <div class="invite-code-box">
           <span class="invite-code-box__code">{{ inviteCode }}</span>
           <button class="invite-code-box__copy" (click)="copyCode()" [class.invite-code-box__copy--copied]="codeCopied()">
             <span class="material-icons">{{ codeCopied() ? 'check' : 'content_copy' }}</span>
-            {{ codeCopied() ? 'Copiato!' : 'Copia' }}
+            {{ codeCopied() ? ('drawerInvite.copied' | translate) : ('drawerInvite.copy' | translate) }}
           </button>
         </div>
         @if (codeCopied()) {
-          <p class="invite-code-section__copied">Copiato negli appunti!</p>
+          <p class="invite-code-section__copied">{{ 'drawerInvite.copiedToClipboard' | translate }}</p>
         }
-        <p class="invite-code-section__hint">Condividi questo codice con i tuoi amici</p>
+        <p class="invite-code-section__hint">{{ 'drawerInvite.codeHint' | translate }}</p>
       </section>
 
       <!-- Share Options -->
       <section class="invite-share">
-        <h3 class="invite-share__title">Condividi via</h3>
+        <h3 class="invite-share__title">{{ 'drawerInvite.shareVia' | translate }}</h3>
         <div class="invite-share__options">
           @for (option of inviteOptions(); track option.id) {
             <button class="invite-share__option" (click)="shareVia(option)" [style.--option-color]="option.color" [attr.aria-label]="option.description">
@@ -94,7 +92,7 @@
       <!-- Pending Invites -->
       @if (pendingInvites().length > 0) {
         <section class="invite-history">
-          <h3 class="invite-history__title">Inviti recenti</h3>
+          <h3 class="invite-history__title">{{ 'drawerInvite.recentInvites' | translate }}</h3>
           <ul class="invite-history__list">
             @for (invite of pendingInvites(); track invite.id) {
               <li class="invite-item">
@@ -118,7 +116,7 @@
                 </div>
                 @if (invite.status === 'pending' || invite.status === 'expired') {
                   <div class="invite-item__actions">
-                    <button class="invite-item__resend" (click)="resendInvite(invite)" aria-label="Reinvia invito">
+                    <button class="invite-item__resend" (click)="resendInvite(invite)" [attr.aria-label]="'drawerInvite.resendAriaLabel' | translate">
                       <span class="material-icons">refresh</span>
                     </button>
                   </div>
@@ -131,4 +129,4 @@
     }
   </main>
 
-</div>
+</app-tab-page-shell-blue>

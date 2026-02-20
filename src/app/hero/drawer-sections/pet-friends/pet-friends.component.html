@@ -1,46 +1,44 @@
-<div class="pet-friends-page">
-  <header class="pet-friends-header">
-    <button class="pet-friends-header__back" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1 class="pet-friends-header__title">Amici Pets</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-  <main class="pet-friends-content">
+  <main class="page-content">
     <!-- Loading State -->
     @if (isLoading()) {
-      <div class="pet-friends-loading">
-        <div class="pet-friends-loading__spinner"></div>
-        <p class="pet-friends-loading__text">Caricamento amici...</p>
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>{{ 'drawerPetFriends.loading' | translate }}</p>
       </div>
     }
 
     <!-- Error State -->
-    @if (hasError() && !isLoading()) {
-      <div class="pet-friends-error">
-        <span class="material-icons pet-friends-error__icon">error_outline</span>
-        <p class="pet-friends-error__text">Errore nel caricamento degli amici</p>
-        <button class="pet-friends-error__retry" (click)="retry()">Riprova</button>
+    @else if (hasError()) {
+      <div class="error-state">
+        <span class="material-icons">error_outline</span>
+        <p>{{ 'drawerPetFriends.error' | translate }}</p>
+        <button class="retry-btn" (click)="retry()">{{ 'drawerPetFriends.retry' | translate }}</button>
       </div>
     }
 
     <!-- Empty State -->
-    @if (!isLoading() && !hasError() && friends().length === 0) {
-      <div class="pet-friends-empty">
-        <span class="material-icons pet-friends-empty__icon">group</span>
-        <p class="pet-friends-empty__text">Nessun amico pet ancora</p>
-        <p class="pet-friends-empty__subtext">Inizia a connetterti con altri amanti degli animali!</p>
+    @else if (friends().length === 0) {
+      <div class="empty-state">
+        <span class="material-icons">group</span>
+        <p>{{ 'drawerPetFriends.empty' | translate }}</p>
+        <p class="subtext">{{ 'drawerPetFriends.emptySubtext' | translate }}</p>
       </div>
     }
 
     <!-- Friends List -->
-    @if (!isLoading() && !hasError() && friends().length > 0) {
-      <ul class="pet-friends-list">
+    @else {
+      <ul class="friends-list">
         @for (friend of friends(); track friend.id) {
           <li class="friend-card" (click)="viewProfile(friend)">
             <div class="friend-card__avatar">
               @if (friend.userAvatar) {
-                <img [src]="friend.userAvatar" [alt]="friend.userName" />
+                <img [src]="friend.userAvatar" [alt]="friend.userName" loading="lazy" />
               } @else {
                 <span class="friend-card__initials">{{ getInitials(friend.userName) }}</span>
               }
@@ -50,7 +48,7 @@
               <div class="friend-card__header">
                 <h3 class="friend-card__name">{{ friend.userName }}</h3>
                 @if (friend.isOnline) {
-                  <span class="friend-card__online-badge">Online</span>
+                  <span class="friend-card__online-badge">{{ 'drawerPetFriends.online' | translate }}</span>
                 } @else if (friend.lastSeen) {
                   <span class="friend-card__last-seen">{{ formatLastSeen(friend.lastSeen) }}</span>
                 }
@@ -81,18 +79,18 @@
                 @if (friend.mutualFriends && friend.mutualFriends > 0) {
                   <span class="friend-card__mutual">
                     <span class="material-icons">people</span>
-                    {{ friend.mutualFriends }} amici in comune
+                    {{ 'drawerPetFriends.mutualFriends' | translate: { count: friend.mutualFriends } }}
                   </span>
                 }
               </div>
               <div class="friend-card__actions">
-                <button class="friend-card__action friend-card__action--message" (click)="sendMessage(friend); $event.stopPropagation()" aria-label="Invia messaggio">
+                <button class="friend-card__action friend-card__action--message" (click)="sendMessage(friend); $event.stopPropagation()" [attr.aria-label]="'drawerPetFriends.sendMessageAria' | translate">
                   <span class="material-icons">chat</span>
-                  Messaggio
+                  {{ 'drawerPetFriends.message' | translate }}
                 </button>
-                <button class="friend-card__action friend-card__action--pets" (click)="viewPets(friend); $event.stopPropagation()" aria-label="Vedi pets">
+                <button class="friend-card__action friend-card__action--pets" (click)="viewPets(friend); $event.stopPropagation()" [attr.aria-label]="'drawerPetFriends.viewPetsAria' | translate">
                   <span class="material-icons">pets</span>
-                  Pets
+                  {{ 'drawerPetFriends.pets' | translate }}
                 </button>
               </div>
             </div>
@@ -102,4 +100,4 @@
     }
   </main>
 
-</div>
+</app-tab-page-shell-blue>

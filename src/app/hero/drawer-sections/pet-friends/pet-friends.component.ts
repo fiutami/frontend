@@ -1,25 +1,42 @@
 import { Component, OnInit, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { PetFriendsService, PetFriend } from '../../../core/services/pet-friends.service';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 @Component({
   selector: 'app-pet-friends',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './pet-friends.component.html',
   styleUrls: ['./pet-friends.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PetFriendsComponent implements OnInit {
-  private location = inject(Location);
-  private router = inject(Router);
-  private petFriendsService = inject(PetFriendsService);
+  private readonly location = inject(Location);
+  private readonly router = inject(Router);
+  private readonly petFriendsService = inject(PetFriendsService);
+  private readonly translate = inject(TranslateService);
+
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawerPetFriends.title');
 
   friends = signal<PetFriend[]>([]);
   isLoading = signal(true);
   hasError = signal(false);
 
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawerPetFriends.title');
+    });
+  }
 
   ngOnInit(): void {
     this.loadFriends();

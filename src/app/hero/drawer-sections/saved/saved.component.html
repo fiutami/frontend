@@ -1,20 +1,8 @@
-<div class="saved-page" [attr.data-viewport]="viewportSize()" data-testid="saved-page">
-  <!-- Header -->
-  <header class="saved-header">
-    <button
-      class="saved-header__back"
-      (click)="goBack()"
-      aria-label="Torna indietro"
-      type="button">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1 class="saved-header__title">
-      {{ title }}
-      @if (savedCount() > 0) {
-        <span class="saved-header__badge">{{ savedCount() }}</span>
-      }
-    </h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
   <!-- Tab Bar -->
   <nav class="saved-tabs" role="tablist">
@@ -27,7 +15,7 @@
         role="tab"
         type="button">
         <span class="material-icons saved-tabs__icon">{{ tab.icon }}</span>
-        <span class="saved-tabs__label">{{ tab.label }}</span>
+        <span class="saved-tabs__label">{{ tab.labelKey | translate }}</span>
       </button>
     }
   </nav>
@@ -38,7 +26,7 @@
     @if (isLoading()) {
       <div class="saved-loading">
         <div class="saved-loading__spinner"></div>
-        <p class="saved-loading__text">Caricamento preferiti...</p>
+        <p class="saved-loading__text">{{ 'drawerSaved.loading' | translate }}</p>
       </div>
     }
 
@@ -46,9 +34,9 @@
     @else if (hasError()) {
       <div class="saved-error">
         <span class="material-icons saved-error__icon">error_outline</span>
-        <p class="saved-error__text">Si è verificato un errore</p>
+        <p class="saved-error__text">{{ 'drawerSaved.error' | translate }}</p>
         <button class="saved-error__retry" (click)="retry()" type="button">
-          Riprova
+          {{ 'drawerSaved.retry' | translate }}
         </button>
       </div>
     }
@@ -57,8 +45,8 @@
     @else if (savedItems().length === 0) {
       <div class="saved-empty">
         <span class="material-icons saved-empty__icon">bookmark_border</span>
-        <p class="saved-empty__text">Nessun preferito</p>
-        <p class="saved-empty__subtext">Gli elementi salvati appariranno qui</p>
+        <p class="saved-empty__text">{{ 'drawerSaved.emptyTitle' | translate }}</p>
+        <p class="saved-empty__subtext">{{ 'drawerSaved.emptySubtitle' | translate }}</p>
       </div>
     }
 
@@ -85,14 +73,14 @@
               <h3 class="saved-item__title">{{ item.title }}</h3>
               <p class="saved-item__subtitle">{{ item.subtitle }}</p>
               <time class="saved-item__time" [attr.datetime]="item.timestamp.toISOString()">
-                Salvato {{ formatTime(item.timestamp) }}
+                {{ 'drawerSaved.saved' | translate }} {{ formatTime(item.timestamp) }}
               </time>
             </div>
             <button
               class="saved-item__remove"
               (click)="onRemoveItem($event, item)"
               type="button"
-              aria-label="Rimuovi dai preferiti">
+              [attr.aria-label]="'drawerSaved.removeAria' | translate">
               <span class="material-icons">bookmark_remove</span>
             </button>
           </li>
@@ -101,4 +89,4 @@
     }
   </main>
 
-</div>
+</app-tab-page-shell-blue>

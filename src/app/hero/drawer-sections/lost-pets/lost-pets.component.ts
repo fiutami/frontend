@@ -1,12 +1,21 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LostPetsService, LostPet } from '../../../core/services/lost-pets.service';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 @Component({
   selector: 'app-lost-pets',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './lost-pets.component.html',
   styleUrls: ['./lost-pets.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -14,6 +23,10 @@ import { LostPetsService, LostPet } from '../../../core/services/lost-pets.servi
 export class LostPetsComponent implements OnInit {
   private readonly location = inject(Location);
   private readonly lostPetsService = inject(LostPetsService);
+  private readonly translate = inject(TranslateService);
+
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawerLostPets.title');
 
   readonly lostPets = signal<LostPet[]>([]);
   readonly isLoading = signal(true);
@@ -24,6 +37,11 @@ export class LostPetsComponent implements OnInit {
   readonly sightingNotes = signal('');
   readonly isSubmitting = signal(false);
 
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawerLostPets.title');
+    });
+  }
 
   ngOnInit(): void {
     this.loadLostPets();

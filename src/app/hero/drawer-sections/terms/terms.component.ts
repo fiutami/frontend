@@ -1,13 +1,16 @@
 import { Component, inject, ChangeDetectionStrategy, signal, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CmsService } from 'src/app/core/services/cms.service';
 import { CmsSection } from 'src/app/core/models/cms.models';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 @Component({
   selector: 'app-terms',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, TabPageShellBlueComponent],
   templateUrl: './terms.component.html',
   styleUrls: ['./terms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -15,8 +18,12 @@ import { CmsSection } from 'src/app/core/models/cms.models';
 export class TermsComponent implements OnInit, AfterViewInit {
   private location = inject(Location);
   private cmsService = inject(CmsService);
+  private translate = inject(TranslateService);
 
   @ViewChildren('sectionEl') sectionElements!: QueryList<ElementRef>;
+
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawer.terms');
 
   title = 'Termini di Servizio';
   lastUpdated = 'Dicembre 2025';
@@ -99,6 +106,12 @@ export class TermsComponent implements OnInit, AfterViewInit {
   ];
 
   private readonly fallbackSections = [...this.sections];
+
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawer.terms');
+    });
+  }
 
   ngOnInit(): void {
     this.cmsService.getPage('terms').subscribe(page => {

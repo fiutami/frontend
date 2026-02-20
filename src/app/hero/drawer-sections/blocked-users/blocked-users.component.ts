@@ -1,11 +1,19 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BlockedUsersService, BlockedUser } from '../../../core/services/blocked-users.service';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 @Component({
   selector: 'app-blocked-users',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './blocked-users.component.html',
   styleUrls: ['./blocked-users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -13,6 +21,10 @@ import { BlockedUsersService, BlockedUser } from '../../../core/services/blocked
 export class BlockedUsersComponent implements OnInit {
   private readonly location = inject(Location);
   private readonly blockedUsersService = inject(BlockedUsersService);
+  private readonly translate = inject(TranslateService);
+
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawerBlocked.title');
 
   readonly blockedUsers = signal<BlockedUser[]>([]);
   readonly isLoading = signal(true);
@@ -21,6 +33,11 @@ export class BlockedUsersComponent implements OnInit {
   readonly userToUnblock = signal<BlockedUser | null>(null);
   readonly isUnblocking = signal(false);
 
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawerBlocked.title');
+    });
+  }
 
   ngOnInit(): void {
     this.loadBlockedUsers();

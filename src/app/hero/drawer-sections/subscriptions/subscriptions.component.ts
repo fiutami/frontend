@@ -1,11 +1,19 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SubscriptionsService, SubscriptionPlan, UserSubscription } from '../../../core/services/subscriptions.service';
+
+// Shell Blue (sfondo blu solido, include: Avatar, Logo, MascotPeek, BottomTabBar)
+import { TabPageShellBlueComponent } from '../../../shared/components/tab-page-shell-blue/tab-page-shell-blue.component';
 
 @Component({
   selector: 'app-subscriptions',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    TabPageShellBlueComponent,
+  ],
   templateUrl: './subscriptions.component.html',
   styleUrls: ['./subscriptions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -13,6 +21,10 @@ import { SubscriptionsService, SubscriptionPlan, UserSubscription } from '../../
 export class SubscriptionsComponent implements OnInit {
   private readonly location = inject(Location);
   private readonly subscriptionsService = inject(SubscriptionsService);
+  private readonly translate = inject(TranslateService);
+
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawerSubscriptions.title');
 
   readonly plans = signal<SubscriptionPlan[]>([]);
   readonly currentSubscription = signal<UserSubscription | null>(null);
@@ -24,6 +36,11 @@ export class SubscriptionsComponent implements OnInit {
 
   readonly isYearly = computed(() => this.billingCycle() === 'yearly');
 
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawerSubscriptions.title');
+    });
+  }
 
   ngOnInit(): void {
     this.loadData();
@@ -73,8 +90,8 @@ export class SubscriptionsComponent implements OnInit {
     return this.subscriptionsService.formatPrice(price);
   }
 
-  getPeriod(): string {
-    return this.isYearly() ? '/anno' : '/mese';
+  getPeriodKey(): string {
+    return this.isYearly() ? 'drawerSubscriptions.perYear' : 'drawerSubscriptions.perMonth';
   }
 
   getPlanGradient(tier: SubscriptionPlan['tier']): string {
@@ -108,9 +125,9 @@ export class SubscriptionsComponent implements OnInit {
     });
   }
 
-  getButtonText(plan: SubscriptionPlan): string {
-    if (this.isCurrentPlan(plan.id)) return 'Piano attuale';
-    if (plan.monthlyPrice === 0) return 'Piano attuale';
-    return 'Abbonati';
+  getButtonTextKey(plan: SubscriptionPlan): string {
+    if (this.isCurrentPlan(plan.id)) return 'drawerSubscriptions.currentPlan';
+    if (plan.monthlyPrice === 0) return 'drawerSubscriptions.currentPlan';
+    return 'drawerSubscriptions.subscribe';
   }
 }

@@ -1,27 +1,26 @@
-<div class="lost-pets-page">
-  <header class="page-header">
-    <button class="back-btn" (click)="goBack()" aria-label="Torna indietro">
-      <span class="material-icons">arrow_back</span>
-    </button>
-    <h1>Animali Smarriti</h1>
-  </header>
+<app-tab-page-shell-blue
+  [title]="pageTitle"
+  activeTabId="home"
+  [showBack]="true"
+  (backClicked)="goBack()">
 
-  <main class="page-content">
+  <!-- Content -->
+  <div class="page-content">
     @if (isLoading()) {
       <div class="loading-state">
         <div class="spinner"></div>
-        <p>Caricamento...</p>
+        <p>{{ 'drawerLostPets.loading' | translate }}</p>
       </div>
     } @else if (hasError()) {
       <div class="error-state">
         <span class="material-icons">error_outline</span>
-        <p>Errore nel caricamento</p>
-        <button class="retry-btn" (click)="loadLostPets()">Riprova</button>
+        <p>{{ 'drawerLostPets.error' | translate }}</p>
+        <button class="retry-btn" (click)="loadLostPets()">{{ 'drawerLostPets.retry' | translate }}</button>
       </div>
     } @else if (lostPets().length === 0) {
       <div class="empty-state">
         <span class="material-icons">search_off</span>
-        <p>Nessun animale segnalato</p>
+        <p>{{ 'drawerLostPets.empty' | translate }}</p>
       </div>
     } @else {
       <div class="pets-list">
@@ -46,7 +45,7 @@
                 </div>
                 <div class="detail">
                   <span class="material-icons">straighten</span>
-                  <span>{{ pet.size === 'small' ? 'Piccolo' : pet.size === 'medium' ? 'Medio' : 'Grande' }}</span>
+                  <span>{{ pet.size === 'small' ? ('drawerLostPets.sizeSmall' | translate) : pet.size === 'medium' ? ('drawerLostPets.sizeMedium' | translate) : ('drawerLostPets.sizeLarge' | translate) }}</span>
                 </div>
               </div>
               <div class="last-seen">
@@ -63,11 +62,11 @@
               <div class="pet-actions">
                 <button class="action-btn call" (click)="callOwner(pet.ownerPhone)">
                   <span class="material-icons">phone</span>
-                  Chiama
+                  {{ 'drawerLostPets.call' | translate }}
                 </button>
                 <button class="action-btn report" (click)="openSightingModal(pet)">
                   <span class="material-icons">visibility</span>
-                  Segnala avvistamento
+                  {{ 'drawerLostPets.reportSighting' | translate }}
                 </button>
               </div>
             </div>
@@ -75,13 +74,13 @@
         }
       </div>
     }
-  </main>
+  </div>
 
   @if (showSightingModal()) {
     <div class="modal-overlay" (click)="closeSightingModal()">
       <div class="modal-content" (click)="$event.stopPropagation()">
         <header class="modal-header">
-          <h2>Segnala avvistamento</h2>
+          <h2>{{ 'drawerLostPets.modalTitle' | translate }}</h2>
           <button class="close-btn" (click)="closeSightingModal()">
             <span class="material-icons">close</span>
           </button>
@@ -93,29 +92,29 @@
               <span>{{ pet.name }}</span>
             </div>
             <div class="form-group">
-              <label for="location">Dove l'hai visto?</label>
+              <label for="location">{{ 'drawerLostPets.locationLabel' | translate }}</label>
               <input
                 id="location"
                 type="text"
                 [ngModel]="sightingLocation()"
                 (ngModelChange)="sightingLocation.set($event)"
-                placeholder="es. Via Roma 10, Milano"
+                [placeholder]="'drawerLostPets.locationPlaceholder' | translate"
                 required
               >
             </div>
             <div class="form-group">
-              <label for="notes">Note aggiuntive (opzionale)</label>
+              <label for="notes">{{ 'drawerLostPets.notesLabel' | translate }}</label>
               <textarea
                 id="notes"
                 [ngModel]="sightingNotes()"
                 (ngModelChange)="sightingNotes.set($event)"
-                placeholder="Descrivi le condizioni, la direzione, ecc."
+                [placeholder]="'drawerLostPets.notesPlaceholder' | translate"
                 rows="3"
               ></textarea>
             </div>
           </div>
           <footer class="modal-footer">
-            <button class="cancel-btn" (click)="closeSightingModal()">Annulla</button>
+            <button class="cancel-btn" (click)="closeSightingModal()">{{ 'drawerLostPets.cancel' | translate }}</button>
             <button
               class="submit-btn"
               (click)="submitSighting()"
@@ -124,7 +123,7 @@
               @if (isSubmitting()) {
                 <span class="btn-spinner"></span>
               } @else {
-                Invia segnalazione
+                {{ 'drawerLostPets.submit' | translate }}
               }
             </button>
           </footer>
@@ -133,4 +132,4 @@
     </div>
   }
 
-</div>
+</app-tab-page-shell-blue>
