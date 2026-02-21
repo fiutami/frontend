@@ -1474,7 +1474,8 @@
     "thisMonth": "Ce Mois",
     "searchHistory": "Historique de Recherche",
     "quizFiutami": "Quiz Fiutami",
-    "comingSoon": "Bientôt disponible"
+    "comingSoon": "Bientôt disponible",
+    "transitionText": "Nous préparons un espace sur mesure pour toi et ton animal. Bientôt tu pourras suivre émotions, activités et connexions."
   },
   "drawerAdopt": {
     "title": "Adoptions",
@@ -1576,6 +1577,14 @@
     "error": "Erreur lors du chargement",
     "retry": "Réessayer",
     "empty": "Aucun animal perdu signalé",
+    "introText": "Ici vous pouvez signaler ou rechercher des animaux perdus dans votre zone. Ensemble, ramenons-les à la maison.",
+    "searchPlaceholder": "Rechercher par nom, race ou lieu...",
+    "sectionNotAlone": "Vous n'êtes pas seul",
+    "contactOrgs": "Contacter les organismes",
+    "createAd": "Créer une annonce",
+    "sectionReports": "Signalements",
+    "filterZone": "Dans votre zone",
+    "filterAll": "Tous les signalements",
     "sizeSmall": "Petit",
     "sizeMedium": "Moyen",
     "sizeLarge": "Grand",
@@ -1587,7 +1596,24 @@
     "notesLabel": "Notes supplémentaires",
     "notesPlaceholder": "Décrivez ce que vous avez vu...",
     "cancel": "Annuler",
-    "submit": "Envoyer le signalement"
+    "submit": "Envoyer le signalement",
+    "orgOverlayTitle": "Organismes et refuges",
+    "emailOrg": "Envoyer un email",
+    "createAdTitle": "Créer une annonce",
+    "createAdDescription": "Saisissez les informations principales de l'animal perdu ou trouvé. L'annonce sera visible par tous les utilisateurs de la zone.",
+    "createAdSubmit": "Publier l'annonce",
+    "adTypeLost": "Perdu",
+    "adTypeFound": "Trouvé",
+    "adPetName": "Nom de l'animal",
+    "adPetNamePlaceholder": "Ex. Luna, Rocky...",
+    "adBreed": "Race",
+    "adBreedPlaceholder": "Ex. Golden Retriever, Européen...",
+    "adLocation": "Dernière observation",
+    "adLocationPlaceholder": "Ex. Jardin du Luxembourg, Paris...",
+    "adDescriptionLabel": "Description",
+    "adDescriptionPlaceholder": "Décrivez l'animal, signes distinctifs, collier...",
+    "adPhone": "Téléphone de contact",
+    "adPhonePlaceholder": "Ex. +33 6 12 34 56 78"
   },
   "drawerPetFriends": {
     "title": "Amis Animaux",
@@ -1595,7 +1621,7 @@
     "error": "Erreur lors du chargement",
     "retry": "Réessayer",
     "empty": "Pas encore d'amis",
-    "emptySubtext": "Trouvez d'autres animaux et nouez de nouvelles amitiés !",
+    "introText": "La communauté grandit aussi grâce à toi. Voici ta meute FiutaMi",
     "online": "En ligne",
     "mutualFriends": "{{count}} amis en commun",
     "sendMessageAria": "Envoyer un message",
@@ -1633,10 +1659,16 @@
     "groupNamePlaceholder": "Nom du groupe",
     "cancel": "Annuler",
     "create": "Créer",
-    "emptyCategory": "Aucun élément dans cette catégorie"
+    "emptyCategory": "Aucun élément dans cette catégorie",
+    "introText": "Garde près de toi ce qui compte. Voici tes favoris dans FiutaMi."
   },
   "drawerSubscriptions": {
     "title": "Abonnements",
+    "introText": "Vérifie ton abonnement et découvre les avantages supplémentaires de FiutaMi.",
+    "yourPlan": "Ton plan",
+    "availablePlans": "Plans disponibles",
+    "currentPlanLabel": "Plan actif",
+    "freePlanName": "FiutaMi Base",
     "loading": "Chargement des plans...",
     "error": "Erreur lors du chargement des plans",
     "retry": "Réessayer",
@@ -1652,5 +1684,32 @@
   },
   "drawerTerms": {
     "introText": "La transparence avant tout. Ici, tu trouveras les règles qui font fonctionner FiutaMi."
+  },
+  "drawerPrivacy": {
+    "introText": "Tes données, tes règles. Découvre comment nous protégeons ta vie privée sur FiutaMi."
+  },
+  "addPet": {
+    "title": "Ajouter des animaux",
+    "intro": "Ici tu peux ajouter un autre animal de ta famille pour mieux le surveiller. N'oublie pas : tu peux avoir jusqu'a 2 animaux actifs. Pour en ajouter d'autres, tu devras activer la version complete de FiutaMi.",
+    "nameLabel": "NOM",
+    "namePlaceholder": "Nom de l'animal",
+    "speciesLabel": "ESPECE",
+    "speciesPlaceholder": "Selectionner une espece",
+    "breedLabel": "RACE",
+    "breedPlaceholder": "Selectionner une race",
+    "selectSpeciesFirst": "Selectionne d'abord une espece",
+    "loadingBreeds": "Chargement des races...",
+    "sexLabel": "SEXE",
+    "male": "Male",
+    "female": "Femelle",
+    "birthDateLabel": "DATE DE NAISSANCE",
+    "weightLabel": "POIDS",
+    "bioLabel": "DESCRIPTION",
+    "bioPlaceholder": "Raconte quelque chose sur ton animal...",
+    "saveButton": "Ajouter l'animal",
+    "saving": "Sauvegarde...",
+    "errorNameRequired": "Le nom de l'animal est obligatoire",
+    "errorSpeciesRequired": "Selectionne une espece",
+    "errorGeneric": "Erreur lors de la creation de l'animal. Reessaie."
   }
 }

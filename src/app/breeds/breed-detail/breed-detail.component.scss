@@ -1,10 +1,11 @@
 @import 'src/styles/tokens-figma';
 
 .breed-detail {
-  min-height: 100dvh;
+  height: 100dvh;
   background: $color-background-primary;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   // Loading state
   &--loading {
@@ -37,12 +38,13 @@
     }
   }
 
-  // Header
+  // Header -- stays fixed at top, does not scroll
   &__header {
     position: relative;
     background: linear-gradient(135deg, #fef3d8 0%, #fde5a7 100%);
     padding-bottom: $spacing-lg;
     flex-shrink: 0;
+    z-index: 2;
   }
 
   &__back {
@@ -136,7 +138,7 @@
     color: $color-text-secondary;
   }
 
-  // Sticky tabs navigation
+  // Sticky tabs navigation -- stays fixed below header
   &__tabs {
     display: flex;
     overflow-x: auto;
@@ -153,6 +155,14 @@
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  // Scrollable wrapper for tabs + content below fixed header
+  &__scrollable {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
   }
 
   &__tab {

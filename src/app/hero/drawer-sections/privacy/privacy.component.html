@@ -3,16 +3,17 @@
   [showBack]="true"
   (backClicked)="goBack()">
 
-  <!-- Quick Navigation -->
+  <!-- Quick Navigation — Numbered Circles -->
   <nav class="privacy-nav" aria-label="Navigazione sezioni">
     <div class="privacy-nav__scroll">
-      @for (section of sections; track section.id) {
+      @for (section of sections; track section.id; let i = $index) {
         <button
-          class="privacy-nav__item"
-          [class.privacy-nav__item--active]="activeSection() === section.id"
+          class="privacy-nav__circle"
+          [class.privacy-nav__circle--active]="activeSection() === section.id"
           (click)="scrollToSection(section.id)"
-          type="button">
-          {{ section.title.split('.')[0] }}
+          type="button"
+          [attr.aria-label]="section.title">
+          {{ i + 1 }}
         </button>
       }
     </div>
@@ -24,9 +25,9 @@
       <!-- Title Section -->
       <div class="privacy-intro">
         <span class="material-icons privacy-intro__icon">security</span>
-        <h2 class="privacy-intro__title">{{ title }}</h2>
+        <h2 class="privacy-intro__title">{{ 'drawer.privacy' | translate }}</h2>
         <p class="privacy-intro__subtitle">
-          {{ 'drawer.privacy' | translate }}
+          {{ 'drawerPrivacy.introText' | translate }}
         </p>
       </div>
 
@@ -51,7 +52,7 @@
       <!-- Last Updated -->
       <div class="privacy-footer">
         <span class="material-icons">update</span>
-        <span>{{ lastUpdated }}</span>
+        <span>Ultimo aggiornamento: {{ lastUpdated }}</span>
       </div>
     </div>
   </main>

@@ -1520,7 +1520,8 @@
     "thisMonth": "This Month",
     "searchHistory": "Search History",
     "quizFiutami": "Quiz Fiutami",
-    "comingSoon": "Coming Soon"
+    "comingSoon": "Coming Soon",
+    "transitionText": "We're building a space tailored just for you and your pet. Soon you'll be able to track emotions, activities and connections."
   },
   "drawerAdopt": {
     "title": "Adoptions",
@@ -1622,6 +1623,14 @@
     "error": "Error loading",
     "retry": "Retry",
     "empty": "No lost pets reported",
+    "introText": "Here you can report or search for lost pets in your area. Together we can bring them home.",
+    "searchPlaceholder": "Search by name, breed or location...",
+    "sectionNotAlone": "You're not alone",
+    "contactOrgs": "Contact organizations",
+    "createAd": "Create listing",
+    "sectionReports": "Reports",
+    "filterZone": "In your area",
+    "filterAll": "All reports",
     "sizeSmall": "Small",
     "sizeMedium": "Medium",
     "sizeLarge": "Large",
@@ -1633,7 +1642,24 @@
     "notesLabel": "Additional notes",
     "notesPlaceholder": "Describe what you saw...",
     "cancel": "Cancel",
-    "submit": "Submit report"
+    "submit": "Submit report",
+    "orgOverlayTitle": "Organizations & shelters",
+    "emailOrg": "Send email",
+    "createAdTitle": "Create listing",
+    "createAdDescription": "Enter the main details of the lost or found pet. The listing will be visible to all users in the area.",
+    "createAdSubmit": "Publish listing",
+    "adTypeLost": "Lost",
+    "adTypeFound": "Found",
+    "adPetName": "Pet name",
+    "adPetNamePlaceholder": "E.g. Luna, Rocky...",
+    "adBreed": "Breed",
+    "adBreedPlaceholder": "E.g. Golden Retriever, European...",
+    "adLocation": "Last seen location",
+    "adLocationPlaceholder": "E.g. Central Park, New York...",
+    "adDescriptionLabel": "Description",
+    "adDescriptionPlaceholder": "Describe the pet, distinctive marks, collar...",
+    "adPhone": "Contact phone",
+    "adPhonePlaceholder": "E.g. +1 555 1234567"
   },
   "drawerPetFriends": {
     "title": "Pet Friends",
@@ -1641,7 +1667,7 @@
     "error": "Error loading",
     "retry": "Retry",
     "empty": "No friends yet",
-    "emptySubtext": "Find other pets and make new friends!",
+    "introText": "The community grows thanks to you too. Here is your FiutaMi pack",
     "online": "Online",
     "mutualFriends": "{{count}} mutual friends",
     "sendMessageAria": "Send message",
@@ -1679,10 +1705,16 @@
     "groupNamePlaceholder": "Group name",
     "cancel": "Cancel",
     "create": "Create",
-    "emptyCategory": "No items in this category"
+    "emptyCategory": "No items in this category",
+    "introText": "Keep what matters close. Here are your favorites in FiutaMi."
   },
   "drawerSubscriptions": {
     "title": "Subscriptions",
+    "introText": "Check your subscription and discover the extra benefits of FiutaMi.",
+    "yourPlan": "Your plan",
+    "availablePlans": "Available plans",
+    "currentPlanLabel": "Active plan",
+    "freePlanName": "FiutaMi Base",
     "loading": "Loading plans...",
     "error": "Error loading plans",
     "retry": "Retry",
@@ -1698,5 +1730,32 @@
   },
   "drawerTerms": {
     "introText": "Transparency first. Here you'll find the rules that make FiutaMi work."
+  },
+  "drawerPrivacy": {
+    "introText": "Your data, your rules. Learn how we protect your privacy on FiutaMi."
+  },
+  "addPet": {
+    "title": "Add Pets",
+    "intro": "Here you can add another pet from your family to monitor it better. Remember: you can have up to 2 active pets. To add more, you will need to activate the full version of FiutaMi.",
+    "nameLabel": "NAME",
+    "namePlaceholder": "Pet name",
+    "speciesLabel": "SPECIES",
+    "speciesPlaceholder": "Select species",
+    "breedLabel": "BREED",
+    "breedPlaceholder": "Select breed",
+    "selectSpeciesFirst": "First select a species",
+    "loadingBreeds": "Loading breeds...",
+    "sexLabel": "SEX",
+    "male": "Male",
+    "female": "Female",
+    "birthDateLabel": "DATE OF BIRTH",
+    "weightLabel": "WEIGHT",
+    "bioLabel": "DESCRIPTION",
+    "bioPlaceholder": "Tell us something about your pet...",
+    "saveButton": "Add Pet",
+    "saving": "Saving...",
+    "errorNameRequired": "Pet name is required",
+    "errorSpeciesRequired": "Please select a species",
+    "errorGeneric": "Error creating pet. Please try again."
   }
 }

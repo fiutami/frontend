@@ -1454,7 +1454,8 @@
     "thisMonth": "Este Mes",
     "searchHistory": "Historial de Búsqueda",
     "quizFiutami": "Quiz Fiutami",
-    "comingSoon": "Próximamente"
+    "comingSoon": "Próximamente",
+    "transitionText": "Estamos preparando un espacio hecho a medida para ti y tu mascota. Pronto podrás seguir emociones, actividades y conexiones."
   },
   "drawerAdopt": {
     "title": "Adopciones",
@@ -1556,6 +1557,14 @@
     "error": "Error al cargar",
     "retry": "Reintentar",
     "empty": "No hay mascotas perdidas reportadas",
+    "introText": "Aqui puedes reportar o buscar mascotas perdidas en tu zona. Juntos podemos llevarlas a casa.",
+    "searchPlaceholder": "Buscar por nombre, raza o lugar...",
+    "sectionNotAlone": "No estas solo",
+    "contactOrgs": "Contactar entidades",
+    "createAd": "Crear anuncio",
+    "sectionReports": "Reportes",
+    "filterZone": "En tu zona",
+    "filterAll": "Todos los reportes",
     "sizeSmall": "Pequeño",
     "sizeMedium": "Mediano",
     "sizeLarge": "Grande",
@@ -1567,7 +1576,24 @@
     "notesLabel": "Notas adicionales",
     "notesPlaceholder": "Describe lo que viste...",
     "cancel": "Cancelar",
-    "submit": "Enviar reporte"
+    "submit": "Enviar reporte",
+    "orgOverlayTitle": "Entidades y refugios",
+    "emailOrg": "Enviar email",
+    "createAdTitle": "Crear anuncio",
+    "createAdDescription": "Introduce los datos principales de la mascota perdida o encontrada. El anuncio sera visible para todos los usuarios de la zona.",
+    "createAdSubmit": "Publicar anuncio",
+    "adTypeLost": "Perdida",
+    "adTypeFound": "Encontrada",
+    "adPetName": "Nombre de la mascota",
+    "adPetNamePlaceholder": "Ej. Luna, Rocky...",
+    "adBreed": "Raza",
+    "adBreedPlaceholder": "Ej. Golden Retriever, Europeo...",
+    "adLocation": "Ultimo avistamiento",
+    "adLocationPlaceholder": "Ej. Parque del Retiro, Madrid...",
+    "adDescriptionLabel": "Descripcion",
+    "adDescriptionPlaceholder": "Describe la mascota, marcas distintivas, collar...",
+    "adPhone": "Telefono de contacto",
+    "adPhonePlaceholder": "Ej. +34 666 123456"
   },
   "drawerPetFriends": {
     "title": "Amigos Mascotas",
@@ -1575,7 +1601,7 @@
     "error": "Error al cargar",
     "retry": "Reintentar",
     "empty": "Sin amigos aún",
-    "emptySubtext": "¡Encuentra otras mascotas y haz nuevas amistades!",
+    "introText": "La comunidad crece también gracias a ti. Aquí está tu manada FiutaMi",
     "online": "En línea",
     "mutualFriends": "{{count}} amigos en común",
     "sendMessageAria": "Enviar mensaje",
@@ -1613,10 +1639,16 @@
     "groupNamePlaceholder": "Nombre del grupo",
     "cancel": "Cancelar",
     "create": "Crear",
-    "emptyCategory": "Sin elementos en esta categoría"
+    "emptyCategory": "Sin elementos en esta categoría",
+    "introText": "Ten cerca lo que importa. Aquí están tus favoritos en FiutaMi."
   },
   "drawerSubscriptions": {
     "title": "Suscripciones",
+    "introText": "Controla tu suscripción y descubre los beneficios extra de FiutaMi.",
+    "yourPlan": "Tu plan",
+    "availablePlans": "Planes disponibles",
+    "currentPlanLabel": "Plan activo",
+    "freePlanName": "FiutaMi Base",
     "loading": "Cargando planes...",
     "error": "Error al cargar los planes",
     "retry": "Reintentar",
@@ -1632,5 +1664,32 @@
   },
   "drawerTerms": {
     "introText": "Transparencia ante todo. Aquí encontrarás las reglas que hacen funcionar FiutaMi."
+  },
+  "drawerPrivacy": {
+    "introText": "Tus datos, tus reglas. Descubre cómo protegemos tu privacidad en FiutaMi."
+  },
+  "addPet": {
+    "title": "Agregar Mascotas",
+    "intro": "Aqui puedes agregar otra mascota de tu familia para monitorearla mejor. Recuerda: puedes tener hasta 2 mascotas activas. Para agregar mas, deberas activar la version completa de FiutaMi.",
+    "nameLabel": "NOMBRE",
+    "namePlaceholder": "Nombre de la mascota",
+    "speciesLabel": "ESPECIE",
+    "speciesPlaceholder": "Seleccionar especie",
+    "breedLabel": "RAZA",
+    "breedPlaceholder": "Seleccionar raza",
+    "selectSpeciesFirst": "Primero selecciona una especie",
+    "loadingBreeds": "Cargando razas...",
+    "sexLabel": "SEXO",
+    "male": "Macho",
+    "female": "Hembra",
+    "birthDateLabel": "FECHA DE NACIMIENTO",
+    "weightLabel": "PESO",
+    "bioLabel": "DESCRIPCION",
+    "bioPlaceholder": "Cuenta algo sobre tu mascota...",
+    "saveButton": "Agregar Mascota",
+    "saving": "Guardando...",
+    "errorNameRequired": "El nombre de la mascota es obligatorio",
+    "errorSpeciesRequired": "Selecciona una especie",
+    "errorGeneric": "Error al crear la mascota. Intentalo de nuevo."
   }
 }

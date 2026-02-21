@@ -77,7 +77,7 @@ export class BreedsListComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/home']);
+    window.history.back();
   }
 
   onOpenDrawer(): void {

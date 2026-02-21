@@ -280,7 +280,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
     const count = this.petService.petCount();
 
     if (count < 2) {
-      this.router.navigate(['/home/pet-register']);
+      this.router.navigate(['/home/pet-profile/add']);
       this.close();
     } else {
       this.close();

@@ -1,0 +1,172 @@
+<app-tab-page-shell-blue
+  [title]="'addPet.title' | translate"
+  activeTabId="pet-profile"
+  [showBack]="true"
+  (backClicked)="goBack()">
+
+  <!-- Main scrollable content -->
+  <div class="add-pet">
+
+    @if (isLoading()) {
+      <div class="add-pet__loading">
+        <span class="add-pet__spinner"></span>
+        <p>{{ 'common.loading' | translate }}</p>
+      </div>
+    }
+
+    @if (errorMessage() && !isLoading()) {
+      <div class="add-pet__error">
+        <p>{{ errorMessage()! | translate }}</p>
+      </div>
+    }
+
+    @if (!isLoading()) {
+    <!-- Intro Section -->
+    <section class="add-pet__intro" aria-label="Introduzione">
+      <p class="add-pet__intro-text">{{ 'addPet.intro' | translate }}</p>
+    </section>
+
+    <!-- Section: Form Fields -->
+    <section class="add-pet__form" aria-label="Dati del pet">
+
+      <!-- Nome -->
+      <div class="add-pet__field">
+        <label class="add-pet__label" for="pet-name">{{ 'addPet.nameLabel' | translate }}</label>
+        <input
+          id="pet-name"
+          type="text"
+          class="add-pet__input"
+          [ngModel]="form().name"
+          (ngModelChange)="updateField('name', $event)"
+          [placeholder]="'addPet.namePlaceholder' | translate"
+          autocomplete="off"
+          maxlength="100"
+        />
+      </div>
+
+      <!-- Specie -->
+      <div class="add-pet__field">
+        <label class="add-pet__label" for="pet-species">{{ 'addPet.speciesLabel' | translate }}</label>
+        <select
+          id="pet-species"
+          class="add-pet__input add-pet__select"
+          [ngModel]="form().speciesId"
+          (ngModelChange)="onSpeciesChange($event)"
+        >
+          <option value="">{{ 'addPet.speciesPlaceholder' | translate }}</option>
+          @for (species of speciesList(); track species.id) {
+            <option [value]="species.id">{{ species.name }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Razza -->
+      <div class="add-pet__field">
+        <label class="add-pet__label" for="pet-breed">{{ 'addPet.breedLabel' | translate }}</label>
+        <select
+          id="pet-breed"
+          class="add-pet__input add-pet__select"
+          [ngModel]="form().breedId"
+          (ngModelChange)="updateField('breedId', $event)"
+          [disabled]="!form().speciesId || isLoadingBreeds()"
+        >
+          <option [ngValue]="null">
+            @if (isLoadingBreeds()) {
+              {{ 'addPet.loadingBreeds' | translate }}
+            } @else if (!form().speciesId) {
+              {{ 'addPet.selectSpeciesFirst' | translate }}
+            } @else {
+              {{ 'addPet.breedPlaceholder' | translate }}
+            }
+          </option>
+          @for (breed of breedsList(); track breed.id) {
+            <option [value]="breed.id">{{ breed.name }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Sesso -->
+      <div class="add-pet__field">
+        <label class="add-pet__label" for="pet-sex">{{ 'addPet.sexLabel' | translate }}</label>
+        <select
+          id="pet-sex"
+          class="add-pet__input add-pet__select"
+          [ngModel]="form().sex"
+          (ngModelChange)="updateField('sex', $event)"
+        >
+          @for (option of sexOptions; track option.value) {
+            <option [value]="option.value">{{ option.labelKey | translate }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Data di nascita -->
+      <div class="add-pet__field">
+        <label class="add-pet__label" for="pet-birthdate">{{ 'addPet.birthDateLabel' | translate }}</label>
+        <input
+          id="pet-birthdate"
+          type="date"
+          class="add-pet__input"
+          [ngModel]="form().birthDate"
+          (ngModelChange)="updateField('birthDate', $event)"
+        />
+      </div>
+
+      <!-- Peso -->
+      <div class="add-pet__field">
+        <label class="add-pet__label" for="pet-weight">{{ 'addPet.weightLabel' | translate }}</label>
+        <div class="add-pet__input-group">
+          <input
+            id="pet-weight"
+            type="number"
+            class="add-pet__input add-pet__input--weight"
+            [ngModel]="form().weight"
+            (ngModelChange)="updateField('weight', $event)"
+            placeholder="0"
+            min="0"
+            max="200"
+            step="0.1"
+          />
+          <span class="add-pet__input-suffix">kg</span>
+        </div>
+      </div>
+
+      <!-- Bio / Descrizione -->
+      <div class="add-pet__field">
+        <label class="add-pet__label" for="pet-bio">{{ 'addPet.bioLabel' | translate }}</label>
+        <textarea
+          id="pet-bio"
+          class="add-pet__input add-pet__textarea"
+          [ngModel]="form().bio"
+          (ngModelChange)="updateField('bio', $event)"
+          [placeholder]="'addPet.bioPlaceholder' | translate"
+          rows="4"
+          maxlength="2000"
+        ></textarea>
+        <span class="add-pet__char-count">
+          {{ form().bio.length }} / 2000
+        </span>
+      </div>
+    </section>
+
+    <!-- Save Button -->
+    <div class="add-pet__actions">
+      <button
+        class="add-pet__save-btn"
+        (click)="onSave()"
+        [disabled]="isSaving()"
+        type="button"
+      >
+        @if (isSaving()) {
+          <span class="add-pet__spinner"></span>
+          {{ 'addPet.saving' | translate }}
+        } @else {
+          {{ 'addPet.saveButton' | translate }}
+        }
+      </button>
+    </div>
+    } <!-- end @if (!isLoading()) -->
+
+  </div>
+
+</app-tab-page-shell-blue>

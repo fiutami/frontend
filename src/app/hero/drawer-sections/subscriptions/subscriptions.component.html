@@ -16,6 +16,40 @@
         <button class="retry-btn" (click)="loadData()">{{ 'drawerSubscriptions.retry' | translate }}</button>
       </div>
     } @else {
+      <!-- Intro text -->
+      <p class="intro-text">{{ 'drawerSubscriptions.introText' | translate }}</p>
+
+      <!-- Section: Il tuo piano -->
+      <div class="section-title">
+        <h3>{{ 'drawerSubscriptions.yourPlan' | translate }}</h3>
+        <div class="section-title__line"></div>
+      </div>
+
+      <!-- Current plan card -->
+      <div class="current-plan-card">
+        <div class="current-plan-card__icon">
+          <span class="material-icons">card_membership</span>
+        </div>
+        <div class="current-plan-card__info">
+          <span class="current-plan-card__label">{{ 'drawerSubscriptions.currentPlanLabel' | translate }}</span>
+          <span class="current-plan-card__name">{{ currentPlanDisplayName() }}</span>
+        </div>
+        @if (currentPlanObj(); as plan) {
+          <div class="current-plan-card__price">
+            <span>{{ getPrice(plan) }}</span>
+            @if (plan.monthlyPrice > 0) {
+              <small>{{ getPeriodKey() | translate }}</small>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Section: Piani disponibili -->
+      <div class="section-title">
+        <h3>{{ 'drawerSubscriptions.availablePlans' | translate }}</h3>
+        <div class="section-title__line"></div>
+      </div>
+
       <div class="billing-toggle">
         <span [class.active]="!isYearly()">{{ 'drawerSubscriptions.monthly' | translate }}</span>
         <button class="toggle-switch" (click)="toggleBillingCycle()" [class.yearly]="isYearly()">

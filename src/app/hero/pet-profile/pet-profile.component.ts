@@ -328,7 +328,7 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
       this.showPaywall.set(true);
       return;
     }
-    this.router.navigate(['/home/pet-register']);
+    this.router.navigate(['/home/pet-profile/add']);
   }
 
   closePaywall(): void {

@@ -84,9 +84,19 @@
 
 // ==========================================
 // STICKY AREA OVERRIDE (overlap blue header)
+// The hero image + breed identity stay fixed in the sticky area
+// while breed-nav buttons in the main content scroll freely
 // ==========================================
 :host ::ng-deep .shell-blue-sticky {
   margin-top: -48px;
+  flex-shrink: 0;
+}
+
+// Ensure the main content area scrolls smoothly
+:host ::ng-deep .shell-content {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 // ==========================================

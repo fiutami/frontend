@@ -36,6 +36,24 @@ export class SubscriptionsComponent implements OnInit {
 
   readonly isYearly = computed(() => this.billingCycle() === 'yearly');
 
+  /** Computed: current plan object from plans list */
+  readonly currentPlanObj = computed(() => {
+    const sub = this.currentSubscription();
+    const allPlans = this.plans();
+    if (!sub || !allPlans.length) return null;
+    return allPlans.find(p => p.id === sub.planId) ?? null;
+  });
+
+  /** Computed: display name for the current plan (e.g. "FiutaMi Base" for free tier) */
+  readonly currentPlanDisplayName = computed(() => {
+    const plan = this.currentPlanObj();
+    if (!plan) return '';
+    if (plan.tier === 'free') {
+      return this.translate.instant('drawerSubscriptions.freePlanName');
+    }
+    return plan.name;
+  });
+
   constructor() {
     this.translate.onLangChange.subscribe(() => {
       this.pageTitle = this.translate.instant('drawerSubscriptions.title');

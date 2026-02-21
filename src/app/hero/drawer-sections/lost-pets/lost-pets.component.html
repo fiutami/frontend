@@ -3,122 +3,317 @@
   [showBack]="true"
   (backClicked)="goBack()">
 
-  <!-- Content -->
-  <div class="page-content">
+  <main class="page-content">
+    <!-- Loading State -->
     @if (isLoading()) {
       <div class="loading-state">
         <div class="spinner"></div>
         <p>{{ 'drawerLostPets.loading' | translate }}</p>
       </div>
-    } @else if (hasError()) {
+    }
+
+    <!-- Error State -->
+    @else if (hasError()) {
       <div class="error-state">
         <span class="material-icons">error_outline</span>
         <p>{{ 'drawerLostPets.error' | translate }}</p>
         <button class="retry-btn" (click)="loadLostPets()">{{ 'drawerLostPets.retry' | translate }}</button>
       </div>
-    } @else if (lostPets().length === 0) {
-      <div class="empty-state">
-        <span class="material-icons">search_off</span>
-        <p>{{ 'drawerLostPets.empty' | translate }}</p>
+    }
+
+    @else {
+      <!-- 1. Intro Text -->
+      <p class="lp-intro">{{ 'drawerLostPets.introText' | translate }}</p>
+
+      <!-- 2. Search Bar -->
+      <div class="lp-search">
+        <span class="material-icons lp-search__icon">search</span>
+        <input
+          type="text"
+          class="lp-search__input"
+          [placeholder]="'drawerLostPets.searchPlaceholder' | translate"
+          [value]="searchQuery()"
+          (input)="searchQuery.set($any($event.target).value)" />
+        @if (searchQuery()) {
+          <button class="lp-search__clear" (click)="searchQuery.set('')" [attr.aria-label]="'common.close' | translate">
+            <span class="material-icons">close</span>
+          </button>
+        }
       </div>
-    } @else {
-      <div class="pets-list">
-        @for (pet of lostPets(); track pet.id) {
-          <article class="pet-card" [class.searching]="pet.status === 'searching'">
-            <div class="pet-image">
-              <img [src]="pet.imageUrl" [alt]="pet.name" loading="lazy">
-              <span class="status-badge" [class]="pet.status">
-                {{ getStatusLabel(pet.status) }}
-              </span>
-            </div>
-            <div class="pet-info">
-              <div class="pet-header">
-                <h3>{{ pet.name }}</h3>
-                <span class="species-icon material-icons">{{ getSpeciesIcon(pet.species) }}</span>
+
+      <!-- 3. Section Title: Non sei solo -->
+      <div class="lp-section-title">
+        <h3>{{ 'drawerLostPets.sectionNotAlone' | translate }}</h3>
+        <div class="lp-section-title__line"></div>
+      </div>
+
+      <!-- 4. Two Yellow Action Buttons -->
+      <div class="lp-action-buttons">
+        <button class="lp-action-btn" (click)="openOrgOverlay()">
+          <span class="material-icons">business</span>
+          {{ 'drawerLostPets.contactOrgs' | translate }}
+        </button>
+        <button class="lp-action-btn" (click)="openCreateAdOverlay()">
+          <span class="material-icons">add_circle</span>
+          {{ 'drawerLostPets.createAd' | translate }}
+        </button>
+      </div>
+
+      <!-- 5. Section Title: Segnalazioni -->
+      <div class="lp-section-title">
+        <h3>{{ 'drawerLostPets.sectionReports' | translate }}</h3>
+        <div class="lp-section-title__line"></div>
+      </div>
+
+      <!-- 6. Lost Pet Cards -->
+      @if (filteredPets().length > 0) {
+        <div class="lp-cards">
+          @for (pet of filteredPets(); track pet.id) {
+            <article class="lp-card" [class.lp-card--searching]="pet.status === 'searching'">
+              <div class="lp-card__image">
+                <img [src]="pet.imageUrl" [alt]="pet.name" loading="lazy">
+                <span class="lp-card__badge" [ngClass]="'lp-card__badge--' + pet.status">
+                  {{ getStatusLabel(pet.status) }}
+                </span>
               </div>
-              <p class="pet-breed">{{ pet.breed || pet.species }}</p>
-              <div class="pet-details">
-                <div class="detail">
-                  <span class="material-icons">palette</span>
-                  <span>{{ pet.color }}</span>
+              <div class="lp-card__body">
+                <div class="lp-card__header">
+                  <h3 class="lp-card__name">{{ pet.name }}</h3>
+                  <span class="material-icons lp-card__species">{{ getSpeciesIcon(pet.species) }}</span>
                 </div>
-                <div class="detail">
-                  <span class="material-icons">straighten</span>
-                  <span>{{ pet.size === 'small' ? ('drawerLostPets.sizeSmall' | translate) : pet.size === 'medium' ? ('drawerLostPets.sizeMedium' | translate) : ('drawerLostPets.sizeLarge' | translate) }}</span>
+                <p class="lp-card__breed">{{ pet.breed || pet.species }}</p>
+                <div class="lp-card__location">
+                  <span class="material-icons">location_on</span>
+                  <div class="lp-card__location-info">
+                    <span class="lp-card__location-text">{{ pet.lastSeenLocation }}</span>
+                    <span class="lp-card__location-time">{{ formatLastSeen(pet.lastSeenDate) }}</span>
+                  </div>
+                </div>
+                <p class="lp-card__description">{{ pet.description }}</p>
+                <div class="lp-card__actions">
+                  <button class="lp-card__action lp-card__action--call" (click)="callOwner(pet.ownerPhone)">
+                    <span class="material-icons">phone</span>
+                    {{ 'drawerLostPets.call' | translate }}
+                  </button>
+                  <button class="lp-card__action lp-card__action--report" (click)="openSightingModal(pet)">
+                    <span class="material-icons">visibility</span>
+                    {{ 'drawerLostPets.reportSighting' | translate }}
+                  </button>
                 </div>
               </div>
-              <div class="last-seen">
-                <span class="material-icons">location_on</span>
-                <div class="location-info">
-                  <span class="location">{{ pet.lastSeenLocation }}</span>
-                  <span class="time">{{ formatLastSeen(pet.lastSeenDate) }}</span>
-                </div>
-              </div>
-              <p class="pet-description">{{ pet.description }}</p>
-              <div class="pet-contact">
-                <span class="owner">{{ pet.ownerName }}</span>
-              </div>
-              <div class="pet-actions">
-                <button class="action-btn call" (click)="callOwner(pet.ownerPhone)">
-                  <span class="material-icons">phone</span>
-                  {{ 'drawerLostPets.call' | translate }}
-                </button>
-                <button class="action-btn report" (click)="openSightingModal(pet)">
-                  <span class="material-icons">visibility</span>
-                  {{ 'drawerLostPets.reportSighting' | translate }}
-                </button>
-              </div>
-            </div>
-          </article>
+            </article>
+          }
+        </div>
+      } @else {
+        <div class="empty-state">
+          <span class="material-icons">search_off</span>
+          <p>{{ 'drawerLostPets.empty' | translate }}</p>
+        </div>
+      }
+
+      <!-- 7. Filter Dropdown Button -->
+      <div class="lp-filter">
+        <button class="lp-filter__btn" (click)="toggleFilterDropdown()">
+          <span class="material-icons">filter_list</span>
+          {{ activeFilter() === 'zone' ? ('drawerLostPets.filterZone' | translate) : ('drawerLostPets.filterAll' | translate) }}
+          <span class="material-icons lp-filter__chevron" [class.lp-filter__chevron--open]="showFilterDropdown()">
+            expand_more
+          </span>
+        </button>
+        @if (showFilterDropdown()) {
+          <div class="lp-filter__dropdown">
+            <button
+              class="lp-filter__option"
+              [class.lp-filter__option--active]="activeFilter() === 'all'"
+              (click)="setFilter('all')">
+              {{ 'drawerLostPets.filterAll' | translate }}
+            </button>
+            <button
+              class="lp-filter__option"
+              [class.lp-filter__option--active]="activeFilter() === 'zone'"
+              (click)="setFilter('zone')">
+              {{ 'drawerLostPets.filterZone' | translate }}
+            </button>
+          </div>
         }
       </div>
     }
-  </div>
+  </main>
 
+  <!-- Overlay: Contact Organizations -->
+  @if (showOrgOverlay()) {
+    <div class="overlay-backdrop" (click)="closeOrgOverlay()">
+      <div class="overlay-content" (click)="$event.stopPropagation()">
+        <header class="overlay-header">
+          <h2>{{ 'drawerLostPets.orgOverlayTitle' | translate }}</h2>
+          <button class="overlay-close" (click)="closeOrgOverlay()" [attr.aria-label]="'common.close' | translate">
+            <span class="material-icons">close</span>
+          </button>
+        </header>
+        <div class="overlay-body">
+          <ul class="org-list" role="list">
+            @for (org of organizations; track org.id) {
+              <li class="org-card">
+                <div class="org-card__icon">
+                  <span class="material-icons">{{ org.icon }}</span>
+                </div>
+                <div class="org-card__info">
+                  <h4 class="org-card__name">{{ org.name }}</h4>
+                  <span class="org-card__location">{{ org.location }}</span>
+                </div>
+                <div class="org-card__actions">
+                  <button class="org-card__btn" (click)="callOrg(org.phone)" [attr.aria-label]="'drawerLostPets.call' | translate">
+                    <span class="material-icons">phone</span>
+                  </button>
+                  <button class="org-card__btn" (click)="emailOrg(org.email)" [attr.aria-label]="'drawerLostPets.emailOrg' | translate">
+                    <span class="material-icons">email</span>
+                  </button>
+                </div>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Overlay: Create Ad -->
+  @if (showCreateAdOverlay()) {
+    <div class="overlay-backdrop" (click)="closeCreateAdOverlay()">
+      <div class="overlay-content" (click)="$event.stopPropagation()">
+        <header class="overlay-header">
+          <h2>{{ 'drawerLostPets.createAdTitle' | translate }}</h2>
+          <button class="overlay-close" (click)="closeCreateAdOverlay()" [attr.aria-label]="'common.close' | translate">
+            <span class="material-icons">close</span>
+          </button>
+        </header>
+        <div class="overlay-body">
+          <p class="overlay-description">{{ 'drawerLostPets.createAdDescription' | translate }}</p>
+
+          <!-- Ad Type Toggle -->
+          <div class="ad-type-toggle">
+            <button
+              class="ad-type-toggle__btn"
+              [class.ad-type-toggle__btn--active]="adType() === 'lost'"
+              (click)="adType.set('lost')">
+              {{ 'drawerLostPets.adTypeLost' | translate }}
+            </button>
+            <button
+              class="ad-type-toggle__btn"
+              [class.ad-type-toggle__btn--active]="adType() === 'found'"
+              (click)="adType.set('found')">
+              {{ 'drawerLostPets.adTypeFound' | translate }}
+            </button>
+          </div>
+
+          <!-- Form Fields -->
+          <div class="form-group">
+            <label for="ad-pet-name">{{ 'drawerLostPets.adPetName' | translate }}</label>
+            <input
+              id="ad-pet-name"
+              type="text"
+              [ngModel]="adPetName()"
+              (ngModelChange)="adPetName.set($event)"
+              [placeholder]="'drawerLostPets.adPetNamePlaceholder' | translate"
+              required />
+          </div>
+          <div class="form-group">
+            <label for="ad-breed">{{ 'drawerLostPets.adBreed' | translate }}</label>
+            <input
+              id="ad-breed"
+              type="text"
+              [ngModel]="adBreed()"
+              (ngModelChange)="adBreed.set($event)"
+              [placeholder]="'drawerLostPets.adBreedPlaceholder' | translate" />
+          </div>
+          <div class="form-group">
+            <label for="ad-location">{{ 'drawerLostPets.adLocation' | translate }}</label>
+            <input
+              id="ad-location"
+              type="text"
+              [ngModel]="adLocation()"
+              (ngModelChange)="adLocation.set($event)"
+              [placeholder]="'drawerLostPets.adLocationPlaceholder' | translate"
+              required />
+          </div>
+          <div class="form-group">
+            <label for="ad-description">{{ 'drawerLostPets.adDescriptionLabel' | translate }}</label>
+            <textarea
+              id="ad-description"
+              [ngModel]="adDescription()"
+              (ngModelChange)="adDescription.set($event)"
+              [placeholder]="'drawerLostPets.adDescriptionPlaceholder' | translate"
+              rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ad-phone">{{ 'drawerLostPets.adPhone' | translate }}</label>
+            <input
+              id="ad-phone"
+              type="tel"
+              [ngModel]="adContactPhone()"
+              (ngModelChange)="adContactPhone.set($event)"
+              [placeholder]="'drawerLostPets.adPhonePlaceholder' | translate" />
+          </div>
+        </div>
+        <footer class="overlay-footer">
+          <button class="overlay-cancel" (click)="closeCreateAdOverlay()">{{ 'drawerLostPets.cancel' | translate }}</button>
+          <button
+            class="overlay-submit"
+            (click)="submitAd()"
+            [disabled]="!adPetName() || !adLocation() || isCreatingAd()">
+            @if (isCreatingAd()) {
+              <span class="btn-spinner"></span>
+            } @else {
+              {{ 'drawerLostPets.createAdSubmit' | translate }}
+            }
+          </button>
+        </footer>
+      </div>
+    </div>
+  }
+
+  <!-- Overlay: Report Sighting -->
   @if (showSightingModal()) {
-    <div class="modal-overlay" (click)="closeSightingModal()">
-      <div class="modal-content" (click)="$event.stopPropagation()">
-        <header class="modal-header">
+    <div class="overlay-backdrop" (click)="closeSightingModal()">
+      <div class="overlay-content" (click)="$event.stopPropagation()">
+        <header class="overlay-header">
           <h2>{{ 'drawerLostPets.modalTitle' | translate }}</h2>
-          <button class="close-btn" (click)="closeSightingModal()">
+          <button class="overlay-close" (click)="closeSightingModal()" [attr.aria-label]="'common.close' | translate">
             <span class="material-icons">close</span>
           </button>
         </header>
         @if (selectedPet(); as pet) {
-          <div class="modal-body">
+          <div class="overlay-body">
             <div class="pet-summary">
               <img [src]="pet.imageUrl" [alt]="pet.name">
               <span>{{ pet.name }}</span>
             </div>
             <div class="form-group">
-              <label for="location">{{ 'drawerLostPets.locationLabel' | translate }}</label>
+              <label for="sighting-location">{{ 'drawerLostPets.locationLabel' | translate }}</label>
               <input
-                id="location"
+                id="sighting-location"
                 type="text"
                 [ngModel]="sightingLocation()"
                 (ngModelChange)="sightingLocation.set($event)"
                 [placeholder]="'drawerLostPets.locationPlaceholder' | translate"
-                required
-              >
+                required />
             </div>
             <div class="form-group">
-              <label for="notes">{{ 'drawerLostPets.notesLabel' | translate }}</label>
+              <label for="sighting-notes">{{ 'drawerLostPets.notesLabel' | translate }}</label>
               <textarea
-                id="notes"
+                id="sighting-notes"
                 [ngModel]="sightingNotes()"
                 (ngModelChange)="sightingNotes.set($event)"
                 [placeholder]="'drawerLostPets.notesPlaceholder' | translate"
-                rows="3"
-              ></textarea>
+                rows="3"></textarea>
             </div>
           </div>
-          <footer class="modal-footer">
-            <button class="cancel-btn" (click)="closeSightingModal()">{{ 'drawerLostPets.cancel' | translate }}</button>
+          <footer class="overlay-footer">
+            <button class="overlay-cancel" (click)="closeSightingModal()">{{ 'drawerLostPets.cancel' | translate }}</button>
             <button
-              class="submit-btn"
+              class="overlay-submit"
               (click)="submitSighting()"
-              [disabled]="!sightingLocation() || isSubmitting()"
-            >
+              [disabled]="!sightingLocation() || isSubmitting()">
               @if (isSubmitting()) {
                 <span class="btn-spinner"></span>
               } @else {

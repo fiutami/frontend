@@ -183,6 +183,31 @@
   &.activity--comment .activity-item__icon { background: rgba(#00BCD4, 0.1); color: #00BCD4; }
 }
 
+// Transition Text
+.activity__transition {
+  text-align: center;
+  margin-top: $spacing-lg;
+  padding: $spacing-md $spacing-lg;
+
+  &-icon {
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: $spacing-xs;
+  }
+
+  &-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+
+    @include respond(md) {
+      font-size: 15px;
+    }
+  }
+}
+
 // Usage Time & Locked Sections
 .activity__section {
   margin-top: $spacing-lg;

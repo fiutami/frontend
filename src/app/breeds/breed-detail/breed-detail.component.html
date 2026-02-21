@@ -47,6 +47,9 @@
       </div>
     </div>
 
+    <!-- SCROLLABLE AREA: tabs + content scroll while header stays fixed -->
+    <div class="breed-detail__scrollable">
+
     <!-- STICKY TABS -->
     <nav class="breed-detail__tabs" role="tablist" aria-label="Breed detail tabs">
       @for (tab of tabs; track tab.id) {
@@ -63,7 +66,7 @@
       }
     </nav>
 
-    <!-- SCROLLABLE CONTENT -->
+    <!-- TAB CONTENT -->
     <div class="breed-detail__content">
       @switch (activeTab()) {
 
@@ -287,6 +290,8 @@
         }
       }
     </div>
+
+    </div> <!-- end .breed-detail__scrollable -->
 
     <!-- FIXED FOOTER CTA -->
     <div class="breed-detail__footer">

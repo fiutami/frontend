@@ -1525,7 +1525,8 @@
     "thisMonth": "Este Mês",
     "searchHistory": "Histórico de Pesquisa",
     "quizFiutami": "Quiz Fiutami",
-    "comingSoon": "Em breve"
+    "comingSoon": "Em breve",
+    "transitionText": "Estamos preparando um espaço feito sob medida para você e seu pet. Em breve você poderá acompanhar emoções, atividades e conexões."
   },
   "drawerAdopt": {
     "title": "Adoções",
@@ -1627,6 +1628,14 @@
     "error": "Erro ao carregar",
     "retry": "Tentar novamente",
     "empty": "Nenhum animal perdido reportado",
+    "introText": "Aqui voce pode reportar ou procurar animais perdidos na sua regiao. Juntos podemos leva-los para casa.",
+    "searchPlaceholder": "Buscar por nome, raca ou local...",
+    "sectionNotAlone": "Voce nao esta sozinho",
+    "contactOrgs": "Contatar entidades",
+    "createAd": "Criar anuncio",
+    "sectionReports": "Relatos",
+    "filterZone": "Na sua regiao",
+    "filterAll": "Todos os relatos",
     "sizeSmall": "Pequeno",
     "sizeMedium": "Médio",
     "sizeLarge": "Grande",
@@ -1638,7 +1647,24 @@
     "notesLabel": "Notas adicionais",
     "notesPlaceholder": "Descreva o que você viu...",
     "cancel": "Cancelar",
-    "submit": "Enviar relatório"
+    "submit": "Enviar relatório",
+    "orgOverlayTitle": "Entidades e abrigos",
+    "emailOrg": "Enviar email",
+    "createAdTitle": "Criar anuncio",
+    "createAdDescription": "Insira as informacoes principais do animal perdido ou encontrado. O anuncio sera visivel para todos os usuarios da regiao.",
+    "createAdSubmit": "Publicar anuncio",
+    "adTypeLost": "Perdido",
+    "adTypeFound": "Encontrado",
+    "adPetName": "Nome do animal",
+    "adPetNamePlaceholder": "Ex. Luna, Rocky...",
+    "adBreed": "Raca",
+    "adBreedPlaceholder": "Ex. Golden Retriever, Europeu...",
+    "adLocation": "Ultimo avistamento",
+    "adLocationPlaceholder": "Ex. Parque Ibirapuera, Sao Paulo...",
+    "adDescriptionLabel": "Descricao",
+    "adDescriptionPlaceholder": "Descreva o animal, marcas distintas, coleira...",
+    "adPhone": "Telefone de contato",
+    "adPhonePlaceholder": "Ex. +55 11 91234-5678"
   },
   "drawerPetFriends": {
     "title": "Amigos Pet",
@@ -1646,7 +1672,7 @@
     "error": "Erro ao carregar",
     "retry": "Tentar novamente",
     "empty": "Nenhum amigo ainda",
-    "emptySubtext": "Encontre outros pets e faça novas amizades!",
+    "introText": "A comunidade cresce também graças a você. Aqui está a sua matilha FiutaMi",
     "online": "Online",
     "mutualFriends": "{{count}} amigos em comum",
     "sendMessageAria": "Enviar mensagem",
@@ -1684,10 +1710,16 @@
     "groupNamePlaceholder": "Nome do grupo",
     "cancel": "Cancelar",
     "create": "Criar",
-    "emptyCategory": "Nenhum item nesta categoria"
+    "emptyCategory": "Nenhum item nesta categoria",
+    "introText": "Mantenha perto o que importa. Aqui estão os seus favoritos no FiutaMi."
   },
   "drawerSubscriptions": {
     "title": "Assinaturas",
+    "introText": "Confira sua assinatura e descubra os benefícios extras do FiutaMi.",
+    "yourPlan": "Seu plano",
+    "availablePlans": "Planos disponíveis",
+    "currentPlanLabel": "Plano ativo",
+    "freePlanName": "FiutaMi Base",
     "loading": "Carregando planos...",
     "error": "Erro ao carregar os planos",
     "retry": "Tentar novamente",
@@ -1703,5 +1735,32 @@
   },
   "drawerTerms": {
     "introText": "Transparência em primeiro lugar. Aqui você encontra as regras que fazem o FiutaMi funcionar."
+  },
+  "drawerPrivacy": {
+    "introText": "Seus dados, suas regras. Descubra como protegemos sua privacidade no FiutaMi."
+  },
+  "addPet": {
+    "title": "Adicionar Pets",
+    "intro": "Aqui voce pode adicionar outro pet da sua familia para monitora-lo melhor. Lembre-se: voce pode ter ate 2 pets ativos. Para adicionar mais, voce precisara ativar a versao completa do FiutaMi.",
+    "nameLabel": "NOME",
+    "namePlaceholder": "Nome do pet",
+    "speciesLabel": "ESPECIE",
+    "speciesPlaceholder": "Selecionar especie",
+    "breedLabel": "RACA",
+    "breedPlaceholder": "Selecionar raca",
+    "selectSpeciesFirst": "Primeiro selecione uma especie",
+    "loadingBreeds": "Carregando racas...",
+    "sexLabel": "SEXO",
+    "male": "Macho",
+    "female": "Femea",
+    "birthDateLabel": "DATA DE NASCIMENTO",
+    "weightLabel": "PESO",
+    "bioLabel": "DESCRICAO",
+    "bioPlaceholder": "Conte algo sobre seu pet...",
+    "saveButton": "Adicionar Pet",
+    "saving": "Salvando...",
+    "errorNameRequired": "O nome do pet e obrigatorio",
+    "errorSpeciesRequired": "Selecione uma especie",
+    "errorGeneric": "Erro ao criar o pet. Tente novamente."
   }
 }

@@ -58,6 +58,106 @@
   }
 }
 
+// Intro text
+.intro-text {
+  text-align: center;
+  font-size: 14px;
+  color: $color-text-secondary;
+  line-height: 1.5;
+  margin: 0 0 $spacing-md;
+  padding: 0 $spacing-sm;
+}
+
+// Section title pattern (yellow title + white decorative line)
+.section-title {
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+
+  h3 {
+    color: #F5A623;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  &__line {
+    width: 60px;
+    height: 2px;
+    background: white;
+    margin: 0.5rem auto 0;
+    border-radius: 1px;
+  }
+}
+
+// Current plan card
+.current-plan-card {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: $border-radius-lg;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-md;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(#F5A623, 0.15);
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    .material-icons {
+      font-size: 24px;
+      color: #F5A623;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__label {
+    font-size: 12px;
+    color: $color-text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin-top: 2px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+
+    span {
+      font-size: 20px;
+      font-weight: 700;
+      color: $color-text-primary;
+    }
+
+    small {
+      font-size: 12px;
+      color: $color-text-secondary;
+    }
+  }
+}
+
 .billing-toggle {
   display: flex;
   align-items: center;

@@ -137,3 +137,20 @@ app-root > *:first-child {
 
 /* Viewport meta tag support - add to index.html: */
 /* <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> */
+
+/* ============================================
+   Global Overlay Backdrop Blur
+   ============================================ */
+.overlay-backdrop,
+.modal-overlay,
+.saved__modal-overlay,
+.delete-confirm__backdrop,
+.upload-overlay,
+.paywall-overlay,
+.photo-menu-overlay,
+.notifications-overlay,
+[class*="__backdrop"],
+[class*="__overlay"] {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}

@@ -5,6 +5,12 @@
 
   <!-- Content -->
   <main class="saved-content">
+    <!-- Intro -->
+    <div class="saved-intro">
+      <span class="material-icons saved-intro__icon">favorite</span>
+      <p class="saved-intro__text">{{ 'drawerSaved.introText' | translate }}</p>
+    </div>
+
     <!-- Loading State -->
     @if (isLoading()) {
       <div class="saved-loading">

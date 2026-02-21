@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy, signal, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy, signal, OnInit, AfterViewInit, OnDestroy, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CmsService } from 'src/app/core/services/cms.service';
@@ -15,20 +15,24 @@ import { TabPageShellDrawerComponent } from '../../../shared/components/tab-page
   styleUrls: ['./privacy.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PrivacyComponent implements OnInit, AfterViewInit {
+export class PrivacyComponent implements OnInit, AfterViewInit, OnDestroy {
   private location = inject(Location);
   private cmsService = inject(CmsService);
   private translate = inject(TranslateService);
 
   @ViewChildren('sectionEl') sectionElements!: QueryList<ElementRef>;
 
-  pageTitle = this.translate.instant('drawer.privacy');
+  /** Translated page title */
+  protected pageTitle = this.translate.instant('drawer.privacy');
+
   title = 'Privacy Policy';
   lastUpdated = 'Dicembre 2025';
 
   // Active section for navigation
   activeSection = signal('');
   isLoading = signal(true);
+
+  private observer?: IntersectionObserver;
 
   // Privacy sections (starts with hardcoded fallback, replaced by CMS if available)
   sections: CmsSection[] = [
@@ -133,6 +137,12 @@ export class PrivacyComponent implements OnInit, AfterViewInit {
 
   private readonly fallbackSections = [...this.sections];
 
+  constructor() {
+    this.translate.onLangChange.subscribe(() => {
+      this.pageTitle = this.translate.instant('drawer.privacy');
+    });
+  }
+
   ngOnInit(): void {
     this.cmsService.getPage('privacy').subscribe(page => {
       if (page) {
@@ -154,7 +164,39 @@ export class PrivacyComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // activeSection is set in ngOnInit after CMS load
+    // Observer will be set up once sections load via sectionElements changes
+    this.sectionElements.changes.subscribe(() => {
+      this.setupScrollObserver();
+    });
+    // Also try immediately in case sections are already rendered
+    if (this.sectionElements.length > 0) {
+      this.setupScrollObserver();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
+  }
+
+  private setupScrollObserver(): void {
+    this.observer?.disconnect();
+
+    const options: IntersectionObserverInit = {
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0,
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          this.activeSection.set(entry.target.id);
+        }
+      }
+    }, options);
+
+    this.sectionElements.forEach((elRef) => {
+      this.observer!.observe(elRef.nativeElement);
+    });
   }
 
   goBack(): void {

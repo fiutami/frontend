@@ -3,8 +3,10 @@
 
 // ================================
 // Privacy Page - Mobile First
+// Matches terms.component.scss style
 // ================================
 
+$tab-bar-height: 64px;
 $nav-height: 52px;
 
 .privacy-page {
@@ -18,18 +20,17 @@ $nav-height: 52px;
 // ================================
 
 .privacy-nav {
-  background: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 9;
+  background: transparent;
 
   &__scroll {
     display: flex;
-    gap: $spacing-xs;
+    gap: $spacing-sm;
     padding: $spacing-sm $spacing-md;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    justify-content: center;
     -webkit-overflow-scrolling: touch;
 
     // Hide scrollbar but keep functionality
@@ -40,31 +41,37 @@ $nav-height: 52px;
     scrollbar-width: none;
   }
 
-  &__item {
-    flex-shrink: 0;
-    padding: $spacing-xs $spacing-md;
-    background: rgba($color-cta-primary, 0.1);
-    border: none;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 500;
-    color: $color-text-secondary;
+  &__circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    scroll-snap-align: start;
-    white-space: nowrap;
+    transition: all 200ms ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 
     &:hover {
-      background: rgba($color-cta-primary, 0.2);
+      border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     &--active {
       background: $color-cta-primary;
-      color: white;
+      border-color: $color-cta-primary;
+      color: $color-text-primary;
+      transform: scale(1.15);
     }
 
     &:focus-visible {
-      outline: 2px solid $color-cta-primary;
+      outline: 2px solid rgba(255, 255, 255, 0.8);
       outline-offset: 2px;
     }
   }
@@ -98,12 +105,11 @@ $nav-height: 52px;
   text-align: center;
   margin-bottom: $spacing-xl;
   padding-bottom: $spacing-xl;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
   &__icon {
     font-size: 56px;
-    color: $color-cta-primary;
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: $spacing-md;
 
     @include respond(md) {
@@ -114,7 +120,7 @@ $nav-height: 52px;
   &__title {
     font-size: 24px;
     font-weight: 700;
-    color: $color-text-primary;
+    color: white;
     margin: 0 0 $spacing-sm 0;
 
     @include respond(md) {
@@ -124,7 +130,7 @@ $nav-height: 52px;
 
   &__subtitle {
     font-size: 15px;
-    color: $color-text-secondary;
+    color: rgba(255, 255, 255, 0.7);
     margin: 0;
     line-height: 1.5;
   }
@@ -135,17 +141,18 @@ $nav-height: 52px;
 // ================================
 
 .privacy-section {
-  margin-bottom: $spacing-xl;
-  scroll-margin-top: 130px; // Account for sticky header + nav
+  margin-bottom: $spacing-lg;
+  padding: 0;
+  scroll-margin-top: 70px;
 
   @include respond(md) {
-    scroll-margin-top: 150px;
+    scroll-margin-top: 90px;
   }
 
   &__title {
     font-size: 18px;
-    font-weight: 600;
-    color: $color-text-primary;
+    font-weight: 700;
+    color: white;
     margin: 0 0 $spacing-md 0;
     display: flex;
     align-items: center;
@@ -167,7 +174,7 @@ $nav-height: 52px;
   &__content {
     font-size: 15px;
     line-height: 1.7;
-    color: $color-text-secondary;
+    color: rgba(255, 255, 255, 0.85);
     margin: 0;
     white-space: pre-line;
 
@@ -185,7 +192,7 @@ $nav-height: 52px;
       position: relative;
       font-size: 14px;
       line-height: 1.7;
-      color: $color-text-secondary;
+      color: rgba(255, 255, 255, 0.85);
       margin-bottom: $spacing-sm;
       padding-left: $spacing-md;
 
@@ -222,8 +229,7 @@ $nav-height: 52px;
   gap: $spacing-sm;
   padding: $spacing-lg;
   font-size: 13px;
-  color: $color-text-secondary;
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.5);
 
   .material-icons {
     font-size: 18px;
@@ -239,7 +245,6 @@ $nav-height: 52px;
   .privacy-nav {
     &__scroll {
       justify-content: center;
-      flex-wrap: wrap;
     }
   }
 }
@@ -248,10 +253,6 @@ $nav-height: 52px;
 @include respond(lg) {
   .privacy-content__wrapper {
     max-width: 900px;
-  }
-
-  .privacy-section {
-    // No hover effect (no card box)
   }
 }
 

@@ -76,7 +76,7 @@ export class BreedDetailComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/home/species']);
+    window.history.back();
   }
 
   onSelectBreed(): void {

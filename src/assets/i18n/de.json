@@ -1476,7 +1476,8 @@
     "thisMonth": "Diesen Monat",
     "searchHistory": "Suchverlauf",
     "quizFiutami": "Quiz Fiutami",
-    "comingSoon": "Demnächst verfügbar"
+    "comingSoon": "Demnächst verfügbar",
+    "transitionText": "Wir bereiten einen Bereich vor, der speziell auf dich und dein Haustier zugeschnitten ist. Bald kannst du Emotionen, Aktivitäten und Verbindungen verfolgen."
   },
   "drawerAdopt": {
     "title": "Adoptionen",
@@ -1578,6 +1579,14 @@
     "error": "Fehler beim Laden",
     "retry": "Erneut versuchen",
     "empty": "Keine vermissten Tiere gemeldet",
+    "introText": "Hier kannst du vermisste Tiere in deiner Gegend melden oder suchen. Gemeinsam bringen wir sie nach Hause.",
+    "searchPlaceholder": "Nach Name, Rasse oder Ort suchen...",
+    "sectionNotAlone": "Du bist nicht allein",
+    "contactOrgs": "Organisationen kontaktieren",
+    "createAd": "Anzeige erstellen",
+    "sectionReports": "Meldungen",
+    "filterZone": "In deiner Nähe",
+    "filterAll": "Alle Meldungen",
     "sizeSmall": "Klein",
     "sizeMedium": "Mittel",
     "sizeLarge": "Groß",
@@ -1589,7 +1598,24 @@
     "notesLabel": "Zusätzliche Hinweise",
     "notesPlaceholder": "Beschreiben Sie was Sie gesehen haben...",
     "cancel": "Abbrechen",
-    "submit": "Meldung senden"
+    "submit": "Meldung senden",
+    "orgOverlayTitle": "Organisationen & Tierheime",
+    "emailOrg": "E-Mail senden",
+    "createAdTitle": "Anzeige erstellen",
+    "createAdDescription": "Geben Sie die wichtigsten Informationen zum vermissten oder gefundenen Tier ein. Die Anzeige wird allen Nutzern in der Umgebung angezeigt.",
+    "createAdSubmit": "Anzeige veröffentlichen",
+    "adTypeLost": "Vermisst",
+    "adTypeFound": "Gefunden",
+    "adPetName": "Name des Tieres",
+    "adPetNamePlaceholder": "Z.B. Luna, Rocky...",
+    "adBreed": "Rasse",
+    "adBreedPlaceholder": "Z.B. Golden Retriever, Europäisch...",
+    "adLocation": "Zuletzt gesehen",
+    "adLocationPlaceholder": "Z.B. Stadtpark, München...",
+    "adDescriptionLabel": "Beschreibung",
+    "adDescriptionPlaceholder": "Beschreiben Sie das Tier, besondere Merkmale, Halsband...",
+    "adPhone": "Kontakttelefon",
+    "adPhonePlaceholder": "Z.B. +49 170 1234567"
   },
   "drawerPetFriends": {
     "title": "Tierfreunde",
@@ -1597,7 +1623,7 @@
     "error": "Fehler beim Laden",
     "retry": "Erneut versuchen",
     "empty": "Noch keine Freunde",
-    "emptySubtext": "Finde andere Tiere und schließe neue Freundschaften!",
+    "introText": "Die Community wächst auch dank dir. Hier ist dein FiutaMi-Rudel",
     "online": "Online",
     "mutualFriends": "{{count}} gemeinsame Freunde",
     "sendMessageAria": "Nachricht senden",
@@ -1635,10 +1661,16 @@
     "groupNamePlaceholder": "Gruppenname",
     "cancel": "Abbrechen",
     "create": "Erstellen",
-    "emptyCategory": "Keine Elemente in dieser Kategorie"
+    "emptyCategory": "Keine Elemente in dieser Kategorie",
+    "introText": "Halte fest, was dir wichtig ist. Hier sind deine Favoriten in FiutaMi."
   },
   "drawerSubscriptions": {
     "title": "Abonnements",
+    "introText": "Prüfe dein Abonnement und entdecke die Extra-Vorteile von FiutaMi.",
+    "yourPlan": "Dein Plan",
+    "availablePlans": "Verfügbare Pläne",
+    "currentPlanLabel": "Aktiver Plan",
+    "freePlanName": "FiutaMi Base",
     "loading": "Pläne laden...",
     "error": "Fehler beim Laden der Pläne",
     "retry": "Erneut versuchen",
@@ -1654,5 +1686,32 @@
   },
   "drawerTerms": {
     "introText": "Transparenz geht vor. Hier findest du die Regeln, die FiutaMi funktionieren lassen."
+  },
+  "drawerPrivacy": {
+    "introText": "Deine Daten, deine Regeln. Erfahre, wie wir deine Privatsphäre bei FiutaMi schützen."
+  },
+  "addPet": {
+    "title": "Haustiere hinzufuegen",
+    "intro": "Hier kannst du ein weiteres Haustier deiner Familie hinzufuegen, um es besser zu ueberwachen. Denke daran: Du kannst bis zu 2 aktive Haustiere haben. Um weitere hinzuzufuegen, musst du die Vollversion von FiutaMi aktivieren.",
+    "nameLabel": "NAME",
+    "namePlaceholder": "Name des Haustieres",
+    "speciesLabel": "TIERART",
+    "speciesPlaceholder": "Tierart waehlen",
+    "breedLabel": "RASSE",
+    "breedPlaceholder": "Rasse waehlen",
+    "selectSpeciesFirst": "Waehle zuerst eine Tierart",
+    "loadingBreeds": "Rassen werden geladen...",
+    "sexLabel": "GESCHLECHT",
+    "male": "Maennlich",
+    "female": "Weiblich",
+    "birthDateLabel": "GEBURTSDATUM",
+    "weightLabel": "GEWICHT",
+    "bioLabel": "BESCHREIBUNG",
+    "bioPlaceholder": "Erzaehle etwas ueber dein Haustier...",
+    "saveButton": "Haustier hinzufuegen",
+    "saving": "Speichern...",
+    "errorNameRequired": "Der Name des Haustieres ist erforderlich",
+    "errorSpeciesRequired": "Bitte waehle eine Tierart",
+    "errorGeneric": "Fehler beim Erstellen des Haustieres. Bitte versuche es erneut."
   }
 }

@@ -30,17 +30,6 @@
   text-align: center;
   margin-bottom: $spacing-xl;
 
-  &__icon {
-    font-size: 64px;
-    color: $color-cta-primary;
-    opacity: 0.8;
-    margin-bottom: $spacing-md;
-
-    @include respond(md) {
-      font-size: 72px;
-    }
-  }
-
   &__text {
     font-size: 15px;
     color: white;

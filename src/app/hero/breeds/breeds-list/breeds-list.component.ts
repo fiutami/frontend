@@ -92,7 +92,7 @@ export class BreedsListComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/home/species']);
+    window.history.back();
   }
 
   trackByBreed(_index: number, breed: Breed): string {

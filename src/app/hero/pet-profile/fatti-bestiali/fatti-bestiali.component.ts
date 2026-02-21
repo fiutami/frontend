@@ -148,7 +148,7 @@ export class FattiBestialiComponent implements OnInit {
   }
 
   navigateToAddPet(): void {
-    this.router.navigate(['/home/pet-register/specie']);
+    this.router.navigate(['/home/pet-profile/add']);
   }
 
   toggleDescription(): void {
