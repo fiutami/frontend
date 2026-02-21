@@ -33,5 +33,13 @@ LINK FIGMA:https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--ori
 34.Nella pagina `home/subscriptions`, con titolo “Abbonamenti”, imposta la schermata seguendo lo stile del Figma.
 
 Deve esserci una frase introduttiva in alto. Subito sotto inserisci un titolo in giallo con la linea grafica decorativa. In questa prima sezione mostra all’utente quale abbonamento è attivo in quel momento. Se l’utente è sul piano gratuito, il nome del piano deve essere “FiutaMi Base”.
-
 Sotto, inserisci una seconda sezione con titolo in giallo e linea grafica decorativa, dedicata all’elenco degli abbonamenti disponibili. Qui deve comparire la lista dei piani esistenti, con le relative informazioni, mantenendo esattamente lo stile e la gerarchia visiva del design in Figma. link: https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--originale-?node-id=12439-5158&t=9RoT8GdBEDWFLvWH-4
+
+35.Nella pagina `home/lost-pets`, con titolo “Animali smarriti”, va creata la schermata seguendo fedelmente il design in Figma.
+
+In alto inserisci la frase introduttiva e subito sotto la barra di ricerca, dove l’utente può inserire i dati dell’animale che sta cercando, come nelle altre pagine. Le scritte in giallo corrispondono ai titoli delle sezioni, mentre la linea bianca è solo un elemento grafico decorativo.
+La prima sezione è “Non sei solo”, con due pulsanti gialli cliccabili. Il pulsante per contattare gli enti deve aprire una finestra in overlay con l’elenco delle associazioni o enti disponibili. Il pulsante “Crea annuncio” deve aprire un overlay dove l’utente può inserire i dati principali dell’animale smarrito o trovato. I dati inseriti devono poi essere salvati e visualizzati in questa stessa pagina.
+Segue un altro titolo in giallo con linea grafica e sotto le schede degli animali smarriti, sia quelli segnalati dai proprietari sia quelli trovati da altri utenti. Ogni scheda deve mostrare le informazioni principali e permettere di visualizzare i dettagli.
+
+Infine, inserisci un ultimo pulsante a tendina che funge da filtro: al click deve mostrare gli animali smarriti nella zona in cui abita l’utente. Segui esattamente struttura e gerarchie del link Figma di riferimento.
+LINK:https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--originale-?node-id=12439-5048&t=9RoT8GdBEDWFLvWH-4
