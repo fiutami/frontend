@@ -51,4 +51,7 @@ Deve aprirsi una nuova schermata con titolo **“Aggiungi pets”**, strutturata
 “Qui puoi aggiungere un altro pet della tua famiglia per monitorarlo al meglio. Ricorda: puoi avere fino a 2 pet attivi. Per aggiungerne altri dovrai attivare la versione completa di FiutaMi.”
 Sotto la frase devono essere presenti gli stessi campi di compilazione della pagina `home/pet-profile/edit`, con l’aggiunta del riquadro “Specie” con menu a tendina e del riquadro “Razza”, anch’esso a tendina e collegato alla scelta della specie. In questo modo, dopo aver selezionato la specie, verranno suggerite automaticamente solo le razze coerenti.
 
+37.Regola generale: tutte le frecce Back devono riportare sempre alla pagina precedente nella navigazione, senza eccezioni.
+E tutte le finestre in overlay, la schermata sottostante deve risultare completamente sfocata, coprendo l’intera area visibile della pagina, come avviene ad esempio con la mappa in `home/map`.
 
+38.In tutte le pagine `home/breeds/detail`, devono essere scrollabili tutti gli elementi posizionati sotto il contenitore che raffigura l’immagine della razza. La parte superiore con l’immagine resta fissa, mentre tutto il contenuto sottostante deve scorrere in modo fluido.
