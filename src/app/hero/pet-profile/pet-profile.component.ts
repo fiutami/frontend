@@ -226,7 +226,10 @@ export class PetProfileComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // === Quick Action icon navigation ===
   onCalendarClick(): void {
-    this.router.navigate(['/home/calendar']);
+    const now = new Date();
+    this.router.navigate(['/calendar/month'], {
+      queryParams: { month: now.getMonth(), year: now.getFullYear() }
+    });
   }
 
   onNotificationsClick(): void {
