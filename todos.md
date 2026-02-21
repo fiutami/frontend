@@ -13,3 +13,17 @@ Questa sezione va inserita prima delle caselle di compilazione del messaggio, co
 LINK FIGMA:https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--originale-?node-id=12439-4821&t=WVRcT0koVbzjwbXp-4
 
 27. Nella pagina titolo abbonamenti , nome home/subscriptions aggiungi frase intro " Controlla il tuo abbonamento e scopri i vantaggi extra di FiutaMi." Inoltre aggiungi un titolo, con scritto  ." il tuo piano" e sotto inserisci il piano dell'utente es. FiutaMi Base.. successivamente a questa informazione mostra all'utente tutti gli abbonamenti 
+
+28.Nella pagina `home/activity`, con titolo “Le tue attività”, inserisci una frase di transizione tra i riquadri bianchi delle attività disponibili e i riquadri ancora bloccati con il lucchetto. Il testo deve essere:
+“Stiamo preparando uno spazio fatto su misura per te e il tuo pet. Presto potrai seguire emozioni, attività e connessioni.”
+
+29.Nella pagina `home/favorites`, con titolo “Salvati”, inserisci sopra gli elementi presenti una frase introduttiva:
+“Tieni vicino ciò che conta. Qui ci sono i tuoi preferiti in FiutaMi.”
+
+30. Nella pagina `home/friends`, con titolo “Amici pet”, sostituisci la frase introduttiva esistente “Trova altri pet…” con:
+“La community cresce anche grazie a te. Ecco il tuo branco FiutaMi”
+
+31.Nella pagina `home/adopt`, con titolo “Adozioni”, elimina il disegno posizionato sopra la frase introduttiva.
+
+32.Nella pagina `home/privacy`, con titolo “Privacy”, applica lo stesso stile e la stessa struttura della pagina `home/terms` “Termini di servizio”.
+
