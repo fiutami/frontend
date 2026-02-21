@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-evenly; // Distribuzione uniforme
   position: fixed;
-  bottom: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   left: 16px;
   right: 16px;
   z-index: 1000;
@@ -40,6 +40,7 @@
   @media (max-width: 359px) {
     left: 8px;
     right: 8px;
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
     justify-content: space-evenly;
   }
 
@@ -73,7 +74,7 @@
     margin: 0 $spacing-md $spacing-md;
     left: $spacing-md;
     right: $spacing-md;
-    bottom: $spacing-md;
+    bottom: calc(#{$spacing-md} + env(safe-area-inset-bottom, 0px));
     border-radius: $border-radius-xl;
     background-color: $color-tab-bar-bg;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -170,7 +171,8 @@
   // ===========================================
 
   &--safe-area {
-    padding-bottom: env(safe-area-inset-bottom, 0);
+    // Safe area is handled via bottom offset, not internal padding
+    // padding-bottom would distort the bar height and misalign icons
   }
 
   // ===========================================
@@ -351,7 +353,7 @@
     right: auto;
     transform: translateX(-50%);
     border-radius: 36px;
-    bottom: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 
     &--floating {
@@ -370,13 +372,13 @@
   // Tablets (1024px+) - container shell è 520px
   @media (min-width: 1024px) {
     max-width: calc(520px - 60px); // 460px
-    bottom: 28px;
+    bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   }
 
   // Desktop (1280px+) - container shell è 560px
   @media (min-width: 1280px) {
     max-width: calc(560px - 60px); // 500px
-    bottom: 32px;
+    bottom: calc(32px + env(safe-area-inset-bottom, 0px));
   }
 }
 
