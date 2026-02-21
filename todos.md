@@ -43,3 +43,12 @@ Segue un altro titolo in giallo con linea grafica e sotto le schede degli animal
 
 Infine, inserisci un ultimo pulsante a tendina che funge da filtro: al click deve mostrare gli animali smarriti nella zona in cui abita l’utente. Segui esattamente struttura e gerarchie del link Figma di riferimento.
 LINK:https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--originale-?node-id=12439-5048&t=9RoT8GdBEDWFLvWH-4
+
+
+36.Quando si vuole aggiungere un nuovo pet, sia cliccando sull’icona “+” nella pagina `home/pet-profile` con titolo “Profilo”, sia cliccando su “Aggiungi pet” nella drawer menu, attualmente si viene reindirizzati a `home/pet-register`. Questo flusso va semplificato.
+
+Deve aprirsi una nuova schermata con titolo **“Aggiungi pets”**, strutturata come la pagina `home/pet-profile/edit`. Prima dei campi di inserimento va inserita una breve descrizione:
+“Qui puoi aggiungere un altro pet della tua famiglia per monitorarlo al meglio. Ricorda: puoi avere fino a 2 pet attivi. Per aggiungerne altri dovrai attivare la versione completa di FiutaMi.”
+Sotto la frase devono essere presenti gli stessi campi di compilazione della pagina `home/pet-profile/edit`, con l’aggiunta del riquadro “Specie” con menu a tendina e del riquadro “Razza”, anch’esso a tendina e collegato alla scelta della specie. In questo modo, dopo aver selezionato la specie, verranno suggerite automaticamente solo le razze coerenti.
+
+
