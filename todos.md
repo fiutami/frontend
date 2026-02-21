@@ -26,4 +26,5 @@ LINK FIGMA:https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--ori
 31.Nella pagina `home/adopt`, con titolo “Adozioni”, elimina il disegno posizionato sopra la frase introduttiva.
 
 32.Nella pagina `home/privacy`, con titolo “Privacy”, applica lo stesso stile e la stessa struttura della pagina `home/terms` “Termini di servizio”.
+33.Nella pagina `home/contact`, con titolo “Contatti”, elimina il disegno posizionato sopra la frase introduttiva.
 
