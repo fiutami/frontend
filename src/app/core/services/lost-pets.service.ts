@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, delay, catchError } from 'rxjs';
+import { Observable, of, delay, catchError, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
@@ -30,6 +30,11 @@ export class LostPetsService {
 
   getLostPets(): Observable<LostPet[]> {
     return this.http.get<LostPet[]>(this.apiUrl).pipe(
+      map(pets => pets.map(p => ({
+        ...p,
+        lastSeenDate: new Date(p.lastSeenDate),
+        createdAt: new Date(p.createdAt),
+      }))),
       catchError(err => {
         console.warn('API failed, using fallback:', err);
         return of(MOCK_DATA);
@@ -61,9 +66,10 @@ export class LostPetsService {
     return icons[species];
   }
 
-  formatLastSeen(date: Date): string {
+  formatLastSeen(date: Date | string): string {
+    const d = date instanceof Date ? date : new Date(date);
     const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
+    const diffMs = now.getTime() - d.getTime();
     const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
@@ -71,7 +77,7 @@ export class LostPetsService {
     if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? 'ora' : 'ore'} fa`;
     if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? 'giorno' : 'giorni'} fa`;
 
-    return date.toLocaleDateString('it-IT', {
+    return d.toLocaleDateString('it-IT', {
       day: 'numeric',
       month: 'long'
     });

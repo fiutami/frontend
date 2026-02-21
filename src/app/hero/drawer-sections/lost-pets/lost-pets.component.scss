@@ -476,6 +476,7 @@
   background: #1a2a4a;
   width: 100%;
   max-width: 480px;
+  height: 85vh;
   max-height: 85vh;
   border-radius: $border-radius-lg $border-radius-lg 0 0;
   animation: slideUp 0.3s ease;
@@ -484,6 +485,7 @@
 
   @include respond(md) {
     border-radius: $border-radius-lg;
+    height: 80vh;
     max-height: 80vh;
   }
 }
