@@ -8,8 +8,6 @@
 * Richiesta di assistenza
 * Assistenza Fiuto
 Questa sezione va inserita prima delle caselle di compilazione del messaggio, così l’utente può selezionare prima la tipologia di richiesta e poi compilare i campi.
-<<<<<<< HEAD
-=======
 
 26.Nella pagina home/friends, con titolo “Amici pet”, la struttura deve seguire esattamente il design in Figma. In alto inserisci la frase introduttiva, poi la barra di ricerca con filtro. Sotto deve esserci il titolo in giallo e la linea bianca decorativa come elemento grafico. A seguire, inserisci il pulsante giallo per la selezione amici e, sotto, la lista degli amici già conosciuti su Fiutami, con foto e nome.
 LINK FIGMA:https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--originale-?node-id=12439-4821&t=WVRcT0koVbzjwbXp-4
@@ -56,5 +54,4 @@ Sotto la frase devono essere presenti gli stessi campi di compilazione della pag
 37.Regola generale: tutte le frecce Back devono riportare sempre alla pagina precedente nella navigazione, senza eccezioni.
 E tutte le finestre in overlay, la schermata sottostante deve risultare completamente sfocata, coprendo l’intera area visibile della pagina, come avviene ad esempio con la mappa in `home/map`.
 
-38.In tutte le pagine `home/breeds/detail`, devono essere scrollabili tutti gli elementi posizionati sotto il contenitore che raffigura l’immagine della razza. La parte superiore con l’immagine resta fissa, mentre tutto il contenuto sottostante deve scorrere in modo fluido.
->>>>>>> c359282ed220f0b5c8db243355202b444db33a94
+38.In tutte le pagine `home/breeds/detail`, devono essere scrollabili tutti gli elementi posizionati sotto il contenitore che raffigura l'immagine della razza. La parte superiore con l'immagine resta fissa, mentre tutto il contenuto sottostante deve scorrere in modo fluido.
