@@ -25,6 +25,13 @@ LINK FIGMA:https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--ori
 
 31.Nella pagina `home/adopt`, con titolo “Adozioni”, elimina il disegno posizionato sopra la frase introduttiva.
 
+
 32.Nella pagina `home/privacy`, con titolo “Privacy”, applica lo stesso stile e la stessa struttura della pagina `home/terms` “Termini di servizio”.
+
 33.Nella pagina `home/contact`, con titolo “Contatti”, elimina il disegno posizionato sopra la frase introduttiva.
 
+34.Nella pagina `home/subscriptions`, con titolo “Abbonamenti”, imposta la schermata seguendo lo stile del Figma.
+
+Deve esserci una frase introduttiva in alto. Subito sotto inserisci un titolo in giallo con la linea grafica decorativa. In questa prima sezione mostra all’utente quale abbonamento è attivo in quel momento. Se l’utente è sul piano gratuito, il nome del piano deve essere “FiutaMi Base”.
+
+Sotto, inserisci una seconda sezione con titolo in giallo e linea grafica decorativa, dedicata all’elenco degli abbonamenti disponibili. Qui deve comparire la lista dei piani esistenti, con le relative informazioni, mantenendo esattamente lo stile e la gerarchia visiva del design in Figma. link: https://www.figma.com/design/FxJsfOV7R7qoXBM2xTyXRE/MVP-Phone-Ok--originale-?node-id=12439-5158&t=9RoT8GdBEDWFLvWH-4
